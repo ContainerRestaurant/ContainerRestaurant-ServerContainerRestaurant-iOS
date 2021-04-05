@@ -16,8 +16,20 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uz6-JZ-azt">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Uz6-JZ-azt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JcL-y0-t49"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Uz6-JZ-azt" secondAttribute="trailing" id="VHf-Rg-ihd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Uz6-JZ-azt" secondAttribute="bottom" id="eQi-df-gpH"/>
+                            <constraint firstItem="Uz6-JZ-azt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="v0P-dH-rhT"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="홈" image="homekit" catalog="system" id="pQC-aT-91t"/>
                     <navigationItem key="navigationItem" id="PgQ-F0-1Mv"/>
@@ -26,15 +38,27 @@
             </objects>
             <point key="canvasLocation" x="1947.826086956522" y="93.75"/>
         </scene>
-        <!--View Controller-->
+        <!--Creation View Controller-->
         <scene sceneID="DRm-lZ-aSl">
             <objects>
-                <viewController id="K72-4z-89V" sceneMemberID="viewController">
+                <viewController id="K72-4z-89V" customClass="CreationViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SSZ-G0-G1o">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w0o-zE-qY7">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="CUz-rI-Bb0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="w0o-zE-qY7" firstAttribute="leading" secondItem="CUz-rI-Bb0" secondAttribute="leading" id="9LR-rz-Zyf"/>
+                            <constraint firstItem="w0o-zE-qY7" firstAttribute="top" secondItem="CUz-rI-Bb0" secondAttribute="top" id="G5l-DN-061"/>
+                            <constraint firstItem="CUz-rI-Bb0" firstAttribute="bottom" secondItem="w0o-zE-qY7" secondAttribute="bottom" id="K56-MU-BxV"/>
+                            <constraint firstAttribute="trailing" secondItem="w0o-zE-qY7" secondAttribute="trailing" id="s43-uI-0Jf"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="plus" catalog="system" id="pGr-RB-Gvp"/>
                 </viewController>
@@ -45,12 +69,24 @@
         <!--지도-->
         <scene sceneID="AlQ-ag-xgc">
             <objects>
-                <viewController id="WKT-hR-IPh" sceneMemberID="viewController">
+                <viewController id="WKT-hR-IPh" customClass="MapViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GLn-jD-yj7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9K-t2-8Vi">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="GOy-qE-5ga"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GOy-qE-5ga" firstAttribute="bottom" secondItem="L9K-t2-8Vi" secondAttribute="bottom" id="Gx3-qk-K0N"/>
+                            <constraint firstItem="GOy-qE-5ga" firstAttribute="trailing" secondItem="L9K-t2-8Vi" secondAttribute="trailing" id="cvt-kz-bZb"/>
+                            <constraint firstItem="L9K-t2-8Vi" firstAttribute="top" secondItem="GOy-qE-5ga" secondAttribute="top" id="iOz-1G-8bJ"/>
+                            <constraint firstItem="L9K-t2-8Vi" firstAttribute="leading" secondItem="GOy-qE-5ga" secondAttribute="leading" id="nCL-zA-uGK"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="지도" image="map" catalog="system" id="mPw-6T-EAe"/>
                 </viewController>
@@ -61,12 +97,24 @@
         <!--마이-->
         <scene sceneID="hdJ-3e-Srh">
             <objects>
-                <viewController id="cW3-yH-bTA" sceneMemberID="viewController">
+                <viewController id="cW3-yH-bTA" customClass="MyViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YCg-Qz-Q0R">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1dj-a0-lMD">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="7Nl-BH-Ewf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1dj-a0-lMD" firstAttribute="leading" secondItem="7Nl-BH-Ewf" secondAttribute="leading" id="2zI-GU-sXm"/>
+                            <constraint firstItem="1dj-a0-lMD" firstAttribute="top" secondItem="7Nl-BH-Ewf" secondAttribute="top" id="CLd-vg-Det"/>
+                            <constraint firstItem="7Nl-BH-Ewf" firstAttribute="trailing" secondItem="1dj-a0-lMD" secondAttribute="trailing" id="Qpt-bO-AAg"/>
+                            <constraint firstItem="7Nl-BH-Ewf" firstAttribute="bottom" secondItem="1dj-a0-lMD" secondAttribute="bottom" id="eOh-jv-lPG"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="마이" image="person" catalog="system" id="h7a-cc-FiU"/>
                 </viewController>
@@ -96,12 +144,24 @@
         <!--탐색-->
         <scene sceneID="IDL-xl-LxT">
             <objects>
-                <viewController id="fp1-zg-zYK" sceneMemberID="viewController">
+                <viewController id="fp1-zg-zYK" customClass="SearchViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xO1-2l-Ntk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWb-CG-oIL">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="LfP-9S-0Fo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LfP-9S-0Fo" firstAttribute="bottom" secondItem="FWb-CG-oIL" secondAttribute="bottom" id="O7V-Uh-znB"/>
+                            <constraint firstItem="FWb-CG-oIL" firstAttribute="top" secondItem="LfP-9S-0Fo" secondAttribute="top" id="cYx-z8-jDy"/>
+                            <constraint firstItem="LfP-9S-0Fo" firstAttribute="trailing" secondItem="FWb-CG-oIL" secondAttribute="trailing" id="eZu-dH-Yrv"/>
+                            <constraint firstItem="FWb-CG-oIL" firstAttribute="leading" secondItem="LfP-9S-0Fo" secondAttribute="leading" id="z1w-hI-JAh"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="탐색" image="magnifyingglass" catalog="system" id="8zg-ru-5W7"/>
                 </viewController>
@@ -140,6 +200,21 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
