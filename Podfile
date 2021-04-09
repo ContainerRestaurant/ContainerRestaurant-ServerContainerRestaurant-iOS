@@ -7,4 +7,6 @@ target 'Restaurant' do
 
   # Pods for Restaurant
   pod 'NMapsMap'
+  pod 'RxSwift', '6.1.0'
+  pod 'RxCocoa', '6.1.0'
 end
