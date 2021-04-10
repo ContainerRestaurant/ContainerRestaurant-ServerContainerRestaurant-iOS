@@ -9,4 +9,6 @@ target 'Restaurant' do
   pod 'NMapsMap'
   pod 'RxSwift', '6.1.0'
   pod 'RxCocoa', '6.1.0'
+  pod 'Kingfisher', '~> 6.0'
+  
 end
