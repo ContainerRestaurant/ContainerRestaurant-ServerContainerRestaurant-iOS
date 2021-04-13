@@ -12,6 +12,10 @@
 		52397342261B62A600856C99 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52397341261B62A600856C99 /* MapViewController.swift */; };
 		52397345261B62AF00856C99 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52397344261B62AF00856C99 /* MyViewController.swift */; };
 		528558D52621EC5000AB4E28 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528558D42621EC5000AB4E28 /* HomeViewModel.swift */; };
+		528558ED26249DDF00AB4E28 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528558EC26249DDF00AB4E28 /* TestViewController.swift */; };
+		528558F32624A2E700AB4E28 /* TestMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528558F12624A2E700AB4E28 /* TestMapViewController.swift */; };
+		528558F42624A2E700AB4E28 /* TestMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528558F22624A2E700AB4E28 /* TestMapViewController.xib */; };
+		528558F72624A99000AB4E28 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528558F62624A99000AB4E28 /* BaseViewController.swift */; };
 		529CF0C4261A0AF6002CAD5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CF0C3261A0AF6002CAD5C /* AppDelegate.swift */; };
 		529CF0C6261A0AF6002CAD5C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CF0C5261A0AF6002CAD5C /* SceneDelegate.swift */; };
 		529CF0C8261A0AF6002CAD5C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CF0C7261A0AF6002CAD5C /* ViewController.swift */; };
@@ -28,6 +32,10 @@
 		52397341261B62A600856C99 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		52397344261B62AF00856C99 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		528558D42621EC5000AB4E28 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		528558EC26249DDF00AB4E28 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		528558F12624A2E700AB4E28 /* TestMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMapViewController.swift; sourceTree = "<group>"; };
+		528558F22624A2E700AB4E28 /* TestMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestMapViewController.xib; sourceTree = "<group>"; };
+		528558F62624A99000AB4E28 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		529CF0C0261A0AF6002CAD5C /* Restaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Restaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		529CF0C3261A0AF6002CAD5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		529CF0C5261A0AF6002CAD5C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +101,24 @@
 			path = Creation;
 			sourceTree = "<group>";
 		};
+		528558EB26249DC300AB4E28 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				528558EC26249DDF00AB4E28 /* TestViewController.swift */,
+				528558F02624A2D000AB4E28 /* TestMap */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		528558F02624A2D000AB4E28 /* TestMap */ = {
+			isa = PBXGroup;
+			children = (
+				528558F12624A2E700AB4E28 /* TestMapViewController.swift */,
+				528558F22624A2E700AB4E28 /* TestMapViewController.xib */,
+			);
+			path = TestMap;
+			sourceTree = "<group>";
+		};
 		529CF0B7261A0AF5002CAD5C = {
 			isa = PBXGroup;
 			children = (
@@ -116,11 +142,13 @@
 			children = (
 				529CF0C3261A0AF6002CAD5C /* AppDelegate.swift */,
 				529CF0C5261A0AF6002CAD5C /* SceneDelegate.swift */,
+				528558F62624A99000AB4E28 /* BaseViewController.swift */,
 				52397335261B612B00856C99 /* Home */,
 				52397336261B613E00856C99 /* Search */,
 				52397339261B616A00856C99 /* Creation */,
 				52397337261B614C00856C99 /* Map */,
 				52397338261B615100856C99 /* My */,
+				528558EB26249DC300AB4E28 /* Test */,
 				529CF0C9261A0AF6002CAD5C /* Main.storyboard */,
 				529CF0CC261A0AF6002CAD5C /* Assets.xcassets */,
 				529CF0CE261A0AF6002CAD5C /* LaunchScreen.storyboard */,
@@ -208,6 +236,7 @@
 				529CF0D0261A0AF6002CAD5C /* LaunchScreen.storyboard in Resources */,
 				529CF0CD261A0AF6002CAD5C /* Assets.xcassets in Resources */,
 				529CF0CB261A0AF6002CAD5C /* Main.storyboard in Resources */,
+				528558F42624A2E700AB4E28 /* TestMapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,11 +291,14 @@
 			files = (
 				5239733F261B629A00856C99 /* CreationViewController.swift in Sources */,
 				52397342261B62A600856C99 /* MapViewController.swift in Sources */,
+				528558F72624A99000AB4E28 /* BaseViewController.swift in Sources */,
 				529CF0C8261A0AF6002CAD5C /* ViewController.swift in Sources */,
+				528558F32624A2E700AB4E28 /* TestMapViewController.swift in Sources */,
 				528558D52621EC5000AB4E28 /* HomeViewModel.swift in Sources */,
 				52397345261B62AF00856C99 /* MyViewController.swift in Sources */,
 				529CF0C4261A0AF6002CAD5C /* AppDelegate.swift in Sources */,
 				5239733C261B625000856C99 /* SearchViewController.swift in Sources */,
+				528558ED26249DDF00AB4E28 /* TestViewController.swift in Sources */,
 				529CF0C6261A0AF6002CAD5C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

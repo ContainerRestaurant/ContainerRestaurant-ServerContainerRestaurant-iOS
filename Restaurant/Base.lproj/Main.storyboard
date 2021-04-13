@@ -64,7 +64,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dtw-pk-rfR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1948" y="1555"/>
+            <point key="canvasLocation" x="2857.971014492754" y="1554.9107142857142"/>
         </scene>
         <!--지도-->
         <scene sceneID="AlQ-ag-xgc">
@@ -121,6 +121,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YWo-X7-UJy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1948" y="3012"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="CKW-Cw-Rfd">
+            <objects>
+                <viewController id="yJF-tY-eQZ" customClass="TestViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PN1-mM-NJq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mch-aq-PSY">
+                                <rect key="frame" x="175.5" y="98" width="63" height="30"/>
+                                <state key="normal" title="Map Test"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="aM8-1P-wQE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Mch-aq-PSY" firstAttribute="centerX" secondItem="PN1-mM-NJq" secondAttribute="centerX" id="596-JY-nWe"/>
+                            <constraint firstItem="Mch-aq-PSY" firstAttribute="top" secondItem="aM8-1P-wQE" secondAttribute="top" constant="10" id="TxI-0D-qy8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="DSg-7W-A0v"/>
+                    <connections>
+                        <outlet property="mapTestButton" destination="Mch-aq-PSY" id="PwL-ag-GBB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eh8-1T-AM9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="193" y="1477"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DUy-bO-YeC">
@@ -185,11 +214,31 @@
                         <segue destination="K72-4z-89V" kind="relationship" relationship="viewControllers" id="mgt-P8-rYD"/>
                         <segue destination="WKT-hR-IPh" kind="relationship" relationship="viewControllers" id="Vun-Xs-KSP"/>
                         <segue destination="cW3-yH-bTA" kind="relationship" relationship="viewControllers" id="wmd-kv-e3N"/>
+                        <segue destination="KMD-7e-CyJ" kind="relationship" relationship="viewControllers" id="rvg-8u-at2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dda-Rc-8cX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="95.652173913043484" y="93.75"/>
+        </scene>
+        <!--테스트-->
+        <scene sceneID="r5r-Yx-Kik">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KMD-7e-CyJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="테스트" image="scribble.variable" catalog="system" id="nu6-Wm-vnL"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8qt-tu-7Bp">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yJF-tY-eQZ" kind="relationship" relationship="rootViewController" id="zJF-2l-tYJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AXA-5Z-9ff" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-701" y="1477"/>
         </scene>
     </scenes>
     <resources>
@@ -198,6 +247,7 @@
         <image name="map" catalog="system" width="128" height="110"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="scribble.variable" catalog="system" width="128" height="118"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
