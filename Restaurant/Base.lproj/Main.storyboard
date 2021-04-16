@@ -134,16 +134,23 @@
                                 <rect key="frame" x="175.5" y="98" width="63" height="30"/>
                                 <state key="normal" title="Map Test"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REB-VD-AAX">
+                                <rect key="frame" x="171.5" y="144" width="71" height="30"/>
+                                <state key="normal" title="Login Test"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aM8-1P-wQE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Mch-aq-PSY" firstAttribute="centerX" secondItem="PN1-mM-NJq" secondAttribute="centerX" id="596-JY-nWe"/>
+                            <constraint firstItem="REB-VD-AAX" firstAttribute="top" secondItem="Mch-aq-PSY" secondAttribute="bottom" constant="16" id="8yA-Ps-pgv"/>
+                            <constraint firstItem="REB-VD-AAX" firstAttribute="centerX" secondItem="Mch-aq-PSY" secondAttribute="centerX" id="CA8-tz-dsq"/>
                             <constraint firstItem="Mch-aq-PSY" firstAttribute="top" secondItem="aM8-1P-wQE" secondAttribute="top" constant="10" id="TxI-0D-qy8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DSg-7W-A0v"/>
                     <connections>
+                        <outlet property="loginTestButton" destination="REB-VD-AAX" id="B2Q-3Q-dbu"/>
                         <outlet property="mapTestButton" destination="Mch-aq-PSY" id="PwL-ag-GBB"/>
                     </connections>
                 </viewController>

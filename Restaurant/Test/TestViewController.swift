@@ -9,6 +9,7 @@ import UIKit
 
 class TestViewController: BaseViewController {
     @IBOutlet weak var mapTestButton: UIButton!
+    @IBOutlet weak var loginTestButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,13 +17,15 @@ class TestViewController: BaseViewController {
         mapTestButton.rx.tap
             .subscribe(onNext: { [self] _ in
                 self.push(viewController: TestMapViewController())
-            })
-            .disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
         
-        print("second view did load")
-    }
-    
-    deinit {
-        print("TestViewController deinit")
+        loginTestButton.rx.tap
+            .subscribe(onNext: { [self] _ in
+                if #available(iOS 13.0, *) {
+                    self.push(viewController: TestLoginViewController())
+                } else {
+                    print("지원안함")
+                }
+            }).disposed(by: disposeBag)
     }
 }
