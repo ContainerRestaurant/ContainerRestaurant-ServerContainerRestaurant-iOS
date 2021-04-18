@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TestLoginViewController" customModule="Restaurant" customModuleProvider="target">
             <connections>
+                <outlet property="kakaoLoginButton" destination="mtS-pX-WnL" id="pHH-sd-QFY"/>
                 <outlet property="loginButton" destination="4lh-h6-2fP" id="wch-dJ-Xmo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -31,12 +32,36 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtS-pX-WnL">
+                    <rect key="frame" x="77" y="210" width="260" height="50"/>
+                    <color key="backgroundColor" systemColor="systemYellowColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Wmh-K1-aOK"/>
+                    </constraints>
+                    <state key="normal" title="Kakao Login"/>
+                    <connections>
+                        <action selector="kakaoLogin:" destination="-1" eventType="touchUpInside" id="Ovx-HM-TjO"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDq-zc-dRl">
+                    <rect key="frame" x="348" y="230" width="46" height="30"/>
+                    <state key="normal" title="logout"/>
+                    <connections>
+                        <action selector="kakaoLogout:" destination="-1" eventType="touchUpInside" id="90x-fG-yfX"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="4lh-h6-2fP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="G4l-vv-4qQ"/>
+                <constraint firstItem="mtS-pX-WnL" firstAttribute="leading" secondItem="4lh-h6-2fP" secondAttribute="leading" id="W0l-b8-YL7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JDq-zc-dRl" secondAttribute="trailing" constant="20" id="Wev-22-o60"/>
+                <constraint firstItem="mtS-pX-WnL" firstAttribute="trailing" secondItem="4lh-h6-2fP" secondAttribute="trailing" id="bb5-Y3-qiO"/>
                 <constraint firstItem="4lh-h6-2fP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hJx-tl-J4v"/>
+                <constraint firstItem="JDq-zc-dRl" firstAttribute="bottom" secondItem="mtS-pX-WnL" secondAttribute="bottom" id="ipK-fW-7qN"/>
+                <constraint firstItem="mtS-pX-WnL" firstAttribute="top" secondItem="4lh-h6-2fP" secondAttribute="bottom" constant="16" id="oeN-ku-5VL"/>
+                <constraint firstItem="JDq-zc-dRl" firstAttribute="leading" secondItem="mtS-pX-WnL" secondAttribute="trailing" constant="11" id="yHY-rU-SyL"/>
             </constraints>
             <point key="canvasLocation" x="67" y="125"/>
         </view>
@@ -47,6 +72,9 @@
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -10,5 +10,8 @@ target 'Restaurant' do
   pod 'RxSwift', '6.1.0'
   pod 'RxCocoa', '6.1.0'
   pod 'Kingfisher', '~> 6.0'
+  pod 'KakaoSDKCommon'  # 필수 요소를 담은 공통 모듈
+  pod 'KakaoSDKAuth'  # 카카오 로그인
+  pod 'KakaoSDKUser'  # 사용자 관리
   
 end
