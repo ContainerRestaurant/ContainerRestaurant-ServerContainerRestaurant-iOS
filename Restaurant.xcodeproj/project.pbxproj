@@ -18,6 +18,8 @@
 		528558F72624A99000AB4E28 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528558F62624A99000AB4E28 /* BaseViewController.swift */; };
 		5285590B2629ECB900AB4E28 /* TestLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528559092629ECB900AB4E28 /* TestLoginViewController.swift */; };
 		5285590C2629ECB900AB4E28 /* TestLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5285590A2629ECB900AB4E28 /* TestLoginViewController.xib */; };
+		5285592B262DD99400AB4E28 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285592A262DD99400AB4E28 /* MainTabBarController.swift */; };
+		52855930262DE5A700AB4E28 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285592F262DE5A700AB4E28 /* TabBarItem.swift */; };
 		529CF0C4261A0AF6002CAD5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CF0C3261A0AF6002CAD5C /* AppDelegate.swift */; };
 		529CF0C6261A0AF6002CAD5C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CF0C5261A0AF6002CAD5C /* SceneDelegate.swift */; };
 		529CF0C8261A0AF6002CAD5C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CF0C7261A0AF6002CAD5C /* ViewController.swift */; };
@@ -41,6 +43,8 @@
 		528559062629E8F800AB4E28 /* Restaurant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Restaurant.entitlements; sourceTree = "<group>"; };
 		528559092629ECB900AB4E28 /* TestLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLoginViewController.swift; sourceTree = "<group>"; };
 		5285590A2629ECB900AB4E28 /* TestLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestLoginViewController.xib; sourceTree = "<group>"; };
+		5285592A262DD99400AB4E28 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		5285592F262DE5A700AB4E28 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		529CF0C0261A0AF6002CAD5C /* Restaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Restaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		529CF0C3261A0AF6002CAD5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		529CF0C5261A0AF6002CAD5C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +138,14 @@
 			path = TestLogin;
 			sourceTree = "<group>";
 		};
+		5285592E262DE59400AB4E28 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				5285592F262DE5A700AB4E28 /* TabBarItem.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		529CF0B7261A0AF5002CAD5C = {
 			isa = PBXGroup;
 			children = (
@@ -155,10 +167,12 @@
 		529CF0C2261A0AF6002CAD5C /* Restaurant */ = {
 			isa = PBXGroup;
 			children = (
+				5285592E262DE59400AB4E28 /* Enum */,
 				528559062629E8F800AB4E28 /* Restaurant.entitlements */,
 				529CF0C3261A0AF6002CAD5C /* AppDelegate.swift */,
 				529CF0C5261A0AF6002CAD5C /* SceneDelegate.swift */,
 				528558F62624A99000AB4E28 /* BaseViewController.swift */,
+				5285592A262DD99400AB4E28 /* MainTabBarController.swift */,
 				52397335261B612B00856C99 /* Home */,
 				52397336261B613E00856C99 /* Search */,
 				52397339261B616A00856C99 /* Creation */,
@@ -310,9 +324,11 @@
 				52397342261B62A600856C99 /* MapViewController.swift in Sources */,
 				528558F72624A99000AB4E28 /* BaseViewController.swift in Sources */,
 				529CF0C8261A0AF6002CAD5C /* ViewController.swift in Sources */,
+				52855930262DE5A700AB4E28 /* TabBarItem.swift in Sources */,
 				5285590B2629ECB900AB4E28 /* TestLoginViewController.swift in Sources */,
 				528558F32624A2E700AB4E28 /* TestMapViewController.swift in Sources */,
 				528558D52621EC5000AB4E28 /* HomeViewModel.swift in Sources */,
+				5285592B262DD99400AB4E28 /* MainTabBarController.swift in Sources */,
 				52397345261B62AF00856C99 /* MyViewController.swift in Sources */,
 				529CF0C4261A0AF6002CAD5C /* AppDelegate.swift in Sources */,
 				5239733C261B625000856C99 /* SearchViewController.swift in Sources */,

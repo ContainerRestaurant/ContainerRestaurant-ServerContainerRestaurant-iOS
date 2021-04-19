@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--홈-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,7 +31,7 @@
                             <constraint firstItem="Uz6-JZ-azt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="v0P-dH-rhT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="홈" image="homekit" catalog="system" id="pQC-aT-91t"/>
+                    <tabBarItem key="tabBarItem" title="" id="pQC-aT-91t"/>
                     <navigationItem key="navigationItem" id="PgQ-F0-1Mv"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -60,13 +60,13 @@
                             <constraint firstAttribute="trailing" secondItem="w0o-zE-qY7" secondAttribute="trailing" id="s43-uI-0Jf"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="plus" catalog="system" id="pGr-RB-Gvp"/>
+                    <tabBarItem key="tabBarItem" title="" id="pGr-RB-Gvp"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dtw-pk-rfR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2857.971014492754" y="1554.9107142857142"/>
         </scene>
-        <!--지도-->
+        <!--Map View Controller-->
         <scene sceneID="AlQ-ag-xgc">
             <objects>
                 <viewController id="WKT-hR-IPh" customClass="MapViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
@@ -88,13 +88,13 @@
                             <constraint firstItem="L9K-t2-8Vi" firstAttribute="leading" secondItem="GOy-qE-5ga" secondAttribute="leading" id="nCL-zA-uGK"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="지도" image="map" catalog="system" id="mPw-6T-EAe"/>
+                    <tabBarItem key="tabBarItem" title="" id="mPw-6T-EAe"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqG-nW-Dc8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1948" y="2284"/>
         </scene>
-        <!--마이-->
+        <!--My View Controller-->
         <scene sceneID="hdJ-3e-Srh">
             <objects>
                 <viewController id="cW3-yH-bTA" customClass="MyViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
@@ -116,7 +116,7 @@
                             <constraint firstItem="7Nl-BH-Ewf" firstAttribute="bottom" secondItem="1dj-a0-lMD" secondAttribute="bottom" id="eOh-jv-lPG"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="마이" image="person" catalog="system" id="h7a-cc-FiU"/>
+                    <tabBarItem key="tabBarItem" title="" id="h7a-cc-FiU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YWo-X7-UJy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -177,7 +177,7 @@
             </objects>
             <point key="canvasLocation" x="1005.7971014492755" y="93.75"/>
         </scene>
-        <!--탐색-->
+        <!--Search View Controller-->
         <scene sceneID="IDL-xl-LxT">
             <objects>
                 <viewController id="fp1-zg-zYK" customClass="SearchViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
@@ -199,23 +199,25 @@
                             <constraint firstItem="FWb-CG-oIL" firstAttribute="leading" secondItem="LfP-9S-0Fo" secondAttribute="leading" id="z1w-hI-JAh"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="탐색" image="magnifyingglass" catalog="system" id="8zg-ru-5W7"/>
+                    <tabBarItem key="tabBarItem" title="" id="8zg-ru-5W7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Nb-EY-CZO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1948" y="820"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="45i-5C-mY7">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="641-ne-S3R" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="641-ne-S3R" customClass="MainTabBarController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vCV-pk-p6e">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
+                        <outlet property="test" destination="vCV-pk-p6e" id="3Us-Fk-P0H"/>
                         <segue destination="Xl3-e3-pGq" kind="relationship" relationship="viewControllers" id="J3M-cz-s2I"/>
                         <segue destination="fp1-zg-zYK" kind="relationship" relationship="viewControllers" id="orj-NH-NAq"/>
                         <segue destination="K72-4z-89V" kind="relationship" relationship="viewControllers" id="mgt-P8-rYD"/>
@@ -249,11 +251,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="homekit" catalog="system" width="128" height="106"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <image name="map" catalog="system" width="128" height="110"/>
-        <image name="person" catalog="system" width="128" height="117"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="scribble.variable" catalog="system" width="128" height="118"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
