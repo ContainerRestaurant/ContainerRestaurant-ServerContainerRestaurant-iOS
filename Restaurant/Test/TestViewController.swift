@@ -24,7 +24,7 @@ class TestViewController: BaseViewController {
                 if #available(iOS 13.0, *) {
                     self.push(viewController: TestLoginViewController())
                 } else {
-                    print("지원안함")
+                    print("lower version")
                 }
             }).disposed(by: disposeBag)
     }

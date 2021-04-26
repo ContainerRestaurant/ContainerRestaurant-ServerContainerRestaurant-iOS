@@ -31,9 +31,7 @@
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-        <!-- 카카오톡 로그인 -->
 		<string>kakaokompassauth</string>
-        <!-- 카카오링크 -->
 		<string>kakaolink</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
@@ -82,5 +80,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>
