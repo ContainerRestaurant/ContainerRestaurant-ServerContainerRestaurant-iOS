@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Kingfisher
 
 class BaseViewController: UIViewController {
     let disposeBag = DisposeBag()
