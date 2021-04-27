@@ -64,14 +64,17 @@
                 <constraint firstItem="nlN-6H-1Vn" firstAttribute="centerY" secondItem="imu-gz-6sK" secondAttribute="centerY" id="9Rr-tC-RUb"/>
                 <constraint firstItem="imu-gz-6sK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="24" id="Gsd-Zd-DsU"/>
                 <constraint firstItem="imu-gz-6sK" firstAttribute="top" secondItem="v13-jX-gDm" secondAttribute="bottom" constant="27" id="LTQ-Lf-3Hd"/>
+                <constraint firstAttribute="bottom" secondItem="TK6-v2-Epd" secondAttribute="bottom" constant="51.5" id="NBp-ZG-Ecs"/>
                 <constraint firstItem="T95-wC-gBv" firstAttribute="trailing" secondItem="v13-jX-gDm" secondAttribute="trailing" id="Nmn-uh-lBe"/>
                 <constraint firstItem="TK6-v2-Epd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="24" id="O3P-oq-Kdc"/>
+                <constraint firstAttribute="bottom" secondItem="T95-wC-gBv" secondAttribute="bottom" constant="51.5" id="PR8-8h-Pm4"/>
                 <constraint firstAttribute="trailing" secondItem="vo6-KG-2bG" secondAttribute="trailing" constant="24" id="S0m-I1-fa5"/>
                 <constraint firstItem="T95-wC-gBv" firstAttribute="centerY" secondItem="TK6-v2-Epd" secondAttribute="centerY" id="UtP-07-XeL"/>
                 <constraint firstItem="v13-jX-gDm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="52" id="bg5-U9-1iw"/>
                 <constraint firstItem="TK6-v2-Epd" firstAttribute="top" secondItem="imu-gz-6sK" secondAttribute="bottom" constant="11" id="bmq-ZW-ddF"/>
                 <constraint firstItem="v13-jX-gDm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="24" id="dRx-ot-uUl"/>
                 <constraint firstItem="vo6-KG-2bG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="44" id="j0n-uW-BDx"/>
+                <constraint firstAttribute="bottom" secondItem="vo6-KG-2bG" secondAttribute="bottom" constant="23" id="jLd-f7-mld"/>
             </constraints>
             <size key="customSize" width="375" height="241"/>
             <point key="canvasLocation" x="-48.550724637681164" y="209.93303571428569"/>

@@ -25,12 +25,14 @@ extension HomeViewController {
 
         collectionView.register(UINib(nibName: "MainTitleSection", bundle: .main), forCellWithReuseIdentifier: "MainTitleSection")
         collectionView.register(UINib(nibName: "Title16Bold", bundle: .main), forCellWithReuseIdentifier: "Title16Bold")
+        collectionView.register(UINib(nibName: "MainFeedCollectionView", bundle: .main), forCellWithReuseIdentifier: "MainFeedCollectionView")
+
     }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        2
+        3
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -39,12 +41,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainTitleSection", for: indexPath)
         } else if indexPath.row == 1 {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Title16Bold", for: indexPath)
+        } else if indexPath.row == 2 {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainFeedCollectionView", for: indexPath)
         }
 
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 375, height: 233)
+        if indexPath.row == 2 { return CGSize(width: 375, height: 4095) }
+//        return CGSize(width: 375, height: 233)
+        return CGSize(width: 375, height: 50)
     }
 }

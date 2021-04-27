@@ -1,5 +1,5 @@
 //
-//  MainFeedCollectionView.swift
+//  MainFeedCollectionViewCell.swift
 //  Restaurant
 //
 //  Created by Lotte on 2021/04/27.
@@ -7,10 +7,8 @@
 
 import UIKit
 
-class MainFeedCollectionView: UICollectionViewCell
+class MainFeedCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        
     }
 }

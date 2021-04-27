@@ -34,6 +34,8 @@
 		FB1BE374263719540004673C /* Title16Bold.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB1BE372263719540004673C /* Title16Bold.xib */; };
 		FB1BE37926371BFA0004673C /* MainFeedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BE37726371BFA0004673C /* MainFeedCollectionView.swift */; };
 		FB1BE37A26371BFA0004673C /* MainFeedCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB1BE37826371BFA0004673C /* MainFeedCollectionView.xib */; };
+		FB1BE3852637DF2B0004673C /* MainFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BE3832637DF2B0004673C /* MainFeedCollectionViewCell.swift */; };
+		FB1BE3862637DF2B0004673C /* MainFeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB1BE3842637DF2B0004673C /* MainFeedCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +71,8 @@
 		FB1BE372263719540004673C /* Title16Bold.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Title16Bold.xib; sourceTree = "<group>"; };
 		FB1BE37726371BFA0004673C /* MainFeedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedCollectionView.swift; sourceTree = "<group>"; };
 		FB1BE37826371BFA0004673C /* MainFeedCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainFeedCollectionView.xib; sourceTree = "<group>"; };
+		FB1BE3832637DF2B0004673C /* MainFeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB1BE3842637DF2B0004673C /* MainFeedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainFeedCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +187,7 @@
 			children = (
 				FB1BE3682636D7170004673C /* Extensions */,
 				5285592E262DE59400AB4E28 /* Enum */,
-				FB1BE3612636C9F10004673C /* CollectionViewCell */,
+				FB1BE3612636C9F10004673C /* Module */,
 				528559062629E8F800AB4E28 /* Restaurant.entitlements */,
 				529CF0C3261A0AF6002CAD5C /* AppDelegate.swift */,
 				529CF0C5261A0AF6002CAD5C /* SceneDelegate.swift */,
@@ -220,16 +224,17 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		FB1BE3612636C9F10004673C /* CollectionViewCell */ = {
+		FB1BE3612636C9F10004673C /* Module */ = {
 			isa = PBXGroup;
 			children = (
 				FB1BE3702637191C0004673C /* Title */,
+				FB1BE3822637DF110004673C /* CollectionViewCell */,
 				FB1BE3632636CB540004673C /* MainTitleSection.swift */,
 				FB1BE3642636CB540004673C /* MainTitleSection.xib */,
 				FB1BE37726371BFA0004673C /* MainFeedCollectionView.swift */,
 				FB1BE37826371BFA0004673C /* MainFeedCollectionView.xib */,
 			);
-			path = CollectionViewCell;
+			path = Module;
 			sourceTree = "<group>";
 		};
 		FB1BE3682636D7170004673C /* Extensions */ = {
@@ -247,6 +252,15 @@
 				FB1BE372263719540004673C /* Title16Bold.xib */,
 			);
 			path = Title;
+			sourceTree = "<group>";
+		};
+		FB1BE3822637DF110004673C /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FB1BE3832637DF2B0004673C /* MainFeedCollectionViewCell.swift */,
+				FB1BE3842637DF2B0004673C /* MainFeedCollectionViewCell.xib */,
+			);
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +327,7 @@
 				529CF0CD261A0AF6002CAD5C /* Assets.xcassets in Resources */,
 				FB1BE37A26371BFA0004673C /* MainFeedCollectionView.xib in Resources */,
 				FB1BE374263719540004673C /* Title16Bold.xib in Resources */,
+				FB1BE3862637DF2B0004673C /* MainFeedCollectionViewCell.xib in Resources */,
 				FB1BE3662636CB540004673C /* MainTitleSection.xib in Resources */,
 				529CF0CB261A0AF6002CAD5C /* Main.storyboard in Resources */,
 				528558F42624A2E700AB4E28 /* TestMapViewController.xib in Resources */,
@@ -381,6 +396,7 @@
 				5285592B262DD99400AB4E28 /* MainTabBarController.swift in Sources */,
 				52397345261B62AF00856C99 /* MyViewController.swift in Sources */,
 				529CF0C4261A0AF6002CAD5C /* AppDelegate.swift in Sources */,
+				FB1BE3852637DF2B0004673C /* MainFeedCollectionViewCell.swift in Sources */,
 				FB1BE36A2636D7330004673C /* ExtensionCollectoinView.swift in Sources */,
 				5239733C261B625000856C99 /* SearchViewController.swift in Sources */,
 				528558ED26249DDF00AB4E28 /* TestViewController.swift in Sources */,
