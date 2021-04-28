@@ -33,11 +33,9 @@ class TestViewController: BaseViewController {
 
         popUpTestButton.rx.tap
             .subscribe(onNext: { [self] _ in
-//                let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
-//                let popupVC = storyBoard.instantiateViewController(withIdentifier: "TestViewController")
                 let popupVC = TestPopUpViewController()
-                popupVC.modalPresentationStyle = .overCurrentContext
-                present(popupVC, animated: true, completion: nil)
+                popupVC.modalPresentationStyle = .overFullScreen
+                present(popupVC, animated: false, completion: nil)
             })
             .disposed(by: disposeBag)
     }
