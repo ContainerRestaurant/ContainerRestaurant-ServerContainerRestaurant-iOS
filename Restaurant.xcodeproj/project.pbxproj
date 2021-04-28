@@ -36,6 +36,8 @@
 		FB1BE37A26371BFA0004673C /* MainFeedCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB1BE37826371BFA0004673C /* MainFeedCollectionView.xib */; };
 		FB1BE3852637DF2B0004673C /* MainFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BE3832637DF2B0004673C /* MainFeedCollectionViewCell.swift */; };
 		FB1BE3862637DF2B0004673C /* MainFeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB1BE3842637DF2B0004673C /* MainFeedCollectionViewCell.xib */; };
+		FB1BE38C26397EEE0004673C /* TestPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BE38A26397EEE0004673C /* TestPopUpViewController.swift */; };
+		FB1BE38D26397EEE0004673C /* TestPopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB1BE38B26397EEE0004673C /* TestPopUpViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +75,8 @@
 		FB1BE37826371BFA0004673C /* MainFeedCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainFeedCollectionView.xib; sourceTree = "<group>"; };
 		FB1BE3832637DF2B0004673C /* MainFeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB1BE3842637DF2B0004673C /* MainFeedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainFeedCollectionViewCell.xib; sourceTree = "<group>"; };
+		FB1BE38A26397EEE0004673C /* TestPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPopUpViewController.swift; sourceTree = "<group>"; };
+		FB1BE38B26397EEE0004673C /* TestPopUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestPopUpViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +138,7 @@
 				528558EC26249DDF00AB4E28 /* TestViewController.swift */,
 				528558F02624A2D000AB4E28 /* TestMap */,
 				528559082629EC9800AB4E28 /* TestLogin */,
+				FB1BE38926397ECF0004673C /* TestPopUp */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -263,6 +268,15 @@
 			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
+		FB1BE38926397ECF0004673C /* TestPopUp */ = {
+			isa = PBXGroup;
+			children = (
+				FB1BE38A26397EEE0004673C /* TestPopUpViewController.swift */,
+				FB1BE38B26397EEE0004673C /* TestPopUpViewController.xib */,
+			);
+			path = TestPopUp;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -331,6 +345,7 @@
 				FB1BE3662636CB540004673C /* MainTitleSection.xib in Resources */,
 				529CF0CB261A0AF6002CAD5C /* Main.storyboard in Resources */,
 				528558F42624A2E700AB4E28 /* TestMapViewController.xib in Resources */,
+				FB1BE38D26397EEE0004673C /* TestPopUpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +401,7 @@
 				5239733F261B629A00856C99 /* CreationViewController.swift in Sources */,
 				52397342261B62A600856C99 /* MapViewController.swift in Sources */,
 				528558F72624A99000AB4E28 /* BaseViewController.swift in Sources */,
+				FB1BE38C26397EEE0004673C /* TestPopUpViewController.swift in Sources */,
 				FB1BE37926371BFA0004673C /* MainFeedCollectionView.swift in Sources */,
 				529CF0C8261A0AF6002CAD5C /* HomeViewController.swift in Sources */,
 				52855930262DE5A700AB4E28 /* TabBarItem.swift in Sources */,
