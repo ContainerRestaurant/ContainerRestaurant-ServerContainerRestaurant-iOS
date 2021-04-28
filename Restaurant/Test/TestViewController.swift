@@ -10,14 +10,16 @@ import UIKit
 class TestViewController: BaseViewController {
     @IBOutlet weak var mapTestButton: UIButton!
     @IBOutlet weak var loginTestButton: UIButton!
-    
+    @IBOutlet weak var popUpTestButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mapTestButton.rx.tap
             .subscribe(onNext: { [self] _ in
                 self.push(viewController: TestMapViewController())
-            }).disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
         
         loginTestButton.rx.tap
             .subscribe(onNext: { [self] _ in
@@ -26,6 +28,21 @@ class TestViewController: BaseViewController {
                 } else {
                     print("lower version")
                 }
-            }).disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
+
+        popUpTestButton.rx.tap
+            .subscribe(onNext: { [self] _ in
+//                let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+//                let popupVC = storyBoard.instantiateViewController(withIdentifier: "TestViewController")
+                let popupVC = TestPopUpViewController()
+                popupVC.modalPresentationStyle = .overCurrentContext
+                present(popupVC, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    deinit {
+        print("TestViewController Deinit")
     }
 }
