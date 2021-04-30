@@ -11,4 +11,8 @@ class MyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
+    deinit {
+        print("MyViewController Deinit")
+    }
 }

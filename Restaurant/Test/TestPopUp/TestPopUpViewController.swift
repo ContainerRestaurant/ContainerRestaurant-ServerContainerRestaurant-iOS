@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class TestPopUpViewController: BaseViewController {
 
@@ -19,11 +20,26 @@ class TestPopUpViewController: BaseViewController {
         popUpView.layer.cornerRadius = 14
 
         cancelButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss(animated: false, completion: nil)
+            }, onDisposed: {
+                print("onDisposed-cancelButton")
+            })
+            .disposed(by: disposeBag)
+
+        okButton.rx.tap
             .subscribe(onNext: {
-                self.dismiss(animated: false, completion: nil)
+                print("좋아요!")
+            }, onDisposed: {
+                print("onDisposed-okButton")
             })
             .disposed(by: disposeBag)
     }
+
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        disposeBag = DisposeBag()
+//    }
 
     deinit {
         print("TestPopUpViewController Deinit")
