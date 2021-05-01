@@ -2,7 +2,7 @@
 //  TestPopUpViewController.swift
 //  Restaurant
 //
-//  Created by Lotte on 2021/04/28.
+//  Created by 0ofKim on 2021/04/28.
 //
 
 import UIKit

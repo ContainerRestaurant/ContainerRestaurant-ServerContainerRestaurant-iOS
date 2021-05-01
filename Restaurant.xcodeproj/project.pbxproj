@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52256FA8263D7B8400A056DE /* MyProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FA6263D7B8400A056DE /* MyProfileSection.swift */; };
+		52256FA9263D7B8400A056DE /* MyProfileSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FA7263D7B8400A056DE /* MyProfileSection.xib */; };
+		52256FAC263D7F4300A056DE /* SeparateLineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */; };
+		52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FAB263D7F4300A056DE /* SeparateLineCollectionViewCell.xib */; };
+		52256FB0263DBEFA00A056DE /* ExtensionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FAF263DBEFA00A056DE /* ExtensionCollectionViewCell.swift */; };
+		52256FBD263DF5DF00A056DE /* MyContentsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FBB263DF5DF00A056DE /* MyContentsCollectionView.swift */; };
+		52256FBE263DF5DF00A056DE /* MyContentsCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FBC263DF5DF00A056DE /* MyContentsCollectionView.xib */; };
+		52256FC1263DF76500A056DE /* MyContentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FBF263DF76500A056DE /* MyContentsCollectionViewCell.swift */; };
+		52256FC2263DF76500A056DE /* MyContentsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FC0263DF76500A056DE /* MyContentsCollectionViewCell.xib */; };
 		5239733C261B625000856C99 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239733B261B625000856C99 /* SearchViewController.swift */; };
 		5239733F261B629A00856C99 /* CreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239733E261B629A00856C99 /* CreationViewController.swift */; };
 		52397342261B62A600856C99 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52397341261B62A600856C99 /* MapViewController.swift */; };
@@ -42,6 +51,15 @@
 
 /* Begin PBXFileReference section */
 		05BE52896353D25BDEB75347 /* Pods-Restaurant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restaurant.release.xcconfig"; path = "Target Support Files/Pods-Restaurant/Pods-Restaurant.release.xcconfig"; sourceTree = "<group>"; };
+		52256FA6263D7B8400A056DE /* MyProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileSection.swift; sourceTree = "<group>"; };
+		52256FA7263D7B8400A056DE /* MyProfileSection.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyProfileSection.xib; sourceTree = "<group>"; };
+		52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateLineCollectionViewCell.swift; sourceTree = "<group>"; };
+		52256FAB263D7F4300A056DE /* SeparateLineCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeparateLineCollectionViewCell.xib; sourceTree = "<group>"; };
+		52256FAF263DBEFA00A056DE /* ExtensionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCollectionViewCell.swift; sourceTree = "<group>"; };
+		52256FBB263DF5DF00A056DE /* MyContentsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContentsCollectionView.swift; sourceTree = "<group>"; };
+		52256FBC263DF5DF00A056DE /* MyContentsCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyContentsCollectionView.xib; sourceTree = "<group>"; };
+		52256FBF263DF76500A056DE /* MyContentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContentsCollectionViewCell.swift; sourceTree = "<group>"; };
+		52256FC0263DF76500A056DE /* MyContentsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyContentsCollectionViewCell.xib; sourceTree = "<group>"; };
 		5239733B261B625000856C99 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		5239733E261B629A00856C99 /* CreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationViewController.swift; sourceTree = "<group>"; };
 		52397341261B62A600856C99 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +109,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52256FAE263D7F4C00A056DE /* SeparateLine */ = {
+			isa = PBXGroup;
+			children = (
+				52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */,
+				52256FAB263D7F4300A056DE /* SeparateLineCollectionViewCell.xib */,
+			);
+			path = SeparateLine;
+			sourceTree = "<group>";
+		};
+		52256FB7263DF41000A056DE /* CollectioinView */ = {
+			isa = PBXGroup;
+			children = (
+				FB1BE37726371BFA0004673C /* MainFeedCollectionView.swift */,
+				FB1BE37826371BFA0004673C /* MainFeedCollectionView.xib */,
+				52256FBB263DF5DF00A056DE /* MyContentsCollectionView.swift */,
+				52256FBC263DF5DF00A056DE /* MyContentsCollectionView.xib */,
+				FB1BE3822637DF110004673C /* CollectionViewCell */,
+			);
+			path = CollectioinView;
+			sourceTree = "<group>";
+		};
+		52256FB8263DF48B00A056DE /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				FB1BE3632636CB540004673C /* MainTitleSection.swift */,
+				FB1BE3642636CB540004673C /* MainTitleSection.xib */,
+				52256FA6263D7B8400A056DE /* MyProfileSection.swift */,
+				52256FA7263D7B8400A056DE /* MyProfileSection.xib */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		52256FB9263DF4BD00A056DE /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				528558F62624A99000AB4E28 /* BaseViewController.swift */,
+				5285592A262DD99400AB4E28 /* MainTabBarController.swift */,
+				52397335261B612B00856C99 /* Home */,
+				52397336261B613E00856C99 /* Search */,
+				52397339261B616A00856C99 /* Creation */,
+				52397337261B614C00856C99 /* Map */,
+				52397338261B615100856C99 /* My */,
+				528558EB26249DC300AB4E28 /* Test */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
 		52397335261B612B00856C99 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,18 +257,11 @@
 			children = (
 				FB1BE3682636D7170004673C /* Extensions */,
 				5285592E262DE59400AB4E28 /* Enum */,
+				52256FB9263DF4BD00A056DE /* MainTabBar */,
 				FB1BE3612636C9F10004673C /* Module */,
 				528559062629E8F800AB4E28 /* Restaurant.entitlements */,
 				529CF0C3261A0AF6002CAD5C /* AppDelegate.swift */,
 				529CF0C5261A0AF6002CAD5C /* SceneDelegate.swift */,
-				528558F62624A99000AB4E28 /* BaseViewController.swift */,
-				5285592A262DD99400AB4E28 /* MainTabBarController.swift */,
-				52397335261B612B00856C99 /* Home */,
-				52397336261B613E00856C99 /* Search */,
-				52397339261B616A00856C99 /* Creation */,
-				52397337261B614C00856C99 /* Map */,
-				52397338261B615100856C99 /* My */,
-				528558EB26249DC300AB4E28 /* Test */,
 				529CF0C9261A0AF6002CAD5C /* Main.storyboard */,
 				529CF0CC261A0AF6002CAD5C /* Assets.xcassets */,
 				529CF0CE261A0AF6002CAD5C /* LaunchScreen.storyboard */,
@@ -232,12 +290,10 @@
 		FB1BE3612636C9F10004673C /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				52256FAE263D7F4C00A056DE /* SeparateLine */,
 				FB1BE3702637191C0004673C /* Title */,
-				FB1BE3822637DF110004673C /* CollectionViewCell */,
-				FB1BE3632636CB540004673C /* MainTitleSection.swift */,
-				FB1BE3642636CB540004673C /* MainTitleSection.xib */,
-				FB1BE37726371BFA0004673C /* MainFeedCollectionView.swift */,
-				FB1BE37826371BFA0004673C /* MainFeedCollectionView.xib */,
+				52256FB8263DF48B00A056DE /* Section */,
+				52256FB7263DF41000A056DE /* CollectioinView */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -246,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				FB1BE3692636D7330004673C /* ExtensionCollectoinView.swift */,
+				52256FAF263DBEFA00A056DE /* ExtensionCollectionViewCell.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -264,6 +321,8 @@
 			children = (
 				FB1BE3832637DF2B0004673C /* MainFeedCollectionViewCell.swift */,
 				FB1BE3842637DF2B0004673C /* MainFeedCollectionViewCell.xib */,
+				52256FBF263DF76500A056DE /* MyContentsCollectionViewCell.swift */,
+				52256FC0263DF76500A056DE /* MyContentsCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -338,10 +397,14 @@
 			files = (
 				529CF0D0261A0AF6002CAD5C /* LaunchScreen.storyboard in Resources */,
 				5285590C2629ECB900AB4E28 /* TestLoginViewController.xib in Resources */,
+				52256FA9263D7B8400A056DE /* MyProfileSection.xib in Resources */,
 				529CF0CD261A0AF6002CAD5C /* Assets.xcassets in Resources */,
 				FB1BE37A26371BFA0004673C /* MainFeedCollectionView.xib in Resources */,
 				FB1BE374263719540004673C /* Title16Bold.xib in Resources */,
+				52256FC2263DF76500A056DE /* MyContentsCollectionViewCell.xib in Resources */,
+				52256FBE263DF5DF00A056DE /* MyContentsCollectionView.xib in Resources */,
 				FB1BE3862637DF2B0004673C /* MainFeedCollectionViewCell.xib in Resources */,
+				52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */,
 				FB1BE3662636CB540004673C /* MainTitleSection.xib in Resources */,
 				529CF0CB261A0AF6002CAD5C /* Main.storyboard in Resources */,
 				528558F42624A2E700AB4E28 /* TestMapViewController.xib in Resources */,
@@ -399,11 +462,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5239733F261B629A00856C99 /* CreationViewController.swift in Sources */,
+				52256FC1263DF76500A056DE /* MyContentsCollectionViewCell.swift in Sources */,
 				52397342261B62A600856C99 /* MapViewController.swift in Sources */,
 				528558F72624A99000AB4E28 /* BaseViewController.swift in Sources */,
 				FB1BE38C26397EEE0004673C /* TestPopUpViewController.swift in Sources */,
+				52256FBD263DF5DF00A056DE /* MyContentsCollectionView.swift in Sources */,
 				FB1BE37926371BFA0004673C /* MainFeedCollectionView.swift in Sources */,
+				52256FAC263D7F4300A056DE /* SeparateLineCollectionViewCell.swift in Sources */,
 				529CF0C8261A0AF6002CAD5C /* HomeViewController.swift in Sources */,
+				52256FB0263DBEFA00A056DE /* ExtensionCollectionViewCell.swift in Sources */,
+				52256FA8263D7B8400A056DE /* MyProfileSection.swift in Sources */,
 				52855930262DE5A700AB4E28 /* TabBarItem.swift in Sources */,
 				5285590B2629ECB900AB4E28 /* TestLoginViewController.swift in Sources */,
 				FB1BE3652636CB540004673C /* MainTitleSection.swift in Sources */,
