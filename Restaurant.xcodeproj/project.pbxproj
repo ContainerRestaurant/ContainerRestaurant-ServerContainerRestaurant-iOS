@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52256FA8263D7B8400A056DE /* MyProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FA6263D7B8400A056DE /* MyProfileCollectionViewCell.swift */; };
+		52256FA9263D7B8400A056DE /* MyProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FA7263D7B8400A056DE /* MyProfileCollectionViewCell.xib */; };
+		52256FAC263D7F4300A056DE /* SeparateLineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */; };
+		52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FAB263D7F4300A056DE /* SeparateLineCollectionViewCell.xib */; };
 		5239733C261B625000856C99 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239733B261B625000856C99 /* SearchViewController.swift */; };
 		5239733F261B629A00856C99 /* CreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239733E261B629A00856C99 /* CreationViewController.swift */; };
 		52397342261B62A600856C99 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52397341261B62A600856C99 /* MapViewController.swift */; };
@@ -42,6 +46,10 @@
 
 /* Begin PBXFileReference section */
 		05BE52896353D25BDEB75347 /* Pods-Restaurant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restaurant.release.xcconfig"; path = "Target Support Files/Pods-Restaurant/Pods-Restaurant.release.xcconfig"; sourceTree = "<group>"; };
+		52256FA6263D7B8400A056DE /* MyProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		52256FA7263D7B8400A056DE /* MyProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyProfileCollectionViewCell.xib; sourceTree = "<group>"; };
+		52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateLineCollectionViewCell.swift; sourceTree = "<group>"; };
+		52256FAB263D7F4300A056DE /* SeparateLineCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeparateLineCollectionViewCell.xib; sourceTree = "<group>"; };
 		5239733B261B625000856C99 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		5239733E261B629A00856C99 /* CreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationViewController.swift; sourceTree = "<group>"; };
 		52397341261B62A600856C99 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +99,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52256FAE263D7F4C00A056DE /* SeparateLine */ = {
+			isa = PBXGroup;
+			children = (
+				52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */,
+				52256FAB263D7F4300A056DE /* SeparateLineCollectionViewCell.xib */,
+			);
+			path = SeparateLine;
+			sourceTree = "<group>";
+		};
 		52397335261B612B00856C99 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,8 +279,11 @@
 		FB1BE3822637DF110004673C /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				52256FAE263D7F4C00A056DE /* SeparateLine */,
 				FB1BE3832637DF2B0004673C /* MainFeedCollectionViewCell.swift */,
 				FB1BE3842637DF2B0004673C /* MainFeedCollectionViewCell.xib */,
+				52256FA6263D7B8400A056DE /* MyProfileCollectionViewCell.swift */,
+				52256FA7263D7B8400A056DE /* MyProfileCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -338,10 +358,12 @@
 			files = (
 				529CF0D0261A0AF6002CAD5C /* LaunchScreen.storyboard in Resources */,
 				5285590C2629ECB900AB4E28 /* TestLoginViewController.xib in Resources */,
+				52256FA9263D7B8400A056DE /* MyProfileCollectionViewCell.xib in Resources */,
 				529CF0CD261A0AF6002CAD5C /* Assets.xcassets in Resources */,
 				FB1BE37A26371BFA0004673C /* MainFeedCollectionView.xib in Resources */,
 				FB1BE374263719540004673C /* Title16Bold.xib in Resources */,
 				FB1BE3862637DF2B0004673C /* MainFeedCollectionViewCell.xib in Resources */,
+				52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */,
 				FB1BE3662636CB540004673C /* MainTitleSection.xib in Resources */,
 				529CF0CB261A0AF6002CAD5C /* Main.storyboard in Resources */,
 				528558F42624A2E700AB4E28 /* TestMapViewController.xib in Resources */,
@@ -403,7 +425,9 @@
 				528558F72624A99000AB4E28 /* BaseViewController.swift in Sources */,
 				FB1BE38C26397EEE0004673C /* TestPopUpViewController.swift in Sources */,
 				FB1BE37926371BFA0004673C /* MainFeedCollectionView.swift in Sources */,
+				52256FAC263D7F4300A056DE /* SeparateLineCollectionViewCell.swift in Sources */,
 				529CF0C8261A0AF6002CAD5C /* HomeViewController.swift in Sources */,
+				52256FA8263D7B8400A056DE /* MyProfileCollectionViewCell.swift in Sources */,
 				52855930262DE5A700AB4E28 /* TabBarItem.swift in Sources */,
 				5285590B2629ECB900AB4E28 /* TestLoginViewController.swift in Sources */,
 				FB1BE3652636CB540004673C /* MainTitleSection.swift in Sources */,
