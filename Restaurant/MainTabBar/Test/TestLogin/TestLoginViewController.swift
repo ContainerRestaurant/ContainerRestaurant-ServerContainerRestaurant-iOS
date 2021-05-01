@@ -23,14 +23,14 @@ class TestLoginViewController: BaseViewController {
         
         addButton()
         kakaoLoginButton.rx.tap
-            .subscribe(onNext: {
-                self.kakaoLogin()
+            .subscribe(onNext: { [weak self] in
+                self?.kakaoLogin()
             })
             .disposed(by: disposeBag)
 
         kakaoLogoutButton.rx.tap
-            .subscribe(onNext: {
-                self.kakaoLogout()
+            .subscribe(onNext: { [weak self] in
+                self?.kakaoLogout()
             })
             .disposed(by: disposeBag)
     }
