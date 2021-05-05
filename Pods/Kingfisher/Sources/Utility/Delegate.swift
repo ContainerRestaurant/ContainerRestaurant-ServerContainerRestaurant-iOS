@@ -35,7 +35,7 @@ import Foundation
 ///     onDone?()
 /// }
 ///
-/// // HomeViewController.swift
+/// // ViewController.swift
 /// var obj: MyClass?
 ///
 /// func doSomething() {
@@ -55,14 +55,14 @@ import Foundation
 ///     onDone.call()
 /// }
 ///
-/// // HomeViewController.swift
+/// // ViewController.swift
 /// var obj: MyClass?
 ///
 /// func doSomething() {
 ///     obj = MyClass()
 ///     obj!.onDone.delegate(on: self) { (self, _)
 ///         // `self` here is shadowed and does not keep a strong ref.
-///         // So you can release both `MyClass` instance and `HomeViewController` instance.
+///         // So you can release both `MyClass` instance and `ViewController` instance.
 ///         self.reportDone()
 ///     }
 /// }

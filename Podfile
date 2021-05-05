@@ -13,5 +13,6 @@ target 'Restaurant' do
   pod 'KakaoSDKCommon'  # 필수 요소를 담은 공통 모듈
   pod 'KakaoSDKAuth'  # 카카오 로그인
   pod 'KakaoSDKUser'  # 사용자 관리
+  pod 'FittedSheets'
   
 end

@@ -1,18 +1,18 @@
 PODS:
-  - Alamofire (5.4.2)
-  - KakaoSDKAuth (2.4.1):
-    - KakaoSDKCommon (= 2.4.1)
-  - KakaoSDKCommon (2.4.1):
-    - KakaoSDKCommon/Common (= 2.4.1)
-    - KakaoSDKCommon/Network (= 2.4.1)
-  - KakaoSDKCommon/Common (2.4.1)
-  - KakaoSDKCommon/Network (2.4.1):
+  - Alamofire (5.4.3)
+  - FittedSheets (2.4.0)
+  - KakaoSDKAuth (2.5.2):
+    - KakaoSDKCommon (= 2.5.2)
+  - KakaoSDKCommon (2.5.2):
+    - KakaoSDKCommon/Common (= 2.5.2)
+    - KakaoSDKCommon/Network (= 2.5.2)
+  - KakaoSDKCommon/Common (2.5.2)
+  - KakaoSDKCommon/Network (2.5.2):
     - Alamofire (~> 5.1)
-    - KakaoSDKCommon/Common (= 2.4.1)
-  - KakaoSDKUser (2.4.1):
-    - KakaoSDKAuth (= 2.4.1)
-    - KakaoSDKCommon (= 2.4.1)
-  - Kingfisher (6.2.1)
+    - KakaoSDKCommon/Common (= 2.5.2)
+  - KakaoSDKUser (2.5.2):
+    - KakaoSDKAuth (= 2.5.2)
+  - Kingfisher (6.3.0)
   - NMapsMap (3.11.0)
   - RxCocoa (6.1.0):
     - RxRelay (= 6.1.0)
@@ -22,6 +22,7 @@ PODS:
   - RxSwift (6.1.0)
 
 DEPENDENCIES:
+  - FittedSheets
   - KakaoSDKAuth
   - KakaoSDKCommon
   - KakaoSDKUser
@@ -33,6 +34,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - FittedSheets
     - KakaoSDKAuth
     - KakaoSDKCommon
     - KakaoSDKUser
@@ -43,16 +45,17 @@ SPEC REPOS:
     - RxSwift
 
 SPEC CHECKSUMS:
-  Alamofire: bfbc4c2fe5909b1d94fb4ef2277c6b3727ef5dae
-  KakaoSDKAuth: fcba1c9ede431683f5bdd84c835a96981cb115a5
-  KakaoSDKCommon: 0912aa0c7db051ae8dc07a35395cf644f7728f95
-  KakaoSDKUser: 11955811d99d1ff1f1dfd5428afe69937e31ccef
-  Kingfisher: e71c6fac2aebb1262888cabc2cb13d313362a48f
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  FittedSheets: 470a7740a083156d711ab6ccd37d1d539005e6aa
+  KakaoSDKAuth: 81715662c03e4c8c1a140f293e9fd6fd68b2e9dd
+  KakaoSDKCommon: 887e22f7aa4647bd0a7d1397512fc5f6211b83d6
+  KakaoSDKUser: b79c1a18da69681de7c9d3fa59e83c37b711ce7e
+  Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
   NMapsMap: e6dbea85c2c195c7532deb637a5e90fd70f94fed
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
 
-PODFILE CHECKSUM: a79a41318f72dc536a8e5ec9d4eb072b34072fa6
+PODFILE CHECKSUM: 585108244bb268e70037a07c247be4b38b10b26e
 
 COCOAPODS: 1.10.1
