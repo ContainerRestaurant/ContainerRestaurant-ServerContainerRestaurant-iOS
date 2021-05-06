@@ -18,6 +18,7 @@
 		52256FC2263DF76500A056DE /* MyContentsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FC0263DF76500A056DE /* MyContentsCollectionViewCell.xib */; };
 		52256FD32644326300A056DE /* TestSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FD12644326300A056DE /* TestSheetViewController.swift */; };
 		52256FD42644326300A056DE /* TestSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FD22644326300A056DE /* TestSheetViewController.xib */; };
+		52256FD626445AB400A056DE /* ExtensionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FD526445AB400A056DE /* ExtensionUIColor.swift */; };
 		5239733C261B625000856C99 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239733B261B625000856C99 /* SearchViewController.swift */; };
 		5239733F261B629A00856C99 /* CreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239733E261B629A00856C99 /* CreationViewController.swift */; };
 		52397342261B62A600856C99 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52397341261B62A600856C99 /* MapViewController.swift */; };
@@ -64,6 +65,7 @@
 		52256FC0263DF76500A056DE /* MyContentsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyContentsCollectionViewCell.xib; sourceTree = "<group>"; };
 		52256FD12644326300A056DE /* TestSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSheetViewController.swift; sourceTree = "<group>"; };
 		52256FD22644326300A056DE /* TestSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestSheetViewController.xib; sourceTree = "<group>"; };
+		52256FD526445AB400A056DE /* ExtensionUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIColor.swift; sourceTree = "<group>"; };
 		5239733B261B625000856C99 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		5239733E261B629A00856C99 /* CreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationViewController.swift; sourceTree = "<group>"; };
 		52397341261B62A600856C99 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 			children = (
 				FB1BE3692636D7330004673C /* ExtensionCollectoinView.swift */,
 				52256FAF263DBEFA00A056DE /* ExtensionCollectionViewCell.swift */,
+				52256FD526445AB400A056DE /* ExtensionUIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				FB1BE3852637DF2B0004673C /* MainFeedCollectionViewCell.swift in Sources */,
 				52256FD32644326300A056DE /* TestSheetViewController.swift in Sources */,
 				FB1BE36A2636D7330004673C /* ExtensionCollectoinView.swift in Sources */,
+				52256FD626445AB400A056DE /* ExtensionUIColor.swift in Sources */,
 				5239733C261B625000856C99 /* SearchViewController.swift in Sources */,
 				528558ED26249DDF00AB4E28 /* TestViewController.swift in Sources */,
 				FB1BE373263719540004673C /* Title16Bold.swift in Sources */,
