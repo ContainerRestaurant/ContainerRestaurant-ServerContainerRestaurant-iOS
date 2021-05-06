@@ -16,6 +16,8 @@
 		52256FBE263DF5DF00A056DE /* MyContentsCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FBC263DF5DF00A056DE /* MyContentsCollectionView.xib */; };
 		52256FC1263DF76500A056DE /* MyContentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FBF263DF76500A056DE /* MyContentsCollectionViewCell.swift */; };
 		52256FC2263DF76500A056DE /* MyContentsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FC0263DF76500A056DE /* MyContentsCollectionViewCell.xib */; };
+		52256FD32644326300A056DE /* TestSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FD12644326300A056DE /* TestSheetViewController.swift */; };
+		52256FD42644326300A056DE /* TestSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FD22644326300A056DE /* TestSheetViewController.xib */; };
 		5239733C261B625000856C99 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239733B261B625000856C99 /* SearchViewController.swift */; };
 		5239733F261B629A00856C99 /* CreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239733E261B629A00856C99 /* CreationViewController.swift */; };
 		52397342261B62A600856C99 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52397341261B62A600856C99 /* MapViewController.swift */; };
@@ -60,6 +62,8 @@
 		52256FBC263DF5DF00A056DE /* MyContentsCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyContentsCollectionView.xib; sourceTree = "<group>"; };
 		52256FBF263DF76500A056DE /* MyContentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContentsCollectionViewCell.swift; sourceTree = "<group>"; };
 		52256FC0263DF76500A056DE /* MyContentsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyContentsCollectionViewCell.xib; sourceTree = "<group>"; };
+		52256FD12644326300A056DE /* TestSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSheetViewController.swift; sourceTree = "<group>"; };
+		52256FD22644326300A056DE /* TestSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestSheetViewController.xib; sourceTree = "<group>"; };
 		5239733B261B625000856C99 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		5239733E261B629A00856C99 /* CreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationViewController.swift; sourceTree = "<group>"; };
 		52397341261B62A600856C99 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +160,15 @@
 			path = MainTabBar;
 			sourceTree = "<group>";
 		};
+		52256FD02644323800A056DE /* TestSheet */ = {
+			isa = PBXGroup;
+			children = (
+				52256FD12644326300A056DE /* TestSheetViewController.swift */,
+				52256FD22644326300A056DE /* TestSheetViewController.xib */,
+			);
+			path = TestSheet;
+			sourceTree = "<group>";
+		};
 		52397335261B612B00856C99 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +217,7 @@
 				528558F02624A2D000AB4E28 /* TestMap */,
 				528559082629EC9800AB4E28 /* TestLogin */,
 				FB1BE38926397ECF0004673C /* TestPopUp */,
+				52256FD02644323800A056DE /* TestSheet */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -405,6 +419,7 @@
 				52256FBE263DF5DF00A056DE /* MyContentsCollectionView.xib in Resources */,
 				FB1BE3862637DF2B0004673C /* MainFeedCollectionViewCell.xib in Resources */,
 				52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */,
+				52256FD42644326300A056DE /* TestSheetViewController.xib in Resources */,
 				FB1BE3662636CB540004673C /* MainTitleSection.xib in Resources */,
 				529CF0CB261A0AF6002CAD5C /* Main.storyboard in Resources */,
 				528558F42624A2E700AB4E28 /* TestMapViewController.xib in Resources */,
@@ -481,6 +496,7 @@
 				52397345261B62AF00856C99 /* MyViewController.swift in Sources */,
 				529CF0C4261A0AF6002CAD5C /* AppDelegate.swift in Sources */,
 				FB1BE3852637DF2B0004673C /* MainFeedCollectionViewCell.swift in Sources */,
+				52256FD32644326300A056DE /* TestSheetViewController.swift in Sources */,
 				FB1BE36A2636D7330004673C /* ExtensionCollectoinView.swift in Sources */,
 				5239733C261B625000856C99 /* SearchViewController.swift in Sources */,
 				528558ED26249DDF00AB4E28 /* TestViewController.swift in Sources */,
