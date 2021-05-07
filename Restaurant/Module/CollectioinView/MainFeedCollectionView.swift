@@ -55,7 +55,7 @@ extension MainFeedCollectionView: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth = CGFloat(357/2.0) - self.interItemSpacing
-        let cellHeight = CGFloat(273)
+        let cellHeight = CGFloat(258)
         
         return CGSize(width: cellWidth, height: cellHeight)
     }

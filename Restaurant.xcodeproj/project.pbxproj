@@ -23,6 +23,7 @@
 		5239733F261B629A00856C99 /* CreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239733E261B629A00856C99 /* CreationViewController.swift */; };
 		52397342261B62A600856C99 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52397341261B62A600856C99 /* MapViewController.swift */; };
 		52397345261B62AF00856C99 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52397344261B62AF00856C99 /* MyViewController.swift */; };
+		526BED462645D98200897230 /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526BED452645D98200897230 /* ViewModelBindableType.swift */; };
 		528558D52621EC5000AB4E28 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528558D42621EC5000AB4E28 /* HomeViewModel.swift */; };
 		528558ED26249DDF00AB4E28 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528558EC26249DDF00AB4E28 /* TestViewController.swift */; };
 		528558F32624A2E700AB4E28 /* TestMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528558F12624A2E700AB4E28 /* TestMapViewController.swift */; };
@@ -70,6 +71,7 @@
 		5239733E261B629A00856C99 /* CreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationViewController.swift; sourceTree = "<group>"; };
 		52397341261B62A600856C99 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		52397344261B62AF00856C99 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		526BED452645D98200897230 /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
 		528558D42621EC5000AB4E28 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		528558EC26249DDF00AB4E28 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		528558F12624A2E700AB4E28 /* TestMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMapViewController.swift; sourceTree = "<group>"; };
@@ -147,9 +149,11 @@
 			path = Section;
 			sourceTree = "<group>";
 		};
-		52256FB9263DF4BD00A056DE /* MainTabBar */ = {
+		52256FB9263DF4BD00A056DE /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				529CF0CE261A0AF6002CAD5C /* LaunchScreen.storyboard */,
+				529CF0C9261A0AF6002CAD5C /* Main.storyboard */,
 				528558F62624A99000AB4E28 /* BaseViewController.swift */,
 				5285592A262DD99400AB4E28 /* MainTabBarController.swift */,
 				52397335261B612B00856C99 /* Home */,
@@ -159,7 +163,7 @@
 				52397338261B615100856C99 /* My */,
 				528558EB26249DC300AB4E28 /* Test */,
 			);
-			path = MainTabBar;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		52256FD02644323800A056DE /* TestSheet */ = {
@@ -175,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				529CF0C7261A0AF6002CAD5C /* HomeViewController.swift */,
-				528558D42621EC5000AB4E28 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -210,6 +213,15 @@
 				5239733E261B629A00856C99 /* CreationViewController.swift */,
 			);
 			path = Creation;
+			sourceTree = "<group>";
+		};
+		526BED442645D60B00897230 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				526BED452645D98200897230 /* ViewModelBindableType.swift */,
+				528558D42621EC5000AB4E28 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		528558EB26249DC300AB4E28 /* Test */ = {
@@ -271,16 +283,15 @@
 		529CF0C2261A0AF6002CAD5C /* Restaurant */ = {
 			isa = PBXGroup;
 			children = (
-				FB1BE3682636D7170004673C /* Extensions */,
-				5285592E262DE59400AB4E28 /* Enum */,
-				52256FB9263DF4BD00A056DE /* MainTabBar */,
-				FB1BE3612636C9F10004673C /* Module */,
-				528559062629E8F800AB4E28 /* Restaurant.entitlements */,
 				529CF0C3261A0AF6002CAD5C /* AppDelegate.swift */,
 				529CF0C5261A0AF6002CAD5C /* SceneDelegate.swift */,
-				529CF0C9261A0AF6002CAD5C /* Main.storyboard */,
+				FB1BE3682636D7170004673C /* Extensions */,
+				5285592E262DE59400AB4E28 /* Enum */,
+				52256FB9263DF4BD00A056DE /* ViewController */,
+				526BED442645D60B00897230 /* ViewModel */,
+				FB1BE3612636C9F10004673C /* Module */,
+				528559062629E8F800AB4E28 /* Restaurant.entitlements */,
 				529CF0CC261A0AF6002CAD5C /* Assets.xcassets */,
-				529CF0CE261A0AF6002CAD5C /* LaunchScreen.storyboard */,
 				529CF0D1261A0AF6002CAD5C /* Info.plist */,
 			);
 			path = Restaurant;
@@ -488,6 +499,7 @@
 				FB1BE37926371BFA0004673C /* MainFeedCollectionView.swift in Sources */,
 				52256FAC263D7F4300A056DE /* SeparateLineCollectionViewCell.swift in Sources */,
 				529CF0C8261A0AF6002CAD5C /* HomeViewController.swift in Sources */,
+				526BED462645D98200897230 /* ViewModelBindableType.swift in Sources */,
 				52256FB0263DBEFA00A056DE /* ExtensionCollectionViewCell.swift in Sources */,
 				52256FA8263D7B8400A056DE /* MyProfileSection.swift in Sources */,
 				52855930262DE5A700AB4E28 /* TabBarItem.swift in Sources */,

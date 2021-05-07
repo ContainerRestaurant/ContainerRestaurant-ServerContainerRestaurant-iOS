@@ -7,8 +7,9 @@
 
 import UIKit
 
-class HomeViewController: BaseViewController {
+class HomeViewController: BaseViewController, ViewModelBindableType {
     private var modules: [UICollectionViewCell] = []
+    var viewModel: HomeViewModel!
     
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -18,6 +19,10 @@ class HomeViewController: BaseViewController {
         setNavigationController()
         setModule()
         setCollectionView()
+    }
+    
+    func bindViewModel() {
+        
     }
     
     //안될거임
