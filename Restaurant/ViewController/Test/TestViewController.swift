@@ -35,7 +35,7 @@ class TestViewController: BaseViewController {
 
         popUpTestButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
-                let popupVC = TestPopUpViewController()
+                let popupVC = popUpViewController()
                 popupVC.modalPresentationStyle = .overFullScreen
                 self?.present(popupVC, animated: false, completion: nil)
             })

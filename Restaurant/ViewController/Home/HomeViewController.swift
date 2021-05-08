@@ -16,8 +16,11 @@ class HomeViewController: BaseViewController, ViewModelBindableType {
         super.viewDidLoad()
         
         viewModel = HomeViewModel()
-        setNavigationController()
         setCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     func bindViewModel() {
@@ -32,10 +35,6 @@ class HomeViewController: BaseViewController, ViewModelBindableType {
 
 //MARK: - Instance Method
 extension HomeViewController {
-    private func setNavigationController() {
-        self.navigationController?.navigationBar.isHidden = true
-    }
-
     private func setCollectionView() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -58,6 +57,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         switch type {
         case is MainTitleSection:
             let cell: MainTitleSection = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configure(viewController: self)
             return cell
             
         case is Title16Bold:
@@ -66,7 +66,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
         case is MainFeedCollectionView:
             let cell: MainFeedCollectionView = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(dummyNumber: 9)
+            cell.configure(dummyNumber: 12)
             return cell
             
         default: return UICollectionViewCell()
@@ -77,7 +77,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         //TODO : 이 부분도 is ReusableCell로 해야할지 고민하기
         switch indexPath.row {
         case 0: return viewModel.mainTitleSectionSize()
-        case 1: return viewModel.title16Bold()
+        case 1: return viewModel.title16BoldSize()
         case 2: return viewModel.MainFeedCollectionViewSize()
         default: return CGSize.zero
         }

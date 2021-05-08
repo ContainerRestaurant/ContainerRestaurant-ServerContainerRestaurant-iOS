@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Title16Bold: UICollectionViewCell, ReusableCell {
+class Title16Bold: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }

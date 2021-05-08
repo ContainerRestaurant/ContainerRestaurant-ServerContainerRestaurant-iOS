@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainFeedCollectionViewCell: UICollectionViewCell, ReusableCell {
+class MainFeedCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }

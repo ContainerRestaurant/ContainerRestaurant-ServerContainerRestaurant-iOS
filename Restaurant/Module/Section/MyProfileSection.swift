@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyProfileSection: UICollectionViewCell, ReusableCell {
+class MyProfileSection: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }

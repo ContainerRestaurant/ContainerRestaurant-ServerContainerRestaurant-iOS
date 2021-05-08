@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainFeedCollectionView: UICollectionViewCell, ReusableCell {
+class MainFeedCollectionView: UICollectionViewCell {
     var cells: [UICollectionViewCell] = []
     var dummyNumber: Int = 0
     private let interItemSpacing: CGFloat = 12
@@ -54,7 +54,7 @@ extension MainFeedCollectionView: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = CGFloat(357/2.0) - self.interItemSpacing
+        let cellWidth = CGFloat(164)
         let cellHeight = CGFloat(273)
         
         return CGSize(width: cellWidth, height: cellHeight)

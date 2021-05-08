@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyContentsCollectionView: UICollectionViewCell, ReusableCell {
+class MyContentsCollectionView: UICollectionViewCell {
     private var cells: [UICollectionViewCell] = []
     
     @IBOutlet weak var collectionView: UICollectionView!

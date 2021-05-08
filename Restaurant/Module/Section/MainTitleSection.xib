@@ -101,6 +101,10 @@
                 <constraint firstItem="vo6-KG-2bG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="40" id="zL2-VH-rtf"/>
             </constraints>
             <size key="customSize" width="375" height="241"/>
+            <connections>
+                <outlet property="containerOfEveryoneButton" destination="EcT-Tw-Yjg" id="eIE-jp-I8y"/>
+                <outlet property="myContainerButton" destination="yOi-Wn-giD" id="66d-NZ-ZeN"/>
+            </connections>
             <point key="canvasLocation" x="-48.550724637681164" y="209.93303571428569"/>
         </collectionViewCell>
     </objects>

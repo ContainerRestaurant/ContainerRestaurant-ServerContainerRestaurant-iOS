@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SeparateLineCollectionViewCell: UICollectionViewCell, ReusableCell {
+class SeparateLineCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var lineViewHeight: NSLayoutConstraint!
     

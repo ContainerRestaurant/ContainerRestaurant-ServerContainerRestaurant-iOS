@@ -8,23 +8,20 @@
 import UIKit
 
 struct HomeViewModel {
-    var modules: [UICollectionViewCell] = []
+    var modules: [UICollectionViewCell] = [
+        MainTitleSection(),
+        Title16Bold(),
+        MainFeedCollectionView()
+    ]
     
     init() {
-        setModules()
-    }
-    
-    private mutating func setModules() {
-        self.modules.append(MainTitleSection())
-        self.modules.append(Title16Bold())
-        self.modules.append(MainFeedCollectionView())
     }
     
     func mainTitleSectionSize() -> CGSize {
         return CGSize(width: 375, height: 251)
     }
     
-    func title16Bold() -> CGSize {
+    func title16BoldSize() -> CGSize {
         return CGSize(width: 375, height: 21)
     }
     
