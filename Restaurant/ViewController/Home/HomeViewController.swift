@@ -8,16 +8,15 @@
 import UIKit
 
 class HomeViewController: BaseViewController, ViewModelBindableType {
-    private var modules: [UICollectionViewCell] = []
     var viewModel: HomeViewModel!
     
     @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        viewModel = HomeViewModel()
         setNavigationController()
-        setModule()
         setCollectionView()
     }
     
@@ -36,13 +35,7 @@ extension HomeViewController {
     private func setNavigationController() {
         self.navigationController?.navigationBar.isHidden = true
     }
-    
-    private func setModule() {
-        self.modules.append(MainTitleSection())
-        self.modules.append(Title16Bold())
-        self.modules.append(MainFeedCollectionView())
-    }
-    
+
     private func setCollectionView() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -56,11 +49,11 @@ extension HomeViewController {
 //MARK: - CollectionView Protocol
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return modules.count
+        return viewModel.modules.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let type = modules[indexPath.row]
+        let type = viewModel.modules[indexPath.row]
         
         switch type {
         case is MainTitleSection:
@@ -82,19 +75,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //TODO : 이 부분도 is ReusableCell로 해야할지 고민하기
-        if indexPath.row == 2 {
-            let cellWidth: CGFloat = 375
-            let cellHeight: CGFloat = { () -> CGFloat in
-                let line = round(9.0/2.0) //9 => dummyNumber
-                let cellHeight: CGFloat = 273 * CGFloat(line)
-                let spacingHeight: CGFloat = 20 * CGFloat(line-1)
-                
-                return cellHeight + spacingHeight
-            }()
-            
-            return CGSize(width: cellWidth, height: cellHeight)  
+        switch indexPath.row {
+        case 0: return viewModel.mainTitleSectionSize()
+        case 1: return viewModel.title16Bold()
+        case 2: return viewModel.MainFeedCollectionViewSize()
+        default: return CGSize.zero
         }
-
-        return CGSize(width: 375, height: 50)
     }
 }
