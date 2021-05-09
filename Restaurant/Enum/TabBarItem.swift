@@ -25,6 +25,16 @@ enum TabBarItem: CaseIterable {
         }
     }
     
+    var viewController: UIViewController {
+        switch self {
+        case .home: return HomeViewController()
+        case .search: return SearchViewController()
+        case .creation: return CreationViewController()
+        case .map: return MapViewController()
+        case .my: return MyViewController()
+        }
+    }
+    
     var iconImage: UIImage? {
         switch self {
         case .home: return UIImage(named: "iconHomeOutline20Px")

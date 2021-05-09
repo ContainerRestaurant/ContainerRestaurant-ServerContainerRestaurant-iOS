@@ -195,12 +195,13 @@
 				529CF0CE261A0AF6002CAD5C /* LaunchScreen.storyboard */,
 				529CF0C9261A0AF6002CAD5C /* Main.storyboard */,
 				528558F62624A99000AB4E28 /* BaseViewController.swift */,
+				526BED452645D98200897230 /* ViewModelBindableType.swift */,
 				5285592A262DD99400AB4E28 /* MainTabBarController.swift */,
-				52397335261B612B00856C99 /* Home */,
-				52397336261B613E00856C99 /* Search */,
-				52397339261B616A00856C99 /* Creation */,
-				52397337261B614C00856C99 /* Map */,
-				52397338261B615100856C99 /* My */,
+				529CF0C7261A0AF6002CAD5C /* HomeViewController.swift */,
+				5239733B261B625000856C99 /* SearchViewController.swift */,
+				5239733E261B629A00856C99 /* CreationViewController.swift */,
+				52397341261B62A600856C99 /* MapViewController.swift */,
+				52397344261B62AF00856C99 /* MyViewController.swift */,
 				528558EB26249DC300AB4E28 /* Test */,
 				FB1BE38926397ECF0004673C /* PopUp */,
 				526BED602646F62A00897230 /* ContainerOfEveryoneViewController.swift */,
@@ -218,52 +219,10 @@
 			path = TestSheet;
 			sourceTree = "<group>";
 		};
-		52397335261B612B00856C99 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				529CF0C7261A0AF6002CAD5C /* HomeViewController.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		52397336261B613E00856C99 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				5239733B261B625000856C99 /* SearchViewController.swift */,
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
-		52397337261B614C00856C99 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				52397341261B62A600856C99 /* MapViewController.swift */,
-			);
-			path = Map;
-			sourceTree = "<group>";
-		};
-		52397338261B615100856C99 /* My */ = {
-			isa = PBXGroup;
-			children = (
-				52397344261B62AF00856C99 /* MyViewController.swift */,
-			);
-			path = My;
-			sourceTree = "<group>";
-		};
-		52397339261B616A00856C99 /* Creation */ = {
-			isa = PBXGroup;
-			children = (
-				5239733E261B629A00856C99 /* CreationViewController.swift */,
-			);
-			path = Creation;
-			sourceTree = "<group>";
-		};
 		526BED442645D60B00897230 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				526BED6E2647101B00897230 /* ViewController */,
-				526BED452645D98200897230 /* ViewModelBindableType.swift */,
-				528558D42621EC5000AB4E28 /* HomeViewModel.swift */,
 				526BED5A2646EC8900897230 /* Module */,
 			);
 			path = ViewModel;
@@ -289,6 +248,7 @@
 		526BED6E2647101B00897230 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				528558D42621EC5000AB4E28 /* HomeViewModel.swift */,
 				526BED64264702F700897230 /* ContainerOfEveryoneViewModel.swift */,
 			);
 			path = ViewController;
