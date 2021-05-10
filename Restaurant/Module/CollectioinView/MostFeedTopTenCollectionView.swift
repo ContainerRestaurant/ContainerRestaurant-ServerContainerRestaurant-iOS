@@ -31,22 +31,22 @@ extension MostFeedTopTenCollectionView {
         self.collectionView.dataSource = self
         
         self.collectionView.register(MostFeedTopTenCollectionViewCell.self)
-        self.collectionView.register(MostFeedTopTenTitleCollectionViewCell.self)
-        self.collectionView.register(SeparateLineCollectionViewCell.self)
+//        self.collectionView.register(MostFeedTopTenTitleCollectionViewCell.self)
+//        self.collectionView.register(SeparateLineCollectionViewCell.self)
     }
 }
 
 //MARK: - CollectionView Protocol
 extension MostFeedTopTenCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1 + 10
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == 0 {
-            let cell: MostFeedTopTenTitleCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            return cell
-        }
+//        if indexPath.row == 0 {
+//            let cell: MostFeedTopTenTitleCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+//            return cell
+//        }
         
         let cell: MostFeedTopTenCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.configure(nickName: "닉네임\(indexPath.row)", level: "레벨\(indexPath.row)")
@@ -54,13 +54,14 @@ extension MostFeedTopTenCollectionView: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch indexPath.row {
-        case 0: return viewModel.mostFeedTopTenTitleSize()
-        default: return viewModel.mostFeedTopTenSize()
-        }
+//        switch indexPath.row {
+//        case 0: return viewModel.mostFeedTopTenTitleSize()
+//        default: return viewModel.mostFeedTopTenSize()
+        return viewModel.mostFeedTopTenSize()
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
+        return 4
     }
 }

@@ -9,15 +9,15 @@ import UIKit
 
 class MostFeedTopTenViewModel {
     var modules: [UICollectionViewCell] = [
-        MostFeedTopTenTitleCollectionViewCell(),
+//        MostFeedTopTenTitleCollectionViewCell(),
         MostFeedTopTenCollectionView()
     ]
     
-    func mostFeedTopTenTitleSize() -> CGSize {
-        return CGSize(width: 100, height: 180)
-    }
+//    func mostFeedTopTenTitleSize() -> CGSize {
+//        return CGSize(width: 100, height: 180)
+//    }
     
     func mostFeedTopTenSize() -> CGSize {
-        return CGSize(width: 136, height: 180)
+        return CGSize(width: 148, height: 186)
     }
 }

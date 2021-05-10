@@ -10,12 +10,11 @@ import UIKit
 class ContainerOfEveryoneViewModel {
     var modules: [UICollectionViewCell] = [
         MostFeedTopTenCollectionView(),
-        SeparateLineCollectionViewCell(),
         RecentlyFeedCollectionView()
     ]
     
     func mostFeedTopTenSize() -> CGSize {
-        return CGSize(width: 375, height: 250)
+        return CGSize(width: 375, height: 286)
     }
     
     func separateLineSize() -> CGSize {
@@ -23,6 +22,6 @@ class ContainerOfEveryoneViewModel {
     }
     
     func RecentlyFeedSize() -> CGSize {
-        return CGSize(width: 375, height: 142 * 6 + 20 * 5 + 114)
+        return CGSize(width: 375, height: 108 * 5 + 20 * 4 + 114)
     }
 }
