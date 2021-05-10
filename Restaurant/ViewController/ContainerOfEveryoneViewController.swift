@@ -36,6 +36,9 @@ class ContainerOfEveryoneViewController: BaseViewController, ViewModelBindableTy
 extension ContainerOfEveryoneViewController {
     private func setNavigation() {
         self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.barTintColor = .colorMainGreen02
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.colorGreyGrey01]
         self.navigationItem.title = "모두의 용기"
     }
     
@@ -44,7 +47,6 @@ extension ContainerOfEveryoneViewController {
         self.collectionView.dataSource = self
         
         self.collectionView.register(MostFeedTopTenCollectionView.self)
-        self.collectionView.register(SeparateLineCollectionViewCell.self)
         self.collectionView.register(RecentlyFeedCollectionView.self)
     }
 }
@@ -63,11 +65,6 @@ extension ContainerOfEveryoneViewController: UICollectionViewDelegate, UICollect
             let cell: MostFeedTopTenCollectionView = collectionView.dequeueReusableCell(for: indexPath)
             return cell
             
-        case is SeparateLineCollectionViewCell:
-            let cell: SeparateLineCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configureCell(height: 8, color: .colorGreyGrey02)
-            return cell
-            
         case is RecentlyFeedCollectionView:
             let cell: RecentlyFeedCollectionView = collectionView.dequeueReusableCell(for: indexPath)
             return cell
@@ -79,10 +76,13 @@ extension ContainerOfEveryoneViewController: UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.row {
         case 0: return viewModel.mostFeedTopTenSize()
-        case 1: return viewModel.separateLineSize()
-        case 2: return viewModel.RecentlyFeedSize()
+        case 1: return viewModel.RecentlyFeedSize()
         default: return CGSize.zero
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
 

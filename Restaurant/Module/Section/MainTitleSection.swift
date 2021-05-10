@@ -38,7 +38,7 @@ class MainTitleSection: UICollectionViewCell {
     
     func setNextVCNavigationItem() {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self.viewController, action: nil)
-        backBarButtonItem.tintColor = .colorGreyGrey07
+        backBarButtonItem.tintColor = .colorGreyGrey01
         self.viewController?.navigationItem.backBarButtonItem = backBarButtonItem
         
         let backImage = UIImage(named: "chevronLeftOutline20Px")
