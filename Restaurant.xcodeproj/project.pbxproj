@@ -25,6 +25,8 @@
 		52397345261B62AF00856C99 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52397344261B62AF00856C99 /* MyViewController.swift */; };
 		52542E05264AD8FB0066F565 /* ListStandardDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52542E03264AD8FB0066F565 /* ListStandardDescriptionViewController.swift */; };
 		52542E06264AD8FB0066F565 /* ListStandardDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52542E04264AD8FB0066F565 /* ListStandardDescriptionViewController.xib */; };
+		52542E09264AEBB10066F565 /* InquiryProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52542E07264AEBB10066F565 /* InquiryProfileViewController.swift */; };
+		52542E0A264AEBB10066F565 /* InquiryProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52542E08264AEBB10066F565 /* InquiryProfileViewController.xib */; };
 		526BED462645D98200897230 /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526BED452645D98200897230 /* ViewModelBindableType.swift */; };
 		526BED48264652CA00897230 /* ExtensionUIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526BED47264652CA00897230 /* ExtensionUIFont.swift */; };
 		526BED4A2646566600897230 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526BED492646566600897230 /* ExtensionUIView.swift */; };
@@ -91,6 +93,8 @@
 		52397344261B62AF00856C99 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		52542E03264AD8FB0066F565 /* ListStandardDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStandardDescriptionViewController.swift; sourceTree = "<group>"; };
 		52542E04264AD8FB0066F565 /* ListStandardDescriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListStandardDescriptionViewController.xib; sourceTree = "<group>"; };
+		52542E07264AEBB10066F565 /* InquiryProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryProfileViewController.swift; sourceTree = "<group>"; };
+		52542E08264AEBB10066F565 /* InquiryProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InquiryProfileViewController.xib; sourceTree = "<group>"; };
 		526BED452645D98200897230 /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
 		526BED47264652CA00897230 /* ExtensionUIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionUIFont.swift; sourceTree = "<group>"; };
 		526BED492646566600897230 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
@@ -202,6 +206,8 @@
 				5239733E261B629A00856C99 /* CreationViewController.swift */,
 				52397341261B62A600856C99 /* MapViewController.swift */,
 				52397344261B62AF00856C99 /* MyViewController.swift */,
+				52542E07264AEBB10066F565 /* InquiryProfileViewController.swift */,
+				52542E08264AEBB10066F565 /* InquiryProfileViewController.xib */,
 				528558EB26249DC300AB4E28 /* Test */,
 				FB1BE38926397ECF0004673C /* PopUp */,
 				526BED602646F62A00897230 /* ContainerOfEveryoneViewController.swift */,
@@ -479,6 +485,7 @@
 				52256FC2263DF76500A056DE /* MyContentsCollectionViewCell.xib in Resources */,
 				52256FBE263DF5DF00A056DE /* MyContentsCollectionView.xib in Resources */,
 				526BED692647069E00897230 /* MostFeedTopTenCollectionView.xib in Resources */,
+				52542E0A264AEBB10066F565 /* InquiryProfileViewController.xib in Resources */,
 				FB1BE3862637DF2B0004673C /* MainFeedCollectionViewCell.xib in Resources */,
 				52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */,
 				52542E06264AD8FB0066F565 /* ListStandardDescriptionViewController.xib in Resources */,
@@ -560,6 +567,7 @@
 				529CF0C8261A0AF6002CAD5C /* HomeViewController.swift in Sources */,
 				526BED462645D98200897230 /* ViewModelBindableType.swift in Sources */,
 				52256FB0263DBEFA00A056DE /* ExtensionCollectionViewCell.swift in Sources */,
+				52542E09264AEBB10066F565 /* InquiryProfileViewController.swift in Sources */,
 				52256FA8263D7B8400A056DE /* MyProfileSection.swift in Sources */,
 				52855930262DE5A700AB4E28 /* TabBarItem.swift in Sources */,
 				526BED6C26470BD200897230 /* MostFeedTopTenCollectionViewCell.swift in Sources */,
