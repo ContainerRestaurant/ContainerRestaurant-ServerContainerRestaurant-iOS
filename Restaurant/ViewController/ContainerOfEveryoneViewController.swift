@@ -40,6 +40,27 @@ extension ContainerOfEveryoneViewController {
         self.navigationController?.navigationBar.barTintColor = .colorMainGreen02
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.colorGreyGrey01]
         self.navigationItem.title = "모두의 용기"
+        
+        let backImage = UIImage(named: "chevronLeftOutline20Px")
+        self.navigationController?.navigationBar.backIndicatorImage = backImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+        
+        let helpButton = UIButton()
+        helpButton.setImage(UIImage(named: "helpOutline20Px"), for: .normal)
+        helpButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        helpButton.addTarget(self, action: #selector(listStandardDescriptionPopup), for: .touchUpInside)
+
+        let helpBarButtonItem = UIBarButtonItem()
+        helpBarButtonItem.customView = helpButton
+        
+        self.navigationController?.navigationItem.rightBarButtonItem = helpBarButtonItem
+        self.navigationItem.rightBarButtonItem = helpBarButtonItem
+    }
+    
+    @objc func listStandardDescriptionPopup() {
+        let listStandardDescriptionPopup = ListStandardDescriptionViewController()
+        listStandardDescriptionPopup.modalPresentationStyle = .overFullScreen
+        self.present(listStandardDescriptionPopup, animated: false, completion: nil)
     }
     
     private func setCollectionView() {

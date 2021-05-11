@@ -23,6 +23,8 @@
 		5239733F261B629A00856C99 /* CreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239733E261B629A00856C99 /* CreationViewController.swift */; };
 		52397342261B62A600856C99 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52397341261B62A600856C99 /* MapViewController.swift */; };
 		52397345261B62AF00856C99 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52397344261B62AF00856C99 /* MyViewController.swift */; };
+		52542E05264AD8FB0066F565 /* ListStandardDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52542E03264AD8FB0066F565 /* ListStandardDescriptionViewController.swift */; };
+		52542E06264AD8FB0066F565 /* ListStandardDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52542E04264AD8FB0066F565 /* ListStandardDescriptionViewController.xib */; };
 		526BED462645D98200897230 /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526BED452645D98200897230 /* ViewModelBindableType.swift */; };
 		526BED48264652CA00897230 /* ExtensionUIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526BED47264652CA00897230 /* ExtensionUIFont.swift */; };
 		526BED4A2646566600897230 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526BED492646566600897230 /* ExtensionUIView.swift */; };
@@ -87,6 +89,8 @@
 		5239733E261B629A00856C99 /* CreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationViewController.swift; sourceTree = "<group>"; };
 		52397341261B62A600856C99 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		52397344261B62AF00856C99 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		52542E03264AD8FB0066F565 /* ListStandardDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStandardDescriptionViewController.swift; sourceTree = "<group>"; };
+		52542E04264AD8FB0066F565 /* ListStandardDescriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListStandardDescriptionViewController.xib; sourceTree = "<group>"; };
 		526BED452645D98200897230 /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
 		526BED47264652CA00897230 /* ExtensionUIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionUIFont.swift; sourceTree = "<group>"; };
 		526BED492646566600897230 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
@@ -400,6 +404,8 @@
 			children = (
 				FB1BE38A26397EEE0004673C /* popUpViewController.swift */,
 				FB1BE38B26397EEE0004673C /* popUpViewController.xib */,
+				52542E03264AD8FB0066F565 /* ListStandardDescriptionViewController.swift */,
+				52542E04264AD8FB0066F565 /* ListStandardDescriptionViewController.xib */,
 			);
 			path = PopUp;
 			sourceTree = "<group>";
@@ -475,6 +481,7 @@
 				526BED692647069E00897230 /* MostFeedTopTenCollectionView.xib in Resources */,
 				FB1BE3862637DF2B0004673C /* MainFeedCollectionViewCell.xib in Resources */,
 				52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */,
+				52542E06264AD8FB0066F565 /* ListStandardDescriptionViewController.xib in Resources */,
 				526BED802647252400897230 /* RecentlyFeedCollectionViewCell.xib in Resources */,
 				526BED632646F62A00897230 /* ContainerOfEveryoneViewController.xib in Resources */,
 				52256FD42644326300A056DE /* TestSheetViewController.xib in Resources */,
@@ -565,6 +572,7 @@
 				529CF0C4261A0AF6002CAD5C /* AppDelegate.swift in Sources */,
 				FB1BE3852637DF2B0004673C /* MainFeedCollectionViewCell.swift in Sources */,
 				52256FD32644326300A056DE /* TestSheetViewController.swift in Sources */,
+				52542E05264AD8FB0066F565 /* ListStandardDescriptionViewController.swift in Sources */,
 				FB1BE36A2636D7330004673C /* ExtensionCollectoinView.swift in Sources */,
 				526BED782647212400897230 /* RecentlyFeedCollectionView.swift in Sources */,
 				526BED4A2646566600897230 /* ExtensionUIView.swift in Sources */,

@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "helpOutline20Px.png",
+      "scale" : "1x",
+      "idiom" : "universal"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "helpOutline20Px@2x.png"
+    },
+    {
+      "filename" : "helpOutline20Px@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
