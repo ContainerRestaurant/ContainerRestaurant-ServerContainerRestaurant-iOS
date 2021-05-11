@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: BaseViewController, ViewModelBindableType {
+class HomeViewController: BaseViewController {
     var viewModel: HomeViewModel!
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -23,9 +23,9 @@ class HomeViewController: BaseViewController, ViewModelBindableType {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    func bindViewModel() {
-        
-    }
+//    func bindViewModel() {
+//
+//    }
     
     //안될거임
     deinit {

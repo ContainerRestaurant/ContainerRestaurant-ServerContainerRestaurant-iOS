@@ -45,7 +45,7 @@ class TestViewController: BaseViewController {
             .subscribe(onNext: { [weak self] _ in
                 let testViewController = TestLoginViewController()
                 let sheetViewController = SheetViewController(controller: testViewController,
-                                                              sizes: [.fixed(540), .fullscreen],
+                                                              sizes: [.fixed(150), .marginFromTop(200)],
                                                               options: SheetOptions(
                                                                 useFullScreenMode: true,
                                                                 shrinkPresentingViewController: false))

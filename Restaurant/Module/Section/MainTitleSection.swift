@@ -40,10 +40,6 @@ class MainTitleSection: UICollectionViewCell {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self.viewController, action: nil)
         backBarButtonItem.tintColor = .colorGreyGrey01
         self.viewController?.navigationItem.backBarButtonItem = backBarButtonItem
-        
-        let backImage = UIImage(named: "chevronLeftOutline20Px")
-        self.viewController?.navigationController?.navigationBar.backIndicatorImage = backImage
-        self.viewController?.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
     }
     
     func configure(viewController: BaseViewController) {
