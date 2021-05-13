@@ -35,7 +35,7 @@ class ListStandardDescriptionViewController: BaseViewController {
         paragraphStyle.lineSpacing = 4
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
         
-        descriptionLabel.textAlignment = .center
         descriptionLabel.attributedText = attributedString
+        descriptionLabel.textAlignment = .center
     }
 }

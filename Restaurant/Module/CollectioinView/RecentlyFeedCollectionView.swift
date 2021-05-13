@@ -9,6 +9,8 @@ import UIKit
 
 class RecentlyFeedCollectionView: UICollectionViewCell, ViewModelBindableType {
     var viewModel: RecentlyFeedViewModel!
+    var viewController: BaseViewController?
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func awakeFromNib() {
@@ -30,6 +32,10 @@ extension RecentlyFeedCollectionView {
         
         self.collectionView.register(RecentlyFeedCollectionViewCell.self)
     }
+    
+    func configure(viewController: BaseViewController) {
+        self.viewController = viewController
+    }
 }
 
 //MARK: - CollectionView Protocol
@@ -45,6 +51,10 @@ extension RecentlyFeedCollectionView: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 86, height: 108)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.viewController?.push(viewController: InquiryProfileViewController())
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
