@@ -9,7 +9,7 @@ import UIKit
 
 class RecentlyFeedCollectionView: UICollectionViewCell, ViewModelBindableType {
     var viewModel: RecentlyFeedViewModel!
-    var viewController: BaseViewController?
+    weak var viewController: BaseViewController?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -21,6 +21,10 @@ class RecentlyFeedCollectionView: UICollectionViewCell, ViewModelBindableType {
     
     func bindViewModel() {
         
+    }
+    
+    deinit {
+        print("RecentlyFeedCollectionView Deinit")
     }
 }
 

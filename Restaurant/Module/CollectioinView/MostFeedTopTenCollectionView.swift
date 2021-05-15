@@ -9,7 +9,7 @@ import UIKit
 
 class MostFeedTopTenCollectionView: UICollectionViewCell, ViewModelBindableType {
     var viewModel: MostFeedTopTenViewModel!
-    var viewController: BaseViewController?
+    weak var viewController: BaseViewController?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -23,6 +23,10 @@ class MostFeedTopTenCollectionView: UICollectionViewCell, ViewModelBindableType 
     func bindViewModel() {
         
     }
+    
+    deinit {
+        print("MostFeedTopTenCollectionView Deinit")
+    }
 }
 
 //MARK: - Instance Method
@@ -32,8 +36,6 @@ extension MostFeedTopTenCollectionView {
         self.collectionView.dataSource = self
         
         self.collectionView.register(MostFeedTopTenCollectionViewCell.self)
-//        self.collectionView.register(MostFeedTopTenTitleCollectionViewCell.self)
-//        self.collectionView.register(SeparateLineCollectionViewCell.self)
     }
     
     func configure(viewController: BaseViewController) {
@@ -48,22 +50,13 @@ extension MostFeedTopTenCollectionView: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        if indexPath.row == 0 {
-//            let cell: MostFeedTopTenTitleCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-//            return cell
-//        }
-        
         let cell: MostFeedTopTenCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.configure(nickName: "닉네임\(indexPath.row)", level: "레벨\(indexPath.row)")
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        switch indexPath.row {
-//        case 0: return viewModel.mostFeedTopTenTitleSize()
-//        default: return viewModel.mostFeedTopTenSize()
         return viewModel.mostFeedTopTenSize()
-//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

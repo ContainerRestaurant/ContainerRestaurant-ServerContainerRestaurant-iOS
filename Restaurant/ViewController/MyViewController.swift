@@ -14,6 +14,7 @@ class MyViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("MyViewController viewDidLoad()")
         
         setNavigationController()
         setModule()

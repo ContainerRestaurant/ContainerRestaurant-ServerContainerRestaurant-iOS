@@ -28,7 +28,7 @@ class ContainerOfEveryoneViewController: BaseViewController, ViewModelBindableTy
     }
     
     deinit {
-        print("ContainerOfEveryoneViewController")
+        print("ContainerOfEveryoneViewController Deinit")
     }
 }
 
@@ -80,18 +80,18 @@ extension ContainerOfEveryoneViewController: UICollectionViewDelegate, UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let type = viewModel.modules[indexPath.row]
-        
+
         switch type {
         case is MostFeedTopTenCollectionView:
             let cell: MostFeedTopTenCollectionView = collectionView.dequeueReusableCell(for: indexPath)
             cell.configure(viewController: self)
             return cell
-            
+
         case is RecentlyFeedCollectionView:
             let cell: RecentlyFeedCollectionView = collectionView.dequeueReusableCell(for: indexPath)
             cell.configure(viewController: self)
             return cell
-            
+
         default: return UICollectionViewCell()
         }
     }

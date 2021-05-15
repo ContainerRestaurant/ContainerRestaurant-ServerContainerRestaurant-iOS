@@ -14,6 +14,7 @@ class HomeViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("HomeViewController viewDidLoad()")
         
         viewModel = HomeViewModel()
         setCollectionView()
@@ -27,8 +28,12 @@ class HomeViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    func bind() {
+        print("HomeViewController Bind()")
     }
     
 //    func bindViewModel() {

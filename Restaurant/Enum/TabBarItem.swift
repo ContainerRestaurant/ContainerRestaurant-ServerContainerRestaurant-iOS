@@ -15,16 +15,6 @@ enum TabBarItem: CaseIterable {
     case map
     case my
     
-    var text: String {
-        switch self {
-        case .home: return "홈"
-        case .search: return "탐색"
-        case .creation: return ""
-        case .map: return "지도"
-        case .my: return "마이"
-        }
-    }
-    
     var viewController: UIViewController {
         switch self {
         case .home: return HomeViewController()
@@ -32,6 +22,16 @@ enum TabBarItem: CaseIterable {
         case .creation: return CreationViewController()
         case .map: return MapViewController()
         case .my: return MyViewController()
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .home: return "홈"
+        case .search: return "탐색"
+        case .creation: return ""
+        case .map: return "지도"
+        case .my: return "마이"
         }
     }
     

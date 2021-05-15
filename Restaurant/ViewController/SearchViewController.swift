@@ -10,5 +10,10 @@ import UIKit
 class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("SearchViewController viewDidLoad()")
+    }
+    
+    func bind() {
+        print("SearchViewController Bind()")
     }
 }
