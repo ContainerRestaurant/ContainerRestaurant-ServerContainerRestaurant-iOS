@@ -9,7 +9,7 @@ import UIKit
 
 class RecentlyFeedCollectionView: UICollectionViewCell, ViewModelBindableType {
     var viewModel: RecentlyFeedViewModel!
-    weak var viewController: BaseViewController?
+    weak var coordinator: ContainerOfEveryoneCoordinator?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -17,6 +17,7 @@ class RecentlyFeedCollectionView: UICollectionViewCell, ViewModelBindableType {
         super.awakeFromNib()
         
         setCollectionView()
+        
     }
     
     func bindViewModel() {
@@ -37,8 +38,8 @@ extension RecentlyFeedCollectionView {
         self.collectionView.register(RecentlyFeedCollectionViewCell.self)
     }
     
-    func configure(viewController: BaseViewController) {
-        self.viewController = viewController
+    func configure(coordinator: ContainerOfEveryoneCoordinator) {
+        self.coordinator = coordinator
     }
 }
 
@@ -58,7 +59,7 @@ extension RecentlyFeedCollectionView: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.viewController?.push(viewController: InquiryProfileViewController())
+        coordinator?.pushToInquiryProfile()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

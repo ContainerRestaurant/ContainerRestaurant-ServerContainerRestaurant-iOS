@@ -33,10 +33,6 @@ class HomeViewController: BaseViewController, Storyboard {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
-    func bind() {
-        print("HomeViewController Bind()")
-    }
-    
 //    func bindViewModel() {
 //
 //    }

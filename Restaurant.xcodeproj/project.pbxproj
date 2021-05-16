@@ -19,6 +19,7 @@
 		5204199F26512E450099BA39 /* MyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5204199E26512E450099BA39 /* MyCoordinator.swift */; };
 		520419A226513A6A0099BA39 /* CreationPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419A126513A6A0099BA39 /* CreationPopupCoordinator.swift */; };
 		520419A5265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419A4265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift */; };
+		520419A8265184580099BA39 /* InquiryProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419A7265184580099BA39 /* InquiryProfileCoordinator.swift */; };
 		52256FA8263D7B8400A056DE /* MyProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FA6263D7B8400A056DE /* MyProfileSection.swift */; };
 		52256FA9263D7B8400A056DE /* MyProfileSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FA7263D7B8400A056DE /* MyProfileSection.xib */; };
 		52256FAC263D7F4300A056DE /* SeparateLineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */; };
@@ -37,7 +38,6 @@
 		52397345261B62AF00856C99 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52397344261B62AF00856C99 /* MyViewController.swift */; };
 		52542E05264AD8FB0066F565 /* ListStandardDescriptionPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52542E03264AD8FB0066F565 /* ListStandardDescriptionPopupViewController.swift */; };
 		52542E09264AEBB10066F565 /* InquiryProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52542E07264AEBB10066F565 /* InquiryProfileViewController.swift */; };
-		52542E0A264AEBB10066F565 /* InquiryProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52542E08264AEBB10066F565 /* InquiryProfileViewController.xib */; };
 		526BED462645D98200897230 /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526BED452645D98200897230 /* ViewModelBindableType.swift */; };
 		526BED48264652CA00897230 /* ExtensionUIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526BED47264652CA00897230 /* ExtensionUIFont.swift */; };
 		526BED4A2646566600897230 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526BED492646566600897230 /* ExtensionUIView.swift */; };
@@ -95,6 +95,7 @@
 		5204199E26512E450099BA39 /* MyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoordinator.swift; sourceTree = "<group>"; };
 		520419A126513A6A0099BA39 /* CreationPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationPopupCoordinator.swift; sourceTree = "<group>"; };
 		520419A4265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStandardDescriptionPopupCoordinator.swift; sourceTree = "<group>"; };
+		520419A7265184580099BA39 /* InquiryProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryProfileCoordinator.swift; sourceTree = "<group>"; };
 		52256FA6263D7B8400A056DE /* MyProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileSection.swift; sourceTree = "<group>"; };
 		52256FA7263D7B8400A056DE /* MyProfileSection.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyProfileSection.xib; sourceTree = "<group>"; };
 		52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateLineCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -113,7 +114,6 @@
 		52397344261B62AF00856C99 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		52542E03264AD8FB0066F565 /* ListStandardDescriptionPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStandardDescriptionPopupViewController.swift; sourceTree = "<group>"; };
 		52542E07264AEBB10066F565 /* InquiryProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryProfileViewController.swift; sourceTree = "<group>"; };
-		52542E08264AEBB10066F565 /* InquiryProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InquiryProfileViewController.xib; sourceTree = "<group>"; };
 		526BED452645D98200897230 /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
 		526BED47264652CA00897230 /* ExtensionUIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionUIFont.swift; sourceTree = "<group>"; };
 		526BED492646566600897230 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
@@ -221,8 +221,8 @@
 		52041992265118210099BA39 /* My */ = {
 			isa = PBXGroup;
 			children = (
-				52397344261B62AF00856C99 /* MyViewController.swift */,
 				5204199E26512E450099BA39 /* MyCoordinator.swift */,
+				52397344261B62AF00856C99 /* MyViewController.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -238,8 +238,8 @@
 		5204199426511A440099BA39 /* ContainerOfEveryone */ = {
 			isa = PBXGroup;
 			children = (
-				526BED602646F62A00897230 /* ContainerOfEveryoneViewController.swift */,
 				5204199526511AB00099BA39 /* ContainerOfEveryoneCoordinator.swift */,
+				526BED602646F62A00897230 /* ContainerOfEveryoneViewController.swift */,
 			);
 			path = ContainerOfEveryone;
 			sourceTree = "<group>";
@@ -260,6 +260,15 @@
 				52542E03264AD8FB0066F565 /* ListStandardDescriptionPopupViewController.swift */,
 			);
 			path = ListStandardDescriptionPopup;
+			sourceTree = "<group>";
+		};
+		520419A6265182780099BA39 /* InquiryProfile */ = {
+			isa = PBXGroup;
+			children = (
+				520419A7265184580099BA39 /* InquiryProfileCoordinator.swift */,
+				52542E07264AEBB10066F565 /* InquiryProfileViewController.swift */,
+			);
+			path = InquiryProfile;
 			sourceTree = "<group>";
 		};
 		52256FAE263D7F4C00A056DE /* SeparateLine */ = {
@@ -313,9 +322,8 @@
 				520419912651181C0099BA39 /* Map */,
 				52041992265118210099BA39 /* My */,
 				5204199426511A440099BA39 /* ContainerOfEveryone */,
+				520419A6265182780099BA39 /* InquiryProfile */,
 				FB1BE3612636C9F10004673C /* Module */,
-				52542E07264AEBB10066F565 /* InquiryProfileViewController.swift */,
-				52542E08264AEBB10066F565 /* InquiryProfileViewController.xib */,
 				FB1BE38926397ECF0004673C /* PopUp */,
 				528558EB26249DC300AB4E28 /* Test */,
 			);
@@ -589,7 +597,6 @@
 				52256FC2263DF76500A056DE /* MyContentsCollectionViewCell.xib in Resources */,
 				52256FBE263DF5DF00A056DE /* MyContentsCollectionView.xib in Resources */,
 				526BED692647069E00897230 /* MostFeedTopTenCollectionView.xib in Resources */,
-				52542E0A264AEBB10066F565 /* InquiryProfileViewController.xib in Resources */,
 				FB1BE3862637DF2B0004673C /* MainFeedCollectionViewCell.xib in Resources */,
 				52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */,
 				526BED802647252400897230 /* RecentlyFeedCollectionViewCell.xib in Resources */,
@@ -666,6 +673,7 @@
 				5204199A26512D8D0099BA39 /* CreationCoordinator.swift in Sources */,
 				5204199F26512E450099BA39 /* MyCoordinator.swift in Sources */,
 				52256FBD263DF5DF00A056DE /* MyContentsCollectionView.swift in Sources */,
+				520419A8265184580099BA39 /* InquiryProfileCoordinator.swift in Sources */,
 				526BED5D2646EC9B00897230 /* MainTitleSectionViewModel.swift in Sources */,
 				520419A5265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift in Sources */,
 				5204199C26512E190099BA39 /* MapCoordinator.swift in Sources */,

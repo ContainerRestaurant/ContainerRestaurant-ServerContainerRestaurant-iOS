@@ -29,4 +29,11 @@ class ContainerOfEveryoneCoordinator: NSObject, Coordinator {
         childCoordinators.append(coordinator)
         coordinator.start()
     }
+    
+    func pushToInquiryProfile() {
+        let coordinator = InquiryProfileCoordinator(presenter: presenter)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
 }

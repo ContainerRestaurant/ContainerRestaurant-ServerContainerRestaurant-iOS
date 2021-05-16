@@ -9,7 +9,7 @@ import UIKit
 
 class MostFeedTopTenCollectionView: UICollectionViewCell, ViewModelBindableType {
     var viewModel: MostFeedTopTenViewModel!
-    weak var viewController: BaseViewController?
+    weak var coordinator: ContainerOfEveryoneCoordinator?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -38,8 +38,8 @@ extension MostFeedTopTenCollectionView {
         self.collectionView.register(MostFeedTopTenCollectionViewCell.self)
     }
     
-    func configure(viewController: BaseViewController) {
-        self.viewController = viewController
+    func configure(coordinator: ContainerOfEveryoneCoordinator) {
+        self.coordinator = coordinator
     }
 }
 
@@ -60,7 +60,7 @@ extension MostFeedTopTenCollectionView: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.viewController?.push(viewController: InquiryProfileViewController())
+        coordinator?.pushToInquiryProfile()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

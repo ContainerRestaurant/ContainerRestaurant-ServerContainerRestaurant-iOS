@@ -210,6 +210,60 @@
             </objects>
             <point key="canvasLocation" x="822" y="854"/>
         </scene>
+        <!--Inquiry Profile View Controller-->
+        <scene sceneID="upL-9B-Eeq">
+            <objects>
+                <viewController storyboardIdentifier="InquiryProfileViewController" id="f85-vM-JdU" customClass="InquiryProfileViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yz2-cd-TVw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5CZ-tG-LIz">
+                                <rect key="frame" x="0.0" y="44" width="414" height="132"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qid-Sy-Yyc">
+                                        <rect key="frame" x="14" y="79" width="371" height="1"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="MlI-9X-IXp"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileViewCountFilled24Px" translatesAutoresizingMaskIntoConstraints="NO" id="Ntu-vg-8bO">
+                                        <rect key="frame" x="17" y="92" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="cUm-0M-7rC"/>
+                                            <constraint firstAttribute="width" constant="24" id="x6J-3R-PQO"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="qid-Sy-Yyc" secondAttribute="trailing" constant="29" id="32s-id-lLr"/>
+                                    <constraint firstItem="Ntu-vg-8bO" firstAttribute="top" secondItem="qid-Sy-Yyc" secondAttribute="bottom" constant="12" id="8Uf-Ol-sUG"/>
+                                    <constraint firstAttribute="height" constant="132" id="COc-Yw-7nF"/>
+                                    <constraint firstAttribute="bottom" secondItem="qid-Sy-Yyc" secondAttribute="bottom" constant="52" id="MgE-Vt-Kh5"/>
+                                    <constraint firstItem="qid-Sy-Yyc" firstAttribute="leading" secondItem="5CZ-tG-LIz" secondAttribute="leading" constant="14" id="Mkd-44-zNL"/>
+                                    <constraint firstItem="Ntu-vg-8bO" firstAttribute="leading" secondItem="5CZ-tG-LIz" secondAttribute="leading" constant="17" id="deo-si-bg8"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ntu-vg-8bO" secondAttribute="bottom" constant="16" id="rfG-uD-SWH"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gRd-Lg-F3b"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstItem="5CZ-tG-LIz" firstAttribute="leading" secondItem="gRd-Lg-F3b" secondAttribute="leading" id="7gq-1y-yHV"/>
+                            <constraint firstItem="gRd-Lg-F3b" firstAttribute="trailing" secondItem="5CZ-tG-LIz" secondAttribute="trailing" id="85d-VU-8sD"/>
+                            <constraint firstItem="5CZ-tG-LIz" firstAttribute="top" secondItem="gRd-Lg-F3b" secondAttribute="top" id="OIa-pM-iFf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="topSectionView" destination="5CZ-tG-LIz" id="iXf-yg-79R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S3I-kV-qw9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1462" y="854"/>
+        </scene>
         <!--Creation View Controller-->
         <scene sceneID="DRm-lZ-aSl">
             <objects>
@@ -494,6 +548,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="profileViewCountFilled24Px" width="24" height="24"/>
         <image name="scribble.variable" catalog="system" width="128" height="118"/>
         <namedColor name="colorGrayGray06">
             <color red="0.45899999141693115" green="0.45899999141693115" blue="0.45899999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
