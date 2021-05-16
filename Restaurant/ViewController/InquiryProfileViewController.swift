@@ -13,9 +13,9 @@ class InquiryProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.title = "프로필 조회"
-        topSectionView.clipsToBounds = true
-        topSectionView.layer.cornerRadius = 24
-        topSectionView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        self.navigationItem.title = "프로필 조회"
+        self.topSectionView.clipsToBounds = true
+        self.topSectionView.layer.cornerRadius = 24
+        self.topSectionView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
     }
 }

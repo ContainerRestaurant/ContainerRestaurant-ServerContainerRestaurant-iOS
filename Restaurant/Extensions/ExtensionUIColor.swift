@@ -9,31 +9,31 @@ import UIKit
 import Foundation
 
 extension UIColor {
-    @nonobjc class var colorGreyGrey01: UIColor {
+    @nonobjc class var colorGrayGray01: UIColor {
         return UIColor(white: 1.0, alpha: 1.0)
     }
     
-    @nonobjc class var colorGreyGrey02: UIColor {
+    @nonobjc class var colorGrayGray02: UIColor {
         return UIColor(white: 245.0 / 255.0, alpha: 1.0)
     }
     
-    @nonobjc class var colorGreyGrey05: UIColor {
+    @nonobjc class var colorGrayGray05: UIColor {
         return UIColor(white: 174.0 / 255.0, alpha: 1.0)
     }
     
-    @nonobjc class var colorGreyGrey04: UIColor {
+    @nonobjc class var colorGrayGray04: UIColor {
         return UIColor(white: 206.0 / 255.0, alpha: 1.0)
     }
     
-    @nonobjc class var colorGreyGrey03: UIColor {
+    @nonobjc class var colorGrayGray03: UIColor {
         return UIColor(white: 236.0 / 255.0, alpha: 1.0)
     }
     
-    @nonobjc class var colorGreyGrey08: UIColor {
+    @nonobjc class var colorGrayGray08: UIColor {
         return UIColor(white: 0.0, alpha: 1.0)
     }
     
-    @nonobjc class var colorGreyGrey07: UIColor {
+    @nonobjc class var colorGrayGray07: UIColor {
         return UIColor(white: 36.0 / 255.0, alpha: 1.0)
     }
     
@@ -109,7 +109,7 @@ extension UIColor {
         return UIColor(red: 1.0, green: 0.0, blue: 1.0, alpha: 0.5)
     }
     
-    @nonobjc class var colorGreyGrey06: UIColor {
+    @nonobjc class var colorGrayGray06: UIColor {
         return UIColor(white: 117.0 / 255.0, alpha: 1.0)
     }
 }

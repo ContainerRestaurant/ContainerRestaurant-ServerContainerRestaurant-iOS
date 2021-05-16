@@ -2,18 +2,18 @@
   "images" : [
     {
       "scale" : "1x",
-      "filename" : "chevronLeftOutline20Px.png",
+      "filename" : "mypageFilled20Px.png",
       "idiom" : "universal"
     },
     {
-      "idiom" : "universal",
-      "filename" : "chevronLeftOutline20Px@2x.png",
-      "scale" : "2x"
+      "filename" : "mypageFilled20Px@2x.png",
+      "scale" : "2x",
+      "idiom" : "universal"
     },
     {
       "scale" : "3x",
       "idiom" : "universal",
-      "filename" : "chevronLeftOutline20Px@3x.png"
+      "filename" : "mypageFilled20Px@3x.png"
     }
   ],
   "info" : {
