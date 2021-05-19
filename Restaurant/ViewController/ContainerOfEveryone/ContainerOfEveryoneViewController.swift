@@ -18,6 +18,12 @@ class ContainerOfEveryoneViewController: BaseViewController, ViewModelBindableTy
         
         viewModel = ContainerOfEveryoneViewModel() //바꿔야함
         setCollectionView()
+//        setNavigation()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         setNavigation()
     }
     
@@ -32,41 +38,43 @@ class ContainerOfEveryoneViewController: BaseViewController, ViewModelBindableTy
 
 //MARK: - Instance Method
 extension ContainerOfEveryoneViewController {
-    private func setNavigation() {
-        self.navigationController?.navigationBar.isHidden = false
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.barTintColor = .colorMainGreen02
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.colorGrayGray01]
-        self.navigationItem.title = "모두의 용기"
-        
-        let backImage = UIImage(named: "chevronLeftOutline20Px")
-        self.navigationController?.navigationBar.backIndicatorImage = backImage
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
-        self.navigationController?.navigationBar.topItem?.title = ""
-        self.navigationController?.navigationBar.tintColor = .colorGrayGray01
-        
-        let helpButton = UIButton()
-        helpButton.setImage(UIImage(named: "helpOutline20Px"), for: .normal)
-        helpButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        helpButton.addTarget(self, action: #selector(listStandardDescriptionPopup), for: .touchUpInside)
-
-        let helpBarButtonItem = UIBarButtonItem()
-        helpBarButtonItem.customView = helpButton
-        
-        self.navigationController?.navigationItem.rightBarButtonItem = helpBarButtonItem
-        self.navigationItem.rightBarButtonItem = helpBarButtonItem
-    }
-    
-    @objc func listStandardDescriptionPopup() {
-        self.coordinator?.presentToListStandardDescription()
-    }
-    
     private func setCollectionView() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
         self.collectionView.register(MostFeedTopTenCollectionView.self)
         self.collectionView.register(RecentlyFeedCollectionView.self)
+    }
+    
+    private func setNavigation() {
+        //Back Button
+        let backImage = UIImage(named: "chevronLeftOutline20Px")
+        self.coordinator?.presenter.navigationBar.backIndicatorImage = backImage
+        self.coordinator?.presenter.navigationBar.backIndicatorTransitionMaskImage = backImage
+        self.coordinator?.presenter.navigationBar.backItem?.title = "" //확인 필요
+        
+        //Help Button => todo: 리팩
+        let helpButton = UIButton()
+        helpButton.setImage(UIImage(named: "helpOutline20Px"), for: .normal)
+        helpButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        helpButton.addTarget(self, action: #selector(listStandardDescriptionPopup), for: .touchUpInside)
+        let helpBarButtonItem = UIBarButtonItem()
+        helpBarButtonItem.customView = helpButton
+        self.coordinator?.presenter.navigationItem.rightBarButtonItem = helpBarButtonItem
+        self.navigationItem.rightBarButtonItem = helpBarButtonItem
+        
+        self.coordinator?.presenter.navigationBar.isHidden = false
+        self.coordinator?.presenter.navigationBar.isTranslucent = false
+        self.coordinator?.presenter.navigationBar.barTintColor = .colorMainGreen02
+        self.coordinator?.presenter.navigationBar.tintColor = .colorGrayGray01
+        self.coordinator?.presenter.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.colorGrayGray01]
+        
+//        self.coordinator?.presenter.navigationBar.topItem?.title = "" //확인 필요
+        self.navigationItem.title = "모두의 용기"
+    }
+    
+    @objc func listStandardDescriptionPopup() {
+        self.coordinator?.presentToListStandardDescription()
     }
 }
 
@@ -82,12 +90,12 @@ extension ContainerOfEveryoneViewController: UICollectionViewDelegate, UICollect
         switch type {
         case is MostFeedTopTenCollectionView:
             let cell: MostFeedTopTenCollectionView = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(viewController: self)
+            cell.configure(coordinator: self.coordinator!)
             return cell
 
         case is RecentlyFeedCollectionView:
             let cell: RecentlyFeedCollectionView = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(viewController: self)
+            cell.configure(coordinator: self.coordinator!)
             return cell
 
         default: return UICollectionViewCell()
