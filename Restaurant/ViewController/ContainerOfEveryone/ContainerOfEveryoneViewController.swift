@@ -53,15 +53,15 @@ extension ContainerOfEveryoneViewController {
         self.coordinator?.presenter.navigationBar.backIndicatorTransitionMaskImage = backImage
         self.coordinator?.presenter.navigationBar.backItem?.title = "" //확인 필요
         
-        //Help Button => todo: 리팩
-        let helpButton = UIButton()
+        //Help Button
+        let helpButton = UIButton(type: .custom)
         helpButton.setImage(UIImage(named: "helpOutline20Px"), for: .normal)
         helpButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         helpButton.addTarget(self, action: #selector(listStandardDescriptionPopup), for: .touchUpInside)
-        let helpBarButtonItem = UIBarButtonItem()
-        helpBarButtonItem.customView = helpButton
-        self.coordinator?.presenter.navigationItem.rightBarButtonItem = helpBarButtonItem
-        self.navigationItem.rightBarButtonItem = helpBarButtonItem
+        let helpRightBarButtonItem = UIBarButtonItem(customView: helpButton)
+        self.navigationItem.rightBarButtonItem = helpRightBarButtonItem
+//        self.coordinator?.presenter.navigationItem.rightBarButtonItem = helpRightBarButtonItem
+        //NavigationController's Navigation Item vs ViewController's Navigation Item
         
         self.coordinator?.presenter.navigationBar.isHidden = false
         self.coordinator?.presenter.navigationBar.isTranslucent = false

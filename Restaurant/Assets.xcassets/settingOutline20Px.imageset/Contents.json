@@ -1,18 +1,18 @@
 {
   "images" : [
     {
-      "filename" : "iconFavoriteFilled20Px.png",
+      "idiom" : "universal",
       "scale" : "1x",
-      "idiom" : "universal"
+      "filename" : "settingOutline20Px.png"
     },
     {
-      "scale" : "2x",
       "idiom" : "universal",
-      "filename" : "iconFavoriteFilled20Px@2x.png"
+      "filename" : "settingOutline20Px@2x.png",
+      "scale" : "2x"
     },
     {
-      "filename" : "iconFavoriteFilled20Px@3x.png",
       "idiom" : "universal",
+      "filename" : "settingOutline20Px@3x.png",
       "scale" : "3x"
     }
   ],
