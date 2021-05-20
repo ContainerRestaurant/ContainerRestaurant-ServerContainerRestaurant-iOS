@@ -20,15 +20,9 @@
 		520419A226513A6A0099BA39 /* CreationPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419A126513A6A0099BA39 /* CreationPopupCoordinator.swift */; };
 		520419A5265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419A4265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift */; };
 		520419A8265184580099BA39 /* InquiryProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419A7265184580099BA39 /* InquiryProfileCoordinator.swift */; };
-		52256FA8263D7B8400A056DE /* MyProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FA6263D7B8400A056DE /* MyProfileSection.swift */; };
-		52256FA9263D7B8400A056DE /* MyProfileSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FA7263D7B8400A056DE /* MyProfileSection.xib */; };
 		52256FAC263D7F4300A056DE /* SeparateLineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */; };
 		52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FAB263D7F4300A056DE /* SeparateLineCollectionViewCell.xib */; };
 		52256FB0263DBEFA00A056DE /* ExtensionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FAF263DBEFA00A056DE /* ExtensionCollectionViewCell.swift */; };
-		52256FBD263DF5DF00A056DE /* MyContentsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FBB263DF5DF00A056DE /* MyContentsCollectionView.swift */; };
-		52256FBE263DF5DF00A056DE /* MyContentsCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FBC263DF5DF00A056DE /* MyContentsCollectionView.xib */; };
-		52256FC1263DF76500A056DE /* MyContentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FBF263DF76500A056DE /* MyContentsCollectionViewCell.swift */; };
-		52256FC2263DF76500A056DE /* MyContentsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FC0263DF76500A056DE /* MyContentsCollectionViewCell.xib */; };
 		52256FD32644326300A056DE /* TestSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FD12644326300A056DE /* TestSheetViewController.swift */; };
 		52256FD42644326300A056DE /* TestSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FD22644326300A056DE /* TestSheetViewController.xib */; };
 		52256FD626445AB400A056DE /* ExtensionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FD526445AB400A056DE /* ExtensionUIColor.swift */; };
@@ -96,15 +90,9 @@
 		520419A126513A6A0099BA39 /* CreationPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationPopupCoordinator.swift; sourceTree = "<group>"; };
 		520419A4265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStandardDescriptionPopupCoordinator.swift; sourceTree = "<group>"; };
 		520419A7265184580099BA39 /* InquiryProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryProfileCoordinator.swift; sourceTree = "<group>"; };
-		52256FA6263D7B8400A056DE /* MyProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileSection.swift; sourceTree = "<group>"; };
-		52256FA7263D7B8400A056DE /* MyProfileSection.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyProfileSection.xib; sourceTree = "<group>"; };
 		52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateLineCollectionViewCell.swift; sourceTree = "<group>"; };
 		52256FAB263D7F4300A056DE /* SeparateLineCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeparateLineCollectionViewCell.xib; sourceTree = "<group>"; };
 		52256FAF263DBEFA00A056DE /* ExtensionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCollectionViewCell.swift; sourceTree = "<group>"; };
-		52256FBB263DF5DF00A056DE /* MyContentsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContentsCollectionView.swift; sourceTree = "<group>"; };
-		52256FBC263DF5DF00A056DE /* MyContentsCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyContentsCollectionView.xib; sourceTree = "<group>"; };
-		52256FBF263DF76500A056DE /* MyContentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContentsCollectionViewCell.swift; sourceTree = "<group>"; };
-		52256FC0263DF76500A056DE /* MyContentsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyContentsCollectionViewCell.xib; sourceTree = "<group>"; };
 		52256FD12644326300A056DE /* TestSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSheetViewController.swift; sourceTree = "<group>"; };
 		52256FD22644326300A056DE /* TestSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestSheetViewController.xib; sourceTree = "<group>"; };
 		52256FD526445AB400A056DE /* ExtensionUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIColor.swift; sourceTree = "<group>"; };
@@ -285,8 +273,6 @@
 			children = (
 				FB1BE37726371BFA0004673C /* MainFeedCollectionView.swift */,
 				FB1BE37826371BFA0004673C /* MainFeedCollectionView.xib */,
-				52256FBB263DF5DF00A056DE /* MyContentsCollectionView.swift */,
-				52256FBC263DF5DF00A056DE /* MyContentsCollectionView.xib */,
 				526BED662647069E00897230 /* MostFeedTopTenCollectionView.swift */,
 				526BED672647069E00897230 /* MostFeedTopTenCollectionView.xib */,
 				526BED762647212400897230 /* RecentlyFeedCollectionView.swift */,
@@ -301,8 +287,6 @@
 			children = (
 				FB1BE3632636CB540004673C /* MainTitleSection.swift */,
 				FB1BE3642636CB540004673C /* MainTitleSection.xib */,
-				52256FA6263D7B8400A056DE /* MyProfileSection.swift */,
-				52256FA7263D7B8400A056DE /* MyProfileSection.xib */,
 			);
 			path = Section;
 			sourceTree = "<group>";
@@ -509,8 +493,6 @@
 			children = (
 				FB1BE3832637DF2B0004673C /* MainFeedCollectionViewCell.swift */,
 				FB1BE3842637DF2B0004673C /* MainFeedCollectionViewCell.xib */,
-				52256FBF263DF76500A056DE /* MyContentsCollectionViewCell.swift */,
-				52256FC0263DF76500A056DE /* MyContentsCollectionViewCell.xib */,
 				526BED6A26470BD200897230 /* MostFeedTopTenCollectionViewCell.swift */,
 				526BED6B26470BD200897230 /* MostFeedTopTenCollectionViewCell.xib */,
 				526BED7D2647252400897230 /* RecentlyFeedCollectionViewCell.swift */,
@@ -589,13 +571,10 @@
 			files = (
 				529CF0D0261A0AF6002CAD5C /* LaunchScreen.storyboard in Resources */,
 				5285590C2629ECB900AB4E28 /* TestLoginViewController.xib in Resources */,
-				52256FA9263D7B8400A056DE /* MyProfileSection.xib in Resources */,
 				529CF0CD261A0AF6002CAD5C /* Assets.xcassets in Resources */,
 				FB1BE37A26371BFA0004673C /* MainFeedCollectionView.xib in Resources */,
 				526BED6D26470BD200897230 /* MostFeedTopTenCollectionViewCell.xib in Resources */,
 				FB1BE374263719540004673C /* Title16Bold.xib in Resources */,
-				52256FC2263DF76500A056DE /* MyContentsCollectionViewCell.xib in Resources */,
-				52256FBE263DF5DF00A056DE /* MyContentsCollectionView.xib in Resources */,
 				526BED692647069E00897230 /* MostFeedTopTenCollectionView.xib in Resources */,
 				FB1BE3862637DF2B0004673C /* MainFeedCollectionViewCell.xib in Resources */,
 				52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */,
@@ -663,7 +642,6 @@
 				5204198B264F987C0099BA39 /* HomeCoordinator.swift in Sources */,
 				52041985264F93690099BA39 /* Coordinator.swift in Sources */,
 				5239733F261B629A00856C99 /* CreationViewController.swift in Sources */,
-				52256FC1263DF76500A056DE /* MyContentsCollectionViewCell.swift in Sources */,
 				526BED7C2647216800897230 /* RecentlyFeedViewModel.swift in Sources */,
 				52397342261B62A600856C99 /* MapViewController.swift in Sources */,
 				52041983264F92DE0099BA39 /* AppCoordinator.swift in Sources */,
@@ -672,7 +650,6 @@
 				526BED622646F62A00897230 /* ContainerOfEveryoneViewController.swift in Sources */,
 				5204199A26512D8D0099BA39 /* CreationCoordinator.swift in Sources */,
 				5204199F26512E450099BA39 /* MyCoordinator.swift in Sources */,
-				52256FBD263DF5DF00A056DE /* MyContentsCollectionView.swift in Sources */,
 				520419A8265184580099BA39 /* InquiryProfileCoordinator.swift in Sources */,
 				526BED5D2646EC9B00897230 /* MainTitleSectionViewModel.swift in Sources */,
 				520419A5265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift in Sources */,
@@ -686,7 +663,6 @@
 				526BED462645D98200897230 /* ViewModelBindableType.swift in Sources */,
 				52256FB0263DBEFA00A056DE /* ExtensionCollectionViewCell.swift in Sources */,
 				52542E09264AEBB10066F565 /* InquiryProfileViewController.swift in Sources */,
-				52256FA8263D7B8400A056DE /* MyProfileSection.swift in Sources */,
 				52855930262DE5A700AB4E28 /* TabBarItem.swift in Sources */,
 				526BED6C26470BD200897230 /* MostFeedTopTenCollectionViewCell.swift in Sources */,
 				5285590B2629ECB900AB4E28 /* TestLoginViewController.swift in Sources */,
