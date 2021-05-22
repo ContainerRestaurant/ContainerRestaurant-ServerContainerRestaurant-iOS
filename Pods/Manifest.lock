@@ -22,6 +22,7 @@ PODS:
   - RxSwift (6.1.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.2)
   - FittedSheets
   - KakaoSDKAuth
   - KakaoSDKCommon
@@ -56,6 +57,6 @@ SPEC CHECKSUMS:
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
 
-PODFILE CHECKSUM: 585108244bb268e70037a07c247be4b38b10b26e
+PODFILE CHECKSUM: 2b1bdf93d55a5b5dc6e4cd5fb54a55755851d5d8
 
 COCOAPODS: 1.10.1

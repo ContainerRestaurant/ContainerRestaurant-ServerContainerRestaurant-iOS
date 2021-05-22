@@ -13,8 +13,10 @@ struct HomeViewModel {
         Title16Bold(),
         MainFeedCollectionView()
     ]
+    var viewModel: TestCodable?
     
-    init() {
+    init(viewModel: TestCodable) {
+        self.viewModel = viewModel
     }
     
     func mainTitleSectionSize() -> CGSize {

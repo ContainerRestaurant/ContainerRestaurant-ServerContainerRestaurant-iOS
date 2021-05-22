@@ -20,6 +20,8 @@
 		520419A226513A6A0099BA39 /* CreationPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419A126513A6A0099BA39 /* CreationPopupCoordinator.swift */; };
 		520419A5265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419A4265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift */; };
 		520419A8265184580099BA39 /* InquiryProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419A7265184580099BA39 /* InquiryProfileCoordinator.swift */; };
+		520419CF2656CCBE0099BA39 /* TestCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419CE2656CCBE0099BA39 /* TestCodable.swift */; };
+		52254C612657E88400D921ED /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52254C602657E88400D921ED /* API.swift */; };
 		52256FAC263D7F4300A056DE /* SeparateLineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */; };
 		52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FAB263D7F4300A056DE /* SeparateLineCollectionViewCell.xib */; };
 		52256FB0263DBEFA00A056DE /* ExtensionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FAF263DBEFA00A056DE /* ExtensionCollectionViewCell.swift */; };
@@ -90,6 +92,8 @@
 		520419A126513A6A0099BA39 /* CreationPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationPopupCoordinator.swift; sourceTree = "<group>"; };
 		520419A4265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStandardDescriptionPopupCoordinator.swift; sourceTree = "<group>"; };
 		520419A7265184580099BA39 /* InquiryProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryProfileCoordinator.swift; sourceTree = "<group>"; };
+		520419CE2656CCBE0099BA39 /* TestCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCodable.swift; sourceTree = "<group>"; };
+		52254C602657E88400D921ED /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateLineCollectionViewCell.swift; sourceTree = "<group>"; };
 		52256FAB263D7F4300A056DE /* SeparateLineCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeparateLineCollectionViewCell.xib; sourceTree = "<group>"; };
 		52256FAF263DBEFA00A056DE /* ExtensionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -257,6 +261,22 @@
 				52542E07264AEBB10066F565 /* InquiryProfileViewController.swift */,
 			);
 			path = InquiryProfile;
+			sourceTree = "<group>";
+		};
+		520419CD2656CCA70099BA39 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				520419CE2656CCBE0099BA39 /* TestCodable.swift */,
+			);
+			path = Codable;
+			sourceTree = "<group>";
+		};
+		52254C5F2657E85D00D921ED /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				52254C602657E88400D921ED /* API.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		52256FAE263D7F4C00A056DE /* SeparateLine */ = {
@@ -427,8 +447,10 @@
 			children = (
 				529CF0C3261A0AF6002CAD5C /* AppDelegate.swift */,
 				529CF0C5261A0AF6002CAD5C /* SceneDelegate.swift */,
+				52254C5F2657E85D00D921ED /* Network */,
 				FB1BE3682636D7170004673C /* Extensions */,
 				5285592E262DE59400AB4E28 /* Enum */,
+				520419CD2656CCA70099BA39 /* Codable */,
 				52041986264F96920099BA39 /* Coordinator */,
 				52256FB9263DF4BD00A056DE /* ViewController */,
 				526BED442645D60B00897230 /* ViewModel */,
@@ -669,6 +691,8 @@
 				FB1BE3652636CB540004673C /* MainTitleSection.swift in Sources */,
 				528558F32624A2E700AB4E28 /* TestMapViewController.swift in Sources */,
 				528558D52621EC5000AB4E28 /* HomeViewModel.swift in Sources */,
+				520419CF2656CCBE0099BA39 /* TestCodable.swift in Sources */,
+				52254C612657E88400D921ED /* API.swift in Sources */,
 				52397345261B62AF00856C99 /* MyViewController.swift in Sources */,
 				529CF0C4261A0AF6002CAD5C /* AppDelegate.swift in Sources */,
 				5204199826512CF90099BA39 /* SearchCoordinator.swift in Sources */,
