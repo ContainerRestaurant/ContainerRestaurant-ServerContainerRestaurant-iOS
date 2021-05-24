@@ -8,12 +8,16 @@
 import Foundation
 import Alamofire
 
+var baseURL = "http://ec2-52-78-66-184.ap-northeast-2.compute.amazonaws.com/"
+
 enum API {
     case test
+    case recommendFeed
     
     public var url: String {
         switch self {
         case .test: return "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass"
+        case .recommendFeed: return "\(baseURL)api/feed/recommend"
         }
     }
 }
