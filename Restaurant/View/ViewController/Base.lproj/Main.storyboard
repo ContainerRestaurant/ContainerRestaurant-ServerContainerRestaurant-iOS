@@ -584,19 +584,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mch-aq-PSY">
-                                <rect key="frame" x="156" y="54" width="63" height="30"/>
+                                <rect key="frame" x="156" y="10" width="63" height="30"/>
                                 <state key="normal" title="Map Test"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REB-VD-AAX">
-                                <rect key="frame" x="152" y="100" width="71" height="30"/>
+                                <rect key="frame" x="152" y="56" width="71" height="30"/>
                                 <state key="normal" title="Login Test"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QnG-pO-IiZ">
-                                <rect key="frame" x="147.5" y="146" width="80" height="30"/>
+                                <rect key="frame" x="147.5" y="102" width="80" height="30"/>
                                 <state key="normal" title="PopUp Test"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mK8-3n-WIp">
-                                <rect key="frame" x="151" y="192" width="73" height="30"/>
+                                <rect key="frame" x="151" y="148" width="73" height="30"/>
                                 <state key="normal" title="Sheet Test"/>
                             </button>
                         </subviews>
@@ -623,7 +623,89 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eh8-1T-AM9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-733" y="-560"/>
+            <point key="canvasLocation" x="-3274" y="4327"/>
+        </scene>
+        <!--Test Login View Controller-->
+        <scene sceneID="IIr-Ie-gKr">
+            <objects>
+                <viewController storyboardIdentifier="TestLoginViewController" id="NOv-Fa-Ft7" customClass="TestLoginViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VnM-2Y-F4q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ik-gZ-EOc">
+                                <rect key="frame" x="87.5" y="96" width="200" height="50"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="vy7-dx-tLs"/>
+                                </constraints>
+                                <state key="normal" title="Kakao Login"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fr-Dt-oqL">
+                                <rect key="frame" x="298.5" y="116" width="76.5" height="30"/>
+                                <state key="normal" title="logout"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZN-sx-6pT">
+                                <rect key="frame" x="87.5" y="30" width="200" height="50"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1Pk-sc-oaN"/>
+                                    <constraint firstAttribute="width" constant="200" id="yRF-Ig-Hmk"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qUt-6s-Iwb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qUt-6s-Iwb" firstAttribute="trailing" secondItem="2fr-Dt-oqL" secondAttribute="trailing" id="85L-8x-XaU"/>
+                            <constraint firstItem="6ik-gZ-EOc" firstAttribute="trailing" secondItem="nZN-sx-6pT" secondAttribute="trailing" id="L84-cA-4OJ"/>
+                            <constraint firstItem="6ik-gZ-EOc" firstAttribute="leading" secondItem="nZN-sx-6pT" secondAttribute="leading" id="SsW-7O-37C"/>
+                            <constraint firstItem="nZN-sx-6pT" firstAttribute="top" secondItem="qUt-6s-Iwb" secondAttribute="top" constant="30" id="VNx-7J-KBJ"/>
+                            <constraint firstItem="2fr-Dt-oqL" firstAttribute="leading" secondItem="6ik-gZ-EOc" secondAttribute="trailing" constant="11" id="ZJJ-TO-qGF"/>
+                            <constraint firstItem="6ik-gZ-EOc" firstAttribute="top" secondItem="nZN-sx-6pT" secondAttribute="bottom" constant="16" id="kuc-8K-PQH"/>
+                            <constraint firstItem="nZN-sx-6pT" firstAttribute="centerX" secondItem="VnM-2Y-F4q" secondAttribute="centerX" id="pIc-Wl-I2M"/>
+                            <constraint firstItem="2fr-Dt-oqL" firstAttribute="bottom" secondItem="6ik-gZ-EOc" secondAttribute="bottom" id="vJe-4G-yvR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="kakaoLoginButton" destination="6ik-gZ-EOc" id="H1a-To-Uj6"/>
+                        <outlet property="kakaoLogoutButton" destination="2fr-Dt-oqL" id="Uwp-Mi-oSR"/>
+                        <outlet property="loginButton" destination="nZN-sx-6pT" id="y0H-yi-Jge"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0RO-aJ-gBE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2002" y="5014"/>
+        </scene>
+        <!--Test Map View Controller-->
+        <scene sceneID="m15-ay-TBp">
+            <objects>
+                <viewController storyboardIdentifier="TestMapViewController" id="nqG-8e-0Qm" customClass="TestMapViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MPz-eP-1sD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w5g-sp-CBo">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5es-EV-4yD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="w5g-sp-CBo" firstAttribute="leading" secondItem="5es-EV-4yD" secondAttribute="leading" id="MKl-WX-Gdp"/>
+                            <constraint firstItem="5es-EV-4yD" firstAttribute="bottom" secondItem="w5g-sp-CBo" secondAttribute="bottom" id="ST1-A5-mYl"/>
+                            <constraint firstItem="5es-EV-4yD" firstAttribute="trailing" secondItem="w5g-sp-CBo" secondAttribute="trailing" id="jVi-CT-uFC"/>
+                            <constraint firstItem="w5g-sp-CBo" firstAttribute="top" secondItem="5es-EV-4yD" secondAttribute="top" id="qv8-I7-bcf"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HJv-Po-uLh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2630" y="5014"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="IDL-xl-LxT">
@@ -652,25 +734,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Nb-EY-CZO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="193" y="1495"/>
-        </scene>
-        <!--테스트-->
-        <scene sceneID="r5r-Yx-Kik">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KMD-7e-CyJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="테스트" image="scribble.variable" catalog="system" id="nu6-Wm-vnL"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8qt-tu-7Bp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="yJF-tY-eQZ" kind="relationship" relationship="rootViewController" id="zJF-2l-tYJ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AXA-5Z-9ff" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1662" y="-560"/>
         </scene>
         <!--List Standard Description Popup View Controller-->
         <scene sceneID="mpN-nc-AjZ">
@@ -762,7 +825,6 @@
         <image name="feedFilledBlue20Px" width="20" height="20"/>
         <image name="photoEdit20Px" width="20" height="20"/>
         <image name="profileViewCountFilled24Px" width="24" height="24"/>
-        <image name="scribble.variable" catalog="system" width="128" height="118"/>
         <image name="settingOutline20Px" width="20" height="20"/>
         <namedColor name="colorGrayGray01">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -793,6 +855,9 @@
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

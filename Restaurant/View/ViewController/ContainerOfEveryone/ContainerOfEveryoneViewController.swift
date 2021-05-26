@@ -30,6 +30,12 @@ class ContainerOfEveryoneViewController: BaseViewController, ViewModelBindableTy
     func bindViewModel() {
         
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        HomeViewController.homeAnimated = true
+    }
     
     deinit {
         print("ContainerOfEveryoneViewController Deinit")

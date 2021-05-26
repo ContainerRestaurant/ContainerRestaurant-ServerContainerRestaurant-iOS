@@ -85,7 +85,7 @@ class MainTabBarCoordinator: NSObject, Coordinator {
     }
 
     private func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
-        tabBarController.setViewControllers(tabControllers, animated: true)
+        tabBarController.setViewControllers(tabControllers, animated: false)
         tabBarController.selectedIndex = 0
         tabBarController.tabBar.isTranslucent = false
         tabBarController.tabBar.tintColor = .colorGrayGray07

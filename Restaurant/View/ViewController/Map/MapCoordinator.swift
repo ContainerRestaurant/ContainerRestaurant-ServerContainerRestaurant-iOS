@@ -1,5 +1,5 @@
 //
-//  SearchCoordinator.swift
+//  MapCoordinator.swift
 //  Restaurant
 //
 //  Created by 0ofKim on 2021/05/16.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchCoordinator: NSObject, Coordinator {
+class MapCoordinator: NSObject, Coordinator {
     var delegate: CoordinatorFinishDelegate?
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
@@ -18,8 +18,9 @@ class SearchCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        let search = SearchViewController.instantiate()
-        search.coordinator = self
-        presenter.pushViewController(search, animated: true)
+        let map = MapViewController.instantiate()
+        map.coordinator = self
+        presenter.pushViewController(map, animated: false)
     }
 }
+

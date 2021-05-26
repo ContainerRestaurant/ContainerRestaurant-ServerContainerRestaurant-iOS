@@ -1,5 +1,5 @@
 //
-//  MapCoordinator.swift
+//  MyCoordinator.swift
 //  Restaurant
 //
 //  Created by 0ofKim on 2021/05/16.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MapCoordinator: NSObject, Coordinator {
+class MyCoordinator: NSObject, Coordinator {
     var delegate: CoordinatorFinishDelegate?
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
@@ -18,9 +18,9 @@ class MapCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        let map = MapViewController.instantiate()
-        map.coordinator = self
-        presenter.pushViewController(map, animated: true)
+        let my = MyViewController.instantiate()
+        my.coordinator = self
+        presenter.pushViewController(my, animated: false)
     }
 }
 

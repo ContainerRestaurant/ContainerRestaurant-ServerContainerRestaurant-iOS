@@ -1,5 +1,5 @@
 //
-//  CreationCoordinator.swift
+//  SearchCoordinator.swift
 //  Restaurant
 //
 //  Created by 0ofKim on 2021/05/16.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreationCoordinator: NSObject, Coordinator {
+class SearchCoordinator: NSObject, Coordinator {
     var delegate: CoordinatorFinishDelegate?
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
@@ -18,8 +18,8 @@ class CreationCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        let creation = CreationViewController.instantiate()
-        creation.coordinator = self
-        presenter.pushViewController(creation, animated: true)
+        let search = SearchViewController.instantiate()
+        search.coordinator = self
+        presenter.pushViewController(search, animated: false)
     }
 }

@@ -8,6 +8,7 @@
 import UIKit
 
 class HomeViewController: BaseViewController, Storyboard {
+    static var homeAnimated = false
     var viewModel: HomeViewModel!
     weak var coordinator: HomeCoordinator?
     
@@ -23,12 +24,13 @@ class HomeViewController: BaseViewController, Storyboard {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: HomeViewController.homeAnimated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
+        HomeViewController.homeAnimated = false
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     

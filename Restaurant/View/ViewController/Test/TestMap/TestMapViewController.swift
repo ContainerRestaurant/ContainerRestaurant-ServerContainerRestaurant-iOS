@@ -8,7 +8,8 @@
 import UIKit
 import NMapsMap
 
-class TestMapViewController: BaseViewController {
+class TestMapViewController: BaseViewController, Storyboard {
+    weak var coordinator: TestMapCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -41,7 +41,6 @@ class MyViewController: BaseViewController, Storyboard {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
-    //안될거임
     deinit {
         print("MyViewController Deinit")
     }

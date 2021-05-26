@@ -13,7 +13,9 @@ import KakaoSDKUser
 import RxSwift
 
 @available(iOS 13.0, *)
-class TestLoginViewController: BaseViewController {
+class TestLoginViewController: BaseViewController, Storyboard {
+    weak var coordinator: TestLoginCoordinator?
+
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var kakaoLoginButton: UIButton!
     @IBOutlet weak var kakaoLogoutButton: UIButton!

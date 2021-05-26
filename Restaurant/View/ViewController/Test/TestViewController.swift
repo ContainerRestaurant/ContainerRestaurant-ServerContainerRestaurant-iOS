@@ -8,7 +8,9 @@
 import UIKit
 import FittedSheets
 
-class TestViewController: BaseViewController {
+class TestViewController: BaseViewController, Storyboard {
+    weak var coordinator: TestCoordinator?
+
     @IBOutlet weak var mapTestButton: UIButton!
     @IBOutlet weak var loginTestButton: UIButton!
     @IBOutlet weak var popUpTestButton: UIButton!
@@ -19,14 +21,14 @@ class TestViewController: BaseViewController {
         
         mapTestButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
-                self?.push(viewController: TestMapViewController())
+                self?.coordinator?.pushTestMap()
             })
             .disposed(by: disposeBag)
         
         loginTestButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 if #available(iOS 13.0, *) {
-                    self?.push(viewController: TestLoginViewController())
+                    self?.coordinator?.pushTestLogin()
                 } else {
                     print("lower version")
                 }
@@ -35,9 +37,7 @@ class TestViewController: BaseViewController {
 
         popUpTestButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
-                let popupVC = CreationPopupViewController()
-                popupVC.modalPresentationStyle = .overFullScreen
-                self?.present(popupVC, animated: false, completion: nil)
+                self?.coordinator?.presentTestPopup()
             })
             .disposed(by: disposeBag)
         
