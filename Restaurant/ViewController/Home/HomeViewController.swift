@@ -17,7 +17,6 @@ class HomeViewController: BaseViewController, Storyboard {
         super.viewDidLoad()
         print("HomeViewController viewDidLoad()")
         
-        viewModel = HomeViewModel()
         setCollectionView()
     }
     
