@@ -18,8 +18,6 @@ class HomeViewController: BaseViewController, Storyboard {
         print("HomeViewController viewDidLoad()")
         
         setCollectionView()
-        
-        print(viewModel)
     }
     
     override func viewWillAppear(_ animated: Bool) {

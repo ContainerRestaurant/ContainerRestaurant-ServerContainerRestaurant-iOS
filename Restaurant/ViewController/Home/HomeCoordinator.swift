@@ -15,7 +15,7 @@ class HomeCoordinator: NSObject, Coordinator {
     var childCoordinators: [Coordinator]
     
     var viewModel: HomeViewModel?
-    let testSubject: PublishSubject<TestCodable> = PublishSubject<TestCodable>()
+    let recommendFeedSubject: PublishSubject<RecommendFeed> = PublishSubject<RecommendFeed>()
     let disposeBag = DisposeBag()
     
     init(presenter: UINavigationController) {
@@ -24,14 +24,9 @@ class HomeCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        testAPI()
-        recommendFeed()
-        let home = HomeViewController.instantiate()
-        home.coordinator = self
-        home.viewModel = HomeViewModel(viewModel: TestCodable(drinks: []))
-        self.presenter.pushViewController(home, animated: false)
-        
-        self.testSubject.subscribe(onNext: { [weak self] in
+        API().recommendFeed(subject: self.recommendFeedSubject)
+
+        self.recommendFeedSubject.subscribe(onNext: { [weak self] in
             let home = HomeViewController.instantiate()
             home.coordinator = self
             home.viewModel = HomeViewModel(viewModel: $0)
@@ -39,48 +34,6 @@ class HomeCoordinator: NSObject, Coordinator {
             self?.presenter.pushViewController(home, animated: false)
         })
         .disposed(by: disposeBag)
-    }
-    
-    func testAPI() {
-        let url = API.test.url
-        
-        AF.request(url).responseJSON { (response) in
-            switch response.result {
-            case .success(let obj):
-                do {
-                    let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .fragmentsAllowed)
-                    let instanceData = try JSONDecoder().decode(TestCodable.self, from: dataJSON)
-
-                    self.testSubject.onNext(instanceData)
-                } catch {
-                    print(error.localizedDescription)
-                }
-            case .failure(let e):
-                print(e.localizedDescription)
-            }
-        }
-    }
-    
-    func recommendFeed() {
-        let url = API.recommendFeed.url
-        
-        AF.request(url).responseJSON { (response) in
-            switch response.result {
-            case .success(let obj):
-                do {
-                    let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .fragmentsAllowed)
-                    let instanceData = try JSONDecoder().decode(RecommendFeed.self, from: dataJSON)
-
-                    print("====================================")
-                    print(instanceData)
-//                    self.testSubject.onNext(instanceData)
-                } catch {
-                    print(error.localizedDescription)
-                }
-            case .failure(let e):
-                print(e.localizedDescription)
-            }
-        }
     }
 }
 

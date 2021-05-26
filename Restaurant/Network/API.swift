@@ -7,48 +7,28 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
 var baseURL = "http://ec2-52-78-66-184.ap-northeast-2.compute.amazonaws.com/"
 
-enum API {
-    case test
-    case recommendFeed
-    
-    public var url: String {
-        switch self {
-        case .test: return "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass"
-        case .recommendFeed: return "\(baseURL)api/feed/recommend"
+struct API {
+    func recommendFeed(subject: PublishSubject<RecommendFeed>) {
+        let url = "\(baseURL)api/feed/recommend"
+
+        AF.request(url).responseJSON { (response) in
+            switch response.result {
+            case .success(let obj):
+                do {
+                    let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .fragmentsAllowed)
+                    let instanceData = try JSONDecoder().decode(RecommendFeed.self, from: dataJSON)
+
+                    subject.onNext(instanceData)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            case .failure(let e):
+                print(e.localizedDescription)
+            }
         }
     }
 }
-//enum APIType {
-//    case test
-//}
-//
-//class API {
-//    static let shared = API()
-//
-//    func url(type: APIType) -> String {
-//        switch type {
-//        case .test: return "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass"
-//        }
-//    }
-//
-//    func get(url: String) {
-//        AF.request(url).responseJSON { (response) in
-//            switch response.result {
-//            case .success(let obj):
-//                do {
-//                    let jsonData = try JSONSerialization.data(withJSONObject: obj, options: .fragmentsAllowed)
-//                    let instanceData = try JSONDecoder().decode(TestCodable.self, from: jsonData)
-//
-//                    print(instanceData.drinks[0].idDrink)
-//                } catch {
-//                    print(error.localizedDescription)
-//                }
-//            case .failure(let e):
-//                print(e.localizedDescription)
-//            }
-//        }
-//    }
-//}
