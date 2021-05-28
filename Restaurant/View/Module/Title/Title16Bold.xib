@@ -34,6 +34,9 @@
                 <constraint firstItem="APS-3b-a6r" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="14" id="EIe-hl-pc5"/>
                 <constraint firstItem="APS-3b-a6r" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="WE7-Wv-vVd"/>
             </constraints>
+            <connections>
+                <outlet property="titleLabel" destination="APS-3b-a6r" id="Z8b-Cc-WKa"/>
+            </connections>
             <point key="canvasLocation" x="28" y="122"/>
         </collectionViewCell>
     </objects>

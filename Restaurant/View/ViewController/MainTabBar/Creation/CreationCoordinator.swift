@@ -23,3 +23,12 @@ class CreationCoordinator: NSObject, Coordinator {
         presenter.pushViewController(creation, animated: false)
     }
 }
+
+extension CreationCoordinator {
+    func presentCreationFeed() {
+        let coordinator = CreationFeedCoordinator(presenter: presenter)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+}

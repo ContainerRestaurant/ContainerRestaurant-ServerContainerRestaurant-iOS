@@ -75,6 +75,11 @@
 		FB56AF61265E62E8002736F5 /* TestCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56AF60265E62E8002736F5 /* TestCoordinator.swift */; };
 		FB56AF63265E675B002736F5 /* TestMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56AF62265E675B002736F5 /* TestMapCoordinator.swift */; };
 		FB56AF65265E697B002736F5 /* TestLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56AF64265E697B002736F5 /* TestLoginCoordinator.swift */; };
+		FB56AF6F265F5F43002736F5 /* CreationFeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56AF6E265F5F43002736F5 /* CreationFeedCoordinator.swift */; };
+		FB56AF71265F5F69002736F5 /* CreationFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56AF70265F5F69002736F5 /* CreationFeedViewController.swift */; };
+		FB56AF75265F71B4002736F5 /* FoodDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56AF73265F71B4002736F5 /* FoodDetailCollectionViewCell.swift */; };
+		FB56AF76265F71B4002736F5 /* FoodDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB56AF74265F71B4002736F5 /* FoodDetailCollectionViewCell.xib */; };
+		FB56AF78265F7589002736F5 /* CreationFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56AF77265F7589002736F5 /* CreationFeedViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -151,6 +156,11 @@
 		FB56AF60265E62E8002736F5 /* TestCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoordinator.swift; sourceTree = "<group>"; };
 		FB56AF62265E675B002736F5 /* TestMapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMapCoordinator.swift; sourceTree = "<group>"; };
 		FB56AF64265E697B002736F5 /* TestLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLoginCoordinator.swift; sourceTree = "<group>"; };
+		FB56AF6E265F5F43002736F5 /* CreationFeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationFeedCoordinator.swift; sourceTree = "<group>"; };
+		FB56AF70265F5F69002736F5 /* CreationFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationFeedViewController.swift; sourceTree = "<group>"; };
+		FB56AF73265F71B4002736F5 /* FoodDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB56AF74265F71B4002736F5 /* FoodDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodDetailCollectionViewCell.xib; sourceTree = "<group>"; };
+		FB56AF77265F7589002736F5 /* CreationFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationFeedViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +233,11 @@
 			isa = PBXGroup;
 			children = (
 				52041987264F98660099BA39 /* MainTabBarCoordinator.swift */,
+				5204198E265117ED0099BA39 /* Home */,
+				5204198F265117FE0099BA39 /* Search */,
+				520419902651180F0099BA39 /* Creation */,
+				520419912651181C0099BA39 /* Map */,
+				52041992265118210099BA39 /* My */,
 			);
 			path = MainTabBar;
 			sourceTree = "<group>";
@@ -298,6 +313,8 @@
 				526BED672647069E00897230 /* MostFeedTopTenCollectionView.xib */,
 				526BED762647212400897230 /* RecentlyFeedCollectionView.swift */,
 				526BED772647212400897230 /* RecentlyFeedCollectionView.xib */,
+				FB56AF73265F71B4002736F5 /* FoodDetailCollectionViewCell.swift */,
+				FB56AF74265F71B4002736F5 /* FoodDetailCollectionViewCell.xib */,
 				FB1BE3822637DF110004673C /* CollectionViewCell */,
 			);
 			path = CollectioinView;
@@ -321,11 +338,7 @@
 				528558F62624A99000AB4E28 /* BaseViewController.swift */,
 				526BED452645D98200897230 /* ViewModelBindableType.swift */,
 				52041993265118540099BA39 /* MainTabBar */,
-				5204198E265117ED0099BA39 /* Home */,
-				5204198F265117FE0099BA39 /* Search */,
-				520419902651180F0099BA39 /* Creation */,
-				520419912651181C0099BA39 /* Map */,
-				52041992265118210099BA39 /* My */,
+				FB56AF6D265F5F19002736F5 /* CreationFeed */,
 				5204199426511A440099BA39 /* ContainerOfEveryone */,
 				520419A6265182780099BA39 /* InquiryProfile */,
 				FB1BE38926397ECF0004673C /* PopUp */,
@@ -365,6 +378,7 @@
 			children = (
 				528558D42621EC5000AB4E28 /* HomeViewModel.swift */,
 				526BED64264702F700897230 /* ContainerOfEveryoneViewModel.swift */,
+				FB56AF77265F7589002736F5 /* CreationFeedViewModel.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -532,6 +546,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		FB56AF6D265F5F19002736F5 /* CreationFeed */ = {
+			isa = PBXGroup;
+			children = (
+				FB56AF6E265F5F43002736F5 /* CreationFeedCoordinator.swift */,
+				FB56AF70265F5F69002736F5 /* CreationFeedViewController.swift */,
+			);
+			path = CreationFeed;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -599,6 +622,7 @@
 				526BED692647069E00897230 /* MostFeedTopTenCollectionView.xib in Resources */,
 				FB1BE3862637DF2B0004673C /* MainFeedCollectionViewCell.xib in Resources */,
 				52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */,
+				FB56AF76265F71B4002736F5 /* FoodDetailCollectionViewCell.xib in Resources */,
 				526BED802647252400897230 /* RecentlyFeedCollectionViewCell.xib in Resources */,
 				FB1BE3662636CB540004673C /* MainTitleSection.xib in Resources */,
 				526BED792647212400897230 /* RecentlyFeedCollectionView.xib in Resources */,
@@ -656,6 +680,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				526BED7F2647252400897230 /* RecentlyFeedCollectionViewCell.swift in Sources */,
+				FB56AF75265F71B4002736F5 /* FoodDetailCollectionViewCell.swift in Sources */,
 				526BED48264652CA00897230 /* ExtensionUIFont.swift in Sources */,
 				5204198D2651128E0099BA39 /* Storyboard.swift in Sources */,
 				5204198B264F987C0099BA39 /* HomeCoordinator.swift in Sources */,
@@ -664,6 +689,7 @@
 				526BED7C2647216800897230 /* RecentlyFeedViewModel.swift in Sources */,
 				52397342261B62A600856C99 /* MapViewController.swift in Sources */,
 				52041983264F92DE0099BA39 /* AppCoordinator.swift in Sources */,
+				FB56AF71265F5F69002736F5 /* CreationFeedViewController.swift in Sources */,
 				528558F72624A99000AB4E28 /* BaseViewController.swift in Sources */,
 				FB1BE38C26397EEE0004673C /* CreationPopupViewController.swift in Sources */,
 				526BED622646F62A00897230 /* ContainerOfEveryoneViewController.swift in Sources */,
@@ -696,6 +722,7 @@
 				52397345261B62AF00856C99 /* MyViewController.swift in Sources */,
 				529CF0C4261A0AF6002CAD5C /* AppDelegate.swift in Sources */,
 				5204199826512CF90099BA39 /* SearchCoordinator.swift in Sources */,
+				FB56AF78265F7589002736F5 /* CreationFeedViewModel.swift in Sources */,
 				FB1BE3852637DF2B0004673C /* MainFeedCollectionViewCell.swift in Sources */,
 				52542E05264AD8FB0066F565 /* ListStandardDescriptionPopupViewController.swift in Sources */,
 				FB1BE36A2636D7330004673C /* ExtensionCollectoinView.swift in Sources */,
@@ -708,6 +735,7 @@
 				52041988264F98660099BA39 /* MainTabBarCoordinator.swift in Sources */,
 				5239733C261B625000856C99 /* SearchViewController.swift in Sources */,
 				528558ED26249DDF00AB4E28 /* TestViewController.swift in Sources */,
+				FB56AF6F265F5F43002736F5 /* CreationFeedCoordinator.swift in Sources */,
 				FB1BE373263719540004673C /* Title16Bold.swift in Sources */,
 				529CF0C6261A0AF6002CAD5C /* SceneDelegate.swift in Sources */,
 			);

@@ -27,7 +27,7 @@ extension HomeViewModel {
 
     func mainTitleSectionSize() -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: 251)
-        }
+    }
 
     func title16BoldSize() -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: 21)

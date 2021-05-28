@@ -73,6 +73,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
         case is Title16Bold:
             let cell: Title16Bold = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configure(title: "용기낸 특별한 경험들")
             return cell
             
         case is MainFeedCollectionView:

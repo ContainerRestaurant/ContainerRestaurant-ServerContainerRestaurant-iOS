@@ -8,7 +8,13 @@
 import UIKit
 
 class Title16Bold: UICollectionViewCell {
+    @IBOutlet weak var titleLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+
+    func configure(title: String) {
+        self.titleLabel.text = title
     }
 }

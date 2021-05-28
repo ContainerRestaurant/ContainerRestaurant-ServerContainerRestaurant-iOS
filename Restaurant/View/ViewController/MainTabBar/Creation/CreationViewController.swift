@@ -15,4 +15,14 @@ class CreationViewController: BaseViewController, Storyboard {
         
         print("CreationViewController viewDidLoad()")
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        coordinator?.presentCreationFeed()
+    }
+
+    deinit {
+        print("CreationViewController")
+    }
 }
