@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,11 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FoodDetailCollectionViewCell" customModule="Restaurant" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="177"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CreationFeedDetail" customModule="Restaurant" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="177"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainMenuOutline20Px" translatesAutoresizingMaskIntoConstraints="NO" id="Fdo-ZX-3PQ">
@@ -31,8 +32,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="pUx-4d-0M2">
-                        <rect key="frame" x="16" y="36" width="343" height="105"/>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="pUx-4d-0M2">
+                        <rect key="frame" x="16" y="36" width="343" height="107"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PeH-vF-EdD">
                             <size key="itemSize" width="128" height="128"/>
@@ -41,13 +42,17 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoJ-3W-Pd4">
-                        <rect key="frame" x="152.5" y="157" width="70" height="20"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoJ-3W-Pd4">
+                        <rect key="frame" x="139" y="159" width="97" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="9HI-ur-qib"/>
-                            <constraint firstAttribute="width" constant="70" id="jFd-7K-cqG"/>
+                            <constraint firstAttribute="width" constant="97" id="jFd-7K-cqG"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="음식 추가하기" image="addOutline12Px">
+                            <color key="titleColor" name="colorGrayGray07"/>
+                        </state>
                     </button>
                 </subviews>
             </view>
@@ -56,27 +61,31 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="pUx-4d-0M2" secondAttribute="trailing" constant="16" id="280-Q8-6VP"/>
                 <constraint firstItem="zoJ-3W-Pd4" firstAttribute="top" secondItem="pUx-4d-0M2" secondAttribute="bottom" constant="16" id="Amd-u2-nRm"/>
+                <constraint firstAttribute="bottom" secondItem="zoJ-3W-Pd4" secondAttribute="bottom" id="C70-zX-MeL"/>
                 <constraint firstItem="Fdo-ZX-3PQ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="FFd-3m-gsS"/>
                 <constraint firstItem="pUx-4d-0M2" firstAttribute="top" secondItem="Fdo-ZX-3PQ" secondAttribute="bottom" constant="16" id="WPN-su-rSo"/>
                 <constraint firstItem="blO-j5-nsG" firstAttribute="centerY" secondItem="Fdo-ZX-3PQ" secondAttribute="centerY" id="enY-2h-2YC"/>
                 <constraint firstItem="zoJ-3W-Pd4" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="hcg-qA-jTG"/>
                 <constraint firstItem="blO-j5-nsG" firstAttribute="leading" secondItem="Fdo-ZX-3PQ" secondAttribute="trailing" constant="6" id="nMv-kr-B5d"/>
-                <constraint firstAttribute="bottom" secondItem="zoJ-3W-Pd4" secondAttribute="bottom" id="oYv-ly-PF2"/>
                 <constraint firstItem="Fdo-ZX-3PQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="qfj-qO-EBE"/>
                 <constraint firstItem="pUx-4d-0M2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="yXe-q4-2bR"/>
             </constraints>
-            <size key="customSize" width="214" height="204"/>
+            <size key="customSize" width="214" height="214"/>
             <connections>
                 <outlet property="appendFoodButton" destination="zoJ-3W-Pd4" id="j8Q-GF-x3N"/>
                 <outlet property="collectionView" destination="pUx-4d-0M2" id="UHW-0L-HxU"/>
                 <outlet property="foodImageView" destination="Fdo-ZX-3PQ" id="gOe-Ff-tuY"/>
                 <outlet property="foodTitleLabel" destination="blO-j5-nsG" id="HCL-zp-7Is"/>
             </connections>
-            <point key="canvasLocation" x="163.04347826086959" y="203.90625"/>
+            <point key="canvasLocation" x="163.04347826086959" y="207.25446428571428"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="mainMenuOutline20Px" width="128" height="128"/>
+        <image name="addOutline12Px" width="12" height="12"/>
+        <image name="mainMenuOutline20Px" width="20" height="20"/>
+        <namedColor name="colorGrayGray07">
+            <color red="0.14100000262260437" green="0.14100000262260437" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

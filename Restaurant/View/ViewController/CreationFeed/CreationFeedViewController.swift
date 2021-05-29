@@ -11,21 +11,15 @@ import FittedSheets
 class CreationFeedViewController: BaseViewController, Storyboard {
     weak var coordinator: CreationFeedCoordinator?
     var viewModel: CreationFeedViewModel!
+    var sectionHeight: CGFloat = 179
 
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var insertTestButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setCollectionView()
-
-        insertTestButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                print("클릭")
-                self?.viewModel.modules.append(FoodDetailCollectionViewCell())
-                self?.collectionView.reloadData()
-            })
-            .disposed(by: disposeBag)
+        binding()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -33,7 +27,7 @@ class CreationFeedViewController: BaseViewController, Storyboard {
     }
 
     deinit {
-        print("CreationFeedViewController")
+        print("CreationFeedViewController Deinit")
     }
 }
 
@@ -44,7 +38,20 @@ extension CreationFeedViewController {
         self.collectionView.dataSource = self
 
         self.collectionView.register(Title16Bold.self)
-//        self.collectionView.register(FoodDetailCollectionViewCell.self)
+        self.collectionView.register(CreationFeedDetail.self)
+    }
+    
+    private func binding() {
+        viewModel.cardHeightSubject
+            .subscribe(onNext: { [weak self] cardViewHeight in
+                let titleHeight: CGFloat = 20
+                let spacing: CGFloat = 16
+                let buttonHeight: CGFloat = 20
+                
+                self?.sectionHeight = titleHeight + spacing + cardViewHeight + spacing + buttonHeight
+                self?.collectionView.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -62,13 +69,23 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
             let cell: Title16Bold = collectionView.dequeueReusableCell(for: indexPath)
             cell.configure(title: "상세내역")
             return cell
-
+        case is CreationFeedDetail:
+            let cell: CreationFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configure(self.viewModel.cardHeightSubject)
+            return cell
         default: return UICollectionViewCell()
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(50))
+        switch indexPath.row {
+        case 0: return viewModel.mainTitleSectionSize()
+        case 1: return CGSize(width: UIScreen.main.bounds.width, height: self.sectionHeight.ratio())
+        default: return CGSize.zero
+        }
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat.zero
+    }
 }

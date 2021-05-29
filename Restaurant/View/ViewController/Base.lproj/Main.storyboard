@@ -320,10 +320,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWe-qD-FgY">
-                                <rect key="frame" x="299" y="607" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Elg-ve-i6n"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -331,14 +327,11 @@
                             <constraint firstItem="hvF-Pt-1Td" firstAttribute="leading" secondItem="Elg-ve-i6n" secondAttribute="leading" id="1f2-eq-uYf"/>
                             <constraint firstItem="hvF-Pt-1Td" firstAttribute="top" secondItem="Elg-ve-i6n" secondAttribute="top" id="NFQ-7M-mJF"/>
                             <constraint firstItem="Elg-ve-i6n" firstAttribute="bottom" secondItem="hvF-Pt-1Td" secondAttribute="bottom" id="gla-as-efc"/>
-                            <constraint firstItem="Elg-ve-i6n" firstAttribute="trailing" secondItem="zWe-qD-FgY" secondAttribute="trailing" constant="30" id="i14-4L-N6l"/>
                             <constraint firstItem="Elg-ve-i6n" firstAttribute="trailing" secondItem="hvF-Pt-1Td" secondAttribute="trailing" id="lcB-in-jP5"/>
-                            <constraint firstItem="Elg-ve-i6n" firstAttribute="bottom" secondItem="zWe-qD-FgY" secondAttribute="bottom" constant="30" id="sUu-tI-Du2"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="hvF-Pt-1Td" id="blf-XW-f1m"/>
-                        <outlet property="insertTestButton" destination="zWe-qD-FgY" id="1SX-PT-VR5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jra-pj-QkD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

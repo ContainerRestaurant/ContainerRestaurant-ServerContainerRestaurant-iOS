@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import RxSwift
 
 struct CreationFeedViewModel {
     var modules: [UICollectionViewCell] = []
+    var cardHeightSubject: PublishSubject<CGFloat> = PublishSubject<CGFloat>()
 
     init() {
         appendModule()
@@ -18,9 +20,14 @@ struct CreationFeedViewModel {
 extension CreationFeedViewModel {
     mutating func appendModule() {
         self.modules.append(Title16Bold())
+        self.modules.append(CreationFeedDetail())
     }
 
     func mainTitleSectionSize() -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: 24)
+    }
+    
+    func creationFeedDetailSize() -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 500)
     }
 }
