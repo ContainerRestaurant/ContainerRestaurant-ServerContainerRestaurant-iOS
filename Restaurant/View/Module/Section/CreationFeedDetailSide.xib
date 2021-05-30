@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CreationFeedDetailSide" customModule="Restaurant" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="iBn-3A-Jfh">
+                        <rect key="frame" x="16" y="36" width="343" height="107"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wrH-Jo-ddC">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auk-T9-pEw">
+                        <rect key="frame" x="139" y="159" width="97" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="0HP-I1-bIt"/>
+                            <constraint firstAttribute="width" constant="97" id="Tce-sT-Hbj"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="음식 추가하기" image="addOutline12Px">
+                            <color key="titleColor" name="colorGrayGray07"/>
+                        </state>
+                    </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sideMenuOutline20Px" translatesAutoresizingMaskIntoConstraints="NO" id="4m2-xG-vth">
+                        <rect key="frame" x="16" y="0.0" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="5uy-yp-tND"/>
+                            <constraint firstAttribute="height" constant="20" id="lKn-7D-XgL"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="반찬(선택입력)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DQ-iG-AKY">
+                        <rect key="frame" x="42" y="1.5" width="84.5" height="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="4m2-xG-vth" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="18l-7W-26r"/>
+                <constraint firstItem="iBn-3A-Jfh" firstAttribute="top" secondItem="4m2-xG-vth" secondAttribute="bottom" constant="16" id="8KF-fF-Wyu"/>
+                <constraint firstItem="3DQ-iG-AKY" firstAttribute="centerY" secondItem="4m2-xG-vth" secondAttribute="centerY" id="ASm-N8-NT9"/>
+                <constraint firstItem="auk-T9-pEw" firstAttribute="top" secondItem="iBn-3A-Jfh" secondAttribute="bottom" constant="16" id="Acm-TQ-UYA"/>
+                <constraint firstItem="auk-T9-pEw" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="DcP-2F-Ysl"/>
+                <constraint firstAttribute="bottom" secondItem="auk-T9-pEw" secondAttribute="bottom" id="VpH-5X-Yit"/>
+                <constraint firstItem="4m2-xG-vth" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="cwO-Bw-nMb"/>
+                <constraint firstItem="iBn-3A-Jfh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="fE9-dZ-riz"/>
+                <constraint firstAttribute="trailing" secondItem="iBn-3A-Jfh" secondAttribute="trailing" constant="16" id="pm0-r5-bzg"/>
+                <constraint firstItem="iBn-3A-Jfh" firstAttribute="top" secondItem="4m2-xG-vth" secondAttribute="bottom" constant="16" id="vOv-av-1Ox"/>
+                <constraint firstItem="3DQ-iG-AKY" firstAttribute="leading" secondItem="4m2-xG-vth" secondAttribute="trailing" constant="6" id="zBl-ol-yUc"/>
+            </constraints>
+            <connections>
+                <outlet property="appendFoodButton" destination="auk-T9-pEw" id="r8R-0V-tFx"/>
+                <outlet property="collectionView" destination="iBn-3A-Jfh" id="KW5-Ps-ROV"/>
+                <outlet property="foodImageView" destination="4m2-xG-vth" id="kcA-1P-26w"/>
+                <outlet property="foodTitleLabel" destination="3DQ-iG-AKY" id="4Ab-xa-lpw"/>
+            </connections>
+            <point key="canvasLocation" x="74" y="153"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="addOutline12Px" width="12" height="12"/>
+        <image name="sideMenuOutline20Px" width="20" height="20"/>
+        <namedColor name="colorGrayGray07">
+            <color red="0.14100000262260437" green="0.14100000262260437" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -64,6 +64,10 @@
 		52E50DC02662105E0068C36C /* CreationFeedDetailCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E50DBE2662105E0068C36C /* CreationFeedDetailCardCollectionViewCell.swift */; };
 		52E50DC12662105E0068C36C /* CreationFeedDetailCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E50DBF2662105E0068C36C /* CreationFeedDetailCardCollectionViewCell.xib */; };
 		52E50DC326626FB60068C36C /* ExtensionCGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E50DC226626FB60068C36C /* ExtensionCGFloat.swift */; };
+		52E50DC62662A70B0068C36C /* CreationFeedDetailSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E50DC42662A70B0068C36C /* CreationFeedDetailSide.swift */; };
+		52E50DC72662A70B0068C36C /* CreationFeedDetailSide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E50DC52662A70B0068C36C /* CreationFeedDetailSide.xib */; };
+		52E50DCA2662B85C0068C36C /* SearchRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E50DC82662B85C0068C36C /* SearchRestaurant.swift */; };
+		52E50DCB2662B85C0068C36C /* SearchRestaurant.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E50DC92662B85C0068C36C /* SearchRestaurant.xib */; };
 		F229FDEFC23BC3F98E7FDAC0 /* Pods_Restaurant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F3CE4B984E3614EE1907F2 /* Pods_Restaurant.framework */; };
 		FB1BE3652636CB540004673C /* MainTitleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BE3632636CB540004673C /* MainTitleSection.swift */; };
 		FB1BE3662636CB540004673C /* MainTitleSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB1BE3642636CB540004673C /* MainTitleSection.xib */; };
@@ -147,6 +151,10 @@
 		52E50DBE2662105E0068C36C /* CreationFeedDetailCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationFeedDetailCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		52E50DBF2662105E0068C36C /* CreationFeedDetailCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreationFeedDetailCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		52E50DC226626FB60068C36C /* ExtensionCGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCGFloat.swift; sourceTree = "<group>"; };
+		52E50DC42662A70B0068C36C /* CreationFeedDetailSide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationFeedDetailSide.swift; sourceTree = "<group>"; };
+		52E50DC52662A70B0068C36C /* CreationFeedDetailSide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreationFeedDetailSide.xib; sourceTree = "<group>"; };
+		52E50DC82662B85C0068C36C /* SearchRestaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRestaurant.swift; sourceTree = "<group>"; };
+		52E50DC92662B85C0068C36C /* SearchRestaurant.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchRestaurant.xib; sourceTree = "<group>"; };
 		F3F3CE4B984E3614EE1907F2 /* Pods_Restaurant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Restaurant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75B0324971F60862967CD66 /* Pods-Restaurant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restaurant.debug.xcconfig"; path = "Target Support Files/Pods-Restaurant/Pods-Restaurant.debug.xcconfig"; sourceTree = "<group>"; };
 		FB1BE3632636CB540004673C /* MainTitleSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTitleSection.swift; sourceTree = "<group>"; };
@@ -321,8 +329,12 @@
 				526BED672647069E00897230 /* MostFeedTopTenCollectionView.xib */,
 				526BED762647212400897230 /* RecentlyFeedCollectionView.swift */,
 				526BED772647212400897230 /* RecentlyFeedCollectionView.xib */,
+				52E50DC82662B85C0068C36C /* SearchRestaurant.swift */,
+				52E50DC92662B85C0068C36C /* SearchRestaurant.xib */,
 				FB56AF73265F71B4002736F5 /* CreationFeedDetail.swift */,
 				FB56AF74265F71B4002736F5 /* CreationFeedDetail.xib */,
+				52E50DC42662A70B0068C36C /* CreationFeedDetailSide.swift */,
+				52E50DC52662A70B0068C36C /* CreationFeedDetailSide.xib */,
 			);
 			path = Section;
 			sourceTree = "<group>";
@@ -615,9 +627,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52E50DC72662A70B0068C36C /* CreationFeedDetailSide.xib in Resources */,
 				529CF0D0261A0AF6002CAD5C /* LaunchScreen.storyboard in Resources */,
 				529CF0CD261A0AF6002CAD5C /* Assets.xcassets in Resources */,
 				FB1BE37A26371BFA0004673C /* MainFeedCollectionView.xib in Resources */,
+				52E50DCB2662B85C0068C36C /* SearchRestaurant.xib in Resources */,
 				526BED6D26470BD200897230 /* MostFeedTopTenCollectionViewCell.xib in Resources */,
 				FB1BE374263719540004673C /* Title16Bold.xib in Resources */,
 				526BED692647069E00897230 /* MostFeedTopTenCollectionView.xib in Resources */,
@@ -692,6 +706,7 @@
 				526BED7C2647216800897230 /* RecentlyFeedViewModel.swift in Sources */,
 				52397342261B62A600856C99 /* MapViewController.swift in Sources */,
 				52041983264F92DE0099BA39 /* AppCoordinator.swift in Sources */,
+				52E50DCA2662B85C0068C36C /* SearchRestaurant.swift in Sources */,
 				FB56AF71265F5F69002736F5 /* CreationFeedViewController.swift in Sources */,
 				528558F72624A99000AB4E28 /* BaseViewController.swift in Sources */,
 				FB1BE38C26397EEE0004673C /* CreationPopupViewController.swift in Sources */,
@@ -701,6 +716,7 @@
 				520419A8265184580099BA39 /* InquiryProfileCoordinator.swift in Sources */,
 				FB56AF63265E675B002736F5 /* TestMapCoordinator.swift in Sources */,
 				526BED5D2646EC9B00897230 /* MainTitleSectionViewModel.swift in Sources */,
+				52E50DC62662A70B0068C36C /* CreationFeedDetailSide.swift in Sources */,
 				520419A5265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift in Sources */,
 				5204199C26512E190099BA39 /* MapCoordinator.swift in Sources */,
 				526BED71264710B500897230 /* MostFeedTopTenViewModel.swift in Sources */,
