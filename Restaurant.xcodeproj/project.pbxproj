@@ -22,7 +22,7 @@
 		520419A8265184580099BA39 /* InquiryProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419A7265184580099BA39 /* InquiryProfileCoordinator.swift */; };
 		520419CF2656CCBE0099BA39 /* TestCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419CE2656CCBE0099BA39 /* TestCodable.swift */; };
 		52254C612657E88400D921ED /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52254C602657E88400D921ED /* API.swift */; };
-		52254C63265AC19C00D921ED /* RecommendFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52254C62265AC19C00D921ED /* RecommendFeed.swift */; };
+		52254C63265AC19C00D921ED /* RecommendFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52254C62265AC19C00D921ED /* RecommendFeedModel.swift */; };
 		52256FAC263D7F4300A056DE /* SeparateLineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */; };
 		52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52256FAB263D7F4300A056DE /* SeparateLineCollectionViewCell.xib */; };
 		52256FB0263DBEFA00A056DE /* ExtensionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FAF263DBEFA00A056DE /* ExtensionCollectionViewCell.swift */; };
@@ -87,6 +87,12 @@
 		FB56AF75265F71B4002736F5 /* CreationFeedDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56AF73265F71B4002736F5 /* CreationFeedDetail.swift */; };
 		FB56AF76265F71B4002736F5 /* CreationFeedDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB56AF74265F71B4002736F5 /* CreationFeedDetail.xib */; };
 		FB56AF78265F7589002736F5 /* CreationFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56AF77265F7589002736F5 /* CreationFeedViewModel.swift */; };
+		FB585B1D266561890085C6B2 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B1C266561890085C6B2 /* Common.swift */; };
+		FB585B2026656E5A0085C6B2 /* SearchRestaurantCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B1F26656E5A0085C6B2 /* SearchRestaurantCoordinator.swift */; };
+		FB585B2226656E810085C6B2 /* SearchRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B2126656E810085C6B2 /* SearchRestaurantViewController.swift */; };
+		FB585B25266591330085C6B2 /* SearchRestaurantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B23266591330085C6B2 /* SearchRestaurantCollectionViewCell.swift */; };
+		FB585B26266591330085C6B2 /* SearchRestaurantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB585B24266591330085C6B2 /* SearchRestaurantCollectionViewCell.xib */; };
+		FB585B2826662B520085C6B2 /* LocalSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B2726662B520085C6B2 /* LocalSearchModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,7 +112,7 @@
 		520419A7265184580099BA39 /* InquiryProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryProfileCoordinator.swift; sourceTree = "<group>"; };
 		520419CE2656CCBE0099BA39 /* TestCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCodable.swift; sourceTree = "<group>"; };
 		52254C602657E88400D921ED /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		52254C62265AC19C00D921ED /* RecommendFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendFeed.swift; sourceTree = "<group>"; };
+		52254C62265AC19C00D921ED /* RecommendFeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendFeedModel.swift; sourceTree = "<group>"; };
 		52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateLineCollectionViewCell.swift; sourceTree = "<group>"; };
 		52256FAB263D7F4300A056DE /* SeparateLineCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeparateLineCollectionViewCell.xib; sourceTree = "<group>"; };
 		52256FAF263DBEFA00A056DE /* ExtensionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -175,6 +181,12 @@
 		FB56AF73265F71B4002736F5 /* CreationFeedDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationFeedDetail.swift; sourceTree = "<group>"; };
 		FB56AF74265F71B4002736F5 /* CreationFeedDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreationFeedDetail.xib; sourceTree = "<group>"; };
 		FB56AF77265F7589002736F5 /* CreationFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationFeedViewModel.swift; sourceTree = "<group>"; };
+		FB585B1C266561890085C6B2 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		FB585B1F26656E5A0085C6B2 /* SearchRestaurantCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRestaurantCoordinator.swift; sourceTree = "<group>"; };
+		FB585B2126656E810085C6B2 /* SearchRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRestaurantViewController.swift; sourceTree = "<group>"; };
+		FB585B23266591330085C6B2 /* SearchRestaurantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRestaurantCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB585B24266591330085C6B2 /* SearchRestaurantCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchRestaurantCollectionViewCell.xib; sourceTree = "<group>"; };
+		FB585B2726662B520085C6B2 /* LocalSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSearchModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,8 +307,9 @@
 		520419CD2656CCA70099BA39 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FB585B29266631CB0085C6B2 /* Home */,
+				FB585B2A266634EB0085C6B2 /* Creation */,
 				520419CE2656CCBE0099BA39 /* TestCodable.swift */,
-				52254C62265AC19C00D921ED /* RecommendFeed.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -349,6 +362,7 @@
 				526BED452645D98200897230 /* ViewModelBindableType.swift */,
 				52041993265118540099BA39 /* MainTabBar */,
 				FB56AF6D265F5F19002736F5 /* CreationFeed */,
+				FB585B1E26656E200085C6B2 /* SearchRestaurant */,
 				5204199426511A440099BA39 /* ContainerOfEveryone */,
 				520419A6265182780099BA39 /* InquiryProfile */,
 				FB1BE38926397ECF0004673C /* PopUp */,
@@ -462,6 +476,7 @@
 			children = (
 				529CF0C3261A0AF6002CAD5C /* AppDelegate.swift */,
 				529CF0C5261A0AF6002CAD5C /* SceneDelegate.swift */,
+				FB585B1B266561730085C6B2 /* Common */,
 				52254C5F2657E85D00D921ED /* Network */,
 				FB1BE3682636D7170004673C /* Extensions */,
 				5285592E262DE59400AB4E28 /* Enum */,
@@ -537,6 +552,8 @@
 				526BED7E2647252400897230 /* RecentlyFeedCollectionViewCell.xib */,
 				52E50DBE2662105E0068C36C /* CreationFeedDetailCardCollectionViewCell.swift */,
 				52E50DBF2662105E0068C36C /* CreationFeedDetailCardCollectionViewCell.xib */,
+				FB585B23266591330085C6B2 /* SearchRestaurantCollectionViewCell.swift */,
+				FB585B24266591330085C6B2 /* SearchRestaurantCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -566,6 +583,39 @@
 				FB56AF70265F5F69002736F5 /* CreationFeedViewController.swift */,
 			);
 			path = CreationFeed;
+			sourceTree = "<group>";
+		};
+		FB585B1B266561730085C6B2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FB585B1C266561890085C6B2 /* Common.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		FB585B1E26656E200085C6B2 /* SearchRestaurant */ = {
+			isa = PBXGroup;
+			children = (
+				FB585B1F26656E5A0085C6B2 /* SearchRestaurantCoordinator.swift */,
+				FB585B2126656E810085C6B2 /* SearchRestaurantViewController.swift */,
+			);
+			path = SearchRestaurant;
+			sourceTree = "<group>";
+		};
+		FB585B29266631CB0085C6B2 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				52254C62265AC19C00D921ED /* RecommendFeedModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		FB585B2A266634EB0085C6B2 /* Creation */ = {
+			isa = PBXGroup;
+			children = (
+				FB585B2726662B520085C6B2 /* LocalSearchModel.swift */,
+			);
+			path = Creation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -629,6 +679,7 @@
 			files = (
 				52E50DC72662A70B0068C36C /* CreationFeedDetailSide.xib in Resources */,
 				529CF0D0261A0AF6002CAD5C /* LaunchScreen.storyboard in Resources */,
+				FB585B26266591330085C6B2 /* SearchRestaurantCollectionViewCell.xib in Resources */,
 				529CF0CD261A0AF6002CAD5C /* Assets.xcassets in Resources */,
 				FB1BE37A26371BFA0004673C /* MainFeedCollectionView.xib in Resources */,
 				52E50DCB2662B85C0068C36C /* SearchRestaurant.xib in Resources */,
@@ -711,6 +762,7 @@
 				528558F72624A99000AB4E28 /* BaseViewController.swift in Sources */,
 				FB1BE38C26397EEE0004673C /* CreationPopupViewController.swift in Sources */,
 				526BED622646F62A00897230 /* ContainerOfEveryoneViewController.swift in Sources */,
+				FB585B1D266561890085C6B2 /* Common.swift in Sources */,
 				5204199A26512D8D0099BA39 /* CreationCoordinator.swift in Sources */,
 				5204199F26512E450099BA39 /* MyCoordinator.swift in Sources */,
 				520419A8265184580099BA39 /* InquiryProfileCoordinator.swift in Sources */,
@@ -722,7 +774,7 @@
 				526BED71264710B500897230 /* MostFeedTopTenViewModel.swift in Sources */,
 				5204199626511AB00099BA39 /* ContainerOfEveryoneCoordinator.swift in Sources */,
 				526BED65264702F700897230 /* ContainerOfEveryoneViewModel.swift in Sources */,
-				52254C63265AC19C00D921ED /* RecommendFeed.swift in Sources */,
+				52254C63265AC19C00D921ED /* RecommendFeedModel.swift in Sources */,
 				FB1BE37926371BFA0004673C /* MainFeedCollectionView.swift in Sources */,
 				52256FAC263D7F4300A056DE /* SeparateLineCollectionViewCell.swift in Sources */,
 				529CF0C8261A0AF6002CAD5C /* HomeViewController.swift in Sources */,
@@ -731,6 +783,7 @@
 				52542E09264AEBB10066F565 /* InquiryProfileViewController.swift in Sources */,
 				52855930262DE5A700AB4E28 /* TabBarItem.swift in Sources */,
 				526BED6C26470BD200897230 /* MostFeedTopTenCollectionViewCell.swift in Sources */,
+				FB585B2226656E810085C6B2 /* SearchRestaurantViewController.swift in Sources */,
 				5285590B2629ECB900AB4E28 /* TestLoginViewController.swift in Sources */,
 				FB1BE3652636CB540004673C /* MainTitleSection.swift in Sources */,
 				528558F32624A2E700AB4E28 /* TestMapViewController.swift in Sources */,
@@ -738,6 +791,7 @@
 				528558D52621EC5000AB4E28 /* HomeViewModel.swift in Sources */,
 				520419CF2656CCBE0099BA39 /* TestCodable.swift in Sources */,
 				52254C612657E88400D921ED /* API.swift in Sources */,
+				FB585B2826662B520085C6B2 /* LocalSearchModel.swift in Sources */,
 				52397345261B62AF00856C99 /* MyViewController.swift in Sources */,
 				529CF0C4261A0AF6002CAD5C /* AppDelegate.swift in Sources */,
 				5204199826512CF90099BA39 /* SearchCoordinator.swift in Sources */,
@@ -745,6 +799,7 @@
 				FB1BE3852637DF2B0004673C /* MainFeedCollectionViewCell.swift in Sources */,
 				52542E05264AD8FB0066F565 /* ListStandardDescriptionPopupViewController.swift in Sources */,
 				FB1BE36A2636D7330004673C /* ExtensionCollectoinView.swift in Sources */,
+				FB585B25266591330085C6B2 /* SearchRestaurantCollectionViewCell.swift in Sources */,
 				526BED782647212400897230 /* RecentlyFeedCollectionView.swift in Sources */,
 				52E50DC326626FB60068C36C /* ExtensionCGFloat.swift in Sources */,
 				526BED4A2646566600897230 /* ExtensionUIView.swift in Sources */,
@@ -753,6 +808,7 @@
 				52256FD626445AB400A056DE /* ExtensionUIColor.swift in Sources */,
 				526BED682647069E00897230 /* MostFeedTopTenCollectionView.swift in Sources */,
 				52041988264F98660099BA39 /* MainTabBarCoordinator.swift in Sources */,
+				FB585B2026656E5A0085C6B2 /* SearchRestaurantCoordinator.swift in Sources */,
 				5239733C261B625000856C99 /* SearchViewController.swift in Sources */,
 				528558ED26249DDF00AB4E28 /* TestViewController.swift in Sources */,
 				FB56AF6F265F5F43002736F5 /* CreationFeedCoordinator.swift in Sources */,

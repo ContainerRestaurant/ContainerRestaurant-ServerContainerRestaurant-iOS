@@ -43,6 +43,7 @@ extension CreationFeedViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
 
+        self.collectionView.register(SearchRestaurant.self)
         self.collectionView.register(Title16Bold.self)
         self.collectionView.register(CreationFeedDetail.self)
         self.collectionView.register(CreationFeedDetailSide.self)
@@ -85,16 +86,30 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
         switch type {
         case is Title16Bold:
             let cell: Title16Bold = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(title: "상세내역")
+            if indexPath.row == 0 {
+                cell.configure(title: "식당 이름")
+            } else if indexPath.row == 2 {
+                cell.configure(title: "상세 내역")
+            }
             return cell
+
+        case is SearchRestaurant:
+            let cell: SearchRestaurant = collectionView.dequeueReusableCell(for: indexPath)
+            if let coordinator = self.coordinator {
+                cell.configure(coordinator, self.viewModel.searchRestaurantSubject)
+            }
+            return cell
+
         case is CreationFeedDetail:
             let cell: CreationFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
             cell.configure(self.viewModel.mainFoodHeightSubject, .main)
             return cell
+
         case is CreationFeedDetailSide:
             let cell: CreationFeedDetailSide = collectionView.dequeueReusableCell(for: indexPath)
             cell.configure(self.viewModel.sideFoodHeightSubject, .side)
             return cell
+
         default: return UICollectionViewCell()
         }
     }
@@ -102,8 +117,10 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.row {
         case 0: return viewModel.mainTitleSectionSize()
-        case 1: return CGSize(width: UIScreen.main.bounds.width, height: self.mainFoodHeight.ratio())
-        case 2: return CGSize(width: UIScreen.main.bounds.width, height: self.sideFoodHeight.ratio())
+        case 1: return viewModel.searchRestaurantSize()
+        case 2: return viewModel.mainTitleSectionSize()
+        case 3: return CGSize(width: UIScreen.main.bounds.width, height: self.mainFoodHeight.ratio())
+        case 4: return CGSize(width: UIScreen.main.bounds.width, height: self.sideFoodHeight.ratio())
         default: return CGSize.zero
         }
     }

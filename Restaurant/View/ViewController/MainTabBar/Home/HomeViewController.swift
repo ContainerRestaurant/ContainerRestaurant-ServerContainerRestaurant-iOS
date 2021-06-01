@@ -7,11 +7,12 @@
 
 import UIKit
 
-class HomeViewController: BaseViewController, Storyboard {
+class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType {
     static var homeAnimated = false
     var viewModel: HomeViewModel!
     weak var coordinator: HomeCoordinator?
     
+    @IBOutlet weak var testLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
@@ -33,10 +34,14 @@ class HomeViewController: BaseViewController, Storyboard {
         HomeViewController.homeAnimated = false
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
-    
-//    func bindViewModel() {
-//
-//    }
+
+    func bindViewModel() {
+        print("타긴타")
+        self.viewModel.recommendFeeds
+            .map { $0.first?.ownerNickname }
+            .drive(testLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
     
     //안될거임
     deinit {

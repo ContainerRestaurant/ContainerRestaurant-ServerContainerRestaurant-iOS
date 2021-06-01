@@ -26,19 +26,19 @@ class HomeCoordinator: NSObject, Coordinator {
     func start() {
         API().recommendFeed(subject: self.recommendFeedSubject)
 
-        let home = HomeViewController.instantiate()
-        home.coordinator = self
-        home.viewModel = HomeViewModel(viewModel: RecommendFeed(_embedded: Embedded(feedPreviewDtoList: [])))
+//        let home = HomeViewController.instantiate()
+//        home.coordinator = self
+//        home.viewModel = HomeViewModel(viewModel: RecommendFeed(_embedded: Embedded(feedPreviewDtoList: [])))
 
-        self.presenter.pushViewController(home, animated: false)
-//        self.recommendFeedSubject.subscribe(onNext: { [weak self] in
-//            let home = HomeViewController.instantiate()
-//            home.coordinator = self
-//            home.viewModel = HomeViewModel(viewModel: $0)
-//
-//            self?.presenter.pushViewController(home, animated: false)
-//        })
-//        .disposed(by: disposeBag)
+//        self.presenter.pushViewController(home, animated: false)
+        self.recommendFeedSubject.subscribe(onNext: { [weak self] in
+            var home = HomeViewController.instantiate()
+            home.coordinator = self
+            home.bind(viewModel: HomeViewModel(viewModel: $0))
+
+            self?.presenter.pushViewController(home, animated: false)
+        })
+        .disposed(by: disposeBag)
     }
 }
 

@@ -4,21 +4,73 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SearchRestaurant" customModule="Restaurant" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUk-fB-0yy">
+                        <rect key="frame" x="16" y="12" width="289" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" name="colorGrayGray07"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9aM-Vw-Mqv">
+                        <rect key="frame" x="16" y="0.0" width="343" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="343" id="LGm-zw-A0K"/>
+                        </constraints>
+                        <state key="normal" image="searchOutline20Px"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QmE-Xc-3Ok">
+                        <rect key="frame" x="305" y="10" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="U0v-FD-bEF"/>
+                            <constraint firstAttribute="width" constant="20" id="p4Q-BH-N5N"/>
+                        </constraints>
+                        <state key="normal" image="closeFilled16Px"/>
+                    </button>
+                </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="QmE-Xc-3Ok" firstAttribute="leading" secondItem="jUk-fB-0yy" secondAttribute="trailing" id="19O-vc-cat"/>
+                <constraint firstItem="QmE-Xc-3Ok" firstAttribute="trailing" secondItem="9aM-Vw-Mqv" secondAttribute="trailing" constant="-34" id="9ps-ij-AoS"/>
+                <constraint firstItem="9aM-Vw-Mqv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="AL5-Ft-JM8"/>
+                <constraint firstItem="jUk-fB-0yy" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Cwj-c9-KG4"/>
+                <constraint firstItem="9aM-Vw-Mqv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="Lp0-Nu-ybg"/>
+                <constraint firstItem="QmE-Xc-3Ok" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="N7H-rN-Nvr"/>
+                <constraint firstItem="jUk-fB-0yy" firstAttribute="leading" secondItem="9aM-Vw-Mqv" secondAttribute="leading" id="P7A-DW-gBU"/>
+                <constraint firstAttribute="bottom" secondItem="9aM-Vw-Mqv" secondAttribute="bottom" id="VVh-PM-gFe"/>
+                <constraint firstAttribute="trailing" secondItem="9aM-Vw-Mqv" secondAttribute="trailing" constant="16" id="pja-57-7oF"/>
+            </constraints>
+            <connections>
+                <outlet property="clearButton" destination="QmE-Xc-3Ok" id="OgZ-Ph-Hh8"/>
+                <outlet property="restaurantNameLabel" destination="jUk-fB-0yy" id="wLg-yi-a2S"/>
+                <outlet property="searchRestaurantButton" destination="9aM-Vw-Mqv" id="GoB-pO-tyt"/>
+            </connections>
             <point key="canvasLocation" x="139" y="153"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="closeFilled16Px" width="20" height="20"/>
+        <image name="searchOutline20Px" width="20" height="20"/>
+        <namedColor name="colorGrayGray07">
+            <color red="0.14100000262260437" green="0.14100000262260437" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

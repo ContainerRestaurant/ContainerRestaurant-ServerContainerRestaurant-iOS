@@ -50,6 +50,7 @@ class MainTabBarCoordinator: NSObject, Coordinator {
             case .creation: return CreationCoordinator(presenter: presenter)
             case .map: return MapCoordinator(presenter: presenter)
             case .my: return MyCoordinator(presenter: presenter)
+//            case .my: return TestCoordinator(presenter: presenter)
             }
         }
     }

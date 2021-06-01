@@ -26,6 +26,6 @@ class CreationFeedCoordinator: NSObject, Coordinator {
     }
 }
 
-extension CreationCoordinator {
+extension CreationFeedCoordinator {
 
 }
