@@ -31,4 +31,31 @@ struct API {
             }
         }
     }
+
+    func searchLocal() {
+        let url = "https://openapi.naver.com/v1/search/local"
+        let httpHeaders: HTTPHeaders = [
+            "X-Naver-Client-Id": "zJ4xl5NeU12vREYMTgji",
+            "X-Naver-Client-Secret": "UFCyKRkPkk"
+        ]
+        let param: Parameters = [
+            "query": "엽떡",
+            "display": 5
+        ]
+
+        AF.request(url, parameters: param, headers: httpHeaders).responseJSON { (response) in
+            switch response.result {
+            case .success(let obj):
+                do {
+                    let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .fragmentsAllowed)
+                    let instanceData = try JSONDecoder().decode(LocalSearch.self, from: dataJSON)
+                    print("성공 => \(instanceData)")
+                } catch {
+                    print(error.localizedDescription)
+                }
+            case .failure(let e):
+                print(e.localizedDescription)
+            }
+        }
+    }
 }

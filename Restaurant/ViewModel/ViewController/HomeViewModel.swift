@@ -6,14 +6,23 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 struct HomeViewModel {
     var modules: [UICollectionViewCell] = []
-    var recommendFeeds: [FeedPreviewDtoList] = []
+    var embedded: Embedded?
+
+    var recommendFeeds: Driver<[FeedPreviewDtoList]> {
+        return Observable
+            .just(embedded?.feedPreviewDtoList ?? [])
+            .asDriver(onErrorJustReturn: [])
+    }
     
     init(viewModel: RecommendFeed) {
         appendModule()
-        self.recommendFeeds = viewModel._embedded.feedPreviewDtoList
+
+        embedded = viewModel._embedded
     }
 }
 
@@ -27,7 +36,7 @@ extension HomeViewModel {
 
     func mainTitleSectionSize() -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: 251)
-        }
+    }
 
     func title16BoldSize() -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: 21)
