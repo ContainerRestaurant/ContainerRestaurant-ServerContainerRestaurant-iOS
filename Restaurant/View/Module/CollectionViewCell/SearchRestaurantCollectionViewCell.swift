@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class SearchRestaurantCollectionViewCell: UICollectionViewCell {
+    let disposeBag = DisposeBag()
+
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var restaurantAdressLabel: UILabel!
 
@@ -15,7 +19,8 @@ class SearchRestaurantCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-    func configure(_ restaurantName: String, restaurantAddress: String) {
-        //Todo: rx로 바인딩
+    func configure(item: LocalSearchItem) {
+        self.restaurantNameLabel.text = item.title.deleteBrTag()
+        self.restaurantAdressLabel.text = item.address
     }
 }

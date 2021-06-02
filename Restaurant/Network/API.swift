@@ -32,14 +32,14 @@ struct API {
         }
     }
 
-    func searchLocal() {
+    func localSearch(text: String, subject: PublishSubject<LocalSearch>) {
         let url = "https://openapi.naver.com/v1/search/local"
         let httpHeaders: HTTPHeaders = [
             "X-Naver-Client-Id": "zJ4xl5NeU12vREYMTgji",
             "X-Naver-Client-Secret": "UFCyKRkPkk"
         ]
         let param: Parameters = [
-            "query": "엽떡",
+            "query": text,
             "display": 5
         ]
 
@@ -50,6 +50,8 @@ struct API {
                     let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .fragmentsAllowed)
                     let instanceData = try JSONDecoder().decode(LocalSearch.self, from: dataJSON)
                     print("성공 => \(instanceData)")
+
+                    subject.onNext(instanceData)
                 } catch {
                     print(error.localizedDescription)
                 }

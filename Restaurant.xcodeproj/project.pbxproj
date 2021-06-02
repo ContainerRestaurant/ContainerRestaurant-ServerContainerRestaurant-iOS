@@ -93,6 +93,8 @@
 		FB585B25266591330085C6B2 /* SearchRestaurantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B23266591330085C6B2 /* SearchRestaurantCollectionViewCell.swift */; };
 		FB585B26266591330085C6B2 /* SearchRestaurantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB585B24266591330085C6B2 /* SearchRestaurantCollectionViewCell.xib */; };
 		FB585B2826662B520085C6B2 /* LocalSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B2726662B520085C6B2 /* LocalSearchModel.swift */; };
+		FB585B2C266780350085C6B2 /* SearchRestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B2B266780350085C6B2 /* SearchRestaurantViewModel.swift */; };
+		FB585B2E2667F6340085C6B2 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B2D2667F6340085C6B2 /* ExtensionString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -187,6 +189,8 @@
 		FB585B23266591330085C6B2 /* SearchRestaurantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRestaurantCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB585B24266591330085C6B2 /* SearchRestaurantCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchRestaurantCollectionViewCell.xib; sourceTree = "<group>"; };
 		FB585B2726662B520085C6B2 /* LocalSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSearchModel.swift; sourceTree = "<group>"; };
+		FB585B2B266780350085C6B2 /* SearchRestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRestaurantViewModel.swift; sourceTree = "<group>"; };
+		FB585B2D2667F6340085C6B2 /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -403,6 +407,7 @@
 				528558D42621EC5000AB4E28 /* HomeViewModel.swift */,
 				526BED64264702F700897230 /* ContainerOfEveryoneViewModel.swift */,
 				FB56AF77265F7589002736F5 /* CreationFeedViewModel.swift */,
+				FB585B2B266780350085C6B2 /* SearchRestaurantViewModel.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -528,6 +533,7 @@
 				FB1BE3692636D7330004673C /* ExtensionCollectoinView.swift */,
 				52256FAF263DBEFA00A056DE /* ExtensionCollectionViewCell.swift */,
 				52E50DC226626FB60068C36C /* ExtensionCGFloat.swift */,
+				FB585B2D2667F6340085C6B2 /* ExtensionString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -749,6 +755,7 @@
 				526BED7F2647252400897230 /* RecentlyFeedCollectionViewCell.swift in Sources */,
 				FB56AF75265F71B4002736F5 /* CreationFeedDetail.swift in Sources */,
 				52E50DC02662105E0068C36C /* CreationFeedDetailCardCollectionViewCell.swift in Sources */,
+				FB585B2C266780350085C6B2 /* SearchRestaurantViewModel.swift in Sources */,
 				526BED48264652CA00897230 /* ExtensionUIFont.swift in Sources */,
 				5204198D2651128E0099BA39 /* Storyboard.swift in Sources */,
 				5204198B264F987C0099BA39 /* HomeCoordinator.swift in Sources */,
@@ -785,6 +792,7 @@
 				526BED6C26470BD200897230 /* MostFeedTopTenCollectionViewCell.swift in Sources */,
 				FB585B2226656E810085C6B2 /* SearchRestaurantViewController.swift in Sources */,
 				5285590B2629ECB900AB4E28 /* TestLoginViewController.swift in Sources */,
+				FB585B2E2667F6340085C6B2 /* ExtensionString.swift in Sources */,
 				FB1BE3652636CB540004673C /* MainTitleSection.swift in Sources */,
 				528558F32624A2E700AB4E28 /* TestMapViewController.swift in Sources */,
 				FB56AF65265E697B002736F5 /* TestLoginCoordinator.swift in Sources */,

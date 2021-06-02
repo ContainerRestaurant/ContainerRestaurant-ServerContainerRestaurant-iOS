@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용기낸 특별한 경험들" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APS-3b-a6r">
-                        <rect key="frame" x="14" y="0.0" width="132.5" height="21"/>
+                        <rect key="frame" x="16" y="0.0" width="132.5" height="21"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <color key="textColor" name="colorGrayGray07"/>
                         <nil key="highlightedColor"/>
@@ -31,7 +31,7 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="APS-3b-a6r" secondAttribute="bottom" id="AYX-Zd-dQ4"/>
-                <constraint firstItem="APS-3b-a6r" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="14" id="EIe-hl-pc5"/>
+                <constraint firstItem="APS-3b-a6r" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="EIe-hl-pc5"/>
                 <constraint firstItem="APS-3b-a6r" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="WE7-Wv-vVd"/>
             </constraints>
             <connections>

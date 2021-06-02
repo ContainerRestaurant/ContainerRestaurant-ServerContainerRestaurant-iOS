@@ -5,26 +5,47 @@
 //  Created by Lotte on 2021/06/01.
 //
 
-//지워도 될 것 같음 나중에 삭제 => 코디네이터로 띄우는 형태가 아니라서.
 import UIKit
+import RxSwift
+import FittedSheets
 
 class SearchRestaurantCoordinator: NSObject, Coordinator {
     var delegate: CoordinatorFinishDelegate?
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
+    var restaurantNameSubject: BehaviorSubject<String> = BehaviorSubject<String>(value: "")
 
-    init(presenter: UINavigationController) {
+    init(presenter: UINavigationController, subject: BehaviorSubject<String>) {
         self.presenter = presenter
         self.childCoordinators = []
+        self.restaurantNameSubject = subject
     }
 
     func start() {
-        let searchRestaurant = SearchRestaurantViewController.instantiate()
-        searchRestaurant.coordinator = self
-        presenter.present(searchRestaurant, animated: true, completion: nil)
+        setBottomSheetAndPresent()
     }
 }
 
-extension CreationCoordinator {
+extension SearchRestaurantCoordinator {
+    private func setBottomSheetAndPresent() {
+        var searchRestaurant = SearchRestaurantViewController.instantiate()
+        searchRestaurant.coordinator = self
+        searchRestaurant.bind(viewModel: SearchRestaurantViewModel(restaurantNameSubject))
 
+        let sheetViewController = SheetViewController(controller: searchRestaurant,
+                                                      sizes: [.fixed(400)],
+                                                      options: SheetOptions(
+                                                        useFullScreenMode: false,
+                                                        shrinkPresentingViewController: false))
+        sheetViewController.allowPullingPastMaxHeight = false
+        sheetViewController.dismissOnPull = true
+        sheetViewController.cornerRadius = 24
+        sheetViewController.gripColor = .colorGrayGray04
+        sheetViewController.gripSize = CGSize(width: CGFloat(32).widthRatio(), height: 4)
+        sheetViewController.didDismiss = { _ in
+            print("sheetViewController didDismiss")
+        }
+
+        Common.currentViewController()?.present(sheetViewController, animated: true, completion: nil)
+    }
 }

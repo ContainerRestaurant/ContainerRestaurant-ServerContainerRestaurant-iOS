@@ -8,7 +8,11 @@
 import UIKit
 
 extension CGFloat {
-    func ratio() -> CGFloat {
+    func widthRatio() -> CGFloat {
         return UIScreen.main.bounds.width / CGFloat(375) * self
+    }
+
+    func heightRatio() -> CGFloat {
+        return UIScreen.main.bounds.height / CGFloat(812) * self
     }
 }
