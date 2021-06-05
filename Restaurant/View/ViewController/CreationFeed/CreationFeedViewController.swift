@@ -82,8 +82,9 @@ extension CreationFeedViewController {
         self.collectionView.dataSource = self
 
         self.collectionView.register(SeparateLineCollectionViewCell.self)
-        self.collectionView.register(SearchRestaurant.self)
         self.collectionView.register(Title16Bold.self)
+        self.collectionView.register(SearchRestaurant.self)
+        self.collectionView.register(FoodCategory.self)
         self.collectionView.register(CreationFeedDetail.self)
         self.collectionView.register(CreationFeedDetailSide.self)
     }
@@ -105,6 +106,18 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
                 cell.configureCell(height: CGFloat(21).heightRatio(), color: .white)
             } else if indexPath.row == 3 {
                 cell.configureCell(height: CGFloat(36).heightRatio(), color: .white)
+            } else if indexPath.row == 5 {
+                cell.configureCell(height: CGFloat(12).heightRatio(), color: .white)
+            } else if indexPath.row == 7 {
+                cell.configureCell(height: CGFloat(34).heightRatio(), color: .white)
+            } else if indexPath.row == 8 {
+                cell.configureCell(height: CGFloat(8).heightRatio(), color: .colorGrayGray02)
+            } else if indexPath.row == 9 {
+                cell.configureCell(height: CGFloat(34).heightRatio(), color: .white)
+            } else if indexPath.row == 11 {
+                cell.configureCell(height: CGFloat(12).heightRatio(), color: .white)
+            } else if indexPath.row == 13 {
+                cell.configureCell(height: CGFloat(32).heightRatio(), color: .white)
             }
             return cell
 
@@ -113,6 +126,8 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
             if indexPath.row == 1 {
                 cell.configure(title: "식당 이름")
             } else if indexPath.row == 4 {
+                cell.configure(title: "음식 카테고리")
+            } else if indexPath.row == 10 {
                 cell.configure(title: "상세 내역")
             }
             return cell
@@ -122,6 +137,10 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
             if let coordinator = self.coordinator {
                 cell.configure(coordinator, viewModel.restaurantNameSubject)
             }
+            return cell
+
+        case is FoodCategory:
+            let cell: FoodCategory = collectionView.dequeueReusableCell(for: indexPath)
             return cell
 
         case is CreationFeedDetail:
@@ -144,10 +163,17 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
         case 1: return viewModel.mainTitleSectionSize()
         case 2: return viewModel.searchRestaurantSize()
         case 3: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(36).heightRatio())
-
         case 4: return viewModel.mainTitleSectionSize()
-        case 5: return CGSize(width: UIScreen.main.bounds.width, height: self.mainFoodHeight.heightRatio())
-        case 6: return CGSize(width: UIScreen.main.bounds.width, height: self.sideFoodHeight.heightRatio())
+        case 5: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(12).heightRatio())
+        case 6: return viewModel.foodCategorySize()
+        case 7: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(34).heightRatio())
+        case 8: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(8).heightRatio())
+        case 9: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(34).heightRatio())
+        case 10: return viewModel.mainTitleSectionSize()
+        case 11: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(12).heightRatio())
+        case 12: return CGSize(width: UIScreen.main.bounds.width, height: self.mainFoodHeight.heightRatio())
+        case 13: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(32).heightRatio())
+        case 14: return CGSize(width: UIScreen.main.bounds.width, height: self.sideFoodHeight.heightRatio())
         default: return CGSize.zero
         }
     }

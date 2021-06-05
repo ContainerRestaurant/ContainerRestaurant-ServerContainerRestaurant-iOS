@@ -12,7 +12,7 @@ import FittedSheets
 class SearchRestaurant: UICollectionViewCell {
     let disposeBag = DisposeBag()
     weak var coordinator: CreationFeedCoordinator?
-    var restaurantNameSubject: BehaviorSubject<String>?
+    var restaurantNameSubject: BehaviorSubject<String> = BehaviorSubject<String>(value: "")
 
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var searchRestaurantButton: UIButton!
@@ -40,7 +40,7 @@ class SearchRestaurant: UICollectionViewCell {
         self.coordinator = coordinator
         restaurantNameSubject = subject
 
-        subject
+        restaurantNameSubject
             .bind(to: restaurantNameLabel.rx.text)
             .disposed(by: disposeBag)
     }
