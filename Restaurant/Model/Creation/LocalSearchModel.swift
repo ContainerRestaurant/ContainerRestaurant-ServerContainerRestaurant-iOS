@@ -8,10 +8,10 @@
 import Foundation
 
 struct LocalSearch: Decodable {
-    var items: [LocalSearchResult]
+    var items: [LocalSearchItem]
 }
 
-struct LocalSearchResult: Decodable {
+struct LocalSearchItem: Decodable {
     var title: String
     var link: String
     var category: String

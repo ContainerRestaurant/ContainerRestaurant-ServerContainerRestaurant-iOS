@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class CreationFeedCoordinator: NSObject, Coordinator {
     var delegate: CoordinatorFinishDelegate?
@@ -18,14 +19,19 @@ class CreationFeedCoordinator: NSObject, Coordinator {
     }
 
     func start() {
-        let creationFeed = CreationFeedViewController.instantiate()
+        var creationFeed = CreationFeedViewController.instantiate()
         creationFeed.coordinator = self
-//        creationFeed.modalPresentationStyle = .pageSheet
-        creationFeed.viewModel = CreationFeedViewModel()
+        creationFeed.modalPresentationStyle = .fullScreen
+        creationFeed.bind(viewModel: CreationFeedViewModel())
         presenter.present(creationFeed, animated: true, completion: nil)
     }
 }
 
 extension CreationFeedCoordinator {
-
+    func presentBottomSheet(_ restaurantNameSubject: BehaviorSubject<String>) {
+        let coordinator = SearchRestaurantCoordinator(presenter: presenter, subject: restaurantNameSubject)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
 }

@@ -10,7 +10,8 @@ import RxSwift
 
 struct CreationFeedViewModel {
     var modules: [UICollectionViewCell] = []
-    var searchRestaurantSubject: PublishSubject<String> = PublishSubject<String>() //아직 안씀
+    var restaurantName: String = ""
+    var restaurantNameSubject: BehaviorSubject<String> = BehaviorSubject<String>(value: "")
     var mainFoodHeightSubject: PublishSubject<CGFloat> = PublishSubject<CGFloat>()
     var sideFoodHeightSubject: PublishSubject<CGFloat> = PublishSubject<CGFloat>()
 
@@ -21,22 +22,32 @@ struct CreationFeedViewModel {
 
 extension CreationFeedViewModel {
     mutating func appendModule() {
+        self.modules.append(SeparateLineCollectionViewCell())
         self.modules.append(Title16Bold())
         self.modules.append(SearchRestaurant())
+        self.modules.append(SeparateLineCollectionViewCell())
         self.modules.append(Title16Bold())
+        self.modules.append(SeparateLineCollectionViewCell())
+        self.modules.append(FoodCategory())
+        self.modules.append(SeparateLineCollectionViewCell())
+        self.modules.append(SeparateLineCollectionViewCell())
+        self.modules.append(SeparateLineCollectionViewCell())
+        self.modules.append(Title16Bold())
+        self.modules.append(SeparateLineCollectionViewCell())
         self.modules.append(CreationFeedDetail())
+        self.modules.append(SeparateLineCollectionViewCell())
         self.modules.append(CreationFeedDetailSide())
     }
 
     func mainTitleSectionSize() -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 24)
+        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(24).heightRatio())
     }
 
     func searchRestaurantSize() -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 40)
+        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(40).heightRatio())
     }
-    
-    func creationFeedDetailSize() -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 500)
+
+    func foodCategorySize() -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(116).heightRatio())
     }
 }
