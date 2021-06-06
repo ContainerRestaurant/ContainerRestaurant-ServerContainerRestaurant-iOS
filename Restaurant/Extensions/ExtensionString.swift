@@ -2,7 +2,7 @@
 //  ExtensionString.swift
 //  Restaurant
 //
-//  Created by Lotte on 2021/06/03.
+//  Created by 0ofKim on 2021/06/03.
 //
 
 import Foundation

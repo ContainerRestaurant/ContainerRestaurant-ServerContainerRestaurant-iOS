@@ -2,7 +2,7 @@
 //  FoodCategory.swift
 //  Restaurant
 //
-//  Created by Lotte on 2021/06/03.
+//  Created by 0ofKim on 2021/06/03.
 //
 
 import UIKit
@@ -13,6 +13,7 @@ class FoodCategory: UICollectionViewCell {
         "패스트푸드", "아시안/양식", "카페/디저트",
         "돈까스/회/일식", "치킨/피자"
     ]
+    var isClickedArray: [Bool] = Array(repeating: false, count: 9)
 
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -41,7 +42,7 @@ extension FoodCategory: UICollectionViewDelegate, UICollectionViewDataSource, UI
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: FoodCategoryCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.configure(title: category[indexPath.row])
+        cell.configure(title: category[indexPath.row], isClicked: isClickedArray[indexPath.row])
 
         return cell
     }
@@ -58,5 +59,16 @@ extension FoodCategory: UICollectionViewDelegate, UICollectionViewDataSource, UI
             }
         }
         return CGSize(width: categoryWidth.widthRatio(), height: CGFloat(32).heightRatio())
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.isClickedArray[indexPath.row] = true
+        for (index, _) in isClickedArray.enumerated() where index != indexPath.row {
+            self.isClickedArray[index] = false
+        }
+
+        UIView.performWithoutAnimation {
+            collectionView.reloadSections(IndexSet(integer: 0))
+        }
     }
 }

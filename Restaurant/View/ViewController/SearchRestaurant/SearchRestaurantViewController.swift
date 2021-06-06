@@ -2,7 +2,7 @@
 //  SearchRestaurantViewController.swift
 //  Restaurant
 //
-//  Created by Lotte on 2021/06/01.
+//  Created by 0ofKim on 2021/06/01.
 //
 
 import UIKit
@@ -15,9 +15,10 @@ class SearchRestaurantViewController: BaseViewController, Storyboard, ViewModelB
     var searchLocalSubject: PublishSubject<LocalSearch> = PublishSubject<LocalSearch>()
     var items: [LocalSearchItem]?
 
-    @IBOutlet weak var searchRestaurantTextField: UITextField!
-    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var searchRestaurantTextField: UITextField!
+    @IBOutlet weak var textClearButton: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,14 @@ class SearchRestaurantViewController: BaseViewController, Storyboard, ViewModelB
                 if let subject = self?.searchLocalSubject {
                     API().localSearch(text: $0 ?? "", subject: subject)
                 }
+            })
+            .disposed(by: disposeBag)
+
+        textClearButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.searchRestaurantTextField.text = ""
+                self?.items = []
+                self?.collectionView.reloadData()
             })
             .disposed(by: disposeBag)
 

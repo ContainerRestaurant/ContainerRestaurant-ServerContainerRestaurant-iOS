@@ -2,7 +2,7 @@
 //  SearchRestaurantViewModel.swift
 //  Restaurant
 //
-//  Created by Lotte on 2021/06/02.
+//  Created by 0ofKim on 2021/06/02.
 //
 
 import Foundation

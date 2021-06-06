@@ -2,7 +2,7 @@
 //  LocalSearchModel.swift
 //  Restaurant
 //
-//  Created by Lotte on 2021/06/01.
+//  Created by 0ofKim on 2021/06/01.
 //
 
 import Foundation

@@ -2,7 +2,7 @@
 //  CreationFeedDetail.swift
 //  Restaurant
 //
-//  Created by Lotte on 2021/05/27.
+//  Created by 0ofKim on 2021/05/27.
 //
 
 import UIKit
@@ -44,7 +44,7 @@ extension CreationFeedDetail {
                 } else {
                     self?.mainFoodCount += 1
                     
-                    let cardHeight = CGFloat(105 * self!.mainFoodCount)
+                    let cardHeight = CGFloat(104 * self!.mainFoodCount)
                     let cardSpacing = CGFloat(14 * (self!.mainFoodCount-1))
                     
                     self?.cardHeightSubject?.onNext(cardHeight+cardSpacing)
@@ -73,6 +73,6 @@ extension CreationFeedDetail: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CGFloat(343), height: CGFloat(105))
+        return CGSize(width: CGFloat(343), height: CGFloat(104))
     }
 }

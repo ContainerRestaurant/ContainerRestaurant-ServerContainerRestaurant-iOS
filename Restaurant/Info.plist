@@ -68,5 +68,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>음식 사진을 불러오기 위해 앨범이 사용됩니다.</string>
 </dict>
 </plist>

@@ -44,7 +44,7 @@ extension CreationFeedDetailSide {
                 } else {
                     self?.subFoodCount += 1
                     
-                    let cardHeight = CGFloat(105 * self!.subFoodCount)
+                    let cardHeight = CGFloat(104 * self!.subFoodCount)
                     let cardSpacing = CGFloat(14 * (self!.subFoodCount-1))
                     
                     self?.cardHeightSubject?.onNext(cardHeight+cardSpacing)
@@ -73,6 +73,6 @@ extension CreationFeedDetailSide: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CGFloat(343), height: CGFloat(105))
+        return CGSize(width: CGFloat(343), height: CGFloat(104))
     }
 }

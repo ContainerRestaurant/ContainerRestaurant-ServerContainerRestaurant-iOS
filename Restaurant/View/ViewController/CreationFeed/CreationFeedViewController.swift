@@ -2,7 +2,7 @@
 //  CreationFeedViewController.swift
 //  Restaurant
 //
-//  Created by Lotte on 2021/05/27.
+//  Created by 0ofKim on 2021/05/27.
 //
 
 import UIKit
@@ -87,6 +87,8 @@ extension CreationFeedViewController {
         self.collectionView.register(FoodCategory.self)
         self.collectionView.register(CreationFeedDetail.self)
         self.collectionView.register(CreationFeedDetailSide.self)
+        self.collectionView.register(LevelOfDifficultyAndWelcome.self)
+        self.collectionView.register(CreationFeedImage.self)
     }
 }
 
@@ -118,6 +120,8 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
                 cell.configureCell(height: CGFloat(12).heightRatio(), color: .white)
             } else if indexPath.row == 13 {
                 cell.configureCell(height: CGFloat(32).heightRatio(), color: .white)
+            } else if indexPath.row == 16 {
+                cell.configureCell(height: CGFloat(8).heightRatio(), color: .colorGrayGray02)
             }
             return cell
 
@@ -153,6 +157,17 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
             cell.configure(self.viewModel.sideFoodHeightSubject, .side)
             return cell
 
+        case is LevelOfDifficultyAndWelcome:
+            let cell: LevelOfDifficultyAndWelcome = collectionView.dequeueReusableCell(for: indexPath)
+            return cell
+
+        case is CreationFeedImage:
+            let cell: CreationFeedImage = collectionView.dequeueReusableCell(for: indexPath)
+            if let coordinator = self.coordinator {
+                cell.configure(coordinator)
+            }
+            return cell
+
         default: return UICollectionViewCell()
         }
     }
@@ -174,6 +189,9 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
         case 12: return CGSize(width: UIScreen.main.bounds.width, height: self.mainFoodHeight.heightRatio())
         case 13: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(32).heightRatio())
         case 14: return CGSize(width: UIScreen.main.bounds.width, height: self.sideFoodHeight.heightRatio())
+        case 15: return viewModel.levelOfDifficultyAndWelcomeSize()
+        case 16: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(8).heightRatio())
+        case 17: return viewModel.creationFeedImage()
         default: return CGSize.zero
         }
     }

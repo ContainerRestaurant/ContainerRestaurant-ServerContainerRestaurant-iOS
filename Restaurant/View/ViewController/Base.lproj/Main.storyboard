@@ -343,7 +343,7 @@
                                     <constraint firstAttribute="width" constant="16" id="LrO-AO-Uig"/>
                                     <constraint firstAttribute="height" constant="16" id="gyX-0s-ssE"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="closeFilled16Px"/>
+                                <state key="normal" title="Button" image="closeOutline20Px"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Elg-ve-i6n"/>
@@ -383,7 +383,7 @@
                                 <color key="textColor" name="colorGrayGray07"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5wV-6S-tY1">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5wV-6S-tY1">
                                 <rect key="frame" x="16" y="39" width="343" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="nWG-Y7-wvz"/>
@@ -436,6 +436,13 @@
                                     <constraint firstAttribute="width" constant="20" id="cZz-OO-zNH"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ti-AT-mVq">
+                                <rect key="frame" x="16" y="78" width="343" height="1"/>
+                                <color key="backgroundColor" name="colorMainGreen03"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="a0u-gB-9tY"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="34M-rs-yWc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -452,17 +459,21 @@
                             <constraint firstItem="5wV-6S-tY1" firstAttribute="top" secondItem="gSw-am-WEF" secondAttribute="bottom" id="Mxa-5p-muk"/>
                             <constraint firstItem="AE7-to-mXH" firstAttribute="bottom" secondItem="gSw-am-WEF" secondAttribute="bottom" id="PSY-UP-uAR"/>
                             <constraint firstItem="cPv-Zm-ZrK" firstAttribute="top" secondItem="5wV-6S-tY1" secondAttribute="bottom" constant="9" id="VBL-CD-m8N"/>
+                            <constraint firstItem="4ti-AT-mVq" firstAttribute="leading" secondItem="5wV-6S-tY1" secondAttribute="leading" id="axr-tp-oG9"/>
                             <constraint firstItem="xpe-J5-aoh" firstAttribute="centerY" secondItem="5wV-6S-tY1" secondAttribute="centerY" id="bxT-xe-Xhj"/>
+                            <constraint firstItem="4ti-AT-mVq" firstAttribute="bottom" secondItem="5wV-6S-tY1" secondAttribute="bottom" id="eRU-BG-5DI"/>
                             <constraint firstItem="34M-rs-yWc" firstAttribute="trailing" secondItem="cPv-Zm-ZrK" secondAttribute="trailing" id="l6S-Sw-g5U"/>
                             <constraint firstAttribute="trailing" secondItem="xpe-J5-aoh" secondAttribute="trailing" constant="16" id="m4K-E7-oo6"/>
                             <constraint firstItem="34M-rs-yWc" firstAttribute="trailing" secondItem="5wV-6S-tY1" secondAttribute="trailing" constant="16" id="nCX-9Z-ZW3"/>
                             <constraint firstItem="xpe-J5-aoh" firstAttribute="leading" secondItem="cKG-lF-wbn" secondAttribute="trailing" constant="14" id="rNd-tD-W54"/>
+                            <constraint firstItem="4ti-AT-mVq" firstAttribute="trailing" secondItem="5wV-6S-tY1" secondAttribute="trailing" id="zub-cW-7AB"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="AE7-to-mXH" id="vcR-sJ-4Bh"/>
                         <outlet property="collectionView" destination="cPv-Zm-ZrK" id="ixK-xG-Sal"/>
                         <outlet property="searchRestaurantTextField" destination="5wV-6S-tY1" id="Hx5-zS-I1O"/>
+                        <outlet property="textClearButton" destination="cKG-lF-wbn" id="AjE-Ld-p4q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zrd-R8-3eK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -999,6 +1010,7 @@
         <image name="IU" width="464" height="461"/>
         <image name="bookmarkFilledGreen20Px" width="20" height="20"/>
         <image name="closeFilled16Px" width="20" height="20"/>
+        <image name="closeOutline20Px" width="20" height="20"/>
         <image name="favoriteFilled20Px" width="20" height="20"/>
         <image name="feedFilledBlue20Px" width="20" height="20"/>
         <image name="photoEdit20Px" width="20" height="20"/>
