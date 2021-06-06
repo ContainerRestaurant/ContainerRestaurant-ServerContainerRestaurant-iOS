@@ -2,7 +2,7 @@
 //  FoodCategoryCollectionViewCell.swift
 //  Restaurant
 //
-//  Created by Lotte on 2021/06/03.
+//  Created by 0ofKim on 2021/06/03.
 //
 
 import UIKit
@@ -14,7 +14,9 @@ class FoodCategoryCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-    func configure(title: String) {
+    func configure(title: String, isClicked: Bool) {
         foodCategoryButton.setTitle(title, for: .normal)
+        foodCategoryButton.borderColor = isClicked ? .colorMainGreen04 : .colorGrayGray04
+        foodCategoryButton.setTitleColor(isClicked ? .colorMainGreen04 : .colorGrayGray06, for: .normal)
     }
 }

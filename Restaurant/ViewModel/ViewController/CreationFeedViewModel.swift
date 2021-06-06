@@ -2,7 +2,7 @@
 //  CreationFeedViewModel.swift
 //  Restaurant
 //
-//  Created by Lotte on 2021/05/27.
+//  Created by 0ofKim on 2021/05/27.
 //
 
 import UIKit
@@ -37,6 +37,9 @@ extension CreationFeedViewModel {
         self.modules.append(CreationFeedDetail())
         self.modules.append(SeparateLineCollectionViewCell())
         self.modules.append(CreationFeedDetailSide())
+        self.modules.append(LevelOfDifficultyAndWelcome())
+        self.modules.append(SeparateLineCollectionViewCell())
+        self.modules.append(CreationFeedImage())
     }
 
     func mainTitleSectionSize() -> CGSize {
@@ -49,5 +52,13 @@ extension CreationFeedViewModel {
 
     func foodCategorySize() -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(116).heightRatio())
+    }
+
+    func levelOfDifficultyAndWelcomeSize() -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(206).heightRatio())
+    }
+
+    func creationFeedImage() -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(283).heightRatio())
     }
 }

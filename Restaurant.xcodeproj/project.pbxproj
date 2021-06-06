@@ -99,6 +99,10 @@
 		FB585B332668C6D40085C6B2 /* FoodCategory.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB585B312668C6D30085C6B2 /* FoodCategory.xib */; };
 		FB585B362668C85B0085C6B2 /* FoodCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B342668C85B0085C6B2 /* FoodCategoryCollectionViewCell.swift */; };
 		FB585B372668C85B0085C6B2 /* FoodCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB585B352668C85B0085C6B2 /* FoodCategoryCollectionViewCell.xib */; };
+		FB585B3B266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B39266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.swift */; };
+		FB585B3C266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB585B3A266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.xib */; };
+		FB585B3F266B533F0085C6B2 /* CreationFeedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B3D266B533F0085C6B2 /* CreationFeedImage.swift */; };
+		FB585B40266B533F0085C6B2 /* CreationFeedImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB585B3E266B533F0085C6B2 /* CreationFeedImage.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -199,6 +203,10 @@
 		FB585B312668C6D30085C6B2 /* FoodCategory.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodCategory.xib; sourceTree = "<group>"; };
 		FB585B342668C85B0085C6B2 /* FoodCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB585B352668C85B0085C6B2 /* FoodCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		FB585B39266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfDifficultyAndWelcome.swift; sourceTree = "<group>"; };
+		FB585B3A266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelOfDifficultyAndWelcome.xib; sourceTree = "<group>"; };
+		FB585B3D266B533F0085C6B2 /* CreationFeedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationFeedImage.swift; sourceTree = "<group>"; };
+		FB585B3E266B533F0085C6B2 /* CreationFeedImage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreationFeedImage.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,14 +362,7 @@
 				526BED672647069E00897230 /* MostFeedTopTenCollectionView.xib */,
 				526BED762647212400897230 /* RecentlyFeedCollectionView.swift */,
 				526BED772647212400897230 /* RecentlyFeedCollectionView.xib */,
-				52E50DC82662B85C0068C36C /* SearchRestaurant.swift */,
-				52E50DC92662B85C0068C36C /* SearchRestaurant.xib */,
-				FB56AF73265F71B4002736F5 /* CreationFeedDetail.swift */,
-				FB56AF74265F71B4002736F5 /* CreationFeedDetail.xib */,
-				52E50DC42662A70B0068C36C /* CreationFeedDetailSide.swift */,
-				52E50DC52662A70B0068C36C /* CreationFeedDetailSide.xib */,
-				FB585B302668C6D30085C6B2 /* FoodCategory.swift */,
-				FB585B312668C6D30085C6B2 /* FoodCategory.xib */,
+				FB585B38266B1A5B0085C6B2 /* Creation */,
 			);
 			path = Section;
 			sourceTree = "<group>";
@@ -636,6 +637,25 @@
 			path = Creation;
 			sourceTree = "<group>";
 		};
+		FB585B38266B1A5B0085C6B2 /* Creation */ = {
+			isa = PBXGroup;
+			children = (
+				52E50DC82662B85C0068C36C /* SearchRestaurant.swift */,
+				52E50DC92662B85C0068C36C /* SearchRestaurant.xib */,
+				FB56AF73265F71B4002736F5 /* CreationFeedDetail.swift */,
+				FB56AF74265F71B4002736F5 /* CreationFeedDetail.xib */,
+				52E50DC42662A70B0068C36C /* CreationFeedDetailSide.swift */,
+				52E50DC52662A70B0068C36C /* CreationFeedDetailSide.xib */,
+				FB585B302668C6D30085C6B2 /* FoodCategory.swift */,
+				FB585B312668C6D30085C6B2 /* FoodCategory.xib */,
+				FB585B39266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.swift */,
+				FB585B3A266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.xib */,
+				FB585B3D266B533F0085C6B2 /* CreationFeedImage.swift */,
+				FB585B3E266B533F0085C6B2 /* CreationFeedImage.xib */,
+			);
+			path = Creation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -698,6 +718,7 @@
 				52E50DC72662A70B0068C36C /* CreationFeedDetailSide.xib in Resources */,
 				529CF0D0261A0AF6002CAD5C /* LaunchScreen.storyboard in Resources */,
 				FB585B26266591330085C6B2 /* SearchRestaurantCollectionViewCell.xib in Resources */,
+				FB585B40266B533F0085C6B2 /* CreationFeedImage.xib in Resources */,
 				529CF0CD261A0AF6002CAD5C /* Assets.xcassets in Resources */,
 				FB1BE37A26371BFA0004673C /* MainFeedCollectionView.xib in Resources */,
 				52E50DCB2662B85C0068C36C /* SearchRestaurant.xib in Resources */,
@@ -710,6 +731,7 @@
 				FB1BE3862637DF2B0004673C /* MainFeedCollectionViewCell.xib in Resources */,
 				52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */,
 				FB56AF76265F71B4002736F5 /* CreationFeedDetail.xib in Resources */,
+				FB585B3C266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.xib in Resources */,
 				526BED802647252400897230 /* RecentlyFeedCollectionViewCell.xib in Resources */,
 				FB1BE3662636CB540004673C /* MainTitleSection.xib in Resources */,
 				526BED792647212400897230 /* RecentlyFeedCollectionView.xib in Resources */,
@@ -800,9 +822,11 @@
 				52254C63265AC19C00D921ED /* RecommendFeedModel.swift in Sources */,
 				FB1BE37926371BFA0004673C /* MainFeedCollectionView.swift in Sources */,
 				52256FAC263D7F4300A056DE /* SeparateLineCollectionViewCell.swift in Sources */,
+				FB585B3B266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.swift in Sources */,
 				529CF0C8261A0AF6002CAD5C /* HomeViewController.swift in Sources */,
 				526BED462645D98200897230 /* ViewModelBindableType.swift in Sources */,
 				52256FB0263DBEFA00A056DE /* ExtensionCollectionViewCell.swift in Sources */,
+				FB585B3F266B533F0085C6B2 /* CreationFeedImage.swift in Sources */,
 				52542E09264AEBB10066F565 /* InquiryProfileViewController.swift in Sources */,
 				52855930262DE5A700AB4E28 /* TabBarItem.swift in Sources */,
 				526BED6C26470BD200897230 /* MostFeedTopTenCollectionViewCell.swift in Sources */,

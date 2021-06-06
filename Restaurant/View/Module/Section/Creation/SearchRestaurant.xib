@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUk-fB-0yy">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="두 줄일 경우 후순위" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUk-fB-0yy">
                         <rect key="frame" x="16" y="12" width="289" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" name="colorGrayGray07"/>
@@ -41,8 +41,8 @@
                         <state key="normal" image="closeFilled16Px"/>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5A-uQ-rKi">
-                        <rect key="frame" x="0.0" y="39" width="375" height="1"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <rect key="frame" x="16" y="39" width="343" height="1"/>
+                        <color key="backgroundColor" name="colorGrayGray04"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="8Lc-bp-10o"/>
                         </constraints>
@@ -60,10 +60,10 @@
                 <constraint firstItem="QmE-Xc-3Ok" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="N7H-rN-Nvr"/>
                 <constraint firstItem="jUk-fB-0yy" firstAttribute="leading" secondItem="9aM-Vw-Mqv" secondAttribute="leading" id="P7A-DW-gBU"/>
                 <constraint firstAttribute="bottom" secondItem="9aM-Vw-Mqv" secondAttribute="bottom" id="VVh-PM-gFe"/>
-                <constraint firstItem="K5A-uQ-rKi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="mMI-vd-apT"/>
+                <constraint firstItem="K5A-uQ-rKi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="mMI-vd-apT"/>
                 <constraint firstAttribute="bottom" secondItem="K5A-uQ-rKi" secondAttribute="bottom" id="pOQ-wO-c36"/>
                 <constraint firstAttribute="trailing" secondItem="9aM-Vw-Mqv" secondAttribute="trailing" constant="16" id="pja-57-7oF"/>
-                <constraint firstAttribute="trailing" secondItem="K5A-uQ-rKi" secondAttribute="trailing" id="xlZ-qe-Rad"/>
+                <constraint firstAttribute="trailing" secondItem="K5A-uQ-rKi" secondAttribute="trailing" constant="16" id="xlZ-qe-Rad"/>
             </constraints>
             <connections>
                 <outlet property="clearButton" destination="QmE-Xc-3Ok" id="OgZ-Ph-Hh8"/>
@@ -76,6 +76,9 @@
     <resources>
         <image name="closeFilled16Px" width="20" height="20"/>
         <image name="searchOutline20Px" width="20" height="20"/>
+        <namedColor name="colorGrayGray04">
+            <color red="0.80800002813339233" green="0.80800002813339233" blue="0.80800002813339233" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="colorGrayGray07">
             <color red="0.14100000262260437" green="0.14100000262260437" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -1,19 +1,19 @@
 //
-//  CreationFeedDetailSide.swift
+//  CreationFeedDetail.swift
 //  Restaurant
 //
-//  Created by 0ofKim on 2021/05/30.
+//  Created by 0ofKim on 2021/05/27.
 //
 
 import UIKit
 import RxSwift
 
-class CreationFeedDetailSide: UICollectionViewCell {
+class CreationFeedDetail: UICollectionViewCell {
     let disposeBag = DisposeBag()
-    var subFoodCount: Int = 1
+    var mainFoodCount: Int = 1
     var cardHeightSubject: PublishSubject<CGFloat>?
     var foodType: FoodType?
-    
+
     @IBOutlet weak var foodImageView: UIImageView!
     @IBOutlet weak var foodTitleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -21,14 +21,14 @@ class CreationFeedDetailSide: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         setCollectionView()
         binding()
     }
 }
 
 //MARK: - Instance Method
-extension CreationFeedDetailSide {
+extension CreationFeedDetail {
     private func setCollectionView() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -39,13 +39,13 @@ extension CreationFeedDetailSide {
     private func binding() {
         appendFoodButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                if self!.subFoodCount >= 5 {
+                if self!.mainFoodCount >= 5 {
                     print("더이상 추가 안됨")
                 } else {
-                    self?.subFoodCount += 1
+                    self?.mainFoodCount += 1
                     
-                    let cardHeight = CGFloat(105 * self!.subFoodCount)
-                    let cardSpacing = CGFloat(14 * (self!.subFoodCount-1))
+                    let cardHeight = CGFloat(104 * self!.mainFoodCount)
+                    let cardSpacing = CGFloat(14 * (self!.mainFoodCount-1))
                     
                     self?.cardHeightSubject?.onNext(cardHeight+cardSpacing)
                     self?.collectionView.reloadData()
@@ -61,18 +61,18 @@ extension CreationFeedDetailSide {
 }
 
 //MARK: - CollectionView Protocol
-extension CreationFeedDetailSide: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension CreationFeedDetail: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return subFoodCount
+        return mainFoodCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: CreationFeedDetailCardCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.configure(foodType: foodType!)
+        cell.configure(foodType: self.foodType!)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CGFloat(343), height: CGFloat(105))
+        return CGSize(width: CGFloat(343), height: CGFloat(104))
     }
 }

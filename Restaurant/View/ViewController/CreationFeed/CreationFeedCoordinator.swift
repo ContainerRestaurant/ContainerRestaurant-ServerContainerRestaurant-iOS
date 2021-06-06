@@ -2,7 +2,7 @@
 //  CreationFeedCoordinator.swift
 //  Restaurant
 //
-//  Created by Lotte on 2021/05/27.
+//  Created by 0ofKim on 2021/05/27.
 //
 
 import UIKit
