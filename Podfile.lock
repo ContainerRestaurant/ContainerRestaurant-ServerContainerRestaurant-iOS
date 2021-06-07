@@ -13,7 +13,8 @@ PODS:
   - KakaoSDKUser (2.5.3):
     - KakaoSDKAuth (= 2.5.3)
   - Kingfisher (6.3.0)
-  - NMapsMap (3.11.0)
+  - lottie-ios (3.2.3)
+  - NMapsMap (3.12.0)
   - RxCocoa (6.1.0):
     - RxRelay (= 6.1.0)
     - RxSwift (= 6.1.0)
@@ -28,6 +29,7 @@ DEPENDENCIES:
   - KakaoSDKCommon
   - KakaoSDKUser
   - Kingfisher (~> 6.0)
+  - lottie-ios
   - NMapsMap
   - RxCocoa (= 6.1.0)
   - RxSwift (= 6.1.0)
@@ -40,6 +42,7 @@ SPEC REPOS:
     - KakaoSDKCommon
     - KakaoSDKUser
     - Kingfisher
+    - lottie-ios
     - NMapsMap
     - RxCocoa
     - RxRelay
@@ -52,11 +55,12 @@ SPEC CHECKSUMS:
   KakaoSDKCommon: 08548932f6f570215ea038241a98157c0b3f7a8b
   KakaoSDKUser: 5d2de71fe070455bbaaad6a37af3eb500fbc8972
   Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
-  NMapsMap: e6dbea85c2c195c7532deb637a5e90fd70f94fed
+  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
+  NMapsMap: b04a3439eac78e52f48cb5a9e4ab994be1bcfc80
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
 
-PODFILE CHECKSUM: 2b1bdf93d55a5b5dc6e4cd5fb54a55755851d5d8
+PODFILE CHECKSUM: 5c6dc3fa09ea96fdc890fe546e66824be80fbc63
 
 COCOAPODS: 1.10.1

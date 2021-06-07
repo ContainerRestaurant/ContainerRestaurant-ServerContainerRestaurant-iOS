@@ -97,7 +97,7 @@ extension SearchRestaurantViewController: UICollectionViewDelegate, UICollection
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(65).heightRatio())
+        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(65))
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

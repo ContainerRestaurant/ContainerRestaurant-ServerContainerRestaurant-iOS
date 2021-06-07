@@ -14,10 +14,10 @@ class ContainerOfEveryoneViewModel {
     ]
     
     func mostFeedTopTenSize() -> CGSize {
-        return CGSize(width: 375, height: 286)
+        return CGSize(width: CGFloat(375).widthRatio(), height: 286)
     }
     
     func RecentlyFeedSize() -> CGSize {
-        return CGSize(width: 375, height: 108 * 5 + 20 * 4 + 114)
+        return CGSize(width: CGFloat(375).widthRatio(), height: 108 * 5 + 20 * 4 + 114)
     }
 }

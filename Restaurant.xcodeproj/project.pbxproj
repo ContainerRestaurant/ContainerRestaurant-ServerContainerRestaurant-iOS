@@ -103,6 +103,16 @@
 		FB585B3C266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB585B3A266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.xib */; };
 		FB585B3F266B533F0085C6B2 /* CreationFeedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B3D266B533F0085C6B2 /* CreationFeedImage.swift */; };
 		FB585B40266B533F0085C6B2 /* CreationFeedImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB585B3E266B533F0085C6B2 /* CreationFeedImage.xib */; };
+		FB585B43266D68670085C6B2 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B42266D68670085C6B2 /* OnboardingViewController.swift */; };
+		FB585B45266D68720085C6B2 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B44266D68720085C6B2 /* OnboardingCoordinator.swift */; };
+		FB585B47266D69B30085C6B2 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B46266D69B30085C6B2 /* Storage.swift */; };
+		FB585B49266D6E770085C6B2 /* ExtensionUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B48266D6E770085C6B2 /* ExtensionUIButton.swift */; };
+		FB585B4B266D79C30085C6B2 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B4A266D79C30085C6B2 /* OnboardingView.swift */; };
+		FB585B4D266D79CE0085C6B2 /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB585B4C266D79CE0085C6B2 /* OnboardingView.xib */; };
+		FB585B50266D91D80085C6B2 /* onboarding1.json in Resources */ = {isa = PBXBuildFile; fileRef = FB585B4F266D91D80085C6B2 /* onboarding1.json */; };
+		FB585B52266DA0990085C6B2 /* onboarding3.json in Resources */ = {isa = PBXBuildFile; fileRef = FB585B51266DA0990085C6B2 /* onboarding3.json */; };
+		FB585B54266DA0B30085C6B2 /* onboarding2.json in Resources */ = {isa = PBXBuildFile; fileRef = FB585B53266DA0B30085C6B2 /* onboarding2.json */; };
+		FBDC3D83266DA3910072D7E8 /* LongText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC3D82266DA3910072D7E8 /* LongText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -207,6 +217,16 @@
 		FB585B3A266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelOfDifficultyAndWelcome.xib; sourceTree = "<group>"; };
 		FB585B3D266B533F0085C6B2 /* CreationFeedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationFeedImage.swift; sourceTree = "<group>"; };
 		FB585B3E266B533F0085C6B2 /* CreationFeedImage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreationFeedImage.xib; sourceTree = "<group>"; };
+		FB585B42266D68670085C6B2 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		FB585B44266D68720085C6B2 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		FB585B46266D69B30085C6B2 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		FB585B48266D6E770085C6B2 /* ExtensionUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIButton.swift; sourceTree = "<group>"; };
+		FB585B4A266D79C30085C6B2 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		FB585B4C266D79CE0085C6B2 /* OnboardingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
+		FB585B4F266D91D80085C6B2 /* onboarding1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = onboarding1.json; path = ../../../../../../Downloads/onboarding1.json; sourceTree = "<group>"; };
+		FB585B51266DA0990085C6B2 /* onboarding3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = onboarding3.json; path = ../../../../../../Downloads/onboarding3.json; sourceTree = "<group>"; };
+		FB585B53266DA0B30085C6B2 /* onboarding2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = onboarding2.json; path = ../../../../../../Downloads/onboarding2.json; sourceTree = "<group>"; };
+		FBDC3D82266DA3910072D7E8 /* LongText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -500,6 +520,7 @@
 				52041986264F96920099BA39 /* Coordinator */,
 				FB56AF5F265E628F002736F5 /* View */,
 				526BED442645D60B00897230 /* ViewModel */,
+				FB585B4E266D91970085C6B2 /* Json */,
 				528559062629E8F800AB4E28 /* Restaurant.entitlements */,
 				529CF0CC261A0AF6002CAD5C /* Assets.xcassets */,
 				529CF0D1261A0AF6002CAD5C /* Info.plist */,
@@ -538,13 +559,14 @@
 		FB1BE3682636D7170004673C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FB585B2D2667F6340085C6B2 /* ExtensionString.swift */,
+				52E50DC226626FB60068C36C /* ExtensionCGFloat.swift */,
 				526BED47264652CA00897230 /* ExtensionUIFont.swift */,
 				52256FD526445AB400A056DE /* ExtensionUIColor.swift */,
 				526BED492646566600897230 /* ExtensionUIView.swift */,
+				FB585B48266D6E770085C6B2 /* ExtensionUIButton.swift */,
 				FB1BE3692636D7330004673C /* ExtensionCollectoinView.swift */,
 				52256FAF263DBEFA00A056DE /* ExtensionCollectionViewCell.swift */,
-				52E50DC226626FB60068C36C /* ExtensionCGFloat.swift */,
-				FB585B2D2667F6340085C6B2 /* ExtensionString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -589,6 +611,7 @@
 		FB56AF5F265E628F002736F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FB585B41266D67570085C6B2 /* Onboarding */,
 				52256FB9263DF4BD00A056DE /* ViewController */,
 				FB1BE3612636C9F10004673C /* Module */,
 			);
@@ -608,6 +631,8 @@
 			isa = PBXGroup;
 			children = (
 				FB585B1C266561890085C6B2 /* Common.swift */,
+				FB585B46266D69B30085C6B2 /* Storage.swift */,
+				FBDC3D82266DA3910072D7E8 /* LongText.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -654,6 +679,27 @@
 				FB585B3E266B533F0085C6B2 /* CreationFeedImage.xib */,
 			);
 			path = Creation;
+			sourceTree = "<group>";
+		};
+		FB585B41266D67570085C6B2 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				FB585B44266D68720085C6B2 /* OnboardingCoordinator.swift */,
+				FB585B42266D68670085C6B2 /* OnboardingViewController.swift */,
+				FB585B4A266D79C30085C6B2 /* OnboardingView.swift */,
+				FB585B4C266D79CE0085C6B2 /* OnboardingView.xib */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		FB585B4E266D91970085C6B2 /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				FB585B53266DA0B30085C6B2 /* onboarding2.json */,
+				FB585B4F266D91D80085C6B2 /* onboarding1.json */,
+				FB585B51266DA0990085C6B2 /* onboarding3.json */,
+			);
+			path = Json;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -728,6 +774,10 @@
 				FB585B332668C6D40085C6B2 /* FoodCategory.xib in Resources */,
 				FB585B372668C85B0085C6B2 /* FoodCategoryCollectionViewCell.xib in Resources */,
 				52E50DC12662105E0068C36C /* CreationFeedDetailCardCollectionViewCell.xib in Resources */,
+				FB585B54266DA0B30085C6B2 /* onboarding2.json in Resources */,
+				FB585B4D266D79CE0085C6B2 /* OnboardingView.xib in Resources */,
+				FB585B52266DA0990085C6B2 /* onboarding3.json in Resources */,
+				FB585B50266D91D80085C6B2 /* onboarding1.json in Resources */,
 				FB1BE3862637DF2B0004673C /* MainFeedCollectionViewCell.xib in Resources */,
 				52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */,
 				FB56AF76265F71B4002736F5 /* CreationFeedDetail.xib in Resources */,
@@ -789,6 +839,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				526BED7F2647252400897230 /* RecentlyFeedCollectionViewCell.swift in Sources */,
+				FB585B47266D69B30085C6B2 /* Storage.swift in Sources */,
 				FB56AF75265F71B4002736F5 /* CreationFeedDetail.swift in Sources */,
 				52E50DC02662105E0068C36C /* CreationFeedDetailCardCollectionViewCell.swift in Sources */,
 				FB585B2C266780350085C6B2 /* SearchRestaurantViewModel.swift in Sources */,
@@ -797,6 +848,7 @@
 				5204198B264F987C0099BA39 /* HomeCoordinator.swift in Sources */,
 				52041985264F93690099BA39 /* Coordinator.swift in Sources */,
 				5239733F261B629A00856C99 /* CreationViewController.swift in Sources */,
+				FB585B4B266D79C30085C6B2 /* OnboardingView.swift in Sources */,
 				FB585B322668C6D40085C6B2 /* FoodCategory.swift in Sources */,
 				526BED7C2647216800897230 /* RecentlyFeedViewModel.swift in Sources */,
 				52397342261B62A600856C99 /* MapViewController.swift in Sources */,
@@ -804,6 +856,7 @@
 				52E50DCA2662B85C0068C36C /* SearchRestaurant.swift in Sources */,
 				FB56AF71265F5F69002736F5 /* CreationFeedViewController.swift in Sources */,
 				528558F72624A99000AB4E28 /* BaseViewController.swift in Sources */,
+				FB585B49266D6E770085C6B2 /* ExtensionUIButton.swift in Sources */,
 				FB1BE38C26397EEE0004673C /* CreationPopupViewController.swift in Sources */,
 				526BED622646F62A00897230 /* ContainerOfEveryoneViewController.swift in Sources */,
 				FB585B1D266561890085C6B2 /* Common.swift in Sources */,
@@ -825,11 +878,13 @@
 				FB585B3B266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.swift in Sources */,
 				529CF0C8261A0AF6002CAD5C /* HomeViewController.swift in Sources */,
 				526BED462645D98200897230 /* ViewModelBindableType.swift in Sources */,
+				FB585B43266D68670085C6B2 /* OnboardingViewController.swift in Sources */,
 				52256FB0263DBEFA00A056DE /* ExtensionCollectionViewCell.swift in Sources */,
 				FB585B3F266B533F0085C6B2 /* CreationFeedImage.swift in Sources */,
 				52542E09264AEBB10066F565 /* InquiryProfileViewController.swift in Sources */,
 				52855930262DE5A700AB4E28 /* TabBarItem.swift in Sources */,
 				526BED6C26470BD200897230 /* MostFeedTopTenCollectionViewCell.swift in Sources */,
+				FBDC3D83266DA3910072D7E8 /* LongText.swift in Sources */,
 				FB585B2226656E810085C6B2 /* SearchRestaurantViewController.swift in Sources */,
 				5285590B2629ECB900AB4E28 /* TestLoginViewController.swift in Sources */,
 				FB585B2E2667F6340085C6B2 /* ExtensionString.swift in Sources */,
@@ -856,6 +911,7 @@
 				52256FD626445AB400A056DE /* ExtensionUIColor.swift in Sources */,
 				526BED682647069E00897230 /* MostFeedTopTenCollectionView.swift in Sources */,
 				52041988264F98660099BA39 /* MainTabBarCoordinator.swift in Sources */,
+				FB585B45266D68720085C6B2 /* OnboardingCoordinator.swift in Sources */,
 				FB585B2026656E5A0085C6B2 /* SearchRestaurantCoordinator.swift in Sources */,
 				5239733C261B625000856C99 /* SearchViewController.swift in Sources */,
 				528558ED26249DDF00AB4E28 /* TestViewController.swift in Sources */,

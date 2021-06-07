@@ -58,7 +58,7 @@ extension FoodCategory: UICollectionViewDelegate, UICollectionViewDataSource, UI
             default: return CGFloat(0)
             }
         }
-        return CGSize(width: categoryWidth.widthRatio(), height: CGFloat(32).heightRatio())
+        return CGSize(width: categoryWidth.widthRatio(), height: CGFloat(32))
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

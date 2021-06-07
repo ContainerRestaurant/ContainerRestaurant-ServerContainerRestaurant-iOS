@@ -105,23 +105,23 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
         case is SeparateLineCollectionViewCell:
             let cell: SeparateLineCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             if indexPath.row == 0 {
-                cell.configureCell(height: CGFloat(21).heightRatio(), color: .white)
+                cell.configureCell(height: CGFloat(21), color: .white)
             } else if indexPath.row == 3 {
-                cell.configureCell(height: CGFloat(36).heightRatio(), color: .white)
+                cell.configureCell(height: CGFloat(36), color: .white)
             } else if indexPath.row == 5 {
-                cell.configureCell(height: CGFloat(12).heightRatio(), color: .white)
+                cell.configureCell(height: CGFloat(12), color: .white)
             } else if indexPath.row == 7 {
-                cell.configureCell(height: CGFloat(34).heightRatio(), color: .white)
+                cell.configureCell(height: CGFloat(34), color: .white)
             } else if indexPath.row == 8 {
-                cell.configureCell(height: CGFloat(8).heightRatio(), color: .colorGrayGray02)
+                cell.configureCell(height: CGFloat(8), color: .colorGrayGray02)
             } else if indexPath.row == 9 {
-                cell.configureCell(height: CGFloat(34).heightRatio(), color: .white)
+                cell.configureCell(height: CGFloat(34), color: .white)
             } else if indexPath.row == 11 {
-                cell.configureCell(height: CGFloat(12).heightRatio(), color: .white)
+                cell.configureCell(height: CGFloat(12), color: .white)
             } else if indexPath.row == 13 {
-                cell.configureCell(height: CGFloat(32).heightRatio(), color: .white)
+                cell.configureCell(height: CGFloat(32), color: .white)
             } else if indexPath.row == 16 {
-                cell.configureCell(height: CGFloat(8).heightRatio(), color: .colorGrayGray02)
+                cell.configureCell(height: CGFloat(8), color: .colorGrayGray02)
             }
             return cell
 
@@ -174,23 +174,23 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.row {
-        case 0: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(21).heightRatio())
+        case 0: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(21))
         case 1: return viewModel.mainTitleSectionSize()
         case 2: return viewModel.searchRestaurantSize()
-        case 3: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(36).heightRatio())
+        case 3: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(36))
         case 4: return viewModel.mainTitleSectionSize()
-        case 5: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(12).heightRatio())
+        case 5: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(12))
         case 6: return viewModel.foodCategorySize()
-        case 7: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(34).heightRatio())
-        case 8: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(8).heightRatio())
-        case 9: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(34).heightRatio())
+        case 7: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(34))
+        case 8: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(8))
+        case 9: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(34))
         case 10: return viewModel.mainTitleSectionSize()
-        case 11: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(12).heightRatio())
-        case 12: return CGSize(width: UIScreen.main.bounds.width, height: self.mainFoodHeight.heightRatio())
-        case 13: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(32).heightRatio())
-        case 14: return CGSize(width: UIScreen.main.bounds.width, height: self.sideFoodHeight.heightRatio())
+        case 11: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(12))
+        case 12: return CGSize(width: UIScreen.main.bounds.width, height: self.mainFoodHeight)
+        case 13: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(32))
+        case 14: return CGSize(width: UIScreen.main.bounds.width, height: self.sideFoodHeight)
         case 15: return viewModel.levelOfDifficultyAndWelcomeSize()
-        case 16: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(8).heightRatio())
+        case 16: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(8))
         case 17: return viewModel.creationFeedImage()
         default: return CGSize.zero
         }

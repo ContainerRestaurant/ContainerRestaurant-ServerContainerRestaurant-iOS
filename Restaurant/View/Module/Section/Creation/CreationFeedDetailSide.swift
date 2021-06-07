@@ -73,6 +73,6 @@ extension CreationFeedDetailSide: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CGFloat(343), height: CGFloat(104))
+        return CGSize(width: CGFloat(343).widthRatio(), height: CGFloat(104))
     }
 }

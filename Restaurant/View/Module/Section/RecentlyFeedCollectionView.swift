@@ -55,7 +55,7 @@ extension RecentlyFeedCollectionView: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 74, height: 108)
+        return CGSize(width: CGFloat(74).widthRatio(), height: 108)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -67,6 +67,6 @@ extension RecentlyFeedCollectionView: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return CGFloat(20).widthRatio()
     }
 }

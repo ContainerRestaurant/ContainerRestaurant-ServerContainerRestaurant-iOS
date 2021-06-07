@@ -15,5 +15,6 @@ target 'Restaurant' do
   pod 'KakaoSDKUser'  # 사용자 관리
   pod 'FittedSheets'
   pod 'Alamofire', '~> 5.2'
+  pod 'lottie-ios'
   
 end
