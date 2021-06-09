@@ -29,11 +29,18 @@ class AppCoordinator: NSObject, Coordinator {
     
     func start() {
         window.rootViewController = presenter
-        
-        let coordinator = MainTabBarCoordinator(presenter: presenter)
-        coordinator.delegate = self
-        childCoordinators.append(coordinator)
-        coordinator.start()
+
+        if Storage.isFirstEntry() {
+            let coordinator = OnboardingCoordinator(presenter: presenter)
+            coordinator.delegate = self
+            childCoordinators.append(coordinator)
+            coordinator.start()
+        } else {
+            let coordinator = MainTabBarCoordinator(presenter: presenter)
+            coordinator.delegate = self
+            childCoordinators.append(coordinator)
+            coordinator.start()
+        }
         
         window.makeKeyAndVisible()
     }

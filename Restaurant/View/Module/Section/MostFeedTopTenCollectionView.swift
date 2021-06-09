@@ -64,6 +64,6 @@ extension MostFeedTopTenCollectionView: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 4
+        return CGFloat(4).widthRatio()
     }
 }

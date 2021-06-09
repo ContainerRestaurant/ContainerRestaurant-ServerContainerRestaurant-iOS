@@ -24,7 +24,6 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bestUserProfile" translatesAutoresizingMaskIntoConstraints="NO" id="KTS-Sv-vW7">
                         <rect key="frame" x="0.0" y="0.0" width="148" height="148"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="148" id="lbw-9w-QJ7"/>
                             <constraint firstAttribute="height" constant="148" id="lbw-dN-70J"/>
                         </constraints>
                     </imageView>
@@ -52,17 +51,17 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="tTm-AF-Fdq" secondAttribute="trailing" id="3kx-Ql-bO0"/>
-                <constraint firstAttribute="trailing" secondItem="KTS-Sv-vW7" secondAttribute="trailing" id="Bk2-zu-ppg"/>
                 <constraint firstItem="KTS-Sv-vW7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="EvL-o5-y16"/>
                 <constraint firstItem="tTm-AF-Fdq" firstAttribute="top" secondItem="t5W-W4-BRe" secondAttribute="bottom" id="R5c-fO-LTo"/>
                 <constraint firstItem="t5W-W4-BRe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="XL8-o5-UTg"/>
                 <constraint firstItem="Gee-LF-bYY" firstAttribute="top" secondItem="tTm-AF-Fdq" secondAttribute="bottom" id="d1U-I1-GOC"/>
+                <constraint firstItem="KTS-Sv-vW7" firstAttribute="trailing" secondItem="t5W-W4-BRe" secondAttribute="trailing" id="dCs-WV-Afm"/>
                 <constraint firstItem="t5W-W4-BRe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="gYP-ec-4ZD"/>
                 <constraint firstItem="tTm-AF-Fdq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="gj9-r5-jlS"/>
                 <constraint firstItem="tTm-AF-Fdq" firstAttribute="top" secondItem="KTS-Sv-vW7" secondAttribute="bottom" id="jBV-dW-Ib3"/>
-                <constraint firstItem="KTS-Sv-vW7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="oqx-Up-FeI"/>
                 <constraint firstAttribute="trailing" secondItem="Gee-LF-bYY" secondAttribute="trailing" id="tGr-M4-8XM"/>
                 <constraint firstAttribute="trailing" secondItem="t5W-W4-BRe" secondAttribute="trailing" id="uZp-72-VtI"/>
+                <constraint firstItem="KTS-Sv-vW7" firstAttribute="leading" secondItem="t5W-W4-BRe" secondAttribute="leading" id="x6L-WZ-xxH"/>
                 <constraint firstItem="Gee-LF-bYY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xzu-BY-c1g"/>
             </constraints>
             <size key="customSize" width="136" height="174"/>

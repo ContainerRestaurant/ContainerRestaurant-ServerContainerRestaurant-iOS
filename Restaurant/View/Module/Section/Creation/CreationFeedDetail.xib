@@ -61,8 +61,8 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="pUx-4d-0M2" secondAttribute="trailing" constant="16" id="280-Q8-6VP"/>
                 <constraint firstItem="zoJ-3W-Pd4" firstAttribute="top" secondItem="pUx-4d-0M2" secondAttribute="bottom" constant="16" id="Amd-u2-nRm"/>
-                <constraint firstAttribute="bottom" secondItem="zoJ-3W-Pd4" secondAttribute="bottom" id="C70-zX-MeL"/>
                 <constraint firstItem="Fdo-ZX-3PQ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="FFd-3m-gsS"/>
+                <constraint firstAttribute="bottom" secondItem="zoJ-3W-Pd4" secondAttribute="bottom" id="HJJ-7X-lHt"/>
                 <constraint firstItem="pUx-4d-0M2" firstAttribute="top" secondItem="Fdo-ZX-3PQ" secondAttribute="bottom" constant="16" id="WPN-su-rSo"/>
                 <constraint firstItem="blO-j5-nsG" firstAttribute="centerY" secondItem="Fdo-ZX-3PQ" secondAttribute="centerY" id="enY-2h-2YC"/>
                 <constraint firstItem="zoJ-3W-Pd4" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="hcg-qA-jTG"/>

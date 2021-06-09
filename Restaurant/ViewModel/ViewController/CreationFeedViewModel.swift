@@ -43,22 +43,22 @@ extension CreationFeedViewModel {
     }
 
     func mainTitleSectionSize() -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(24).heightRatio())
+        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(24))
     }
 
     func searchRestaurantSize() -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(40).heightRatio())
+        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(40))
     }
 
     func foodCategorySize() -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(116).heightRatio())
+        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(116))
     }
 
     func levelOfDifficultyAndWelcomeSize() -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(206).heightRatio())
+        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(206))
     }
 
     func creationFeedImage() -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(283).heightRatio())
+        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(283))
     }
 }
