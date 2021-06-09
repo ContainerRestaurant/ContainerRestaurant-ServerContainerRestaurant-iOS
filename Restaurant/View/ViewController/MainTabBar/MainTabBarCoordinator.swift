@@ -76,6 +76,9 @@ class MainTabBarCoordinator: NSObject, Coordinator {
         let navigationController = UINavigationController()
         let tabItem = UITabBarItem(title: item.title, image: item.image, selectedImage: item.selectedImage)
         navigationController.tabBarItem = tabItem
+//        navigationController.view.backgroundColor = .red
+        navigationController.view.backgroundColor = .systemBackground
+        navigationController.navigationBar.backgroundColor = .systemBackground
         
         let coordinator = item.getCoordinator(presenter: navigationController)
         coordinator.delegate = self
