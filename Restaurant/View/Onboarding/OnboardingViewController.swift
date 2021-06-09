@@ -55,15 +55,21 @@ class OnboardingViewController: BaseViewController, Storyboard {
     }
 }
 
+//se 667
+//8 : 667
+//12mini : 812
+//12promax 896
 extension OnboardingViewController {
     func createOnboardingView() -> [OnboardingView] {
+        //높이 330으로 세련님과 퉁
+        let lottieHeight = UIScreen.main.bounds.height < CGFloat(700) ? CGFloat(295).heightRatio() : CGFloat(330).heightRatio()
+
         let onboarding1: OnboardingView = Bundle.main.loadNibNamed("OnboardingView", owner: self, options: nil)?.first as! OnboardingView
         onboarding1.mainTitleLabel.text = LongText.onboarding1MainTitle.rawValue
         onboarding1.subTitleLabel.text = LongText.onboarding1SubTitle.rawValue
         onboarding1.addSubview(animationView1)
-
         let animationView1Point = CGPoint(x: onboarding1.lottieView.frame.minX, y: onboarding1.lottieView.frame.minY)
-        let animationView1Size = CGSize(width: CGFloat(260).widthRatio(), height: CGFloat(295).heightRatio())
+        let animationView1Size = CGSize(width: CGFloat(260).widthRatio(), height: lottieHeight)
         animationView1.frame = CGRect(origin: animationView1Point, size: animationView1Size)
         animationView1.contentMode = .scaleAspectFit
         animationView1.play()
@@ -73,7 +79,7 @@ extension OnboardingViewController {
         onboarding2.subTitleLabel.text = LongText.onboarding2SubTitle.rawValue
         onboarding2.addSubview(animationView2)
         let animationView2Point = CGPoint(x: onboarding2.lottieView.frame.minX, y: onboarding2.lottieView.frame.minY)
-        let animationView2Size = CGSize(width: CGFloat(260).widthRatio(), height: CGFloat(295).heightRatio())
+        let animationView2Size = CGSize(width: CGFloat(260).widthRatio(), height: lottieHeight)
         animationView2.frame = CGRect(origin: animationView2Point, size: animationView2Size)
         animationView2.contentMode = .scaleAspectFit
 
@@ -82,7 +88,7 @@ extension OnboardingViewController {
         onboarding3.subTitleLabel.text = LongText.onboarding3SubTitle.rawValue
         onboarding3.addSubview(animationView3)
         let animationView3Point = CGPoint(x: onboarding3.lottieView.frame.minX, y: onboarding3.lottieView.frame.minY)
-        let animationView3Size = CGSize(width: CGFloat(260).widthRatio(), height: CGFloat(295).heightRatio())
+        let animationView3Size = CGSize(width: CGFloat(260).widthRatio(), height: lottieHeight)
         animationView3.frame = CGRect(origin: animationView3Point, size: animationView3Size)
         animationView3.contentMode = .scaleAspectFit
 

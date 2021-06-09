@@ -153,16 +153,24 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3a-f2-7kx">
                                 <rect key="frame" x="0.0" y="136" width="375" height="480"/>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Rd5-7b-OdA">
+                                <rect key="frame" x="127.33333333333334" y="656" width="120.33333333333334" height="27"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="pageIndicatorTintColor" red="0.91372549020000005" green="0.2666666667" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="currentPageIndicatorTintColor" name="AccentColor"/>
+                            </pageControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="m66-MP-dtJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Rd5-7b-OdA" firstAttribute="centerX" secondItem="SHh-aV-jhF" secondAttribute="centerX" id="2dQ-wd-9oI"/>
                             <constraint firstItem="m66-MP-dtJ" firstAttribute="trailing" secondItem="V3a-f2-7kx" secondAttribute="trailing" id="2k7-zj-O9G"/>
                             <constraint firstItem="2gq-IG-GY2" firstAttribute="top" secondItem="V3a-f2-7kx" secondAttribute="bottom" constant="98" id="6ee-az-uRX"/>
                             <constraint firstItem="V3a-f2-7kx" firstAttribute="top" secondItem="pr7-To-LTT" secondAttribute="bottom" constant="38" id="8CR-NS-Ahw"/>
                             <constraint firstItem="V3a-f2-7kx" firstAttribute="leading" secondItem="m66-MP-dtJ" secondAttribute="leading" id="Dv8-05-Ay9"/>
                             <constraint firstItem="m66-MP-dtJ" firstAttribute="trailing" secondItem="2gq-IG-GY2" secondAttribute="trailing" constant="16" id="Dvo-ow-PF5"/>
                             <constraint firstItem="2gq-IG-GY2" firstAttribute="leading" secondItem="m66-MP-dtJ" secondAttribute="leading" constant="16" id="Fas-DI-Sui"/>
+                            <constraint firstItem="Rd5-7b-OdA" firstAttribute="top" secondItem="V3a-f2-7kx" secondAttribute="bottom" constant="40" id="NsM-Hq-MOU"/>
                             <constraint firstItem="m66-MP-dtJ" firstAttribute="trailing" secondItem="pr7-To-LTT" secondAttribute="trailing" constant="21" id="XXb-P4-fhO"/>
                             <constraint firstItem="pr7-To-LTT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m66-MP-dtJ" secondAttribute="leading" symbolic="YES" id="afQ-BI-zSq"/>
                             <constraint firstItem="pr7-To-LTT" firstAttribute="top" secondItem="m66-MP-dtJ" secondAttribute="top" constant="34" id="eWs-zG-fRo"/>
@@ -1080,6 +1088,9 @@
         <image name="profileViewCountFilled24Px" width="24" height="24"/>
         <image name="searchOutline20Px" width="20" height="20"/>
         <image name="settingOutline20Px" width="20" height="20"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="colorGrayGray01">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
