@@ -8,6 +8,11 @@
 import UIKit
 
 struct Common {
+    static var homeBarHeight: CGFloat = 34
+    static var isNotchPhone: Bool {
+        return UIScreen.main.bounds.height > CGFloat(700)
+    }
+
     //topViewController에서 currentViewController로 수정
     static func currentViewController() -> UIViewController? {
         var viewController = UIApplication.shared.windows.first!.rootViewController

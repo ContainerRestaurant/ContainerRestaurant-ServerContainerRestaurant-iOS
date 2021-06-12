@@ -449,7 +449,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="식당 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSw-am-WEF">
-                                <rect key="frame" x="15.999999999999996" y="63" width="59.666666666666657" height="20"/>
+                                <rect key="frame" x="16.000000000000004" y="63" width="59.333333333333343" height="20"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <color key="textColor" name="colorGrayGray07"/>
                                 <nil key="highlightedColor"/>
@@ -558,20 +558,8 @@
                     <view key="view" contentMode="scaleToFill" id="GLn-jD-yj7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9K-t2-8Vi">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
-                            </view>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="GOy-qE-5ga"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="GOy-qE-5ga" firstAttribute="bottom" secondItem="L9K-t2-8Vi" secondAttribute="bottom" id="Gx3-qk-K0N"/>
-                            <constraint firstItem="GOy-qE-5ga" firstAttribute="trailing" secondItem="L9K-t2-8Vi" secondAttribute="trailing" id="cvt-kz-bZb"/>
-                            <constraint firstItem="L9K-t2-8Vi" firstAttribute="top" secondItem="GOy-qE-5ga" secondAttribute="top" id="iOz-1G-8bJ"/>
-                            <constraint firstItem="L9K-t2-8Vi" firstAttribute="leading" secondItem="GOy-qE-5ga" secondAttribute="leading" id="nCL-zA-uGK"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eqI-kv-3Cy"/>
                 </viewController>
@@ -1117,9 +1105,6 @@
         </systemColor>
         <systemColor name="systemGray3Color">
             <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
