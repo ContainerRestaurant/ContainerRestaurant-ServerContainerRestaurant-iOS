@@ -11,6 +11,130 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Login Popup View Controller-->
+        <scene sceneID="dXH-RY-0IA">
+            <objects>
+                <viewController storyboardIdentifier="LoginPopupViewController" id="E64-4Y-ciu" customClass="LoginPopupViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yTr-3G-E0G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6m3-wu-vyi">
+                                <rect key="frame" x="31.666666666666657" y="318" width="312" height="176"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yez-w8-32e">
+                                        <rect key="frame" x="280" y="12" width="20" height="20"/>
+                                        <color key="backgroundColor" name="colorGrayGray03"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="9qo-Zq-gGW"/>
+                                            <constraint firstAttribute="height" constant="20" id="bAq-zX-TPt"/>
+                                        </constraints>
+                                        <state key="normal" image="closeFilled16Px"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="9"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="선택하신 기능은 간편로그인 후 이용할 수 있어요!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eB2-Sv-Hhl">
+                                        <rect key="frame" x="12" y="30.999999999999996" width="288" height="33.666666666666657"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="28PxIconKakao" translatesAutoresizingMaskIntoConstraints="NO" id="wm4-fP-9fu">
+                                        <rect key="frame" x="77" y="100" width="28" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="28" id="0KH-ql-mgd"/>
+                                            <constraint firstAttribute="height" constant="28" id="lEO-Kj-OEE"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카카오 로그인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAE-GC-428">
+                                        <rect key="frame" x="56" y="140" width="70" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="3Dw-oB-Ah1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" name="colorGrayGray06"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple 로그인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pxx-dp-qgh">
+                                        <rect key="frame" x="187" y="140" width="69" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="69" id="S7a-vO-1NT"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" name="colorGrayGray06"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="28PxIconApple" translatesAutoresizingMaskIntoConstraints="NO" id="VxS-s2-8cK">
+                                        <rect key="frame" x="207.33333333333334" y="100" width="28" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="28" id="9Xh-ft-kgc"/>
+                                            <constraint firstAttribute="height" constant="28" id="fDk-Ae-ScS"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zri-0Q-vZB">
+                                        <rect key="frame" x="56" y="100" width="70" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="6ea-jH-hf3"/>
+                                            <constraint firstAttribute="height" constant="55" id="d6U-jd-eRR"/>
+                                        </constraints>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ca3-l5-uSm">
+                                        <rect key="frame" x="187" y="100" width="69" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="69" id="7Mn-b9-FpD"/>
+                                            <constraint firstAttribute="height" constant="55" id="T3Y-CX-BSz"/>
+                                        </constraints>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="eB2-Sv-Hhl" firstAttribute="top" secondItem="6m3-wu-vyi" secondAttribute="top" constant="31" id="0ug-9E-VTK"/>
+                                    <constraint firstAttribute="bottom" secondItem="Pxx-dp-qgh" secondAttribute="bottom" constant="21" id="5p9-T8-FQ6"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yez-w8-32e" secondAttribute="trailing" constant="12" id="8Sk-fD-nZ7"/>
+                                    <constraint firstItem="mAE-GC-428" firstAttribute="leading" secondItem="6m3-wu-vyi" secondAttribute="leading" constant="56" id="AUc-L4-CGX"/>
+                                    <constraint firstItem="Pxx-dp-qgh" firstAttribute="top" secondItem="VxS-s2-8cK" secondAttribute="bottom" constant="12" id="IvT-TH-E2z"/>
+                                    <constraint firstAttribute="trailing" secondItem="Pxx-dp-qgh" secondAttribute="trailing" constant="56" id="JXk-aV-hmx"/>
+                                    <constraint firstItem="mAE-GC-428" firstAttribute="top" secondItem="wm4-fP-9fu" secondAttribute="bottom" constant="12" id="Nv9-Ep-Miz"/>
+                                    <constraint firstItem="wm4-fP-9fu" firstAttribute="centerX" secondItem="mAE-GC-428" secondAttribute="centerX" id="P2P-Sh-nGY"/>
+                                    <constraint firstAttribute="height" constant="176" id="SMa-ku-xSO"/>
+                                    <constraint firstAttribute="width" constant="312" id="Wh9-ZW-GZ9"/>
+                                    <constraint firstItem="Yez-w8-32e" firstAttribute="top" secondItem="6m3-wu-vyi" secondAttribute="top" constant="12" id="Y0e-3Q-nQX"/>
+                                    <constraint firstAttribute="trailing" secondItem="eB2-Sv-Hhl" secondAttribute="trailing" constant="12" id="cbg-nU-49V"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ca3-l5-uSm" secondAttribute="bottom" constant="21" id="hCm-88-8AG"/>
+                                    <constraint firstItem="eB2-Sv-Hhl" firstAttribute="leading" secondItem="6m3-wu-vyi" secondAttribute="leading" constant="12" id="qs0-Rr-fP8"/>
+                                    <constraint firstItem="zri-0Q-vZB" firstAttribute="leading" secondItem="6m3-wu-vyi" secondAttribute="leading" constant="56" id="rhv-yP-bbe"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ca3-l5-uSm" secondAttribute="trailing" constant="56" id="t84-iQ-BM5"/>
+                                    <constraint firstAttribute="bottom" secondItem="zri-0Q-vZB" secondAttribute="bottom" constant="21" id="tai-T2-kzf"/>
+                                    <constraint firstAttribute="bottom" secondItem="mAE-GC-428" secondAttribute="bottom" constant="21" id="tuN-m3-FWV"/>
+                                    <constraint firstItem="VxS-s2-8cK" firstAttribute="centerX" secondItem="Pxx-dp-qgh" secondAttribute="centerX" id="u5l-bQ-Psh"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5IQ-ky-lVi"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6m3-wu-vyi" firstAttribute="centerY" secondItem="yTr-3G-E0G" secondAttribute="centerY" id="ECR-L6-9mW"/>
+                            <constraint firstItem="6m3-wu-vyi" firstAttribute="centerX" secondItem="yTr-3G-E0G" secondAttribute="centerX" id="YA1-kY-zJv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="appleLoginButton" destination="Ca3-l5-uSm" id="z17-W3-YGD"/>
+                        <outlet property="closeButton" destination="Yez-w8-32e" id="5pQ-fJ-7SX"/>
+                        <outlet property="kakaoLoginButton" destination="zri-0Q-vZB" id="O5D-rd-SfP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n7a-Ji-KJ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="192.80000000000001" y="-548.27586206896558"/>
+        </scene>
         <!--Creation Popup View Controller-->
         <scene sceneID="QcJ-H6-A41">
             <objects>
@@ -114,7 +238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ilQ-Ts-fCK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="193" y="-551"/>
+            <point key="canvasLocation" x="822" y="-547"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="Jqf-Jl-eKa">
@@ -1062,10 +1186,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BIf-mh-dqC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="822" y="-551"/>
+            <point key="canvasLocation" x="1462" y="-548"/>
         </scene>
     </scenes>
     <resources>
+        <image name="28PxIconApple" width="28.333333969116211" height="28"/>
+        <image name="28PxIconKakao" width="28.333333969116211" height="28"/>
         <image name="IU" width="464" height="461"/>
         <image name="bookmarkFilledGreen20Px" width="20" height="20"/>
         <image name="closeFilled16Px" width="20" height="20"/>
@@ -1084,6 +1210,9 @@
         </namedColor>
         <namedColor name="colorGrayGray02">
             <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="colorGrayGray03">
+            <color red="0.92500001192092896" green="0.92500001192092896" blue="0.92500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="colorGrayGray05">
             <color red="0.68199998140335083" green="0.68199998140335083" blue="0.68199998140335083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

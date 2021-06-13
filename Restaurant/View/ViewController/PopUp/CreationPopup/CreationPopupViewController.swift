@@ -32,8 +32,9 @@ class CreationPopupViewController: BaseViewController, Storyboard {
             .disposed(by: disposeBag)
 
         okButton.rx.tap
-            .subscribe(onNext: {
-                print("좋아요!")
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss(animated: false, completion: nil)
+                self?.coordinator?.presentLogin()
             })
             .disposed(by: disposeBag)
     }

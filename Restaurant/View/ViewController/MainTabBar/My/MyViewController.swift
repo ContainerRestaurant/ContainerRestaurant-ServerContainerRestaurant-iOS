@@ -39,6 +39,9 @@ class MyViewController: BaseViewController, Storyboard {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+
+        //로그인 안됐다면
+        self.coordinator?.presentLogin()
     }
 
     deinit {

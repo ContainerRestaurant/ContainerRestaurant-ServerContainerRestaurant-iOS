@@ -113,6 +113,8 @@
 		FB585B52266DA0990085C6B2 /* onboarding3.json in Resources */ = {isa = PBXBuildFile; fileRef = FB585B51266DA0990085C6B2 /* onboarding3.json */; };
 		FB585B54266DA0B30085C6B2 /* onboarding2.json in Resources */ = {isa = PBXBuildFile; fileRef = FB585B53266DA0B30085C6B2 /* onboarding2.json */; };
 		FBDC3D83266DA3910072D7E8 /* LongText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC3D82266DA3910072D7E8 /* LongText.swift */; };
+		FBEDEA162676528D00446B83 /* LoginPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDEA152676528D00446B83 /* LoginPopupCoordinator.swift */; };
+		FBEDEA1B26765E0200446B83 /* LoginPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDEA1926765E0200446B83 /* LoginPopupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -227,6 +229,8 @@
 		FB585B51266DA0990085C6B2 /* onboarding3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = onboarding3.json; path = ../../../../../../Downloads/onboarding3.json; sourceTree = "<group>"; };
 		FB585B53266DA0B30085C6B2 /* onboarding2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = onboarding2.json; path = ../../../../../../Downloads/onboarding2.json; sourceTree = "<group>"; };
 		FBDC3D82266DA3910072D7E8 /* LongText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongText.swift; sourceTree = "<group>"; };
+		FBEDEA152676528D00446B83 /* LoginPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPopupCoordinator.swift; sourceTree = "<group>"; };
+		FBEDEA1926765E0200446B83 /* LoginPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPopupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -602,8 +606,9 @@
 		FB1BE38926397ECF0004673C /* PopUp */ = {
 			isa = PBXGroup;
 			children = (
-				520419A326513F750099BA39 /* ListStandardDescriptionPopup */,
+				FBEDEA142676526500446B83 /* LoginPopup */,
 				520419A026513A570099BA39 /* CreationPopup */,
+				520419A326513F750099BA39 /* ListStandardDescriptionPopup */,
 			);
 			path = PopUp;
 			sourceTree = "<group>";
@@ -700,6 +705,15 @@
 				FB585B51266DA0990085C6B2 /* onboarding3.json */,
 			);
 			path = Json;
+			sourceTree = "<group>";
+		};
+		FBEDEA142676526500446B83 /* LoginPopup */ = {
+			isa = PBXGroup;
+			children = (
+				FBEDEA152676528D00446B83 /* LoginPopupCoordinator.swift */,
+				FBEDEA1926765E0200446B83 /* LoginPopupViewController.swift */,
+			);
+			path = LoginPopup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -863,6 +877,8 @@
 				5204199A26512D8D0099BA39 /* CreationCoordinator.swift in Sources */,
 				5204199F26512E450099BA39 /* MyCoordinator.swift in Sources */,
 				520419A8265184580099BA39 /* InquiryProfileCoordinator.swift in Sources */,
+				FBEDEA1B26765E0200446B83 /* LoginPopupViewController.swift in Sources */,
+				FBEDEA162676528D00446B83 /* LoginPopupCoordinator.swift in Sources */,
 				FB56AF63265E675B002736F5 /* TestMapCoordinator.swift in Sources */,
 				526BED5D2646EC9B00897230 /* MainTitleSectionViewModel.swift in Sources */,
 				52E50DC62662A70B0068C36C /* CreationFeedDetailSide.swift in Sources */,

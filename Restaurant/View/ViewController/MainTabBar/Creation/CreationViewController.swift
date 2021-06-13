@@ -19,7 +19,11 @@ class CreationViewController: BaseViewController, Storyboard {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        coordinator?.presentCreationFeed()
+        //로그인 됐다면
+//        coordinator?.presentCreationFeed()
+
+        //로그인 안됐다면
+        coordinator?.presentLogin()
     }
 
     deinit {
