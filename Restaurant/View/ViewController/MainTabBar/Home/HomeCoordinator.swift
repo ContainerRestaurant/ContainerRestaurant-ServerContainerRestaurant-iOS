@@ -37,7 +37,7 @@ class HomeCoordinator: NSObject, Coordinator {
 }
 
 extension HomeCoordinator {
-    func presentToMyContainer() {
+    func presentCreationPopup() {
         let coordinator = CreationPopupCoordinator(presenter: presenter)
         coordinator.delegate = self
         childCoordinators.append(coordinator)

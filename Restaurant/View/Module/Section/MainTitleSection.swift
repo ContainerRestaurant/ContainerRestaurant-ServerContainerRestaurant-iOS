@@ -21,7 +21,7 @@ class MainTitleSection: UICollectionViewCell {
         
         myContainerButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
-                self?.coordinator?.presentToMyContainer()
+                self?.coordinator?.presentCreationPopup()
             })
             .disposed(by: disposeBag)
         

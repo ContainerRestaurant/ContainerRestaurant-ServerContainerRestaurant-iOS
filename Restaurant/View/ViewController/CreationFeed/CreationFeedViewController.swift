@@ -25,7 +25,7 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setCollectionView()
 
         closeButton.rx.tap
@@ -36,6 +36,8 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
         self.coordinator?.presenter.tabBarController?.selectedIndex = 0
     }
 
