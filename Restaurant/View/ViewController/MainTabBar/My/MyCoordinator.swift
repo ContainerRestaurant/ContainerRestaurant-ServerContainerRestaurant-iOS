@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import RxSwift
 
 class MyCoordinator: NSObject, Coordinator {
     var delegate: CoordinatorFinishDelegate?
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
+    
+    let userDataSubject: PublishSubject<UserModel> = PublishSubject<UserModel>()
+    let disposeBag = DisposeBag()
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
@@ -18,9 +22,16 @@ class MyCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        let my = MyViewController.instantiate()
-        my.coordinator = self
-        presenter.pushViewController(my, animated: false)
+//        API().askUser(userDataSubject: userDataSubject)
+        
+//        self.userDataSubject.subscribe(onNext: { [weak self] _ in
+            var my = MyViewController.instantiate()
+            my.coordinator = self
+            my.bind(viewModel: MyViewModel(viewModel: UserModel()))
+            
+            self.presenter.pushViewController(my, animated: false)
+//        })
+//        .disposed(by: disposeBag)
     }
 }
 

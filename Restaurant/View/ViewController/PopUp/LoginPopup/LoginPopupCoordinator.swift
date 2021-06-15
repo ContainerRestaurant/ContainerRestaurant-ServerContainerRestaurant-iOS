@@ -27,5 +27,10 @@ class LoginPopupCoordinator: NSObject, Coordinator {
 }
 
 extension LoginPopupCoordinator {
-    
+    func presentNickNamePopup() {
+        let coordinator = NickNamePopupCoordinator(presenter: presenter)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
 }

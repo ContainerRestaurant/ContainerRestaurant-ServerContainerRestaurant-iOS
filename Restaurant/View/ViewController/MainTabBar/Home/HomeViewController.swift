@@ -36,7 +36,7 @@ class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType 
     }
 
     func bindViewModel() {
-        print("타긴타")
+        print("Home bindViewModel")
         self.viewModel.recommendFeeds
             .map { $0.first?.ownerNickname }
             .drive(testLabel.rx.text)
