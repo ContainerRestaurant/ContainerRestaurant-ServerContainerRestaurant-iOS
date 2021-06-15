@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import RxSwift
 
 class CreationViewController: BaseViewController, Storyboard {
     weak var coordinator: CreationCoordinator?
+    var isLoginSubject: PublishSubject<Bool> = PublishSubject<Bool>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,12 +20,16 @@ class CreationViewController: BaseViewController, Storyboard {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        //로그인 됐다면
-//        coordinator?.presentCreationFeed()
-
-        //로그인 안됐다면
-        coordinator?.presentLogin()
+        
+        //로그인 여부로 피드쓰기 띄울지 로그인 띄울지 결정
+        //Todo: 피드 띄울때에 시간이 좀 걸림, 해결 필요
+        API().askUser(isLoginSubject: isLoginSubject)
+        self.isLoginSubject.subscribe(onNext: { [weak self] isLogin in
+            print("로그인 여부: \(isLogin)")
+            guard let coordinator = self?.coordinator else { return }
+            isLogin ? coordinator.presentCreationFeed() : coordinator.presentLogin()
+        })
+        .disposed(by: disposeBag)
     }
 
     deinit {

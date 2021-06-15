@@ -59,6 +59,10 @@ class CreationFeedImage: UICollectionViewCell {
             })
             .disposed(by: disposeBag)
     }
+    
+    deinit {
+        print("사진 등록하고 닫으면 메모리 계속 쌓임")
+    }
 }
 
 extension CreationFeedImage: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

@@ -30,7 +30,8 @@ class AppCoordinator: NSObject, Coordinator {
     func start() {
         window.rootViewController = presenter
 
-        if Storage.isFirstEntry() {
+        if UserDataManager.sharedInstance.isFirstEntry {
+            UserDataManager.sharedInstance.isFirstEntry = false
             let coordinator = OnboardingCoordinator(presenter: presenter)
             coordinator.delegate = self
             childCoordinators.append(coordinator)

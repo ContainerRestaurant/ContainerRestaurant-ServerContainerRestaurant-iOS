@@ -88,6 +88,14 @@
                                             <constraint firstAttribute="height" constant="55" id="T3Y-CX-BSz"/>
                                         </constraints>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cG-la-YUP">
+                                        <rect key="frame" x="130" y="73" width="52" height="30"/>
+                                        <color key="backgroundColor" name="colorMainGreen02"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleColor" name="colorGrayGray01"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -95,6 +103,7 @@
                                     <constraint firstAttribute="bottom" secondItem="Pxx-dp-qgh" secondAttribute="bottom" constant="21" id="5p9-T8-FQ6"/>
                                     <constraint firstAttribute="trailing" secondItem="Yez-w8-32e" secondAttribute="trailing" constant="12" id="8Sk-fD-nZ7"/>
                                     <constraint firstItem="mAE-GC-428" firstAttribute="leading" secondItem="6m3-wu-vyi" secondAttribute="leading" constant="56" id="AUc-L4-CGX"/>
+                                    <constraint firstItem="5cG-la-YUP" firstAttribute="centerX" secondItem="6m3-wu-vyi" secondAttribute="centerX" id="IhG-RA-p8O"/>
                                     <constraint firstItem="Pxx-dp-qgh" firstAttribute="top" secondItem="VxS-s2-8cK" secondAttribute="bottom" constant="12" id="IvT-TH-E2z"/>
                                     <constraint firstAttribute="trailing" secondItem="Pxx-dp-qgh" secondAttribute="trailing" constant="56" id="JXk-aV-hmx"/>
                                     <constraint firstItem="mAE-GC-428" firstAttribute="top" secondItem="wm4-fP-9fu" secondAttribute="bottom" constant="12" id="Nv9-Ep-Miz"/>
@@ -104,6 +113,7 @@
                                     <constraint firstItem="Yez-w8-32e" firstAttribute="top" secondItem="6m3-wu-vyi" secondAttribute="top" constant="12" id="Y0e-3Q-nQX"/>
                                     <constraint firstAttribute="trailing" secondItem="eB2-Sv-Hhl" secondAttribute="trailing" constant="12" id="cbg-nU-49V"/>
                                     <constraint firstAttribute="bottom" secondItem="Ca3-l5-uSm" secondAttribute="bottom" constant="21" id="hCm-88-8AG"/>
+                                    <constraint firstItem="5cG-la-YUP" firstAttribute="centerY" secondItem="6m3-wu-vyi" secondAttribute="centerY" id="iji-T4-jj4"/>
                                     <constraint firstItem="eB2-Sv-Hhl" firstAttribute="leading" secondItem="6m3-wu-vyi" secondAttribute="leading" constant="12" id="qs0-Rr-fP8"/>
                                     <constraint firstItem="zri-0Q-vZB" firstAttribute="leading" secondItem="6m3-wu-vyi" secondAttribute="leading" constant="56" id="rhv-yP-bbe"/>
                                     <constraint firstAttribute="trailing" secondItem="Ca3-l5-uSm" secondAttribute="trailing" constant="56" id="t84-iQ-BM5"/>
@@ -129,6 +139,7 @@
                         <outlet property="appleLoginButton" destination="Ca3-l5-uSm" id="z17-W3-YGD"/>
                         <outlet property="closeButton" destination="Yez-w8-32e" id="5pQ-fJ-7SX"/>
                         <outlet property="kakaoLoginButton" destination="zri-0Q-vZB" id="O5D-rd-SfP"/>
+                        <outlet property="logoutButton" destination="5cG-la-YUP" id="4Sh-k1-LdI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n7a-Ji-KJ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -937,9 +948,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="Jqt-ti-K0X"/>
                     <connections>
-                        <outlet property="myFeedButton" destination="pGV-sU-ZBI" id="9Ag-fD-8An"/>
+                        <outlet property="bookmarkedCountButton" destination="4Lo-Sm-E8A" id="tQR-cJ-KXj"/>
+                        <outlet property="bookmarkedCountLabel" destination="wPN-Rg-hDp" id="uno-4d-9lk"/>
+                        <outlet property="feedButton" destination="pGV-sU-ZBI" id="yal-w5-x18"/>
+                        <outlet property="feedCountLabel" destination="oPg-i3-dbp" id="veD-8q-XT2"/>
+                        <outlet property="levelLabel" destination="vlR-Np-TuJ" id="UjE-Pr-5MC"/>
+                        <outlet property="nicknameLabel" destination="1O8-8X-0lS" id="LG1-a9-ZkS"/>
                         <outlet property="scrapFeedButton" destination="72P-3y-VWO" id="PdW-yc-wyb"/>
-                        <outlet property="zzimedRestaurantButton" destination="4Lo-Sm-E8A" id="bl0-zp-SO3"/>
+                        <outlet property="scrapFeedCountLabel" destination="v5E-UE-CYK" id="rr3-xK-6D0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YWo-X7-UJy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1188,6 +1204,59 @@
             </objects>
             <point key="canvasLocation" x="1462" y="-548"/>
         </scene>
+        <!--Nick Name Popup View Controller-->
+        <scene sceneID="V9U-cE-jt9">
+            <objects>
+                <viewController storyboardIdentifier="NickNamePopupViewController" id="0Fv-by-WNS" customClass="NickNamePopupViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Na7-cE-cbW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용기낸 식당에 어서오세요! 닉네임만 정하면 가입이 끝나요 :)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbo-76-67R">
+                                <rect key="frame" x="16" y="154" width="232" height="43"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FYs-yP-j7E">
+                                <rect key="frame" x="16" y="235" width="32" height="34"/>
+                                <color key="textColor" name="colorGrayGray07"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ih-jK-i7q">
+                                <rect key="frame" x="0.0" y="380" width="375" height="52"/>
+                                <color key="backgroundColor" name="colorGrayGray03"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="np4-ST-aAb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="작성 완료">
+                                    <color key="titleColor" name="colorGrayGray06"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pSE-J2-PYq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FYs-yP-j7E" firstAttribute="leading" secondItem="pSE-J2-PYq" secondAttribute="leading" constant="16" id="DkC-2J-cwM"/>
+                            <constraint firstItem="FYs-yP-j7E" firstAttribute="top" secondItem="xbo-76-67R" secondAttribute="bottom" constant="38" id="FDy-iO-aYf"/>
+                            <constraint firstItem="9ih-jK-i7q" firstAttribute="leading" secondItem="pSE-J2-PYq" secondAttribute="leading" id="H9D-1J-cft"/>
+                            <constraint firstItem="xbo-76-67R" firstAttribute="top" secondItem="pSE-J2-PYq" secondAttribute="top" constant="110" id="J2C-mu-tlk"/>
+                            <constraint firstItem="9ih-jK-i7q" firstAttribute="centerY" secondItem="Na7-cE-cbW" secondAttribute="centerY" id="NGE-At-xBg"/>
+                            <constraint firstItem="pSE-J2-PYq" firstAttribute="trailing" secondItem="9ih-jK-i7q" secondAttribute="trailing" id="Sq2-SS-hHt"/>
+                            <constraint firstItem="xbo-76-67R" firstAttribute="leading" secondItem="pSE-J2-PYq" secondAttribute="leading" constant="16" id="lsj-bz-Ulw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nickNameTextField" destination="FYs-yP-j7E" id="zwX-S0-9vl"/>
+                        <outlet property="registerButton" destination="9ih-jK-i7q" id="t4N-nJ-NUw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mga-Sw-Q1p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2106" y="-548"/>
+        </scene>
     </scenes>
     <resources>
         <image name="28PxIconApple" width="28.333333969116211" height="28"/>
@@ -1225,6 +1294,9 @@
         </namedColor>
         <namedColor name="colorMainGreen01">
             <color red="0.9100000262260437" green="0.98400002717971802" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="colorMainGreen02">
+            <color red="0.31799998879432678" green="0.83099997043609619" blue="0.67799997329711914" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="colorMainGreen03">
             <color red="0.093999996781349182" green="0.75300002098083496" blue="0.55299997329711914" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
