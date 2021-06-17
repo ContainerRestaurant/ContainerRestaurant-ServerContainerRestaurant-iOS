@@ -17,6 +17,7 @@ class CreationFeedImage: UICollectionViewCell {
     @IBOutlet weak var imagePickerButton: UIButton!
     @IBOutlet weak var hideImageButton: UIButton!
     @IBOutlet weak var pickedImageView: UIImageView!
+    @IBOutlet weak var registerButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -764,7 +764,7 @@
                                     <constraint firstAttribute="height" constant="32" id="LAe-uk-MOb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                <state key="normal" title="용기낸 레벨">
+                                <state key="normal" title="계정 삭제(임시)">
                                     <color key="titleColor" name="colorMainGreen03"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -950,6 +950,7 @@
                     <connections>
                         <outlet property="bookmarkedCountButton" destination="4Lo-Sm-E8A" id="tQR-cJ-KXj"/>
                         <outlet property="bookmarkedCountLabel" destination="wPN-Rg-hDp" id="uno-4d-9lk"/>
+                        <outlet property="descriptionLevelButton" destination="OYM-7u-GIh" id="Qm6-sp-oKS"/>
                         <outlet property="feedButton" destination="pGV-sU-ZBI" id="yal-w5-x18"/>
                         <outlet property="feedCountLabel" destination="oPg-i3-dbp" id="veD-8q-XT2"/>
                         <outlet property="levelLabel" destination="vlR-Np-TuJ" id="UjE-Pr-5MC"/>

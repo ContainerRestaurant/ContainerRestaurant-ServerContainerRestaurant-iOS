@@ -16,8 +16,8 @@ struct MyViewModel {
         return Driver<String>.just(viewModel.nickname)
     }()
     
-    lazy var level: Driver<Int> = {
-        return Driver<Int>.just(viewModel.level)
+    lazy var levelTitle: Driver<String> = {
+        return Driver<String>.just(viewModel.levelTitle)
     }()
     
     lazy var feedCount: Driver<Int> = {

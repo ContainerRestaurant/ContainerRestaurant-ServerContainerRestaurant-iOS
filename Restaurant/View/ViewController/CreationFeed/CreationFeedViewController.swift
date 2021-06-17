@@ -107,9 +107,9 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
         case is SeparateLineCollectionViewCell:
             let cell: SeparateLineCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             if indexPath.row == 0 {
-                cell.configureCell(height: CGFloat(21), color: .white)
+                cell.configureCell(height: CGFloat(16), color: .white)
             } else if indexPath.row == 3 {
-                cell.configureCell(height: CGFloat(36), color: .white)
+                cell.configureCell(height: CGFloat(34), color: .white)
             } else if indexPath.row == 5 {
                 cell.configureCell(height: CGFloat(12), color: .white)
             } else if indexPath.row == 7 {
@@ -176,10 +176,10 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.row {
-        case 0: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(21))
+        case 0: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(16))
         case 1: return viewModel.mainTitleSectionSize()
         case 2: return viewModel.searchRestaurantSize()
-        case 3: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(36))
+        case 3: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(34))
         case 4: return viewModel.mainTitleSectionSize()
         case 5: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(12))
         case 6: return viewModel.foodCategorySize()

@@ -22,7 +22,8 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
     @IBOutlet weak var scrapFeedCountLabel: UILabel!
     @IBOutlet weak var bookmarkedCountButton: UIButton!
     @IBOutlet weak var bookmarkedCountLabel: UILabel!
-    
+    @IBOutlet weak var descriptionLevelButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         print("MyViewController viewDidLoad()")
@@ -42,6 +43,13 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
         bookmarkedCountButton.rx.tap
             .subscribe(onNext: {
                 print("찜한 식당")
+            })
+            .disposed(by: disposeBag)
+
+        descriptionLevelButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                API().deleteUser()
+                self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
             })
             .disposed(by: disposeBag)
     }
@@ -67,8 +75,7 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
             .drive(nicknameLabel.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.level
-            .map { String($0) }
+        viewModel.levelTitle
             .drive(levelLabel.rx.text)
             .disposed(by: disposeBag)
         

@@ -12,7 +12,7 @@ struct UserModel: Decodable {
     var email: String
     var nickname: String
     var profile: String
-    var level: Int
+    var levelTitle: String
     var feedCount: Int
     var scrapCount: Int
     var bookmarkedCount: Int
@@ -22,7 +22,7 @@ struct UserModel: Decodable {
         case email
         case nickname
         case profile
-        case level
+        case levelTitle
         case feedCount
         case scrapCount
         case bookmarkedCount
@@ -33,7 +33,7 @@ struct UserModel: Decodable {
         email = "e-mail"
         nickname = "용기낸식당"
         profile = ""
-        level = 1
+        levelTitle = "Lv1. 텀블러"
         feedCount = 999
         scrapCount = 999
         bookmarkedCount = 999
@@ -46,7 +46,7 @@ struct UserModel: Decodable {
         self.email = (try? container.decode(String.self, forKey: .email)) ?? ""
         self.nickname = (try? container.decode(String.self, forKey: .nickname)) ?? ""
         self.profile = (try? container.decode(String.self, forKey: .profile)) ?? ""
-        self.level = (try? container.decode(Int.self, forKey: .level)) ?? 0
+        self.levelTitle = (try? container.decode(String.self, forKey: .levelTitle)) ?? "Lv1. 텀블러"
         self.feedCount = (try? container.decode(Int.self, forKey: .feedCount)) ?? 0
         self.scrapCount = (try? container.decode(Int.self, forKey: .scrapCount)) ?? 0
         self.bookmarkedCount = (try? container.decode(Int.self, forKey: .bookmarkedCount)) ?? 0

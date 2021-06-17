@@ -129,7 +129,7 @@ extension API {
 
                         userDataSubject.onNext(instanceData)
                         //카카오 소셜 로그인으로 회원가입 시에 UserDefault에 UserID 저장
-                        UserDataManager.sharedInstance.userID = instanceData.id
+                        UserDataManager.sharedInstance.userID = instanceData.id//144
                         print(instanceData)
                     } catch {
                         print(error.localizedDescription)
@@ -159,6 +159,26 @@ extension API {
                 print("로그아웃------------------------------------")
                 print(json)
                 print("로그아웃------------------------------------")
+            }
+    }
+
+    //계정탈퇴
+    func deleteUser() {
+        let url = "\(baseURL)/api/user/\(UserDataManager.sharedInstance.userID)"
+
+        AF.request(url,
+                   method: .delete,
+                   parameters: nil,
+                   encoding: URLEncoding.default,
+                   headers: ["Content-Type": "application/json", "Accept":"application/json"])
+            .validate(statusCode: 200..<300)
+            .responseString { response in
+                switch response.result {
+                case .success(let obj):
+                    print("계정탈퇴 성공: \(obj)")
+                case .failure(let e):
+                    print("계정탈퇴 실패: \(e.localizedDescription)")
+                }
             }
     }
 
