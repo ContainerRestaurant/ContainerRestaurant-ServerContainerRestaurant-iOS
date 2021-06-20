@@ -13,6 +13,7 @@ class CreationFeedImage: UICollectionViewCell {
     let disposeBag = DisposeBag()
     var coordinator: CreationFeedCoordinator?
     let imagePicker = UIImagePickerController()
+    var registerSubject: PublishSubject<Bool> = PublishSubject<Bool>()
 
     @IBOutlet weak var imagePickerButton: UIButton!
     @IBOutlet weak var hideImageButton: UIButton!
@@ -26,8 +27,9 @@ class CreationFeedImage: UICollectionViewCell {
         bindingView()
     }
 
-    func configure(_ coordinator: CreationFeedCoordinator) {
+    func configure(_ coordinator: CreationFeedCoordinator, _ registerSubject: PublishSubject<Bool>) {
         self.coordinator = coordinator
+        self.registerSubject = registerSubject
     }
 
     private func bindingView() {
@@ -57,6 +59,13 @@ class CreationFeedImage: UICollectionViewCell {
                 self?.hideImageButton.isHidden = true
                 self?.pickedImageView.isHidden = true
                 self?.pickedImageView.image = nil
+            })
+            .disposed(by: disposeBag)
+
+        registerButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                print("등록버튼")
+                self?.registerSubject.onNext(true)
             })
             .disposed(by: disposeBag)
     }

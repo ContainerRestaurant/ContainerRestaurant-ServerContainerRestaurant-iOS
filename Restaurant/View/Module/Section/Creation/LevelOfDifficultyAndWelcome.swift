@@ -10,8 +10,9 @@ import RxSwift
 
 class LevelOfDifficultyAndWelcome: UICollectionViewCell {
     let disposeBag = DisposeBag()
+    var levelOfDifficultySubject: BehaviorSubject<Int>?
     var isWelcome = false
-    var isWelcomeSubject: BehaviorSubject<Bool> = BehaviorSubject<Bool>(value: false)
+    var isWelcomeSubject: BehaviorSubject<Bool>?
 
     @IBOutlet weak var levelOfDifficultyLabel: UIButton!
     @IBOutlet weak var levelOfDifficulty1: UIButton!
@@ -27,12 +28,18 @@ class LevelOfDifficultyAndWelcome: UICollectionViewCell {
         welcomeButton.applySketchShadow(color: .colorGrayGray08, alpha: 0.1, x: 0, y: 0, blur: 8, spread: 0)
         bindingView()
     }
+
+    func configure(_ levelOfDifficultySubject: BehaviorSubject<Int>, _ isWelcomeSubject: BehaviorSubject<Bool>) {
+        self.levelOfDifficultySubject = levelOfDifficultySubject
+        self.isWelcomeSubject = isWelcomeSubject
+    }
 }
 
 extension LevelOfDifficultyAndWelcome {
     private func bindingView() {
         levelOfDifficulty1.rx.tap
             .subscribe(onNext: { [weak self] in
+                self?.levelOfDifficultySubject?.onNext(1)
                 self?.levelOfDifficultyLabel.setTitle("쉬워요", for: .normal)
                 self?.buttonImage(index: 0)
             })
@@ -40,6 +47,7 @@ extension LevelOfDifficultyAndWelcome {
 
         levelOfDifficulty2.rx.tap
             .subscribe(onNext: { [weak self] in
+                self?.levelOfDifficultySubject?.onNext(2)
                 self?.levelOfDifficultyLabel.setTitle("할 만 해요", for: .normal)
                 self?.buttonImage(index: 1)
             })
@@ -47,6 +55,7 @@ extension LevelOfDifficultyAndWelcome {
 
         levelOfDifficulty3.rx.tap
             .subscribe(onNext: { [weak self] in
+                self?.levelOfDifficultySubject?.onNext(3)
                 self?.levelOfDifficultyLabel.setTitle("보통이에요", for: .normal)
                 self?.buttonImage(index: 2)
             })
@@ -54,6 +63,7 @@ extension LevelOfDifficultyAndWelcome {
 
         levelOfDifficulty4.rx.tap
             .subscribe(onNext: { [weak self] in
+                self?.levelOfDifficultySubject?.onNext(4)
                 self?.levelOfDifficultyLabel.setTitle("까다로워요", for: .normal)
                 self?.buttonImage(index: 3)
             })
@@ -61,6 +71,7 @@ extension LevelOfDifficultyAndWelcome {
 
         levelOfDifficulty5.rx.tap
             .subscribe(onNext: { [weak self] in
+                self?.levelOfDifficultySubject?.onNext(5)
                 self?.levelOfDifficultyLabel.setTitle("많이 어려워요", for: .normal)
                 self?.buttonImage(index: 4)
             })
@@ -69,14 +80,10 @@ extension LevelOfDifficultyAndWelcome {
         welcomeButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.isWelcome = !(self!.isWelcome)
-                self?.isWelcomeSubject.onNext(self!.isWelcome)
+                self?.isWelcomeSubject?.onNext(self!.isWelcome)
+                self?.welcomeButton.setImage(UIImage(named: self!.isWelcome ? "badgeFilled32Px" : "badgeOutline32Px"), for: .normal)
             })
             .disposed(by: disposeBag)
-
-        isWelcomeSubject.subscribe(onNext: { [weak self] in
-            self?.welcomeButton.setImage(UIImage(named: $0 ? "badgeFilled32Px" : "badgeOutline32Px"), for: .normal)
-        })
-        .disposed(by: disposeBag)
     }
 
     private func buttonImage(index: Int) {

@@ -19,6 +19,14 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
     var viewModel: CreationFeedViewModel!
     var mainFoodHeight: CGFloat = 179
     var sideFoodHeight: CGFloat = 179
+    let registerSubject: PublishSubject<Bool> = PublishSubject<Bool>()
+
+    var restaurantNameLabel: UILabel?
+    var selectedCategoryText: String = "한식"
+    var levelOfDifficulty: Int = 0
+    var levelOfDifficultySubject: BehaviorSubject<Int> = BehaviorSubject<Int>(value: 1)
+    var isWelcome: Bool = false
+    var isWelcomeSubject: BehaviorSubject<Bool> = BehaviorSubject<Bool>(value: false)
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var closeButton: UIButton!
@@ -27,6 +35,28 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
         super.viewDidLoad()
 
         setCollectionView()
+
+        levelOfDifficultySubject
+            .subscribe(onNext: { [weak self] in
+                self?.levelOfDifficulty = $0
+            })
+            .disposed(by: disposeBag)
+
+        isWelcomeSubject
+            .subscribe(onNext: { [weak self] in
+                self?.isWelcome = $0
+            })
+            .disposed(by: disposeBag)
+
+        registerSubject
+            .filter { $0 }
+            .subscribe(onNext: { [weak self] _ in
+                print(self?.restaurantNameLabel?.text)
+                print(self?.selectedCategoryText)
+                print(self?.levelOfDifficulty)
+                print(self?.isWelcome)
+            })
+            .disposed(by: disposeBag)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -142,11 +172,13 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
             let cell: SearchRestaurant = collectionView.dequeueReusableCell(for: indexPath)
             if let coordinator = self.coordinator {
                 cell.configure(coordinator, viewModel.restaurantNameSubject)
+                self.restaurantNameLabel = cell.restaurantNameLabel
             }
             return cell
 
         case is FoodCategory:
             let cell: FoodCategory = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configure(&self.selectedCategoryText)
             return cell
 
         case is CreationFeedDetail:
@@ -161,12 +193,14 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
 
         case is LevelOfDifficultyAndWelcome:
             let cell: LevelOfDifficultyAndWelcome = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configure(self.levelOfDifficultySubject, self.isWelcomeSubject)
+
             return cell
 
         case is CreationFeedImage:
             let cell: CreationFeedImage = collectionView.dequeueReusableCell(for: indexPath)
             if let coordinator = self.coordinator {
-                cell.configure(coordinator)
+                cell.configure(coordinator, registerSubject)
             }
             return cell
 

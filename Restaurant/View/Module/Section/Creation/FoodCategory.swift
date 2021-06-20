@@ -14,6 +14,7 @@ class FoodCategory: UICollectionViewCell {
         "돈까스/회/일식", "치킨/피자"
     ]
     var isClickedArray: [Bool] = Array(repeating: false, count: 9)
+    var selectedCategoryText: String = "한식"
 
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -21,6 +22,11 @@ class FoodCategory: UICollectionViewCell {
         super.awakeFromNib()
 
         setCollectionView()
+        isClickedArray[0] = true
+    }
+
+    func configure(_ selectedCategoryText: inout String) {
+        selectedCategoryText = self.selectedCategoryText
     }
 }
 
@@ -63,8 +69,12 @@ extension FoodCategory: UICollectionViewDelegate, UICollectionViewDataSource, UI
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.isClickedArray[indexPath.row] = true
-        for (index, _) in isClickedArray.enumerated() where index != indexPath.row {
-            self.isClickedArray[index] = false
+        for (index, _) in isClickedArray.enumerated() {
+            if index == indexPath.row {
+                selectedCategoryText = category[indexPath.row]
+            } else {
+                self.isClickedArray[index] = false
+            }
         }
 
         UIView.performWithoutAnimation {
