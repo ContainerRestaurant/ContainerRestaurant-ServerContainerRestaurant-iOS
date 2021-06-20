@@ -35,8 +35,8 @@ class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType 
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
-    func bindViewModel() {
-        print("Home bindViewModel")
+    func bindingView() {
+        print("Home bindingView")
         self.viewModel.recommendFeeds
             .map { $0.first?.ownerNickname }
             .drive(testLabel.rx.text)
@@ -56,6 +56,7 @@ extension HomeViewController {
         self.collectionView.dataSource = self
         
         self.collectionView.register(MainTitleSection.self)
+        self.collectionView.register(MainBanner.self)
         self.collectionView.register(Title16Bold.self)
         self.collectionView.register(MainFeedCollectionView.self)
     }
@@ -74,6 +75,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         case is MainTitleSection:
             let cell: MainTitleSection = collectionView.dequeueReusableCell(for: indexPath)
             if let coordinator = self.coordinator { cell.configure(coordinator: coordinator) }
+            return cell
+
+        case is MainBanner:
+            let cell: MainBanner = collectionView.dequeueReusableCell(for: indexPath)
             return cell
             
         case is Title16Bold:
@@ -94,9 +99,18 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         //TODO : 이 부분도 is ReusableCell로 해야할지 고민하기
         switch indexPath.row {
         case 0: return viewModel.mainTitleSectionSize()
-        case 1: return viewModel.title16BoldSize()
-        case 2: return viewModel.MainFeedCollectionViewSize()
+        case 1: return viewModel.mainBannerSize()
+        case 2: return viewModel.title16BoldSize()
+        case 3: return viewModel.MainFeedCollectionViewSize()
         default: return CGSize.zero
         }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }

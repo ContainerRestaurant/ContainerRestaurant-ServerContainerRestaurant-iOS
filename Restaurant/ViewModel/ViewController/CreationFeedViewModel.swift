@@ -59,6 +59,6 @@ extension CreationFeedViewModel {
     }
 
     func creationFeedImage() -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(314))
+        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(432))
     }
 }

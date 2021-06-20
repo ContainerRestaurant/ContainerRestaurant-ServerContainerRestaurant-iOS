@@ -20,7 +20,7 @@ class MostFeedTopTenCollectionView: UICollectionViewCell, ViewModelBindableType 
         setCollectionView()
     }
     
-    func bindViewModel() {
+    func bindingView() {
         
     }
     

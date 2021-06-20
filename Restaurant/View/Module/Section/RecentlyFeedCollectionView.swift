@@ -20,7 +20,7 @@ class RecentlyFeedCollectionView: UICollectionViewCell, ViewModelBindableType {
         
     }
     
-    func bindViewModel() {
+    func bindingView() {
         
     }
     

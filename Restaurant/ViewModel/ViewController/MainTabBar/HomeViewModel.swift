@@ -30,12 +30,17 @@ struct HomeViewModel {
 extension HomeViewModel {
     mutating func appendModule() {
         self.modules.append(MainTitleSection())
+        self.modules.append(MainBanner())
         self.modules.append(Title16Bold())
         self.modules.append(MainFeedCollectionView())
     }
 
     func mainTitleSectionSize() -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: 251)
+    }
+
+    func mainBannerSize() -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width-CGFloat(32), height: 88)
     }
 
     func title16BoldSize() -> CGSize {

@@ -23,14 +23,14 @@ class CreationFeedImage: UICollectionViewCell {
         super.awakeFromNib()
 
         imagePicker.delegate = self
-        bind()
+        bindingView()
     }
 
     func configure(_ coordinator: CreationFeedCoordinator) {
         self.coordinator = coordinator
     }
 
-    private func bind() {
+    private func bindingView() {
         imagePickerButton.rx.tap
             .subscribe(onNext: {
                 PHPhotoLibrary.requestAuthorization({ (status) in

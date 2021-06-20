@@ -23,7 +23,7 @@ class CreationFeedDetail: UICollectionViewCell {
         super.awakeFromNib()
 
         setCollectionView()
-        binding()
+        bindingView()
     }
 }
 
@@ -36,7 +36,7 @@ extension CreationFeedDetail {
         self.collectionView.register(CreationFeedDetailCardCollectionViewCell.self)
     }
     
-    private func binding() {
+    private func bindingView() {
         appendFoodButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 if self!.mainFoodCount >= 5 {
