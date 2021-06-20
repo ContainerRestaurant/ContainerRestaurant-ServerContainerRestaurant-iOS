@@ -27,31 +27,6 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("MyViewController viewDidLoad()")
-        
-        feedButton.rx.tap
-            .subscribe(onNext: {
-                print("내 피드")
-            })
-            .disposed(by: disposeBag)
-        
-        scrapFeedButton.rx.tap
-            .subscribe(onNext: {
-                print("스크랩 피드")
-            })
-            .disposed(by: disposeBag)
-        
-        bookmarkedCountButton.rx.tap
-            .subscribe(onNext: {
-                print("찜한 식당")
-            })
-            .disposed(by: disposeBag)
-
-        descriptionLevelButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                API().deleteUser()
-                self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
-            })
-            .disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,13 +38,13 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
                 if !isLogin { self?.coordinator?.presentLogin() }
                 self?.viewModel = MyViewModel(viewModel: userData)
                 
-                self?.bindViewModel()
+                self?.bindingView()
             })
             .disposed(by: disposeBag)
     }
     
-    func bindViewModel() {
-        print("My bindViewModel")
+    func bindingView() {
+        print("My bindingView")
         
         viewModel.nickname
             .drive(nicknameLabel.rx.text)
@@ -92,6 +67,31 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
         viewModel.bookmarkedCount
             .map { String($0) }
             .drive(bookmarkedCountLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        feedButton.rx.tap
+            .subscribe(onNext: {
+                print("내 피드")
+            })
+            .disposed(by: disposeBag)
+
+        scrapFeedButton.rx.tap
+            .subscribe(onNext: {
+                print("스크랩 피드")
+            })
+            .disposed(by: disposeBag)
+
+        bookmarkedCountButton.rx.tap
+            .subscribe(onNext: {
+                print("찜한 식당")
+            })
+            .disposed(by: disposeBag)
+
+        descriptionLevelButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                API().deleteUser()
+                self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
+            })
             .disposed(by: disposeBag)
     }
 

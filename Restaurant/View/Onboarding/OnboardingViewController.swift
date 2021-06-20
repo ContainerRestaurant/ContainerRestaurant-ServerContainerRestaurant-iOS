@@ -28,10 +28,10 @@ class OnboardingViewController: BaseViewController, Storyboard {
         onboardingViews = createOnboardingView()
         onboardingScrollView(onboardings: onboardingViews)
 //        pageControl()
-        bind()
+        bindingView()
     }
 
-    private func bind() {
+    private func bindingView() {
         nextAndCloseButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 switch (self?.scrollView.contentOffset.x)! / UIScreen.main.bounds.width {

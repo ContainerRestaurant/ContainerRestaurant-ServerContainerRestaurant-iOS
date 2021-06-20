@@ -30,7 +30,7 @@ class SearchRestaurantViewController: BaseViewController, Storyboard, ViewModelB
         self.view.endEditing(true)
     }
 
-    func bindViewModel() {
+    func bindingView() {
         closeButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
@@ -57,8 +57,8 @@ class SearchRestaurantViewController: BaseViewController, Storyboard, ViewModelB
             .subscribe(onNext: { [weak self] in
                 self?.items = $0.items
                 self?.collectionView.reloadData()
-        })
-        .disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
     }
 
     deinit {

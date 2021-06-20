@@ -27,7 +27,7 @@ class ContainerOfEveryoneViewController: BaseViewController, ViewModelBindableTy
         setNavigation()
     }
     
-    func bindViewModel() {
+    func bindingView() {
         
     }
 

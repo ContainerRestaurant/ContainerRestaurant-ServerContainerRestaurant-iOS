@@ -120,6 +120,10 @@
 		FBDC3D83266DA3910072D7E8 /* LongText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC3D82266DA3910072D7E8 /* LongText.swift */; };
 		FBEDEA162676528D00446B83 /* LoginPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDEA152676528D00446B83 /* LoginPopupCoordinator.swift */; };
 		FBEDEA1B26765E0200446B83 /* LoginPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDEA1926765E0200446B83 /* LoginPopupViewController.swift */; };
+		FBEDEA20267BBACE00446B83 /* MainBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDEA1E267BBACE00446B83 /* MainBanner.swift */; };
+		FBEDEA21267BBACE00446B83 /* MainBanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBEDEA1F267BBACE00446B83 /* MainBanner.xib */; };
+		FBEDEA24267BC1BB00446B83 /* MainBannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDEA22267BC1BB00446B83 /* MainBannerCollectionViewCell.swift */; };
+		FBEDEA25267BC1BB00446B83 /* MainBannerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBEDEA23267BC1BB00446B83 /* MainBannerCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -241,6 +245,10 @@
 		FBDC3D82266DA3910072D7E8 /* LongText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongText.swift; sourceTree = "<group>"; };
 		FBEDEA152676528D00446B83 /* LoginPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPopupCoordinator.swift; sourceTree = "<group>"; };
 		FBEDEA1926765E0200446B83 /* LoginPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPopupViewController.swift; sourceTree = "<group>"; };
+		FBEDEA1E267BBACE00446B83 /* MainBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBanner.swift; sourceTree = "<group>"; };
+		FBEDEA1F267BBACE00446B83 /* MainBanner.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainBanner.xib; sourceTree = "<group>"; };
+		FBEDEA22267BC1BB00446B83 /* MainBannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		FBEDEA23267BC1BB00446B83 /* MainBannerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainBannerCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -592,10 +600,11 @@
 		FB1BE3612636C9F10004673C /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				FBEDEA1D267BBA7C00446B83 /* Banner */,
+				FB1BE3822637DF110004673C /* CollectionViewCell */,
+				52256FB8263DF48B00A056DE /* Section */,
 				52256FAE263D7F4C00A056DE /* SeparateLine */,
 				FB1BE3702637191C0004673C /* Title */,
-				52256FB8263DF48B00A056DE /* Section */,
-				FB1BE3822637DF110004673C /* CollectionViewCell */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -639,6 +648,8 @@
 				FB585B24266591330085C6B2 /* SearchRestaurantCollectionViewCell.xib */,
 				FB585B342668C85B0085C6B2 /* FoodCategoryCollectionViewCell.swift */,
 				FB585B352668C85B0085C6B2 /* FoodCategoryCollectionViewCell.xib */,
+				FBEDEA22267BC1BB00446B83 /* MainBannerCollectionViewCell.swift */,
+				FBEDEA23267BC1BB00446B83 /* MainBannerCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -747,6 +758,15 @@
 			path = LoginPopup;
 			sourceTree = "<group>";
 		};
+		FBEDEA1D267BBA7C00446B83 /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				FBEDEA1E267BBACE00446B83 /* MainBanner.swift */,
+				FBEDEA1F267BBACE00446B83 /* MainBanner.xib */,
+			);
+			path = Banner;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -820,10 +840,12 @@
 				FB585B332668C6D40085C6B2 /* FoodCategory.xib in Resources */,
 				FB585B372668C85B0085C6B2 /* FoodCategoryCollectionViewCell.xib in Resources */,
 				525811522677A97800900D59 /* onboarding2.json in Resources */,
+				FBEDEA25267BC1BB00446B83 /* MainBannerCollectionViewCell.xib in Resources */,
 				52E50DC12662105E0068C36C /* CreationFeedDetailCardCollectionViewCell.xib in Resources */,
 				FB585B4D266D79CE0085C6B2 /* OnboardingView.xib in Resources */,
 				FB1BE3862637DF2B0004673C /* MainFeedCollectionViewCell.xib in Resources */,
 				52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */,
+				FBEDEA21267BBACE00446B83 /* MainBanner.xib in Resources */,
 				FB56AF76265F71B4002736F5 /* CreationFeedDetail.xib in Resources */,
 				FB585B3C266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.xib in Resources */,
 				526BED802647252400897230 /* RecentlyFeedCollectionViewCell.xib in Resources */,
@@ -913,7 +935,9 @@
 				FBEDEA162676528D00446B83 /* LoginPopupCoordinator.swift in Sources */,
 				FB56AF63265E675B002736F5 /* TestMapCoordinator.swift in Sources */,
 				526BED5D2646EC9B00897230 /* MainTitleSectionViewModel.swift in Sources */,
+				FBEDEA20267BBACE00446B83 /* MainBanner.swift in Sources */,
 				52E50DC62662A70B0068C36C /* CreationFeedDetailSide.swift in Sources */,
+				FBEDEA24267BC1BB00446B83 /* MainBannerCollectionViewCell.swift in Sources */,
 				520419A5265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift in Sources */,
 				5204199C26512E190099BA39 /* MapCoordinator.swift in Sources */,
 				526BED71264710B500897230 /* MostFeedTopTenViewModel.swift in Sources */,

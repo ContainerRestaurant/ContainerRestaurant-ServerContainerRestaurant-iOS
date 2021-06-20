@@ -27,12 +27,6 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
         super.viewDidLoad()
 
         setCollectionView()
-
-        closeButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
-            })
-            .disposed(by: disposeBag)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -41,7 +35,7 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
         self.coordinator?.presenter.tabBarController?.selectedIndex = 0
     }
 
-    func bindViewModel() {
+    func bindingView() {
         viewModel.restaurantNameSubject
             .subscribe(onNext: { [weak self] in
                 self?.viewModel.restaurantName = $0
@@ -68,6 +62,12 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
 
                 self?.sideFoodHeight = titleHeight + spacing + cardViewHeight + spacing + buttonHeight
                 self?.collectionView.reloadData()
+            })
+            .disposed(by: disposeBag)
+
+        closeButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
     }

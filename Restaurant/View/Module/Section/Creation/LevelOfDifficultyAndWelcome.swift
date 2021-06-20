@@ -25,12 +25,12 @@ class LevelOfDifficultyAndWelcome: UICollectionViewCell {
         super.awakeFromNib()
 
         welcomeButton.applySketchShadow(color: .colorGrayGray08, alpha: 0.1, x: 0, y: 0, blur: 8, spread: 0)
-        setButtonAction()
+        bindingView()
     }
 }
 
 extension LevelOfDifficultyAndWelcome {
-    private func setButtonAction() {
+    private func bindingView() {
         levelOfDifficulty1.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.levelOfDifficultyLabel.setTitle("쉬워요", for: .normal)

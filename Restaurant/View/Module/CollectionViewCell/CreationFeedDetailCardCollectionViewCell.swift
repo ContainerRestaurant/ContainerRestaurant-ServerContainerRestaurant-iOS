@@ -22,11 +22,11 @@ class CreationFeedDetailCardCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(foodType: FoodType) {
-        mainTitleLabel.text = foodType == .main ? "음식" : "수량"
+        mainTitleLabel.text = "음식"
         subTitleLabel.text = "용기"
 
-        mainTextField.placeholder = foodType == .main ? "ex) 제육볶음" : "ex) 5개"
-        subTextField.placeholder = "ex) 1L 스테인리스 용기"
+        mainTextField.placeholder = foodType == .main ? "ex) 제육볶음" : "ex) 반찬 뭐있지"
+        subTextField.placeholder = foodType == .main ? "ex) 1L 스테인리스 용기" : "ex) 반찬 용기 뭐있지"
     }
 }
 
