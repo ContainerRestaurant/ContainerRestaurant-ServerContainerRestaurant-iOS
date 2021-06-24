@@ -34,9 +34,9 @@ struct UserModel: Decodable {
         nickname = "용기낸식당"
         profile = ""
         levelTitle = "Lv1. 텀블러"
-        feedCount = 999
-        scrapCount = 999
-        bookmarkedCount = 999
+        feedCount = 0
+        scrapCount = 0
+        bookmarkedCount = 0
     }
     
     init(from decoder: Decoder) throws {

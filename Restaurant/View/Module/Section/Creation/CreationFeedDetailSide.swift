@@ -10,6 +10,8 @@ import RxSwift
 
 class CreationFeedDetailSide: UICollectionViewCell {
     let disposeBag = DisposeBag()
+    var sideFoodAndContainer: [(String,String)] = [("","")]
+    var sideFoodAndContainerSubject: BehaviorSubject<[(String,String)]> = BehaviorSubject<[(String,String)]>(value: [("","")])
     var subFoodCount: Int = 1
     var cardHeightSubject: PublishSubject<CGFloat>?
     var foodType: FoodType?
@@ -42,6 +44,7 @@ extension CreationFeedDetailSide {
                 if self!.subFoodCount >= 5 {
                     print("더이상 추가 안됨")
                 } else {
+                    self?.sideFoodAndContainer.append(("",""))
                     self?.subFoodCount += 1
                     
                     let cardHeight = CGFloat(104 * self!.subFoodCount)
@@ -54,7 +57,8 @@ extension CreationFeedDetailSide {
             .disposed(by: disposeBag)
     }
     
-    func configure(_ cardHeightSubject: PublishSubject<CGFloat>, _ foodType: FoodType) {
+    func configure(_ sideFoodAndContainerSubject: BehaviorSubject<[(String,String)]>, _ cardHeightSubject: PublishSubject<CGFloat>, _ foodType: FoodType) {
+        self.sideFoodAndContainerSubject = sideFoodAndContainerSubject
         self.cardHeightSubject = cardHeightSubject
         self.foodType = foodType
     }
@@ -68,7 +72,21 @@ extension CreationFeedDetailSide: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: CreationFeedDetailCardCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+
         cell.configure(foodType: foodType!)
+        cell.mainTextField.rx.text
+            .subscribe(onNext: { [weak self] sideFood in
+                self?.sideFoodAndContainer[indexPath.row].0 = sideFood!
+                self?.sideFoodAndContainerSubject.onNext(self!.sideFoodAndContainer)
+            })
+            .disposed(by: disposeBag)
+        cell.subTextField.rx.text
+            .subscribe(onNext: { [weak self] container in
+                self?.sideFoodAndContainer[indexPath.row].1 = container!
+                self?.sideFoodAndContainerSubject.onNext(self!.sideFoodAndContainer)
+            })
+            .disposed(by: disposeBag)
+
         return cell
     }
     
