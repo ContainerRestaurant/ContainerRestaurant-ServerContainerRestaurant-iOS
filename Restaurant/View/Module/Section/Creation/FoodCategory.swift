@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class FoodCategory: UICollectionViewCell {
     var category: [String] = [
@@ -14,7 +15,7 @@ class FoodCategory: UICollectionViewCell {
         "돈까스/회/일식", "치킨/피자"
     ]
     var isClickedArray: [Bool] = Array(repeating: false, count: 9)
-    var selectedCategoryText: String = "한식"
+    var selectedCategorySubject: BehaviorSubject<String> = BehaviorSubject<String>(value: "한식")
 
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -25,8 +26,8 @@ class FoodCategory: UICollectionViewCell {
         isClickedArray[0] = true
     }
 
-    func configure(_ selectedCategoryText: inout String) {
-        selectedCategoryText = self.selectedCategoryText
+    func configure(_ selectedCategorySubject: BehaviorSubject<String>) {
+        self.selectedCategorySubject = selectedCategorySubject
     }
 }
 
@@ -71,7 +72,7 @@ extension FoodCategory: UICollectionViewDelegate, UICollectionViewDataSource, UI
         self.isClickedArray[indexPath.row] = true
         for (index, _) in isClickedArray.enumerated() {
             if index == indexPath.row {
-                selectedCategoryText = category[indexPath.row]
+                self.selectedCategorySubject.onNext(category[indexPath.row])
             } else {
                 self.isClickedArray[index] = false
             }

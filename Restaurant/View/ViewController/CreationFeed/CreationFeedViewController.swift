@@ -22,7 +22,12 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
     let registerSubject: PublishSubject<Bool> = PublishSubject<Bool>()
 
     var restaurantNameLabel: UILabel?
-    var selectedCategoryText: String = "한식"
+    var selectedCategory: String = "한식"
+    var selectedCategorySubject: BehaviorSubject<String> = BehaviorSubject<String>(value: "한식")
+    var mainFoodAndContainer: [(String, String)] = []
+    var mainFoodAndContainerSubject: BehaviorSubject<[(String,String)]> = BehaviorSubject<[(String,String)]>(value: [("","")])
+    var sideFoodAndContainer: [(String, String)] = []
+    var sideFoodAndContainerSubject: BehaviorSubject<[(String,String)]> = BehaviorSubject<[(String,String)]>(value: [("","")])
     var levelOfDifficulty: Int = 0
     var levelOfDifficultySubject: BehaviorSubject<Int> = BehaviorSubject<Int>(value: 1)
     var isWelcome: Bool = false
@@ -35,6 +40,24 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
         super.viewDidLoad()
 
         setCollectionView()
+
+        selectedCategorySubject
+            .subscribe(onNext: { [weak self] in
+                self?.selectedCategory = $0
+            })
+            .disposed(by: disposeBag)
+
+        mainFoodAndContainerSubject
+            .subscribe(onNext: { [weak self] in
+                self?.mainFoodAndContainer = $0
+            })
+            .disposed(by: disposeBag)
+
+        sideFoodAndContainerSubject
+            .subscribe(onNext: { [weak self] in
+                self?.sideFoodAndContainer = $0
+            })
+            .disposed(by: disposeBag)
 
         levelOfDifficultySubject
             .subscribe(onNext: { [weak self] in
@@ -52,7 +75,9 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
             .filter { $0 }
             .subscribe(onNext: { [weak self] _ in
                 print(self?.restaurantNameLabel?.text)
-                print(self?.selectedCategoryText)
+                print(self?.selectedCategory)
+                print(self?.mainFoodAndContainer)
+                print(self?.sideFoodAndContainer)
                 print(self?.levelOfDifficulty)
                 print(self?.isWelcome)
             })
@@ -66,12 +91,12 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
     }
 
     func bindingView() {
-        viewModel.restaurantNameSubject
-            .subscribe(onNext: { [weak self] in
-                self?.viewModel.restaurantName = $0
-                self?.collectionView.reloadData()
-            })
-            .disposed(by: disposeBag)
+//        viewModel.restaurantNameSubject
+//            .subscribe(onNext: { [weak self] in
+//                self?.viewModel.restaurantName = $0
+//                self?.collectionView.reloadData()
+//            })
+//            .disposed(by: disposeBag)
 
         viewModel.mainFoodHeightSubject
             .subscribe(onNext: { [weak self] cardViewHeight in
@@ -178,17 +203,17 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
 
         case is FoodCategory:
             let cell: FoodCategory = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(&self.selectedCategoryText)
+            cell.configure(self.selectedCategorySubject)
             return cell
 
         case is CreationFeedDetail:
             let cell: CreationFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(self.viewModel.mainFoodHeightSubject, .main)
+            cell.configure(self.mainFoodAndContainerSubject, self.viewModel.mainFoodHeightSubject, .main)
             return cell
 
         case is CreationFeedDetailSide:
             let cell: CreationFeedDetailSide = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(self.viewModel.sideFoodHeightSubject, .side)
+            cell.configure(self.sideFoodAndContainerSubject, self.viewModel.sideFoodHeightSubject, .side)
             return cell
 
         case is LevelOfDifficultyAndWelcome:
