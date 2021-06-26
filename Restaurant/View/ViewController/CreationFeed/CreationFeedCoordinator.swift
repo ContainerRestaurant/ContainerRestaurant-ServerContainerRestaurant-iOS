@@ -28,8 +28,8 @@ class CreationFeedCoordinator: NSObject, Coordinator {
 }
 
 extension CreationFeedCoordinator {
-    func presentBottomSheet(_ restaurantNameSubject: BehaviorSubject<String>) {
-        let coordinator = SearchRestaurantCoordinator(presenter: presenter, subject: restaurantNameSubject)
+    func presentBottomSheet(_ restaurantSubject: PublishSubject<LocalSearchItem>) {
+        let coordinator = SearchRestaurantCoordinator(presenter: presenter, subject: restaurantSubject)
         coordinator.delegate = self
         childCoordinators.append(coordinator)
         coordinator.start()

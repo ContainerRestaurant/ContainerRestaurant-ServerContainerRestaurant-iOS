@@ -12,7 +12,7 @@ import FittedSheets
 class SearchRestaurant: UICollectionViewCell {
     let disposeBag = DisposeBag()
     weak var coordinator: CreationFeedCoordinator?
-    var restaurantNameSubject: BehaviorSubject<String> = BehaviorSubject<String>(value: "")
+    var restaurantSubject: PublishSubject<LocalSearchItem> = PublishSubject<LocalSearchItem>()
 
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var searchRestaurantButton: UIButton!
@@ -23,7 +23,7 @@ class SearchRestaurant: UICollectionViewCell {
 
         searchRestaurantButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                if let subject = self?.restaurantNameSubject {
+                if let subject = self?.restaurantSubject {
                     self?.coordinator?.presentBottomSheet(subject)
                 }
             })
@@ -36,11 +36,12 @@ class SearchRestaurant: UICollectionViewCell {
             .disposed(by: disposeBag)
     }
 
-    func configure(_ coordinator: CreationFeedCoordinator, _ subject: BehaviorSubject<String>) {
+    func configure(_ coordinator: CreationFeedCoordinator, _ subject: PublishSubject<LocalSearchItem>) {
         self.coordinator = coordinator
-        restaurantNameSubject = subject
+        restaurantSubject = subject
 
-        restaurantNameSubject
+        restaurantSubject
+            .map { $0.title.deleteBrTag() }
             .bind(to: restaurantNameLabel.rx.text)
             .disposed(by: disposeBag)
     }

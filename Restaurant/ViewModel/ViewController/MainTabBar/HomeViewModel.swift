@@ -22,7 +22,7 @@ struct HomeViewModel {
     init(viewModel: RecommendFeed) {
         appendModule()
 
-        embedded = viewModel._embedded
+        embedded = viewModel.embedded
     }
 }
 

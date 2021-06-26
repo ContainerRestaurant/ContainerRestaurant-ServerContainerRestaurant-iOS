@@ -10,9 +10,9 @@ import RxSwift
 
 class LevelOfDifficultyAndWelcome: UICollectionViewCell {
     let disposeBag = DisposeBag()
-    var levelOfDifficultySubject: BehaviorSubject<Int>?
+    var levelOfDifficultySubject: PublishSubject<Int>?
     var isWelcome = false
-    var isWelcomeSubject: BehaviorSubject<Bool>?
+    var isWelcomeSubject: PublishSubject<Bool>?
 
     @IBOutlet weak var levelOfDifficultyLabel: UIButton!
     @IBOutlet weak var levelOfDifficulty1: UIButton!
@@ -29,7 +29,7 @@ class LevelOfDifficultyAndWelcome: UICollectionViewCell {
         bindingView()
     }
 
-    func configure(_ levelOfDifficultySubject: BehaviorSubject<Int>, _ isWelcomeSubject: BehaviorSubject<Bool>) {
+    func configure(_ levelOfDifficultySubject: PublishSubject<Int>, _ isWelcomeSubject: PublishSubject<Bool>) {
         self.levelOfDifficultySubject = levelOfDifficultySubject
         self.isWelcomeSubject = isWelcomeSubject
     }

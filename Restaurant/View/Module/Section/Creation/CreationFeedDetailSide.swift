@@ -10,8 +10,8 @@ import RxSwift
 
 class CreationFeedDetailSide: UICollectionViewCell {
     let disposeBag = DisposeBag()
-    var sideFoodAndContainer: [(String,String)] = [("","")]
-    var sideFoodAndContainerSubject: BehaviorSubject<[(String,String)]> = BehaviorSubject<[(String,String)]>(value: [("","")])
+    var sideFoodAndContainer: [FoodAndContainerModel] = [FoodAndContainerModel()]
+    var sideFoodAndContainerSubject: PublishSubject<[FoodAndContainerModel]> = PublishSubject<[FoodAndContainerModel]>()
     var subFoodCount: Int = 1
     var cardHeightSubject: PublishSubject<CGFloat>?
     var foodType: FoodType?
@@ -44,7 +44,7 @@ extension CreationFeedDetailSide {
                 if self!.subFoodCount >= 5 {
                     print("더이상 추가 안됨")
                 } else {
-                    self?.sideFoodAndContainer.append(("",""))
+                    self?.sideFoodAndContainer.append(FoodAndContainerModel())
                     self?.subFoodCount += 1
                     
                     let cardHeight = CGFloat(104 * self!.subFoodCount)
@@ -57,7 +57,7 @@ extension CreationFeedDetailSide {
             .disposed(by: disposeBag)
     }
     
-    func configure(_ sideFoodAndContainerSubject: BehaviorSubject<[(String,String)]>, _ cardHeightSubject: PublishSubject<CGFloat>, _ foodType: FoodType) {
+    func configure(_ sideFoodAndContainerSubject: PublishSubject<[FoodAndContainerModel]>, _ cardHeightSubject: PublishSubject<CGFloat>, _ foodType: FoodType) {
         self.sideFoodAndContainerSubject = sideFoodAndContainerSubject
         self.cardHeightSubject = cardHeightSubject
         self.foodType = foodType
@@ -75,15 +75,21 @@ extension CreationFeedDetailSide: UICollectionViewDelegate, UICollectionViewData
 
         cell.configure(foodType: foodType!)
         cell.mainTextField.rx.text
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] sideFood in
-                self?.sideFoodAndContainer[indexPath.row].0 = sideFood!
-                self?.sideFoodAndContainerSubject.onNext(self!.sideFoodAndContainer)
+                if let sideFood = sideFood {
+                    self?.sideFoodAndContainer[indexPath.row].menuName = sideFood
+                    self?.sideFoodAndContainerSubject.onNext(self!.sideFoodAndContainer)
+                }
             })
             .disposed(by: disposeBag)
         cell.subTextField.rx.text
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] container in
-                self?.sideFoodAndContainer[indexPath.row].1 = container!
-                self?.sideFoodAndContainerSubject.onNext(self!.sideFoodAndContainer)
+                if let container = container {
+                    self?.sideFoodAndContainer[indexPath.row].container = container
+                    self?.sideFoodAndContainerSubject.onNext(self!.sideFoodAndContainer)
+                }
             })
             .disposed(by: disposeBag)
 
