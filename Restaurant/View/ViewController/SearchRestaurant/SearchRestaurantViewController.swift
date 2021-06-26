@@ -91,7 +91,7 @@ extension SearchRestaurantViewController: UICollectionViewDelegate, UICollection
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let item = items?[indexPath.row] {
-            viewModel.restaurantNameSubject?.onNext(item.title.deleteBrTag())
+            viewModel.restaurantSubject?.onNext(item)
             self.dismiss(animated: true, completion: nil)
         }
     }

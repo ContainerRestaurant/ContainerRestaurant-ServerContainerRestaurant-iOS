@@ -9,16 +9,20 @@ import Foundation
 
 ///추천피드 모델
 struct RecommendFeed: Decodable {
-    var _embedded: Embedded
+//    var _embedded: Embedded
+    var embedded: Embedded
 
-    private enum CodingKeys: CodingKey {
-        case _embedded
+//    private enum CodingKeys: CodingKey {
+//        case _embedded
+//    }
+    private enum CodingKeys: String, CodingKey {
+        case embedded = "_embedded"
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        self._embedded = (try? container.decode(Embedded.self, forKey: ._embedded)) ?? Embedded()
+        self.embedded = (try? container.decode(Embedded.self, forKey: .embedded)) ?? Embedded()
     }
 }
 

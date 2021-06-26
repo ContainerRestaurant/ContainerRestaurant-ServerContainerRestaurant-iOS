@@ -10,9 +10,9 @@ import RxSwift
 import RxCocoa
 
 struct SearchRestaurantViewModel {
-    var restaurantNameSubject: BehaviorSubject<String>?
+    var restaurantSubject: PublishSubject<LocalSearchItem>?
 
-    init(_ subeject: BehaviorSubject<String>) {
-        self.restaurantNameSubject = subeject
+    init(_ subeject: PublishSubject<LocalSearchItem>) {
+        self.restaurantSubject = subeject
     }
 }

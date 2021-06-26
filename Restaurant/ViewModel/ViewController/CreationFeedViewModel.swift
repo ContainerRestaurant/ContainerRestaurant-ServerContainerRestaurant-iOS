@@ -11,7 +11,7 @@ import RxSwift
 struct CreationFeedViewModel {
     var modules: [UICollectionViewCell] = []
     var restaurantName: String = ""
-    var restaurantNameSubject: BehaviorSubject<String> = BehaviorSubject<String>(value: "")
+    var restaurantSubject: PublishSubject<LocalSearchItem> = PublishSubject<LocalSearchItem>()
     var mainFoodHeightSubject: PublishSubject<CGFloat> = PublishSubject<CGFloat>()
     var sideFoodHeightSubject: PublishSubject<CGFloat> = PublishSubject<CGFloat>()
 

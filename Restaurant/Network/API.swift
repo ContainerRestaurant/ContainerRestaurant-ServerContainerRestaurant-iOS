@@ -69,6 +69,57 @@ extension API {
             }
         }
     }
+    
+    //이미지 업로드
+    func uploadImage(image: UIImage, imageIDSubject: PublishSubject<Int>) {
+        let url = "\(baseURL)/api/image/upload"
+        let header: HTTPHeaders = [
+            "Content-type": "multipart/form-data",
+            "Accept": "application/json"
+        ]
+
+        AF.upload(multipartFormData: { multipartFormData in
+            if let data = image.jpegData(compressionQuality: 0.4) {
+                multipartFormData.append(data, withName: "image", fileName: "file.jpeg", mimeType: "image/png")
+            }
+        }, to: url, method: .post, headers: header).responseJSON(completionHandler: { response in
+            switch response.result {
+            case .success(let obj):
+                do {
+                    let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .fragmentsAllowed)
+                    let instanceData = try JSONDecoder().decode(UploadingImageModel.self, from: dataJSON)
+                    
+                    imageIDSubject.onNext(instanceData.id)
+                    print("upload Image: \(instanceData)")
+                } catch {
+                    print(error.localizedDescription)
+                }
+            case .failure(let e):
+                print(e.localizedDescription)
+                //JSON could not be serialized because of error:
+                //The data couldn’t be read because it isn’t in the correct format.
+                //Todo: 특정 사진에 위와 같은 에러가 떨어질 때 있음... 나중에 확인 !
+            }
+        })
+    }
+    
+    //피드 업로드
+    func uploadFeed(feedModel: FeedModel, coordinator: CreationFeedCoordinator) {
+        let url = "\(baseURL)/api/feed"
+        let params = feedModel
+
+        AF.request(url,
+                   method: .post,
+                   parameters: params,
+                   encoder: JSONParameterEncoder.default)
+            .validate(statusCode: 200..<300)
+            .response { response in
+                print("피드쓰기----------------")
+                print(response)
+                print("피드쓰기----------------")
+                coordinator.presenter.dismiss(animated: true, completion: nil)
+            }
+    }
 }
 
 //MARK: 로그인

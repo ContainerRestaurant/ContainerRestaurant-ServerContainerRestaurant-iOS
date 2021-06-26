@@ -13,12 +13,12 @@ class SearchRestaurantCoordinator: NSObject, Coordinator {
     var delegate: CoordinatorFinishDelegate?
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
-    var restaurantNameSubject: BehaviorSubject<String> = BehaviorSubject<String>(value: "")
+    var restaurantSubject: PublishSubject<LocalSearchItem> = PublishSubject<LocalSearchItem>()
 
-    init(presenter: UINavigationController, subject: BehaviorSubject<String>) {
+    init(presenter: UINavigationController, subject: PublishSubject<LocalSearchItem>) {
         self.presenter = presenter
         self.childCoordinators = []
-        self.restaurantNameSubject = subject
+        self.restaurantSubject = subject
     }
 
     func start() {
@@ -30,7 +30,7 @@ extension SearchRestaurantCoordinator {
     private func setBottomSheetAndPresent() {
         var searchRestaurant = SearchRestaurantViewController.instantiate()
         searchRestaurant.coordinator = self
-        searchRestaurant.bind(viewModel: SearchRestaurantViewModel(restaurantNameSubject))
+        searchRestaurant.bind(viewModel: SearchRestaurantViewModel(restaurantSubject))
 
         let sheetViewController = SheetViewController(controller: searchRestaurant,
                                                       sizes: [.fixed(400)],

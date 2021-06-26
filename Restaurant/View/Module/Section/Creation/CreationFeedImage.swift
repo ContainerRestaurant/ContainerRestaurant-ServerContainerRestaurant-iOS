@@ -14,6 +14,8 @@ class CreationFeedImage: UICollectionViewCell {
     var coordinator: CreationFeedCoordinator?
     let imagePicker = UIImagePickerController()
     var registerSubject: PublishSubject<Bool> = PublishSubject<Bool>()
+    var image: UIImage?
+    var imageSubject: PublishSubject<UIImage>?
 
     @IBOutlet weak var imagePickerButton: UIButton!
     @IBOutlet weak var hideImageButton: UIButton!
@@ -27,9 +29,10 @@ class CreationFeedImage: UICollectionViewCell {
         bindingView()
     }
 
-    func configure(_ coordinator: CreationFeedCoordinator, _ registerSubject: PublishSubject<Bool>) {
+    func configure(_ coordinator: CreationFeedCoordinator, _ registerSubject: PublishSubject<Bool>, _ imageSubject: PublishSubject<UIImage>) {
         self.coordinator = coordinator
         self.registerSubject = registerSubject
+        self.imageSubject = imageSubject
     }
 
     private func bindingView() {
@@ -59,11 +62,15 @@ class CreationFeedImage: UICollectionViewCell {
                 self?.hideImageButton.isHidden = true
                 self?.pickedImageView.isHidden = true
                 self?.pickedImageView.image = nil
+                self?.image = nil
             })
             .disposed(by: disposeBag)
 
         registerButton.rx.tap
             .subscribe(onNext: { [weak self] in
+                if let image = self?.image {
+                    self?.imageSubject?.onNext(image)
+                }
                 print("등록버튼")
                 self?.registerSubject.onNext(true)
             })
@@ -78,9 +85,10 @@ class CreationFeedImage: UICollectionViewCell {
 extension CreationFeedImage: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            hideImageButton.isHidden = false
-            pickedImageView.isHidden = false
-            pickedImageView.image = image
+            self.hideImageButton.isHidden = false
+            self.pickedImageView.isHidden = false
+            self.pickedImageView.image = image
+            self.image = image
         }
 
         Common.currentViewController()?.dismiss(animated: true, completion: nil)

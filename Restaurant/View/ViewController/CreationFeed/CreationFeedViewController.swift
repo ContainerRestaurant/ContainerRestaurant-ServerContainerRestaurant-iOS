@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import FittedSheets
+import NMapsMap
 
 enum FoodType {
     case main
@@ -21,17 +22,21 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
     var sideFoodHeight: CGFloat = 179
     let registerSubject: PublishSubject<Bool> = PublishSubject<Bool>()
 
-    var restaurantNameLabel: UILabel?
-    var selectedCategory: String = "한식"
-    var selectedCategorySubject: BehaviorSubject<String> = BehaviorSubject<String>(value: "한식")
-    var mainFoodAndContainer: [(String, String)] = []
-    var mainFoodAndContainerSubject: BehaviorSubject<[(String,String)]> = BehaviorSubject<[(String,String)]>(value: [("","")])
-    var sideFoodAndContainer: [(String, String)] = []
-    var sideFoodAndContainerSubject: BehaviorSubject<[(String,String)]> = BehaviorSubject<[(String,String)]>(value: [("","")])
-    var levelOfDifficulty: Int = 0
-    var levelOfDifficultySubject: BehaviorSubject<Int> = BehaviorSubject<Int>(value: 1)
+//    var restaurantNameLabel: UILabel?
+    var restaurant: LocalSearchItem?
+    var selectedCategory: String = "KOREAN"
+    var selectedCategorySubject: PublishSubject<String> = PublishSubject<String>()
+    var mainFoodAndContainer: [FoodAndContainerModel] = []
+    var mainFoodAndContainerSubject: PublishSubject<[FoodAndContainerModel]> = PublishSubject<[FoodAndContainerModel]>()
+    var sideFoodAndContainer: [FoodAndContainerModel] = []
+    var sideFoodAndContainerSubject: PublishSubject<[FoodAndContainerModel]> = PublishSubject<[FoodAndContainerModel]>()
+    var levelOfDifficulty: Int = 1
+    var levelOfDifficultySubject: PublishSubject<Int> = PublishSubject<Int>()
     var isWelcome: Bool = false
-    var isWelcomeSubject: BehaviorSubject<Bool> = BehaviorSubject<Bool>(value: false)
+    var isWelcomeSubject: PublishSubject<Bool> = PublishSubject<Bool>()
+    var imageID: Int?
+    var imageIDSubject: PublishSubject<Int> = PublishSubject<Int>()
+    var imageSubject: PublishSubject<UIImage> = PublishSubject<UIImage>()
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var closeButton: UIButton!
@@ -41,6 +46,12 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
 
         setCollectionView()
 
+        viewModel.restaurantSubject
+            .subscribe(onNext: { [weak self] in
+                self?.restaurant = $0
+            })
+            .disposed(by: disposeBag)
+        
         selectedCategorySubject
             .subscribe(onNext: { [weak self] in
                 self?.selectedCategory = $0
@@ -70,18 +81,50 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
                 self?.isWelcome = $0
             })
             .disposed(by: disposeBag)
-
-        registerSubject
-            .filter { $0 }
-            .subscribe(onNext: { [weak self] _ in
-                print(self?.restaurantNameLabel?.text)
-                print(self?.selectedCategory)
-                print(self?.mainFoodAndContainer)
-                print(self?.sideFoodAndContainer)
-                print(self?.levelOfDifficulty)
-                print(self?.isWelcome)
+        
+        imageSubject
+            .subscribe(onNext: { [weak self] in
+                //API쏘기
+                API().uploadImage(image: $0, imageIDSubject: self!.imageIDSubject)
             })
             .disposed(by: disposeBag)
+        
+        imageIDSubject
+            .subscribe(onNext: { [weak self] in
+                self?.imageID = $0
+            })
+            .disposed(by: disposeBag)
+
+//        registerSubject
+//            .filter { $0 }
+//            .subscribe(onNext: { [weak self] _ in
+//                print(self?.restaurantNameLabel?.text)
+//                print(self?.selectedCategory)
+//                print(self?.mainFoodAndContainer)
+//                print(self?.sideFoodAndContainer)
+//                print(self?.levelOfDifficulty)
+//                print(self?.isWelcome)
+//                print(self?.imageID)
+////                print(self?.image)
+//            })
+//            .disposed(by: disposeBag)
+        
+        //Todo: 사진 입력됐을 때에만 등록됨...
+        Observable
+            .zip(registerSubject, imageIDSubject)
+            .subscribe(onNext: { [weak self] (registerSubject, imageIDSubject) in
+                let convertingXY = self?.convertingXY()
+                let restaurant: RestaurantModel = RestaurantModel(name: self?.restaurant?.title.deleteBrTag() ?? "", address: self?.restaurant?.roadAddress ?? "", latitude: convertingXY?.lat ?? 0.0, longitude: convertingXY?.lng ?? 0.0)
+                
+                if let mainFoodAndContainer = self?.mainFoodAndContainer,
+                   let sideFoodAndContainer = self?.sideFoodAndContainer,
+                   let thumbnailImageID = self?.imageID,
+                   let coordinator = self?.coordinator {
+                    let feedInformation = FeedModel(restaurantCreateDto: restaurant, category: self!.selectedCategory, mainMenu: mainFoodAndContainer, subMenu: sideFoodAndContainer, difficulty: self!.levelOfDifficulty, welcome: self!.isWelcome, thumbnailImageID: thumbnailImageID)
+                    
+                    API().uploadFeed(feedModel: feedInformation, coordinator: coordinator)
+                }
+            })
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -147,6 +190,18 @@ extension CreationFeedViewController {
         self.collectionView.register(LevelOfDifficultyAndWelcome.self)
         self.collectionView.register(CreationFeedImage.self)
     }
+    
+    private func convertingXY() -> NMGLatLng? {
+        if let mapx = self.restaurant?.mapx,
+           let mapy = self.restaurant?.mapy {
+            let doubleMapx = Double(mapx)!
+            let doubleMapy = Double(mapy)!
+            print("변환: \(NMGTm128(x: doubleMapx, y: doubleMapy).toLatLng())")
+            return NMGTm128(x: doubleMapx, y: doubleMapy).toLatLng()
+        }
+        
+        return nil
+    }
 }
 
 //MARK: - CollectionView Protocol
@@ -196,8 +251,8 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
         case is SearchRestaurant:
             let cell: SearchRestaurant = collectionView.dequeueReusableCell(for: indexPath)
             if let coordinator = self.coordinator {
-                cell.configure(coordinator, viewModel.restaurantNameSubject)
-                self.restaurantNameLabel = cell.restaurantNameLabel
+                cell.configure(coordinator, viewModel.restaurantSubject)
+//                self.restaurantNameLabel = cell.restaurantNameLabel
             }
             return cell
 
@@ -225,7 +280,7 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
         case is CreationFeedImage:
             let cell: CreationFeedImage = collectionView.dequeueReusableCell(for: indexPath)
             if let coordinator = self.coordinator {
-                cell.configure(coordinator, registerSubject)
+                cell.configure(coordinator, registerSubject, imageSubject)
             }
             return cell
 

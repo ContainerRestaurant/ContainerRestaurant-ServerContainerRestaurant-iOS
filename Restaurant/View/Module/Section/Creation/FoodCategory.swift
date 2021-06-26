@@ -9,13 +9,19 @@ import UIKit
 import RxSwift
 
 class FoodCategory: UICollectionViewCell {
-    var category: [String] = [
-        "한식", "야식", "중식", "분식",
-        "패스트푸드", "아시안/양식", "카페/디저트",
-        "돈까스/회/일식", "치킨/피자"
+    var category: [(String,String)] = [
+        ("KOREAN","한식"),
+        ("NIGHT_MEAL","야식"),
+        ("CHINESE","중식"),
+        ("SCHOOL_FOOD","분식"),
+        ("FAST_FOOD","패스트푸드"),
+        ("ASIAN_AND_WESTERN","아시안/양식"),
+        ("COFFEE_AND_DESSERT","카페/디저트"),
+        ("JAPANESE","돈가스/회/일식"),
+        ("CHICKEN_AND_PIZZA","치킨/피자")
     ]
     var isClickedArray: [Bool] = Array(repeating: false, count: 9)
-    var selectedCategorySubject: BehaviorSubject<String> = BehaviorSubject<String>(value: "한식")
+    var selectedCategorySubject: PublishSubject<String> = PublishSubject<String>()
 
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -26,7 +32,7 @@ class FoodCategory: UICollectionViewCell {
         isClickedArray[0] = true
     }
 
-    func configure(_ selectedCategorySubject: BehaviorSubject<String>) {
+    func configure(_ selectedCategorySubject: PublishSubject<String>) {
         self.selectedCategorySubject = selectedCategorySubject
     }
 }
@@ -49,7 +55,7 @@ extension FoodCategory: UICollectionViewDelegate, UICollectionViewDataSource, UI
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: FoodCategoryCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.configure(title: category[indexPath.row], isClicked: isClickedArray[indexPath.row])
+        cell.configure(title: category[indexPath.row].1, isClicked: isClickedArray[indexPath.row])
 
         return cell
     }
@@ -72,7 +78,7 @@ extension FoodCategory: UICollectionViewDelegate, UICollectionViewDataSource, UI
         self.isClickedArray[indexPath.row] = true
         for (index, _) in isClickedArray.enumerated() {
             if index == indexPath.row {
-                self.selectedCategorySubject.onNext(category[indexPath.row])
+                self.selectedCategorySubject.onNext(category[indexPath.row].0)
             } else {
                 self.isClickedArray[index] = false
             }
