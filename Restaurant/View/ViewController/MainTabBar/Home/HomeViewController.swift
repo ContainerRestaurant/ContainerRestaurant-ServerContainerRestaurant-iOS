@@ -79,6 +79,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         case is MainBanner:
             let cell: MainBanner = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configure(viewModel.bannerInfo ?? [])
             return cell
             
         case is Title16Bold:

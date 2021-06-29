@@ -8,6 +8,8 @@
 import UIKit
 
 class MainBanner: UICollectionViewCell {
+    var bannerList: [BannerInfoModel] = []
+    
     @IBOutlet weak var mainBannerCollectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
 
@@ -15,7 +17,6 @@ class MainBanner: UICollectionViewCell {
         super.awakeFromNib()
 
         setCollectionView()
-//        setPageControl()
     }
 
     private func setCollectionView() {
@@ -26,20 +27,26 @@ class MainBanner: UICollectionViewCell {
 
         mainBannerCollectionView.decelerationRate = .fast
     }
+    
+    func configure(_ bannerList: [BannerInfoModel]) {
+        self.bannerList = bannerList
+        
+        setPageControl()
+    }
 
-//    private func setPageControl() {
-//        pageControl
-//    }
+    private func setPageControl() {
+        pageControl.numberOfPages = bannerList.count
+    }
 }
 
 extension MainBanner: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return bannerList.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: MainBannerCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.configure(testIndex: indexPath.row)
+        cell.configure(imageURL: self.bannerList[indexPath.row].bannerURL)
 
         return cell
     }
