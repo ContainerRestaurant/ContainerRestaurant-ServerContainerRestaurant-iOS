@@ -9,9 +9,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-struct HomeViewModel {
+class HomeViewModel {
     var modules: [UICollectionViewCell] = []
     var embedded: Embedded?
+    var bannerInfo: [BannerInfoModel]?
 
     var recommendFeeds: Driver<[FeedPreviewDtoList]> {
         return Observable
@@ -19,16 +20,17 @@ struct HomeViewModel {
             .asDriver(onErrorJustReturn: [])
     }
     
-    init(viewModel: RecommendFeed) {
+    init(_ recommendFeed: RecommendFeed, _ banner: [BannerInfoModel]) {
         appendModule()
 
-        embedded = viewModel.embedded
+        embedded = recommendFeed.embedded
+        bannerInfo = banner
     }
 }
 
 //MARK: - Module Size
 extension HomeViewModel {
-    mutating func appendModule() {
+    func appendModule() {
         self.modules.append(MainTitleSection())
         self.modules.append(MainBanner())
         self.modules.append(Title16Bold())

@@ -13,13 +13,10 @@ class MainBannerCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
-    func configure(testIndex: Int) {
-        switch testIndex {
-        case 0: imageView.backgroundColor = .red
-        case 1: imageView.backgroundColor = .orange
-        case 2: imageView.backgroundColor = .yellow
-        default: imageView.backgroundColor = .green
-        }
+    
+    func configure(imageURL: String) {
+        let totalURL = baseURL + imageURL
+        let URL = URL(string: totalURL)
+        imageView.kf.setImage(with: URL, options: [.transition(.fade(0.3))])
     }
 }

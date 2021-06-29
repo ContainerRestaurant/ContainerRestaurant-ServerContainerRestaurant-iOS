@@ -23,12 +23,14 @@ class HomeCoordinator: NSObject, Coordinator {
     }
     
     func start() {
+        var banner: [BannerInfoModel] = []
+        API().mainBanner { banner = $0.bannerInfo }
         API().recommendFeed(subject: self.recommendFeedSubject)
 
         self.recommendFeedSubject.subscribe(onNext: { [weak self] in
             var home = HomeViewController.instantiate()
             home.coordinator = self
-            home.bind(viewModel: HomeViewModel(viewModel: $0))
+            home.bind(viewModel: HomeViewModel($0, banner))
 
             self?.presenter.pushViewController(home, animated: false)
         })
