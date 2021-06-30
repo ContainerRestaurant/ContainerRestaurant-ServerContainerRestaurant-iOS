@@ -8,7 +8,7 @@
 import Foundation
 
 struct BannerModel: Decodable {
-    var bannerInfo: [BannerInfoModel]
+    var bannerInfo: [BannerInfo]
     
     private enum RootKey: String, CodingKey {
         case embedded = "_embedded"
@@ -27,7 +27,7 @@ struct BannerModel: Decodable {
     }
 }
 
-struct BannerInfoModel: Decodable {
+struct BannerInfo: Decodable {
     var title: String
     var bannerURL: String
     var contentURL: String

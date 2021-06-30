@@ -122,6 +122,8 @@
 		FB585B49266D6E770085C6B2 /* ExtensionUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B48266D6E770085C6B2 /* ExtensionUIButton.swift */; };
 		FB585B4B266D79C30085C6B2 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B4A266D79C30085C6B2 /* OnboardingView.swift */; };
 		FB585B4D266D79CE0085C6B2 /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB585B4C266D79CE0085C6B2 /* OnboardingView.xib */; };
+		FBB0010B268CF9CA00B6ED03 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0010A268CF9CA00B6ED03 /* APIClient.swift */; };
+		FBB0010D268CF9DE00B6ED03 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0010C268CF9DE00B6ED03 /* Router.swift */; };
 		FBDC3D83266DA3910072D7E8 /* LongText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC3D82266DA3910072D7E8 /* LongText.swift */; };
 		FBEDEA162676528D00446B83 /* LoginPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDEA152676528D00446B83 /* LoginPopupCoordinator.swift */; };
 		FBEDEA1B26765E0200446B83 /* LoginPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDEA1926765E0200446B83 /* LoginPopupViewController.swift */; };
@@ -252,6 +254,8 @@
 		FB585B48266D6E770085C6B2 /* ExtensionUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIButton.swift; sourceTree = "<group>"; };
 		FB585B4A266D79C30085C6B2 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FB585B4C266D79CE0085C6B2 /* OnboardingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
+		FBB0010A268CF9CA00B6ED03 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		FBB0010C268CF9DE00B6ED03 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		FBDC3D82266DA3910072D7E8 /* LongText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongText.swift; sourceTree = "<group>"; };
 		FBEDEA152676528D00446B83 /* LoginPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPopupCoordinator.swift; sourceTree = "<group>"; };
 		FBEDEA1926765E0200446B83 /* LoginPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPopupViewController.swift; sourceTree = "<group>"; };
@@ -392,6 +396,8 @@
 			isa = PBXGroup;
 			children = (
 				52254C602657E88400D921ED /* API.swift */,
+				FBB0010A268CF9CA00B6ED03 /* APIClient.swift */,
+				FBB0010C268CF9DE00B6ED03 /* Router.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -960,6 +966,7 @@
 				526BED71264710B500897230 /* MostFeedTopTenViewModel.swift in Sources */,
 				524686FC2687540D00BE2BE4 /* FeedModel.swift in Sources */,
 				FB585B362668C85B0085C6B2 /* FoodCategoryCollectionViewCell.swift in Sources */,
+				FBB0010D268CF9DE00B6ED03 /* Router.swift in Sources */,
 				5204199626511AB00099BA39 /* ContainerOfEveryoneCoordinator.swift in Sources */,
 				526BED65264702F700897230 /* ContainerOfEveryoneViewModel.swift in Sources */,
 				5258115D267901E900900D59 /* UserModel.swift in Sources */,
@@ -983,6 +990,7 @@
 				FB1BE3652636CB540004673C /* MainTitleSection.swift in Sources */,
 				528558F32624A2E700AB4E28 /* TestMapViewController.swift in Sources */,
 				FB56AF65265E697B002736F5 /* TestLoginCoordinator.swift in Sources */,
+				FBB0010B268CF9CA00B6ED03 /* APIClient.swift in Sources */,
 				528558D52621EC5000AB4E28 /* HomeViewModel.swift in Sources */,
 				520419CF2656CCBE0099BA39 /* TestCodable.swift in Sources */,
 				52254C612657E88400D921ED /* API.swift in Sources */,

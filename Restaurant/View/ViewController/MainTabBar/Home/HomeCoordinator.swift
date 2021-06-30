@@ -23,8 +23,10 @@ class HomeCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        var banner: [BannerInfoModel] = []
-        API().mainBanner { banner = $0.bannerInfo }
+        //Todo: ViewDidLoad 때에 데이터 못 가져올 수도 있어서 수정 필요
+        var banner: [BannerInfo] = []
+        APIClient.mainBanner { banner = $0 }
+        //
         API().recommendFeed(subject: self.recommendFeedSubject)
 
         self.recommendFeedSubject.subscribe(onNext: { [weak self] in
