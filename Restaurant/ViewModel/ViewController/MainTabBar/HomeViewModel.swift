@@ -12,7 +12,7 @@ import RxCocoa
 class HomeViewModel {
     var modules: [UICollectionViewCell] = []
     var embedded: Embedded?
-    var bannerInfo: [BannerInfoModel]?
+    var bannerInfo: [BannerInfo]?
 
     var recommendFeeds: Driver<[FeedPreviewDtoList]> {
         return Observable
@@ -20,7 +20,7 @@ class HomeViewModel {
             .asDriver(onErrorJustReturn: [])
     }
     
-    init(_ recommendFeed: RecommendFeed, _ banner: [BannerInfoModel]) {
+    init(_ recommendFeed: RecommendFeed, _ banner: [BannerInfo]) {
         appendModule()
 
         embedded = recommendFeed.embedded
