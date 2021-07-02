@@ -8,7 +8,7 @@
 import UIKit
 
 class MainBanner: UICollectionViewCell {
-    var bannerList: [BannerInfo] = []
+    var bannerList: [BannerInfoModel] = []
     
     @IBOutlet weak var mainBannerCollectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -28,7 +28,7 @@ class MainBanner: UICollectionViewCell {
         mainBannerCollectionView.decelerationRate = .fast
     }
     
-    func configure(_ bannerList: [BannerInfo]) {
+    func configure(_ bannerList: [BannerInfoModel]) {
         self.bannerList = bannerList
         
         setPageControl()

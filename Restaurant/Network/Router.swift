@@ -10,22 +10,27 @@ import Alamofire
 
 enum Router: URLRequestConvertible {
     case HomeBanner
+    case RecommendFeed
 
     private var method: HTTPMethod {
         switch self {
         case .HomeBanner: return .get
+        case .RecommendFeed: return .get
         }
     }
 
     private var path: String {
         switch self {
         case .HomeBanner: return "/banners"
+//        case .RecommendFeed: return "/api/feed/recommend"
+        case .RecommendFeed: return "/api/feed"
         }
     }
 
     private var parameters: Parameters? {
         switch self {
         case .HomeBanner: return nil
+        case .RecommendFeed: return nil
         }
     }
 
