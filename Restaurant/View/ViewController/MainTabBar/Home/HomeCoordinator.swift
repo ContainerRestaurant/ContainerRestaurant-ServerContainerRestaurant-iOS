@@ -14,7 +14,8 @@ class HomeCoordinator: NSObject, Coordinator {
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
 
-    let recommendFeedSubject: PublishSubject<RecommendFeed> = PublishSubject<RecommendFeed>()
+    let recommendFeedSubject: PublishSubject<[FeedPreviewModel]> = PublishSubject<[FeedPreviewModel]>()
+    let mainBannerSubject: PublishSubject<[BannerInfoModel]> = PublishSubject<[BannerInfoModel]>()
     let disposeBag = DisposeBag()
     
     init(presenter: UINavigationController) {
@@ -23,20 +24,18 @@ class HomeCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        //Todo: ViewDidLoad 때에 데이터 못 가져올 수도 있어서 수정 필요
-        var banner: [BannerInfo] = []
-        APIClient.mainBanner { banner = $0 }
-        //
-        API().recommendFeed(subject: self.recommendFeedSubject)
+        APIClient.mainBanner { self.mainBannerSubject.onNext($0) }
+        APIClient.recommendFeed { self.recommendFeedSubject.onNext($0) }
 
-        self.recommendFeedSubject.subscribe(onNext: { [weak self] in
-            var home = HomeViewController.instantiate()
-            home.coordinator = self
-            home.bind(viewModel: HomeViewModel($0, banner))
+        Observable.zip(self.mainBannerSubject, self.recommendFeedSubject)
+            .subscribe(onNext: { [weak self] (mainBanner, recommendFeed) in
+                var homeViewController = HomeViewController.instantiate()
+                homeViewController.coordinator = self
+                homeViewController.bind(viewModel: HomeViewModel(recommendFeed, mainBanner))
 
-            self?.presenter.pushViewController(home, animated: false)
-        })
-        .disposed(by: disposeBag)
+                self?.presenter.pushViewController(homeViewController, animated: false)
+            })
+            .disposed(by: disposeBag)
     }
 }
 

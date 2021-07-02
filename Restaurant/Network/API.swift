@@ -18,7 +18,7 @@ struct API {
 //MARK: 홈
 extension API {
     //추천피드
-    func recommendFeed(subject: PublishSubject<RecommendFeed>) {
+    func recommendFeed(subject: PublishSubject<RecommendFeedModel>) {
         let url = "\(baseURL)/api/feed/recommend"
 
         AF.request(url).responseJSON { (response) in
@@ -26,7 +26,7 @@ extension API {
             case .success(let obj):
                 do {
                     let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .fragmentsAllowed)
-                    let instanceData = try JSONDecoder().decode(RecommendFeed.self, from: dataJSON)
+                    let instanceData = try JSONDecoder().decode(RecommendFeedModel.self, from: dataJSON)
 
                     subject.onNext(instanceData)
                 } catch {

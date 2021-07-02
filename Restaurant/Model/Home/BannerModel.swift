@@ -8,26 +8,25 @@
 import Foundation
 
 struct BannerModel: Decodable {
-    var bannerInfo: [BannerInfo]
+    var bannerInfoList: [BannerInfoModel]
     
     private enum RootKey: String, CodingKey {
         case embedded = "_embedded"
     }
     
     private enum Embedded: String, CodingKey {
-        case bannerInfo = "bannerInfoDtoList"
+        case bannerInfoList = "bannerInfoDtoList"
     }
-    
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: RootKey.self)
-        let bannerInfoDtoList = try container.nestedContainer(keyedBy: Embedded.self, forKey: .embedded)
+        let bannerInfoList = try container.nestedContainer(keyedBy: Embedded.self, forKey: .embedded)
         
-        self.bannerInfo = try bannerInfoDtoList.decode(Array.self, forKey: .bannerInfo)
+        self.bannerInfoList = try bannerInfoList.decode(Array.self, forKey: .bannerInfoList)
     }
 }
 
-struct BannerInfo: Decodable {
+struct BannerInfoModel: Decodable {
     var title: String
     var bannerURL: String
     var contentURL: String

@@ -8,43 +8,26 @@
 import Foundation
 
 ///추천피드 모델
-struct RecommendFeed: Decodable {
-//    var _embedded: Embedded
-    var embedded: Embedded
+struct RecommendFeedModel: Decodable {
+    var feedPreviewList: [FeedPreviewModel]
 
-//    private enum CodingKeys: CodingKey {
-//        case _embedded
-//    }
-    private enum CodingKeys: String, CodingKey {
+    private enum RootKey: String, CodingKey {
         case embedded = "_embedded"
     }
 
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        self.embedded = (try? container.decode(Embedded.self, forKey: .embedded)) ?? Embedded()
-    }
-}
-
-struct Embedded: Decodable {
-    var feedPreviewDtoList: [FeedPreviewDtoList]
-
-    private enum CodingKeys: CodingKey {
-        case feedPreviewDtoList
-    }
-
-    init() {
-        self.feedPreviewDtoList = []
+    private enum Embedded: String, CodingKey {
+        case feedPreviewList = "feedPreviewDtoList"
     }
 
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let container = try decoder.container(keyedBy: RootKey.self)
+        let feedPreviewList = try container.nestedContainer(keyedBy: Embedded.self, forKey: .embedded)
 
-        self.feedPreviewDtoList = (try? container.decode(Array.self, forKey: .feedPreviewDtoList)) ?? []
+        self.feedPreviewList = try feedPreviewList.decode(Array.self, forKey: .feedPreviewList)
     }
 }
 
-struct FeedPreviewDtoList: Decodable {
+struct FeedPreviewModel: Decodable {
     var id: Int
     var thumbnailUrl: String
     var ownerNickname: String
