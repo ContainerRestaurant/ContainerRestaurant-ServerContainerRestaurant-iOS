@@ -12,6 +12,8 @@ enum Router: URLRequestConvertible {
     case HomeBanner
     case RecommendFeed
 
+    static var baseURLString = "http://ec2-52-78-66-184.ap-northeast-2.compute.amazonaws.com"
+    
     private var method: HTTPMethod {
         switch self {
         case .HomeBanner: return .get
@@ -22,8 +24,7 @@ enum Router: URLRequestConvertible {
     private var path: String {
         switch self {
         case .HomeBanner: return "/banners"
-//        case .RecommendFeed: return "/api/feed/recommend"
-        case .RecommendFeed: return "/api/feed"
+        case .RecommendFeed: return "/api/feed/recommend"
         }
     }
 
@@ -35,7 +36,7 @@ enum Router: URLRequestConvertible {
     }
 
     func asURLRequest() throws -> URLRequest {
-        let baseURL = try "http://ec2-52-78-66-184.ap-northeast-2.compute.amazonaws.com".asURL()
+        let baseURL = try Router.baseURLString.asURL()
         var urlRequest = URLRequest(url: baseURL.appendingPathComponent(path))
 
         urlRequest.httpMethod = method.rawValue
