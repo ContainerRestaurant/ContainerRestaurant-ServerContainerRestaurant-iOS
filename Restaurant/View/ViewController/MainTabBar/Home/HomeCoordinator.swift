@@ -28,10 +28,10 @@ class HomeCoordinator: NSObject, Coordinator {
         APIClient.recommendFeed { self.recommendFeedSubject.onNext($0) }
 
         Observable.zip(self.mainBannerSubject, self.recommendFeedSubject)
-            .subscribe(onNext: { [weak self] (mainBanner, recommendFeed) in
+            .subscribe(onNext: { [weak self] (mainBanner, recommendFeeds) in
                 var homeViewController = HomeViewController.instantiate()
                 homeViewController.coordinator = self
-                homeViewController.bind(viewModel: HomeViewModel(recommendFeed, mainBanner))
+                homeViewController.bind(viewModel: HomeViewModel(recommendFeeds, mainBanner))
 
                 self?.presenter.pushViewController(homeViewController, animated: false)
             })

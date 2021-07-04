@@ -11,19 +11,19 @@ import RxCocoa
 
 class HomeViewModel {
     var modules: [UICollectionViewCell] = []
-    var recommendFeed: [FeedPreviewModel]?
-    var bannerInfo: [BannerInfoModel]?
+    var recommendFeeds: [FeedPreviewModel] = []
+    var bannerInfo: [BannerInfoModel] = []
 
-    var recommendFeeds: Driver<[FeedPreviewModel]> {
-        return Observable
-            .just(recommendFeed ?? [])
-            .asDriver(onErrorJustReturn: [])
-    }
+//    var recommendFeeds: Driver<[FeedPreviewModel]> {
+//        return Observable
+//            .just(recommendFeed)
+//            .asDriver(onErrorJustReturn: [])
+//    }
     
-    init(_ recommendFeed: [FeedPreviewModel], _ banner: [BannerInfoModel]) {
+    init(_ recommendFeeds: [FeedPreviewModel], _ banner: [BannerInfoModel]) {
         appendModule()
 
-        self.recommendFeed = recommendFeed
+        self.recommendFeeds = recommendFeeds
         self.bannerInfo = banner
     }
 }
@@ -51,7 +51,7 @@ extension HomeViewModel {
 
     func MainFeedCollectionViewSize() -> CGSize {
         let height: CGFloat = { () -> CGFloat in
-            let line = round(9.0/2.0) //9 => dummyNumber
+            let line = round(Double(self.recommendFeeds.count)/2.0)
             let cellHeight: CGFloat = 273 * CGFloat(line)
             let spacingHeight: CGFloat = 20 * CGFloat(line-1)
 

@@ -37,10 +37,10 @@ class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType 
 
     func bindingView() {
         print("Home bindingView")
-        self.viewModel.recommendFeeds
-            .map { $0.first?.ownerNickname }
-            .drive(testLabel.rx.text)
-            .disposed(by: disposeBag)
+//        self.viewModel.recommendFeeds
+//            .map { $0.first?.ownerNickname }
+//            .drive(testLabel.rx.text)
+//            .disposed(by: disposeBag)
     }
     
     //안될거임
@@ -79,7 +79,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         case is MainBanner:
             let cell: MainBanner = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(viewModel.bannerInfo ?? [])
+            cell.configure(viewModel.bannerInfo)
             return cell
             
         case is Title16Bold:
@@ -89,7 +89,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
         case is MainFeedCollectionView:
             let cell: MainFeedCollectionView = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(dummyNumber: 12)
+            cell.configure(recommendFeeds: viewModel.recommendFeeds)
             return cell
             
         default: return UICollectionViewCell()
