@@ -1,5 +1,5 @@
 //
-//  SearchCoordinator.swift
+//  FeedCoordinator.swift
 //  Restaurant
 //
 //  Created by 0ofKim on 2021/05/16.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchCoordinator: NSObject, Coordinator {
+class FeedCoordinator: NSObject, Coordinator {
     var delegate: CoordinatorFinishDelegate?
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
@@ -18,7 +18,7 @@ class SearchCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        let search = SearchViewController.instantiate()
+        let search = FeedViewController.instantiate()
         search.coordinator = self
         presenter.pushViewController(search, animated: false)
     }
