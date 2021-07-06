@@ -1,5 +1,5 @@
 //
-//  MainFeedCollectionViewCell.swift
+//  FeedCollectionViewCell.swift
 //  Restaurant
 //
 //  Created by 0ofKim on 2021/04/27.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainFeedCollectionViewCell: UICollectionViewCell {
+class FeedCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var feedImageView: UIImageView!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!

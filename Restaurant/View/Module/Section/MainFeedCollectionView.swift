@@ -30,14 +30,14 @@ class MainFeedCollectionView: UICollectionViewCell {
 //MARK: - Instance Method
 extension MainFeedCollectionView {
     private func setCells() {
-        self.cells.append(MainFeedCollectionViewCell())
+        self.cells.append(FeedCollectionViewCell())
     }
     
     private func setCollectionView() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-        self.collectionView.register(MainFeedCollectionViewCell.self)
+        self.collectionView.register(FeedCollectionViewCell.self)
     }
 }
 
@@ -48,7 +48,7 @@ extension MainFeedCollectionView: UICollectionViewDelegate, UICollectionViewData
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: MainFeedCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        let cell: FeedCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.configure(self.recommendFeeds[indexPath.row])
 
         return cell

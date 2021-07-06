@@ -90,8 +90,8 @@
 		FB1BE374263719540004673C /* Title16Bold.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB1BE372263719540004673C /* Title16Bold.xib */; };
 		FB1BE37926371BFA0004673C /* MainFeedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BE37726371BFA0004673C /* MainFeedCollectionView.swift */; };
 		FB1BE37A26371BFA0004673C /* MainFeedCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB1BE37826371BFA0004673C /* MainFeedCollectionView.xib */; };
-		FB1BE3852637DF2B0004673C /* MainFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BE3832637DF2B0004673C /* MainFeedCollectionViewCell.swift */; };
-		FB1BE3862637DF2B0004673C /* MainFeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB1BE3842637DF2B0004673C /* MainFeedCollectionViewCell.xib */; };
+		FB1BE3852637DF2B0004673C /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BE3832637DF2B0004673C /* FeedCollectionViewCell.swift */; };
+		FB1BE3862637DF2B0004673C /* FeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB1BE3842637DF2B0004673C /* FeedCollectionViewCell.xib */; };
 		FB1BE38C26397EEE0004673C /* CreationPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BE38A26397EEE0004673C /* CreationPopupViewController.swift */; };
 		FB56AF61265E62E8002736F5 /* TestCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56AF60265E62E8002736F5 /* TestCoordinator.swift */; };
 		FB56AF63265E675B002736F5 /* TestMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56AF62265E675B002736F5 /* TestMapCoordinator.swift */; };
@@ -222,8 +222,8 @@
 		FB1BE372263719540004673C /* Title16Bold.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Title16Bold.xib; sourceTree = "<group>"; };
 		FB1BE37726371BFA0004673C /* MainFeedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedCollectionView.swift; sourceTree = "<group>"; };
 		FB1BE37826371BFA0004673C /* MainFeedCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainFeedCollectionView.xib; sourceTree = "<group>"; };
-		FB1BE3832637DF2B0004673C /* MainFeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedCollectionViewCell.swift; sourceTree = "<group>"; };
-		FB1BE3842637DF2B0004673C /* MainFeedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainFeedCollectionViewCell.xib; sourceTree = "<group>"; };
+		FB1BE3832637DF2B0004673C /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB1BE3842637DF2B0004673C /* FeedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCollectionViewCell.xib; sourceTree = "<group>"; };
 		FB1BE38A26397EEE0004673C /* CreationPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationPopupViewController.swift; sourceTree = "<group>"; };
 		FB56AF60265E62E8002736F5 /* TestCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoordinator.swift; sourceTree = "<group>"; };
 		FB56AF62265E675B002736F5 /* TestMapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMapCoordinator.swift; sourceTree = "<group>"; };
@@ -652,8 +652,8 @@
 		FB1BE3822637DF110004673C /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				FB1BE3832637DF2B0004673C /* MainFeedCollectionViewCell.swift */,
-				FB1BE3842637DF2B0004673C /* MainFeedCollectionViewCell.xib */,
+				FB1BE3832637DF2B0004673C /* FeedCollectionViewCell.swift */,
+				FB1BE3842637DF2B0004673C /* FeedCollectionViewCell.xib */,
 				526BED6A26470BD200897230 /* MostFeedTopTenCollectionViewCell.swift */,
 				526BED6B26470BD200897230 /* MostFeedTopTenCollectionViewCell.xib */,
 				526BED7D2647252400897230 /* RecentlyFeedCollectionViewCell.swift */,
@@ -864,7 +864,7 @@
 				FBEDEA25267BC1BB00446B83 /* MainBannerCollectionViewCell.xib in Resources */,
 				52E50DC12662105E0068C36C /* CreationFeedDetailCardCollectionViewCell.xib in Resources */,
 				FB585B4D266D79CE0085C6B2 /* OnboardingView.xib in Resources */,
-				FB1BE3862637DF2B0004673C /* MainFeedCollectionViewCell.xib in Resources */,
+				FB1BE3862637DF2B0004673C /* FeedCollectionViewCell.xib in Resources */,
 				52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */,
 				FBEDEA21267BBACE00446B83 /* MainBanner.xib in Resources */,
 				FB56AF76265F71B4002736F5 /* CreationFeedDetail.xib in Resources */,
@@ -1001,7 +1001,7 @@
 				5204199826512CF90099BA39 /* SearchCoordinator.swift in Sources */,
 				FB56AF78265F7589002736F5 /* CreationFeedViewModel.swift in Sources */,
 				525811592677DD6B00900D59 /* NickNameValidationModel.swift in Sources */,
-				FB1BE3852637DF2B0004673C /* MainFeedCollectionViewCell.swift in Sources */,
+				FB1BE3852637DF2B0004673C /* FeedCollectionViewCell.swift in Sources */,
 				52542E05264AD8FB0066F565 /* ListStandardDescriptionPopupViewController.swift in Sources */,
 				FB1BE36A2636D7330004673C /* ExtensionCollectoinView.swift in Sources */,
 				FB585B25266591330085C6B2 /* SearchRestaurantCollectionViewCell.swift in Sources */,
