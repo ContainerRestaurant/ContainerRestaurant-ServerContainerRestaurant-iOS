@@ -9,7 +9,7 @@ import UIKit
 
 class MainFeedCollectionView: UICollectionViewCell {
     var cells: [UICollectionViewCell] = []
-    var dummyNumber: Int = 0
+    private var recommendFeeds: [FeedPreviewModel] = []
     private let interItemSpacing: CGFloat = 12
     private let cellLineSpacing: CGFloat = 20
     
@@ -22,8 +22,8 @@ class MainFeedCollectionView: UICollectionViewCell {
         setCollectionView()
     }
     
-    func configure(dummyNumber: Int) {
-        self.dummyNumber = dummyNumber
+    func configure(recommendFeeds: [FeedPreviewModel]) {
+        self.recommendFeeds = recommendFeeds
     }
 }
 
@@ -44,11 +44,12 @@ extension MainFeedCollectionView {
 //MARK: - CollectionView Protocol
 extension MainFeedCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.dummyNumber
+        return self.recommendFeeds.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainFeedCollectionViewCell", for: indexPath)
+        let cell: MainFeedCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        cell.configure(self.recommendFeeds[indexPath.row])
 
         return cell
     }
