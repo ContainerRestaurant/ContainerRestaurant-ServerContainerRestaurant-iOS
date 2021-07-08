@@ -8,9 +8,9 @@
 import UIKit
 
 class ContainerOfEveryoneViewModel {
-    var modules: [UICollectionViewCell] = [
-        MostFeedTopTenCollectionView(),
-        RecentlyFeedCollectionView()
+    var modules: [UICollectionViewCell.Type] = [
+        MostFeedTopTenCollectionView.self,
+        RecentlyFeedCollectionView.self
     ]
     
     func mostFeedTopTenSize() -> CGSize {

@@ -17,7 +17,7 @@ class RecentlyFeedCollectionView: UICollectionViewCell, ViewModelBindableType {
         super.awakeFromNib()
         
         setCollectionView()
-        
+        print("RecentlyFeedCollectionView awakeFromNib()")
     }
     
     func bindingView() {
