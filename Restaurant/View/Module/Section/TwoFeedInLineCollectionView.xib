@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MainFeedCollectionView" customModule="Restaurant" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TwoFeedInLineCollectionView" customModule="Restaurant" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Ezs-3z-Cuu">
-                        <rect key="frame" x="14" y="0.0" width="347" height="384"/>
+                        <rect key="frame" x="16" y="0.0" width="343" height="384"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yFK-22-wWA">
                             <size key="itemSize" width="128" height="128"/>
@@ -34,8 +34,8 @@
             <constraints>
                 <constraint firstItem="Ezs-3z-Cuu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8PU-XD-9ru"/>
                 <constraint firstAttribute="bottom" secondItem="Ezs-3z-Cuu" secondAttribute="bottom" id="9Eo-L7-EDe"/>
-                <constraint firstItem="Ezs-3z-Cuu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="14" id="bpZ-PY-7QB"/>
-                <constraint firstAttribute="trailing" secondItem="Ezs-3z-Cuu" secondAttribute="trailing" constant="14" id="x6j-oq-GRo"/>
+                <constraint firstItem="Ezs-3z-Cuu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="bpZ-PY-7QB"/>
+                <constraint firstAttribute="trailing" secondItem="Ezs-3z-Cuu" secondAttribute="trailing" constant="16" id="x6j-oq-GRo"/>
             </constraints>
             <size key="customSize" width="375" height="384"/>
             <connections>

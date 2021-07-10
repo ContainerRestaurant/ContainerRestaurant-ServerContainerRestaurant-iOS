@@ -24,8 +24,8 @@ class HomeCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        APIClient.mainBanner { self.mainBannerSubject.onNext($0) }
-        APIClient.recommendFeed { self.recommendFeedSubject.onNext($0) }
+        APIClient.mainBanner { [weak self] in self?.mainBannerSubject.onNext($0) }
+        APIClient.recommendFeed { [weak self] in self?.recommendFeedSubject.onNext($0) }
 
         Observable.zip(self.mainBannerSubject, self.recommendFeedSubject)
             .subscribe(onNext: { [weak self] (mainBanner, recommendFeeds) in

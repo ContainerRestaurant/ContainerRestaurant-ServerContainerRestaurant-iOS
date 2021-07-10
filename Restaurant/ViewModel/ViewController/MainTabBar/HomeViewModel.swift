@@ -34,7 +34,7 @@ extension HomeViewModel {
         self.modules.append(MainTitleSection())
         self.modules.append(MainBanner())
         self.modules.append(Title16Bold())
-        self.modules.append(MainFeedCollectionView())
+        self.modules.append(TwoFeedInLineCollectionView())
     }
 
     func mainTitleSectionSize() -> CGSize {

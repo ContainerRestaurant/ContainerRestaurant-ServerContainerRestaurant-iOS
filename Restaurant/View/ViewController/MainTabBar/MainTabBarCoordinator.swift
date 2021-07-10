@@ -24,6 +24,15 @@ class MainTabBarCoordinator: NSObject, Coordinator {
             case .my: return "마이"
             }
         }
+        var font: UIFont {
+            switch self {
+            case .home: return .boldSystemFont(ofSize: 12)
+            case .feed: return .boldSystemFont(ofSize: 12)
+            case .creation: return .boldSystemFont(ofSize: 12)
+            case .map: return .boldSystemFont(ofSize: 12)
+            case .my: return .boldSystemFont(ofSize: 12)
+            }
+        }
         var image: UIImage {
             switch self {
             case .home: return (UIImage(named: "homeOutline20Px")?.withRenderingMode(.alwaysOriginal))!
@@ -75,8 +84,9 @@ class MainTabBarCoordinator: NSObject, Coordinator {
     func getTabController(item: TabBarItem) -> UINavigationController {
         let navigationController = UINavigationController()
         let tabItem = UITabBarItem(title: item.title, image: item.image, selectedImage: item.selectedImage)
+        tabItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 12)], for: .normal)
+        
         navigationController.tabBarItem = tabItem
-//        navigationController.view.backgroundColor = .red
         navigationController.view.backgroundColor = .systemBackground
         navigationController.navigationBar.backgroundColor = .systemBackground
         

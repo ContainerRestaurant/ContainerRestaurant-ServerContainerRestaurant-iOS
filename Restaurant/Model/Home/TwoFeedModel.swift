@@ -1,5 +1,5 @@
 //
-//  RecommendFeedModel.swift
+//  TwoFeedModel.swift
 //  Restaurant
 //
 //  Created by 0ofKim on 2021/05/24.
@@ -8,7 +8,7 @@
 import Foundation
 
 ///추천피드 모델
-struct RecommendFeedModel: Decodable {
+struct TwoFeedModel: Decodable {
     var feedPreviewList: [FeedPreviewModel]
 
     private enum RootKey: String, CodingKey {
