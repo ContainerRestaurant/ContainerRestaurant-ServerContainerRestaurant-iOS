@@ -88,7 +88,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
         case is TwoFeedInLineCollectionView:
             let cell: TwoFeedInLineCollectionView = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(viewModel.recommendFeeds)
+            cell.configureHomeMainFeed(viewModel.recommendFeeds)
             return cell
             
         default: return UICollectionViewCell()

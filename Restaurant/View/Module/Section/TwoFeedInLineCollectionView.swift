@@ -33,8 +33,13 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
 //        feeds = []
     }
     
-    //파라미터 많아지면 configure 따로 분리 필요
-    func configure(_ feeds: [FeedPreviewModel], _ selectedCategorySubject: PublishSubject<String> = PublishSubject<String>()) {
+    //홈 탭 피드
+    func configureHomeMainFeed(_ feeds: [FeedPreviewModel]) {
+        self.feeds = feeds
+    }
+    
+    //피드 탭 카테고리 피드
+    func configureFeedCategoryFeed(_ feeds: [FeedPreviewModel], _ selectedCategorySubject: PublishSubject<String>, _ reloadFlagSubject: PublishSubject<[FeedPreviewModel]>) {
         self.feeds = feeds
         self.selectedCategorySubject = selectedCategorySubject
         
@@ -43,6 +48,7 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
                 APIClient.categoryFeed(category: category) { [weak self] feeds in
                     self?.feeds = feeds
                     self?.collectionView.reloadData()
+                    reloadFlagSubject.onNext(self?.feeds ?? [])
                 }
             })
             .disposed(by: disposeBag)
