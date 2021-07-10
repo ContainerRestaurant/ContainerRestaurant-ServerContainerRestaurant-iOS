@@ -34,7 +34,7 @@ extension HomeViewModel {
         self.modules.append(MainTitleSection())
         self.modules.append(MainBanner())
         self.modules.append(Title16Bold())
-        self.modules.append(MainFeedCollectionView())
+        self.modules.append(TwoFeedInLineCollectionView())
     }
 
     func mainTitleSectionSize() -> CGSize {
@@ -51,11 +51,11 @@ extension HomeViewModel {
 
     func MainFeedCollectionViewSize() -> CGSize {
         let height: CGFloat = { () -> CGFloat in
-            let line = round(Double(self.recommendFeeds.count)/2.0)
-            let cellHeight: CGFloat = 273 * CGFloat(line)
-            let spacingHeight: CGFloat = 20 * CGFloat(line-1)
+            let lineCount = round(Double(self.recommendFeeds.count)/2.0)
+            var cellHeight: CGFloat = 273 * CGFloat(lineCount)
+            if lineCount > 0 { cellHeight += 20 * CGFloat(lineCount-1) }
 
-            return cellHeight + spacingHeight
+            return cellHeight
         }()
 
         return CGSize(width: UIScreen.main.bounds.width, height: height)

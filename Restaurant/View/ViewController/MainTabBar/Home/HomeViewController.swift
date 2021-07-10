@@ -12,7 +12,6 @@ class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType 
     var viewModel: HomeViewModel!
     weak var coordinator: HomeCoordinator?
     
-    @IBOutlet weak var testLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
@@ -58,7 +57,7 @@ extension HomeViewController {
         self.collectionView.register(MainTitleSection.self)
         self.collectionView.register(MainBanner.self)
         self.collectionView.register(Title16Bold.self)
-        self.collectionView.register(MainFeedCollectionView.self)
+        self.collectionView.register(TwoFeedInLineCollectionView.self)
     }
 }
 
@@ -87,9 +86,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.configure(title: "용기낸 특별한 경험들")
             return cell
             
-        case is MainFeedCollectionView:
-            let cell: MainFeedCollectionView = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(recommendFeeds: viewModel.recommendFeeds)
+        case is TwoFeedInLineCollectionView:
+            let cell: TwoFeedInLineCollectionView = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configure(viewModel.recommendFeeds)
             return cell
             
         default: return UICollectionViewCell()

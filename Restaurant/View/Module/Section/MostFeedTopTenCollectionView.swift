@@ -18,6 +18,7 @@ class MostFeedTopTenCollectionView: UICollectionViewCell, ViewModelBindableType 
         
         self.viewModel = MostFeedTopTenViewModel() //나중에 의존성 주입으로 바꿔야함
         setCollectionView()
+        print("MostFeedTopTenCollectionView awakeFromNib()")
     }
     
     func bindingView() {

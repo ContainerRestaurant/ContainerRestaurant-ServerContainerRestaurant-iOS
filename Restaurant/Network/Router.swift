@@ -11,6 +11,7 @@ import Alamofire
 enum Router: URLRequestConvertible {
     case HomeBanner
     case RecommendFeed
+    case CategoryFeed(category: String)
 
     static var baseURLString = "http://ec2-52-78-66-184.ap-northeast-2.compute.amazonaws.com"
     
@@ -18,6 +19,7 @@ enum Router: URLRequestConvertible {
         switch self {
         case .HomeBanner: return .get
         case .RecommendFeed: return .get
+        case .CategoryFeed: return .get
         }
     }
 
@@ -25,6 +27,7 @@ enum Router: URLRequestConvertible {
         switch self {
         case .HomeBanner: return "/banners"
         case .RecommendFeed: return "/api/feed/recommend"
+        case .CategoryFeed: return "/api/feed"
         }
     }
 
@@ -32,14 +35,15 @@ enum Router: URLRequestConvertible {
         switch self {
         case .HomeBanner: return nil
         case .RecommendFeed: return nil
+        case .CategoryFeed(let category): return category.isEmpty ? nil : ["category": category]
         }
     }
 
     func asURLRequest() throws -> URLRequest {
         let baseURL = try Router.baseURLString.asURL()
         var urlRequest = URLRequest(url: baseURL.appendingPathComponent(path))
-
-        urlRequest.httpMethod = method.rawValue
+        urlRequest.method = method
+        
         /* 추후 참고
         //urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
         //urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)    }
@@ -47,7 +51,12 @@ enum Router: URLRequestConvertible {
 
         if let parameters = parameters {
             do {
-                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+                switch method {
+                case .get:
+                    urlRequest = try URLEncodedFormParameterEncoder().encode(parameters as? [String: String], into: urlRequest)
+                case .post:
+                    urlRequest = try JSONParameterEncoder().encode(parameters as? [String: String], into: urlRequest)                default: break
+                }
             } catch {
                 throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
             }

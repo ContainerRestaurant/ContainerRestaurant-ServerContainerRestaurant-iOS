@@ -31,6 +31,12 @@ class CreationViewController: BaseViewController, Storyboard {
         })
         .disposed(by: disposeBag)
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        disposeBag = DisposeBag()
+    }
 
     deinit {
         print("CreationViewController")

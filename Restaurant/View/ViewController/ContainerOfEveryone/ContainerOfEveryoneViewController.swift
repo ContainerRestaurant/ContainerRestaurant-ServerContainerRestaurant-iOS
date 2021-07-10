@@ -18,6 +18,7 @@ class ContainerOfEveryoneViewController: BaseViewController, ViewModelBindableTy
         
         viewModel = ContainerOfEveryoneViewModel() //바꿔야함
         setCollectionView()
+        print("ContainerOfEveryoneViewController viewDidLoad()")
 //        setNavigation()
     }
     
@@ -94,12 +95,12 @@ extension ContainerOfEveryoneViewController: UICollectionViewDelegate, UICollect
         let type = viewModel.modules[indexPath.row]
 
         switch type {
-        case is MostFeedTopTenCollectionView:
+        case is MostFeedTopTenCollectionView.Type:
             let cell: MostFeedTopTenCollectionView = collectionView.dequeueReusableCell(for: indexPath)
             cell.configure(coordinator: self.coordinator!)
             return cell
 
-        case is RecentlyFeedCollectionView:
+        case is RecentlyFeedCollectionView.Type:
             let cell: RecentlyFeedCollectionView = collectionView.dequeueReusableCell(for: indexPath)
             cell.configure(coordinator: self.coordinator!)
             return cell

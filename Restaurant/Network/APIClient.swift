@@ -26,13 +26,27 @@ class APIClient {
     //홈 탭 메인 피드
     static func recommendFeed(completion: @escaping ([FeedPreviewModel]) -> Void ) {
         AF.request(Router.RecommendFeed)
-            .responseDecodable { (response: DataResponse<RecommendFeedModel, AFError>) in
+            .responseDecodable { (response: DataResponse<TwoFeedModel, AFError>) in
                 switch response.result {
                 case .success(let recommendFeed):
                     completion(recommendFeed.feedPreviewList)
                 case .failure(let error):
                     completion([])
                     print("Recommend Feed's Error: \(error)")
+                }
+            }
+    }
+    
+    //피드 탭 카테고리 피드
+    static func categoryFeed(category: String, completion: @escaping ([FeedPreviewModel]) -> Void ) {
+        AF.request(Router.CategoryFeed(category: category))
+            .responseDecodable { (response: DataResponse<TwoFeedModel, AFError>) in
+                switch response.result {
+                case .success(let categoryFeed):
+                    completion(categoryFeed.feedPreviewList)
+                case .failure(let error):
+                    completion([])
+                    print("Category Feed's Error: \(error)")
                 }
             }
     }

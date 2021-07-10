@@ -1,14 +1,14 @@
 {
   "images" : [
     {
-      "scale" : "1x",
+      "idiom" : "universal",
       "filename" : "homeOutline20Px.png",
-      "idiom" : "universal"
+      "scale" : "1x"
     },
     {
       "filename" : "homeOutline20Px@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "idiom" : "universal"
     },
     {
       "idiom" : "universal",

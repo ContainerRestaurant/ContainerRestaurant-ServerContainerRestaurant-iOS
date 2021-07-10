@@ -8,9 +8,9 @@
 import UIKit
 
 class MostFeedTopTenViewModel {
-    var modules: [UICollectionViewCell] = [
+    var modules: [UICollectionViewCell.Type] = [
 //        MostFeedTopTenTitleCollectionViewCell(),
-        MostFeedTopTenCollectionView()
+        MostFeedTopTenCollectionView.self
     ]
     
 //    func mostFeedTopTenTitleSize() -> CGSize {

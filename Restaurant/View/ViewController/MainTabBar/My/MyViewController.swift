@@ -30,6 +30,8 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.navigationController?.setNavigationBarHidden(true, animated: true)
 
         API().askUser(isLoginSubject: isLoginSubject, userDataSubject: userDataSubject)
@@ -41,6 +43,12 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
                 self?.bindingView()
             })
             .disposed(by: disposeBag)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        disposeBag = DisposeBag()
     }
     
     func bindingView() {
