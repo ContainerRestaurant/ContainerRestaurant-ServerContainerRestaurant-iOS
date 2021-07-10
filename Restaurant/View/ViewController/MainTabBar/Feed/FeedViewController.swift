@@ -13,6 +13,7 @@ class FeedViewController: BaseViewController, Storyboard, ViewModelBindableType 
     weak var coordinator: FeedCoordinator?
     var isSelectedCategoryIndex: Int = 0
     let selectedCategorySubject: PublishSubject<String> = PublishSubject<String>()
+    let reloadFlagSubject: PublishSubject<[FeedPreviewModel]> = PublishSubject<[FeedPreviewModel]>()
     
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var latestOrderButton: UIButton!
@@ -38,6 +39,14 @@ class FeedViewController: BaseViewController, Storyboard, ViewModelBindableType 
     
     func bindingView() {
         print("Search bindingView")
+        
+        self.reloadFlagSubject
+            .subscribe(onNext: { [weak self] feeds in
+                self?.viewModel.categoryFeeds = feeds
+                self?.feedCollectionView.reloadData()
+                self?.feedCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -76,7 +85,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return cell
         } else {
             let cell: TwoFeedInLineCollectionView = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(viewModel.categoryFeeds, self.selectedCategorySubject)
+            cell.configureFeedCategoryFeed(viewModel.categoryFeeds, self.selectedCategorySubject, self.reloadFlagSubject)
             return cell
         }
     }
