@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 
 struct CreationFeedViewModel {
-    var modules: [UICollectionViewCell] = []
+    var modules: [UICollectionViewCell.Type] = []
     var restaurantName: String = ""
     var restaurantSubject: PublishSubject<LocalSearchItem> = PublishSubject<LocalSearchItem>()
     var mainFoodHeightSubject: PublishSubject<CGFloat> = PublishSubject<CGFloat>()
@@ -22,24 +22,24 @@ struct CreationFeedViewModel {
 
 extension CreationFeedViewModel {
     mutating func appendModule() {
-        self.modules.append(SeparateLineCollectionViewCell())
-        self.modules.append(Title16Bold())
-        self.modules.append(SearchRestaurant())
-        self.modules.append(SeparateLineCollectionViewCell())
-        self.modules.append(Title16Bold())
-        self.modules.append(SeparateLineCollectionViewCell())
-        self.modules.append(FoodCategory())
-        self.modules.append(SeparateLineCollectionViewCell())
-        self.modules.append(SeparateLineCollectionViewCell())
-        self.modules.append(SeparateLineCollectionViewCell())
-        self.modules.append(Title16Bold())
-        self.modules.append(SeparateLineCollectionViewCell())
-        self.modules.append(CreationFeedDetail())
-        self.modules.append(SeparateLineCollectionViewCell())
-        self.modules.append(CreationFeedDetailSide())
-        self.modules.append(LevelOfDifficultyAndWelcome())
-        self.modules.append(SeparateLineCollectionViewCell())
-        self.modules.append(CreationFeedImage())
+        self.modules.append(SeparateLineCollectionViewCell.self)
+        self.modules.append(Title16Bold.self)
+        self.modules.append(SearchRestaurant.self)
+        self.modules.append(SeparateLineCollectionViewCell.self)
+        self.modules.append(Title16Bold.self)
+        self.modules.append(SeparateLineCollectionViewCell.self)
+        self.modules.append(FoodCategory.self)
+        self.modules.append(SeparateLineCollectionViewCell.self)
+        self.modules.append(SeparateLineCollectionViewCell.self)
+        self.modules.append(SeparateLineCollectionViewCell.self)
+        self.modules.append(Title16Bold.self)
+        self.modules.append(SeparateLineCollectionViewCell.self)
+        self.modules.append(CreationFeedDetail.self)
+        self.modules.append(SeparateLineCollectionViewCell.self)
+        self.modules.append(CreationFeedDetailSide.self)
+        self.modules.append(LevelOfDifficultyAndWelcome.self)
+        self.modules.append(SeparateLineCollectionViewCell.self)
+        self.modules.append(CreationFeedImage.self)
     }
 
     func mainTitleSectionSize() -> CGSize {

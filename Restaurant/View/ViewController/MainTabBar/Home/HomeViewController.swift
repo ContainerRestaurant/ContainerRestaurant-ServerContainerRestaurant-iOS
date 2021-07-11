@@ -71,22 +71,22 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let type = viewModel.modules[indexPath.row]
         
         switch type {
-        case is MainTitleSection:
+        case is MainTitleSection.Type:
             let cell: MainTitleSection = collectionView.dequeueReusableCell(for: indexPath)
             if let coordinator = self.coordinator { cell.configure(coordinator: coordinator) }
             return cell
 
-        case is MainBanner:
+        case is MainBanner.Type:
             let cell: MainBanner = collectionView.dequeueReusableCell(for: indexPath)
             cell.configure(viewModel.bannerInfo)
             return cell
             
-        case is Title16Bold:
+        case is Title16Bold.Type:
             let cell: Title16Bold = collectionView.dequeueReusableCell(for: indexPath)
             cell.configure(title: "용기낸 특별한 경험들")
             return cell
             
-        case is TwoFeedInLineCollectionView:
+        case is TwoFeedInLineCollectionView.Type:
             let cell: TwoFeedInLineCollectionView = collectionView.dequeueReusableCell(for: indexPath)
             cell.configureHomeMainFeed(viewModel.recommendFeeds)
             return cell
