@@ -214,7 +214,7 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
         let type = viewModel.modules[indexPath.row]
 
         switch type {
-        case is SeparateLineCollectionViewCell:
+        case is SeparateLineCollectionViewCell.Type:
             let cell: SeparateLineCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             if indexPath.row == 0 {
                 cell.configureCell(height: CGFloat(16), color: .white)
@@ -237,7 +237,7 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
             }
             return cell
 
-        case is Title16Bold:
+        case is Title16Bold.Type:
             let cell: Title16Bold = collectionView.dequeueReusableCell(for: indexPath)
             if indexPath.row == 1 {
                 cell.configure(title: "식당 이름")
@@ -248,7 +248,7 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
             }
             return cell
 
-        case is SearchRestaurant:
+        case is SearchRestaurant.Type:
             let cell: SearchRestaurant = collectionView.dequeueReusableCell(for: indexPath)
             if let coordinator = self.coordinator {
                 cell.configure(coordinator, viewModel.restaurantSubject)
@@ -256,28 +256,28 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
             }
             return cell
 
-        case is FoodCategory:
+        case is FoodCategory.Type:
             let cell: FoodCategory = collectionView.dequeueReusableCell(for: indexPath)
             cell.configure(self.selectedCategorySubject)
             return cell
 
-        case is CreationFeedDetail:
+        case is CreationFeedDetail.Type:
             let cell: CreationFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
             cell.configure(self.mainFoodAndContainerSubject, self.viewModel.mainFoodHeightSubject, .main)
             return cell
 
-        case is CreationFeedDetailSide:
+        case is CreationFeedDetailSide.Type:
             let cell: CreationFeedDetailSide = collectionView.dequeueReusableCell(for: indexPath)
             cell.configure(self.sideFoodAndContainerSubject, self.viewModel.sideFoodHeightSubject, .side)
             return cell
 
-        case is LevelOfDifficultyAndWelcome:
+        case is LevelOfDifficultyAndWelcome.Type:
             let cell: LevelOfDifficultyAndWelcome = collectionView.dequeueReusableCell(for: indexPath)
             cell.configure(self.levelOfDifficultySubject, self.isWelcomeSubject)
 
             return cell
 
-        case is CreationFeedImage:
+        case is CreationFeedImage.Type:
             let cell: CreationFeedImage = collectionView.dequeueReusableCell(for: indexPath)
             if let coordinator = self.coordinator {
                 cell.configure(coordinator, registerSubject, imageSubject)

@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 class HomeViewModel {
-    var modules: [UICollectionViewCell] = []
+    var modules: [UICollectionViewCell.Type] = []
     var recommendFeeds: [FeedPreviewModel] = []
     var bannerInfo: [BannerInfoModel] = []
 
@@ -31,10 +31,10 @@ class HomeViewModel {
 //MARK: - Module Size
 extension HomeViewModel {
     func appendModule() {
-        self.modules.append(MainTitleSection())
-        self.modules.append(MainBanner())
-        self.modules.append(Title16Bold())
-        self.modules.append(TwoFeedInLineCollectionView())
+        self.modules.append(MainTitleSection.self)
+        self.modules.append(MainBanner.self)
+        self.modules.append(Title16Bold.self)
+        self.modules.append(TwoFeedInLineCollectionView.self)
     }
 
     func mainTitleSectionSize() -> CGSize {
