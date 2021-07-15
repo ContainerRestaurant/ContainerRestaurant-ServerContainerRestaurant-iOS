@@ -7,7 +7,7 @@
 
 import Foundation
 
-///추천피드 모델
+///2단형 피드 모델
 struct TwoFeedModel: Decodable {
     var feedPreviewList: [FeedPreviewModel]
 

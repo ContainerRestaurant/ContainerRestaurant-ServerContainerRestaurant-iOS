@@ -12,6 +12,7 @@ enum Router: URLRequestConvertible {
     case HomeBanner
     case RecommendFeed
     case CategoryFeed(category: String)
+    case FeedDetail(feedID: Int)
 
     static var baseURLString = "http://ec2-52-78-66-184.ap-northeast-2.compute.amazonaws.com"
     
@@ -20,6 +21,7 @@ enum Router: URLRequestConvertible {
         case .HomeBanner: return .get
         case .RecommendFeed: return .get
         case .CategoryFeed: return .get
+        case .FeedDetail: return .get
         }
     }
 
@@ -28,6 +30,7 @@ enum Router: URLRequestConvertible {
         case .HomeBanner: return "/banners"
         case .RecommendFeed: return "/api/feed/recommend"
         case .CategoryFeed: return "/api/feed"
+        case .FeedDetail(let feedID): return "/api/feed/\(feedID)"
         }
     }
 
@@ -36,6 +39,7 @@ enum Router: URLRequestConvertible {
         case .HomeBanner: return nil
         case .RecommendFeed: return nil
         case .CategoryFeed(let category): return category.isEmpty ? nil : ["category": category]
+        case .FeedDetail: return nil
         }
     }
 

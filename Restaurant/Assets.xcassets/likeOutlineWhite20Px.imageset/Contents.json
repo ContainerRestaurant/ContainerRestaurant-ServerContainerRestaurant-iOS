@@ -1,19 +1,19 @@
 {
   "images" : [
     {
-      "filename" : "likeOutline20Px.png",
       "scale" : "1x",
+      "filename" : "likeOutlineWhite20Px.png",
       "idiom" : "universal"
     },
     {
       "scale" : "2x",
-      "filename" : "likeOutline20Px@2x.png",
+      "filename" : "likeOutlineWhite20Px@2x.png",
       "idiom" : "universal"
     },
     {
-      "filename" : "likeOutline20Px@3x.png",
-      "scale" : "3x",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "likeOutlineWhite20Px@3x.png",
+      "scale" : "3x"
     }
   ],
   "info" : {
