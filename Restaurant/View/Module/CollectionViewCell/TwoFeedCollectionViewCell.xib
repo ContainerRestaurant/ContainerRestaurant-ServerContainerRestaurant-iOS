@@ -86,7 +86,7 @@
                                     <constraint firstAttribute="height" constant="20" id="Xut-Ud-X5V"/>
                                     <constraint firstAttribute="width" constant="20" id="m2r-IX-ZKx"/>
                                 </constraints>
-                                <state key="normal" image="likeOutline20Px"/>
+                                <state key="normal" image="likeOutlineWhite20Px"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -136,7 +136,7 @@
         <image name="commentOutline12Px" width="12" height="12"/>
         <image name="imgLevelUp" width="150" height="175"/>
         <image name="likeOutline12Px" width="12" height="12"/>
-        <image name="likeOutline20Px" width="20" height="20"/>
+        <image name="likeOutlineWhite20Px" width="20" height="20"/>
         <namedColor name="colorGrayGray05">
             <color red="0.68199998140335083" green="0.68199998140335083" blue="0.68199998140335083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

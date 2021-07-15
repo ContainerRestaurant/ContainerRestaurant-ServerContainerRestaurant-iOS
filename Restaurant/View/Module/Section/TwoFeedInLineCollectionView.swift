@@ -12,6 +12,7 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
     private var feeds: [FeedPreviewModel] = []
     private let interItemSpacing: CGFloat = 15
     private let cellLineSpacing: CGFloat = 20
+    var coordinator: FeedCoordinator?
     var selectedCategorySubject: PublishSubject<String>?
     var disposeBag = DisposeBag()
     
@@ -39,9 +40,10 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
     }
     
     //피드 탭 카테고리 피드
-    func configureFeedCategoryFeed(_ feeds: [FeedPreviewModel], _ selectedCategorySubject: PublishSubject<String>, _ reloadFlagSubject: PublishSubject<[FeedPreviewModel]>) {
+    func configureFeedCategoryFeed(_ feeds: [FeedPreviewModel], _ selectedCategorySubject: PublishSubject<String>, _ reloadFlagSubject: PublishSubject<[FeedPreviewModel]>, _ coordinator: FeedCoordinator) {
         self.feeds = feeds
         self.selectedCategorySubject = selectedCategorySubject
+        self.coordinator = coordinator
         
         self.selectedCategorySubject?
             .subscribe(onNext: { category in
@@ -76,6 +78,10 @@ extension TwoFeedInLineCollectionView: UICollectionViewDelegate, UICollectionVie
         cell.configure(self.feeds[indexPath.row])
 
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.coordinator?.pushToFeedDetail(feedID: self.feeds[indexPath.row].id)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

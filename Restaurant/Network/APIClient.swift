@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
 class APIClient {
     //홈 탭 메인 배너
@@ -50,4 +51,29 @@ class APIClient {
                 }
             }
     }
+    
+    //피드 상세
+    static func feedDetail(feedID: Int, completion: @escaping (FeedDetailModel?) -> Void ) {
+        AF.request(Router.FeedDetail(feedID: feedID))
+            .responseDecodable { (response: DataResponse<FeedDetailModel, AFError>) in
+                switch response.result {
+                case .success(let feedDetail):
+                    completion(feedDetail)
+                case .failure(let error):
+                    completion(FeedDetailModel())
+                    print("Category Feed's Error: \(error)")
+                }
+            }
+    }
+    
+    //피드 상세 Rx로 감싸보기
+//    static func feedDetailRx(feedID: Int) -> Observable<FeedDetailModel> {
+//        return Observable.create() { emitter in
+//            feedDetail(feedID: feedID) { feedDetail in
+//                emitter.onNext(feedDetail!)
+//                emitter.onCompleted()
+//            }
+//            return Disposables.create()
+//        }
+//    }
 }

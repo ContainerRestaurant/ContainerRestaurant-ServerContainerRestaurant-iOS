@@ -85,7 +85,9 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return cell
         } else {
             let cell: TwoFeedInLineCollectionView = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configureFeedCategoryFeed(viewModel.categoryFeeds, self.selectedCategorySubject, self.reloadFlagSubject)
+            if let coordinator = self.coordinator {
+                cell.configureFeedCategoryFeed(viewModel.categoryFeeds, self.selectedCategorySubject, self.reloadFlagSubject, coordinator)
+            }
             return cell
         }
     }

@@ -1241,6 +1241,52 @@
             </objects>
             <point key="canvasLocation" x="193" y="1495"/>
         </scene>
+        <!--Feed Detail View Controller-->
+        <scene sceneID="b7d-WP-JEI">
+            <objects>
+                <viewController storyboardIdentifier="FeedDetailViewController" id="112-zz-b0Y" customClass="FeedDetailViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Hc-FR-x9h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JqD-W7-e36">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <color key="backgroundColor" name="colorPointOrange01"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="z8S-3J-82a">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Eja-yv-Pom">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="sM1-PI-fRg">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nyc-NB-TJH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nyc-NB-TJH" firstAttribute="bottom" secondItem="JqD-W7-e36" secondAttribute="bottom" id="4JJ-70-OD2"/>
+                            <constraint firstItem="JqD-W7-e36" firstAttribute="leading" secondItem="nyc-NB-TJH" secondAttribute="leading" id="BK2-TA-0sA"/>
+                            <constraint firstItem="nyc-NB-TJH" firstAttribute="trailing" secondItem="JqD-W7-e36" secondAttribute="trailing" id="MOZ-hV-DSE"/>
+                            <constraint firstItem="JqD-W7-e36" firstAttribute="top" secondItem="nyc-NB-TJH" secondAttribute="top" id="xyY-dH-zsv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="JqD-W7-e36" id="rV7-0a-wPN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="weG-X7-4TL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="822" y="1495"/>
+        </scene>
         <!--List Standard Description Popup View Controller-->
         <scene sceneID="mpN-nc-AjZ">
             <objects>
@@ -1422,6 +1468,9 @@
         </namedColor>
         <namedColor name="colorMainGreen04">
             <color red="0.078000001609325409" green="0.68599998950958252" blue="0.50199997425079346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="colorPointOrange01">
+            <color red="1" green="0.71399998664855957" blue="0.62400001287460327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
