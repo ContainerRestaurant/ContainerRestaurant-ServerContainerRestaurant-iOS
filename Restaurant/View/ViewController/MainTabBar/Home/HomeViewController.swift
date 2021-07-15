@@ -58,6 +58,8 @@ extension HomeViewController {
         self.collectionView.register(MainBanner.self)
         self.collectionView.register(Title16Bold.self)
         self.collectionView.register(TwoFeedInLineCollectionView.self)
+        self.collectionView.register(ViewMoreButton.self)
+        self.collectionView.register(FooterSection.self)
     }
 }
 
@@ -91,6 +93,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.configureHomeMainFeed(viewModel.recommendFeeds)
             return cell
             
+        case is ViewMoreButton.Type:
+            let cell: ViewMoreButton = collectionView.dequeueReusableCell(for: indexPath)
+            if let coordinator = self.coordinator {
+                cell.configure(coordinator)
+            }
+            return cell
+            
+        case is FooterSection.Type:
+            let cell: FooterSection = collectionView.dequeueReusableCell(for: indexPath)
+            return cell
+            
         default: return UICollectionViewCell()
         }
     }
@@ -102,6 +115,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         case 1: return viewModel.mainBannerSize()
         case 2: return viewModel.title16BoldSize()
         case 3: return viewModel.MainFeedCollectionViewSize()
+        case 4: return viewModel.viewMoreButtonSize()
+        case 5: return viewModel.footerSectionSize()
         default: return CGSize.zero
         }
     }
