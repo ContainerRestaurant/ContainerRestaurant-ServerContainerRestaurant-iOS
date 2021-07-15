@@ -21,10 +21,10 @@ class HomeViewModel {
 //    }
     
     init(_ recommendFeeds: [FeedPreviewModel], _ banner: [BannerInfoModel]) {
-        appendModule()
-
         self.recommendFeeds = recommendFeeds
         self.bannerInfo = banner
+        
+        appendModule()
     }
 }
 
@@ -35,6 +35,8 @@ extension HomeViewModel {
         self.modules.append(MainBanner.self)
         self.modules.append(Title16Bold.self)
         self.modules.append(TwoFeedInLineCollectionView.self)
+        self.modules.append(ViewMoreButton.self)
+        self.modules.append(FooterSection.self)
     }
 
     func mainTitleSectionSize() -> CGSize {
@@ -59,5 +61,13 @@ extension HomeViewModel {
         }()
 
         return CGSize(width: UIScreen.main.bounds.width, height: height)
+    }
+    
+    func viewMoreButtonSize() -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: recommendFeeds.count >= 12 ? 68 : 0)
+    }
+    
+    func footerSectionSize() -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 99)
     }
 }
