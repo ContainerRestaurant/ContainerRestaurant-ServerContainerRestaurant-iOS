@@ -1,8 +1,8 @@
 {
   "images" : [
     {
-      "scale" : "1x",
       "filename" : "photoOutline20Px.png",
+      "scale" : "1x",
       "idiom" : "universal"
     },
     {
@@ -11,9 +11,9 @@
       "filename" : "photoOutline20Px@2x.png"
     },
     {
-      "filename" : "photoOutline20Px@3x.png",
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "photoOutline20Px@3x.png"
     }
   ],
   "info" : {

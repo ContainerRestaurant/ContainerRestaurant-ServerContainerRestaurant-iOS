@@ -39,7 +39,7 @@ struct FeedModel: Codable {
         self.content = ""
     }
     
-    init(restaurantCreateDto: RestaurantModel, category: String, mainMenu: [FoodAndContainerModel], subMenu: [FoodAndContainerModel], difficulty: Int, welcome: Bool, thumbnailImageID: Int, content: String = "") {
+    init(restaurantCreateDto: RestaurantModel, category: String, mainMenu: [FoodAndContainerModel], subMenu: [FoodAndContainerModel], difficulty: Int, welcome: Bool, thumbnailImageID: Int, content: String) {
         self.restaurantCreateDto = restaurantCreateDto
         self.category = category
         self.mainMenu = mainMenu

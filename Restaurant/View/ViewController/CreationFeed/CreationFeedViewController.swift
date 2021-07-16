@@ -37,6 +37,8 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
     var imageID: Int?
     var imageIDSubject: PublishSubject<Int> = PublishSubject<Int>()
     var imageSubject: PublishSubject<UIImage> = PublishSubject<UIImage>()
+    var contentsTextSubject: PublishSubject<String> = PublishSubject<String>()
+    var contentsText: String = ""
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var closeButton: UIButton!
@@ -94,6 +96,12 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
                 self?.imageID = $0
             })
             .disposed(by: disposeBag)
+        
+        contentsTextSubject
+            .subscribe(onNext: { [weak self] in
+                self?.contentsText = $0
+            })
+            .disposed(by: disposeBag)
 
 //        registerSubject
 //            .filter { $0 }
@@ -109,7 +117,7 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
 //            })
 //            .disposed(by: disposeBag)
         
-        //Todo: 사진 입력됐을 때에만 등록됨...
+        //Todo: 현재는 사진 입력됐을 때에만 등록됨... => 사진은 옵셔널로 수정 ㄱ
         Observable
             .zip(registerSubject, imageIDSubject)
             .subscribe(onNext: { [weak self] (registerSubject, imageIDSubject) in
@@ -120,11 +128,12 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
                    let sideFoodAndContainer = self?.sideFoodAndContainer,
                    let thumbnailImageID = self?.imageID,
                    let coordinator = self?.coordinator {
-                    let feedInformation = FeedModel(restaurantCreateDto: restaurant, category: self!.selectedCategory, mainMenu: mainFoodAndContainer, subMenu: sideFoodAndContainer, difficulty: self!.levelOfDifficulty, welcome: self!.isWelcome, thumbnailImageID: thumbnailImageID)
+                    let feedInformation = FeedModel(restaurantCreateDto: restaurant, category: self!.selectedCategory, mainMenu: mainFoodAndContainer, subMenu: sideFoodAndContainer, difficulty: self!.levelOfDifficulty, welcome: self!.isWelcome, thumbnailImageID: thumbnailImageID, content: self!.contentsText)
                     
                     API().uploadFeed(feedModel: feedInformation, coordinator: coordinator)
                 }
             })
+            .disposed(by: disposeBag)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -280,7 +289,7 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
         case is CreationFeedImage.Type:
             let cell: CreationFeedImage = collectionView.dequeueReusableCell(for: indexPath)
             if let coordinator = self.coordinator {
-                cell.configure(coordinator, registerSubject, imageSubject)
+                cell.configure(coordinator, registerSubject, imageSubject, contentsTextSubject)
             }
             return cell
 
