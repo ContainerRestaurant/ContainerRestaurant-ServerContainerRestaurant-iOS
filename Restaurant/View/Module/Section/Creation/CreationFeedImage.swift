@@ -16,23 +16,28 @@ class CreationFeedImage: UICollectionViewCell {
     var registerSubject: PublishSubject<Bool> = PublishSubject<Bool>()
     var image: UIImage?
     var imageSubject: PublishSubject<UIImage>?
+    var contentsTextSubject: PublishSubject<String>?
 
     @IBOutlet weak var imagePickerButton: UIButton!
     @IBOutlet weak var hideImageButton: UIButton!
     @IBOutlet weak var pickedImageView: UIImageView!
     @IBOutlet weak var registerButton: UIButton!
-
+    @IBOutlet weak var contentsTextView: UITextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
         imagePicker.delegate = self
+        contentsTextView.delegate = self
+        contentsTextView.textContainerInset = .init(top: 15, left: 16, bottom: 15, right: 16)
         bindingView()
     }
 
-    func configure(_ coordinator: CreationFeedCoordinator, _ registerSubject: PublishSubject<Bool>, _ imageSubject: PublishSubject<UIImage>) {
+    func configure(_ coordinator: CreationFeedCoordinator, _ registerSubject: PublishSubject<Bool>, _ imageSubject: PublishSubject<UIImage>, _ contentsTextSubject: PublishSubject<String>) {
         self.coordinator = coordinator
         self.registerSubject = registerSubject
         self.imageSubject = imageSubject
+        self.contentsTextSubject = contentsTextSubject
     }
 
     private func bindingView() {
@@ -65,6 +70,14 @@ class CreationFeedImage: UICollectionViewCell {
                 self?.image = nil
             })
             .disposed(by: disposeBag)
+        
+        self.contentsTextView.rx.text
+            .subscribe(onNext: { [weak self] contentsText in
+                if let text = contentsText {
+                    self?.contentsTextSubject?.onNext(text)
+                }
+            })
+            .disposed(by: disposeBag)
 
         registerButton.rx.tap
             .subscribe(onNext: { [weak self] in
@@ -92,5 +105,38 @@ extension CreationFeedImage: UIImagePickerControllerDelegate, UINavigationContro
         }
 
         Common.currentViewController()?.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension CreationFeedImage: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        self.textViewSetupView()
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if contentsTextView.text == "" {
+            self.textViewSetupView()
+        }
+    }
+    
+    //???????????????????????????????????????????
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        //개행시 최초 응답자 제거
+        if text == "\n" {
+            contentsTextView.resignFirstResponder()
+        }
+        return true
+    }
+    
+    func textViewSetupView() {
+        let placeHolder = "용기 구성 팁 등 타인에게 용기를 줄 수 있는 소감을 적어 주세요 :)"
+        
+        if contentsTextView.text == placeHolder {
+            contentsTextView.text = ""
+            contentsTextView.textColor = .black
+        } else if contentsTextView.text == "" {
+            contentsTextView.text = placeHolder
+            contentsTextView.textColor = .colorGrayGray05
+        }
     }
 }
