@@ -27,12 +27,13 @@ class TwoFeedCollectionViewCell: UICollectionViewCell {
 //    }
     
     func configure(_ recommendFeed: FeedPreviewModel) {
-//        let imageURL = URL(string: Router.baseURLString + recommendFeed.thumbnailUrl)
-        let imageURL = URL(string: recommendFeed.thumbnailUrl)
-//        let imageURL = URL(string: "http://ec2-52-78-66-184.ap-northeast-2.compute.amazonaws.com/api/image/03b8ccde-9b83-5904-8029-a4dc1b559326.jpeg")
-        
-        
-        feedImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.3))])
+        if recommendFeed.thumbnailUrl.isEmpty {
+            feedImageView.image = UIImage(named: "emptyFeedImgIos")
+            feedImageView.backgroundColor = FeedBackgroundColor.allCases.randomElement()?.color()
+        } else {
+            let imageURL = URL(string: recommendFeed.thumbnailUrl)
+            feedImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.3))])
+        }
         nicknameLabel.text = recommendFeed.ownerNickname
         contentLabel.text = recommendFeed.content
         likeCountLabel.text = String(recommendFeed.likeCount)

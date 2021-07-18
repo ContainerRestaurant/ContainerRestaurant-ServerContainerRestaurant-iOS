@@ -21,6 +21,7 @@
 		520419A5265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419A4265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift */; };
 		520419A8265184580099BA39 /* InquiryProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419A7265184580099BA39 /* InquiryProfileCoordinator.swift */; };
 		520419CF2656CCBE0099BA39 /* TestCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419CE2656CCBE0099BA39 /* TestCodable.swift */; };
+		52169B0226A458F900705FEC /* FeedRandomBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52169B0126A458F900705FEC /* FeedRandomBackgroundColor.swift */; };
 		52254C612657E88400D921ED /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52254C602657E88400D921ED /* API.swift */; };
 		52254C63265AC19C00D921ED /* TwoFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52254C62265AC19C00D921ED /* TwoFeedModel.swift */; };
 		52256FAC263D7F4300A056DE /* SeparateLineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */; };
@@ -162,6 +163,7 @@
 		520419A4265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStandardDescriptionPopupCoordinator.swift; sourceTree = "<group>"; };
 		520419A7265184580099BA39 /* InquiryProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryProfileCoordinator.swift; sourceTree = "<group>"; };
 		520419CE2656CCBE0099BA39 /* TestCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCodable.swift; sourceTree = "<group>"; };
+		52169B0126A458F900705FEC /* FeedRandomBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRandomBackgroundColor.swift; sourceTree = "<group>"; };
 		52254C602657E88400D921ED /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		52254C62265AC19C00D921ED /* TwoFeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFeedModel.swift; sourceTree = "<group>"; };
 		52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateLineCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -589,6 +591,7 @@
 			isa = PBXGroup;
 			children = (
 				5285592F262DE5A700AB4E28 /* TabBarItem.swift */,
+				52169B0126A458F900705FEC /* FeedRandomBackgroundColor.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -1041,6 +1044,7 @@
 				528558F72624A99000AB4E28 /* BaseViewController.swift in Sources */,
 				FB585B49266D6E770085C6B2 /* ExtensionUIButton.swift in Sources */,
 				FB1BE38C26397EEE0004673C /* CreationPopupViewController.swift in Sources */,
+				52169B0226A458F900705FEC /* FeedRandomBackgroundColor.swift in Sources */,
 				526BED622646F62A00897230 /* ContainerOfEveryoneViewController.swift in Sources */,
 				528EF7E02694C893009ECF59 /* CategoryTabCollectionViewCell.swift in Sources */,
 				FB585B1D266561890085C6B2 /* Common.swift in Sources */,
