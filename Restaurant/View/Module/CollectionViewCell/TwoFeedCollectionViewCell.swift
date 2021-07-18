@@ -28,7 +28,7 @@ class TwoFeedCollectionViewCell: UICollectionViewCell {
     
     func configure(_ recommendFeed: FeedPreviewModel) {
         if recommendFeed.thumbnailUrl.isEmpty {
-            feedImageView.image = UIImage(named: "editOutline")
+            feedImageView.image = UIImage(named: "emptyFeedImgIos")
             feedImageView.backgroundColor = FeedBackgroundColor.allCases.randomElement()?.color()
         } else {
             let imageURL = URL(string: recommendFeed.thumbnailUrl)
