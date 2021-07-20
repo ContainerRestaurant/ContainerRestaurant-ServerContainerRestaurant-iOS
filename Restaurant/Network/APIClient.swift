@@ -61,7 +61,7 @@ class APIClient {
                     completion(feedDetail)
                 case .failure(let error):
                     completion(FeedDetailModel())
-                    print("Category Feed's Error: \(error)")
+                    print("Feed Detail's Error: \(error)")
                 }
             }
     }
@@ -76,4 +76,18 @@ class APIClient {
 //            return Disposables.create()
 //        }
 //    }
+    
+    //주변 식당 검색
+    static func nearbyRestaurants(latitude: Double, longitude: Double, radius: Int, completion: @escaping (NearybyRestaurantModel) -> Void) {
+        AF.request(Router.NearbyRestaurants(latitude: latitude, longitude: longitude, radius: radius))
+            .responseDecodable { (response: DataResponse<NearybyRestaurantModel, AFError>) in
+                switch response.result {
+                case .success(let nearbyRestaurants):
+                    completion(nearbyRestaurants)
+                case .failure(let error):
+                    completion(NearybyRestaurantModel())
+                    print("Nearby Restaurants's Error: \(error)")
+                }
+            }
+    }
 }

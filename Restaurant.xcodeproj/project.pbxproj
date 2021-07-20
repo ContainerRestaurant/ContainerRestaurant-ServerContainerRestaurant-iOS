@@ -22,6 +22,8 @@
 		520419A8265184580099BA39 /* InquiryProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419A7265184580099BA39 /* InquiryProfileCoordinator.swift */; };
 		520419CF2656CCBE0099BA39 /* TestCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419CE2656CCBE0099BA39 /* TestCodable.swift */; };
 		52169B0226A458F900705FEC /* FeedRandomBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52169B0126A458F900705FEC /* FeedRandomBackgroundColor.swift */; };
+		52169B0526A7572600705FEC /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52169B0426A7572600705FEC /* MapViewModel.swift */; };
+		52169B0826A7608600705FEC /* NearybyRestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52169B0726A7608600705FEC /* NearybyRestaurantModel.swift */; };
 		52254C612657E88400D921ED /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52254C602657E88400D921ED /* API.swift */; };
 		52254C63265AC19C00D921ED /* TwoFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52254C62265AC19C00D921ED /* TwoFeedModel.swift */; };
 		52256FAC263D7F4300A056DE /* SeparateLineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */; };
@@ -164,6 +166,8 @@
 		520419A7265184580099BA39 /* InquiryProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryProfileCoordinator.swift; sourceTree = "<group>"; };
 		520419CE2656CCBE0099BA39 /* TestCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCodable.swift; sourceTree = "<group>"; };
 		52169B0126A458F900705FEC /* FeedRandomBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRandomBackgroundColor.swift; sourceTree = "<group>"; };
+		52169B0426A7572600705FEC /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		52169B0726A7608600705FEC /* NearybyRestaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearybyRestaurantModel.swift; sourceTree = "<group>"; };
 		52254C602657E88400D921ED /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		52254C62265AC19C00D921ED /* TwoFeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFeedModel.swift; sourceTree = "<group>"; };
 		52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateLineCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -416,11 +420,28 @@
 				FB585B29266631CB0085C6B2 /* Home */,
 				528EF7E2269DF515009ECF59 /* Feed */,
 				FB585B2A266634EB0085C6B2 /* Creation */,
+				52169B0626A7604B00705FEC /* Map */,
 				520419CE2656CCBE0099BA39 /* TestCodable.swift */,
 				5258115C267901E900900D59 /* UserModel.swift */,
 				525811582677DD6B00900D59 /* NickNameValidationModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		52169B0326A7570F00705FEC /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				52169B0426A7572600705FEC /* MapViewModel.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		52169B0626A7604B00705FEC /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				52169B0726A7608600705FEC /* NearybyRestaurantModel.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		52254C5F2657E85D00D921ED /* Network */ = {
@@ -507,6 +528,7 @@
 			children = (
 				528EF7EB269E055E009ECF59 /* Home */,
 				528EF7EC269E056B009ECF59 /* Feed */,
+				52169B0326A7570F00705FEC /* Map */,
 				528EF7ED269E0585009ECF59 /* My */,
 			);
 			path = MainTabBar;
@@ -1087,6 +1109,7 @@
 				FB585B2226656E810085C6B2 /* SearchRestaurantViewController.swift in Sources */,
 				5285590B2629ECB900AB4E28 /* TestLoginViewController.swift in Sources */,
 				524686F6268703D900BE2BE4 /* UploadingImageModel.swift in Sources */,
+				52169B0526A7572600705FEC /* MapViewModel.swift in Sources */,
 				FB585B2E2667F6340085C6B2 /* ExtensionString.swift in Sources */,
 				FB1BE3652636CB540004673C /* MainTitleSection.swift in Sources */,
 				528558F32624A2E700AB4E28 /* TestMapViewController.swift in Sources */,
@@ -1122,6 +1145,7 @@
 				FB585B45266D68720085C6B2 /* OnboardingCoordinator.swift in Sources */,
 				FB585B2026656E5A0085C6B2 /* SearchRestaurantCoordinator.swift in Sources */,
 				5239733C261B625000856C99 /* FeedViewController.swift in Sources */,
+				52169B0826A7608600705FEC /* NearybyRestaurantModel.swift in Sources */,
 				528558ED26249DDF00AB4E28 /* TestViewController.swift in Sources */,
 				FB56AF6F265F5F43002736F5 /* CreationFeedCoordinator.swift in Sources */,
 				FB1BE373263719540004673C /* Title16Bold.swift in Sources */,

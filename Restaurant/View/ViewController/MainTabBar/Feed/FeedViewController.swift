@@ -25,7 +25,7 @@ class FeedViewController: BaseViewController, Storyboard, ViewModelBindableType 
         super.viewDidLoad()
         
         setCollectionViews()
-        print("FeedViewController init")
+        print("FeedViewController viewDidLoad()")
     }
     
     deinit {
