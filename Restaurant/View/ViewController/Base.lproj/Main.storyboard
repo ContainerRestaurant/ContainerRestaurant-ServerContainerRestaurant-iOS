@@ -685,14 +685,75 @@
                     <view key="view" contentMode="scaleToFill" id="GLn-jD-yj7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aSh-yW-Cc4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seZ-WF-Ue5">
+                                <rect key="frame" x="122.66666666666669" y="705" width="130" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="6te-pR-i6G"/>
+                                    <constraint firstAttribute="width" constant="130" id="B75-kS-NdK"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="btnMapList"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="목록보기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sL-FO-Qat">
+                                <rect key="frame" x="175.66666666666666" y="725.66666666666663" width="49" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" name="colorGrayGray07"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="listOutline16Px" translatesAutoresizingMaskIntoConstraints="NO" id="T97-Np-wAV">
+                                <rect key="frame" x="151.66666666666666" y="726" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="9Sg-qg-t4t"/>
+                                    <constraint firstAttribute="width" constant="16" id="CKF-mq-CaH"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iac-ul-D2V">
+                                <rect key="frame" x="306" y="705" width="58" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="A9t-gx-2b6"/>
+                                    <constraint firstAttribute="width" constant="58" id="elG-e7-vQs"/>
+                                </constraints>
+                                <state key="normal" image="btnMapLocation"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="moveToMyLocation:" destination="WKT-hR-IPh" eventType="touchUpInside" id="lfy-Ja-HFk"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="GOy-qE-5ga"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="seZ-WF-Ue5" firstAttribute="centerX" secondItem="GLn-jD-yj7" secondAttribute="centerX" id="4Y2-RR-mYS"/>
+                            <constraint firstItem="GOy-qE-5ga" firstAttribute="bottom" secondItem="seZ-WF-Ue5" secondAttribute="bottom" constant="15" id="9rz-Kn-7s8"/>
+                            <constraint firstItem="aSh-yW-Cc4" firstAttribute="top" secondItem="GOy-qE-5ga" secondAttribute="top" constant="-44" id="Bx9-LG-gMw"/>
+                            <constraint firstItem="GOy-qE-5ga" firstAttribute="trailing" secondItem="iac-ul-D2V" secondAttribute="trailing" constant="11" id="ECS-FF-nHN"/>
+                            <constraint firstItem="T97-Np-wAV" firstAttribute="leading" secondItem="seZ-WF-Ue5" secondAttribute="leading" constant="29" id="HP4-Dc-Y5J"/>
+                            <constraint firstItem="GOy-qE-5ga" firstAttribute="trailing" secondItem="aSh-yW-Cc4" secondAttribute="trailing" id="P9n-LF-S0I"/>
+                            <constraint firstItem="3sL-FO-Qat" firstAttribute="centerY" secondItem="seZ-WF-Ue5" secondAttribute="centerY" id="ST0-i5-z3P"/>
+                            <constraint firstItem="T97-Np-wAV" firstAttribute="centerY" secondItem="seZ-WF-Ue5" secondAttribute="centerY" id="cad-KK-NZp"/>
+                            <constraint firstItem="GOy-qE-5ga" firstAttribute="bottom" secondItem="iac-ul-D2V" secondAttribute="bottom" constant="15" id="eB6-GM-bhg"/>
+                            <constraint firstItem="aSh-yW-Cc4" firstAttribute="leading" secondItem="GOy-qE-5ga" secondAttribute="leading" id="hoB-a9-1He"/>
+                            <constraint firstItem="GOy-qE-5ga" firstAttribute="bottom" secondItem="aSh-yW-Cc4" secondAttribute="bottom" id="oX8-LC-iXy"/>
+                            <constraint firstItem="3sL-FO-Qat" firstAttribute="leading" secondItem="T97-Np-wAV" secondAttribute="trailing" constant="8" id="vc8-CU-5bT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eqI-kv-3Cy"/>
+                    <connections>
+                        <outlet property="mainView" destination="aSh-yW-Cc4" id="d4x-Yx-h2J"/>
+                        <outlet property="myLocationButton" destination="iac-ul-D2V" id="QRK-Wr-vg2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqG-nW-Dc8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="193" y="2768"/>
+            <point key="canvasLocation" x="192.80000000000001" y="2767.9802955665027"/>
         </scene>
         <!--My View Controller-->
         <scene sceneID="hdJ-3e-Srh">
@@ -1428,10 +1489,13 @@
         <image name="28PxIconKakao" width="28.333333969116211" height="28"/>
         <image name="IU" width="464" height="461"/>
         <image name="bookmarkFilledGreen20Px" width="20" height="20"/>
+        <image name="btnMapList" width="130" height="58"/>
+        <image name="btnMapLocation" width="58" height="58"/>
         <image name="closeFilled16Px" width="20" height="20"/>
         <image name="closeOutline20Px" width="20" height="20"/>
         <image name="favoriteFilled20Px" width="20" height="20"/>
         <image name="feedFilledBlue20Px" width="20" height="20"/>
+        <image name="listOutline16Px" width="16" height="16"/>
         <image name="photoEdit20Px" width="20" height="20"/>
         <image name="profileViewCountFilled24Px" width="24" height="24"/>
         <image name="searchOutline20Px" width="20" height="20"/>

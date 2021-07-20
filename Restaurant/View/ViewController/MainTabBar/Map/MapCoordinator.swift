@@ -15,11 +15,19 @@ class MapCoordinator: NSObject, Coordinator {
     init(presenter: UINavigationController) {
         self.presenter = presenter
         self.childCoordinators = []
+        
+        print("MapCoordinator init")
+    }
+    
+    deinit {
+        print("MapCoordinator Deinit")
     }
     
     func start() {
         let map = MapViewController.instantiate()
         map.coordinator = self
+//        map.bind(viewModel: MapViewModel([])) //이거 쓸거면 setMapView()를 viewWillAppear로 이동
+        
         presenter.pushViewController(map, animated: false)
     }
 }

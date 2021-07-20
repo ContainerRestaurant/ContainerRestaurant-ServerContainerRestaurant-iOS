@@ -13,6 +13,7 @@ enum Router: URLRequestConvertible {
     case RecommendFeed
     case CategoryFeed(category: String)
     case FeedDetail(feedID: Int)
+    case NearbyRestaurants(latitude: Double, longitude: Double, radius: Int)
 
     static var baseURLString = "http://ec2-52-78-66-184.ap-northeast-2.compute.amazonaws.com"
     
@@ -22,6 +23,7 @@ enum Router: URLRequestConvertible {
         case .RecommendFeed: return .get
         case .CategoryFeed: return .get
         case .FeedDetail: return .get
+        case .NearbyRestaurants: return .get
         }
     }
 
@@ -31,6 +33,7 @@ enum Router: URLRequestConvertible {
         case .RecommendFeed: return "/api/feed/recommend"
         case .CategoryFeed: return "/api/feed"
         case .FeedDetail(let feedID): return "/api/feed/\(feedID)"
+        case .NearbyRestaurants(let latitude, let longitude, let radius): return "/api/restaurant/\(latitude)/\(longitude)/\(radius)"
         }
     }
 
@@ -40,6 +43,7 @@ enum Router: URLRequestConvertible {
         case .RecommendFeed: return nil
         case .CategoryFeed(let category): return category.isEmpty ? nil : ["category": category]
         case .FeedDetail: return nil
+        case .NearbyRestaurants(_, _, _): return nil
         }
     }
 

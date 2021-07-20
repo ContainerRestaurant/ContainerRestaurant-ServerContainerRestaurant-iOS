@@ -13,11 +13,22 @@ struct RestaurantModel: Codable {
     var latitude: Double
     var longitude: Double
     
-    private enum CodingKeys: CodingKey {
+    //주변 식당 정보에서 추가
+    var id: Int
+    var imagePath: String
+    var difficultyAverage: Double
+    var feedCount: Int
+    
+    private enum CodingKeys: String, CodingKey {
         case name
         case address
         case latitude
         case longitude
+        
+        case id
+        case imagePath = "image_path"
+        case difficultyAverage = "difficultyAvg"
+        case feedCount
     }
     
     init() {
@@ -25,13 +36,23 @@ struct RestaurantModel: Codable {
         self.address = ""
         self.latitude = 0.0
         self.longitude = 0.0
+        
+        id = 0
+        imagePath = ""
+        difficultyAverage = 0.0
+        feedCount = 0
     }
     
-    init(name: String, address: String, latitude: Double, longitude: Double) {
+    init(name: String, address: String, latitude: Double, longitude: Double, id: Int = 0, imagePath: String = "", difficultyAverage: Double = 0.0, feedCount: Int = 0) {
         self.name = name
         self.address = address
         self.latitude = latitude
         self.longitude = longitude
+        
+        self.id = id
+        self.imagePath = imagePath
+        self.difficultyAverage = difficultyAverage
+        self.feedCount = feedCount
     }
     
     init(from decoder: Decoder) throws {
@@ -41,5 +62,10 @@ struct RestaurantModel: Codable {
         self.address = (try? container.decode(String.self, forKey: .address)) ?? ""
         self.latitude = (try? container.decode(Double.self, forKey: .latitude)) ?? 0
         self.longitude = (try? container.decode(Double.self, forKey: .longitude)) ?? 0
+        
+        self.id = (try? container.decode(Int.self, forKey: .id)) ?? 0
+        self.imagePath = (try? container.decode(String.self, forKey: .imagePath)) ?? ""
+        self.difficultyAverage = (try? container.decode(Double.self, forKey: .difficultyAverage)) ?? 0.0
+        self.feedCount = (try? container.decode(Int.self, forKey: .feedCount)) ?? 0
     }
 }

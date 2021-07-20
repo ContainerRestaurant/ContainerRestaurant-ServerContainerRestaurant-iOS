@@ -8,17 +8,38 @@
 import UIKit
 import NMapsMap
 
-class MapViewController: BaseViewController, Storyboard {
+class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
+    var viewModel: MapViewModel!
     weak var coordinator: MapCoordinator?
+    var mapView = NMFMapView()
     var locationManager = CLLocationManager()
     
     @IBOutlet weak var mainView: UIView!
-
+    @IBOutlet weak var myLocationButton: UIButton!
+    @IBAction func moveToMyLocation(_ sender: Any) {
+        moveToMyLocationOnMap()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setMapView()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        print("MapViewController viewDidLoad()")
+    }
+    
+    deinit {
+        print("MapViewController Deinit")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    func bindingView() {
+        print("왔구나 \(viewModel.nearbyRestaurants)")
     }
 
     private func setMapView() {
@@ -28,17 +49,18 @@ class MapViewController: BaseViewController, Storyboard {
         let (viewX, viewY) = (self.view.frame.minX, self.view.frame.minY)
         let (viewWidth, viewHeight) = (self.view.frame.width, self.view.frame.height - CGFloat(83) + (Common.isNotchPhone ? CGFloat(0) : Common.homeBarHeight))
         let viewCGRect = CGRect(x: viewX, y: viewY, width: viewWidth, height: viewHeight)
-        let mapView = NMFNaverMapView(frame: viewCGRect)
-        mapView.showLocationButton = true
+        mapView = NMFMapView(frame: viewCGRect)
         mapView.positionMode = .normal
-
-        self.view.addSubview(mapView)
+        
+        self.mainView.addSubview(mapView)
+        self.setMyLocationIcon()
+        self.moveToMyLocationOnMap()
+        
     }
 }
 
 extension MapViewController: CLLocationManagerDelegate {
     private func getLocationUsagePermission() {
-//        locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
     }
 
@@ -55,5 +77,22 @@ extension MapViewController: CLLocationManagerDelegate {
         default:
             print("GPS: Default")
         }
+    }
+    
+    func setMyLocationIcon() {
+        guard let locationCoordinate = locationManager.location?.coordinate else { return }
+        
+        let locationOverlay = mapView.locationOverlay
+        locationOverlay.hidden = false
+        locationOverlay.location = NMGLatLng(lat: locationCoordinate.latitude, lng: locationCoordinate.longitude)
+    }
+    
+    func moveToMyLocationOnMap() {
+        guard let locationCoordinate = locationManager.location?.coordinate else { return }
+        
+        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: locationCoordinate.latitude, lng: locationCoordinate.longitude))
+        cameraUpdate.animation = .easeOut
+        cameraUpdate.animationDuration = 1
+        mapView.moveCamera(cameraUpdate)
     }
 }
