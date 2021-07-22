@@ -78,14 +78,14 @@ class APIClient {
 //    }
     
     //주변 식당 검색
-    static func nearbyRestaurants(latitude: Double, longitude: Double, radius: Int, completion: @escaping (NearybyRestaurantModel) -> Void) {
+    static func nearbyRestaurants(latitude: Double, longitude: Double, radius: Int, completion: @escaping ([RestaurantModel]) -> Void) {
         AF.request(Router.NearbyRestaurants(latitude: latitude, longitude: longitude, radius: radius))
             .responseDecodable { (response: DataResponse<NearybyRestaurantModel, AFError>) in
                 switch response.result {
-                case .success(let nearbyRestaurants):
-                    completion(nearbyRestaurants)
+                case .success(let nearbyRestaurant):
+                    completion(nearbyRestaurant.nearbyRestaurants)
                 case .failure(let error):
-                    completion(NearybyRestaurantModel())
+                    completion([])
                     print("Nearby Restaurants's Error: \(error)")
                 }
             }

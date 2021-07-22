@@ -8,7 +8,9 @@
 import UIKit
 
 struct Common {
-    static var homeBarHeight: CGFloat = 34
+    static var homeBarHeight: CGFloat = 35
+    static var tabBarHeight: CGFloat = 48
+    static var notchHeight: CGFloat = 48
     static var isNotchPhone: Bool {
         return UIScreen.main.bounds.height > CGFloat(700)
     }
