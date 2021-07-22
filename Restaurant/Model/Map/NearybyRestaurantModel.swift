@@ -24,8 +24,4 @@ struct NearybyRestaurantModel: Decodable {
         
         self.nearbyRestaurants = try nearbyRestaurants.decode(Array.self, forKey: .nearbyRestaurants)
     }
-    
-    init() {
-        nearbyRestaurants = []
-    }
 }

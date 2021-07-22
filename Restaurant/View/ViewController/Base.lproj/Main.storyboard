@@ -686,7 +686,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aSh-yW-Cc4">
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSh-yW-Cc4">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -733,11 +733,11 @@
                         <constraints>
                             <constraint firstItem="seZ-WF-Ue5" firstAttribute="centerX" secondItem="GLn-jD-yj7" secondAttribute="centerX" id="4Y2-RR-mYS"/>
                             <constraint firstItem="GOy-qE-5ga" firstAttribute="bottom" secondItem="seZ-WF-Ue5" secondAttribute="bottom" constant="15" id="9rz-Kn-7s8"/>
-                            <constraint firstItem="aSh-yW-Cc4" firstAttribute="top" secondItem="GOy-qE-5ga" secondAttribute="top" constant="-44" id="Bx9-LG-gMw"/>
                             <constraint firstItem="GOy-qE-5ga" firstAttribute="trailing" secondItem="iac-ul-D2V" secondAttribute="trailing" constant="11" id="ECS-FF-nHN"/>
                             <constraint firstItem="T97-Np-wAV" firstAttribute="leading" secondItem="seZ-WF-Ue5" secondAttribute="leading" constant="29" id="HP4-Dc-Y5J"/>
                             <constraint firstItem="GOy-qE-5ga" firstAttribute="trailing" secondItem="aSh-yW-Cc4" secondAttribute="trailing" id="P9n-LF-S0I"/>
                             <constraint firstItem="3sL-FO-Qat" firstAttribute="centerY" secondItem="seZ-WF-Ue5" secondAttribute="centerY" id="ST0-i5-z3P"/>
+                            <constraint firstItem="aSh-yW-Cc4" firstAttribute="top" secondItem="GLn-jD-yj7" secondAttribute="top" id="Wvr-1D-5Zp"/>
                             <constraint firstItem="T97-Np-wAV" firstAttribute="centerY" secondItem="seZ-WF-Ue5" secondAttribute="centerY" id="cad-KK-NZp"/>
                             <constraint firstItem="GOy-qE-5ga" firstAttribute="bottom" secondItem="iac-ul-D2V" secondAttribute="bottom" constant="15" id="eB6-GM-bhg"/>
                             <constraint firstItem="aSh-yW-Cc4" firstAttribute="leading" secondItem="GOy-qE-5ga" secondAttribute="leading" id="hoB-a9-1He"/>

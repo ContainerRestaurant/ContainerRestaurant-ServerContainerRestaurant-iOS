@@ -7,6 +7,7 @@
 
 import UIKit
 import NMapsMap
+import RxSwift
 
 class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
     var viewModel: MapViewModel!
@@ -23,8 +24,6 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setMapView()
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
         print("MapViewController viewDidLoad()")
     }
     
@@ -35,28 +34,57 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        if self.viewModel.isFirstEntry {
+            setMapView()
+            self.viewModel.isFirstEntry = false
+        }
     }
     
     func bindingView() {
-        print("왔구나 \(viewModel.nearbyRestaurants)")
+        viewModel.nearbyRestaurantsFlag.subscribe(onNext: { [weak self] in
+            self?.setMarker()
+        })
+        .disposed(by: disposeBag)
     }
 
     private func setMapView() {
         locationManager.delegate = self
         getLocationUsagePermission()
 
-        let (viewX, viewY) = (self.view.frame.minX, self.view.frame.minY)
-        let (viewWidth, viewHeight) = (self.view.frame.width, self.view.frame.height - CGFloat(83) + (Common.isNotchPhone ? CGFloat(0) : Common.homeBarHeight))
-        let viewCGRect = CGRect(x: viewX, y: viewY, width: viewWidth, height: viewHeight)
+        let (fullWidth, fullHeight) = (UIScreen.main.bounds.width, UIScreen.main.bounds.height)
+        let bottomBarSectionHeight = Common.tabBarHeight + (Common.isNotchPhone ? Common.homeBarHeight : 0)
+        let (viewWidth, viewHeight) = (fullWidth, fullHeight - bottomBarSectionHeight)
+        let viewCGRect = CGRect(x: 0, y: 0, width: viewWidth, height: viewHeight)
         mapView = NMFMapView(frame: viewCGRect)
         mapView.positionMode = .normal
         
         self.mainView.addSubview(mapView)
         self.setMyLocationIcon()
         self.moveToMyLocationOnMap()
-        
+        self.viewModel.fetchNearbyRestaurants()
     }
+    
+    private func setMarker() {
+        for restaurant in self.viewModel.nearbyRestaurants {
+            let marker = NMFMarker()
+            marker.position = NMGLatLng(lat: restaurant.latitude, lng: restaurant.longitude)
+            marker.iconImage = NMFOverlayImage(name: "mapMarker")
+            marker.width = 51
+            marker.height = 56
+            marker.mapView = mapView
+            
+            let handler = { [weak self] (overlay: NMFOverlay) -> Bool in
+                if let marker = overlay as? NMFMarker {
+                    print("\(restaurant.name) 마커 클릭")
+                }
+                return true
+            }
+            marker.touchHandler = handler
+        }
+    }
+    
+    
 }
 
 extension MapViewController: CLLocationManagerDelegate {
@@ -68,6 +96,10 @@ extension MapViewController: CLLocationManagerDelegate {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
             print("GPS 권한 설정됨")
+            //setMapView()에 있는 세 method는 권한 설정 전에 호출돼서 현재 위치값을 못가져오므로 권한 설정 이후에도 다시 한 번 호출
+            self.setMyLocationIcon()
+            self.moveToMyLocationOnMap()
+            self.viewModel.fetchNearbyRestaurants()
         case .restricted, .notDetermined:
             print("GPS 권한 설정되지 않음")
             getLocationUsagePermission()
@@ -81,16 +113,20 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func setMyLocationIcon() {
         guard let locationCoordinate = locationManager.location?.coordinate else { return }
+        self.viewModel.latitude = locationCoordinate.latitude
+        self.viewModel.longitude = locationCoordinate.longitude
         
         let locationOverlay = mapView.locationOverlay
         locationOverlay.hidden = false
-        locationOverlay.location = NMGLatLng(lat: locationCoordinate.latitude, lng: locationCoordinate.longitude)
+        locationOverlay.location = NMGLatLng(lat: viewModel.latitude, lng: viewModel.longitude)
     }
     
     func moveToMyLocationOnMap() {
         guard let locationCoordinate = locationManager.location?.coordinate else { return }
+        self.viewModel.latitude = locationCoordinate.latitude
+        self.viewModel.longitude = locationCoordinate.longitude
         
-        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: locationCoordinate.latitude, lng: locationCoordinate.longitude))
+        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: viewModel.latitude, lng: viewModel.longitude))
         cameraUpdate.animation = .easeOut
         cameraUpdate.animationDuration = 1
         mapView.moveCamera(cameraUpdate)

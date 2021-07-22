@@ -24,9 +24,10 @@ class MapCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        let map = MapViewController.instantiate()
+        var map = MapViewController.instantiate()
         map.coordinator = self
 //        map.bind(viewModel: MapViewModel([])) //이거 쓸거면 setMapView()를 viewWillAppear로 이동
+        map.bind(viewModel: MapViewModel())
         
         presenter.pushViewController(map, animated: false)
     }
