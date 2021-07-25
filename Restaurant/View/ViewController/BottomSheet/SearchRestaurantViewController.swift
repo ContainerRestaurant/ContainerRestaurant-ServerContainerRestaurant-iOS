@@ -24,6 +24,11 @@ class SearchRestaurantViewController: BaseViewController, Storyboard, ViewModelB
         super.viewDidLoad()
 
         setCollectionView()
+        print("SearchRestaurantViewController viewDidLoad()")
+    }
+    
+    deinit {
+        print("SearchRestaurantViewController Deinit")
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -59,10 +64,6 @@ class SearchRestaurantViewController: BaseViewController, Storyboard, ViewModelB
                 self?.collectionView.reloadData()
             })
             .disposed(by: disposeBag)
-    }
-
-    deinit {
-        print("SearchRestaurantViewController Deinit")
     }
 }
 

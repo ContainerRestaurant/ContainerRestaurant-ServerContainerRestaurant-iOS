@@ -43,7 +43,15 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
     
     func bindingView() {
         viewModel.nearbyRestaurantsFlag.subscribe(onNext: { [weak self] in
-            self?.setMarker()
+            if let nearbyRestaurants = self?.viewModel.nearbyRestaurants {
+                if nearbyRestaurants.isEmpty {
+                    self?.coordinator?.presentNoRestaurantNearby()
+                } else {
+                    self?.setMarker()
+                }
+            } else {
+                self?.coordinator?.presentNoRestaurantNearby()
+            }
         })
         .disposed(by: disposeBag)
     }
@@ -75,9 +83,8 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
             marker.mapView = mapView
             
             let handler = { [weak self] (overlay: NMFOverlay) -> Bool in
-                if let marker = overlay as? NMFMarker {
-                    print("\(restaurant.name) 마커 클릭")
-                }
+                self?.coordinator?.presentNoRestaurantNearby()
+                
                 return true
             }
             marker.touchHandler = handler

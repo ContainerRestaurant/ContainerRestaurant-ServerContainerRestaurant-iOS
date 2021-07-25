@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import RxSwift
 
 class MapCoordinator: NSObject, Coordinator {
     var delegate: CoordinatorFinishDelegate?
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
+    
+    var afterSearchingRestaurantSubject: PublishSubject<[RestaurantModel]> = PublishSubject<[RestaurantModel]>()
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
@@ -26,10 +29,17 @@ class MapCoordinator: NSObject, Coordinator {
     func start() {
         var map = MapViewController.instantiate()
         map.coordinator = self
-//        map.bind(viewModel: MapViewModel([])) //이거 쓸거면 setMapView()를 viewWillAppear로 이동
-        map.bind(viewModel: MapViewModel())
+        map.bind(viewModel: MapViewModel(afterSearchingRestaurantSubject))
         
         presenter.pushViewController(map, animated: false)
     }
 }
 
+extension MapCoordinator {
+    func presentNoRestaurantNearby() {
+        let coordinator = NoRestaurantNearbyCoordinator(presenter: presenter, afterSearchingRestaurantSubject)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.noRestaurantNearby()
+    }
+}
