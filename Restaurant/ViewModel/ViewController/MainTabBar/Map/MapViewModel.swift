@@ -10,6 +10,7 @@ import NMapsMap
 import RxSwift
 
 class MapViewModel {
+    var disposeBag = DisposeBag()
     var isFirstEntry = true
     var nearbyRestaurants: [RestaurantModel] = []
     var latitude: Double = 0
@@ -17,13 +18,16 @@ class MapViewModel {
     var nearbyRestaurantsFlag: PublishSubject<Void> = PublishSubject<Void>()
     
     
-    init() {
-        
+    init(_ afterSearchingRestaurantSubject: PublishSubject<[RestaurantModel]>) {
+        afterSearchingRestaurantSubject.subscribe(onNext: { [weak self] in
+            self?.nearbyRestaurants = $0
+            self?.nearbyRestaurantsFlag.onNext(())
+        })
+        .disposed(by: disposeBag)
     }
     
-    //일단 식당 나오게 임시로 radius 2000 => default 뭔지 안드랑 기획에 여쭤보기
     func fetchNearbyRestaurants() {
-        APIClient.nearbyRestaurants(latitude: latitude, longitude: longitude, radius: 2000) { [weak self] nearbyRestaurants in
+        APIClient.nearbyRestaurants(latitude: latitude, longitude: longitude, radius: 200) { [weak self] nearbyRestaurants in
             self?.nearbyRestaurants = nearbyRestaurants
             self?.nearbyRestaurantsFlag.onNext(())
         }

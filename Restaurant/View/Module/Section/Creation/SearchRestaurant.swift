@@ -7,7 +7,6 @@
 
 import UIKit
 import RxSwift
-import FittedSheets
 
 class SearchRestaurant: UICollectionViewCell {
     let disposeBag = DisposeBag()

@@ -755,6 +755,105 @@
             </objects>
             <point key="canvasLocation" x="192.80000000000001" y="2767.9802955665027"/>
         </scene>
+        <!--No Restaurant Nearby View Controller-->
+        <scene sceneID="Mme-3q-CnG">
+            <objects>
+                <viewController storyboardIdentifier="NoRestaurantNearbyViewController" id="3DE-zk-uKa" customClass="NoRestaurantNearbyViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="21b-Cr-WI2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68f-bE-Pf3">
+                                <rect key="frame" x="337" y="62" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="f9t-l1-VGx"/>
+                                    <constraint firstAttribute="height" constant="20" id="vL6-9E-jLG"/>
+                                </constraints>
+                                <state key="normal" image="closeOutline20Px"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 위치에 아직 용기낸 식당이 없어요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1S-jt-9cC">
+                                <rect key="frame" x="121" y="90" width="133" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="VZi-Lq-9HY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <color key="textColor" name="colorGrayGray07"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyDataImgMap" translatesAutoresizingMaskIntoConstraints="NO" id="1Zm-aA-obc">
+                                <rect key="frame" x="105" y="152" width="160" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="2hi-ZN-J4W"/>
+                                    <constraint firstAttribute="width" constant="160" id="fNB-K3-Rlk"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aoY-g0-lKO">
+                                <rect key="frame" x="16" y="269" width="343" height="52"/>
+                                <color key="backgroundColor" name="colorMainGreen02"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="rMA-6S-S2W"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <state key="normal" title="내가 1등으로 용기내기">
+                                    <color key="titleColor" name="colorGrayGray01"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="beBraveInFirst:" destination="3DE-zk-uKa" eventType="touchUpInside" id="hB1-cX-gR9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiJ-xm-FZM">
+                                <rect key="frame" x="16" y="333" width="343" height="52"/>
+                                <color key="backgroundColor" name="colorMainGreen01"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="XEM-WO-Vfx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <state key="normal" title="가장 가까운 용기낸 식당 찾기">
+                                    <color key="titleColor" name="colorGrayGray06"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="findNearestRestaurant:" destination="3DE-zk-uKa" eventType="touchUpInside" id="d8r-JO-G8k"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Eho-Qw-tUC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="68f-bE-Pf3" firstAttribute="top" secondItem="Eho-Qw-tUC" secondAttribute="top" constant="18" id="2oH-s2-wLD"/>
+                            <constraint firstItem="hiJ-xm-FZM" firstAttribute="top" secondItem="aoY-g0-lKO" secondAttribute="bottom" constant="12" id="3PX-3n-ytW"/>
+                            <constraint firstItem="1Zm-aA-obc" firstAttribute="top" secondItem="c1S-jt-9cC" secondAttribute="bottom" constant="14" id="FJc-qe-faI"/>
+                            <constraint firstItem="c1S-jt-9cC" firstAttribute="top" secondItem="Eho-Qw-tUC" secondAttribute="top" constant="46" id="FLC-x7-Jlu"/>
+                            <constraint firstItem="aoY-g0-lKO" firstAttribute="leading" secondItem="Eho-Qw-tUC" secondAttribute="leading" constant="16" id="GQ4-i9-J0q"/>
+                            <constraint firstItem="hiJ-xm-FZM" firstAttribute="leading" secondItem="Eho-Qw-tUC" secondAttribute="leading" constant="16" id="J6e-aX-1j8"/>
+                            <constraint firstItem="1Zm-aA-obc" firstAttribute="leading" secondItem="Eho-Qw-tUC" secondAttribute="leading" constant="105" id="JK5-tD-518"/>
+                            <constraint firstItem="c1S-jt-9cC" firstAttribute="leading" secondItem="Eho-Qw-tUC" secondAttribute="leading" constant="121" id="gUy-sI-TWL"/>
+                            <constraint firstItem="Eho-Qw-tUC" firstAttribute="trailing" secondItem="1Zm-aA-obc" secondAttribute="trailing" constant="110" id="h9c-Ao-lgZ"/>
+                            <constraint firstItem="Eho-Qw-tUC" firstAttribute="trailing" secondItem="aoY-g0-lKO" secondAttribute="trailing" constant="16" id="hCr-mc-lie"/>
+                            <constraint firstItem="Eho-Qw-tUC" firstAttribute="trailing" secondItem="hiJ-xm-FZM" secondAttribute="trailing" constant="16" id="jZg-7f-GEq"/>
+                            <constraint firstItem="Eho-Qw-tUC" firstAttribute="trailing" secondItem="c1S-jt-9cC" secondAttribute="trailing" constant="121" id="meg-MS-vqi"/>
+                            <constraint firstItem="aoY-g0-lKO" firstAttribute="top" secondItem="1Zm-aA-obc" secondAttribute="bottom" constant="27" id="yOJ-kz-Rtz"/>
+                            <constraint firstItem="Eho-Qw-tUC" firstAttribute="trailing" secondItem="68f-bE-Pf3" secondAttribute="trailing" constant="18" id="yyo-Zu-DR3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="beBraveInFirstButton" destination="aoY-g0-lKO" id="EIR-Zj-kJv"/>
+                        <outlet property="findNearestRestaurantButton" destination="hiJ-xm-FZM" id="3U2-7y-kjb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="csj-7q-Ys6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="821.60000000000002" y="2767.9802955665027"/>
+        </scene>
         <!--My View Controller-->
         <scene sceneID="hdJ-3e-Srh">
             <objects>
@@ -1430,6 +1529,36 @@
             </objects>
             <point key="canvasLocation" x="1462" y="-548"/>
         </scene>
+        <!--Searching Restaurant Popup View Controller-->
+        <scene sceneID="cHX-yu-nCz">
+            <objects>
+                <viewController storyboardIdentifier="SearchingRestaurantPopupViewController" id="le8-1B-uo7" customClass="SearchingRestaurantPopupViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aY5-DB-B3F">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="반경 20km 이내의 용기낸 식당을 찾고 있어요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehs-yy-Vua">
+                                <rect key="frame" x="105.66666666666669" y="382" width="164" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="ybE-gv-rC7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <color key="textColor" name="colorGrayGray01"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qei-B2-jNV"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ehs-yy-Vua" firstAttribute="centerX" secondItem="aY5-DB-B3F" secondAttribute="centerX" id="F2s-zj-XBH"/>
+                            <constraint firstItem="ehs-yy-Vua" firstAttribute="centerY" secondItem="aY5-DB-B3F" secondAttribute="centerY" id="T5d-gy-TVc"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FMt-Ib-Lqp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2106" y="-548"/>
+        </scene>
         <!--Nick Name Popup View Controller-->
         <scene sceneID="V9U-cE-jt9">
             <objects>
@@ -1481,7 +1610,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mga-Sw-Q1p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2106" y="-548"/>
+            <point key="canvasLocation" x="2748" y="-548"/>
         </scene>
     </scenes>
     <resources>
@@ -1493,6 +1622,7 @@
         <image name="btnMapLocation" width="58" height="58"/>
         <image name="closeFilled16Px" width="20" height="20"/>
         <image name="closeOutline20Px" width="20" height="20"/>
+        <image name="emptyDataImgMap" width="160" height="90"/>
         <image name="favoriteFilled20Px" width="20" height="20"/>
         <image name="feedFilledBlue20Px" width="20" height="20"/>
         <image name="listOutline16Px" width="16" height="16"/>
