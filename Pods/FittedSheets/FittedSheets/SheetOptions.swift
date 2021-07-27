@@ -19,7 +19,7 @@ public struct SheetOptions {
         case automatic
     }
     
-    public var pullBarHeight: CGFloat = 28
+    public var pullBarHeight: CGFloat = 24
     
     public var presentingViewCornerRadius: CGFloat = 12
     public var shouldExtendBackground = true
