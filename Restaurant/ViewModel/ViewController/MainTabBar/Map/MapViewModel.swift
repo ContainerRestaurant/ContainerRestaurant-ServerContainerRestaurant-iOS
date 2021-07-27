@@ -17,7 +17,6 @@ class MapViewModel {
     var longitude: Double = 0
     var nearbyRestaurantsFlag: PublishSubject<Void> = PublishSubject<Void>()
     
-    
     init(_ afterSearchingRestaurantSubject: PublishSubject<[RestaurantModel]>) {
         afterSearchingRestaurantSubject.subscribe(onNext: { [weak self] in
             self?.nearbyRestaurants = $0
@@ -27,7 +26,7 @@ class MapViewModel {
     }
     
     func fetchNearbyRestaurants() {
-        APIClient.nearbyRestaurants(latitude: latitude, longitude: longitude, radius: 200) { [weak self] nearbyRestaurants in
+        APIClient.nearbyRestaurants(latitude: latitude, longitude: longitude, radius: 2000) { [weak self] nearbyRestaurants in
             self?.nearbyRestaurants = nearbyRestaurants
             self?.nearbyRestaurantsFlag.onNext(())
         }

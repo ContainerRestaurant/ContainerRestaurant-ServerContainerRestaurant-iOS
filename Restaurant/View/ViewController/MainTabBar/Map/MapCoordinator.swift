@@ -42,4 +42,18 @@ extension MapCoordinator {
         childCoordinators.append(coordinator)
         coordinator.noRestaurantNearby()
     }
+    
+    func restaurantSummaryInformation() {
+        let coordinator = RestaurantSummaryInformationCoordinator(presenter: presenter)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+    
+    func pushNearbyRestaurants(nearbyRestaurants: [RestaurantModel]) {
+        let coordinator = NearbyRestaurantsCoordinator(presenter: presenter)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start(nearbyRestaurants: nearbyRestaurants)
+    }
 }
