@@ -28,6 +28,13 @@
 		52169B0F26A9F58C00705FEC /* NoRestaurantNearbyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52169B0E26A9F58C00705FEC /* NoRestaurantNearbyCoordinator.swift */; };
 		52169B1226AA09BB00705FEC /* SearchingRestaurantPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52169B1126AA09BB00705FEC /* SearchingRestaurantPopupViewController.swift */; };
 		52169B1426AA09E900705FEC /* SearchingRestaurantPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52169B1326AA09E900705FEC /* SearchingRestaurantPopupCoordinator.swift */; };
+		52169B1826ADE36900705FEC /* NearbyRestaurantsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52169B1726ADE36900705FEC /* NearbyRestaurantsCoordinator.swift */; };
+		52169B1A26ADE3D400705FEC /* NearbyRestaurantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52169B1926ADE3D400705FEC /* NearbyRestaurantsViewController.swift */; };
+		52169B1C26ADE62B00705FEC /* NearbyRestaurantsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52169B1B26ADE62B00705FEC /* NearbyRestaurantsViewModel.swift */; };
+		52169B1F26ADECC200705FEC /* OneFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52169B1D26ADECC200705FEC /* OneFeedCollectionViewCell.swift */; };
+		52169B2026ADECC200705FEC /* OneFeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52169B1E26ADECC200705FEC /* OneFeedCollectionViewCell.xib */; };
+		52169B2226AF34F600705FEC /* RestaurantSummaryInformationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52169B2126AF34F600705FEC /* RestaurantSummaryInformationCoordinator.swift */; };
+		52169B2426AF351200705FEC /* RestaurantSummaryInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52169B2326AF351200705FEC /* RestaurantSummaryInformationViewController.swift */; };
 		52254C612657E88400D921ED /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52254C602657E88400D921ED /* API.swift */; };
 		52254C63265AC19C00D921ED /* TwoFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52254C62265AC19C00D921ED /* TwoFeedModel.swift */; };
 		52256FAC263D7F4300A056DE /* SeparateLineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */; };
@@ -176,6 +183,13 @@
 		52169B0E26A9F58C00705FEC /* NoRestaurantNearbyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRestaurantNearbyCoordinator.swift; sourceTree = "<group>"; };
 		52169B1126AA09BB00705FEC /* SearchingRestaurantPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingRestaurantPopupViewController.swift; sourceTree = "<group>"; };
 		52169B1326AA09E900705FEC /* SearchingRestaurantPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingRestaurantPopupCoordinator.swift; sourceTree = "<group>"; };
+		52169B1726ADE36900705FEC /* NearbyRestaurantsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyRestaurantsCoordinator.swift; sourceTree = "<group>"; };
+		52169B1926ADE3D400705FEC /* NearbyRestaurantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyRestaurantsViewController.swift; sourceTree = "<group>"; };
+		52169B1B26ADE62B00705FEC /* NearbyRestaurantsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyRestaurantsViewModel.swift; sourceTree = "<group>"; };
+		52169B1D26ADECC200705FEC /* OneFeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneFeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		52169B1E26ADECC200705FEC /* OneFeedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OneFeedCollectionViewCell.xib; sourceTree = "<group>"; };
+		52169B2126AF34F600705FEC /* RestaurantSummaryInformationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSummaryInformationCoordinator.swift; sourceTree = "<group>"; };
+		52169B2326AF351200705FEC /* RestaurantSummaryInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSummaryInformationViewController.swift; sourceTree = "<group>"; };
 		52254C602657E88400D921ED /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		52254C62265AC19C00D921ED /* TwoFeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFeedModel.swift; sourceTree = "<group>"; };
 		52256FAA263D7F4300A056DE /* SeparateLineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateLineCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -360,6 +374,8 @@
 			children = (
 				5204199B26512E190099BA39 /* MapCoordinator.swift */,
 				52397341261B62A600856C99 /* MapViewController.swift */,
+				52169B1726ADE36900705FEC /* NearbyRestaurantsCoordinator.swift */,
+				52169B1926ADE3D400705FEC /* NearbyRestaurantsViewController.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -440,6 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				52169B0426A7572600705FEC /* MapViewModel.swift */,
+				52169B1B26ADE62B00705FEC /* NearbyRestaurantsViewModel.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -459,6 +476,8 @@
 				FB585B2126656E810085C6B2 /* SearchRestaurantViewController.swift */,
 				52169B0E26A9F58C00705FEC /* NoRestaurantNearbyCoordinator.swift */,
 				52169B0A26A9F56500705FEC /* NoRestaurantNearbyViewController.swift */,
+				52169B2126AF34F600705FEC /* RestaurantSummaryInformationCoordinator.swift */,
+				52169B2326AF351200705FEC /* RestaurantSummaryInformationViewController.swift */,
 			);
 			path = BottomSheet;
 			sourceTree = "<group>";
@@ -790,6 +809,8 @@
 		FB1BE3822637DF110004673C /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				52169B1D26ADECC200705FEC /* OneFeedCollectionViewCell.swift */,
+				52169B1E26ADECC200705FEC /* OneFeedCollectionViewCell.xib */,
 				FB1BE3832637DF2B0004673C /* TwoFeedCollectionViewCell.swift */,
 				FB1BE3842637DF2B0004673C /* TwoFeedCollectionViewCell.xib */,
 				526BED6A26470BD200897230 /* MostFeedTopTenCollectionViewCell.swift */,
@@ -990,6 +1011,7 @@
 				526BED6D26470BD200897230 /* MostFeedTopTenCollectionViewCell.xib in Resources */,
 				FB1BE374263719540004673C /* Title16Bold.xib in Resources */,
 				526BED692647069E00897230 /* MostFeedTopTenCollectionView.xib in Resources */,
+				52169B2026ADECC200705FEC /* OneFeedCollectionViewCell.xib in Resources */,
 				FB585B332668C6D40085C6B2 /* FoodCategory.xib in Resources */,
 				FB585B372668C85B0085C6B2 /* FoodCategoryCollectionViewCell.xib in Resources */,
 				525811522677A97800900D59 /* onboarding2.json in Resources */,
@@ -1093,6 +1115,7 @@
 				FB585B1D266561890085C6B2 /* Common.swift in Sources */,
 				5204199A26512D8D0099BA39 /* CreationCoordinator.swift in Sources */,
 				52169B1226AA09BB00705FEC /* SearchingRestaurantPopupViewController.swift in Sources */,
+				52169B1826ADE36900705FEC /* NearbyRestaurantsCoordinator.swift in Sources */,
 				5204199F26512E450099BA39 /* MyCoordinator.swift in Sources */,
 				520419A8265184580099BA39 /* InquiryProfileCoordinator.swift in Sources */,
 				FBEDEA1B26765E0200446B83 /* LoginPopupViewController.swift in Sources */,
@@ -1118,8 +1141,12 @@
 				5258115D267901E900900D59 /* UserModel.swift in Sources */,
 				52254C63265AC19C00D921ED /* TwoFeedModel.swift in Sources */,
 				FB1BE37926371BFA0004673C /* TwoFeedInLineCollectionView.swift in Sources */,
+				52169B1C26ADE62B00705FEC /* NearbyRestaurantsViewModel.swift in Sources */,
 				52256FAC263D7F4300A056DE /* SeparateLineCollectionViewCell.swift in Sources */,
+				52169B1F26ADECC200705FEC /* OneFeedCollectionViewCell.swift in Sources */,
 				FB585B3B266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.swift in Sources */,
+				52169B2426AF351200705FEC /* RestaurantSummaryInformationViewController.swift in Sources */,
+				52169B2226AF34F600705FEC /* RestaurantSummaryInformationCoordinator.swift in Sources */,
 				529CF0C8261A0AF6002CAD5C /* HomeViewController.swift in Sources */,
 				526BED462645D98200897230 /* ViewModelBindableType.swift in Sources */,
 				FB585B43266D68670085C6B2 /* OnboardingViewController.swift in Sources */,
@@ -1139,6 +1166,7 @@
 				FB56AF65265E697B002736F5 /* TestLoginCoordinator.swift in Sources */,
 				FBB0010B268CF9CA00B6ED03 /* APIClient.swift in Sources */,
 				528558D52621EC5000AB4E28 /* HomeViewModel.swift in Sources */,
+				52169B1A26ADE3D400705FEC /* NearbyRestaurantsViewController.swift in Sources */,
 				520419CF2656CCBE0099BA39 /* TestCodable.swift in Sources */,
 				52254C612657E88400D921ED /* API.swift in Sources */,
 				525811572677CF3C00900D59 /* NickNamePopupViewController.swift in Sources */,

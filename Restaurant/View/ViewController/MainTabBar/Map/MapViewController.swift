@@ -16,6 +16,10 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
     var locationManager = CLLocationManager()
     
     @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var showListButton: UIButton!
+    @IBAction func showList(_ sender: Any) {
+        pushNearbyRestaurants()
+    }
     @IBOutlet weak var myLocationButton: UIButton!
     @IBAction func moveToMyLocation(_ sender: Any) {
         moveToMyLocationOnMap()
@@ -41,6 +45,10 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     func bindingView() {
         viewModel.nearbyRestaurantsFlag.subscribe(onNext: { [weak self] in
             if let nearbyRestaurants = self?.viewModel.nearbyRestaurants {
@@ -55,7 +63,9 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
         })
         .disposed(by: disposeBag)
     }
+}
 
+extension MapViewController {
     private func setMapView() {
         locationManager.delegate = self
         getLocationUsagePermission()
@@ -83,7 +93,7 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
             marker.mapView = mapView
             
             let handler = { [weak self] (overlay: NMFOverlay) -> Bool in
-                self?.coordinator?.presentNoRestaurantNearby()
+                self?.coordinator?.restaurantSummaryInformation()
                 
                 return true
             }
@@ -91,7 +101,9 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
         }
     }
     
-    
+    private func pushNearbyRestaurants() {
+        coordinator?.pushNearbyRestaurants(nearbyRestaurants: viewModel.nearbyRestaurants)
+    }
 }
 
 extension MapViewController: CLLocationManagerDelegate {

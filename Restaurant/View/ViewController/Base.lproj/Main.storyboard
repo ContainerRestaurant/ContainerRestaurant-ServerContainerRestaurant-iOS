@@ -697,6 +697,9 @@
                                     <constraint firstAttribute="width" constant="130" id="B75-kS-NdK"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="btnMapList"/>
+                                <connections>
+                                    <action selector="showList:" destination="WKT-hR-IPh" eventType="touchUpInside" id="vvS-NB-P86"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="목록보기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sL-FO-Qat">
                                 <rect key="frame" x="175.66666666666666" y="725.66666666666663" width="49" height="17"/>
@@ -749,6 +752,7 @@
                     <connections>
                         <outlet property="mainView" destination="aSh-yW-Cc4" id="d4x-Yx-h2J"/>
                         <outlet property="myLocationButton" destination="iac-ul-D2V" id="QRK-Wr-vg2"/>
+                        <outlet property="showListButton" destination="seZ-WF-Ue5" id="fxU-2V-iSi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqG-nW-Dc8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -853,6 +857,90 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="csj-7q-Ys6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="821.60000000000002" y="2767.9802955665027"/>
+        </scene>
+        <!--Nearby Restaurants View Controller-->
+        <scene sceneID="SE0-8w-f6l">
+            <objects>
+                <viewController storyboardIdentifier="NearbyRestaurantsViewController" id="syI-ug-xTx" customClass="NearbyRestaurantsViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nlB-F1-wwb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="o1d-hE-gO0">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qgv-hS-M4h">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1Mn-v3-Rqs">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="l7H-oC-5fN">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5G5-qA-Xyh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5G5-qA-Xyh" firstAttribute="bottom" secondItem="o1d-hE-gO0" secondAttribute="bottom" id="55o-K4-nkW"/>
+                            <constraint firstItem="5G5-qA-Xyh" firstAttribute="trailing" secondItem="o1d-hE-gO0" secondAttribute="trailing" id="8vd-GA-lp5"/>
+                            <constraint firstItem="o1d-hE-gO0" firstAttribute="leading" secondItem="5G5-qA-Xyh" secondAttribute="leading" id="c4z-g8-PBT"/>
+                            <constraint firstItem="o1d-hE-gO0" firstAttribute="top" secondItem="5G5-qA-Xyh" secondAttribute="top" id="xxk-ga-ELV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="o1d-hE-gO0" id="0ZQ-xM-sCo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I7b-KF-Quu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1462" y="2768"/>
+        </scene>
+        <!--Restaurant Summary Information View Controller-->
+        <scene sceneID="a1C-gJ-Q7a">
+            <objects>
+                <viewController storyboardIdentifier="RestaurantSummaryInformationViewController" id="pzF-cn-jGO" customClass="RestaurantSummaryInformationViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6vS-wR-bIk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="unm-af-kg9">
+                                <rect key="frame" x="0.0" y="44" width="375" height="158"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHs-xV-MAT">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                        <color key="backgroundColor" name="colorPointPurple01"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" name="colorPointPurple02"/>
+                                        </state>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRb-xA-mhC">
+                                        <rect key="frame" x="0.0" y="30" width="375" height="128"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uCf-Fr-AeB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uCf-Fr-AeB" firstAttribute="trailing" secondItem="unm-af-kg9" secondAttribute="trailing" id="917-bQ-thw"/>
+                            <constraint firstItem="unm-af-kg9" firstAttribute="leading" secondItem="uCf-Fr-AeB" secondAttribute="leading" id="lbJ-mo-IpR"/>
+                            <constraint firstItem="unm-af-kg9" firstAttribute="top" secondItem="uCf-Fr-AeB" secondAttribute="top" id="p6S-pK-Cjd"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8q0-Ie-w5Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2105" y="2768"/>
         </scene>
         <!--My View Controller-->
         <scene sceneID="hdJ-3e-Srh">
@@ -1665,6 +1753,12 @@
         </namedColor>
         <namedColor name="colorPointOrange01">
             <color red="1" green="0.71399998664855957" blue="0.62400001287460327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="colorPointPurple01">
+            <color red="0.92941176470588238" green="0.92549019607843142" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="colorPointPurple02">
+            <color red="0.50980392156862742" green="0.47450980392156861" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
