@@ -16,6 +16,6 @@ target 'Restaurant' do
   pod 'FittedSheets'
   pod 'Alamofire', '~> 5.2'
   pod 'lottie-ios'
-  pod 'Cosmos', '~> 23.0' #별점 뷰 (난이도)
+#  pod 'Cosmos', '~> 23.0' #별점 뷰 (난이도)
   
 end

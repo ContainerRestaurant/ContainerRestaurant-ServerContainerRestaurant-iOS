@@ -6,12 +6,12 @@
 //
 
 import UIKit
-import Cosmos
+//import Cosmos
 
 class OneFeedCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var feedImageView: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
-    @IBOutlet weak var levelOfDifficultyView: CosmosView!
+//    @IBOutlet weak var levelOfDifficultyView: CosmosView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,6 +21,6 @@ class OneFeedCollectionViewCell: UICollectionViewCell {
         let imageURL = URL(string: baseURL + nearbyRestaurant.imagePath)
         feedImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.3))])
         restaurantNameLabel.text = nearbyRestaurant.name
-        levelOfDifficultyView.rating = nearbyRestaurant.difficultyAverage
+//        levelOfDifficultyView.rating = nearbyRestaurant.difficultyAverage
     }
 }
