@@ -93,7 +93,7 @@ extension MapViewController {
             marker.mapView = mapView
             
             let handler = { [weak self] (overlay: NMFOverlay) -> Bool in
-                self?.coordinator?.restaurantSummaryInformation()
+                self?.coordinator?.restaurantSummaryInformation(restaurant: restaurant)
                 
                 return true
             }
