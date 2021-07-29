@@ -690,6 +690,25 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oam-IE-BxH">
+                                <rect key="frame" x="122" y="60" width="131" height="36"/>
+                                <color key="backgroundColor" name="colorGrayGray07"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="131" id="fia-dZ-ABY"/>
+                                    <constraint firstAttribute="height" constant="36" id="urC-4p-qBN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
+                                <state key="normal" title="이 위치에서 찾기" image="resetOutline16Px">
+                                    <color key="titleColor" name="colorGrayGray01"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seZ-WF-Ue5">
                                 <rect key="frame" x="122.66666666666669" y="705" width="130" height="58"/>
                                 <constraints>
@@ -697,9 +716,6 @@
                                     <constraint firstAttribute="width" constant="130" id="B75-kS-NdK"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="btnMapList"/>
-                                <connections>
-                                    <action selector="showList:" destination="WKT-hR-IPh" eventType="touchUpInside" id="vvS-NB-P86"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="목록보기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sL-FO-Qat">
                                 <rect key="frame" x="175.66666666666666" y="725.66666666666663" width="49" height="17"/>
@@ -726,9 +742,6 @@
                                         <size key="value" width="0.0" height="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="moveToMyLocation:" destination="WKT-hR-IPh" eventType="touchUpInside" id="lfy-Ja-HFk"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GOy-qE-5ga"/>
@@ -744,6 +757,8 @@
                             <constraint firstItem="T97-Np-wAV" firstAttribute="centerY" secondItem="seZ-WF-Ue5" secondAttribute="centerY" id="cad-KK-NZp"/>
                             <constraint firstItem="GOy-qE-5ga" firstAttribute="bottom" secondItem="iac-ul-D2V" secondAttribute="bottom" constant="15" id="eB6-GM-bhg"/>
                             <constraint firstItem="aSh-yW-Cc4" firstAttribute="leading" secondItem="GOy-qE-5ga" secondAttribute="leading" id="hoB-a9-1He"/>
+                            <constraint firstItem="oam-IE-BxH" firstAttribute="centerX" secondItem="GLn-jD-yj7" secondAttribute="centerX" id="hz1-2r-ym1"/>
+                            <constraint firstItem="oam-IE-BxH" firstAttribute="top" secondItem="GOy-qE-5ga" secondAttribute="top" constant="16" id="mWv-j9-E6L"/>
                             <constraint firstItem="GOy-qE-5ga" firstAttribute="bottom" secondItem="aSh-yW-Cc4" secondAttribute="bottom" id="oX8-LC-iXy"/>
                             <constraint firstItem="3sL-FO-Qat" firstAttribute="leading" secondItem="T97-Np-wAV" secondAttribute="trailing" constant="8" id="vc8-CU-5bT"/>
                         </constraints>
@@ -752,6 +767,7 @@
                     <connections>
                         <outlet property="mainView" destination="aSh-yW-Cc4" id="d4x-Yx-h2J"/>
                         <outlet property="myLocationButton" destination="iac-ul-D2V" id="QRK-Wr-vg2"/>
+                        <outlet property="searchCurrentLocationButton" destination="oam-IE-BxH" id="hI3-sK-43H"/>
                         <outlet property="showListButton" destination="seZ-WF-Ue5" id="fxU-2V-iSi"/>
                     </connections>
                 </viewController>
@@ -1885,6 +1901,7 @@
         <image name="listOutline16Px" width="16" height="16"/>
         <image name="photoEdit20Px" width="20" height="20"/>
         <image name="profileViewCountFilled24Px" width="24" height="24"/>
+        <image name="resetOutline16Px" width="16" height="16"/>
         <image name="searchOutline20Px" width="20" height="20"/>
         <image name="settingOutline20Px" width="20" height="20"/>
         <namedColor name="AccentColor">
