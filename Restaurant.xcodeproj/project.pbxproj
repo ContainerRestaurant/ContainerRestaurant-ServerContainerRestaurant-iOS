@@ -149,6 +149,7 @@
 		FB585B49266D6E770085C6B2 /* ExtensionUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B48266D6E770085C6B2 /* ExtensionUIButton.swift */; };
 		FB585B4B266D79C30085C6B2 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B4A266D79C30085C6B2 /* OnboardingView.swift */; };
 		FB585B4D266D79CE0085C6B2 /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB585B4C266D79CE0085C6B2 /* OnboardingView.xib */; };
+		FBAA5D0D26B2F6BB00CC38CA /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA5D0C26B2F6BB00CC38CA /* ToastMessage.swift */; };
 		FBB0010B268CF9CA00B6ED03 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0010A268CF9CA00B6ED03 /* APIClient.swift */; };
 		FBB0010D268CF9DE00B6ED03 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0010C268CF9DE00B6ED03 /* Router.swift */; };
 		FBDC3D83266DA3910072D7E8 /* LongText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC3D82266DA3910072D7E8 /* LongText.swift */; };
@@ -308,6 +309,7 @@
 		FB585B48266D6E770085C6B2 /* ExtensionUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIButton.swift; sourceTree = "<group>"; };
 		FB585B4A266D79C30085C6B2 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FB585B4C266D79CE0085C6B2 /* OnboardingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
+		FBAA5D0C26B2F6BB00CC38CA /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		FBB0010A268CF9CA00B6ED03 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		FBB0010C268CF9DE00B6ED03 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		FBDC3D82266DA3910072D7E8 /* LongText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongText.swift; sourceTree = "<group>"; };
@@ -868,6 +870,7 @@
 				FB585B1C266561890085C6B2 /* Common.swift */,
 				FBDC3D82266DA3910072D7E8 /* LongText.swift */,
 				5258115A2678F16700900D59 /* UserDataManager.swift */,
+				FBAA5D0C26B2F6BB00CC38CA /* ToastMessage.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1115,6 +1118,7 @@
 				FB585B1D266561890085C6B2 /* Common.swift in Sources */,
 				5204199A26512D8D0099BA39 /* CreationCoordinator.swift in Sources */,
 				52169B1226AA09BB00705FEC /* SearchingRestaurantPopupViewController.swift in Sources */,
+				FBAA5D0D26B2F6BB00CC38CA /* ToastMessage.swift in Sources */,
 				52169B1826ADE36900705FEC /* NearbyRestaurantsCoordinator.swift in Sources */,
 				5204199F26512E450099BA39 /* MyCoordinator.swift in Sources */,
 				520419A8265184580099BA39 /* InquiryProfileCoordinator.swift in Sources */,
