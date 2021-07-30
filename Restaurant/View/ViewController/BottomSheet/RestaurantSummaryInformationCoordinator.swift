@@ -34,7 +34,7 @@ class RestaurantSummaryInformationCoordinator: Coordinator {
         if Common.isNotchPhone { bottomSheetHeight += Common.homeBarHeight }
 
         let sheetViewController = SheetViewController(controller: restaurantSummaryInformation,
-                                                      sizes: [.fixed(bottomSheetHeight)],
+                                                      sizes: [.fixed(bottomSheetHeight), .marginFromTop(44)],
                                                       options: SheetOptions(
                                                         pullBarHeight: 27,
                                                         useFullScreenMode: false,
