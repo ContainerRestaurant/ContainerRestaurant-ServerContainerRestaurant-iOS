@@ -27,10 +27,10 @@ class RestaurantSummaryInformationCoordinator: Coordinator {
     }
 
     func start() {
-        let restaurantSummaryInformation = RestaurantSummaryInformationViewController.instantiate()
+        var restaurantSummaryInformation = RestaurantSummaryInformationViewController.instantiate()
         restaurantSummaryInformation.coordinator = self
-        restaurantSummaryInformation.restaurant = self.restaurant
-        var bottomSheetHeight: CGFloat = 168
+        restaurantSummaryInformation.bind(viewModel: RestaurantSummaryInformationViewModel(self.restaurant ?? RestaurantModel()))
+        var bottomSheetHeight: CGFloat = 154
         if Common.isNotchPhone { bottomSheetHeight += Common.homeBarHeight }
 
         let sheetViewController = SheetViewController(controller: restaurantSummaryInformation,
@@ -43,6 +43,7 @@ class RestaurantSummaryInformationCoordinator: Coordinator {
         sheetViewController.dismissOnPull = true
         sheetViewController.cornerRadius = 10
         sheetViewController.gripColor = .colorGrayGray03
+        sheetViewController.handleScrollView(restaurantSummaryInformation.collectionView)
         sheetViewController.didDismiss = { _ in
             print("sheetViewController didDismiss")
         }

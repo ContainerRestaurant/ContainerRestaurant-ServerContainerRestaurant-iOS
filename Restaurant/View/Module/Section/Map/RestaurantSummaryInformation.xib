@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RestaurantSummaryInformation" customModule="Restaurant" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="신전떡볶이 종로대학로점" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHi-IW-SK2">
+                        <rect key="frame" x="16" y="0.0" width="156.5" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="5VM-mb-MYi"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="포장 난이도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBa-F2-0bE">
+                        <rect key="frame" x="16" y="28" width="55.5" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="89A-mS-TOo"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" name="colorGrayGray06"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVL-tc-Xyv" customClass="CosmosView" customModule="Cosmos">
+                        <rect key="frame" x="77.5" y="29" width="84" height="16"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="84" id="mpG-oO-IKg"/>
+                            <constraint firstAttribute="height" constant="16" id="xYi-rW-GeX"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                <color key="value" name="colorSubYellow04"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                <real key="value" value="16"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                <real key="value" value="3.7000000000000002"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="minTouchRating">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
+                            <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="HardFilledYellow16px"/>
+                            <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="hardFilledGray16Px"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0t-aa-g4x">
+                        <rect key="frame" x="165.5" y="30" width="16" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" name="colorGrayGray07"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSf-HG-s0J">
+                        <rect key="frame" x="189.5" y="32" width="1" height="10"/>
+                        <color key="backgroundColor" name="colorGrayGray04"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="JGG-9r-htt"/>
+                            <constraint firstAttribute="width" constant="1" id="cCP-EI-L6N"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d5i-zp-P8O">
+                        <rect key="frame" x="198.5" y="29.5" width="176.5" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="999" image="feedFilled12Px">
+                            <color key="titleColor" name="colorMainGreen02"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGV-2i-YTT">
+                        <rect key="frame" x="16" y="57" width="30" height="20"/>
+                        <color key="backgroundColor" name="colorGrayGray02"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Ypq-i1-xr3"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <inset key="contentEdgeInsets" minX="6" minY="4" maxX="6" maxY="4"/>
+                        <state key="normal" title="가나">
+                            <color key="titleColor" name="colorGrayGray05"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4C-yP-mES">
+                        <rect key="frame" x="50" y="57" width="99" height="20"/>
+                        <color key="backgroundColor" name="colorGrayGray02"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="QsY-EG-9hz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <inset key="contentEdgeInsets" minX="6" minY="4" maxX="6" maxY="4"/>
+                        <state key="normal" title="가나다라마바사아자차">
+                            <color key="titleColor" name="colorGrayGray05"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="hGV-2i-YTT" firstAttribute="top" secondItem="wBa-F2-0bE" secondAttribute="bottom" constant="11" id="49E-EG-nfS"/>
+                <constraint firstItem="wBa-F2-0bE" firstAttribute="top" secondItem="gHi-IW-SK2" secondAttribute="bottom" constant="4" id="CSC-Dz-I6h"/>
+                <constraint firstItem="IVL-tc-Xyv" firstAttribute="leading" secondItem="wBa-F2-0bE" secondAttribute="trailing" constant="6" id="Dmm-Co-y0m"/>
+                <constraint firstItem="gHi-IW-SK2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="EEv-jf-OnT"/>
+                <constraint firstItem="F4C-yP-mES" firstAttribute="leading" secondItem="hGV-2i-YTT" secondAttribute="trailing" constant="4" id="LBV-K8-X8L"/>
+                <constraint firstItem="oSf-HG-s0J" firstAttribute="leading" secondItem="p0t-aa-g4x" secondAttribute="trailing" constant="8" id="LJk-s7-oKe"/>
+                <constraint firstItem="d5i-zp-P8O" firstAttribute="leading" secondItem="oSf-HG-s0J" secondAttribute="trailing" constant="8" id="Lyi-qI-MEN"/>
+                <constraint firstItem="oSf-HG-s0J" firstAttribute="centerY" secondItem="IVL-tc-Xyv" secondAttribute="centerY" id="Q3N-wk-Wy4"/>
+                <constraint firstItem="IVL-tc-Xyv" firstAttribute="top" secondItem="gHi-IW-SK2" secondAttribute="bottom" constant="5" id="anc-bD-qnh"/>
+                <constraint firstItem="hGV-2i-YTT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="cJW-W3-RhF"/>
+                <constraint firstItem="gHi-IW-SK2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="gU8-vV-8qX"/>
+                <constraint firstItem="F4C-yP-mES" firstAttribute="top" secondItem="hGV-2i-YTT" secondAttribute="top" id="iH4-0y-Cew"/>
+                <constraint firstItem="p0t-aa-g4x" firstAttribute="centerY" secondItem="IVL-tc-Xyv" secondAttribute="centerY" id="mE9-g6-dy1"/>
+                <constraint firstItem="wBa-F2-0bE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="y8m-GB-jWz"/>
+                <constraint firstItem="d5i-zp-P8O" firstAttribute="centerY" secondItem="oSf-HG-s0J" secondAttribute="centerY" id="zMT-Jw-oPE"/>
+                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="d5i-zp-P8O" secondAttribute="trailing" id="zTP-3Z-srq"/>
+                <constraint firstItem="p0t-aa-g4x" firstAttribute="leading" secondItem="IVL-tc-Xyv" secondAttribute="trailing" constant="4" id="zU2-DN-Ho8"/>
+            </constraints>
+            <point key="canvasLocation" x="9" y="153"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="HardFilledYellow16px" width="16" height="16"/>
+        <image name="feedFilled12Px" width="12" height="12"/>
+        <image name="hardFilledGray16Px" width="16" height="16"/>
+        <namedColor name="colorGrayGray02">
+            <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="colorGrayGray04">
+            <color red="0.80800002813339233" green="0.80800002813339233" blue="0.80800002813339233" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="colorGrayGray05">
+            <color red="0.68199998140335083" green="0.68199998140335083" blue="0.68199998140335083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="colorGrayGray06">
+            <color red="0.45899999141693115" green="0.45899999141693115" blue="0.45899999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="colorGrayGray07">
+            <color red="0.14100000262260437" green="0.14100000262260437" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="colorMainGreen02">
+            <color red="0.31799998879432678" green="0.83099997043609619" blue="0.67799997329711914" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="colorSubYellow04">
+            <color red="0.95300000905990601" green="0.76099997758865356" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
