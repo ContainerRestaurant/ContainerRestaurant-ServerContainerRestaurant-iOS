@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "PhotoOutline20Px.png",
+      "filename" : "badgeOutline48Px.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "PhotoOutline20Px@2x.png",
+      "filename" : "badgeOutline48Px@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "PhotoOutline20Px@3x.png",
+      "filename" : "badgeOutline48Px@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
