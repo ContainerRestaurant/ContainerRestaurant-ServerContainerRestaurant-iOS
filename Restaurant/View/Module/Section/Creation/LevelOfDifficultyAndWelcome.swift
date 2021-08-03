@@ -7,12 +7,14 @@
 
 import UIKit
 import RxSwift
+import Lottie
 
 class LevelOfDifficultyAndWelcome: UICollectionViewCell {
     let disposeBag = DisposeBag()
     var levelOfDifficultySubject: PublishSubject<Int>?
     var isWelcome = false
     var isWelcomeSubject: PublishSubject<Bool>?
+    let welcomeAnimationView = AnimationView(name: "welcome")
 
     @IBOutlet weak var levelOfDifficultyLabel: UIButton!
     @IBOutlet weak var levelOfDifficulty1: UIButton!
@@ -79,9 +81,10 @@ extension LevelOfDifficultyAndWelcome {
 
         welcomeButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.isWelcome = !(self!.isWelcome)
-                self?.isWelcomeSubject?.onNext(self!.isWelcome)
-                self?.welcomeButton.setImage(UIImage(named: self!.isWelcome ? "badgeFilled32Px" : "badgeOutline32Px"), for: .normal)
+                guard let `self` = self else { return }
+
+                self.setWelcomeButton()
+                self.hapticVibration()
             })
             .disposed(by: disposeBag)
     }
@@ -91,5 +94,22 @@ extension LevelOfDifficultyAndWelcome {
         self.levelOfDifficulty3.setImage(UIImage(named: index >= 2 ? "hardFilled32Px" : "hardDisabled32Px"), for: .normal)
         self.levelOfDifficulty4.setImage(UIImage(named: index >= 3 ? "hardFilled32Px" : "hardDisabled32Px"), for: .normal)
         self.levelOfDifficulty5.setImage(UIImage(named: index >= 4 ? "hardFilled32Px" : "hardDisabled32Px"), for: .normal)
+    }
+
+    private func setWelcomeButton() {
+        self.isWelcome = !(self.isWelcome)
+        self.isWelcomeSubject?.onNext(self.isWelcome)
+        
+        if self.isWelcome {
+            self.welcomeButton.imageView?.addSubview(self.welcomeAnimationView)
+            self.welcomeAnimationView.play()
+        } else {
+            self.welcomeButton.imageView?.subviews.forEach { $0.removeFromSuperview() }
+        }
+    }
+
+    private func hapticVibration() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
     }
 }
