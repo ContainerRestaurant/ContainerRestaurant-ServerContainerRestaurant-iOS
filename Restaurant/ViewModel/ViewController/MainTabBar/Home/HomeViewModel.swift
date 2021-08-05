@@ -33,6 +33,7 @@ extension HomeViewModel {
     func appendModule() {
         self.modules.append(MainTitleSection.self)
         self.modules.append(MainBanner.self)
+        self.modules.append(SeparateLineCollectionViewCell.self)
         self.modules.append(Title16Bold.self)
         self.modules.append(TwoFeedInLineCollectionView.self)
         self.modules.append(ViewMoreButton.self)
@@ -40,11 +41,11 @@ extension HomeViewModel {
     }
 
     func mainTitleSectionSize() -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 251)
+        return CGSize(width: UIScreen.main.bounds.width, height: 344)
     }
 
     func mainBannerSize() -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width-CGFloat(32), height: 88)
+        return CGSize(width: UIScreen.main.bounds.width-CGFloat(32), height: 100)
     }
 
     func title16BoldSize() -> CGSize {
@@ -53,11 +54,15 @@ extension HomeViewModel {
 
     func MainFeedCollectionViewSize() -> CGSize {
         let height: CGFloat = { () -> CGFloat in
-            let lineCount = round(Double(self.recommendFeeds.count)/2.0)
-            var cellHeight: CGFloat = 273 * CGFloat(lineCount)
-            if lineCount > 0 { cellHeight += 20 * CGFloat(lineCount-1) }
+            if recommendFeeds.count > 0 {
+                let lineCount = round(Double(self.recommendFeeds.count)/2.0)
+                var cellHeight: CGFloat = 273 * CGFloat(lineCount)
+                if lineCount > 0 { cellHeight += 20 * CGFloat(lineCount-1) }
 
-            return cellHeight
+                return cellHeight
+            } else {
+                return CGFloat(285)
+            }
         }()
 
         return CGSize(width: UIScreen.main.bounds.width, height: height)

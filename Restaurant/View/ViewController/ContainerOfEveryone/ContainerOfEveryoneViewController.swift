@@ -35,7 +35,7 @@ class ContainerOfEveryoneViewController: BaseViewController, ViewModelBindableTy
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        HomeViewController.homeAnimated = true
+        HomeViewController.homeNavigationBarAnimated = true
     }
     
     deinit {

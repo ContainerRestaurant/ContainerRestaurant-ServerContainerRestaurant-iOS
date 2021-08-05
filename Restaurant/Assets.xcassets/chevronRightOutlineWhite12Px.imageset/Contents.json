@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "photoOutline20Px.png",
+      "filename" : "chevronRightOutlineWhite12Px.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "photoOutline20Px@2x.png",
+      "filename" : "chevronRightOutlineWhite12Px@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "photoOutline20Px@3x.png",
+      "filename" : "chevronRightOutlineWhite12Px@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
