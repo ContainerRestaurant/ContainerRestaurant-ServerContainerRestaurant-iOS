@@ -159,7 +159,7 @@
 		FBAA5D1C26B5733200CC38CA /* MainImageInRestaurantSummaryInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBAA5D1A26B5733200CC38CA /* MainImageInRestaurantSummaryInfo.xib */; };
 		FBAA5D1F26B5742200CC38CA /* FeedInRestaurantSummaryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA5D1D26B5742200CC38CA /* FeedInRestaurantSummaryInfo.swift */; };
 		FBAA5D2026B5742200CC38CA /* FeedInRestaurantSummaryInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBAA5D1E26B5742200CC38CA /* FeedInRestaurantSummaryInfo.xib */; };
-		FBAA5D2226B5E72D00CC38CA /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = FBAA5D2126B5E72D00CC38CA /* welcome.json */; };
+		FBAA5D3626B9BDB400CC38CA /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = FBAA5D3526B9BDB400CC38CA /* welcome.json */; };
 		FBB0010B268CF9CA00B6ED03 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0010A268CF9CA00B6ED03 /* APIClient.swift */; };
 		FBB0010D268CF9DE00B6ED03 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0010C268CF9DE00B6ED03 /* Router.swift */; };
 		FBDC3D83266DA3910072D7E8 /* LongText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC3D82266DA3910072D7E8 /* LongText.swift */; };
@@ -329,7 +329,7 @@
 		FBAA5D1A26B5733200CC38CA /* MainImageInRestaurantSummaryInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainImageInRestaurantSummaryInfo.xib; sourceTree = "<group>"; };
 		FBAA5D1D26B5742200CC38CA /* FeedInRestaurantSummaryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedInRestaurantSummaryInfo.swift; sourceTree = "<group>"; };
 		FBAA5D1E26B5742200CC38CA /* FeedInRestaurantSummaryInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedInRestaurantSummaryInfo.xib; sourceTree = "<group>"; };
-		FBAA5D2126B5E72D00CC38CA /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = welcome.json; path = ../../../../../welcome.json; sourceTree = "<group>"; };
+		FBAA5D3526B9BDB400CC38CA /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcome.json; sourceTree = "<group>"; };
 		FBB0010A268CF9CA00B6ED03 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		FBB0010C268CF9DE00B6ED03 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		FBDC3D82266DA3910072D7E8 /* LongText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongText.swift; sourceTree = "<group>"; };
@@ -566,7 +566,7 @@
 		5258114C2677A95C00900D59 /* Json */ = {
 			isa = PBXGroup;
 			children = (
-				FBAA5D2126B5E72D00CC38CA /* welcome.json */,
+				FBAA5D3526B9BDB400CC38CA /* welcome.json */,
 				5258114E2677A97700900D59 /* onboarding1.json */,
 				5258114F2677A97800900D59 /* onboarding2.json */,
 				5258114D2677A97700900D59 /* onboarding3.json */,
@@ -1072,7 +1072,7 @@
 				FBAA5D1626B55FFC00CC38CA /* RestaurantSummaryInformation.xib in Resources */,
 				FB56AF76265F71B4002736F5 /* CreationFeedDetail.xib in Resources */,
 				FB585B3C266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.xib in Resources */,
-				FBAA5D2226B5E72D00CC38CA /* welcome.json in Resources */,
+				FBAA5D3626B9BDB400CC38CA /* welcome.json in Resources */,
 				526BED802647252400897230 /* RecentlyFeedCollectionViewCell.xib in Resources */,
 				525811512677A97800900D59 /* onboarding1.json in Resources */,
 				FB1BE3662636CB540004673C /* MainTitleSection.xib in Resources */,

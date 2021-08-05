@@ -17,7 +17,8 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
     var disposeBag = DisposeBag()
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    @IBOutlet weak var emptyView: UIView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -37,6 +38,8 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
     //홈 탭 피드
     func configureHomeMainFeed(_ feeds: [FeedPreviewModel]) {
         self.feeds = feeds
+        
+        self.emptyView.isHidden = self.feeds.count > 0
     }
     
     //피드 탭 카테고리 피드
@@ -44,6 +47,8 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
         self.feeds = feeds
         self.selectedCategorySubject = selectedCategorySubject
         self.coordinator = coordinator
+
+        self.emptyView.isHidden = self.feeds.count > 0
         
         self.selectedCategorySubject?
             .subscribe(onNext: { category in

@@ -33,6 +33,12 @@ class NearbyRestaurantsViewController: BaseViewController, Storyboard, ViewModel
         
         self.setNavigation()
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        MapViewController.mapNavigationBarAnimated = true
+    }
 }
 
 extension NearbyRestaurantsViewController {

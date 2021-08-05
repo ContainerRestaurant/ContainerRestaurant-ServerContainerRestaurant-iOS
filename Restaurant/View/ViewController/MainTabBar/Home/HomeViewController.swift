@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType {
-    static var homeAnimated = false
+    static var homeNavigationBarAnimated = false
     var viewModel: HomeViewModel!
     weak var coordinator: HomeCoordinator?
     
@@ -24,13 +24,13 @@ class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.setNavigationBarHidden(true, animated: HomeViewController.homeAnimated)
+        self.navigationController?.setNavigationBarHidden(true, animated: HomeViewController.homeNavigationBarAnimated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        HomeViewController.homeAnimated = false
+        HomeViewController.homeNavigationBarAnimated = false
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
@@ -57,6 +57,7 @@ extension HomeViewController {
         self.collectionView.register(MainTitleSection.self)
         self.collectionView.register(MainBanner.self)
         self.collectionView.register(Title16Bold.self)
+        self.collectionView.register(SeparateLineCollectionViewCell.self)
         self.collectionView.register(TwoFeedInLineCollectionView.self)
         self.collectionView.register(ViewMoreButton.self)
         self.collectionView.register(FooterSection.self)
@@ -81,6 +82,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         case is MainBanner.Type:
             let cell: MainBanner = collectionView.dequeueReusableCell(for: indexPath)
             cell.configure(viewModel.bannerInfo)
+            return cell
+
+        case is SeparateLineCollectionViewCell.Type:
+            let cell: SeparateLineCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configureCell(height: 28, color: .clear)
             return cell
             
         case is Title16Bold.Type:
@@ -113,10 +119,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         switch indexPath.row {
         case 0: return viewModel.mainTitleSectionSize()
         case 1: return viewModel.mainBannerSize()
-        case 2: return viewModel.title16BoldSize()
-        case 3: return viewModel.MainFeedCollectionViewSize()
-        case 4: return viewModel.viewMoreButtonSize()
-        case 5: return viewModel.footerSectionSize()
+        case 2: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(28))
+        case 3: return viewModel.title16BoldSize()
+        case 4: return viewModel.MainFeedCollectionViewSize()
+        case 5: return viewModel.viewMoreButtonSize()
+        case 6: return viewModel.footerSectionSize()
         default: return CGSize.zero
         }
     }

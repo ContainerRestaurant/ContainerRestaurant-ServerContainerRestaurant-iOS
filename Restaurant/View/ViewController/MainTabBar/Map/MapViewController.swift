@@ -10,6 +10,7 @@ import NMapsMap
 import RxSwift
 
 class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
+    static var mapNavigationBarAnimated = false
     var viewModel: MapViewModel!
     weak var coordinator: MapCoordinator?
     var mapView = NMFMapView()
@@ -34,7 +35,7 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(true, animated: MapViewController.mapNavigationBarAnimated)
         if self.viewModel.isFirstEntry {
             setMapView()
             self.viewModel.isFirstEntry = false
@@ -42,6 +43,9 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        MapViewController.mapNavigationBarAnimated = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
