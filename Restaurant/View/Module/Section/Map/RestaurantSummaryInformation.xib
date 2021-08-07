@@ -127,6 +127,14 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdt-9A-0rr">
+                        <rect key="frame" x="339" y="2" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="LQ0-qC-oAg"/>
+                            <constraint firstAttribute="width" constant="20" id="aV6-1U-FbI"/>
+                        </constraints>
+                        <state key="normal" title="Button" image="favoriteDisabled20Px"/>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -145,6 +153,8 @@
                 <constraint firstItem="gHi-IW-SK2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="gU8-vV-8qX"/>
                 <constraint firstItem="F4C-yP-mES" firstAttribute="top" secondItem="hGV-2i-YTT" secondAttribute="top" id="iH4-0y-Cew"/>
                 <constraint firstItem="p0t-aa-g4x" firstAttribute="centerY" secondItem="IVL-tc-Xyv" secondAttribute="centerY" id="mE9-g6-dy1"/>
+                <constraint firstItem="qdt-9A-0rr" firstAttribute="centerY" secondItem="gHi-IW-SK2" secondAttribute="centerY" id="nMG-Wm-vD8"/>
+                <constraint firstAttribute="trailing" secondItem="qdt-9A-0rr" secondAttribute="trailing" constant="16" id="wcY-AI-WfO"/>
                 <constraint firstItem="wBa-F2-0bE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="y8m-GB-jWz"/>
                 <constraint firstItem="d5i-zp-P8O" firstAttribute="centerY" secondItem="oSf-HG-s0J" secondAttribute="centerY" id="zMT-Jw-oPE"/>
                 <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="d5i-zp-P8O" secondAttribute="trailing" id="zTP-3Z-srq"/>
@@ -155,6 +165,7 @@
     </objects>
     <resources>
         <image name="HardFilledYellow16px" width="16" height="16"/>
+        <image name="favoriteDisabled20Px" width="20" height="20"/>
         <image name="feedFilled12Px" width="12" height="12"/>
         <image name="hardFilledGray16Px" width="16" height="16"/>
         <namedColor name="colorGrayGray02">
