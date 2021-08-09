@@ -110,6 +110,10 @@
 		52E50DCA2662B85C0068C36C /* SearchRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E50DC82662B85C0068C36C /* SearchRestaurant.swift */; };
 		52E50DCB2662B85C0068C36C /* SearchRestaurant.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E50DC92662B85C0068C36C /* SearchRestaurant.xib */; };
 		F229FDEFC23BC3F98E7FDAC0 /* Pods_Restaurant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F3CE4B984E3614EE1907F2 /* Pods_Restaurant.framework */; };
+		FB115A8926C029100043A4DE /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB115A8826C029100043A4DE /* SettingCoordinator.swift */; };
+		FB115A8B26C0294C0043A4DE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB115A8A26C0294C0043A4DE /* SettingViewController.swift */; };
+		FB115A8E26C0397D0043A4DE /* SettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB115A8C26C0397D0043A4DE /* SettingCollectionViewCell.swift */; };
+		FB115A8F26C0397D0043A4DE /* SettingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB115A8D26C0397D0043A4DE /* SettingCollectionViewCell.xib */; };
 		FB1BE3652636CB540004673C /* MainTitleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BE3632636CB540004673C /* MainTitleSection.swift */; };
 		FB1BE3662636CB540004673C /* MainTitleSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB1BE3642636CB540004673C /* MainTitleSection.xib */; };
 		FB1BE36A2636D7330004673C /* ExtensionCollectoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BE3692636D7330004673C /* ExtensionCollectoinView.swift */; };
@@ -280,6 +284,10 @@
 		52E50DC92662B85C0068C36C /* SearchRestaurant.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchRestaurant.xib; sourceTree = "<group>"; };
 		F3F3CE4B984E3614EE1907F2 /* Pods_Restaurant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Restaurant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75B0324971F60862967CD66 /* Pods-Restaurant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restaurant.debug.xcconfig"; path = "Target Support Files/Pods-Restaurant/Pods-Restaurant.debug.xcconfig"; sourceTree = "<group>"; };
+		FB115A8826C029100043A4DE /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
+		FB115A8A26C0294C0043A4DE /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		FB115A8C26C0397D0043A4DE /* SettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB115A8D26C0397D0043A4DE /* SettingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCollectionViewCell.xib; sourceTree = "<group>"; };
 		FB1BE3632636CB540004673C /* MainTitleSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTitleSection.swift; sourceTree = "<group>"; };
 		FB1BE3642636CB540004673C /* MainTitleSection.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTitleSection.xib; sourceTree = "<group>"; };
 		FB1BE3692636D7330004673C /* ExtensionCollectoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCollectoinView.swift; sourceTree = "<group>"; };
@@ -407,6 +415,8 @@
 			children = (
 				5204199E26512E450099BA39 /* MyCoordinator.swift */,
 				52397344261B62AF00856C99 /* MyViewController.swift */,
+				FB115A8826C029100043A4DE /* SettingCoordinator.swift */,
+				FB115A8A26C0294C0043A4DE /* SettingViewController.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -852,6 +862,8 @@
 				FBEDEA23267BC1BB00446B83 /* MainBannerCollectionViewCell.xib */,
 				528EF7DE2694C893009ECF59 /* CategoryTabCollectionViewCell.swift */,
 				528EF7DF2694C893009ECF59 /* CategoryTabCollectionViewCell.xib */,
+				FB115A8C26C0397D0043A4DE /* SettingCollectionViewCell.swift */,
+				FB115A8D26C0397D0043A4DE /* SettingCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -1060,6 +1072,7 @@
 				525811522677A97800900D59 /* onboarding2.json in Resources */,
 				FBEDEA25267BC1BB00446B83 /* MainBannerCollectionViewCell.xib in Resources */,
 				52E50DC12662105E0068C36C /* CreationFeedDetailCardCollectionViewCell.xib in Resources */,
+				FB115A8F26C0397D0043A4DE /* SettingCollectionViewCell.xib in Resources */,
 				FB585B4D266D79CE0085C6B2 /* OnboardingView.xib in Resources */,
 				FB1BE3862637DF2B0004673C /* TwoFeedCollectionViewCell.xib in Resources */,
 				528EF7E12694C893009ECF59 /* CategoryTabCollectionViewCell.xib in Resources */,
@@ -1135,6 +1148,7 @@
 				FB56AF75265F71B4002736F5 /* CreationFeedDetail.swift in Sources */,
 				52E50DC02662105E0068C36C /* CreationFeedDetailCardCollectionViewCell.swift in Sources */,
 				FB585B2C266780350085C6B2 /* SearchRestaurantViewModel.swift in Sources */,
+				FB115A8B26C0294C0043A4DE /* SettingViewController.swift in Sources */,
 				526BED48264652CA00897230 /* ExtensionUIFont.swift in Sources */,
 				5204198D2651128E0099BA39 /* Storyboard.swift in Sources */,
 				528EF7DB2694BF1B009ECF59 /* FeedViewModel.swift in Sources */,
@@ -1192,6 +1206,7 @@
 				FB1BE37926371BFA0004673C /* TwoFeedInLineCollectionView.swift in Sources */,
 				52169B1C26ADE62B00705FEC /* NearbyRestaurantsViewModel.swift in Sources */,
 				52256FAC263D7F4300A056DE /* SeparateLineCollectionViewCell.swift in Sources */,
+				FB115A8926C029100043A4DE /* SettingCoordinator.swift in Sources */,
 				52169B1F26ADECC200705FEC /* OneFeedCollectionViewCell.swift in Sources */,
 				FB585B3B266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.swift in Sources */,
 				52169B2426AF351200705FEC /* RestaurantSummaryInformationViewController.swift in Sources */,
@@ -1202,6 +1217,7 @@
 				52256FB0263DBEFA00A056DE /* ExtensionCollectionViewCell.swift in Sources */,
 				FB585B3F266B533F0085C6B2 /* CreationFeedImage.swift in Sources */,
 				52542E09264AEBB10066F565 /* InquiryProfileViewController.swift in Sources */,
+				FB115A8E26C0397D0043A4DE /* SettingCollectionViewCell.swift in Sources */,
 				52855930262DE5A700AB4E28 /* TabBarItem.swift in Sources */,
 				526BED6C26470BD200897230 /* MostFeedTopTenCollectionViewCell.swift in Sources */,
 				FBDC3D83266DA3910072D7E8 /* LongText.swift in Sources */,

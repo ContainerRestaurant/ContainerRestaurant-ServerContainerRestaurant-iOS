@@ -47,6 +47,7 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
 
         MapViewController.mapNavigationBarAnimated = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        disposeBag = DisposeBag()
     }
     
     func bindingView() {

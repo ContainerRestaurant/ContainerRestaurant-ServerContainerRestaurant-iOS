@@ -140,6 +140,7 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
         super.viewWillDisappear(animated)
 
         self.coordinator?.presenter.tabBarController?.selectedIndex = 0
+        disposeBag = DisposeBag()
     }
 
     func bindingView() {

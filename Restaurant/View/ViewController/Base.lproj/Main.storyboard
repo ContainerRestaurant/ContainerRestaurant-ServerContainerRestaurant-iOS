@@ -1224,11 +1224,59 @@
                         <outlet property="nicknameLabel" destination="1O8-8X-0lS" id="LG1-a9-ZkS"/>
                         <outlet property="scrapFeedButton" destination="72P-3y-VWO" id="PdW-yc-wyb"/>
                         <outlet property="scrapFeedCountLabel" destination="v5E-UE-CYK" id="rr3-xK-6D0"/>
+                        <outlet property="settingButton" destination="IgL-jW-e7X" id="n80-hW-k2g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YWo-X7-UJy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="191.19999999999999" y="3407.0464767616195"/>
+        </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="7O7-jd-rGe">
+            <objects>
+                <viewController storyboardIdentifier="SettingViewController" id="C72-6R-shq" customClass="SettingViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Kb-Yf-vFg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="omh-F1-O29">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tcA-cZ-izo">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="estimatedItemSize" width="375" height="52"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5qa-5O-HqS">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="izq-1d-scH">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4Oi-WN-dEZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4Oi-WN-dEZ" firstAttribute="trailing" secondItem="omh-F1-O29" secondAttribute="trailing" id="4LW-Kg-Kws"/>
+                            <constraint firstItem="omh-F1-O29" firstAttribute="top" secondItem="4Oi-WN-dEZ" secondAttribute="top" id="77H-pN-mOl"/>
+                            <constraint firstItem="omh-F1-O29" firstAttribute="leading" secondItem="4Oi-WN-dEZ" secondAttribute="leading" id="OKM-Cb-9mf"/>
+                            <constraint firstItem="4Oi-WN-dEZ" firstAttribute="bottom" secondItem="omh-F1-O29" secondAttribute="bottom" id="r78-A2-gZk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="omh-F1-O29" id="fVu-3V-KuW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U5L-XH-UwH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="822" y="3406"/>
         </scene>
         <!--Test View Controller-->
         <scene sceneID="CKW-Cw-Rfd">
