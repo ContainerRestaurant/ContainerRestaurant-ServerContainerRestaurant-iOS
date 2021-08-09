@@ -33,8 +33,16 @@ class FeedViewController: BaseViewController, Storyboard, ViewModelBindableType 
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
         setNavigationBar()
         feedCollectionView.reloadData()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        disposeBag = DisposeBag()
     }
     
     func bindingView() {

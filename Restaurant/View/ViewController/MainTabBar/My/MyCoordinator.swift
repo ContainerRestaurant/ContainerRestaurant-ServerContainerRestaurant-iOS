@@ -42,4 +42,11 @@ extension MyCoordinator {
         childCoordinators.append(coordinator)
         coordinator.start()
     }
+
+    func pushSetting() {
+        let coordinator = SettingCoordinator(presenter: presenter)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
 }

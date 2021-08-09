@@ -23,6 +23,7 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
     @IBOutlet weak var bookmarkedCountButton: UIButton!
     @IBOutlet weak var bookmarkedCountLabel: UILabel!
     @IBOutlet weak var descriptionLevelButton: UIButton!
+    @IBOutlet weak var settingButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,7 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         self.navigationController?.setNavigationBarHidden(true, animated: true)
 
         API().askUser(isLoginSubject: isLoginSubject, userDataSubject: userDataSubject)
@@ -75,6 +76,12 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
         viewModel.bookmarkedCount
             .map { String($0) }
             .drive(bookmarkedCountLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        settingButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.coordinator?.pushSetting()
+            })
             .disposed(by: disposeBag)
 
         feedButton.rx.tap
