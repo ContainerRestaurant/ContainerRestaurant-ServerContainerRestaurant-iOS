@@ -25,8 +25,8 @@ class CreationFeedDetailCardCollectionViewCell: UICollectionViewCell {
         mainTitleLabel.text = "음식"
         subTitleLabel.text = "용기"
 
-        mainTextField.placeholder = foodType == .main ? "ex) 제육볶음" : "ex) 반찬 뭐있지"
-        subTextField.placeholder = foodType == .main ? "ex) 1L 스테인리스 용기" : "ex) 반찬 용기 뭐있지"
+        mainTextField.placeholder = foodType == .main ? "ex) 된장국" : "ex) 단무지, 멸치볶음"
+        subTextField.placeholder = foodType == .main ? "ex) 500ml 반찬통" : "ex) 3칸 칸막이 1개"
     }
 }
 
