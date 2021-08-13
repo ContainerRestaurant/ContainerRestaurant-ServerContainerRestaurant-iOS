@@ -90,8 +90,6 @@
 		528EF7E6269E009D009ECF59 /* FeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528EF7E5269E009D009ECF59 /* FeedDetailViewController.swift */; };
 		528EF7E8269E0120009ECF59 /* FeedDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528EF7E7269E0120009ECF59 /* FeedDetailCoordinator.swift */; };
 		528EF7EA269E0518009ECF59 /* FeedDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528EF7E9269E0518009ECF59 /* FeedDetailViewModel.swift */; };
-		528EF7F0269E0F00009ECF59 /* FeedDetailTopSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528EF7EE269E0F00009ECF59 /* FeedDetailTopSection.swift */; };
-		528EF7F1269E0F00009ECF59 /* FeedDetailTopSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528EF7EF269E0F00009ECF59 /* FeedDetailTopSection.xib */; };
 		528EF7F626A0A1FB009ECF59 /* ViewMoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528EF7F426A0A1FB009ECF59 /* ViewMoreButton.swift */; };
 		528EF7F726A0A1FB009ECF59 /* ViewMoreButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528EF7F526A0A1FB009ECF59 /* ViewMoreButton.xib */; };
 		528EF7FA26A0A67C009ECF59 /* FooterSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528EF7F826A0A67C009ECF59 /* FooterSection.swift */; };
@@ -261,8 +259,6 @@
 		528EF7E5269E009D009ECF59 /* FeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewController.swift; sourceTree = "<group>"; };
 		528EF7E7269E0120009ECF59 /* FeedDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailCoordinator.swift; sourceTree = "<group>"; };
 		528EF7E9269E0518009ECF59 /* FeedDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewModel.swift; sourceTree = "<group>"; };
-		528EF7EE269E0F00009ECF59 /* FeedDetailTopSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailTopSection.swift; sourceTree = "<group>"; };
-		528EF7EF269E0F00009ECF59 /* FeedDetailTopSection.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedDetailTopSection.xib; sourceTree = "<group>"; };
 		528EF7F426A0A1FB009ECF59 /* ViewMoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMoreButton.swift; sourceTree = "<group>"; };
 		528EF7F526A0A1FB009ECF59 /* ViewMoreButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewMoreButton.xib; sourceTree = "<group>"; };
 		528EF7F826A0A67C009ECF59 /* FooterSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterSection.swift; sourceTree = "<group>"; };
@@ -741,8 +737,6 @@
 		528EF7F3269E0F20009ECF59 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				528EF7EE269E0F00009ECF59 /* FeedDetailTopSection.swift */,
-				528EF7EF269E0F00009ECF59 /* FeedDetailTopSection.xib */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -1078,7 +1072,6 @@
 				528EF7E12694C893009ECF59 /* CategoryTabCollectionViewCell.xib in Resources */,
 				FBAA5D1226B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.xib in Resources */,
 				52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */,
-				528EF7F1269E0F00009ECF59 /* FeedDetailTopSection.xib in Resources */,
 				528EF7F726A0A1FB009ECF59 /* ViewMoreButton.xib in Resources */,
 				528EF7FB26A0A67C009ECF59 /* FooterSection.xib in Resources */,
 				FBEDEA21267BBACE00446B83 /* MainBanner.xib in Resources */,
@@ -1199,7 +1192,6 @@
 				FBB0010D268CF9DE00B6ED03 /* Router.swift in Sources */,
 				5204199626511AB00099BA39 /* ContainerOfEveryoneCoordinator.swift in Sources */,
 				528EF7FA26A0A67C009ECF59 /* FooterSection.swift in Sources */,
-				528EF7F0269E0F00009ECF59 /* FeedDetailTopSection.swift in Sources */,
 				526BED65264702F700897230 /* ContainerOfEveryoneViewModel.swift in Sources */,
 				5258115D267901E900900D59 /* UserModel.swift in Sources */,
 				52254C63265AC19C00D921ED /* TwoFeedModel.swift in Sources */,

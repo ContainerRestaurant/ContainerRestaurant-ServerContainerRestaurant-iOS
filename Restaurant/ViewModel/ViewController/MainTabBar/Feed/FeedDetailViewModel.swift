@@ -14,6 +14,7 @@ class FeedDetailViewModel {
     var thumbnailURL: Observable<String>
     var likeCount: Driver<Int>
     var scrapCount: Driver<Int>
+    var content: Observable<String>
     
     init(_ feedDetail: FeedDetailModel) {
         userNickname = Observable<String>
@@ -30,5 +31,8 @@ class FeedDetailViewModel {
         scrapCount = Observable<Int>
             .just(feedDetail.scrapCount)
             .asDriver(onErrorJustReturn: 0)
+
+        content = Observable<String>
+            .just(feedDetail.content)
     }
 }

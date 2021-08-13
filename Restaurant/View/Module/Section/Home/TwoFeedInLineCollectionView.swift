@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 
 class TwoFeedInLineCollectionView: UICollectionViewCell {
+    private var isFirstEnterToFeed = true
     private var feeds: [FeedPreviewModel] = []
     private let interItemSpacing: CGFloat = 15
     private let cellLineSpacing: CGFloat = 20
@@ -44,7 +45,10 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
     
     //피드 탭 카테고리 피드
     func configureFeedCategoryFeed(_ feeds: [FeedPreviewModel], _ selectedCategorySubject: PublishSubject<String>, _ reloadFlagSubject: PublishSubject<[FeedPreviewModel]>, _ coordinator: FeedCoordinator) {
-        self.feeds = feeds
+        if isFirstEnterToFeed {
+            self.feeds = feeds
+            self.isFirstEnterToFeed = false
+        }
         self.selectedCategorySubject = selectedCategorySubject
         self.coordinator = coordinator
 
