@@ -73,7 +73,7 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.row {
-        case 0: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(367))
+        case 0: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(328))
         default: return .zero
         }
     }
