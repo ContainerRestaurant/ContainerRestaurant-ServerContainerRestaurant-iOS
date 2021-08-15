@@ -10,29 +10,48 @@ import RxSwift
 import RxCocoa
 
 class FeedDetailViewModel {
-    var userNickname: Driver<String>
-    var thumbnailURL: Observable<String>
-    var likeCount: Driver<Int>
-    var scrapCount: Driver<Int>
-    var content: Observable<String>
-    
+    var userNicknameDriver: Driver<String>
+    var thumbnailURLObservable: Observable<String>
+    var likeCountDriver: Driver<Int>
+    var scrapCountDriver: Driver<Int>
+
+    var contentObservable: Observable<String>
+
+    var categoryDriver: Driver<String>
+    var restaurantNameDriver: Driver<String>
+    var isWelcome: Bool = false
+    var isWelcomeDriver: Driver<Bool>
+
     init(_ feedDetail: FeedDetailModel) {
-        userNickname = Observable<String>
+        userNicknameDriver = Observable<String>
             .just(feedDetail.userNickname)
             .asDriver(onErrorJustReturn: "")
         
-        thumbnailURL = Observable<String>
+        thumbnailURLObservable = Observable<String>
             .just(feedDetail.thumbnailURL)
         
-        likeCount = Observable<Int>
+        likeCountDriver = Observable<Int>
             .just(feedDetail.likeCount)
             .asDriver(onErrorJustReturn: 0)
         
-        scrapCount = Observable<Int>
+        scrapCountDriver = Observable<Int>
             .just(feedDetail.scrapCount)
             .asDriver(onErrorJustReturn: 0)
 
-        content = Observable<String>
+        contentObservable = Observable<String>
             .just(feedDetail.content)
+
+        categoryDriver = Observable<String>
+            .just(feedDetail.category)
+            .asDriver(onErrorJustReturn: "")
+
+        restaurantNameDriver = Observable<String>
+            .just(feedDetail.restaurantName)
+            .asDriver(onErrorJustReturn: "")
+
+        isWelcome = feedDetail.isWelcome
+        isWelcomeDriver = Observable<Bool>
+            .just(feedDetail.isWelcome)
+            .asDriver(onErrorJustReturn: false)
     }
 }

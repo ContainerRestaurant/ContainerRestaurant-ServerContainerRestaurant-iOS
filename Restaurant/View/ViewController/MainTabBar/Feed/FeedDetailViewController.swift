@@ -6,10 +6,19 @@
 //
 
 import UIKit
+import RxSwift
+
+enum FeedDetailTap {
+    case information
+    case content
+}
 
 class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindableType {
     var viewModel: FeedDetailViewModel!
     weak var coordinator: FeedDetailCoordinator?
+    var selectedTapTypeSubject = PublishSubject<FeedDetailTap>()
+    var selectedTapType: FeedDetailTap = .information
+    var collectionViewCellCount = 0
     
     @IBOutlet weak var feedImageView: UIImageView!
     @IBOutlet weak var userNicknameLabel: UILabel!
@@ -32,6 +41,21 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
         super.viewDidLoad()
         
         setCollectionView()
+
+        selectedTapTypeSubject
+            .subscribe(onNext: { [weak self] type in
+                self?.selectedTapType = type
+
+                switch type {
+                case .information:
+                    self?.collectionViewCellCount = 1
+                case .content: break
+                }
+
+                self?.collectionView.reloadData()
+            })
+            .disposed(by: disposeBag)
+
         print("FeedDetailViewController viewDidLoad()")
     }
     
@@ -48,33 +72,41 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
     func bindingView() {
         print("FeedDetail bindingView()")
 
-        viewModel.thumbnailURL
+        viewModel.thumbnailURLObservable
             .map { URL(string: $0) }
             .subscribe(onNext: { [weak self] imageURL in
                 self?.feedImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.3))])
             })
             .disposed(by: disposeBag)
 
-        viewModel.userNickname
+        viewModel.userNicknameDriver
             .drive(userNicknameLabel.rx.text)
             .disposed(by: disposeBag)
 
-        viewModel.content
+        viewModel.contentObservable
             .map { $0.isEmpty }
             .subscribe(onNext: { [weak self] isEmptyContent in
-                isEmptyContent ? self?.setOnlyInformationTap() : self?.setContentTapAndInformationTap()
+                if isEmptyContent {
+                    self?.selectedTapTypeSubject.onNext(.information)
+                    self?.setOnlyInformationTap()
+                } else {
+                    self?.selectedTapTypeSubject.onNext(.content)
+                    self?.setContentTapAndInformationTap()
+                }
             })
             .disposed(by: disposeBag)
 
         informationTapButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.isSelectedInformationTap()
+                self?.selectedTapTypeSubject.onNext(.information)
             })
             .disposed(by: disposeBag)
 
         contentTapButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.isSelectedContentTap()
+                self?.selectedTapTypeSubject.onNext(.content)
             })
             .disposed(by: disposeBag)
     }
@@ -86,7 +118,7 @@ extension FeedDetailViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-//        self.collectionView.register(FeedDetailTopSection.self)
+        self.collectionView.register(RestaurantInformationOnFeedDetail.self)
     }
     
     private func setNavigation() {
@@ -134,16 +166,24 @@ extension FeedDetailViewController {
 
 extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return self.collectionViewCellCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch self.selectedTapType {
+        case .information:
+            let cell: RestaurantInformationOnFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configure(category: viewModel.categoryDriver, restaurantName: viewModel.restaurantNameDriver, isWelcome: viewModel.isWelcomeDriver)
+            return cell
+        case .content: break
+        }
+
         return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.row {
-        case 0: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(328))
+        case 0: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(viewModel.isWelcome ? 123 : 91))
         default: return .zero
         }
     }

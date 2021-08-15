@@ -42,7 +42,7 @@ class FeedViewController: BaseViewController, Storyboard, ViewModelBindableType 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        disposeBag = DisposeBag()
+//        disposeBag = DisposeBag()
     }
     
     func bindingView() {
