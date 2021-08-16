@@ -39,4 +39,23 @@ struct Common {
 
         return viewController
     }
+
+    //피드 상세의 content 영역에 쓰임
+    //추후 커스터마이징 필요하면 attrString 분기 처리해야함
+    static func labelHeight(text: String, font: UIFont, width: CGFloat) -> CGFloat {
+        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = .byCharWrapping
+        label.font = font
+        label.text = text
+
+        let attrString = NSMutableAttributedString(string: label.text!)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
+        label.attributedText = attrString
+        label.sizeToFit()
+
+        return label.frame.height
+    }
 }
