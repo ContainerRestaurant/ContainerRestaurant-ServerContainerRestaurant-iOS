@@ -47,7 +47,7 @@ extension CreationFeedViewModel {
     }
 
     func searchRestaurantSize() -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(48))
+        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(60))
     }
 
     func foodCategorySize() -> CGSize {
