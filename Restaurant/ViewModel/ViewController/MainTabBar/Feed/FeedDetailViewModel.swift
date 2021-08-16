@@ -15,12 +15,18 @@ class FeedDetailViewModel {
     var likeCountDriver: Driver<Int>
     var scrapCountDriver: Driver<Int>
 
-    var contentObservable: Observable<String>
-
     var categoryDriver: Driver<String>
     var restaurantNameDriver: Driver<String>
     var isWelcome: Bool = false
     var isWelcomeDriver: Driver<Bool>
+
+    var levelOfDifficulty: Int = 1
+
+    var mainMenuAndContainers: [MenuAndContainerModel]
+
+    var contentObservable: Observable<String>
+
+    var modules: [UICollectionViewCell.Type] = []
 
     init(_ feedDetail: FeedDetailModel) {
         userNicknameDriver = Observable<String>
@@ -38,9 +44,6 @@ class FeedDetailViewModel {
             .just(feedDetail.scrapCount)
             .asDriver(onErrorJustReturn: 0)
 
-        contentObservable = Observable<String>
-            .just(feedDetail.content)
-
         categoryDriver = Observable<String>
             .just(feedDetail.category)
             .asDriver(onErrorJustReturn: "")
@@ -53,5 +56,20 @@ class FeedDetailViewModel {
         isWelcomeDriver = Observable<Bool>
             .just(feedDetail.isWelcome)
             .asDriver(onErrorJustReturn: false)
+
+        levelOfDifficulty = feedDetail.difficulty
+
+        mainMenuAndContainers = feedDetail.mainMenu
+
+        contentObservable = Observable<String>
+            .just(feedDetail.content)
+    }
+
+    func setInformationModules() {
+        modules.removeAll()
+
+        modules.append(RestaurantInformationOnFeedDetail.self)
+        modules.append(LevelOfDifficultyOnFeedDetail.self)
+        modules.append(MenuOnFeedDetail.self)
     }
 }

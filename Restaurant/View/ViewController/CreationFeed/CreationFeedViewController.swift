@@ -26,10 +26,10 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
     var restaurant: LocalSearchItem?
     var selectedCategory: String = "KOREAN"
     var selectedCategorySubject: PublishSubject<String> = PublishSubject<String>()
-    var mainFoodAndContainer: [FoodAndContainerModel] = []
-    var mainFoodAndContainerSubject: PublishSubject<[FoodAndContainerModel]> = PublishSubject<[FoodAndContainerModel]>()
-    var sideFoodAndContainer: [FoodAndContainerModel] = []
-    var sideFoodAndContainerSubject: PublishSubject<[FoodAndContainerModel]> = PublishSubject<[FoodAndContainerModel]>()
+    var mainFoodAndContainer: [MenuAndContainerModel] = []
+    var mainFoodAndContainerSubject: PublishSubject<[MenuAndContainerModel]> = PublishSubject<[MenuAndContainerModel]>()
+    var sideFoodAndContainer: [MenuAndContainerModel] = []
+    var sideFoodAndContainerSubject: PublishSubject<[MenuAndContainerModel]> = PublishSubject<[MenuAndContainerModel]>()
     var levelOfDifficulty: Int = 1
     var levelOfDifficultySubject: PublishSubject<Int> = PublishSubject<Int>()
     var isWelcome: Bool = false

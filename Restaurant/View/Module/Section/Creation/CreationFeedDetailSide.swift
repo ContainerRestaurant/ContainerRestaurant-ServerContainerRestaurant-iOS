@@ -10,8 +10,8 @@ import RxSwift
 
 class CreationFeedDetailSide: UICollectionViewCell {
     let disposeBag = DisposeBag()
-    var sideFoodAndContainer: [FoodAndContainerModel] = [FoodAndContainerModel()]
-    var sideFoodAndContainerSubject: PublishSubject<[FoodAndContainerModel]> = PublishSubject<[FoodAndContainerModel]>()
+    var sideFoodAndContainer: [MenuAndContainerModel] = [MenuAndContainerModel()]
+    var sideFoodAndContainerSubject: PublishSubject<[MenuAndContainerModel]> = PublishSubject<[MenuAndContainerModel]>()
     var subFoodCount: Int = 1
     var cardHeightSubject: PublishSubject<CGFloat>?
     var foodType: FoodType?
@@ -44,7 +44,7 @@ extension CreationFeedDetailSide {
                 if self!.subFoodCount >= 5 {
                     print("더이상 추가 안됨")
                 } else {
-                    self?.sideFoodAndContainer.append(FoodAndContainerModel())
+                    self?.sideFoodAndContainer.append(MenuAndContainerModel())
                     self?.subFoodCount += 1
                     
                     let cardHeight = CGFloat(104 * self!.subFoodCount)
@@ -57,7 +57,7 @@ extension CreationFeedDetailSide {
             .disposed(by: disposeBag)
     }
     
-    func configure(_ sideFoodAndContainerSubject: PublishSubject<[FoodAndContainerModel]>, _ cardHeightSubject: PublishSubject<CGFloat>, _ foodType: FoodType) {
+    func configure(_ sideFoodAndContainerSubject: PublishSubject<[MenuAndContainerModel]>, _ cardHeightSubject: PublishSubject<CGFloat>, _ foodType: FoodType) {
         self.sideFoodAndContainerSubject = sideFoodAndContainerSubject
         self.cardHeightSubject = cardHeightSubject
         self.foodType = foodType

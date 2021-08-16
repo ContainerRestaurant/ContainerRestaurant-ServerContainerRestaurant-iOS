@@ -18,7 +18,6 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
     weak var coordinator: FeedDetailCoordinator?
     var selectedTapTypeSubject = PublishSubject<FeedDetailTap>()
     var selectedTapType: FeedDetailTap = .information
-    var collectionViewCellCount = 0
     
     @IBOutlet weak var feedImageView: UIImageView!
     @IBOutlet weak var userNicknameLabel: UILabel!
@@ -48,7 +47,7 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
 
                 switch type {
                 case .information:
-                    self?.collectionViewCellCount = 1
+                    self?.viewModel.setInformationModules()
                 case .content: break
                 }
 
@@ -119,6 +118,8 @@ extension FeedDetailViewController {
         self.collectionView.dataSource = self
         
         self.collectionView.register(RestaurantInformationOnFeedDetail.self)
+        self.collectionView.register(LevelOfDifficultyOnFeedDetail.self)
+        self.collectionView.register(MenuOnFeedDetail.self)
     }
     
     private func setNavigation() {
@@ -166,25 +167,61 @@ extension FeedDetailViewController {
 
 extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.collectionViewCellCount
+        return viewModel.modules.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch self.selectedTapType {
-        case .information:
-            let cell: RestaurantInformationOnFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(category: viewModel.categoryDriver, restaurantName: viewModel.restaurantNameDriver, isWelcome: viewModel.isWelcomeDriver)
-            return cell
-        case .content: break
-        }
+        if self.selectedTapType == .information {
+            switch viewModel.modules[indexPath.row] {
+            case is RestaurantInformationOnFeedDetail.Type:
+                let cell: RestaurantInformationOnFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
+                cell.configure(category: viewModel.categoryDriver, restaurantName: viewModel.restaurantNameDriver, isWelcome: viewModel.isWelcomeDriver)
+                return cell
 
-        return UICollectionViewCell()
+            case is LevelOfDifficultyOnFeedDetail.Type:
+                let cell: LevelOfDifficultyOnFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
+                cell.configure(levelOfDifficulty: viewModel.levelOfDifficulty)
+                return cell
+
+            case is MenuOnFeedDetail.Type:
+                let cell: MenuOnFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
+                cell.mainMenuConfigure(menuAndContainers: viewModel.mainMenuAndContainers)
+                return cell
+
+            default: return UICollectionViewCell()
+            }
+        } else {
+            return UICollectionViewCell()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch indexPath.row {
-        case 0: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(viewModel.isWelcome ? 123 : 91))
-        default: return .zero
+        if self.selectedTapType == .information {
+            switch viewModel.modules[indexPath.row] {
+            case is RestaurantInformationOnFeedDetail.Type: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(viewModel.isWelcome ? 123 : 91))
+
+            case is LevelOfDifficultyOnFeedDetail.Type:
+                return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(84))
+
+            case is MenuOnFeedDetail.Type:
+                var cellHeight = CGFloat(110)
+                if viewModel.mainMenuAndContainers.count > 1 {
+                    cellHeight += CGFloat(64 * (viewModel.mainMenuAndContainers.count - 1))
+                }
+                return CGSize(width: UIScreen.main.bounds.width, height: cellHeight)
+
+            default: return .zero
+            }
+        } else {
+            return .zero
         }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return .zero
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return .zero
     }
 }

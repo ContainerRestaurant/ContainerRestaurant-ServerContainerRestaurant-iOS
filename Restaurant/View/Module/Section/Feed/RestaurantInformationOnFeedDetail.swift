@@ -20,7 +20,6 @@ class RestaurantInformationOnFeedDetail: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        //물어보기
         self.borderView.applySketchShadow(color: .colorGrayGray08, alpha: 0.15, x: 0, y: 0, blur: 5, spread: 0)
     }
 

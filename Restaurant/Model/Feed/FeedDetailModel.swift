@@ -22,8 +22,8 @@ struct FeedDetailModel: Decodable {
     var scrapCount: Int
     var replyCount: Int
     var isWelcome: Bool
-    var mainMenu: [FoodAndContainerModel]
-    var subMenu: [FoodAndContainerModel]
+    var mainMenu: [MenuAndContainerModel]
+    var subMenu: [MenuAndContainerModel]
     var isLike: Bool
     var isScraped: Bool
     

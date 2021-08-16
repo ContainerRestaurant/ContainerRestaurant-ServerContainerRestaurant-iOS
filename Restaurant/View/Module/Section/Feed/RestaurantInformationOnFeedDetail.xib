@@ -23,10 +23,10 @@
                         <rect key="frame" x="5" y="5" width="365" height="113"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="hXj-jA-FNF">
-                                <rect key="frame" x="20" y="19" width="345" height="82"/>
+                                <rect key="frame" x="15" y="14" width="350" height="82"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용기낸 식당" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giu-HX-n2h">
-                                        <rect key="frame" x="0.0" y="0.0" width="345" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="2na-29-xza"/>
                                         </constraints>
@@ -35,7 +35,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WpA-fe-qwr">
-                                        <rect key="frame" x="0.0" y="26" width="345" height="26"/>
+                                        <rect key="frame" x="0.0" y="26" width="350" height="26"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSK-hX-kMh">
                                                 <rect key="frame" x="0.0" y="0.0" width="57" height="26"/>
@@ -77,7 +77,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5D-7C-9Y6">
-                                        <rect key="frame" x="0.0" y="58" width="345" height="24"/>
+                                        <rect key="frame" x="0.0" y="58" width="350" height="24"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPa-d8-P7E">
                                                 <rect key="frame" x="0.0" y="0.0" width="160" height="24"/>
@@ -112,9 +112,9 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hXj-jA-FNF" firstAttribute="leading" secondItem="1uV-mk-1HV" secondAttribute="leading" constant="20" id="7FU-d9-XKT"/>
+                            <constraint firstItem="hXj-jA-FNF" firstAttribute="leading" secondItem="1uV-mk-1HV" secondAttribute="leading" constant="15" id="7FU-d9-XKT"/>
                             <constraint firstAttribute="trailing" secondItem="hXj-jA-FNF" secondAttribute="trailing" id="NPB-9T-Vwa"/>
-                            <constraint firstItem="hXj-jA-FNF" firstAttribute="top" secondItem="1uV-mk-1HV" secondAttribute="top" constant="19" id="zqT-gf-vHO"/>
+                            <constraint firstItem="hXj-jA-FNF" firstAttribute="top" secondItem="1uV-mk-1HV" secondAttribute="top" constant="14" id="zqT-gf-vHO"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

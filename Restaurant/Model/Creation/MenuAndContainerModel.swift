@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FoodAndContainerModel: Codable {
+struct MenuAndContainerModel: Codable {
     var menuName: String
     var container: String
     

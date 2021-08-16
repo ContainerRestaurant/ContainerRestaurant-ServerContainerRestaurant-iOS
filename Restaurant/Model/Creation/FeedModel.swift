@@ -10,8 +10,8 @@ import Foundation
 struct FeedModel: Codable {
     var restaurantCreateDto: RestaurantModel
     var category: String
-    var mainMenu: [FoodAndContainerModel]
-    var subMenu: [FoodAndContainerModel]
+    var mainMenu: [MenuAndContainerModel]
+    var subMenu: [MenuAndContainerModel]
     var difficulty: Int
     var welcome: Bool
     var thumbnailImageId: Int
@@ -39,7 +39,7 @@ struct FeedModel: Codable {
         self.content = ""
     }
     
-    init(restaurantCreateDto: RestaurantModel, category: String, mainMenu: [FoodAndContainerModel], subMenu: [FoodAndContainerModel], difficulty: Int, welcome: Bool, thumbnailImageID: Int, content: String) {
+    init(restaurantCreateDto: RestaurantModel, category: String, mainMenu: [MenuAndContainerModel], subMenu: [MenuAndContainerModel], difficulty: Int, welcome: Bool, thumbnailImageID: Int, content: String) {
         self.restaurantCreateDto = restaurantCreateDto
         self.category = category
         self.mainMenu = mainMenu
