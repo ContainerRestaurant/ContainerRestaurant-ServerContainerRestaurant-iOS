@@ -49,4 +49,12 @@ extension MenuOnFeedDetail: UICollectionViewDelegate, UICollectionViewDataSource
         cell.configure(menuAndContainer: menuAndContainers[indexPath.row])
         return cell
     }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: CGFloat(313).widthRatio(), height: CGFloat(44))
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(20)
+    }
 }

@@ -10,31 +10,29 @@ import RxSwift
 import RxCocoa
 
 class FeedDetailViewModel {
-    var userNicknameDriver: Driver<String>
     var thumbnailURLObservable: Observable<String>
+    var userNicknameDriver: Driver<String>
     var likeCountDriver: Driver<Int>
     var scrapCountDriver: Driver<Int>
-
     var categoryDriver: Driver<String>
     var restaurantNameDriver: Driver<String>
     var isWelcome: Bool = false
     var isWelcomeDriver: Driver<Bool>
-
     var levelOfDifficulty: Int = 1
-
     var mainMenuAndContainers: [MenuAndContainerModel]
+    var sideMenuAndContainers: [MenuAndContainerModel]
 
-    var contentObservable: Observable<String>
+    var content: String = ""
 
     var modules: [UICollectionViewCell.Type] = []
 
     init(_ feedDetail: FeedDetailModel) {
+        thumbnailURLObservable = Observable<String>
+            .just(feedDetail.thumbnailURL)
+
         userNicknameDriver = Observable<String>
             .just(feedDetail.userNickname)
             .asDriver(onErrorJustReturn: "")
-        
-        thumbnailURLObservable = Observable<String>
-            .just(feedDetail.thumbnailURL)
         
         likeCountDriver = Observable<Int>
             .just(feedDetail.likeCount)
@@ -60,16 +58,27 @@ class FeedDetailViewModel {
         levelOfDifficulty = feedDetail.difficulty
 
         mainMenuAndContainers = feedDetail.mainMenu
+        sideMenuAndContainers = feedDetail.subMenu
 
-        contentObservable = Observable<String>
-            .just(feedDetail.content)
+        content = feedDetail.content
     }
 
     func setInformationModules() {
         modules.removeAll()
 
+        modules.append(TopSectionOnFeedDetail.self)
+        modules.append(TapOnFeedDetail.self)
         modules.append(RestaurantInformationOnFeedDetail.self)
         modules.append(LevelOfDifficultyOnFeedDetail.self)
         modules.append(MenuOnFeedDetail.self)
+        if sideMenuAndContainers.count > 0 { modules.append(MenuOnFeedDetail.self) }
+    }
+
+    func setContentModules() {
+        modules.removeAll()
+
+        modules.append(TopSectionOnFeedDetail.self)
+        modules.append(TapOnFeedDetail.self)
+        modules.append(ContentOnFeedDetail.self)
     }
 }
