@@ -19,8 +19,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUk-fB-0yy">
-                        <rect key="frame" x="16" y="24" width="279" height="0.0"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ddd" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUk-fB-0yy">
+                        <rect key="frame" x="29" y="16" width="266" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" name="colorGrayGray07"/>
                         <nil key="highlightedColor"/>
@@ -63,7 +63,7 @@
                 <constraint firstItem="jUk-fB-0yy" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Cwj-c9-KG4"/>
                 <constraint firstItem="9aM-Vw-Mqv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="Lp0-Nu-ybg"/>
                 <constraint firstItem="QmE-Xc-3Ok" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="N7H-rN-Nvr"/>
-                <constraint firstItem="jUk-fB-0yy" firstAttribute="leading" secondItem="9aM-Vw-Mqv" secondAttribute="leading" id="P7A-DW-gBU"/>
+                <constraint firstItem="jUk-fB-0yy" firstAttribute="leading" secondItem="9aM-Vw-Mqv" secondAttribute="leading" constant="13" id="P7A-DW-gBU"/>
                 <constraint firstAttribute="bottom" secondItem="9aM-Vw-Mqv" secondAttribute="bottom" id="VVh-PM-gFe"/>
                 <constraint firstAttribute="trailing" secondItem="9aM-Vw-Mqv" secondAttribute="trailing" constant="16" id="pja-57-7oF"/>
             </constraints>
