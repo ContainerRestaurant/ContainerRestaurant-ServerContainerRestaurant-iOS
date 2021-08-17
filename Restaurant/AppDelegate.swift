@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appCoordinator?.start()
         
         //카카오 로그인
-        KakaoSDKCommon.initSDK(appKey: "63a75c39603fff674c385ba73dbb51ff")
+        KakaoSDKCommon.initSDK(appKey: "8c9f75191418c58ae3116ceb63721938")
         
         return true
     }
