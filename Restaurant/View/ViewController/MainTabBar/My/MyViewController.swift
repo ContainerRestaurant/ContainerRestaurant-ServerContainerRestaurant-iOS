@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import KakaoSDKUser
 
 class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
     weak var coordinator: MyCoordinator?
@@ -35,15 +36,15 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
 
         self.navigationController?.setNavigationBarHidden(true, animated: true)
 
-        API().askUser(isLoginSubject: isLoginSubject, userDataSubject: userDataSubject)
-        Observable.zip(isLoginSubject, userDataSubject)
-            .subscribe(onNext: { [weak self] (isLogin, userData) in
-                if !isLogin { self?.coordinator?.presentLogin() }
-                self?.viewModel = MyViewModel(viewModel: userData)
-                
-                self?.bindingView()
-            })
-            .disposed(by: disposeBag)
+//        API().askUser(isLoginSubject: isLoginSubject, userDataSubject: userDataSubject)
+//        Observable.zip(isLoginSubject, userDataSubject)
+//            .subscribe(onNext: { [weak self] (isLogin, userData) in
+//                if !isLogin { self?.coordinator?.presentLogin() }
+//                self?.viewModel = MyViewModel(viewModel: userData)
+//
+//                self?.bindingView()
+//            })
+//            .disposed(by: disposeBag)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -104,7 +105,17 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
 
         descriptionLevelButton.rx.tap
             .subscribe(onNext: { [weak self] in
+                //계정 삭제
                 API().deleteUser()
+                //카카오 연결 끊기
+//                UserApi.shared.unlink {(error) in
+//                    if let error = error {
+//                        print(error)
+//                    }
+//                    else {
+//                        print("unlink() success.")
+//                    }
+//                }
                 self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
             })
             .disposed(by: disposeBag)

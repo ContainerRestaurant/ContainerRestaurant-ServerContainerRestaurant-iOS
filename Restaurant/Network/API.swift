@@ -185,6 +185,7 @@ extension API {
     //내 정보 또는 사용자 정보 조회
     func askUser(isLoginSubject: PublishSubject<Bool> = PublishSubject<Bool>(), userDataSubject: PublishSubject<UserModel> = PublishSubject<UserModel>(), userID: Int = Int.max) {
         let url = "\(baseURL)/api/user\(userID == Int.max ? "" : "/\(userID)")"
+//        let url = "\(baseURL)/api/user/163"
         
         AF.request(url,
                    method: .get,
