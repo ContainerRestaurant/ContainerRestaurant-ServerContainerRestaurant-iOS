@@ -8,12 +8,21 @@
 import UIKit
 
 class FeedInRestaurantSummaryInfo: UICollectionViewCell {
+    var restaurantFeed: [FeedPreviewModel] = []
+
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var feedCountDescriptionLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         setCollectionView()
+    }
+
+    func configure(restaurantFeed: [FeedPreviewModel]) {
+        self.restaurantFeed = restaurantFeed
+
+        feedCountDescriptionLabel.text = "총 \(restaurantFeed.count)개의 용기낸 피드가 있어요"
     }
 }
 
@@ -28,11 +37,12 @@ extension FeedInRestaurantSummaryInfo {
 
 extension FeedInRestaurantSummaryInfo: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return restaurantFeed.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: TwoFeedCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        cell.configure(restaurantFeed[indexPath.row])
         return cell
     }
 

@@ -27,27 +27,30 @@ class RestaurantSummaryInformationCoordinator: Coordinator {
     }
 
     func start() {
-        var restaurantSummaryInformation = RestaurantSummaryInformationViewController.instantiate()
-        restaurantSummaryInformation.coordinator = self
-        restaurantSummaryInformation.bind(viewModel: RestaurantSummaryInformationViewModel(self.restaurant ?? RestaurantModel()))
-        var bottomSheetHeight: CGFloat = 154
-        if Common.isNotchPhone { bottomSheetHeight += Common.homeBarHeight }
+        APIClient.restaurantFeed(restaurantID: self.restaurant?.id ?? 0) { [weak self] restaurantFeed in
+            var restaurantSummaryInformation = RestaurantSummaryInformationViewController.instantiate()
+            restaurantSummaryInformation.coordinator = self
+            restaurantSummaryInformation.bind(viewModel: RestaurantSummaryInformationViewModel(self?.restaurant ?? RestaurantModel(), restaurantFeed))
+            var bottomSheetHeight: CGFloat = 154
+            if !(self?.restaurant?.isWelcome ?? false) { bottomSheetHeight -= 31 }
+            if Common.isNotchPhone { bottomSheetHeight += Common.homeBarHeight }
 
-        let sheetViewController = SheetViewController(controller: restaurantSummaryInformation,
-                                                      sizes: [.fixed(bottomSheetHeight), .marginFromTop(44)],
-                                                      options: SheetOptions(
-                                                        pullBarHeight: 27,
-                                                        useFullScreenMode: false,
-                                                        shrinkPresentingViewController: false))
-        sheetViewController.allowPullingPastMaxHeight = false
-        sheetViewController.dismissOnPull = true
-        sheetViewController.cornerRadius = 10
-        sheetViewController.gripColor = .colorGrayGray03
-        sheetViewController.handleScrollView(restaurantSummaryInformation.collectionView)
-        sheetViewController.didDismiss = { _ in
-            print("sheetViewController didDismiss")
+            let sheetViewController = SheetViewController(controller: restaurantSummaryInformation,
+                                                          sizes: [.fixed(bottomSheetHeight), .marginFromTop(44)],
+                                                          options: SheetOptions(
+                                                            pullBarHeight: 27,
+                                                            useFullScreenMode: false,
+                                                            shrinkPresentingViewController: false))
+            sheetViewController.allowPullingPastMaxHeight = false
+            sheetViewController.dismissOnPull = true
+            sheetViewController.cornerRadius = 10
+            sheetViewController.gripColor = .colorGrayGray03
+            sheetViewController.handleScrollView(restaurantSummaryInformation.collectionView)
+            sheetViewController.didDismiss = { _ in
+                print("sheetViewController didDismiss")
+            }
+
+            Common.currentViewController()?.present(sheetViewController, animated: true, completion: nil)
         }
-
-        Common.currentViewController()?.present(sheetViewController, animated: true, completion: nil)
     }
 }

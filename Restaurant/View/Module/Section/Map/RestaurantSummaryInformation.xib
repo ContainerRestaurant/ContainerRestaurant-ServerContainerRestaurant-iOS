@@ -160,6 +160,12 @@
                 <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="d5i-zp-P8O" secondAttribute="trailing" id="zTP-3Z-srq"/>
                 <constraint firstItem="p0t-aa-g4x" firstAttribute="leading" secondItem="IVL-tc-Xyv" secondAttribute="trailing" constant="4" id="zU2-DN-Ho8"/>
             </constraints>
+            <connections>
+                <outlet property="feedCountButton" destination="d5i-zp-P8O" id="US8-Ya-Ug4"/>
+                <outlet property="levelOfDifficultyLabel" destination="p0t-aa-g4x" id="uuZ-Bh-w5I"/>
+                <outlet property="levelOfDifficultyView" destination="IVL-tc-Xyv" id="0dh-fp-JqO"/>
+                <outlet property="restaurantNameLabel" destination="gHi-IW-SK2" id="But-VE-quF"/>
+            </connections>
             <point key="canvasLocation" x="9" y="153"/>
         </collectionViewCell>
     </objects>

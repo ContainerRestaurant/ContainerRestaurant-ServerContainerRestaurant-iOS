@@ -49,6 +49,9 @@
                 <constraint firstAttribute="bottom" secondItem="oAy-Xb-KFa" secondAttribute="bottom" id="lT5-nS-0RK"/>
                 <constraint firstItem="oAy-Xb-KFa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="zWr-qD-N6M"/>
             </constraints>
+            <connections>
+                <outlet property="mainImageView" destination="Ikf-nb-ONU" id="2gg-87-e5P"/>
+            </connections>
             <point key="canvasLocation" x="131.15942028985509" y="152.34375"/>
         </collectionViewCell>
     </objects>

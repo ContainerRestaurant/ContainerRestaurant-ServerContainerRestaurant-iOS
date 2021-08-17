@@ -63,6 +63,7 @@
             </constraints>
             <connections>
                 <outlet property="collectionView" destination="9QH-q4-t3v" id="bb2-qz-Ocw"/>
+                <outlet property="feedCountDescriptionLabel" destination="ncw-Xu-tL9" id="O6l-ER-6Zy"/>
             </connections>
             <point key="canvasLocation" x="9" y="153"/>
         </collectionViewCell>

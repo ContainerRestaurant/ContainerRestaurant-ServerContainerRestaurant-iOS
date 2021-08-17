@@ -26,17 +26,17 @@ class TwoFeedCollectionViewCell: UICollectionViewCell {
 //        replyCountLabel.text = "0"
 //    }
     
-    func configure(_ recommendFeed: FeedPreviewModel) {
-        if recommendFeed.thumbnailUrl.isEmpty {
+    func configure(_ feedPreview: FeedPreviewModel) {
+        if feedPreview.thumbnailUrl.isEmpty {
             feedImageView.image = UIImage(named: "emptyFeedImgIos")
             feedImageView.backgroundColor = FeedBackgroundColor.allCases.randomElement()?.color()
         } else {
-            let imageURL = URL(string: recommendFeed.thumbnailUrl)
+            let imageURL = URL(string: feedPreview.thumbnailUrl)
             feedImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.3))])
         }
-        nicknameLabel.text = recommendFeed.ownerNickname
-        contentLabel.text = recommendFeed.content
-        likeCountLabel.text = String(recommendFeed.likeCount)
-        replyCountLabel.text = String(recommendFeed.replyCount)
+        nicknameLabel.text = feedPreview.ownerNickname
+        contentLabel.text = feedPreview.content
+        likeCountLabel.text = String(feedPreview.likeCount)
+        replyCountLabel.text = String(feedPreview.replyCount)
     }
 }

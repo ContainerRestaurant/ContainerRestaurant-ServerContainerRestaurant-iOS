@@ -9,10 +9,12 @@ import UIKit
 
 class RestaurantSummaryInformationViewModel {
     var modules: [UICollectionViewCell.Type] = []
-    var restaurant: RestaurantModel?
+    var restaurant: RestaurantModel
+    var restaurantFeed: [FeedPreviewModel]
 
-    init(_ restaurant: RestaurantModel) {
+    init(_ restaurant: RestaurantModel, _ restaurantFeed: [FeedPreviewModel]) {
         self.restaurant = restaurant
+        self.restaurantFeed = restaurantFeed
 
         appendModule()
     }
@@ -20,7 +22,7 @@ class RestaurantSummaryInformationViewModel {
 
 extension RestaurantSummaryInformationViewModel {
     private func appendModule() {
-        self.modules.append(WelcomeViewInRestaurantSummaryInfo.self)
+        if restaurant.isWelcome { self.modules.append(WelcomeViewInRestaurantSummaryInfo.self) }
         self.modules.append(RestaurantSummaryInformation.self)
         self.modules.append(MainImageInRestaurantSummaryInfo.self)
         self.modules.append(FeedInRestaurantSummaryInfo.self)
