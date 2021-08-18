@@ -18,6 +18,7 @@ struct RestaurantModel: Codable {
     var imagePath: String
     var difficultyAverage: Double
     var feedCount: Int
+    var isWelcome: Bool
     
     private enum CodingKeys: String, CodingKey {
         case name
@@ -29,6 +30,7 @@ struct RestaurantModel: Codable {
         case imagePath = "image_path"
         case difficultyAverage = "difficultyAvg"
         case feedCount
+        case isWelcome = "isContainerFriendly"
     }
     
     init() {
@@ -41,9 +43,10 @@ struct RestaurantModel: Codable {
         imagePath = ""
         difficultyAverage = 0.0
         feedCount = 0
+        isWelcome = false
     }
     
-    init(name: String, address: String, latitude: Double, longitude: Double, id: Int = 0, imagePath: String = "", difficultyAverage: Double = 0.0, feedCount: Int = 0) {
+    init(name: String, address: String, latitude: Double, longitude: Double, id: Int = 0, imagePath: String = "", difficultyAverage: Double = 0.0, feedCount: Int = 0, isWelcome: Bool = false) {
         self.name = name
         self.address = address
         self.latitude = latitude
@@ -53,6 +56,7 @@ struct RestaurantModel: Codable {
         self.imagePath = imagePath
         self.difficultyAverage = difficultyAverage
         self.feedCount = feedCount
+        self.isWelcome = isWelcome
     }
     
     init(from decoder: Decoder) throws {
@@ -67,5 +71,6 @@ struct RestaurantModel: Codable {
         self.imagePath = (try? container.decode(String.self, forKey: .imagePath)) ?? ""
         self.difficultyAverage = (try? container.decode(Double.self, forKey: .difficultyAverage)) ?? 0.0
         self.feedCount = (try? container.decode(Int.self, forKey: .feedCount)) ?? 0
+        self.isWelcome = (try? container.decode(Bool.self, forKey: .isWelcome)) ?? false
     }
 }

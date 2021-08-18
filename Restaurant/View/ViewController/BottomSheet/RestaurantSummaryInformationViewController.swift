@@ -46,7 +46,7 @@ extension RestaurantSummaryInformationViewController {
 
 extension RestaurantSummaryInformationViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return viewModel.modules.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -58,12 +58,14 @@ extension RestaurantSummaryInformationViewController: UICollectionViewDelegate, 
             return cell
         case is RestaurantSummaryInformation.Type:
             let cell: RestaurantSummaryInformation = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configure(restaurant: viewModel.restaurant)
             return cell
         case is MainImageInRestaurantSummaryInfo.Type:
             let cell: MainImageInRestaurantSummaryInfo = collectionView.dequeueReusableCell(for: indexPath)
             return cell
         case is FeedInRestaurantSummaryInfo.Type:
             let cell: FeedInRestaurantSummaryInfo = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configure(restaurantFeed: viewModel.restaurantFeed)
             return cell
         default: return UICollectionViewCell()
         }
@@ -80,7 +82,8 @@ extension RestaurantSummaryInformationViewController: UICollectionViewDelegate, 
         case is MainImageInRestaurantSummaryInfo.Type:
             return CGSize(width: CGFloat(375).widthRatio(), height: 209)
         case is FeedInRestaurantSummaryInfo.Type:
-            return CGSize(width: CGFloat(375).widthRatio(), height: 74 + 272*4 + 20*3)
+            let feedLineCount = ceil(Double(viewModel.restaurantFeed.count)/2.0)
+            return CGSize(width: CGFloat(375).widthRatio(), height: CGFloat(74 + 272*feedLineCount + 20*(feedLineCount-1)))
         default:
             return CGSize.zero
         }

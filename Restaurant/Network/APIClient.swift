@@ -51,6 +51,20 @@ class APIClient {
                 }
             }
     }
+
+    //해당 식당에 쓰인 피드
+    static func restaurantFeed(restaurantID: Int, completion: @escaping ([FeedPreviewModel]) -> Void ) {
+        AF.request(Router.RestaurantFeed(restaurantID: restaurantID))
+            .responseDecodable { (response: DataResponse<TwoFeedModel, AFError>) in
+                switch response.result {
+                case .success(let categoryFeed):
+                    completion(categoryFeed.feedPreviewList)
+                case .failure(let error):
+                    completion([])
+                    print("Restaurant Feed's Error: \(error)")
+                }
+            }
+    }
     
     //피드 상세
     static func feedDetail(feedID: Int, completion: @escaping (FeedDetailModel?) -> Void ) {

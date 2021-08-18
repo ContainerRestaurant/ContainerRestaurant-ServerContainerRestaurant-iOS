@@ -8,7 +8,13 @@
 import UIKit
 
 class MainImageInRestaurantSummaryInfo: UICollectionViewCell {
+    @IBOutlet weak var mainImageView: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+
+    func configure(imageURL: String) {
+        
     }
 }
