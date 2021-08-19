@@ -36,6 +36,15 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
 
         self.navigationController?.setNavigationBarHidden(true, animated: true)
 
+        let loginToken = UserDataManager.sharedInstance.loginToken
+        APIClient.checkLogin(loginToken: loginToken) { [weak self] userModel in
+            if userModel.id == 0 {
+                self?.coordinator?.presentLogin()
+            } else {
+                self?.viewModel = MyViewModel(viewModel: userModel)
+                self?.bindingView()
+            }
+        }
 //        API().askUser(isLoginSubject: isLoginSubject, userDataSubject: userDataSubject)
 //        Observable.zip(isLoginSubject, userDataSubject)
 //            .subscribe(onNext: { [weak self] (isLogin, userData) in

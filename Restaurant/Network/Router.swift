@@ -9,6 +9,9 @@ import Foundation
 import Alamofire
 
 enum Router: URLRequestConvertible {
+    case CreateLoginToken(provider: String, accessToken: String)
+    case CheckLogin
+    case UpdateUserInformation(userID: Int, nickname: String)
     case HomeBanner
     case RecommendFeed
     case CategoryFeed(category: String)
@@ -19,6 +22,9 @@ enum Router: URLRequestConvertible {
     
     private var method: HTTPMethod {
         switch self {
+        case .CreateLoginToken: return .post
+        case .CheckLogin: return .get
+        case .UpdateUserInformation: return .patch
         case .HomeBanner: return .get
         case .RecommendFeed: return .get
         case .CategoryFeed: return .get
@@ -29,6 +35,9 @@ enum Router: URLRequestConvertible {
 
     private var path: String {
         switch self {
+        case .CreateLoginToken: return "/api/user"
+        case .CheckLogin: return "/api/user"
+        case .UpdateUserInformation(let userID, _): return "/api/user/\(userID)"
         case .HomeBanner: return "/banners"
         case .RecommendFeed: return "/api/feed/recommend"
         case .CategoryFeed: return "/api/feed"
@@ -39,6 +48,9 @@ enum Router: URLRequestConvertible {
 
     private var parameters: Parameters? {
         switch self {
+        case .CreateLoginToken(let provider, let accessToken): return ["provider": provider, "accessToken": accessToken]
+        case .CheckLogin: return nil
+        case .UpdateUserInformation(_, let nickname): return ["nickname": nickname]
         case .HomeBanner: return nil
         case .RecommendFeed: return nil
         case .CategoryFeed(let category): return category.isEmpty ? nil : ["category": category]
@@ -51,6 +63,13 @@ enum Router: URLRequestConvertible {
         let baseURL = try Router.baseURLString.asURL()
         var urlRequest = URLRequest(url: baseURL.appendingPathComponent(path))
         urlRequest.method = method
+
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        switch self {
+        case .CheckLogin, .UpdateUserInformation:
+            urlRequest.setValue("Bearer \(UserDataManager.sharedInstance.loginToken)", forHTTPHeaderField: "Authorization")
+        default: break
+        }
         
         /* 추후 참고
         //urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
@@ -62,7 +81,7 @@ enum Router: URLRequestConvertible {
                 switch method {
                 case .get:
                     urlRequest = try URLEncodedFormParameterEncoder().encode(parameters as? [String: String], into: urlRequest)
-                case .post:
+                case .post, .patch:
                     urlRequest = try JSONParameterEncoder().encode(parameters as? [String: String], into: urlRequest)                default: break
                 }
             } catch {
