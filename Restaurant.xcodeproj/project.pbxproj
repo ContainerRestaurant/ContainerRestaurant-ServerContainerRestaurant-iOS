@@ -167,6 +167,7 @@
 		FB6EEE2C26CA8C7300E6237B /* ContentOnFeedDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB6EEE2A26CA8C7300E6237B /* ContentOnFeedDetail.xib */; };
 		FB6EEE2F26CAC4CE00E6237B /* CommentViewOnFeedDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6EEE2D26CAC4CE00E6237B /* CommentViewOnFeedDetail.swift */; };
 		FB6EEE3026CAC4CE00E6237B /* CommentViewOnFeedDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB6EEE2E26CAC4CE00E6237B /* CommentViewOnFeedDetail.xib */; };
+		FB6EEE3226CC1F4C00E6237B /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6EEE3126CC1F4C00E6237B /* LoginModel.swift */; };
 		FBAA5D0D26B2F6BB00CC38CA /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA5D0C26B2F6BB00CC38CA /* ToastMessage.swift */; };
 		FBAA5D1126B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA5D0F26B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.swift */; };
 		FBAA5D1226B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBAA5D1026B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.xib */; };
@@ -355,6 +356,7 @@
 		FB6EEE2A26CA8C7300E6237B /* ContentOnFeedDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentOnFeedDetail.xib; sourceTree = "<group>"; };
 		FB6EEE2D26CAC4CE00E6237B /* CommentViewOnFeedDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewOnFeedDetail.swift; sourceTree = "<group>"; };
 		FB6EEE2E26CAC4CE00E6237B /* CommentViewOnFeedDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentViewOnFeedDetail.xib; sourceTree = "<group>"; };
+		FB6EEE3126CC1F4C00E6237B /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		FBAA5D0C26B2F6BB00CC38CA /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		FBAA5D0F26B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewInRestaurantSummaryInfo.swift; sourceTree = "<group>"; };
 		FBAA5D1026B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewInRestaurantSummaryInfo.xib; sourceTree = "<group>"; };
@@ -506,6 +508,7 @@
 				FB585B2A266634EB0085C6B2 /* Creation */,
 				52169B0626A7604B00705FEC /* Map */,
 				520419CE2656CCBE0099BA39 /* TestCodable.swift */,
+				FB6EEE3126CC1F4C00E6237B /* LoginModel.swift */,
 				5258115C267901E900900D59 /* UserModel.swift */,
 				525811582677DD6B00900D59 /* NickNameValidationModel.swift */,
 			);
@@ -1322,6 +1325,7 @@
 				FBAA5D1B26B5733200CC38CA /* MainImageInRestaurantSummaryInfo.swift in Sources */,
 				5239733C261B625000856C99 /* FeedViewController.swift in Sources */,
 				52169B0826A7608600705FEC /* NearybyRestaurantModel.swift in Sources */,
+				FB6EEE3226CC1F4C00E6237B /* LoginModel.swift in Sources */,
 				528558ED26249DDF00AB4E28 /* TestViewController.swift in Sources */,
 				FB56AF6F265F5F43002736F5 /* CreationFeedCoordinator.swift in Sources */,
 				FB1BE373263719540004673C /* Title16Bold.swift in Sources */,

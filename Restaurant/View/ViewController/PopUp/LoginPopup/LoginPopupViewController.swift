@@ -38,7 +38,7 @@ class LoginPopupViewController: UIViewController, Storyboard {
         
         appleLoginButton.rx.tap
             .subscribe(onNext: { _ in
-                API().askUser()
+                print("애플 로그인 작업 필요")
             })
             .disposed(by: disposeBag)
         
@@ -68,8 +68,14 @@ extension LoginPopupViewController {
                             print("사용자 정보 가져오기 \(error)")
                         } else {
                             print("me() success.")
-                            print("엑세스토큰: \(oAuthToken?.accessToken)")
-                            API().createUser(provider: "KAKAO", accessToken: oAuthToken?.accessToken ?? "")
+
+                            APIClient.createLoginToken(provider: "KAKAO", accessToken: oAuthToken?.accessToken ?? "") {
+                                print("이거지이거")
+                                print($0)
+                                UserDataManager.sharedInstance.userID = $0.id
+                                UserDataManager.sharedInstance.loginToken = $0.token
+                                print("이거지이거")
+                            }
                             
                             self?.dismiss(animated: false, completion: nil)
                             self?.coordinator?.presentNickNamePopup()

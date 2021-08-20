@@ -44,7 +44,14 @@ class NickNamePopupViewController: BaseViewController, Storyboard {
         registerButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 let userID = UserDataManager.sharedInstance.userID
-                API().updateNickname(userID: userID, nickname: self?.nickNameTextField.text ?? "")
+                let nickname = self?.nickNameTextField.text ?? ""
+
+                APIClient.updateUserInformation(userID: userID, nickname: nickname) {
+                    print("업데이트 됐따")
+                    print($0)
+                    print("업데이트 됐따")
+                }
+//                API().updateNickname(userID: userID, nickname: self?.nickNameTextField.text ?? "")
                 self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
                 self?.dismiss(animated: true, completion: nil)
             })
