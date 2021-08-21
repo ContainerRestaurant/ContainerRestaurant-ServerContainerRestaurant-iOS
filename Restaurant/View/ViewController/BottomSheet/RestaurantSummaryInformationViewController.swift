@@ -62,6 +62,7 @@ extension RestaurantSummaryInformationViewController: UICollectionViewDelegate, 
             return cell
         case is MainImageInRestaurantSummaryInfo.Type:
             let cell: MainImageInRestaurantSummaryInfo = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configure(imageURL: viewModel.restaurant.imagePath)
             return cell
         case is FeedInRestaurantSummaryInfo.Type:
             let cell: FeedInRestaurantSummaryInfo = collectionView.dequeueReusableCell(for: indexPath)
