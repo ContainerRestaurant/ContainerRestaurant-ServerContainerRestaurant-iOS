@@ -15,6 +15,6 @@ class MainImageInRestaurantSummaryInfo: UICollectionViewCell {
     }
 
     func configure(imageURL: String) {
-        
+        mainImageView.kf.setImage(with: URL(string: imageURL), options: [.transition(.fade(0.3))])
     }
 }

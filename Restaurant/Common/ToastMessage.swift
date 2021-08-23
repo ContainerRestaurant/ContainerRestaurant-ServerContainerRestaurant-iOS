@@ -26,9 +26,9 @@ class ToastMessage {
             window.addSubview(label)
             label.alpha = 0
             UIView.animate(withDuration: 0, animations: {
-                label.alpha = 1
+                label.alpha = 0.5
             }, completion: { _ in
-                UIView.animate(withDuration: 3, animations: {
+                UIView.animate(withDuration: 2, animations: {
                     label.alpha = 0
                 }, completion: { _ in
                     label.removeFromSuperview()
