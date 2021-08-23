@@ -6,12 +6,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RecentlyFeedCollectionViewCell" customModule="Restaurant" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RecentlyFeedCreationUserCollectionViewCell" customModule="Restaurant" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="86" height="108"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -40,7 +41,7 @@
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <color key="backgroundColor" name="guideGuide"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="3LG-1w-HMP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4Ip-1U-gFF"/>
                 <constraint firstItem="yZu-FO-I1G" firstAttribute="top" secondItem="XxK-lZ-arY" secondAttribute="bottom" constant="4" id="B2O-is-xPl"/>
@@ -52,6 +53,11 @@
                 <constraint firstAttribute="trailing" secondItem="yZu-FO-I1G" secondAttribute="trailing" id="qcW-my-GE3"/>
                 <constraint firstItem="yZu-FO-I1G" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="scu-9U-l7s"/>
             </constraints>
+            <connections>
+                <outlet property="imageView" destination="XxK-lZ-arY" id="mqQ-sc-obu"/>
+                <outlet property="levelLabel" destination="3LG-1w-HMP" id="7gQ-3k-Iy7"/>
+                <outlet property="nicknameLabel" destination="yZu-FO-I1G" id="XuK-l7-zGS"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </collectionViewCell>
     </objects>
@@ -62,8 +68,8 @@
         <namedColor name="colorGrayGray07">
             <color red="0.14100000262260437" green="0.14100000262260437" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="guideGuide">
-            <color red="1" green="0.0" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

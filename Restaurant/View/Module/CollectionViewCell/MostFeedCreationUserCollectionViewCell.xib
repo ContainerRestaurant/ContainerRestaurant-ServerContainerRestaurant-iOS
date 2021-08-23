@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MostFeedTopTenCollectionViewCell" customModule="Restaurant" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MostFeedCreationUserCollectionViewCell" customModule="Restaurant" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="148" height="186"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -66,7 +66,7 @@
             </constraints>
             <size key="customSize" width="136" height="174"/>
             <connections>
-                <outlet property="imageView" destination="KTS-Sv-vW7" id="Pfg-CF-uQe"/>
+                <outlet property="imageView" destination="t5W-W4-BRe" id="nVG-cG-Ruv"/>
                 <outlet property="levelLabel" destination="Gee-LF-bYY" id="qeG-nW-a9d"/>
                 <outlet property="nickNameLabel" destination="tTm-AF-Fdq" id="xJt-j5-Ygz"/>
             </connections>

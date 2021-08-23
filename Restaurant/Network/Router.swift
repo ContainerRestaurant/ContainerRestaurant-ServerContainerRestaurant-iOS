@@ -13,6 +13,8 @@ enum Router: URLRequestConvertible {
     case CheckLogin
     case UpdateUserInformation(userID: Int, nickname: String)
     case HomeBanner
+    case MostFeedCreationUsers
+    case RecentlyFeedCreationUsers
     case RecommendFeed
     case CategoryFeed(category: String)
     case RestaurantFeed(restaurantID: Int)
@@ -26,6 +28,8 @@ enum Router: URLRequestConvertible {
         case .CreateLoginToken: return .post
         case .CheckLogin: return .get
         case .UpdateUserInformation: return .patch
+        case .MostFeedCreationUsers: return .get
+        case .RecentlyFeedCreationUsers: return .get
         case .HomeBanner: return .get
         case .RecommendFeed: return .get
         case .CategoryFeed: return .get
@@ -41,6 +45,8 @@ enum Router: URLRequestConvertible {
         case .CheckLogin: return "/api/user"
         case .UpdateUserInformation(let userID, _): return "/api/user/\(userID)"
         case .HomeBanner: return "/banners"
+        case .MostFeedCreationUsers: return "/api/statistics/top"
+        case .RecentlyFeedCreationUsers: return "/api/statistics/latest"
         case .RecommendFeed: return "/api/feed/recommend"
         case .CategoryFeed: return "/api/feed"
         case .RestaurantFeed(let restaurantID): return "/api/feed/restaurant/\(restaurantID)"
@@ -55,6 +61,8 @@ enum Router: URLRequestConvertible {
         case .CheckLogin: return nil
         case .UpdateUserInformation(_, let nickname): return ["nickname": nickname]
         case .HomeBanner: return nil
+        case .MostFeedCreationUsers: return nil
+        case .RecentlyFeedCreationUsers: return nil
         case .RecommendFeed: return nil
         case .CategoryFeed(let category): return category.isEmpty ? nil : ["category": category]
         case .RestaurantFeed: return nil
