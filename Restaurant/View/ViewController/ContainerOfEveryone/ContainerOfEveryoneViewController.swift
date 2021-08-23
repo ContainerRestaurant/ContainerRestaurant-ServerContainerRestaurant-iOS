@@ -15,11 +15,9 @@ class ContainerOfEveryoneViewController: BaseViewController, ViewModelBindableTy
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewModel = ContainerOfEveryoneViewModel() //바꿔야함
+
         setCollectionView()
         print("ContainerOfEveryoneViewController viewDidLoad()")
-//        setNavigation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,8 +47,8 @@ extension ContainerOfEveryoneViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-        self.collectionView.register(MostFeedTopTenCollectionView.self)
-        self.collectionView.register(RecentlyFeedCollectionView.self)
+        self.collectionView.register(MostFeedCreationUserCollectionView.self)
+        self.collectionView.register(RecentlyFeedCreationUserCollectionView.self)
     }
     
     private func setNavigation() {
@@ -67,16 +65,13 @@ extension ContainerOfEveryoneViewController {
         helpButton.addTarget(self, action: #selector(listStandardDescriptionPopup), for: .touchUpInside)
         let helpRightBarButtonItem = UIBarButtonItem(customView: helpButton)
         self.navigationItem.rightBarButtonItem = helpRightBarButtonItem
-//        self.coordinator?.presenter.navigationItem.rightBarButtonItem = helpRightBarButtonItem
-        //NavigationController's Navigation Item vs ViewController's Navigation Item
         
         self.coordinator?.presenter.navigationBar.isHidden = false
         self.coordinator?.presenter.navigationBar.isTranslucent = false
         self.coordinator?.presenter.navigationBar.barTintColor = .colorMainGreen02
         self.coordinator?.presenter.navigationBar.tintColor = .colorGrayGray01
         self.coordinator?.presenter.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.colorGrayGray01]
-        
-//        self.coordinator?.presenter.navigationBar.topItem?.title = "" //확인 필요
+
         self.navigationItem.title = "모두의 용기"
     }
     
@@ -95,14 +90,14 @@ extension ContainerOfEveryoneViewController: UICollectionViewDelegate, UICollect
         let type = viewModel.modules[indexPath.row]
 
         switch type {
-        case is MostFeedTopTenCollectionView.Type:
-            let cell: MostFeedTopTenCollectionView = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(coordinator: self.coordinator!)
+        case is MostFeedCreationUserCollectionView.Type:
+            let cell: MostFeedCreationUserCollectionView = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configure(self.viewModel.mostFeedCreationUsers, self.coordinator!)
             return cell
 
-        case is RecentlyFeedCollectionView.Type:
-            let cell: RecentlyFeedCollectionView = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(coordinator: self.coordinator!)
+        case is RecentlyFeedCreationUserCollectionView.Type:
+            let cell: RecentlyFeedCreationUserCollectionView = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configure(self.viewModel.recentlyFeedCreationUsers, self.coordinator!)
             return cell
 
         default: return UICollectionViewCell()
@@ -110,9 +105,11 @@ extension ContainerOfEveryoneViewController: UICollectionViewDelegate, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch indexPath.row {
-        case 0: return viewModel.mostFeedTopTenSize()
-        case 1: return viewModel.RecentlyFeedSize()
+        let type = viewModel.modules[indexPath.row]
+
+        switch type {
+        case is MostFeedCreationUserCollectionView.Type: return viewModel.mostFeedTopTenSize()
+        case is RecentlyFeedCreationUserCollectionView.Type: return viewModel.RecentlyFeedSize()
         default: return CGSize.zero
         }
     }

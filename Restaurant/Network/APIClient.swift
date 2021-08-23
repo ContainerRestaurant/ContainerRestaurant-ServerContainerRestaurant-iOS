@@ -66,6 +66,34 @@ class APIClient {
             }
     }
 
+    //최다 피드 작성자 리스트(탑텐)
+    static func mostFeedCreationUsers(completion: @escaping ([UserModel]) -> Void) {
+        AF.request(Router.MostFeedCreationUsers)
+            .responseDecodable { (response: DataResponse<MostFeedCreationUserModel, AFError>) in
+                switch response.result {
+                case .success(let mostFeedCreationUserModel):
+                    completion(mostFeedCreationUserModel.users)
+                case .failure(let error):
+                    completion([])
+                    print("Most Feed Creation User's Error: \(error)")
+                }
+            }
+    }
+
+    //최근 피드 작성자 리스트
+    static func recentlyFeedCreationUsers(completion: @escaping ([UserModel]) -> Void) {
+        AF.request(Router.RecentlyFeedCreationUsers)
+            .responseDecodable { (response: DataResponse<RecentlyFeedCreationUserModel, AFError>) in
+                switch response.result {
+                case .success(let recentlyFeedCreationUserModel):
+                    completion(recentlyFeedCreationUserModel.users)
+                case .failure(let error):
+                    completion([])
+                    print("Recently Feed Creation User's Error: \(error)")
+                }
+            }
+    }
+
     //홈 탭 메인 피드
     static func recommendFeed(completion: @escaping ([FeedPreviewModel]) -> Void ) {
         AF.request(Router.RecommendFeed)

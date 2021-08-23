@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import RxSwift
 
 class ContainerOfEveryoneCoordinator: NSObject, Coordinator {
     var delegate: CoordinatorFinishDelegate?
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
+    let disposeBag = DisposeBag()
+    let mostFeedCreationUsersSubject = PublishSubject<[UserModel]>()
+    let recentlyFeedCreationUsersSubject = PublishSubject<[UserModel]>()
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
@@ -18,9 +22,22 @@ class ContainerOfEveryoneCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        let containerOfEveryone = ContainerOfEveryoneViewController.instantiate()
-        containerOfEveryone.coordinator = self
-        presenter.pushViewController(containerOfEveryone, animated: true)
+        APIClient.mostFeedCreationUsers { [weak self] in
+            self?.mostFeedCreationUsersSubject.onNext($0)
+        }
+
+        APIClient.recentlyFeedCreationUsers { [weak self] in
+            self?.recentlyFeedCreationUsersSubject.onNext($0)
+        }
+
+        Observable.zip(mostFeedCreationUsersSubject, recentlyFeedCreationUsersSubject)
+            .subscribe(onNext: { [weak self] (mostFeedCreationUsers, recentlyFeedCreationUsers) in
+                var containerOfEveryone = ContainerOfEveryoneViewController.instantiate()
+                containerOfEveryone.coordinator = self
+                containerOfEveryone.bind(viewModel: ContainerOfEveryoneViewModel(mostFeedCreationUsers, recentlyFeedCreationUsers))
+                self?.presenter.pushViewController(containerOfEveryone, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
     
     func presentToListStandardDescription() {
