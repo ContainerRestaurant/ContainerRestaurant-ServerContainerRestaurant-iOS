@@ -32,6 +32,7 @@ class FeedDetailCoordinator: NSObject, Coordinator {
                 var feedDetail = FeedDetailViewController.instantiate()
                 feedDetail.coordinator = self
                 feedDetail.bind(viewModel: FeedDetailViewModel(feedDetailData))
+                feedDetail.hidesBottomBarWhenPushed = true
                 
                 self?.presenter.pushViewController(feedDetail, animated: true)
             }
