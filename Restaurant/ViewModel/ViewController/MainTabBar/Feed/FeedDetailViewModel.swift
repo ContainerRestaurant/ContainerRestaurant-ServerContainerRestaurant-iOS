@@ -11,7 +11,9 @@ import RxCocoa
 
 class FeedDetailViewModel {
     var thumbnailURLObservable: Observable<String>
+    var userProfileImageObservable: Observable<String>
     var userNicknameDriver: Driver<String>
+    var userLevelDriver: Driver<String>
     var likeCountDriver: Driver<Int>
     var scrapCountDriver: Driver<Int>
     var categoryDriver: Driver<String>
@@ -19,6 +21,7 @@ class FeedDetailViewModel {
     var isWelcome: Bool = false
     var isWelcomeDriver: Driver<Bool>
     var levelOfDifficulty: Int = 1
+    var userLevel: String = ""
     var mainMenuAndContainers: [MenuAndContainerModel]
     var sideMenuAndContainers: [MenuAndContainerModel]
 
@@ -30,8 +33,15 @@ class FeedDetailViewModel {
         thumbnailURLObservable = Observable<String>
             .just(feedDetail.thumbnailURL)
 
+        userProfileImageObservable = Observable<String>
+            .just(feedDetail.userProfileImage)
+
         userNicknameDriver = Observable<String>
             .just(feedDetail.userNickname)
+            .asDriver(onErrorJustReturn: "")
+
+        userLevelDriver = Observable<String>
+            .just(feedDetail.userLevel)
             .asDriver(onErrorJustReturn: "")
         
         likeCountDriver = Observable<Int>
@@ -56,6 +66,7 @@ class FeedDetailViewModel {
             .asDriver(onErrorJustReturn: false)
 
         levelOfDifficulty = feedDetail.difficulty
+        userLevel = feedDetail.userLevel
 
         mainMenuAndContainers = feedDetail.mainMenu
         sideMenuAndContainers = feedDetail.subMenu

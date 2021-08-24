@@ -71,6 +71,7 @@ struct Common {
         }
     }
 
+    //레벨별 프로필 이미지 74
     static func getDefaultProfileImage74(_ levelTitle: String) -> UIImage? {
         switch levelTitle {
         case "LV1. 텀블러": return UIImage(named: "ProfileTumbler74px")
@@ -78,6 +79,18 @@ struct Common {
         case "LV3. 용기 세트": return UIImage(named: "ProfileContainerSet74px")
         case "LV4. 후라이팬": return UIImage(named: "ProfileFryingPan74px")
         case "LV5. 냄비": return UIImage(named: "ProfilePot74px")
+        default: return nil//UIImage(named: "ProfileTumbler148px")
+        }
+    }
+
+    //레벨별 프로필 이미지 36
+    static func getDefaultProfileImage36(_ levelTitle: String) -> UIImage? {
+        switch levelTitle {
+        case "LV1. 텀블러": return UIImage(named: "ProfileTumbler36px")
+        case "LV2. 밥그릇": return UIImage(named: "ProfileBowl36px")
+        case "LV3. 용기 세트": return UIImage(named: "ProfileContainerSet36px")
+        case "LV4. 후라이팬": return UIImage(named: "ProfileFryingPan36px")
+        case "LV5. 냄비": return UIImage(named: "ProfilePot36px")
         default: return nil//UIImage(named: "ProfileTumbler148px")
         }
     }

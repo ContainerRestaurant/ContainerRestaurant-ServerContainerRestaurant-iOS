@@ -103,7 +103,7 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
         switch viewModel.modules[indexPath.row] {
         case is TopSectionOnFeedDetail.Type:
             let cell: TopSectionOnFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(viewModel.thumbnailURLObservable, viewModel.userNicknameDriver, viewModel.likeCountDriver, viewModel.scrapCountDriver)
+            cell.configure(viewModel.thumbnailURLObservable, viewModel.userProfileImageObservable, viewModel.userNicknameDriver, viewModel.userLevelDriver, viewModel.likeCountDriver, viewModel.scrapCountDriver, viewModel.userLevel)
             return cell
 
         case is TapOnFeedDetail.Type:
