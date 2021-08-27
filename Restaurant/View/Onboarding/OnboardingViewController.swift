@@ -62,7 +62,7 @@ class OnboardingViewController: BaseViewController, Storyboard {
 extension OnboardingViewController {
     func createOnboardingView() -> [OnboardingView] {
         //높이 330으로 세련님과 퉁
-        let lottieHeight = Common.isNotchPhone ? CGFloat(330).heightRatio() : CGFloat(295).heightRatio()
+        let lottieHeight = UIDevice.current.hasNotch ? CGFloat(330).heightRatio() : CGFloat(295).heightRatio()
 
         let onboarding1: OnboardingView = Bundle.main.loadNibNamed("OnboardingView", owner: self, options: nil)?.first as! OnboardingView
         onboarding1.mainTitleLabel.text = LongText.onboarding1MainTitle.rawValue

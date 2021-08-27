@@ -32,7 +32,7 @@ class TopSectionOnFeedDetail: UICollectionViewCell {
                 if let imageURL = imageURL {
                     self?.feedImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.3))])
                 } else {
-                    self?.feedImageView.image = UIImage(named: "emptyFeedImgIos")
+                    self?.feedImageView.image = UIImage(named: "emptyImgFeedDetail")
                     self?.feedImageView.backgroundColor = FeedBackgroundColor.allCases.randomElement()?.color()
                 }
             })

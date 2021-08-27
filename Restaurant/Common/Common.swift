@@ -8,12 +8,9 @@
 import UIKit
 
 struct Common {
-    static var homeBarHeight: CGFloat = 35
+    static var homeBarHeight: CGFloat = 34 // home indicator
     static var tabBarHeight: CGFloat = 48
     static var notchHeight: CGFloat = 48
-    static var isNotchPhone: Bool {
-        return UIScreen.main.bounds.height > CGFloat(700)
-    }
 
 //    static func showToast(controller: UIViewController, message: String, seconds: Double) {
 //        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)

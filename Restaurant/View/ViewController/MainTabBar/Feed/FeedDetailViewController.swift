@@ -19,11 +19,20 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
     var selectedTapTypeSubject = PublishSubject<FeedDetailTap>()
     var selectedTapType: FeedDetailTap = .information
     var isMainMenu = true
+    var isFirstTapCommentView = true
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var commentBackgroundView: UIView!
+    @IBOutlet weak var commentTextView: UITextView!
+    @IBOutlet weak var commentRegisterButton: UIButton!
+    @IBOutlet weak var commentBackgroundBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var commentTextViewHeight: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        commentTextView.delegate = self
+        commentTextView.textContainerInset = .zero
         
         setCollectionView()
 
@@ -59,10 +68,26 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
         super.viewWillAppear(animated)
         
         setNavigation()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(noti:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(noti:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
     func bindingView() {
         print("FeedDetail bindingView()")
+
+        commentRegisterButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.view.endEditing(true)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -91,6 +116,54 @@ extension FeedDetailViewController {
         self.coordinator?.presenter.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.colorGrayGray08]
         self.coordinator?.presenter.navigationBar.isTranslucent = false
         self.coordinator?.presenter.navigationBar.topItem?.title = ""
+    }
+}
+
+//MARK: - Comment View
+extension FeedDetailViewController: UITextViewDelegate {
+    @objc func keyboardWillAppear(noti: NSNotification){
+        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            var keyboardHeight = keyboardRectangle.height
+            if UIDevice.current.hasNotch { keyboardHeight -= self.view.safeAreaInsets.bottom }
+
+            if isFirstTapCommentView {
+                self.commentBackgroundView.frame.origin.y -= keyboardHeight
+                commentBackgroundBottomConstraint.constant -= keyboardHeight
+                isFirstTapCommentView = false
+                print("키보드 올라올 때: \(self.commentBackgroundView.frame.origin.y)")
+            }
+        }
+    }
+
+    @objc func keyboardWillDisappear(noti: NSNotification){
+        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            var keyboardHeight = keyboardRectangle.height
+            if UIDevice.current.hasNotch { keyboardHeight -= self.view.safeAreaInsets.bottom }
+
+            self.commentBackgroundView.frame.origin.y += keyboardHeight
+            commentBackgroundBottomConstraint.constant += keyboardHeight
+            isFirstTapCommentView = true
+            print("키보드 사라질 때: \(self.commentBackgroundView.frame.origin.y)")
+        }
+    }
+
+    func textViewDidChange(_ textView: UITextView) {
+        let size = CGSize(width: textView.frame.width, height: .infinity)
+        let estimatedHeight = textView.sizeThatFits(size).height
+        let thirdLineHeight = CGFloat(55) //대략적 세 줄 높이 (원래는 50.33333)
+
+        if estimatedHeight > thirdLineHeight {
+            commentTextView.isScrollEnabled = true
+        } else {
+            commentTextViewHeight.constant = estimatedHeight < 20 ? 20 : estimatedHeight
+            commentTextView.isScrollEnabled = false
+        }
+
+
+        print("텍스트 쳐질 때: \(self.commentBackgroundView.frame.origin.y)")
+        print("text view size: \(estimatedHeight)")
     }
 }
 
@@ -180,5 +253,11 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return .zero
+    }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if scrollView == collectionView {
+            self.view.endEditing(true)
+        }
     }
 }
