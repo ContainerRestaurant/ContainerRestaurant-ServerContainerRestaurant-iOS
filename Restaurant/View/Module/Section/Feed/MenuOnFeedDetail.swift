@@ -24,11 +24,15 @@ class MenuOnFeedDetail: UICollectionViewCell {
     func mainMenuConfigure(menuAndContainers: [MenuAndContainerModel]) {
         self.menuTitleLabel.text = "메인 음식"
         self.menuAndContainers = menuAndContainers
+
+        collectionView.reloadData()
     }
 
     func sideMenuConfigure(menuAndContainers: [MenuAndContainerModel]) {
         self.menuTitleLabel.text = "사이드 음식"
         self.menuAndContainers = menuAndContainers
+
+        collectionView.reloadData()
     }
 
     private func setCollectionView() {

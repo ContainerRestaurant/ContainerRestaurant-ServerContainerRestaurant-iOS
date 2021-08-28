@@ -27,6 +27,12 @@ class TapOnFeedDetail: UICollectionViewCell {
         super.awakeFromNib()
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        disposeBag = DisposeBag()
+    }
+
     func configure(_ content: String, _ selectedTapType: FeedDetailTap, _ selectedTapTypeSubject: PublishSubject<FeedDetailTap>) {
         if firstEntry {
             content.isEmpty ? self.setOnlyInformationTap() : self.setContentTapAndInformationTap()

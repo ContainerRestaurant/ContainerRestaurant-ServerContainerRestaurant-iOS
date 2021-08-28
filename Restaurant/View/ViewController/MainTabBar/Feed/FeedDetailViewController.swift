@@ -18,7 +18,6 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
     weak var coordinator: FeedDetailCoordinator?
     var selectedTapTypeSubject = PublishSubject<FeedDetailTap>()
     var selectedTapType: FeedDetailTap = .information
-    var isMainMenu = true
 
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -123,10 +122,9 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 
         case is MenuOnFeedDetail.Type:
             let cell: MenuOnFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
-            if isMainMenu {
+            if indexPath.row == 4 {
                 cell.mainMenuConfigure(menuAndContainers: viewModel.mainMenuAndContainers)
-                isMainMenu = false
-            } else if !isMainMenu && viewModel.sideMenuAndContainers.count > 0 {
+            } else {
                 cell.sideMenuConfigure(menuAndContainers: viewModel.sideMenuAndContainers)
             }
             return cell
@@ -153,8 +151,8 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 
         case is MenuOnFeedDetail.Type:
             var cellHeight = CGFloat(112)
-            let isTwoOrMoreMainMenu = isMainMenu && viewModel.mainMenuAndContainers.count > 1
-            let isTwoOrMoreSideMenu = !isMainMenu && viewModel.sideMenuAndContainers.count > 1
+            let isTwoOrMoreMainMenu = indexPath.row == 4 && viewModel.mainMenuAndContainers.count > 1
+            let isTwoOrMoreSideMenu = indexPath.row == 5 && viewModel.sideMenuAndContainers.count > 1
             if isTwoOrMoreMainMenu {
                 cellHeight += CGFloat(64 * (viewModel.mainMenuAndContainers.count - 1))
             } else if isTwoOrMoreSideMenu {
