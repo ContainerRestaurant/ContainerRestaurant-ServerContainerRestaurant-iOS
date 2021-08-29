@@ -36,7 +36,7 @@ class ContainerOfEveryoneCoordinator: NSObject, Coordinator {
                 containerOfEveryone.coordinator = self
                 containerOfEveryone.bind(viewModel: ContainerOfEveryoneViewModel(mostFeedCreationUsers, recentlyFeedCreationUsers))
                 containerOfEveryone.hidesBottomBarWhenPushed = true
-                
+
                 self?.presenter.pushViewController(containerOfEveryone, animated: true)
             })
             .disposed(by: disposeBag)
