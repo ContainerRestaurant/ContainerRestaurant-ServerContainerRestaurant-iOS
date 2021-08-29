@@ -98,7 +98,7 @@ extension MapViewController {
         getLocationUsagePermission()
 
         let (fullWidth, fullHeight) = (UIScreen.main.bounds.width, UIScreen.main.bounds.height)
-        let bottomBarSectionHeight = Common.tabBarHeight + (Common.isNotchPhone ? Common.homeBarHeight : 0)
+        let bottomBarSectionHeight = Common.tabBarHeight + (UIDevice.current.hasNotch ? Common.homeBarHeight : 0)
         let (viewWidth, viewHeight) = (fullWidth, fullHeight - bottomBarSectionHeight)
         let viewCGRect = CGRect(x: 0, y: 0, width: viewWidth, height: viewHeight)
         mapView = NMFMapView(frame: viewCGRect)

@@ -33,7 +33,7 @@ class RestaurantSummaryInformationCoordinator: Coordinator {
             restaurantSummaryInformation.bind(viewModel: RestaurantSummaryInformationViewModel(self?.restaurant ?? RestaurantModel(), restaurantFeed))
             var bottomSheetHeight: CGFloat = 154
             if !(self?.restaurant?.isWelcome ?? false) { bottomSheetHeight -= 31 }
-            if Common.isNotchPhone { bottomSheetHeight += Common.homeBarHeight }
+            if UIDevice.current.hasNotch { bottomSheetHeight += Common.homeBarHeight }
 
             let sheetViewController = SheetViewController(controller: restaurantSummaryInformation,
                                                           sizes: [.fixed(bottomSheetHeight), .marginFromTop(44)],

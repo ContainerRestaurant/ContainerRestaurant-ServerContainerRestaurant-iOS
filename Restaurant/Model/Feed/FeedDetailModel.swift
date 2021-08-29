@@ -12,6 +12,8 @@ struct FeedDetailModel: Decodable {
     var userID: Int
     var restaurantID: Int
     var userNickname: String
+    var userLevel: String
+    var userProfileImage: String
     var restaurantName: String
     var category: String
     var thumbnailURL: String
@@ -32,6 +34,8 @@ struct FeedDetailModel: Decodable {
         case userID = "ownerId"
         case restaurantID = "restaurantId"
         case userNickname = "ownerNickname"
+        case userLevel = "ownerContainerLevel"
+        case userProfileImage = "ownerProfile"
         case restaurantName
         case category
         case thumbnailURL = "thumbnailUrl"
@@ -53,6 +57,8 @@ struct FeedDetailModel: Decodable {
         self.userID =  0
         self.restaurantID =  0
         self.userNickname = ""
+        self.userLevel = ""
+        self.userProfileImage = ""
         self.restaurantName =  ""
         self.category = ""
         self.thumbnailURL = ""
@@ -76,6 +82,8 @@ struct FeedDetailModel: Decodable {
         self.userID = (try? container.decode(Int.self, forKey: .userID)) ?? 0
         self.restaurantID = (try? container.decode(Int.self, forKey: .restaurantID)) ?? 0
         self.userNickname = (try? container.decode(String.self, forKey: .userNickname)) ?? ""
+        self.userLevel = (try? container.decode(String.self, forKey: .userLevel)) ?? ""
+        self.userProfileImage = (try? container.decode(String.self, forKey: .userProfileImage)) ?? ""
         self.restaurantName = (try? container.decode(String.self, forKey: .restaurantName)) ?? ""
         let convertedCategory = convertCategory(category: (try? container.decode(String.self, forKey: .category)) ?? "")
         self.category = convertedCategory
