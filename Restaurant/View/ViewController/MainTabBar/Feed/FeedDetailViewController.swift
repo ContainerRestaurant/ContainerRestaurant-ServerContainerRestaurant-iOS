@@ -84,7 +84,16 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
 
         commentRegisterButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.view.endEditing(true)
+                guard let viewModel = self?.viewModel else { return }
+                guard let comment = self?.commentTextView.text else { return }
+
+                APIClient.createFeedComment(feedID: viewModel.feedID, content: comment) { [weak self] _ in
+                    self?.view.endEditing(true)
+                    self?.collectionView.reloadData()
+
+                    let collectionViewItemCount = self?.collectionView.numberOfItems(inSection: 0) ?? 1
+                    self?.collectionView.scrollToItem(at: IndexPath.init(row: collectionViewItemCount-1, section: 0), at: .top, animated: true)
+                }
             })
             .disposed(by: disposeBag)
     }

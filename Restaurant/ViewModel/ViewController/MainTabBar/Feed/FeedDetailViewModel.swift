@@ -26,6 +26,7 @@ class FeedDetailViewModel {
     var sideMenuAndContainers: [MenuAndContainerModel]
 
     var content: String = ""
+    var feedID: String = ""
 
     var modules: [UICollectionViewCell.Type] = []
 
@@ -72,6 +73,7 @@ class FeedDetailViewModel {
         sideMenuAndContainers = feedDetail.subMenu
 
         content = feedDetail.content
+        feedID = String(feedDetail.id)
     }
 
     func setInformationModules() {
@@ -91,5 +93,14 @@ class FeedDetailViewModel {
         modules.append(TopSectionOnFeedDetail.self)
         modules.append(TapOnFeedDetail.self)
         modules.append(ContentOnFeedDetail.self)
+    }
+}
+
+extension FeedDetailViewModel {
+    //댓글 조회
+    func fetchCommentsOfFeed() {
+        APIClient.commentsOfFeed(feedID: feedID) {
+            print($0)
+        }
     }
 }
