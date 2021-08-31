@@ -182,6 +182,8 @@
 		FBAA5D3626B9BDB400CC38CA /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = FBAA5D3526B9BDB400CC38CA /* welcome.json */; };
 		FBB0010B268CF9CA00B6ED03 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0010A268CF9CA00B6ED03 /* APIClient.swift */; };
 		FBB0010D268CF9DE00B6ED03 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0010C268CF9DE00B6ED03 /* Router.swift */; };
+		FBDB2E9026DC0EA80072816F /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDB2E8F26DC0EA80072816F /* CommentModel.swift */; };
+		FBDB2E9226DC16CC0072816F /* CommentOfFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDB2E9126DC16CC0072816F /* CommentOfFeedModel.swift */; };
 		FBDC3D83266DA3910072D7E8 /* LongText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC3D82266DA3910072D7E8 /* LongText.swift */; };
 		FBEDEA162676528D00446B83 /* LoginPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDEA152676528D00446B83 /* LoginPopupCoordinator.swift */; };
 		FBEDEA1B26765E0200446B83 /* LoginPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDEA1926765E0200446B83 /* LoginPopupViewController.swift */; };
@@ -372,6 +374,8 @@
 		FBAA5D3526B9BDB400CC38CA /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcome.json; sourceTree = "<group>"; };
 		FBB0010A268CF9CA00B6ED03 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		FBB0010C268CF9DE00B6ED03 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		FBDB2E8F26DC0EA80072816F /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
+		FBDB2E9126DC16CC0072816F /* CommentOfFeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentOfFeedModel.swift; sourceTree = "<group>"; };
 		FBDC3D82266DA3910072D7E8 /* LongText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongText.swift; sourceTree = "<group>"; };
 		FBEDEA152676528D00446B83 /* LoginPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPopupCoordinator.swift; sourceTree = "<group>"; };
 		FBEDEA1926765E0200446B83 /* LoginPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPopupViewController.swift; sourceTree = "<group>"; };
@@ -723,6 +727,8 @@
 			isa = PBXGroup;
 			children = (
 				528EF7E3269DF527009ECF59 /* FeedDetailModel.swift */,
+				FBDB2E8F26DC0EA80072816F /* CommentModel.swift */,
+				FBDB2E9126DC16CC0072816F /* CommentOfFeedModel.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -1248,6 +1254,7 @@
 				52169B1426AA09E900705FEC /* SearchingRestaurantPopupCoordinator.swift in Sources */,
 				528EF7E8269E0120009ECF59 /* FeedDetailCoordinator.swift in Sources */,
 				520419A5265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift in Sources */,
+				FBDB2E9026DC0EA80072816F /* CommentModel.swift in Sources */,
 				FBAA5D1826B563B400CC38CA /* RestaurantSummaryInformationViewModel.swift in Sources */,
 				5204199C26512E190099BA39 /* MapCoordinator.swift in Sources */,
 				524686FC2687540D00BE2BE4 /* FeedModel.swift in Sources */,
@@ -1299,6 +1306,7 @@
 				FB585B2826662B520085C6B2 /* LocalSearchModel.swift in Sources */,
 				52397345261B62AF00856C99 /* MyViewController.swift in Sources */,
 				529CF0C4261A0AF6002CAD5C /* AppDelegate.swift in Sources */,
+				FBDB2E9226DC16CC0072816F /* CommentOfFeedModel.swift in Sources */,
 				5204199826512CF90099BA39 /* FeedCoordinator.swift in Sources */,
 				FB56AF78265F7589002736F5 /* CreationFeedViewModel.swift in Sources */,
 				525811592677DD6B00900D59 /* NickNameValidationModel.swift in Sources */,

@@ -160,6 +160,34 @@ class APIClient {
 //            return Disposables.create()
 //        }
 //    }
+
+    //댓글 작성
+    static func createFeedComment(feedID: String, content: String, completion: @escaping (CommentModel) -> Void) {
+        AF.request(Router.CreateFeedComment(feedID: feedID, content: content))
+            .responseDecodable { (response: DataResponse<CommentModel, AFError>) in
+                switch response.result {
+                case .success(let commentModel):
+                    completion(commentModel)
+                case .failure(let error):
+                    completion(CommentModel())
+                    print("Create Feed Comment's Error: \(error)")
+                }
+            }
+    }
+
+    //댓글 조회
+    static func commentsOfFeed(feedID: String, completion: @escaping ([CommentModel]) -> Void) {
+        AF.request(Router.FeedComment(feedID: feedID))
+            .responseDecodable { (response: DataResponse<CommentOfFeedModel, AFError>) in
+                switch response.result {
+                case .success(let commentOfFeed):
+                    completion(commentOfFeed.comments)
+                case .failure(let error):
+                    completion([])
+                    print("Comments Of Feed's Error: \(error)")
+                }
+            }
+    }
     
     //주변 식당 검색
     static func nearbyRestaurants(latitude: Double, longitude: Double, radius: Int, completion: @escaping ([RestaurantModel]) -> Void) {
