@@ -28,6 +28,8 @@ class FeedDetailViewModel {
     var content: String = ""
     var feedID: String = ""
 
+    var comments: [CommentModel] = []
+
     var modules: [UICollectionViewCell.Type] = []
 
     init(_ feedDetail: FeedDetailModel) {
@@ -84,7 +86,10 @@ class FeedDetailViewModel {
         modules.append(RestaurantInformationOnFeedDetail.self)
         modules.append(LevelOfDifficultyOnFeedDetail.self)
         modules.append(MenuOnFeedDetail.self)
-        if sideMenuAndContainers.count > 0 { modules.append(MenuOnFeedDetail.self) }
+        if sideMenuAndContainers.count > 0 {
+            modules.append(MenuOnFeedDetail.self)
+        }
+        modules.append(CommentSectionOnFeedDetail.self)
     }
 
     func setContentModules() {
@@ -93,14 +98,16 @@ class FeedDetailViewModel {
         modules.append(TopSectionOnFeedDetail.self)
         modules.append(TapOnFeedDetail.self)
         modules.append(ContentOnFeedDetail.self)
+        modules.append(CommentSectionOnFeedDetail.self)
     }
 }
 
 extension FeedDetailViewModel {
     //댓글 조회
-    func fetchCommentsOfFeed() {
-        APIClient.commentsOfFeed(feedID: feedID) {
-            print($0)
+    func fetchCommentsOfFeed(completion: @escaping () -> ()) {
+        APIClient.commentsOfFeed(feedID: feedID) { [weak self] in
+            self?.comments = $0
+            completion()
         }
     }
 }

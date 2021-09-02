@@ -184,6 +184,12 @@
 		FBB0010D268CF9DE00B6ED03 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0010C268CF9DE00B6ED03 /* Router.swift */; };
 		FBDB2E9026DC0EA80072816F /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDB2E8F26DC0EA80072816F /* CommentModel.swift */; };
 		FBDB2E9226DC16CC0072816F /* CommentOfFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDB2E9126DC16CC0072816F /* CommentOfFeedModel.swift */; };
+		FBDB2E9526DD38190072816F /* CommentSectionOnFeedDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDB2E9326DD38190072816F /* CommentSectionOnFeedDetail.swift */; };
+		FBDB2E9626DD38190072816F /* CommentSectionOnFeedDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDB2E9426DD38190072816F /* CommentSectionOnFeedDetail.xib */; };
+		FBDB2E9926DD45DB0072816F /* CommentOnFeedDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDB2E9726DD45DB0072816F /* CommentOnFeedDetailCollectionViewCell.swift */; };
+		FBDB2E9A26DD45DB0072816F /* CommentOnFeedDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDB2E9826DD45DB0072816F /* CommentOnFeedDetailCollectionViewCell.xib */; };
+		FBDB2E9D26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDB2E9B26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.swift */; };
+		FBDB2E9E26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDB2E9C26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.xib */; };
 		FBDC3D83266DA3910072D7E8 /* LongText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC3D82266DA3910072D7E8 /* LongText.swift */; };
 		FBEDEA162676528D00446B83 /* LoginPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDEA152676528D00446B83 /* LoginPopupCoordinator.swift */; };
 		FBEDEA1B26765E0200446B83 /* LoginPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDEA1926765E0200446B83 /* LoginPopupViewController.swift */; };
@@ -376,6 +382,12 @@
 		FBB0010C268CF9DE00B6ED03 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		FBDB2E8F26DC0EA80072816F /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		FBDB2E9126DC16CC0072816F /* CommentOfFeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentOfFeedModel.swift; sourceTree = "<group>"; };
+		FBDB2E9326DD38190072816F /* CommentSectionOnFeedDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentSectionOnFeedDetail.swift; sourceTree = "<group>"; };
+		FBDB2E9426DD38190072816F /* CommentSectionOnFeedDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentSectionOnFeedDetail.xib; sourceTree = "<group>"; };
+		FBDB2E9726DD45DB0072816F /* CommentOnFeedDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentOnFeedDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		FBDB2E9826DD45DB0072816F /* CommentOnFeedDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentOnFeedDetailCollectionViewCell.xib; sourceTree = "<group>"; };
+		FBDB2E9B26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyCommentOnFeedDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		FBDB2E9C26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplyCommentOnFeedDetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		FBDC3D82266DA3910072D7E8 /* LongText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongText.swift; sourceTree = "<group>"; };
 		FBEDEA152676528D00446B83 /* LoginPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPopupCoordinator.swift; sourceTree = "<group>"; };
 		FBEDEA1926765E0200446B83 /* LoginPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPopupViewController.swift; sourceTree = "<group>"; };
@@ -790,6 +802,8 @@
 				FB6EEE2626CA4A5800E6237B /* TapOnFeedDetail.xib */,
 				FB6EEE2926CA8C7300E6237B /* ContentOnFeedDetail.swift */,
 				FB6EEE2A26CA8C7300E6237B /* ContentOnFeedDetail.xib */,
+				FBDB2E9326DD38190072816F /* CommentSectionOnFeedDetail.swift */,
+				FBDB2E9426DD38190072816F /* CommentSectionOnFeedDetail.xib */,
 				FB6EEE2D26CAC4CE00E6237B /* CommentViewOnFeedDetail.swift */,
 				FB6EEE2E26CAC4CE00E6237B /* CommentViewOnFeedDetail.xib */,
 			);
@@ -916,6 +930,10 @@
 				FB115A8D26C0397D0043A4DE /* SettingCollectionViewCell.xib */,
 				FB6EEE1D26CA3B2700E6237B /* MenuOnFeedDetailCollectionViewCell.swift */,
 				FB6EEE1E26CA3B2700E6237B /* MenuOnFeedDetailCollectionViewCell.xib */,
+				FBDB2E9726DD45DB0072816F /* CommentOnFeedDetailCollectionViewCell.swift */,
+				FBDB2E9826DD45DB0072816F /* CommentOnFeedDetailCollectionViewCell.xib */,
+				FBDB2E9B26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.swift */,
+				FBDB2E9C26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -1116,6 +1134,7 @@
 				529CF0CD261A0AF6002CAD5C /* Assets.xcassets in Resources */,
 				FB6EEE1C26CA374600E6237B /* MenuOnFeedDetail.xib in Resources */,
 				FBAA5D2026B5742200CC38CA /* FeedInRestaurantSummaryInfo.xib in Resources */,
+				FBDB2E9E26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.xib in Resources */,
 				FB1BE37A26371BFA0004673C /* TwoFeedInLineCollectionView.xib in Resources */,
 				52E50DCB2662B85C0068C36C /* SearchRestaurant.xib in Resources */,
 				525811502677A97800900D59 /* onboarding3.json in Resources */,
@@ -1136,10 +1155,12 @@
 				FB6EEE1826CA105B00E6237B /* LevelOfDifficultyOnFeedDetail.xib in Resources */,
 				FB1BE3862637DF2B0004673C /* TwoFeedCollectionViewCell.xib in Resources */,
 				528EF7E12694C893009ECF59 /* CategoryTabCollectionViewCell.xib in Resources */,
+				FBDB2E9626DD38190072816F /* CommentSectionOnFeedDetail.xib in Resources */,
 				FBAA5D1226B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.xib in Resources */,
 				52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */,
 				528EF7F726A0A1FB009ECF59 /* ViewMoreButton.xib in Resources */,
 				528EF7FB26A0A67C009ECF59 /* FooterSection.xib in Resources */,
+				FBDB2E9A26DD45DB0072816F /* CommentOnFeedDetailCollectionViewCell.xib in Resources */,
 				FBEDEA21267BBACE00446B83 /* MainBanner.xib in Resources */,
 				FBAA5D1626B55FFC00CC38CA /* RestaurantSummaryInformation.xib in Resources */,
 				FB56AF76265F71B4002736F5 /* CreationFeedDetail.xib in Resources */,
@@ -1241,6 +1262,7 @@
 				FBAA5D0D26B2F6BB00CC38CA /* ToastMessage.swift in Sources */,
 				52169B1826ADE36900705FEC /* NearbyRestaurantsCoordinator.swift in Sources */,
 				5204199F26512E450099BA39 /* MyCoordinator.swift in Sources */,
+				FBDB2E9526DD38190072816F /* CommentSectionOnFeedDetail.swift in Sources */,
 				520419A8265184580099BA39 /* InquiryProfileCoordinator.swift in Sources */,
 				FBEDEA1B26765E0200446B83 /* LoginPopupViewController.swift in Sources */,
 				FBEDEA162676528D00446B83 /* LoginPopupCoordinator.swift in Sources */,
@@ -1307,6 +1329,7 @@
 				52397345261B62AF00856C99 /* MyViewController.swift in Sources */,
 				529CF0C4261A0AF6002CAD5C /* AppDelegate.swift in Sources */,
 				FBDB2E9226DC16CC0072816F /* CommentOfFeedModel.swift in Sources */,
+				FBDB2E9D26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.swift in Sources */,
 				5204199826512CF90099BA39 /* FeedCoordinator.swift in Sources */,
 				FB56AF78265F7589002736F5 /* CreationFeedViewModel.swift in Sources */,
 				525811592677DD6B00900D59 /* NickNameValidationModel.swift in Sources */,
@@ -1315,6 +1338,7 @@
 				528EF7E6269E009D009ECF59 /* FeedDetailViewController.swift in Sources */,
 				52542E05264AD8FB0066F565 /* ListStandardDescriptionPopupViewController.swift in Sources */,
 				FB1BE36A2636D7330004673C /* ExtensionCollectoinView.swift in Sources */,
+				FBDB2E9926DD45DB0072816F /* CommentOnFeedDetailCollectionViewCell.swift in Sources */,
 				528EF7EA269E0518009ECF59 /* FeedDetailViewModel.swift in Sources */,
 				FB585B25266591330085C6B2 /* SearchRestaurantCollectionViewCell.swift in Sources */,
 				FB6EEE4826D1F38F00E6237B /* RecentlyFeedCreationUserModel.swift in Sources */,

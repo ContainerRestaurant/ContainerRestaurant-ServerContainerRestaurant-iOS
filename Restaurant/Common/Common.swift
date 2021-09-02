@@ -91,4 +91,16 @@ struct Common {
         default: return nil//UIImage(named: "ProfileTumbler148px")
         }
     }
+
+    //레벨별 프로필 이미지 32
+    static func getDefaultProfileImage32(_ levelTitle: String) -> UIImage? {
+        switch levelTitle {
+        case "LV1. 텀블러": return UIImage(named: "profileTumbler32px")
+        case "LV2. 밥그릇": return UIImage(named: "profileBowl32px")
+        case "LV3. 용기 세트": return UIImage(named: "profileContainerSet32px")
+        case "LV4. 후라이팬": return UIImage(named: "profileFryingPan32px")
+        case "LV5. 냄비": return UIImage(named: "profilePot32px")
+        default: return nil//UIImage(named: "ProfileTumbler148px")
+        }
+    }
 }
