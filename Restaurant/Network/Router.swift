@@ -20,6 +20,7 @@ enum Router: URLRequestConvertible {
     case RestaurantFeed(restaurantID: Int)
     case FeedDetail(feedID: Int)
     case CreateFeedComment(feedID: String, content: String)
+    case CreateFeedReplyComment(feedID: String, content: String, uppperReplyID: Int)
     case FeedComment(feedID: String)
     case NearbyRestaurants(latitude: Double, longitude: Double, radius: Int)
 
@@ -38,6 +39,7 @@ enum Router: URLRequestConvertible {
         case .RestaurantFeed: return .get
         case .FeedDetail: return .get
         case .CreateFeedComment: return .post
+        case .CreateFeedReplyComment: return .post
         case .FeedComment: return .get
         case .NearbyRestaurants: return .get
         }
@@ -56,6 +58,7 @@ enum Router: URLRequestConvertible {
         case .RestaurantFeed(let restaurantID): return "/api/feed/restaurant/\(restaurantID)"
         case .FeedDetail(let feedID): return "/api/feed/\(feedID)"
         case .CreateFeedComment(let feedID, _): return "/api/comment/feed/\(feedID)"
+        case .CreateFeedReplyComment(let feedID, _, _): return "/api/comment/feed/\(feedID)"
         case .FeedComment(let feedID): return "/api/comment/feed/\(feedID)"
         case .NearbyRestaurants(let latitude, let longitude, let radius): return "/api/restaurant/\(latitude)/\(longitude)/\(radius)"
         }
@@ -74,6 +77,7 @@ enum Router: URLRequestConvertible {
         case .RestaurantFeed: return nil
         case .FeedDetail: return nil
         case .CreateFeedComment(_, let content): return ["content": content]
+        case .CreateFeedReplyComment(_, let content, let uppperReplyID): return ["content": content, "upperReplyId": String(uppperReplyID)]
         case .FeedComment: return nil
         case .NearbyRestaurants(_, _, _): return nil
         }

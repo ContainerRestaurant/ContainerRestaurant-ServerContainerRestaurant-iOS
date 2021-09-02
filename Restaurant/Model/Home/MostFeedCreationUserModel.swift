@@ -2,7 +2,7 @@
 //  MostFeedCreationUserModel.swift
 //  Restaurant
 //
-//  Created by Lotte on 2021/08/22.
+//  Created by 0ofKim on 2021/08/22.
 //
 
 import Foundation

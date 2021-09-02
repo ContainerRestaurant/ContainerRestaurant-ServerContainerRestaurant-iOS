@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,56 +12,43 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ContentOnFeedDetail" customModule="Restaurant" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="288"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="288"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ht-Tw-PJX">
-                        <rect key="frame" x="16" y="0.0" width="343" height="16"/>
+                        <rect key="frame" x="16" y="0.0" width="343" height="17"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <attributedString key="attributedText">
                             <fragment content="content">
                                 <attributes>
                                     <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <font key="NSFont" size="14" name=".AppleSDGothicNeoI-Regular"/>
+                                    <font key="NSFont" metaFont="system" size="14"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="4" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
                         </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QHz-Lh-mDy">
-                        <rect key="frame" x="0.0" y="42" width="375" height="1"/>
-                        <color key="backgroundColor" name="colorGrayGray04"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="1" id="0F8-Gg-JGF"/>
-                        </constraints>
-                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="9ht-Tw-PJX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="53x-rd-RHM"/>
-                <constraint firstItem="QHz-Lh-mDy" firstAttribute="top" secondItem="9ht-Tw-PJX" secondAttribute="bottom" constant="26" id="MXJ-cP-dmK"/>
                 <constraint firstItem="9ht-Tw-PJX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Xo2-m6-tSp"/>
                 <constraint firstAttribute="trailing" secondItem="9ht-Tw-PJX" secondAttribute="trailing" constant="16" id="Z8q-zd-xdj"/>
-                <constraint firstItem="QHz-Lh-mDy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="mg0-NP-tye"/>
-                <constraint firstAttribute="trailing" secondItem="QHz-Lh-mDy" secondAttribute="trailing" id="qqA-bh-mZC"/>
             </constraints>
-            <size key="customSize" width="375" height="288"/>
+            <size key="customSize" width="375" height="104"/>
             <connections>
                 <outlet property="contentLabel" destination="9ht-Tw-PJX" id="Khd-eP-EC3"/>
             </connections>
-            <point key="canvasLocation" x="93.478260869565219" y="232.36607142857142"/>
+            <point key="canvasLocation" x="93.478260869565219" y="170.75892857142856"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <namedColor name="colorGrayGray04">
-            <color red="0.80800002813339233" green="0.80800002813339233" blue="0.80800002813339233" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

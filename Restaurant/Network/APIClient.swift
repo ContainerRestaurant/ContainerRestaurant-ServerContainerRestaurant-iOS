@@ -175,6 +175,20 @@ class APIClient {
             }
     }
 
+    //대댓글 작성
+    static func createFeedReplyComment(feedID: String, content: String, upperReplyID: Int, completion: @escaping (CommentModel) -> Void) {
+        AF.request(Router.CreateFeedReplyComment(feedID: feedID, content: content, uppperReplyID: upperReplyID))
+            .responseDecodable { (response: DataResponse<CommentModel, AFError>) in
+                switch response.result {
+                case .success(let replyCommentModel):
+                    completion(replyCommentModel)
+                case .failure(let error):
+                    completion(CommentModel())
+                    print("Create Feed Reply Comment's Error: \(error)")
+                }
+            }
+    }
+
     //댓글 조회
     static func commentsOfFeed(feedID: String, completion: @escaping ([CommentModel]) -> Void) {
         AF.request(Router.FeedComment(feedID: feedID))

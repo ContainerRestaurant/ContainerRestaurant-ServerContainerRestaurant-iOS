@@ -18,7 +18,7 @@ struct CommentModel: Decodable {
     var userLevelTitle: String
     var createdDate: String
     var isLike: Bool
-//    var commentReply: [CommentReplyModel]
+    var replyComment: [CommentModel]
 
     private enum CodingKeys: String, CodingKey {
         case id
@@ -31,6 +31,7 @@ struct CommentModel: Decodable {
         case userLevelTitle = "ownerLevelTitle"
         case createdDate
         case isLike
+        case replyComment = "commentReply"
     }
 
     init() {
@@ -44,6 +45,7 @@ struct CommentModel: Decodable {
         self.userLevelTitle = ""
         self.createdDate = ""
         self.isLike = false
+        self.replyComment = []
     }
 
     init(from decoder: Decoder) throws {
@@ -59,5 +61,6 @@ struct CommentModel: Decodable {
         self.userLevelTitle = (try? container.decode(String.self, forKey: .userLevelTitle)) ?? ""
         self.createdDate = (try? container.decode(String.self, forKey: .createdDate)) ?? ""
         self.isLike = (try? container.decode(Bool.self, forKey: .isLike)) ?? false
+        self.replyComment = (try? container.decode(Array.self, forKey: .replyComment)) ?? []
     }
 }

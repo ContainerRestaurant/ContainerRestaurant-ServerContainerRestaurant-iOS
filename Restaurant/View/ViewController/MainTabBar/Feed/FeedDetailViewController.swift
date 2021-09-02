@@ -19,6 +19,9 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
     var selectedTapTypeSubject = PublishSubject<FeedDetailTap>()
     var selectedTapType: FeedDetailTap = .information
     var isFirstTapCommentView = true
+    var upperCommentID = 0
+    var isReplyCommentState = false
+    var isReplyCommentSubject = PublishSubject<Int>()
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var commentBackgroundView: UIView!
@@ -29,11 +32,15 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setCollectionView()
+
+        viewModel.fetchCommentsOfFeed() { [weak self] in
+            let lastRowInCollectionView = (self?.viewModel.modules.count)!-1
+            self?.collectionView.reloadItems(at: [IndexPath(row: lastRowInCollectionView, section: 0)])
+        }
 
         commentTextView.delegate = self
         commentTextView.textContainerInset = .zero
-        
-        setCollectionView()
 
         if viewModel.content.isEmpty {
             selectedTapType = .information
@@ -42,21 +49,6 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
             selectedTapType = .content
             viewModel.setContentModules()
         }
-
-        selectedTapTypeSubject
-            .subscribe(onNext: { [weak self] type in
-                self?.selectedTapType = type
-
-                switch type {
-                case .information: self?.viewModel.setInformationModules()
-                case .content: self?.viewModel.setContentModules()
-                }
-
-                self?.collectionView.reloadData()
-            })
-            .disposed(by: disposeBag)
-
-        print("FeedDetailViewController viewDidLoad()")
     }
     
     deinit {
@@ -80,19 +72,62 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
     }
 
     func bindingView() {
-        print("FeedDetail bindingView()")
+        selectedTapTypeSubject
+            .subscribe(onNext: { [weak self] type in
+                self?.selectedTapType = type
+
+                switch type {
+                case .information: self?.viewModel.setInformationModules()
+                case .content: self?.viewModel.setContentModules()
+                }
+
+                self?.collectionView.reloadData()
+            })
+            .disposed(by: disposeBag)
+
+        isReplyCommentSubject
+            .subscribe(onNext: { [weak self] upperCommentID in
+                self?.isReplyCommentState = true
+                self?.upperCommentID = upperCommentID
+                self?.commentTextView.becomeFirstResponder()
+            })
+            .disposed(by: disposeBag)
 
         commentRegisterButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                guard let viewModel = self?.viewModel else { return }
-                guard let comment = self?.commentTextView.text else { return }
+                guard let `self` = self else { return }
+                guard let viewModel = self.viewModel else { return }
+                guard let comment = self.commentTextView.text else { return }
 
-                APIClient.createFeedComment(feedID: viewModel.feedID, content: comment) { [weak self] _ in
-                    self?.view.endEditing(true)
-                    self?.collectionView.reloadData()
+                if self.isReplyCommentState {
+                    APIClient.createFeedReplyComment(feedID: viewModel.feedID, content: comment, upperReplyID: self.upperCommentID) { [weak self] model in
+                        self?.commentTextView.text = ""
+                        self?.view.endEditing(true)
 
-                    let collectionViewItemCount = self?.collectionView.numberOfItems(inSection: 0) ?? 1
-                    self?.collectionView.scrollToItem(at: IndexPath.init(row: collectionViewItemCount-1, section: 0), at: .top, animated: true)
+                        self?.viewModel.fetchCommentsOfFeed() { [weak self] in
+                            let lastRowInCollectionView = (self?.viewModel.modules.count)!-1
+                            self?.collectionView.reloadItems(at: [IndexPath(row: lastRowInCollectionView, section: 0)])
+                        }
+
+                        let collectionViewItemCount = self?.collectionView.numberOfItems(inSection: 0) ?? 1
+                        self?.collectionView.scrollToItem(at: IndexPath.init(row: collectionViewItemCount-1, section: 0), at: .top, animated: true)
+                    }
+                } else {
+                    APIClient.createFeedComment(feedID: viewModel.feedID, content: comment) { [weak self] _ in
+                        self?.commentTextView.text = ""
+                        self?.view.endEditing(true)
+//                        self?.viewModel.comments.append($0)
+//                        let lastRowInCollectionView = (self?.viewModel.modules.count)!-1
+//                        self?.collectionView.reloadItems(at: [IndexPath(row: lastRowInCollectionView, section: 0)])
+                        //아래껄로 되는지 확인해보기
+                        self?.viewModel.fetchCommentsOfFeed() { [weak self] in
+                            let lastRowInCollectionView = (self?.viewModel.modules.count)!-1
+                            self?.collectionView.reloadItems(at: [IndexPath(row: lastRowInCollectionView, section: 0)])
+                        }
+
+                        let collectionViewItemCount = self?.collectionView.numberOfItems(inSection: 0) ?? 1
+                        self?.collectionView.scrollToItem(at: IndexPath.init(row: collectionViewItemCount-1, section: 0), at: .top, animated: true)
+                    }
                 }
             })
             .disposed(by: disposeBag)
@@ -112,6 +147,8 @@ extension FeedDetailViewController {
         self.collectionView.register(MenuOnFeedDetail.self)
 
         self.collectionView.register(ContentOnFeedDetail.self)
+
+        self.collectionView.register(CommentSectionOnFeedDetail.self)
     }
     
     private func setNavigation() {
@@ -168,10 +205,6 @@ extension FeedDetailViewController: UITextViewDelegate {
             commentTextViewHeight.constant = estimatedHeight < 20 ? 20 : estimatedHeight
             commentTextView.isScrollEnabled = false
         }
-
-
-        print("텍스트 쳐질 때: \(self.commentBackgroundView.frame.origin.y)")
-        print("text view size: \(estimatedHeight)")
     }
 }
 
@@ -216,6 +249,11 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
             cell.configure(content: viewModel.content)
             return cell
 
+        case is CommentSectionOnFeedDetail.Type:
+            let cell: CommentSectionOnFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configure(comments: viewModel.comments, isReplyCommentSubject: isReplyCommentSubject)
+            return cell
+
         default: return UICollectionViewCell()
         }
     }
@@ -244,9 +282,30 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 
         case is ContentOnFeedDetail.Type:
             let labelHeight = Common.labelHeight(text: viewModel.content, font: .systemFont(ofSize: 14), width: CGFloat(343).widthRatio())
-//            let labelHeight = Common.labelHeight(text: "신전떡볶이 용기낸 후기입니다😙 사장님이 다회용기를 환영하는 뱃지를 보고 바로 가서 담아왔습니다! 생각보다 어렵지 않고 환경을 지키는 것에 대해 동참한다는 게 뿌듯하네요 신전떡볶이 용기낸 후기입니다😙 사장님이 다회용기를 환영하는 뱃지를 보고 바로 가서 담아왔습니다! 생각보다 어렵지 않고 환경을 지키는 것에 대해 동참한다는 게 뿌듯하네요", font: .systemFont(ofSize: 14), width: CGFloat(343).widthRatio())
-            let otherHeight = CGFloat(26+1)
-            let cellHeight = labelHeight + otherHeight
+            return CGSize(width: UIScreen.main.bounds.width, height: labelHeight)
+
+        case is CommentSectionOnFeedDetail.Type:
+            let commentTitleHeight = CGFloat(76)
+            var widthoutCommentHeight = CGFloat(0)
+            var commentLabelHeight = CGFloat(0)
+            var widthoutReplyCommentHeight = CGFloat(0)
+            var replyCommentLabelHeight = CGFloat(0)
+            var replyCommentSeparateHeight = CGFloat(0)
+
+            for comment in viewModel.comments {
+                widthoutCommentHeight += CGFloat(101)
+                let commentHeight = Common.labelHeight(text: comment.content, font: .systemFont(ofSize: 12), width: CGFloat(301).widthRatio())
+                commentLabelHeight += commentHeight == 0 ? 14 : commentHeight
+
+                for (index, replyComment) in comment.replyComment.enumerated() {
+                    if index > 0 { replyCommentSeparateHeight += CGFloat(18) }
+                    widthoutReplyCommentHeight += CGFloat(86)
+                    let replyCommentHeight = Common.labelHeight(text: replyComment.content, font: .systemFont(ofSize: 12), width: CGFloat(235).widthRatio())
+                    replyCommentLabelHeight += replyCommentHeight == 0 ? 14 : replyCommentHeight
+                }
+            }
+
+            let cellHeight = commentTitleHeight + widthoutCommentHeight + commentLabelHeight + widthoutReplyCommentHeight + replyCommentLabelHeight + replyCommentSeparateHeight
 
             return CGSize(width: UIScreen.main.bounds.width, height: cellHeight)
 
@@ -265,6 +324,7 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if scrollView == collectionView {
             self.view.endEditing(true)
+            self.isReplyCommentState = false
         }
     }
 }
