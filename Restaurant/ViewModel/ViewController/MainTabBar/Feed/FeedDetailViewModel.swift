@@ -86,7 +86,9 @@ class FeedDetailViewModel {
         modules.append(RestaurantInformationOnFeedDetail.self)
         modules.append(LevelOfDifficultyOnFeedDetail.self)
         modules.append(MenuOnFeedDetail.self)
-        if sideMenuAndContainers.count > 0 { modules.append(MenuOnFeedDetail.self) }
+        if sideMenuAndContainers.count > 0 {
+            modules.append(MenuOnFeedDetail.self)
+        }
         modules.append(CommentSectionOnFeedDetail.self)
     }
 

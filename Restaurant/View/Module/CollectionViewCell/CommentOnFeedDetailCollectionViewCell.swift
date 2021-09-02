@@ -28,14 +28,6 @@ class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
         replyCommentCollectionView.register(ReplyCommentOnFeedDetailCollectionViewCell.self)
         replyCommentCollectionView.delegate = self
         replyCommentCollectionView.dataSource = self
-
-        replyButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                if let commentID = self?.comment?.id {
-                    self?.isReplyCommentSubject.onNext(commentID)
-                }
-            })
-            .disposed(by: disposeBag)
     }
 
     override func prepareForReuse() {
@@ -54,6 +46,16 @@ class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
         commentLabel.text = comment.content == "" ? "내용이 입력되지 않은 댓글입니다." : comment.content
         createdDateLabel.text = comment.createdDate
         likeCountButton.setTitle("\(comment.likeCount)", for: .normal)
+
+        replyButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                if let commentID = self?.comment?.id {
+                    self?.isReplyCommentSubject.onNext(commentID)
+                }
+            })
+            .disposed(by: disposeBag)
+
+        replyCommentCollectionView.reloadData()
     }
 }
 
