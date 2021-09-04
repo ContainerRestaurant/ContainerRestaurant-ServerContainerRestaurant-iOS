@@ -52,16 +52,16 @@ class APIClient {
             }
     }
 
-    //홈 탭 메인 배너
-    static func mainBanner(completion: @escaping ([BannerInfoModel]) -> Void) {
-        AF.request(Router.HomeBanner)
-            .responseDecodable { (response: DataResponse<BannerModel, AFError>) in
+    //홈 탭 메인 데이터
+    static func homeMainData(completion: @escaping (HomeMainDataModel) -> Void) {
+        AF.request(Router.HomeMainData)
+            .responseDecodable { (response: DataResponse<HomeMainDataModel, AFError>) in
                 switch response.result {
-                case .success(let bannerInfo):
-                    completion(bannerInfo.bannerInfoList)
+                case .success(let homeMainData):
+                    completion(homeMainData)
                 case .failure(let error):
-                    completion([])
-                    print("Main Banner's Error: \(error)")
+                    completion(HomeMainDataModel())
+                    print("Home Main Data's Error: \(error)")
                 }
             }
     }

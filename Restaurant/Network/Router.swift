@@ -12,7 +12,7 @@ enum Router: URLRequestConvertible {
     case CreateLoginToken(provider: String, accessToken: String)
     case CheckLogin
     case UpdateUserInformation(userID: Int, nickname: String)
-    case HomeBanner
+    case HomeMainData
     case MostFeedCreationUsers
     case RecentlyFeedCreationUsers
     case RecommendFeed
@@ -31,9 +31,9 @@ enum Router: URLRequestConvertible {
         case .CreateLoginToken: return .post
         case .CheckLogin: return .get
         case .UpdateUserInformation: return .patch
+        case .HomeMainData: return .get
         case .MostFeedCreationUsers: return .get
         case .RecentlyFeedCreationUsers: return .get
-        case .HomeBanner: return .get
         case .RecommendFeed: return .get
         case .CategoryFeed: return .get
         case .RestaurantFeed: return .get
@@ -50,7 +50,7 @@ enum Router: URLRequestConvertible {
         case .CreateLoginToken: return "/api/user"
         case .CheckLogin: return "/api/user"
         case .UpdateUserInformation(let userID, _): return "/api/user/\(userID)"
-        case .HomeBanner: return "/banners"
+        case .HomeMainData: return "/api/home"
         case .MostFeedCreationUsers: return "/api/statistics/top"
         case .RecentlyFeedCreationUsers: return "/api/statistics/latest"
         case .RecommendFeed: return "/api/feed/recommend"
@@ -69,7 +69,7 @@ enum Router: URLRequestConvertible {
         case .CreateLoginToken(let provider, let accessToken): return ["provider": provider, "accessToken": accessToken]
         case .CheckLogin: return nil
         case .UpdateUserInformation(_, let nickname): return ["nickname": nickname]
-        case .HomeBanner: return nil
+        case .HomeMainData: return nil
         case .MostFeedCreationUsers: return nil
         case .RecentlyFeedCreationUsers: return nil
         case .RecommendFeed: return nil
@@ -90,7 +90,7 @@ enum Router: URLRequestConvertible {
 
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         switch self {
-        case .CheckLogin, .UpdateUserInformation:
+        case .CheckLogin, .UpdateUserInformation, .HomeMainData:
             urlRequest.setValue("Bearer \(UserDataManager.sharedInstance.loginToken)", forHTTPHeaderField: "Authorization")
         default: break
         }

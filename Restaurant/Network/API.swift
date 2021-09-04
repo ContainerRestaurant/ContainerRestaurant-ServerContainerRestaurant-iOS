@@ -39,27 +39,27 @@ extension API {
     }
     
     //메인 배너
-    func mainBanner(completion: @escaping ((BannerModel) -> Void)) {
-        let url = "\(baseURL)/banners"
-        
-        AF.request(url)
-            .validate(statusCode: 200..<300)
-            .responseJSON { response in
-                switch response.result {
-                case .success(let obj):
-                    do {
-                        let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .fragmentsAllowed)
-                        let instanceData = try JSONDecoder().decode(BannerModel.self, from: dataJSON)
-                        
-                        completion(instanceData)
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-                case .failure(let e):
-                    print(e.localizedDescription)
-                }
-            }
-    }
+//    func mainBanner(completion: @escaping ((BannerModel) -> Void)) {
+//        let url = "\(baseURL)/banners"
+//        
+//        AF.request(url)
+//            .validate(statusCode: 200..<300)
+//            .responseJSON { response in
+//                switch response.result {
+//                case .success(let obj):
+//                    do {
+//                        let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .fragmentsAllowed)
+//                        let instanceData = try JSONDecoder().decode(BannerModel.self, from: dataJSON)
+//                        
+//                        completion(instanceData)
+//                    } catch {
+//                        print(error.localizedDescription)
+//                    }
+//                case .failure(let e):
+//                    print(e.localizedDescription)
+//                }
+//            }
+//    }
 }
 
 //MARK: 피드쓰기
