@@ -67,6 +67,7 @@
             <size key="customSize" width="375" height="366"/>
             <connections>
                 <outlet property="collectionView" destination="PXc-Kh-Ray" id="AAT-qw-dhl"/>
+                <outlet property="writerStatisticsLabel" destination="HQB-r5-BCx" id="QJv-g2-HVa"/>
             </connections>
             <point key="canvasLocation" x="138.40579710144928" y="258.48214285714283"/>
         </collectionViewCell>

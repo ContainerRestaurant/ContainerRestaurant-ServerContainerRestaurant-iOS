@@ -66,30 +66,16 @@ class APIClient {
             }
     }
 
-    //최다 피드 작성자 리스트(탑텐)
-    static func mostFeedCreationUsers(completion: @escaping ([UserModel]) -> Void) {
-        AF.request(Router.MostFeedCreationUsers)
-            .responseDecodable { (response: DataResponse<MostFeedCreationUserModel, AFError>) in
+    //모두의 용기 화면 데이터
+    static func containerOfEveryone(completion: @escaping (ContainerOfEveryoneModel) -> Void) {
+        AF.request(Router.ContainerOfEveryone)
+            .responseDecodable { (response: DataResponse<ContainerOfEveryoneModel, AFError>) in
                 switch response.result {
-                case .success(let mostFeedCreationUserModel):
-                    completion(mostFeedCreationUserModel.users)
+                case .success(let containerOfEveryoneModel):
+                    completion(containerOfEveryoneModel)
                 case .failure(let error):
-                    completion([])
+                    completion(ContainerOfEveryoneModel())
                     print("Most Feed Creation User's Error: \(error)")
-                }
-            }
-    }
-
-    //최근 피드 작성자 리스트
-    static func recentlyFeedCreationUsers(completion: @escaping ([UserModel]) -> Void) {
-        AF.request(Router.RecentlyFeedCreationUsers)
-            .responseDecodable { (response: DataResponse<RecentlyFeedCreationUserModel, AFError>) in
-                switch response.result {
-                case .success(let recentlyFeedCreationUserModel):
-                    completion(recentlyFeedCreationUserModel.users)
-                case .failure(let error):
-                    completion([])
-                    print("Recently Feed Creation User's Error: \(error)")
                 }
             }
     }
