@@ -170,6 +170,7 @@
 		FB6EEE4826D1F38F00E6237B /* RecentlyFeedCreationUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6EEE4726D1F38F00E6237B /* RecentlyFeedCreationUserModel.swift */; };
 		FB6EEE5026D6B1A500E6237B /* ExtensionUIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6EEE4F26D6B1A400E6237B /* ExtensionUIDevice.swift */; };
 		FB9E1DC326E159F300707C60 /* HomeMainDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9E1DC226E159F300707C60 /* HomeMainDataModel.swift */; };
+		FB9E1DC526E31F6500707C60 /* ContainerOfEveryoneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9E1DC426E31F6500707C60 /* ContainerOfEveryoneModel.swift */; };
 		FBAA5D0D26B2F6BB00CC38CA /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA5D0C26B2F6BB00CC38CA /* ToastMessage.swift */; };
 		FBAA5D1126B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA5D0F26B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.swift */; };
 		FBAA5D1226B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBAA5D1026B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.xib */; };
@@ -369,6 +370,7 @@
 		FB6EEE4726D1F38F00E6237B /* RecentlyFeedCreationUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyFeedCreationUserModel.swift; sourceTree = "<group>"; };
 		FB6EEE4F26D6B1A400E6237B /* ExtensionUIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIDevice.swift; sourceTree = "<group>"; };
 		FB9E1DC226E159F300707C60 /* HomeMainDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainDataModel.swift; sourceTree = "<group>"; };
+		FB9E1DC426E31F6500707C60 /* ContainerOfEveryoneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerOfEveryoneModel.swift; sourceTree = "<group>"; };
 		FBAA5D0C26B2F6BB00CC38CA /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		FBAA5D0F26B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewInRestaurantSummaryInfo.swift; sourceTree = "<group>"; };
 		FBAA5D1026B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewInRestaurantSummaryInfo.xib; sourceTree = "<group>"; };
@@ -990,6 +992,7 @@
 				524D24E7268A370C008CF320 /* BannerInfoModel.swift */,
 				FB6EEE4526D1F07400E6237B /* MostFeedCreationUserModel.swift */,
 				FB6EEE4726D1F38F00E6237B /* RecentlyFeedCreationUserModel.swift */,
+				FB9E1DC426E31F6500707C60 /* ContainerOfEveryoneModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1289,6 +1292,7 @@
 				FBB0010D268CF9DE00B6ED03 /* Router.swift in Sources */,
 				5204199626511AB00099BA39 /* ContainerOfEveryoneCoordinator.swift in Sources */,
 				528EF7FA26A0A67C009ECF59 /* FooterSection.swift in Sources */,
+				FB9E1DC526E31F6500707C60 /* ContainerOfEveryoneModel.swift in Sources */,
 				526BED65264702F700897230 /* ContainerOfEveryoneViewModel.swift in Sources */,
 				5258115D267901E900900D59 /* UserModel.swift in Sources */,
 				52254C63265AC19C00D921ED /* TwoFeedModel.swift in Sources */,

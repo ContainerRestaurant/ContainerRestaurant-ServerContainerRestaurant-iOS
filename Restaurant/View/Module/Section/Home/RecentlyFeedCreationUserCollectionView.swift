@@ -12,16 +12,24 @@ class RecentlyFeedCreationUserCollectionView: UICollectionViewCell {
     var recentlyFeedCreationUsers: [UserModel] = []
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    @IBOutlet weak var writerStatisticsLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         
         setCollectionView()
+
         print("RecentlyFeedCreationUserCollectionView awakeFromNib()")
     }
     
     deinit {
         print("RecentlyFeedCreationUserCollectionView Deinit")
+    }
+
+    func configure(_ recentlyFeedCreationUsers: [UserModel],_ writerCount: Int, _ feedCount: Int, _ coordinator: ContainerOfEveryoneCoordinator) {
+        self.recentlyFeedCreationUsers = recentlyFeedCreationUsers
+        writerStatisticsLabel.text = "지금까지 총 \(writerCount)명이 \(feedCount)번의 용기를 내주셨어요!"
+        self.coordinator = coordinator
     }
 }
 
@@ -32,11 +40,6 @@ extension RecentlyFeedCreationUserCollectionView {
         self.collectionView.dataSource = self
         
         self.collectionView.register(RecentlyFeedCreationUserCollectionViewCell.self)
-    }
-    
-    func configure(_ recentlyFeedCreationUsers: [UserModel], _ coordinator: ContainerOfEveryoneCoordinator) {
-        self.recentlyFeedCreationUsers = recentlyFeedCreationUsers
-        self.coordinator = coordinator
     }
 }
 

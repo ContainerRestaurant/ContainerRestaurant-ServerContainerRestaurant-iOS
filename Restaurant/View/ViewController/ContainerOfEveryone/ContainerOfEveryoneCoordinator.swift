@@ -13,8 +13,6 @@ class ContainerOfEveryoneCoordinator: NSObject, Coordinator {
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
     let disposeBag = DisposeBag()
-    let mostFeedCreationUsersSubject = PublishSubject<[UserModel]>()
-    let recentlyFeedCreationUsersSubject = PublishSubject<[UserModel]>()
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
@@ -22,24 +20,14 @@ class ContainerOfEveryoneCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        APIClient.mostFeedCreationUsers { [weak self] in
-            self?.mostFeedCreationUsersSubject.onNext($0)
+        APIClient.containerOfEveryone { [weak self] containerOfEveryoneData in
+            var containerOfEveryone = ContainerOfEveryoneViewController.instantiate()
+            containerOfEveryone.coordinator = self
+            containerOfEveryone.bind(viewModel: ContainerOfEveryoneViewModel(containerOfEveryoneData))
+            containerOfEveryone.hidesBottomBarWhenPushed = true
+
+            self?.presenter.pushViewController(containerOfEveryone, animated: true)
         }
-
-        APIClient.recentlyFeedCreationUsers { [weak self] in
-            self?.recentlyFeedCreationUsersSubject.onNext($0)
-        }
-
-        Observable.zip(mostFeedCreationUsersSubject, recentlyFeedCreationUsersSubject)
-            .subscribe(onNext: { [weak self] (mostFeedCreationUsers, recentlyFeedCreationUsers) in
-                var containerOfEveryone = ContainerOfEveryoneViewController.instantiate()
-                containerOfEveryone.coordinator = self
-                containerOfEveryone.bind(viewModel: ContainerOfEveryoneViewModel(mostFeedCreationUsers, recentlyFeedCreationUsers))
-                containerOfEveryone.hidesBottomBarWhenPushed = true
-
-                self?.presenter.pushViewController(containerOfEveryone, animated: true)
-            })
-            .disposed(by: disposeBag)
     }
     
     func presentToListStandardDescription() {

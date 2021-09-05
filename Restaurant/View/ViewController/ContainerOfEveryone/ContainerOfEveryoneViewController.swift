@@ -92,12 +92,12 @@ extension ContainerOfEveryoneViewController: UICollectionViewDelegate, UICollect
         switch type {
         case is MostFeedCreationUserCollectionView.Type:
             let cell: MostFeedCreationUserCollectionView = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(self.viewModel.mostFeedCreationUsers, self.coordinator!)
+            cell.configure(self.viewModel.mostFeedWriters, self.coordinator!)
             return cell
 
         case is RecentlyFeedCreationUserCollectionView.Type:
             let cell: RecentlyFeedCreationUserCollectionView = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(self.viewModel.recentlyFeedCreationUsers, self.coordinator!)
+            cell.configure(self.viewModel.recentlyFeedWriters, self.viewModel.userCount, self.viewModel.feedCount, self.coordinator!)
             return cell
 
         default: return UICollectionViewCell()
