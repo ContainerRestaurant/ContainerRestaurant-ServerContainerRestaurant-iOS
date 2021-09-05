@@ -12,9 +12,11 @@ enum Router: URLRequestConvertible {
     case CreateLoginToken(provider: String, accessToken: String)
     case CheckLogin
     case UpdateUserInformation(userID: Int, nickname: String)
+    case CheckUser(userID: Int)
     case HomeMainData
     case ContainerOfEveryone
     case RecommendFeed
+    case UserFeed(userID: Int)
     case CategoryFeed(category: String)
     case RestaurantFeed(restaurantID: Int)
     case FeedDetail(feedID: Int)
@@ -30,9 +32,11 @@ enum Router: URLRequestConvertible {
         case .CreateLoginToken: return .post
         case .CheckLogin: return .get
         case .UpdateUserInformation: return .patch
+        case .CheckUser: return .get
         case .HomeMainData: return .get
         case .ContainerOfEveryone: return .get
         case .RecommendFeed: return .get
+        case .UserFeed: return .get
         case .CategoryFeed: return .get
         case .RestaurantFeed: return .get
         case .FeedDetail: return .get
@@ -48,9 +52,11 @@ enum Router: URLRequestConvertible {
         case .CreateLoginToken: return "/api/user"
         case .CheckLogin: return "/api/user"
         case .UpdateUserInformation(let userID, _): return "/api/user/\(userID)"
+        case .CheckUser(let userID): return "/api/user/\(userID)"
         case .HomeMainData: return "/api/home"
         case .ContainerOfEveryone: return "/api/statistics/total-container"
         case .RecommendFeed: return "/api/feed/recommend"
+        case .UserFeed(let userID): return "/api/feed/user/\(userID)"
         case .CategoryFeed: return "/api/feed"
         case .RestaurantFeed(let restaurantID): return "/api/feed/restaurant/\(restaurantID)"
         case .FeedDetail(let feedID): return "/api/feed/\(feedID)"
@@ -66,11 +72,13 @@ enum Router: URLRequestConvertible {
         case .CreateLoginToken(let provider, let accessToken): return ["provider": provider, "accessToken": accessToken]
         case .CheckLogin: return nil
         case .UpdateUserInformation(_, let nickname): return ["nickname": nickname]
+        case .CheckUser: return nil
         case .HomeMainData: return nil
         case .ContainerOfEveryone: return nil
-        case .RecommendFeed: return nil
-        case .CategoryFeed(let category): return category.isEmpty ? nil : ["category": category]
-        case .RestaurantFeed: return nil
+        case .RecommendFeed: return nil //Todo: 페이징 처리
+        case .UserFeed: return nil //Todo: 페이징 처리
+        case .CategoryFeed(let category): return category.isEmpty ? nil : ["category": category] //Todo: 페이징 처리
+        case .RestaurantFeed: return nil //Todo: 페이징 처리
         case .FeedDetail: return nil
         case .CreateFeedComment(_, let content): return ["content": content]
         case .CreateFeedReplyComment(_, let content, let uppperReplyID): return ["content": content, "upperReplyId": String(uppperReplyID)]

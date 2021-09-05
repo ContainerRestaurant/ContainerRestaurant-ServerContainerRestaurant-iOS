@@ -33,8 +33,15 @@ class CreationPopupViewController: BaseViewController, Storyboard {
 
         okButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.dismiss(animated: false, completion: nil)
-                self?.coordinator?.presentLogin()
+                APIClient.checkLogin(loginToken: UserDataManager.sharedInstance.loginToken) { [weak self] userModel in
+                    if userModel.id == 0 {
+                        self?.dismiss(animated: false, completion: nil)
+                        self?.coordinator?.presentLogin()
+                    } else {
+                        self?.dismiss(animated: false, completion: nil)
+                        self?.coordinator?.presenter.tabBarController?.selectedIndex = 2
+                    }
+                }
             })
             .disposed(by: disposeBag)
     }

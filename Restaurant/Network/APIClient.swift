@@ -52,6 +52,20 @@ class APIClient {
             }
     }
 
+    //사용자 정보 조회
+    static func checkUser(userID: Int, completion: @escaping (UserModel) -> Void) {
+        AF.request(Router.CheckUser(userID: userID))
+            .responseDecodable { (response: DataResponse<UserModel, AFError>) in
+                switch response.result {
+                case .success(let userModel):
+                    completion(userModel)
+                case .failure(let error):
+                    completion(UserModel())
+                    print("Check User's Error: \(error)")
+                }
+            }
+    }
+
     //홈 탭 메인 데이터
     static func homeMainData(completion: @escaping (HomeMainDataModel) -> Void) {
         AF.request(Router.HomeMainData)
@@ -90,6 +104,20 @@ class APIClient {
                 case .failure(let error):
                     completion([])
                     print("Recommend Feed's Error: \(error)")
+                }
+            }
+    }
+
+    //홈 탭 메인 피드
+    static func userFeed(userID: Int, completion: @escaping ([FeedPreviewModel]) -> Void ) {
+        AF.request(Router.UserFeed(userID: userID))
+            .responseDecodable { (response: DataResponse<TwoFeedModel, AFError>) in
+                switch response.result {
+                case .success(let userFeed):
+                    completion(userFeed.feedPreviewList)
+                case .failure(let error):
+                    completion([])
+                    print("User Feed's Error: \(error)")
                 }
             }
     }
