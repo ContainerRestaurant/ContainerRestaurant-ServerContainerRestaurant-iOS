@@ -22,6 +22,6 @@ struct NearybyRestaurantModel: Decodable {
         let container = try decoder.container(keyedBy: RootKey.self)
         let nearbyRestaurants = try container.nestedContainer(keyedBy: Embedded.self, forKey: .embedded)
         
-        self.nearbyRestaurants = try nearbyRestaurants.decode(Array.self, forKey: .nearbyRestaurants)
+        self.nearbyRestaurants = (try? nearbyRestaurants.decode(Array.self, forKey: .nearbyRestaurants)) ?? []
     }
 }

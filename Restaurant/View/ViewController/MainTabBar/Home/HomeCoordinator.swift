@@ -15,7 +15,7 @@ class HomeCoordinator: NSObject, Coordinator {
     var childCoordinators: [Coordinator]
 
     let recommendFeedSubject: PublishSubject<[FeedPreviewModel]> = PublishSubject<[FeedPreviewModel]>()
-    let mainBannerSubject: PublishSubject<[BannerInfoModel]> = PublishSubject<[BannerInfoModel]>()
+    let homeMainDataSubject: PublishSubject<HomeMainDataModel> = PublishSubject<HomeMainDataModel>()
     let disposeBag = DisposeBag()
     
     init(presenter: UINavigationController) {
@@ -24,14 +24,14 @@ class HomeCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        APIClient.mainBanner { [weak self] in self?.mainBannerSubject.onNext($0) }
+        APIClient.homeMainData { [weak self] in self?.homeMainDataSubject.onNext($0) }
         APIClient.recommendFeed { [weak self] in self?.recommendFeedSubject.onNext($0) }
 
-        Observable.zip(self.mainBannerSubject, self.recommendFeedSubject)
-            .subscribe(onNext: { [weak self] (mainBanner, recommendFeeds) in
+        Observable.zip(self.homeMainDataSubject, self.recommendFeedSubject)
+            .subscribe(onNext: { [weak self] (homeMainData, recommendFeeds) in
                 var homeViewController = HomeViewController.instantiate()
                 homeViewController.coordinator = self
-                homeViewController.bind(viewModel: HomeViewModel(recommendFeeds, mainBanner))
+                homeViewController.bind(viewModel: HomeViewModel(recommendFeeds, homeMainData))
 
                 self?.presenter.pushViewController(homeViewController, animated: false)
             })

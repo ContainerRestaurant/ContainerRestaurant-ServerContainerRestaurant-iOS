@@ -25,6 +25,10 @@ class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType 
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(true, animated: HomeViewController.homeNavigationBarAnimated)
+        APIClient.homeMainData {
+            //데이터 나오면 어떻게 데이터 새로 세팅하고 화면 reload할건지 생각하기
+            print($0)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -76,12 +80,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         switch type {
         case is MainTitleSection.Type:
             let cell: MainTitleSection = collectionView.dequeueReusableCell(for: indexPath)
-            if let coordinator = self.coordinator { cell.configure(coordinator: coordinator) }
+            if let coordinator = self.coordinator {
+                cell.configure(coordinator: coordinator, homeMainData: viewModel.homeMainData)
+            }
             return cell
 
         case is MainBanner.Type:
             let cell: MainBanner = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(viewModel.bannerInfo)
+            cell.configure(viewModel.homeMainData.banners)
             return cell
 
         case is SeparateLineCollectionViewCell.Type:

@@ -12,7 +12,7 @@ import RxCocoa
 class HomeViewModel {
     var modules: [UICollectionViewCell.Type] = []
     var recommendFeeds: [FeedPreviewModel] = []
-    var bannerInfo: [BannerInfoModel] = []
+    var homeMainData: HomeMainDataModel = HomeMainDataModel()
 
 //    var recommendFeeds: Driver<[FeedPreviewModel]> {
 //        return Observable
@@ -20,9 +20,9 @@ class HomeViewModel {
 //            .asDriver(onErrorJustReturn: [])
 //    }
     
-    init(_ recommendFeeds: [FeedPreviewModel], _ banner: [BannerInfoModel]) {
+    init(_ recommendFeeds: [FeedPreviewModel], _ homeMainData: HomeMainDataModel) {
         self.recommendFeeds = recommendFeeds
-        self.bannerInfo = banner
+        self.homeMainData = homeMainData
         
         appendModule()
     }

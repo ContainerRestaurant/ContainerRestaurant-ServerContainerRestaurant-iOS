@@ -22,6 +22,6 @@ struct CommentOfFeedModel: Decodable {
         let container = try decoder.container(keyedBy: RootKey.self)
         let comments = try container.nestedContainer(keyedBy: Embedded.self, forKey: .embedded)
 
-        self.comments = try comments.decode(Array.self, forKey: .comments)
+        self.comments = (try? comments.decode(Array.self, forKey: .comments)) ?? []
     }
 }

@@ -22,6 +22,6 @@ struct MostFeedCreationUserModel: Decodable {
         let container = try decoder.container(keyedBy: RootKey.self)
         let users = try container.nestedContainer(keyedBy: Embedded.self, forKey: .embedded)
 
-        self.users = try users.decode(Array.self, forKey: .user)
+        self.users = (try? users.decode(Array.self, forKey: .user)) ?? []
     }
 }
