@@ -29,7 +29,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3k-eb-bbx">
-                                <rect key="frame" x="46.5" y="16" width="37.5" height="17"/>
+                                <rect key="frame" x="46.5" y="14.5" width="37.5" height="17"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <color key="textColor" name="colorGrayGray05"/>
                                 <nil key="highlightedColor"/>
@@ -37,9 +37,9 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="u3k-eb-bbx" secondAttribute="bottom" constant="13" id="0jX-YO-ZrR"/>
                             <constraint firstItem="4t3-xq-40S" firstAttribute="leading" secondItem="ZeY-Av-GVZ" secondAttribute="leading" constant="16" id="1TK-H6-wjc"/>
                             <constraint firstAttribute="height" constant="46" id="DQZ-8L-wOO"/>
+                            <constraint firstItem="u3k-eb-bbx" firstAttribute="centerY" secondItem="4t3-xq-40S" secondAttribute="centerY" id="DiR-Ox-GkF"/>
                             <constraint firstAttribute="bottom" secondItem="4t3-xq-40S" secondAttribute="bottom" constant="13" id="EYO-tb-Dtg"/>
                             <constraint firstItem="u3k-eb-bbx" firstAttribute="leading" secondItem="4t3-xq-40S" secondAttribute="trailing" constant="6" id="XeY-G6-jCJ"/>
                             <constraint firstItem="4t3-xq-40S" firstAttribute="top" secondItem="ZeY-Av-GVZ" secondAttribute="top" constant="13" id="ZXN-e8-oHO"/>
