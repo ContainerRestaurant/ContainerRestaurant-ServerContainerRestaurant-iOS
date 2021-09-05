@@ -107,7 +107,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
         case is TwoFeedInLineCollectionView.Type:
             let cell: TwoFeedInLineCollectionView = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configureHomeMainFeed(viewModel.recommendFeeds)
+            if let coordinator = self.coordinator {
+                cell.configureHomeMainFeed(viewModel.recommendFeeds, coordinator)
+            }
             return cell
             
         case is ViewMoreButton.Type:

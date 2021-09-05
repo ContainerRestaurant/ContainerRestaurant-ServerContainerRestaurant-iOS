@@ -76,7 +76,9 @@ extension InquiryProfileViewController: UICollectionViewDelegate, UICollectionVi
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: TwoFeedInLineCollectionView = collectionView.dequeueReusableCell(for: indexPath)
-        cell.configureUserFeed(userFeed)
+        if let coordinator = self.coordinator {
+            cell.configureUserFeed(userFeed, coordinator)
+        }
         return cell
     }
 

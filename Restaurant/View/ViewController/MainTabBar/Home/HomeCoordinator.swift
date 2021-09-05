@@ -60,4 +60,12 @@ extension HomeCoordinator {
         childCoordinators.append(coordinator)
         coordinator.start()
     }
+
+    func pushToFeedDetail(feedID: Int) {
+        let coordinator = FeedDetailCoordinator(presenter: presenter)
+        coordinator.feedID = feedID
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
 }

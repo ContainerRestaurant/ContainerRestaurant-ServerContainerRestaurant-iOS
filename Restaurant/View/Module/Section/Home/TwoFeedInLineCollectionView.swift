@@ -13,7 +13,9 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
     private var feeds: [FeedPreviewModel] = []
     private let interItemSpacing: CGFloat = 15
     private let cellLineSpacing: CGFloat = 20
-    var coordinator: FeedCoordinator?
+    var homeCoordinator: HomeCoordinator?
+    var feedCoordinator: FeedCoordinator?
+    var inquiryProfileCoordinator: InquiryProfileCoordinator?
     var selectedCategorySubject: PublishSubject<String>?
     var disposeBag = DisposeBag()
     
@@ -37,8 +39,9 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
     }
     
     //홈 탭 피드
-    func configureHomeMainFeed(_ feeds: [FeedPreviewModel]) {
+    func configureHomeMainFeed(_ feeds: [FeedPreviewModel], _ coordinator: HomeCoordinator) {
         self.feeds = feeds
+        self.homeCoordinator = coordinator
         
         self.emptyView.isHidden = self.feeds.count > 0
     }
@@ -50,7 +53,7 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
             self.isFirstEnterToFeed = false
         }
         self.selectedCategorySubject = selectedCategorySubject
-        self.coordinator = coordinator
+        self.feedCoordinator = coordinator
 
         self.emptyView.isHidden = self.feeds.count > 0
         
@@ -66,8 +69,9 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
     }
 
     //유저 피드
-    func configureUserFeed(_ feeds: [FeedPreviewModel]) {
+    func configureUserFeed(_ feeds: [FeedPreviewModel], _ coordinator: InquiryProfileCoordinator) {
         self.feeds = feeds
+        self.inquiryProfileCoordinator = coordinator
 
         self.emptyView.isHidden = self.feeds.count > 0
     }
@@ -97,7 +101,13 @@ extension TwoFeedInLineCollectionView: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.coordinator?.pushToFeedDetail(feedID: self.feeds[indexPath.row].id)
+        if let coordinator = feedCoordinator {
+            coordinator.pushToFeedDetail(feedID: self.feeds[indexPath.row].id)
+        } else if let coordinator = inquiryProfileCoordinator {
+            coordinator.pushToFeedDetail(feedID: self.feeds[indexPath.row].id)
+        } else if let coordinator = homeCoordinator {
+            coordinator.pushToFeedDetail(feedID: self.feeds[indexPath.row].id)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
