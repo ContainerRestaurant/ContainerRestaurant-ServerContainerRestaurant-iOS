@@ -23,12 +23,17 @@ class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationController?.setNavigationBarHidden(true, animated: HomeViewController.homeNavigationBarAnimated)
-        APIClient.homeMainData {
-            //데이터 나오면 어떻게 데이터 새로 세팅하고 화면 reload할건지 생각하기
-            print($0)
+
+        APIClient.checkLogin(loginToken: UserDataManager.sharedInstance.loginToken) { [weak self] userModel in
+            if userModel.id != 0 {
+                APIClient.homeMainData { [weak self] in
+                    self?.viewModel.homeMainData = $0
+                    self?.collectionView.reloadData()
+                }
+            }
         }
+
+        self.navigationController?.setNavigationBarHidden(true, animated: HomeViewController.homeNavigationBarAnimated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

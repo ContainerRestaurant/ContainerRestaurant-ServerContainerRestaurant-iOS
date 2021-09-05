@@ -12,6 +12,7 @@ import RxCocoa
 class MainTitleSection: UICollectionViewCell {
     var disposeBag = DisposeBag()
     weak var coordinator: HomeCoordinator?
+    var myContainerCount = 0
     
     @IBOutlet weak var mainPhraseLabel: UILabel!
     @IBOutlet weak var myLevelTitleLabel: UILabel!
@@ -37,6 +38,7 @@ class MainTitleSection: UICollectionViewCell {
     
     func configure(coordinator: HomeCoordinator, homeMainData: HomeMainDataModel) {
         self.coordinator = coordinator
+        self.myContainerCount = homeMainData.myContainer
 
         mainPhraseLabel.text = homeMainData.phrase
         myLevelTitleLabel.text = homeMainData.myLevelTitle
@@ -62,7 +64,11 @@ class MainTitleSection: UICollectionViewCell {
 
         myContainerButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
-                self?.coordinator?.presentCreationPopup()
+                if self?.myContainerCount == 0 {
+                    self?.coordinator?.presentCreationPopup()
+                } else {
+                    self?.coordinator?.pushToInquiryProfile(userID: UserDataManager.sharedInstance.userID)
+                }
             })
             .disposed(by: disposeBag)
 
