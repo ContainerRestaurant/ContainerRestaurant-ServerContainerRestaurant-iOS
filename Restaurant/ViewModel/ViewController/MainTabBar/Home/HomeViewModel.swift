@@ -45,7 +45,11 @@ extension HomeViewModel {
     }
 
     func mainBannerSize() -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width-CGFloat(32), height: 100)
+        if homeMainData.banners.isEmpty {
+            return .zero
+        } else {
+            return CGSize(width: UIScreen.main.bounds.width-CGFloat(32), height: 100)
+        }
     }
 
     func title16BoldSize() -> CGSize {
