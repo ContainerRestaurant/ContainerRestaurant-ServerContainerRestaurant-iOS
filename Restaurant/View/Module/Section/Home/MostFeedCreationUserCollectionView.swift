@@ -57,7 +57,7 @@ extension MostFeedCreationUserCollectionView: UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        coordinator?.pushToInquiryProfile()
+        coordinator?.pushToInquiryProfile(userID: mostFeedCreationUsers[indexPath.row].id)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

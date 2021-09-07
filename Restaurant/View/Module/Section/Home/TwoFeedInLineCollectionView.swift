@@ -64,6 +64,13 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
             })
             .disposed(by: disposeBag)
     }
+
+    //유저 피드
+    func configureUserFeed(_ feeds: [FeedPreviewModel]) {
+        self.feeds = feeds
+
+        self.emptyView.isHidden = self.feeds.count > 0
+    }
 }
 
 //MARK: - Instance Method

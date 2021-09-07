@@ -60,7 +60,7 @@ extension RecentlyFeedCreationUserCollectionView: UICollectionViewDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        coordinator?.pushToInquiryProfile()
+        coordinator?.pushToInquiryProfile(userID: recentlyFeedCreationUsers[indexPath.row].id)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

@@ -37,8 +37,8 @@ class ContainerOfEveryoneCoordinator: NSObject, Coordinator {
         coordinator.start()
     }
     
-    func pushToInquiryProfile() {
-        let coordinator = InquiryProfileCoordinator(presenter: presenter)
+    func pushToInquiryProfile(userID: Int) {
+        let coordinator = InquiryProfileCoordinator(presenter: presenter, userID: userID)
         coordinator.delegate = self
         childCoordinators.append(coordinator)
         coordinator.start()
