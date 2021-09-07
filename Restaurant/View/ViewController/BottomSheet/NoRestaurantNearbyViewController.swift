@@ -21,7 +21,10 @@ class NoRestaurantNearbyViewController: BaseViewController, Storyboard {
         self.dismiss(animated: true, completion: nil)
         self.coordinator?.presentSearchingRestaurantPopup()
     }
-    
+    @IBAction func dismissViewController(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

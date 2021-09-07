@@ -877,6 +877,9 @@
                                     <constraint firstAttribute="height" constant="20" id="vL6-9E-jLG"/>
                                 </constraints>
                                 <state key="normal" image="closeOutline20Px"/>
+                                <connections>
+                                    <action selector="dismissViewController:" destination="3DE-zk-uKa" eventType="touchUpInside" id="SOV-bj-xW5"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 위치에 아직 용기낸 식당이 없어요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1S-jt-9cC">
                                 <rect key="frame" x="121" y="90" width="133" height="48"/>
