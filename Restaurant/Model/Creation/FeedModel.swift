@@ -11,10 +11,10 @@ struct FeedModel: Codable {
     var restaurantCreateDto: RestaurantModel
     var category: String
     var mainMenu: [MenuAndContainerModel]
-    var subMenu: [MenuAndContainerModel]
+    var subMenu: [MenuAndContainerModel]?
     var difficulty: Int
     var welcome: Bool
-    var thumbnailImageId: Int
+    var thumbnailImageId: Int?
     var content: String
     
     private enum CodingKeys: CodingKey {
@@ -43,10 +43,10 @@ struct FeedModel: Codable {
         self.restaurantCreateDto = restaurantCreateDto
         self.category = category
         self.mainMenu = mainMenu
-        self.subMenu = subMenu
+        self.subMenu = (subMenu.first?.menuName.isEmpty ?? true || subMenu.first?.container.isEmpty ?? true) ? nil : subMenu
         self.difficulty = difficulty
         self.welcome = welcome
-        self.thumbnailImageId = thumbnailImageID
+        self.thumbnailImageId = thumbnailImageID == -1 ? nil : thumbnailImageID
         self.content = content
     }
     

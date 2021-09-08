@@ -15,7 +15,7 @@ class CreationFeedImage: UICollectionViewCell {
     let imagePicker = UIImagePickerController()
     var registerSubject: PublishSubject<Bool> = PublishSubject<Bool>()
     var image: UIImage?
-    var imageSubject: PublishSubject<UIImage>?
+    var imageSubject: PublishSubject<UIImage?>?
     var contentsTextSubject: PublishSubject<String>?
 
     @IBOutlet weak var imagePickerButton: UIButton!
@@ -23,7 +23,8 @@ class CreationFeedImage: UICollectionViewCell {
     @IBOutlet weak var pickedImageView: UIImageView!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var contentsTextView: UITextView!
-    
+    @IBOutlet weak var notEnoughInformationWarningLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -33,11 +34,41 @@ class CreationFeedImage: UICollectionViewCell {
         bindingView()
     }
 
-    func configure(_ coordinator: CreationFeedCoordinator, _ registerSubject: PublishSubject<Bool>, _ imageSubject: PublishSubject<UIImage>, _ contentsTextSubject: PublishSubject<String>) {
+    func configure(_ coordinator: CreationFeedCoordinator, _ restaurant: LocalSearchItem, _ mainMenuAndContainer: [MenuAndContainerModel], _ registerSubject: PublishSubject<Bool>, _ imageSubject: PublishSubject<UIImage?>, _ contentsTextSubject: PublishSubject<String>) {
         self.coordinator = coordinator
         self.registerSubject = registerSubject
         self.imageSubject = imageSubject
         self.contentsTextSubject = contentsTextSubject
+
+        setNotEnoughInformationView(restaurant, mainMenuAndContainer)
+    }
+
+    func setNotEnoughInformationView(_ restaurant: LocalSearchItem, _ mainMenuAndContainer: [MenuAndContainerModel]) {
+        if restaurant.title.isEmpty {
+            var isEmpty = false
+            for menuAndContainer in mainMenuAndContainer {
+                isEmpty = menuAndContainer.menuName.isEmpty || menuAndContainer.container.isEmpty
+                if isEmpty {
+                    break
+                }
+            }
+
+            notEnoughInformationWarningLabel.text = isEmpty ? "식당 이름, 메인음식 정보를 입력해주세요" : "식당 이름을 입력해주세요"
+            registerButton.isEnabled = false
+            registerButton.backgroundColor = .colorGrayGray04
+        } else {
+            var isEmpty = false
+            for menuAndContainer in mainMenuAndContainer {
+                isEmpty = menuAndContainer.menuName.isEmpty || menuAndContainer.container.isEmpty
+                if isEmpty {
+                    break
+                }
+            }
+
+            notEnoughInformationWarningLabel.text = isEmpty ? "메인음식 정보를 입력해주세요" : ""
+            registerButton.isEnabled = !isEmpty
+            registerButton.backgroundColor = isEmpty ? .colorGrayGray04 : .colorMainGreen03
+        }
     }
 
     private func bindingView() {
@@ -70,8 +101,8 @@ class CreationFeedImage: UICollectionViewCell {
                 self?.image = nil
             })
             .disposed(by: disposeBag)
-        
-        self.contentsTextView.rx.text
+
+        contentsTextView.rx.text
             .subscribe(onNext: { [weak self] contentsText in
                 if let text = contentsText {
                     self?.contentsTextSubject?.onNext(text)
@@ -81,10 +112,7 @@ class CreationFeedImage: UICollectionViewCell {
 
         registerButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                if let image = self?.image {
-                    self?.imageSubject?.onNext(image)
-                }
-                print("등록버튼")
+                self?.imageSubject?.onNext(self?.image)
                 self?.registerSubject.onNext(true)
             })
             .disposed(by: disposeBag)
