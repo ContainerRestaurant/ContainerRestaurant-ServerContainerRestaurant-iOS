@@ -42,6 +42,7 @@ class MainTitleSection: UICollectionViewCell {
 
         mainPhraseLabel.text = homeMainData.phrase
         myLevelTitleLabel.text = homeMainData.myLevelTitle
+        mainProfileImageView.image = Common.getMainProfileImage(homeMainData.myLevelTitle)
 
         if homeMainData.myProfile.isEmpty {
             myProfileImageView.image = UIImage(named: "ProfileTumbler36px")

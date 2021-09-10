@@ -18,17 +18,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="344"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="뭐든 처음이 어려운 법이죠" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v13-jX-gDm">
-                        <rect key="frame" x="24" y="85" width="175" height="67"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="175" id="g9b-U6-NM5"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배달 일회용기 재활용도 안돼요" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v13-jX-gDm">
+                        <rect key="frame" x="24" y="85" width="191" height="67"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                         <color key="textColor" name="colorGrayGray08"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgLevelUp" translatesAutoresizingMaskIntoConstraints="NO" id="vo6-KG-2bG">
-                        <rect key="frame" x="207" y="34" width="144" height="168"/>
+                        <rect key="frame" x="215" y="34" width="144" height="168"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="168" id="S9p-ya-wNV"/>
                             <constraint firstAttribute="width" constant="144" id="zCw-nQ-HDP"/>
@@ -199,8 +196,9 @@
                 <constraint firstItem="3Zw-fZ-0fz" firstAttribute="top" secondItem="vo6-KG-2bG" secondAttribute="bottom" constant="16" id="2gA-DE-NwP"/>
                 <constraint firstItem="4h2-xz-epm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="4P6-45-szU"/>
                 <constraint firstItem="yOi-Wn-giD" firstAttribute="leading" secondItem="4h2-xz-epm" secondAttribute="leading" id="9Hl-65-DCI"/>
-                <constraint firstAttribute="trailing" secondItem="vo6-KG-2bG" secondAttribute="trailing" constant="24" id="CqE-AT-PrP"/>
+                <constraint firstAttribute="trailing" secondItem="vo6-KG-2bG" secondAttribute="trailing" constant="16" id="CqE-AT-PrP"/>
                 <constraint firstItem="4h2-xz-epm" firstAttribute="top" secondItem="vo6-KG-2bG" secondAttribute="bottom" constant="16" id="E9e-xb-MZQ"/>
+                <constraint firstItem="vo6-KG-2bG" firstAttribute="leading" secondItem="v13-jX-gDm" secondAttribute="trailing" id="LsA-BI-3id"/>
                 <constraint firstItem="yOi-Wn-giD" firstAttribute="top" secondItem="4h2-xz-epm" secondAttribute="top" id="MbU-Aa-gIn"/>
                 <constraint firstAttribute="trailing" secondItem="3Zw-fZ-0fz" secondAttribute="trailing" constant="16" id="RAO-wa-e2H"/>
                 <constraint firstItem="6fz-6l-4cP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="24" id="S1g-9P-qwZ"/>
