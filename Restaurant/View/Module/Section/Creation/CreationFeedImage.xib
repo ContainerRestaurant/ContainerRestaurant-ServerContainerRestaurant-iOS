@@ -125,6 +125,12 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </textView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5U-J4-P5O">
+                        <rect key="frame" x="16" y="466" width="343" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" name="colorPointOrange02"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -134,12 +140,15 @@
                 <constraint firstItem="cgO-f0-3hP" firstAttribute="top" secondItem="AO6-DO-Vbt" secondAttribute="bottom" constant="16" id="532-2f-pfW"/>
                 <constraint firstItem="ox3-1G-u5l" firstAttribute="top" secondItem="0kQ-gJ-nYX" secondAttribute="bottom" constant="64" id="5I3-z3-Mfb"/>
                 <constraint firstItem="jPU-zS-zNN" firstAttribute="top" secondItem="KIX-AX-Rwu" secondAttribute="top" constant="4" id="7mU-rd-nmP"/>
+                <constraint firstItem="i5U-J4-P5O" firstAttribute="top" secondItem="ox3-1G-u5l" secondAttribute="bottom" constant="12" id="Df0-gB-ygH"/>
+                <constraint firstAttribute="trailing" secondItem="i5U-J4-P5O" secondAttribute="trailing" constant="16" id="Egm-gv-Vy0"/>
                 <constraint firstItem="KIX-AX-Rwu" firstAttribute="top" secondItem="cgO-f0-3hP" secondAttribute="top" id="Ev6-wT-LeM"/>
                 <constraint firstItem="KIX-AX-Rwu" firstAttribute="leading" secondItem="cgO-f0-3hP" secondAttribute="trailing" constant="8" id="F6k-su-d54"/>
                 <constraint firstItem="DYe-hK-jau" firstAttribute="centerX" secondItem="Rwz-Zc-33h" secondAttribute="centerX" id="FJr-YO-Gai"/>
                 <constraint firstItem="Rwz-Zc-33h" firstAttribute="top" secondItem="cgO-f0-3hP" secondAttribute="top" constant="22" id="KAF-4g-4TO"/>
                 <constraint firstItem="AO6-DO-Vbt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="Mlr-al-wRg"/>
                 <constraint firstItem="cgO-f0-3hP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="O7J-C2-c3K"/>
+                <constraint firstItem="i5U-J4-P5O" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="YkA-eS-czc"/>
                 <constraint firstItem="jPU-zS-zNN" firstAttribute="trailing" secondItem="KIX-AX-Rwu" secondAttribute="trailing" constant="-4" id="ZNa-hr-QcX"/>
                 <constraint firstAttribute="trailing" secondItem="CaU-Uc-H5r" secondAttribute="trailing" constant="16" id="abY-YE-VrT"/>
                 <constraint firstItem="0kQ-gJ-nYX" firstAttribute="top" secondItem="CaU-Uc-H5r" secondAttribute="bottom" constant="12" id="b92-V6-paK"/>
@@ -159,6 +168,7 @@
                 <outlet property="contentsTextView" destination="CaU-Uc-H5r" id="TNm-6E-STw"/>
                 <outlet property="hideImageButton" destination="jPU-zS-zNN" id="pEr-jZ-FAb"/>
                 <outlet property="imagePickerButton" destination="cgO-f0-3hP" id="mGG-la-K64"/>
+                <outlet property="notEnoughInformationWarningLabel" destination="i5U-J4-P5O" id="sHC-Dc-Y6D"/>
                 <outlet property="pickedImageView" destination="KIX-AX-Rwu" id="wkR-Gk-nQg"/>
                 <outlet property="registerButton" destination="ox3-1G-u5l" id="Bzc-w9-Ofw"/>
             </connections>
@@ -182,6 +192,9 @@
         </namedColor>
         <namedColor name="colorMainGreen03">
             <color red="0.093999996781349182" green="0.75300002098083496" blue="0.55299997329711914" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="colorPointOrange02">
+            <color red="0.9570000171661377" green="0.35699999332427979" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

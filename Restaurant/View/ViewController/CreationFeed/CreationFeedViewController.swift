@@ -36,7 +36,7 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
     var isWelcomeSubject: PublishSubject<Bool> = PublishSubject<Bool>()
     var imageID: Int?
     var imageIDSubject: PublishSubject<Int> = PublishSubject<Int>()
-    var imageSubject: PublishSubject<UIImage> = PublishSubject<UIImage>()
+    var imageSubject: PublishSubject<UIImage?> = PublishSubject<UIImage?>()
     var contentsTextSubject: PublishSubject<String> = PublishSubject<String>()
     var contentsText: String = ""
 
@@ -51,6 +51,7 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
         viewModel.restaurantSubject
             .subscribe(onNext: { [weak self] in
                 self?.restaurant = $0
+                self?.collectionView.reloadItems(at: [IndexPath(row: 17, section: 0)])
             })
             .disposed(by: disposeBag)
         
@@ -63,6 +64,7 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
         mainFoodAndContainerSubject
             .subscribe(onNext: { [weak self] in
                 self?.mainFoodAndContainer = $0
+                self?.collectionView.reloadItems(at: [IndexPath(row: 17, section: 0)])
             })
             .disposed(by: disposeBag)
 
@@ -86,8 +88,11 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
         
         imageSubject
             .subscribe(onNext: { [weak self] in
-                //API쏘기
-                API().uploadImage(image: $0, imageIDSubject: self!.imageIDSubject)
+                if $0 == nil {
+                    self?.imageIDSubject.onNext(-1)
+                } else {
+                    API().uploadImage(image: $0!, imageIDSubject: self!.imageIDSubject)
+                }
             })
             .disposed(by: disposeBag)
         
@@ -103,21 +108,6 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
             })
             .disposed(by: disposeBag)
 
-//        registerSubject
-//            .filter { $0 }
-//            .subscribe(onNext: { [weak self] _ in
-//                print(self?.restaurantNameLabel?.text)
-//                print(self?.selectedCategory)
-//                print(self?.mainFoodAndContainer)
-//                print(self?.sideFoodAndContainer)
-//                print(self?.levelOfDifficulty)
-//                print(self?.isWelcome)
-//                print(self?.imageID)
-////                print(self?.image)
-//            })
-//            .disposed(by: disposeBag)
-        
-        //Todo: 현재는 사진 입력됐을 때에만 등록됨... => 사진은 옵셔널로 수정 ㄱ
         Observable
             .zip(registerSubject, imageIDSubject)
             .subscribe(onNext: { [weak self] (registerSubject, imageIDSubject) in
@@ -144,13 +134,6 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
     }
 
     func bindingView() {
-//        viewModel.restaurantNameSubject
-//            .subscribe(onNext: { [weak self] in
-//                self?.viewModel.restaurantName = $0
-//                self?.collectionView.reloadData()
-//            })
-//            .disposed(by: disposeBag)
-
         viewModel.mainFoodHeightSubject
             .subscribe(onNext: { [weak self] cardViewHeight in
                 let titleHeight: CGFloat = 20
@@ -290,7 +273,7 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
         case is CreationFeedImage.Type:
             let cell: CreationFeedImage = collectionView.dequeueReusableCell(for: indexPath)
             if let coordinator = self.coordinator {
-                cell.configure(coordinator, registerSubject, imageSubject, contentsTextSubject)
+            cell.configure(coordinator, restaurant ?? LocalSearchItem(), mainFoodAndContainer, registerSubject, imageSubject, contentsTextSubject)
             }
             return cell
 

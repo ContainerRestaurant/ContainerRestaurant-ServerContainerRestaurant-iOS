@@ -34,6 +34,18 @@ struct LocalSearchItem: Decodable {
         case mapy
     }
 
+    init() {
+        self.title = ""
+        self.link = ""
+        self.category = ""
+        self.description = ""
+        self.telephone = ""
+        self.address = ""
+        self.roadAddress = ""
+        self.mapx = ""
+        self.mapy = ""
+    }
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 

@@ -31,6 +31,7 @@ class SearchRestaurant: UICollectionViewCell {
         clearButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.restaurantNameLabel.text = ""
+                self?.restaurantSubject.onNext(LocalSearchItem())
             })
             .disposed(by: disposeBag)
     }
