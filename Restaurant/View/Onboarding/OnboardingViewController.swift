@@ -15,9 +15,11 @@ class OnboardingViewController: BaseViewController, Storyboard {
     let animationView1 = AnimationView(name: "onboarding1")
     let animationView2 = AnimationView(name: "onboarding2")
     let animationView3 = AnimationView(name: "onboarding3")
+    let animationView4 = AnimationView(name: "onboarding4")
 
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var nextAndCloseButton: UIButton!
+    @IBOutlet weak var pageControlView: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
@@ -27,7 +29,7 @@ class OnboardingViewController: BaseViewController, Storyboard {
         scrollView.delegate = self
         onboardingViews = createOnboardingView()
         onboardingScrollView(onboardings: onboardingViews)
-//        pageControl()
+        setIndicatorImage(page: 0)
         bindingView()
     }
 
@@ -95,7 +97,11 @@ extension OnboardingViewController {
         let onboarding4: OnboardingView = Bundle.main.loadNibNamed("OnboardingView", owner: self, options: nil)?.first as! OnboardingView
         onboarding4.mainTitleLabel.text = LongText.onboarding4MainTitle.rawValue
         onboarding4.subTitleLabel.text = LongText.onboarding4SubTitle.rawValue
-        onboarding4.lottieView.backgroundColor = .green
+        onboarding4.addSubview(animationView4)
+        let animationView4Point = CGPoint(x: onboarding3.lottieView.frame.minX, y: onboarding4.lottieView.frame.minY)
+        let animationView4Size = CGSize(width: CGFloat(260).widthRatio(), height: lottieHeight)
+        animationView4.frame = CGRect(origin: animationView4Point, size: animationView4Size)
+        animationView4.contentMode = .scaleAspectFit
 
         return [onboarding1, onboarding2, onboarding3, onboarding4]
     }
@@ -110,29 +116,47 @@ extension OnboardingViewController {
             scrollView.addSubview(onboardings[i])
         }
     }
-
-    //    private func pageControl() {
-    //        pageControl.numberOfPages = slides.count
-    //        pageControl.currentPage = 0
-    //        view.bringSubview(toFront: pageControl)
-    //    }
 }
 
 extension OnboardingViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         switch scrollView.contentOffset.x / UIScreen.main.bounds.width {
         case 0:
+            setIndicatorImage(page: 0)
             nextAndCloseButton(title: "다음 단계", isHiddenSkipButton: false)
             animationView1.play()
         case 1:
+            setIndicatorImage(page: 1)
             nextAndCloseButton(title: "다음 단계", isHiddenSkipButton: false)
             animationView2.play()
         case 2:
+            setIndicatorImage(page: 2)
             nextAndCloseButton(title: "다음 단계", isHiddenSkipButton: false)
             animationView3.play()
-        case 3: nextAndCloseButton(title: "시작하기", isHiddenSkipButton: true)
-        default: nextAndCloseButton(title: "다음 단계", isHiddenSkipButton: false)
+        case 3:
+            setIndicatorImage(page: 3)
+            nextAndCloseButton(title: "시작하기", isHiddenSkipButton: true)
+            animationView4.play()
+        default:
+            break
         }
+    }
+
+    private func setIndicatorImage(page: Int) {
+        pageControlView.currentPageIndicatorTintColor = .colorGrayGray04
+        pageControlView.currentPage = page
+        for i in 0...3 {
+            if i == page {
+                if #available(iOS 14.0, *) {
+                    pageControlView.setIndicatorImage(UIImage(named: "selectedIndicatorIcon"), forPage: i)
+                } else { }
+            } else {
+                if #available(iOS 14.0, *) {
+                    pageControlView.setIndicatorImage(UIImage(named: "indicatorIcon"), forPage: i)
+                } else { }
+            }
+        }
+        pageControlView.currentPageIndicatorTintColor = .colorMainGreen02
     }
 
     private func nextAndCloseButton(title: String, isHiddenSkipButton: Bool) {

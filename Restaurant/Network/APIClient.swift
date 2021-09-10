@@ -33,7 +33,7 @@ class APIClient {
                     completion(userModel)
                 case .failure(let error):
                     completion(UserModel())
-                    print("Create Login Token's Error: \(error)")
+                    print("Check Login's Error: \(error)")
                 }
             }
     }

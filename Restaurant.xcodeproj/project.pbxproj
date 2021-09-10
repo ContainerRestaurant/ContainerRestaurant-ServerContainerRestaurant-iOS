@@ -171,6 +171,7 @@
 		FB6EEE5026D6B1A500E6237B /* ExtensionUIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6EEE4F26D6B1A400E6237B /* ExtensionUIDevice.swift */; };
 		FB9E1DC326E159F300707C60 /* HomeMainDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9E1DC226E159F300707C60 /* HomeMainDataModel.swift */; };
 		FB9E1DC526E31F6500707C60 /* ContainerOfEveryoneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9E1DC426E31F6500707C60 /* ContainerOfEveryoneModel.swift */; };
+		FB9E1DC726E7B36100707C60 /* onboarding4.json in Resources */ = {isa = PBXBuildFile; fileRef = FB9E1DC626E7B36100707C60 /* onboarding4.json */; };
 		FBAA5D0D26B2F6BB00CC38CA /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA5D0C26B2F6BB00CC38CA /* ToastMessage.swift */; };
 		FBAA5D1126B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA5D0F26B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.swift */; };
 		FBAA5D1226B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBAA5D1026B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.xib */; };
@@ -371,6 +372,7 @@
 		FB6EEE4F26D6B1A400E6237B /* ExtensionUIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIDevice.swift; sourceTree = "<group>"; };
 		FB9E1DC226E159F300707C60 /* HomeMainDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainDataModel.swift; sourceTree = "<group>"; };
 		FB9E1DC426E31F6500707C60 /* ContainerOfEveryoneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerOfEveryoneModel.swift; sourceTree = "<group>"; };
+		FB9E1DC626E7B36100707C60 /* onboarding4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = onboarding4.json; sourceTree = "<group>"; };
 		FBAA5D0C26B2F6BB00CC38CA /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		FBAA5D0F26B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewInRestaurantSummaryInfo.swift; sourceTree = "<group>"; };
 		FBAA5D1026B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewInRestaurantSummaryInfo.xib; sourceTree = "<group>"; };
@@ -629,6 +631,7 @@
 		5258114C2677A95C00900D59 /* Json */ = {
 			isa = PBXGroup;
 			children = (
+				FB9E1DC626E7B36100707C60 /* onboarding4.json */,
 				FBAA5D3526B9BDB400CC38CA /* welcome.json */,
 				5258114E2677A97700900D59 /* onboarding1.json */,
 				5258114F2677A97800900D59 /* onboarding2.json */,
@@ -1172,6 +1175,7 @@
 				FB56AF76265F71B4002736F5 /* CreationFeedDetail.xib in Resources */,
 				FB585B3C266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.xib in Resources */,
 				FBAA5D3626B9BDB400CC38CA /* welcome.json in Resources */,
+				FB9E1DC726E7B36100707C60 /* onboarding4.json in Resources */,
 				526BED802647252400897230 /* RecentlyFeedCreationUserCollectionViewCell.xib in Resources */,
 				FB6EEE3026CAC4CE00E6237B /* CommentViewOnFeedDetail.xib in Resources */,
 				FB6EEE2426CA46D900E6237B /* TopSectionOnFeedDetail.xib in Resources */,

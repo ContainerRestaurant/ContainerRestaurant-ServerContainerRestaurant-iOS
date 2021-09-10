@@ -288,11 +288,11 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3a-f2-7kx">
                                 <rect key="frame" x="0.0" y="136" width="375" height="480"/>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Rd5-7b-OdA">
-                                <rect key="frame" x="127.33333333333334" y="656" width="120.33333333333334" height="27"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="Rd5-7b-OdA">
+                                <rect key="frame" x="118" y="656" width="139" height="27"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="pageIndicatorTintColor" red="0.91372549020000005" green="0.2666666667" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="currentPageIndicatorTintColor" name="AccentColor"/>
+                                <color key="pageIndicatorTintColor" name="colorGrayGray04"/>
+                                <color key="currentPageIndicatorTintColor" name="colorMainGreen02"/>
                             </pageControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="m66-MP-dtJ"/>
@@ -314,6 +314,7 @@
                     </view>
                     <connections>
                         <outlet property="nextAndCloseButton" destination="2gq-IG-GY2" id="Hv4-ub-w9v"/>
+                        <outlet property="pageControlView" destination="Rd5-7b-OdA" id="1li-0D-Lfp"/>
                         <outlet property="scrollView" destination="V3a-f2-7kx" id="Sda-aH-54e"/>
                         <outlet property="skipButton" destination="pr7-To-LTT" id="L6C-aX-fqY"/>
                     </connections>
@@ -1969,9 +1970,6 @@
         <image name="resetOutline16Px" width="16" height="16"/>
         <image name="searchOutline20Px" width="20" height="20"/>
         <image name="settingOutline20Px" width="20" height="20"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="colorGrayGray01">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
