@@ -30,14 +30,23 @@ struct TwoFeedModel: Decodable {
 struct FeedPreviewModel: Decodable {
     var id: Int
     var thumbnailUrl: String
-    var ownerNickname: String
+    var userNickname: String
     var content: String
     var likeCount: Int
-    var replyCount: Int
+    var commentCount: Int
+    var isWelcome: Bool
+    var isLike: Bool
+    var isScraped: Bool
 
-    private enum CodingKeys: CodingKey {
-        case id, thumbnailUrl, ownerNickname, content
-        case likeCount, replyCount
+    private enum CodingKeys: String, CodingKey {
+        case id, thumbnailUrl
+        case userNickname = "ownerNickname"
+        case content
+        case likeCount
+        case commentCount = "replyCount"
+        case isWelcome = "isContainerFriendly"
+        case isLike
+        case isScraped = "isScraped"
     }
 
     init(from decoder: Decoder) throws {
@@ -45,9 +54,12 @@ struct FeedPreviewModel: Decodable {
 
         self.id = (try? container.decode(Int.self, forKey: .id)) ?? 0
         self.thumbnailUrl = (try? container.decode(String.self, forKey: .thumbnailUrl)) ?? ""
-        self.ownerNickname = (try? container.decode(String.self, forKey: .ownerNickname)) ?? ""
+        self.userNickname = (try? container.decode(String.self, forKey: .userNickname)) ?? ""
         self.content = (try? container.decode(String.self, forKey: .content)) ?? ""
         self.likeCount = (try? container.decode(Int.self, forKey: .likeCount)) ?? 0
-        self.replyCount = (try? container.decode(Int.self, forKey: .replyCount)) ?? 0
+        self.commentCount = (try? container.decode(Int.self, forKey: .commentCount)) ?? 0
+        self.isWelcome = (try? container.decode(Bool.self, forKey: .isWelcome)) ?? false
+        self.isLike = (try? container.decode(Bool.self, forKey: .isLike)) ?? false
+        self.isScraped = (try? container.decode(Bool.self, forKey: .isScraped)) ?? false
     }
 }

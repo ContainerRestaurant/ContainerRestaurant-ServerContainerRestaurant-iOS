@@ -15,6 +15,7 @@ class UserDataManager: NSObject {
     
     var userID: Int = Int.max //Default Int.max, 로그인 시에 세팅
     var loginToken: String = ""
+    var isFirstEntryAfterLogin: Bool = false
     
     //앱 첫 진입 여부(온보딩 체크)
     var isFirstEntry: Bool {

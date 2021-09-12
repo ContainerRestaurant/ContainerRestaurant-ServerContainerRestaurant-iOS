@@ -11,6 +11,7 @@ import RxSwift
 class NickNamePopupViewController: BaseViewController, Storyboard {
     weak var coordinator: NickNamePopupCoordinator?
     var validateNicknameSubject: PublishSubject<Bool> = PublishSubject<Bool>()
+    var isFromMapBottomSheet = false
 
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var registerButton: UIButton!
@@ -51,9 +52,20 @@ class NickNamePopupViewController: BaseViewController, Storyboard {
                     print($0)
                     print("업데이트 됐따")
                 }
-//                API().updateNickname(userID: userID, nickname: self?.nickNameTextField.text ?? "")
-                self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
-                self?.dismiss(animated: true, completion: nil)
+
+                if self?.isFromMapBottomSheet ?? false {
+                    self?.isFromMapBottomSheet = false
+                    self?.dismiss(animated: true) {
+                        Common.currentViewController()?.dismiss(animated: false) {
+                            Common.currentViewController()?.dismiss(animated: false) {
+                                print("Todo: 탭바 인덱스 0으로 보내기")
+                            }
+                        }
+                    }
+                } else {
+                    self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
+                    self?.dismiss(animated: true, completion: nil)
+                }
             })
             .disposed(by: disposeBag)
     }

@@ -12,8 +12,6 @@ class FeedCoordinator: NSObject, Coordinator {
     var delegate: CoordinatorFinishDelegate?
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
-    
-    let categoryFeedSubject: PublishSubject<[FeedPreviewModel]> = PublishSubject<[FeedPreviewModel]>()
     let disposeBag = DisposeBag()
     
     init(presenter: UINavigationController) {
@@ -28,24 +26,27 @@ class FeedCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        APIClient.categoryFeed(category: "") { [weak self] in
-            self?.categoryFeedSubject.onNext($0)
+        APIClient.categoryFeed(category: "") { [weak self] categoryFeed in
+            var feed = FeedViewController.instantiate()
+            feed.coordinator = self
+            feed.bind(viewModel: FeedViewModel(categoryFeed))
+
+            self?.presenter.pushViewController(feed, animated: false)
         }
-        
-        self.categoryFeedSubject
-            .subscribe(onNext: { [weak self] categoryFeed in
-                var feed = FeedViewController.instantiate()
-                feed.coordinator = self
-                feed.bind(viewModel: FeedViewModel(categoryFeed))
-                
-                self?.presenter.pushViewController(feed, animated: false)
-            })
-            .disposed(by: disposeBag)
     }
-    
+}
+
+extension FeedCoordinator {
     func pushToFeedDetail(feedID: Int) {
         let coordinator = FeedDetailCoordinator(presenter: presenter)
         coordinator.feedID = feedID
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+
+    func presentLogin() {
+        let coordinator = LoginPopupCoordinator(presenter: presenter)
         coordinator.delegate = self
         childCoordinators.append(coordinator)
         coordinator.start()

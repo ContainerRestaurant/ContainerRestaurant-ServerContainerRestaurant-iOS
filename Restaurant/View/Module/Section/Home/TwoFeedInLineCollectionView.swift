@@ -34,8 +34,9 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
+
         self.disposeBag = DisposeBag()
-//        feeds = []
     }
     
     //홈 탭 피드
@@ -48,14 +49,17 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
     
     //피드 탭 카테고리 피드
     func configureFeedCategoryFeed(_ feeds: [FeedPreviewModel], _ selectedCategorySubject: PublishSubject<String>, _ reloadFlagSubject: PublishSubject<[FeedPreviewModel]>, _ coordinator: FeedCoordinator) {
-        if isFirstEnterToFeed {
-            self.feeds = feeds
-            self.isFirstEnterToFeed = false
-        }
+        self.feeds = feeds
         self.selectedCategorySubject = selectedCategorySubject
         self.feedCoordinator = coordinator
-
         self.emptyView.isHidden = self.feeds.count > 0
+
+        if isFirstEnterToFeed {
+            isFirstEnterToFeed = false
+        } else if UserDataManager.sharedInstance.isFirstEntryAfterLogin {
+            collectionView.reloadData()
+            UserDataManager.sharedInstance.isFirstEntryAfterLogin = false
+        }
         
         self.selectedCategorySubject?
             .subscribe(onNext: { category in
@@ -95,7 +99,13 @@ extension TwoFeedInLineCollectionView: UICollectionViewDelegate, UICollectionVie
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: TwoFeedCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.configure(self.feeds[indexPath.row])
+        if let coordinator = homeCoordinator {
+            cell.configure(self.feeds[indexPath.row], coordinator)
+        } else if let coordinator = feedCoordinator {
+            cell.configure(self.feeds[indexPath.row], coordinator)
+        } else if let coordinator = inquiryProfileCoordinator {
+            cell.configure(self.feeds[indexPath.row], coordinator)
+        }
 
         return cell
     }

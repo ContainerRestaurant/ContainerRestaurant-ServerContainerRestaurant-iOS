@@ -66,7 +66,9 @@ extension RestaurantSummaryInformationViewController: UICollectionViewDelegate, 
             return cell
         case is FeedInRestaurantSummaryInfo.Type:
             let cell: FeedInRestaurantSummaryInfo = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(restaurantFeed: viewModel.restaurantFeed)
+            if let coordinator = coordinator {
+                cell.configure(restaurantFeed: viewModel.restaurantFeed, coordinator: coordinator)
+            }
             return cell
         default: return UICollectionViewCell()
         }

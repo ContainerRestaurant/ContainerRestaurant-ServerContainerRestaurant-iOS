@@ -8,6 +8,9 @@
 import UIKit
 
 struct Common {
+    //Todo: sharedInstance 써서 바꾸기
+//    static var sharedInstance = Common()
+
     static var homeBarHeight: CGFloat = 34 // home indicator
     static var tabBarHeight: CGFloat = 48
     static var notchHeight: CGFloat = 48
@@ -56,6 +59,14 @@ struct Common {
         return label.frame.height
     }
 
+    static func hapticVibration() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+    }
+}
+
+//레벨별 프로필 이미지
+extension Common {
     //레벨별 프로필 이미지 148
     static func getDefaultProfileImage148(_ levelTitle: String) -> UIImage? {
         switch levelTitle {

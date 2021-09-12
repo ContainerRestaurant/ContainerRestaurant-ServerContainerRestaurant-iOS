@@ -9,6 +9,7 @@ import UIKit
 
 class FeedInRestaurantSummaryInfo: UICollectionViewCell {
     var restaurantFeed: [FeedPreviewModel] = []
+    var coordinator: RestaurantSummaryInformationCoordinator?
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var feedCountDescriptionLabel: UILabel!
@@ -19,8 +20,9 @@ class FeedInRestaurantSummaryInfo: UICollectionViewCell {
         setCollectionView()
     }
 
-    func configure(restaurantFeed: [FeedPreviewModel]) {
+    func configure(restaurantFeed: [FeedPreviewModel], coordinator: RestaurantSummaryInformationCoordinator) {
         self.restaurantFeed = restaurantFeed
+        self.coordinator = coordinator
 
         feedCountDescriptionLabel.text = "총 \(restaurantFeed.count)개의 용기낸 피드가 있어요"
     }
@@ -42,7 +44,9 @@ extension FeedInRestaurantSummaryInfo: UICollectionViewDelegate, UICollectionVie
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: TwoFeedCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.configure(restaurantFeed[indexPath.row])
+        if let coordinator = coordinator {
+            cell.configure(restaurantFeed[indexPath.row], coordinator)
+        }
         return cell
     }
 

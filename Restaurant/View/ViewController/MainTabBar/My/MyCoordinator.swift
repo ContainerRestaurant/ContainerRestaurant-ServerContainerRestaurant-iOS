@@ -39,6 +39,7 @@ extension MyCoordinator {
     func presentLogin() {
         let coordinator = LoginPopupCoordinator(presenter: presenter)
         coordinator.delegate = self
+        coordinator.isFromTapBar = true
         childCoordinators.append(coordinator)
         coordinator.start()
     }

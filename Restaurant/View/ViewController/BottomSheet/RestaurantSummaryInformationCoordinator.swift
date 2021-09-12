@@ -54,3 +54,15 @@ class RestaurantSummaryInformationCoordinator: Coordinator {
         }
     }
 }
+
+extension RestaurantSummaryInformationCoordinator {
+    func presentLogin() {
+//        let coordinator = LoginPopupCoordinator(presenter: presenter)
+//        coordinator.delegate = self
+//        childCoordinators.append(coordinator)
+//        coordinator.start()
+        let loginPopup = LoginPopupViewController.instantiate()
+        loginPopup.isFromMapBottomSheet = true
+        Common.currentViewController()?.present(loginPopup, animated: false, completion: nil)
+    }
+}
