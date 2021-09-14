@@ -27,6 +27,10 @@ class CreationFeedDetailSide: UICollectionViewCell {
         setCollectionView()
         bindingView()
     }
+
+    deinit {
+        print("CreationFeedDetailSide Deinit")
+    }
 }
 
 //MARK: - Instance Method

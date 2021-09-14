@@ -149,6 +149,19 @@ class APIClient {
                 }
             }
     }
+
+    //피드 좋아요
+    static func likeFeed(feedID: Int, cancel: Bool) {
+        AF.request(Router.LikeFeed(feedID: feedID, cancel: cancel))
+            .response(completionHandler: { response in
+                switch response.result {
+                case .success(let result):
+                    print("Like Feed's Success: \(String(describing: result))")
+                case .failure(let error):
+                    print("Like Feed's Error: \(error)")
+                }
+            })
+    }
     
     //피드 상세
     static func feedDetail(feedID: Int, completion: @escaping (FeedDetailModel?) -> Void ) {

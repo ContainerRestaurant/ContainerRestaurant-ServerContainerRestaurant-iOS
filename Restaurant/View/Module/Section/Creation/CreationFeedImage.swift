@@ -73,8 +73,8 @@ class CreationFeedImage: UICollectionViewCell {
 
     private func bindingView() {
         imagePickerButton.rx.tap
-            .subscribe(onNext: {
-                PHPhotoLibrary.requestAuthorization({ (status) in
+            .subscribe(onNext: { [weak self] in
+                PHPhotoLibrary.requestAuthorization({ [weak self] (status) in
                     switch status {
                     case .authorized:
                         DispatchQueue.main.async { [weak self] in
@@ -119,7 +119,7 @@ class CreationFeedImage: UICollectionViewCell {
     }
     
     deinit {
-        print("사진 등록하고 닫으면 메모리 계속 쌓임")
+        print("CreationFeedImage Deinit & 사진 등록하고 닫으면 메모리 계속 쌓임")
     }
 }
 

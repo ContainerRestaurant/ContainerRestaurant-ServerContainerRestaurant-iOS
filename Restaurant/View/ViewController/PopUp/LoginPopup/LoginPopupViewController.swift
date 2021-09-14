@@ -14,6 +14,8 @@ import KakaoSDKUser
 class LoginPopupViewController: UIViewController, Storyboard {
     weak var coordinator: LoginPopupCoordinator?
     var disposeBag = DisposeBag()
+    var isFromTapBar: Bool?
+    var isFromMapBottomSheet = false
 
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var kakaoLoginButton: UIButton!
@@ -25,13 +27,18 @@ class LoginPopupViewController: UIViewController, Storyboard {
 
         closeButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.coordinator?.presenter.tabBarController?.selectedIndex = 0 //임시로 0
+                if self?.isFromTapBar ?? false {
+                    self?.coordinator?.presenter.tabBarController?.selectedIndex = 0 //임시로 0
+                }
                 self?.dismiss(animated: false, completion: nil)
             })
             .disposed(by: disposeBag)
         
         kakaoLoginButton.rx.tap
             .subscribe(onNext: { [weak self] in
+//                if self?.isFromMapBottomSheet ?? false {
+//                    self?.dismiss(animated: false, completion: nil)
+//                }
                 self?.kakaoLogin()
             })
             .disposed(by: disposeBag)
@@ -76,9 +83,16 @@ extension LoginPopupViewController {
                                 UserDataManager.sharedInstance.loginToken = $0.token
                                 print("이거지이거")
                             }
-                            
-                            self?.dismiss(animated: false, completion: nil)
-                            self?.coordinator?.presentNickNamePopup()
+                            UserDataManager.sharedInstance.isFirstEntryAfterLogin = true
+                            if self?.isFromMapBottomSheet ?? false  {
+                                self?.isFromMapBottomSheet = false
+                                let nicknamePopup = NickNamePopupViewController.instantiate()
+                                nicknamePopup.isFromMapBottomSheet = true
+                                self?.present(nicknamePopup, animated: false, completion: nil)
+                            } else {
+                                self?.dismiss(animated: false, completion: nil)
+                                self?.coordinator?.presentNickNamePopup()
+                            }
                         }
                     }
                 }

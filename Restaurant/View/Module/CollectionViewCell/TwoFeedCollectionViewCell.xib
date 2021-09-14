@@ -125,6 +125,7 @@
             <connections>
                 <outlet property="contentLabel" destination="dh7-wu-EDp" id="a0r-8J-eCt"/>
                 <outlet property="feedImageView" destination="888-D0-Gj8" id="zCi-BM-yLT"/>
+                <outlet property="likeButton" destination="SD4-vj-ToP" id="At6-Tw-0pB"/>
                 <outlet property="likeCountLabel" destination="Xdg-Hh-PaY" id="66f-kh-S3Z"/>
                 <outlet property="nicknameLabel" destination="wK5-2p-IPB" id="f2r-qI-vdd"/>
                 <outlet property="replyCountLabel" destination="04B-wp-ps6" id="llF-oM-VB9"/>

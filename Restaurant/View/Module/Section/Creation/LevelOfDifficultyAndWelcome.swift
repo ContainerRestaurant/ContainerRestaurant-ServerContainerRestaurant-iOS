@@ -31,6 +31,10 @@ class LevelOfDifficultyAndWelcome: UICollectionViewCell {
         bindingView()
     }
 
+    deinit {
+        print("LevelOfDifficultyAndWelcome Deinit")
+    }
+
     func configure(_ levelOfDifficultySubject: PublishSubject<Int>, _ isWelcomeSubject: PublishSubject<Bool>) {
         self.levelOfDifficultySubject = levelOfDifficultySubject
         self.isWelcomeSubject = isWelcomeSubject
@@ -84,7 +88,7 @@ extension LevelOfDifficultyAndWelcome {
                 guard let `self` = self else { return }
 
                 self.setWelcomeButton()
-                self.hapticVibration()
+                Common.hapticVibration()
             })
             .disposed(by: disposeBag)
     }
@@ -106,10 +110,5 @@ extension LevelOfDifficultyAndWelcome {
         } else {
             self.welcomeButton.imageView?.subviews.forEach { $0.removeFromSuperview() }
         }
-    }
-
-    private func hapticVibration() {
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.success)
     }
 }

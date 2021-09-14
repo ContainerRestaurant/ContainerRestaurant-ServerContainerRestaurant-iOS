@@ -19,6 +19,7 @@ enum Router: URLRequestConvertible {
     case UserFeed(userID: Int)
     case CategoryFeed(category: String)
     case RestaurantFeed(restaurantID: Int)
+    case LikeFeed(feedID: Int, cancel: Bool)
     case FeedDetail(feedID: Int)
     case CreateFeedComment(feedID: String, content: String)
     case CreateFeedReplyComment(feedID: String, content: String, uppperReplyID: Int)
@@ -39,6 +40,7 @@ enum Router: URLRequestConvertible {
         case .UserFeed: return .get
         case .CategoryFeed: return .get
         case .RestaurantFeed: return .get
+        case .LikeFeed(_, let cancel): return cancel ? .delete : .post
         case .FeedDetail: return .get
         case .CreateFeedComment: return .post
         case .CreateFeedReplyComment: return .post
@@ -59,6 +61,7 @@ enum Router: URLRequestConvertible {
         case .UserFeed(let userID): return "/api/feed/user/\(userID)"
         case .CategoryFeed: return "/api/feed"
         case .RestaurantFeed(let restaurantID): return "/api/feed/restaurant/\(restaurantID)"
+        case .LikeFeed(let feedID, _): return "/api/like/feed/\(feedID)"
         case .FeedDetail(let feedID): return "/api/feed/\(feedID)"
         case .CreateFeedComment(let feedID, _): return "/api/comment/feed/\(feedID)"
         case .CreateFeedReplyComment(let feedID, _, _): return "/api/comment/feed/\(feedID)"
@@ -79,6 +82,7 @@ enum Router: URLRequestConvertible {
         case .UserFeed: return nil //Todo: 페이징 처리
         case .CategoryFeed(let category): return category.isEmpty ? nil : ["category": category] //Todo: 페이징 처리
         case .RestaurantFeed: return nil //Todo: 페이징 처리
+        case .LikeFeed: return nil
         case .FeedDetail: return nil
         case .CreateFeedComment(_, let content): return ["content": content]
         case .CreateFeedReplyComment(_, let content, let uppperReplyID): return ["content": content, "upperReplyId": String(uppperReplyID)]
@@ -94,7 +98,7 @@ enum Router: URLRequestConvertible {
 
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         switch self {
-        case .CheckLogin, .UpdateUserInformation, .HomeMainData:
+        case .CheckLogin, .UpdateUserInformation, .HomeMainData, .LikeFeed:
             urlRequest.setValue("Bearer \(UserDataManager.sharedInstance.loginToken)", forHTTPHeaderField: "Authorization")
         default: break
         }

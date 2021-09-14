@@ -46,7 +46,7 @@ class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType 
     func bindingView() {
         print("Home bindingView")
 //        self.viewModel.recommendFeeds
-//            .map { $0.first?.ownerNickname }
+//            .map { $0.first?.userNickname }
 //            .drive(testLabel.rx.text)
 //            .disposed(by: disposeBag)
     }

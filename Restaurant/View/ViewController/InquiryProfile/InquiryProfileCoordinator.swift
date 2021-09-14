@@ -30,10 +30,19 @@ class InquiryProfileCoordinator: NSObject, Coordinator {
             }
         }
     }
+}
 
+extension InquiryProfileCoordinator {
     func pushToFeedDetail(feedID: Int) {
         let coordinator = FeedDetailCoordinator(presenter: presenter)
         coordinator.feedID = feedID
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+
+    func presentLogin() {
+        let coordinator = LoginPopupCoordinator(presenter: presenter)
         coordinator.delegate = self
         childCoordinators.append(coordinator)
         coordinator.start()

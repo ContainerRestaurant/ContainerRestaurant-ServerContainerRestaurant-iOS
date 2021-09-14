@@ -36,15 +36,14 @@ class FeedViewController: BaseViewController, Storyboard, ViewModelBindableType 
         super.viewWillAppear(animated)
 
         setNavigationBar()
-        feedCollectionView.reloadData()
+        if UserDataManager.sharedInstance.isFirstEntryAfterLogin {
+            APIClient.categoryFeed(category: "") { [weak self] categoryFeed in
+                self?.viewModel.categoryFeeds = categoryFeed
+                self?.feedCollectionView.reloadData()
+            }
+        }
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-//        disposeBag = DisposeBag()
-    }
-    
     func bindingView() {
         print("Search bindingView")
         
