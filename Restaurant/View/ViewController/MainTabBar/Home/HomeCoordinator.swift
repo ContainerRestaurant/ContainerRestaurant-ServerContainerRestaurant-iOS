@@ -33,7 +33,9 @@ class HomeCoordinator: NSObject, Coordinator {
                 homeViewController.coordinator = self
                 homeViewController.bind(viewModel: HomeViewModel(recommendFeeds, homeMainData))
 
-                self?.presenter.pushViewController(homeViewController, animated: false)
+                self?.presenter.present(homeViewController, animated: true, completion: nil)
+//                self?.presenter.pushViewController(homeViewController, animated: true)
+                //온보딩 끝나고 아래에서 위로 올라오는 인터랙션 원하셔서 수정 (storyboard transitionStyle이랑 presentation도 수정)
             })
             .disposed(by: disposeBag)
     }
