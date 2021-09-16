@@ -172,6 +172,8 @@
 		FB9E1DC326E159F300707C60 /* HomeMainDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9E1DC226E159F300707C60 /* HomeMainDataModel.swift */; };
 		FB9E1DC526E31F6500707C60 /* ContainerOfEveryoneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9E1DC426E31F6500707C60 /* ContainerOfEveryoneModel.swift */; };
 		FB9E1DC726E7B36100707C60 /* onboarding4.json in Resources */ = {isa = PBXBuildFile; fileRef = FB9E1DC626E7B36100707C60 /* onboarding4.json */; };
+		FB9E1DC926F24B5F00707C60 /* HTMLTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9E1DC826F24B5F00707C60 /* HTMLTextViewController.swift */; };
+		FB9E1DCB26F24B8C00707C60 /* HTMLTextCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9E1DCA26F24B8C00707C60 /* HTMLTextCoordinator.swift */; };
 		FBAA5D0D26B2F6BB00CC38CA /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA5D0C26B2F6BB00CC38CA /* ToastMessage.swift */; };
 		FBAA5D1126B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA5D0F26B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.swift */; };
 		FBAA5D1226B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBAA5D1026B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.xib */; };
@@ -373,6 +375,8 @@
 		FB9E1DC226E159F300707C60 /* HomeMainDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainDataModel.swift; sourceTree = "<group>"; };
 		FB9E1DC426E31F6500707C60 /* ContainerOfEveryoneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerOfEveryoneModel.swift; sourceTree = "<group>"; };
 		FB9E1DC626E7B36100707C60 /* onboarding4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = onboarding4.json; sourceTree = "<group>"; };
+		FB9E1DC826F24B5F00707C60 /* HTMLTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextViewController.swift; sourceTree = "<group>"; };
+		FB9E1DCA26F24B8C00707C60 /* HTMLTextCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextCoordinator.swift; sourceTree = "<group>"; };
 		FBAA5D0C26B2F6BB00CC38CA /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		FBAA5D0F26B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewInRestaurantSummaryInfo.swift; sourceTree = "<group>"; };
 		FBAA5D1026B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewInRestaurantSummaryInfo.xib; sourceTree = "<group>"; };
@@ -471,6 +475,8 @@
 				52397344261B62AF00856C99 /* MyViewController.swift */,
 				FB115A8826C029100043A4DE /* SettingCoordinator.swift */,
 				FB115A8A26C0294C0043A4DE /* SettingViewController.swift */,
+				FB9E1DCA26F24B8C00707C60 /* HTMLTextCoordinator.swift */,
+				FB9E1DC826F24B5F00707C60 /* HTMLTextViewController.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -1251,6 +1257,7 @@
 				FBAA5D1126B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.swift in Sources */,
 				5239733F261B629A00856C99 /* CreationViewController.swift in Sources */,
 				FB585B4B266D79C30085C6B2 /* OnboardingView.swift in Sources */,
+				FB9E1DC926F24B5F00707C60 /* HTMLTextViewController.swift in Sources */,
 				5258116026791D8F00900D59 /* MyViewModel.swift in Sources */,
 				FB585B322668C6D40085C6B2 /* FoodCategory.swift in Sources */,
 				FB6EEE2B26CA8C7300E6237B /* ContentOnFeedDetail.swift in Sources */,
@@ -1372,6 +1379,7 @@
 				FB585B2026656E5A0085C6B2 /* SearchRestaurantCoordinator.swift in Sources */,
 				FBAA5D1B26B5733200CC38CA /* MainImageInRestaurantSummaryInfo.swift in Sources */,
 				5239733C261B625000856C99 /* FeedViewController.swift in Sources */,
+				FB9E1DCB26F24B8C00707C60 /* HTMLTextCoordinator.swift in Sources */,
 				52169B0826A7608600705FEC /* NearybyRestaurantModel.swift in Sources */,
 				FB6EEE3226CC1F4C00E6237B /* LoginModel.swift in Sources */,
 				528558ED26249DDF00AB4E28 /* TestViewController.swift in Sources */,

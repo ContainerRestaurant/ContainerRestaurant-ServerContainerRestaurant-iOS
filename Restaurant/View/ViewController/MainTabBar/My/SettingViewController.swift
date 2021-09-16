@@ -31,6 +31,8 @@ class SettingViewController: BaseViewController, Storyboard {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+
+        self.navigationItem.title = ""
     }
 }
 
@@ -75,6 +77,14 @@ extension SettingViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
 
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 1: coordinator?.pushPrivacyPolicy()
+        case 2: coordinator?.pushServiceAccessTerms()
+        default: break
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

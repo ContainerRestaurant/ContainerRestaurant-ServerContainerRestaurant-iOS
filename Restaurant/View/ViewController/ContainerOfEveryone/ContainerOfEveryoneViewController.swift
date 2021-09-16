@@ -56,7 +56,6 @@ extension ContainerOfEveryoneViewController {
         let backImage = UIImage(named: "chevronLeftOutline20Px")
         self.coordinator?.presenter.navigationBar.backIndicatorImage = backImage
         self.coordinator?.presenter.navigationBar.backIndicatorTransitionMaskImage = backImage
-        self.coordinator?.presenter.navigationBar.backItem?.title = "" //확인 필요
         
         //Help Button
         let helpButton = UIButton(type: .custom)
