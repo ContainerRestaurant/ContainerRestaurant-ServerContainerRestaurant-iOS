@@ -17,6 +17,7 @@ class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType 
     override func viewDidLoad() {
         super.viewDidLoad()
         print("HomeViewController viewDidLoad()")
+        self.navigationItem.title = ""
         
         setCollectionView()
     }

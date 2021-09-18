@@ -103,7 +103,8 @@ class MainTabBarCoordinator: NSObject, Coordinator {
         tabBarController.selectedIndex = 0
         tabBarController.tabBar.isTranslucent = false
         tabBarController.tabBar.tintColor = .colorGrayGray07
-        
+        tabBarController.view.backgroundColor = .systemBackground
+
         presenter.viewControllers = [tabBarController]
     }
 }
