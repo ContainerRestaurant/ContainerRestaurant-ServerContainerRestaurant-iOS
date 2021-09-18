@@ -63,6 +63,16 @@ struct Common {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
     }
+
+    static func pushFromTopTransition() -> CATransition {
+        let transition: CATransition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        transition.type = .push
+        transition.subtype = .fromTop
+
+        return transition
+    }
 }
 
 //레벨별 프로필 이미지

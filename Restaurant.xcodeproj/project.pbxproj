@@ -17,7 +17,7 @@
 		5204199A26512D8D0099BA39 /* CreationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5204199926512D8D0099BA39 /* CreationCoordinator.swift */; };
 		5204199C26512E190099BA39 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5204199B26512E190099BA39 /* MapCoordinator.swift */; };
 		5204199F26512E450099BA39 /* MyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5204199E26512E450099BA39 /* MyCoordinator.swift */; };
-		520419A226513A6A0099BA39 /* CreationPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419A126513A6A0099BA39 /* CreationPopupCoordinator.swift */; };
+		520419A226513A6A0099BA39 /* CommonPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419A126513A6A0099BA39 /* CommonPopupCoordinator.swift */; };
 		520419A5265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419A4265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift */; };
 		520419A8265184580099BA39 /* InquiryProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419A7265184580099BA39 /* InquiryProfileCoordinator.swift */; };
 		520419CF2656CCBE0099BA39 /* TestCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520419CE2656CCBE0099BA39 /* TestCodable.swift */; };
@@ -216,7 +216,7 @@
 		5204199926512D8D0099BA39 /* CreationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationCoordinator.swift; sourceTree = "<group>"; };
 		5204199B26512E190099BA39 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		5204199E26512E450099BA39 /* MyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoordinator.swift; sourceTree = "<group>"; };
-		520419A126513A6A0099BA39 /* CreationPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationPopupCoordinator.swift; sourceTree = "<group>"; };
+		520419A126513A6A0099BA39 /* CommonPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonPopupCoordinator.swift; sourceTree = "<group>"; };
 		520419A4265140C60099BA39 /* ListStandardDescriptionPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStandardDescriptionPopupCoordinator.swift; sourceTree = "<group>"; };
 		520419A7265184580099BA39 /* InquiryProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryProfileCoordinator.swift; sourceTree = "<group>"; };
 		520419CE2656CCBE0099BA39 /* TestCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCodable.swift; sourceTree = "<group>"; };
@@ -506,7 +506,7 @@
 		520419A026513A570099BA39 /* CreationPopup */ = {
 			isa = PBXGroup;
 			children = (
-				520419A126513A6A0099BA39 /* CreationPopupCoordinator.swift */,
+				520419A126513A6A0099BA39 /* CommonPopupCoordinator.swift */,
 				FB1BE38A26397EEE0004673C /* CommonPopupViewController.swift */,
 			);
 			path = CreationPopup;
@@ -1365,7 +1365,7 @@
 				52E50DC326626FB60068C36C /* ExtensionCGFloat.swift in Sources */,
 				5258115B2678F16700900D59 /* UserDataManager.swift in Sources */,
 				526BED4A2646566600897230 /* ExtensionUIView.swift in Sources */,
-				520419A226513A6A0099BA39 /* CreationPopupCoordinator.swift in Sources */,
+				520419A226513A6A0099BA39 /* CommonPopupCoordinator.swift in Sources */,
 				524686F82687129900BE2BE4 /* RestaurantModel.swift in Sources */,
 				FB56AF61265E62E8002736F5 /* TestCoordinator.swift in Sources */,
 				52256FD626445AB400A056DE /* ExtensionUIColor.swift in Sources */,
