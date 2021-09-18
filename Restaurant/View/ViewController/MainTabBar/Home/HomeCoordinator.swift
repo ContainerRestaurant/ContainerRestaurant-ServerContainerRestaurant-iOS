@@ -33,12 +33,7 @@ class HomeCoordinator: NSObject, Coordinator {
                 homeViewController.coordinator = self
                 homeViewController.bind(viewModel: HomeViewModel(recommendFeeds, homeMainData))
 
-                let transition: CATransition = CATransition()
-                transition.duration = 0.5
-                transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-                transition.type = .push
-                transition.subtype = .fromTop
-                self?.presenter.view.layer.add(transition, forKey: kCATransition)
+                self?.presenter.view.layer.add(Common.pushFromTopTransition(), forKey: kCATransition)
                 self?.presenter.pushViewController(homeViewController, animated: true)
             })
             .disposed(by: disposeBag)
@@ -47,7 +42,7 @@ class HomeCoordinator: NSObject, Coordinator {
 
 extension HomeCoordinator {
     func presentCreationPopup() {
-        let coordinator = CreationPopupCoordinator(presenter: presenter)
+        let coordinator = CommonPopupCoordinator(presenter: presenter, isTwoButton: true, buttonType: .creationFeed)
         coordinator.delegate = self
         childCoordinators.append(coordinator)
         coordinator.start()

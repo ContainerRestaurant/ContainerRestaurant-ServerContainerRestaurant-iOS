@@ -40,7 +40,7 @@ extension TestCoordinator {
     }
 
     func presentTestPopup() {
-        let coordinator = CreationPopupCoordinator(presenter: presenter)
+        let coordinator = CommonPopupCoordinator(presenter: presenter, isTwoButton: true, buttonType: .none)
         coordinator.delegate = self
         childCoordinators.append(coordinator)
         coordinator.start()

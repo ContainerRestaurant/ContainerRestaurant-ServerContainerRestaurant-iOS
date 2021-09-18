@@ -21,8 +21,6 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
     var mainFoodHeight: CGFloat = 179
     var sideFoodHeight: CGFloat = 179
     let registerSubject: PublishSubject<Bool> = PublishSubject<Bool>()
-
-//    var restaurantNameLabel: UILabel?
     var restaurant: LocalSearchItem?
     var selectedCategory: String = "KOREAN"
     var selectedCategorySubject: PublishSubject<String> = PublishSubject<String>()
@@ -158,7 +156,15 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
 
         closeButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
+                if !(self?.restaurant?.title.isEmpty ?? true) || !(self?.mainFoodAndContainer.first?.menuName.isEmpty ?? true) || !(self?.mainFoodAndContainer.first?.container.isEmpty ?? true) || !(self?.contentsText.isEmpty ?? true) {
+                    let confirmExitPopup = CommonPopupViewController.instantiate()
+                    confirmExitPopup.isTwoButton = true
+                    confirmExitPopup.buttonType = .confirmExit
+                    confirmExitPopup.modalPresentationStyle = .overFullScreen
+                    Common.currentViewController()?.present(confirmExitPopup, animated: false, completion: nil)
+                } else {
+                    self?.dismiss(animated: true, completion: nil)
+                }
             })
             .disposed(by: disposeBag)
     }

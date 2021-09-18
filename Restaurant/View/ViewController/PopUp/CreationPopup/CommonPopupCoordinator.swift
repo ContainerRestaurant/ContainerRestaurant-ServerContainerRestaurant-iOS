@@ -1,5 +1,5 @@
 //
-//  CreationPopupCoordinator.swift
+//  CommonPopupCoordinator.swift
 //  Restaurant
 //
 //  Created by 0ofKim on 2021/05/16.
@@ -7,28 +7,33 @@
 
 import UIKit
 
-class CreationPopupCoordinator: NSObject, Coordinator {
+class CommonPopupCoordinator: NSObject, Coordinator {
     var delegate: CoordinatorFinishDelegate?
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
+    var isTwoButton: Bool = true
+    var buttonType: PopupButtonType = .none
     
-    init(presenter: UINavigationController) {
+    init(presenter: UINavigationController, isTwoButton: Bool, buttonType: PopupButtonType) {
         self.presenter = presenter
         self.childCoordinators = []
+        self.isTwoButton = isTwoButton
+        self.buttonType = buttonType
+
     }
     
     func start() {
         let creationPopup = CommonPopupViewController.instantiate()
         creationPopup.coordinator = self
         creationPopup.modalPresentationStyle = .overFullScreen
-        creationPopup.isTwoButton = true
-        creationPopup.buttonType = .creationFeed
+        creationPopup.isTwoButton = self.isTwoButton
+        creationPopup.buttonType = self.buttonType
 
         presenter.present(creationPopup, animated: false, completion: nil)
     }
 }
 
-extension CreationPopupCoordinator {
+extension CommonPopupCoordinator {
     func presentLogin() {
         let coordinator = LoginPopupCoordinator(presenter: presenter)
         coordinator.delegate = self

@@ -158,32 +158,47 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="beE-gI-k48">
-                                <rect key="frame" x="31.666666666666657" y="337" width="312" height="138"/>
+                                <rect key="frame" x="31.666666666666657" y="335.66666666666669" width="312" height="141"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ylK-7G-r2I">
+                                        <rect key="frame" x="0.0" y="0.0" width="312" height="90"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용기낸 경험을 들려주시겠어요?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60J-X8-67Q">
+                                                <rect key="frame" x="0.0" y="30" width="312" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="60J-X8-67Q" secondAttribute="bottom" constant="30" id="0I4-Nk-aJP"/>
+                                            <constraint firstAttribute="trailing" secondItem="60J-X8-67Q" secondAttribute="trailing" id="CcG-7L-VOg"/>
+                                            <constraint firstItem="60J-X8-67Q" firstAttribute="top" secondItem="ylK-7G-r2I" secondAttribute="top" constant="30" id="nbL-da-aVF"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="90" id="uJq-na-jJd"/>
+                                            <constraint firstItem="60J-X8-67Q" firstAttribute="leading" secondItem="ylK-7G-r2I" secondAttribute="leading" id="xCz-Y6-mC2"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="14"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7L7-zu-1qP">
-                                        <rect key="frame" x="0.0" y="89" width="312" height="1"/>
+                                        <rect key="frame" x="0.0" y="90" width="312" height="1"/>
                                         <color key="backgroundColor" red="0.92549019610000005" green="0.92549019610000005" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="af5-my-NNr"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용기낸 경험을 들려주시겠어요?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60J-X8-67Q">
-                                        <rect key="frame" x="0.0" y="0.0" width="312" height="90"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="90" id="BX5-eE-e63"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8qb-Uy-1fr">
-                                        <rect key="frame" x="0.0" y="90" width="312" height="48"/>
+                                        <rect key="frame" x="0.0" y="91" width="312" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mD3-v4-NAD">
-                                                <rect key="frame" x="0.0" y="0.0" width="156" height="48"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="156" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhN-UY-bLc">
-                                                        <rect key="frame" x="0.0" y="0.0" width="155" height="48"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="155" height="50"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <state key="normal" title="나중에요">
                                                             <color key="titleColor" name="colorGrayGray06"/>
@@ -192,6 +207,10 @@
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="14"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeft" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="topLeft" value="NO"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="topRight" value="NO"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRight" value="NO"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                 </subviews>
@@ -206,10 +225,14 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="14"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeft" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRight" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topRight" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topLeft" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkC-Kz-Cmd">
-                                                <rect key="frame" x="156" y="0.0" width="156" height="48"/>
+                                                <rect key="frame" x="156" y="0.0" width="156" height="50"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <state key="normal" title="네, 좋아요!">
                                                     <color key="titleColor" name="colorMainGreen03"/>
@@ -221,6 +244,9 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="FfI-HE-iUR"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="14"/>
@@ -230,18 +256,17 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="138" id="7kM-Ix-9bX"/>
                                     <constraint firstItem="7L7-zu-1qP" firstAttribute="leading" secondItem="beE-gI-k48" secondAttribute="leading" id="MlZ-7y-8fe"/>
                                     <constraint firstAttribute="bottom" secondItem="8qb-Uy-1fr" secondAttribute="bottom" id="NOl-jx-xAX"/>
                                     <constraint firstAttribute="trailing" secondItem="8qb-Uy-1fr" secondAttribute="trailing" id="OOD-nC-IGi"/>
                                     <constraint firstAttribute="trailing" secondItem="7L7-zu-1qP" secondAttribute="trailing" id="OfL-dz-9GL"/>
+                                    <constraint firstItem="7L7-zu-1qP" firstAttribute="top" secondItem="ylK-7G-r2I" secondAttribute="bottom" id="YfK-3l-hMD"/>
+                                    <constraint firstItem="ylK-7G-r2I" firstAttribute="leading" secondItem="beE-gI-k48" secondAttribute="leading" id="Zgk-HH-8KX"/>
                                     <constraint firstAttribute="width" constant="312" id="duM-MO-2VP"/>
                                     <constraint firstItem="8qb-Uy-1fr" firstAttribute="leading" secondItem="beE-gI-k48" secondAttribute="leading" id="hny-Bl-CnG"/>
-                                    <constraint firstItem="60J-X8-67Q" firstAttribute="top" secondItem="beE-gI-k48" secondAttribute="top" id="kdQ-VH-Us8"/>
                                     <constraint firstItem="8qb-Uy-1fr" firstAttribute="top" secondItem="7L7-zu-1qP" secondAttribute="bottom" id="lxs-x4-w4m"/>
-                                    <constraint firstItem="60J-X8-67Q" firstAttribute="leading" secondItem="beE-gI-k48" secondAttribute="leading" id="ocB-KW-qXs"/>
-                                    <constraint firstAttribute="trailing" secondItem="60J-X8-67Q" secondAttribute="trailing" id="olh-Nx-yPI"/>
-                                    <constraint firstItem="7L7-zu-1qP" firstAttribute="bottom" secondItem="60J-X8-67Q" secondAttribute="bottom" id="xIv-gm-CAO"/>
+                                    <constraint firstItem="ylK-7G-r2I" firstAttribute="top" secondItem="beE-gI-k48" secondAttribute="top" id="q5M-Mx-bNE"/>
+                                    <constraint firstAttribute="trailing" secondItem="ylK-7G-r2I" secondAttribute="trailing" id="uaV-rH-mqD"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
