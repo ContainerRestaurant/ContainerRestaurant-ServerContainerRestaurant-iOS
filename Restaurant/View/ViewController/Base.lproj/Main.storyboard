@@ -146,10 +146,10 @@
             </objects>
             <point key="canvasLocation" x="192.80000000000001" y="-548.27586206896558"/>
         </scene>
-        <!--Creation Popup View Controller-->
+        <!--Common Popup View Controller-->
         <scene sceneID="QcJ-H6-A41">
             <objects>
-                <viewController storyboardIdentifier="CreationPopupViewController" id="16i-Bb-dRz" customClass="CreationPopupViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CommonPopupViewController" id="16i-Bb-dRz" customClass="CommonPopupViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NcJ-6J-j2W">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -167,15 +167,7 @@
                                             <constraint firstAttribute="height" constant="1" id="af5-my-NNr"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mD3-v4-NAD">
-                                        <rect key="frame" x="155.33333333333334" y="90" width="1" height="48"/>
-                                        <color key="backgroundColor" red="0.92549019610000005" green="0.92549019610000005" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="1" id="Qqf-cw-8Mf"/>
-                                            <constraint firstAttribute="height" constant="48" id="ema-et-WQp"/>
-                                        </constraints>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용기낸 경험을 들려주시겠어요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60J-X8-67Q">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용기낸 경험을 들려주시겠어요?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60J-X8-67Q">
                                         <rect key="frame" x="0.0" y="0.0" width="312" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="BX5-eE-e63"/>
@@ -184,40 +176,69 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhN-UY-bLc">
-                                        <rect key="frame" x="0.0" y="90" width="156" height="48"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="156" id="FdU-OS-UdX"/>
-                                            <constraint firstAttribute="height" constant="48" id="erE-cc-Kqf"/>
-                                        </constraints>
-                                        <state key="normal" title="나중에요">
-                                            <color key="titleColor" name="colorGrayGray06"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkC-Kz-Cmd">
-                                        <rect key="frame" x="156" y="90" width="156" height="48"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="156" id="IMn-2h-uxA"/>
-                                            <constraint firstAttribute="height" constant="48" id="oDL-Ok-wfZ"/>
-                                        </constraints>
-                                        <state key="normal" title="네, 좋아요!">
-                                            <color key="titleColor" name="colorMainGreen03"/>
-                                        </state>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8qb-Uy-1fr">
+                                        <rect key="frame" x="0.0" y="90" width="312" height="48"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mD3-v4-NAD">
+                                                <rect key="frame" x="0.0" y="0.0" width="156" height="48"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhN-UY-bLc">
+                                                        <rect key="frame" x="0.0" y="0.0" width="155" height="48"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <state key="normal" title="나중에요">
+                                                            <color key="titleColor" name="colorGrayGray06"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="14"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.92549019610000005" green="0.92549019610000005" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="yhN-UY-bLc" secondAttribute="bottom" id="0KL-Bh-ES6"/>
+                                                    <constraint firstItem="yhN-UY-bLc" firstAttribute="top" secondItem="mD3-v4-NAD" secondAttribute="top" id="0YV-Tg-Rxu"/>
+                                                    <constraint firstItem="yhN-UY-bLc" firstAttribute="leading" secondItem="mD3-v4-NAD" secondAttribute="leading" id="hf5-0O-jOd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="yhN-UY-bLc" secondAttribute="trailing" constant="1" id="n9Z-NI-glu"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="14"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkC-Kz-Cmd">
+                                                <rect key="frame" x="156" y="0.0" width="156" height="48"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <state key="normal" title="네, 좋아요!">
+                                                    <color key="titleColor" name="colorMainGreen03"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="14"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="14"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="138" id="7kM-Ix-9bX"/>
-                                    <constraint firstAttribute="trailing" secondItem="CkC-Kz-Cmd" secondAttribute="trailing" id="8ip-f7-zXV"/>
-                                    <constraint firstItem="yhN-UY-bLc" firstAttribute="leading" secondItem="beE-gI-k48" secondAttribute="leading" id="MI8-jC-BQx"/>
                                     <constraint firstItem="7L7-zu-1qP" firstAttribute="leading" secondItem="beE-gI-k48" secondAttribute="leading" id="MlZ-7y-8fe"/>
+                                    <constraint firstAttribute="bottom" secondItem="8qb-Uy-1fr" secondAttribute="bottom" id="NOl-jx-xAX"/>
+                                    <constraint firstAttribute="trailing" secondItem="8qb-Uy-1fr" secondAttribute="trailing" id="OOD-nC-IGi"/>
                                     <constraint firstAttribute="trailing" secondItem="7L7-zu-1qP" secondAttribute="trailing" id="OfL-dz-9GL"/>
                                     <constraint firstAttribute="width" constant="312" id="duM-MO-2VP"/>
+                                    <constraint firstItem="8qb-Uy-1fr" firstAttribute="leading" secondItem="beE-gI-k48" secondAttribute="leading" id="hny-Bl-CnG"/>
                                     <constraint firstItem="60J-X8-67Q" firstAttribute="top" secondItem="beE-gI-k48" secondAttribute="top" id="kdQ-VH-Us8"/>
-                                    <constraint firstAttribute="bottom" secondItem="mD3-v4-NAD" secondAttribute="bottom" id="lIC-pT-ZxB"/>
-                                    <constraint firstAttribute="bottom" secondItem="yhN-UY-bLc" secondAttribute="bottom" id="ljA-Do-MNT"/>
-                                    <constraint firstItem="mD3-v4-NAD" firstAttribute="centerX" secondItem="beE-gI-k48" secondAttribute="centerX" id="mI9-Xi-BDr"/>
-                                    <constraint firstAttribute="bottom" secondItem="CkC-Kz-Cmd" secondAttribute="bottom" id="nch-gM-Ozg"/>
+                                    <constraint firstItem="8qb-Uy-1fr" firstAttribute="top" secondItem="7L7-zu-1qP" secondAttribute="bottom" id="lxs-x4-w4m"/>
                                     <constraint firstItem="60J-X8-67Q" firstAttribute="leading" secondItem="beE-gI-k48" secondAttribute="leading" id="ocB-KW-qXs"/>
                                     <constraint firstAttribute="trailing" secondItem="60J-X8-67Q" secondAttribute="trailing" id="olh-Nx-yPI"/>
                                     <constraint firstItem="7L7-zu-1qP" firstAttribute="bottom" secondItem="60J-X8-67Q" secondAttribute="bottom" id="xIv-gm-CAO"/>
@@ -243,7 +264,9 @@
                     <connections>
                         <outlet property="backgroundButton" destination="7dt-K0-cPV" id="6aX-BL-dir"/>
                         <outlet property="cancelButton" destination="yhN-UY-bLc" id="gMJ-MM-EGx"/>
+                        <outlet property="cancelView" destination="mD3-v4-NAD" id="4Xo-uH-C8p"/>
                         <outlet property="okButton" destination="CkC-Kz-Cmd" id="VRI-sz-gNL"/>
+                        <outlet property="popupTitleLabel" destination="60J-X8-67Q" id="8uR-YT-dx1"/>
                         <outlet property="popupView" destination="beE-gI-k48" id="Iwo-5d-7KL"/>
                     </connections>
                 </viewController>
