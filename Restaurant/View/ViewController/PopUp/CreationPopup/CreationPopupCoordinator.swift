@@ -18,9 +18,12 @@ class CreationPopupCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        let creationPopup = CreationPopupViewController.instantiate()
+        let creationPopup = CommonPopupViewController.instantiate()
         creationPopup.coordinator = self
         creationPopup.modalPresentationStyle = .overFullScreen
+        creationPopup.isTwoButton = true
+        creationPopup.buttonType = .creationFeed
+
         presenter.present(creationPopup, animated: false, completion: nil)
     }
 }

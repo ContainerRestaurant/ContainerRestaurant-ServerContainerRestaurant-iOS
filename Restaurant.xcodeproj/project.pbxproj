@@ -119,7 +119,7 @@
 		FB1BE37A26371BFA0004673C /* TwoFeedInLineCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB1BE37826371BFA0004673C /* TwoFeedInLineCollectionView.xib */; };
 		FB1BE3852637DF2B0004673C /* TwoFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BE3832637DF2B0004673C /* TwoFeedCollectionViewCell.swift */; };
 		FB1BE3862637DF2B0004673C /* TwoFeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB1BE3842637DF2B0004673C /* TwoFeedCollectionViewCell.xib */; };
-		FB1BE38C26397EEE0004673C /* CreationPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BE38A26397EEE0004673C /* CreationPopupViewController.swift */; };
+		FB1BE38C26397EEE0004673C /* CommonPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BE38A26397EEE0004673C /* CommonPopupViewController.swift */; };
 		FB56AF61265E62E8002736F5 /* TestCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56AF60265E62E8002736F5 /* TestCoordinator.swift */; };
 		FB56AF63265E675B002736F5 /* TestMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56AF62265E675B002736F5 /* TestMapCoordinator.swift */; };
 		FB56AF65265E697B002736F5 /* TestLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56AF64265E697B002736F5 /* TestLoginCoordinator.swift */; };
@@ -322,7 +322,7 @@
 		FB1BE37826371BFA0004673C /* TwoFeedInLineCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoFeedInLineCollectionView.xib; sourceTree = "<group>"; };
 		FB1BE3832637DF2B0004673C /* TwoFeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB1BE3842637DF2B0004673C /* TwoFeedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoFeedCollectionViewCell.xib; sourceTree = "<group>"; };
-		FB1BE38A26397EEE0004673C /* CreationPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationPopupViewController.swift; sourceTree = "<group>"; };
+		FB1BE38A26397EEE0004673C /* CommonPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonPopupViewController.swift; sourceTree = "<group>"; };
 		FB56AF60265E62E8002736F5 /* TestCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoordinator.swift; sourceTree = "<group>"; };
 		FB56AF62265E675B002736F5 /* TestMapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMapCoordinator.swift; sourceTree = "<group>"; };
 		FB56AF64265E697B002736F5 /* TestLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLoginCoordinator.swift; sourceTree = "<group>"; };
@@ -507,7 +507,7 @@
 			isa = PBXGroup;
 			children = (
 				520419A126513A6A0099BA39 /* CreationPopupCoordinator.swift */,
-				FB1BE38A26397EEE0004673C /* CreationPopupViewController.swift */,
+				FB1BE38A26397EEE0004673C /* CommonPopupViewController.swift */,
 			);
 			path = CreationPopup;
 			sourceTree = "<group>";
@@ -1269,7 +1269,7 @@
 				FB56AF71265F5F69002736F5 /* CreationFeedViewController.swift in Sources */,
 				528558F72624A99000AB4E28 /* BaseViewController.swift in Sources */,
 				FB585B49266D6E770085C6B2 /* ExtensionUIButton.swift in Sources */,
-				FB1BE38C26397EEE0004673C /* CreationPopupViewController.swift in Sources */,
+				FB1BE38C26397EEE0004673C /* CommonPopupViewController.swift in Sources */,
 				52169B0226A458F900705FEC /* FeedRandomBackgroundColor.swift in Sources */,
 				FB9E1DC326E159F300707C60 /* HomeMainDataModel.swift in Sources */,
 				526BED622646F62A00897230 /* ContainerOfEveryoneViewController.swift in Sources */,
