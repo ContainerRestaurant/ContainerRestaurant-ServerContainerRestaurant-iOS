@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "level1Tumbler.png",
+      "filename" : "level1Tumbler.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "level1Tumbler@2x.png",
+      "filename" : "level1Tumbler@2x.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "level1Tumbler@3x.png",
+      "filename" : "level1Tumbler@3x.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }

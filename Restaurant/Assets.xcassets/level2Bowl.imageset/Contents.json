@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "level2Bowl.png",
+      "filename" : "level2Bowl.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "level2Bowl@2x.png",
+      "filename" : "level2Bowl@2x.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "level2Bowl@3x.png",
+      "filename" : "level2Bowl@3x.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }
