@@ -16,6 +16,7 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
     var mapView = NMFMapView()
     var locationManager = CLLocationManager()
     var markers: [NMFMarker] = []
+    var isAuthorized = false
     
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var searchCurrentLocationButton: UIButton!
@@ -108,7 +109,9 @@ extension MapViewController {
         self.mainView.addSubview(mapView)
         self.setMyLocationIcon()
         self.moveToMyLocationOnMap()
-        self.viewModel.fetchMyNearbyRestaurants()
+        if isAuthorized {
+            self.viewModel.fetchMyNearbyRestaurants()
+        }
     }
     
     private func setMarkers() {
@@ -158,6 +161,7 @@ extension MapViewController: CLLocationManagerDelegate {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
             print("GPS 권한 설정됨")
+            isAuthorized = true
             //setMapView()에 있는 세 method는 권한 설정 전에 호출돼서 현재 위치값을 못가져오므로 권한 설정 이후에도 다시 한 번 호출
             self.setMyLocationIcon()
             self.moveToMyLocationOnMap()
