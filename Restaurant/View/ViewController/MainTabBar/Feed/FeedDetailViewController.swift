@@ -101,7 +101,10 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
 
                 if self.isReplyCommentState {
                     APIClient.createFeedReplyComment(feedID: viewModel.feedID, content: comment, upperReplyID: self.upperCommentID) { [weak self] model in
-                        self?.commentTextView.text = ""
+                        self?.commentTextView.text = "댓글을 남겨주세요."
+                        self?.commentTextView.textColor = .colorGrayGray05
+                        self?.commentRegisterButton.setTitleColor(.colorGrayGray05, for: .normal)
+                        self?.commentRegisterButton.isEnabled = false
                         self?.view.endEditing(true)
 
                         self?.viewModel.fetchCommentsOfFeed() { [weak self] in
@@ -114,7 +117,10 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
                     }
                 } else {
                     APIClient.createFeedComment(feedID: viewModel.feedID, content: comment) { [weak self] _ in
-                        self?.commentTextView.text = ""
+                        self?.commentTextView.text = "댓글을 남겨주세요."
+                        self?.commentTextView.textColor = .colorGrayGray05
+                        self?.commentRegisterButton.setTitleColor(.colorGrayGray05, for: .normal)
+                        self?.commentRegisterButton.isEnabled = false
                         self?.view.endEditing(true)
 //                        self?.viewModel.comments.append($0)
 //                        let lastRowInCollectionView = (self?.viewModel.modules.count)!-1
@@ -166,7 +172,7 @@ extension FeedDetailViewController {
 
 //MARK: - Comment View
 extension FeedDetailViewController: UITextViewDelegate {
-    @objc func keyboardWillAppear(noti: NSNotification){
+    @objc func keyboardWillAppear(noti: NSNotification) {
         if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             var keyboardHeight = keyboardRectangle.height
@@ -178,10 +184,15 @@ extension FeedDetailViewController: UITextViewDelegate {
                 isFirstTapCommentView = false
                 print("키보드 올라올 때: \(self.commentBackgroundView.frame.origin.y)")
             }
+
+            if self.commentTextView.text == "댓글을 남겨주세요." {
+                self.commentTextView.text = ""
+                self.commentTextView.textColor = .colorGrayGray07
+            }
         }
     }
 
-    @objc func keyboardWillDisappear(noti: NSNotification){
+    @objc func keyboardWillDisappear(noti: NSNotification) {
         if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             var keyboardHeight = keyboardRectangle.height
@@ -191,10 +202,18 @@ extension FeedDetailViewController: UITextViewDelegate {
             commentBackgroundBottomConstraint.constant += keyboardHeight
             isFirstTapCommentView = true
             print("키보드 사라질 때: \(self.commentBackgroundView.frame.origin.y)")
+
+            if self.commentTextView.text == "" {
+                self.commentTextView.text = "댓글을 남겨주세요."
+                self.commentTextView.textColor = .colorGrayGray05
+            }
         }
     }
 
     func textViewDidChange(_ textView: UITextView) {
+        commentRegisterButton.setTitleColor(textView.text.isEmpty ? .colorGrayGray05 : .colorMainGreen02, for: .normal)
+        commentRegisterButton.isEnabled = !textView.text.isEmpty
+
         let size = CGSize(width: textView.frame.width, height: .infinity)
         let estimatedHeight = textView.sizeThatFits(size).height
         let thirdLineHeight = CGFloat(55) //대략적 세 줄 높이 (원래는 50.33333)
