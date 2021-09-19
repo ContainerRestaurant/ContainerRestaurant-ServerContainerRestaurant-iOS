@@ -92,6 +92,7 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
     }
 }
 
+//MARK: - 지도 뷰 관련
 extension MapViewController {
     private func setMapView() {
         locationManager.delegate = self
@@ -108,9 +109,12 @@ extension MapViewController {
         self.mainView.addSubview(mapView)
         self.setMyLocationIcon()
         self.moveToMyLocationOnMap()
-        self.viewModel.fetchMyNearbyRestaurants()
+
+        if checkGPSPermission() {
+            self.viewModel.fetchMyNearbyRestaurants()
+        }
     }
-    
+
     private func setMarkers() {
         for restaurant in self.viewModel.nearbyRestaurants {
             let marker = NMFMarker()
@@ -138,8 +142,30 @@ extension MapViewController {
     private func pushNearbyRestaurants() {
         coordinator?.pushNearbyRestaurants(nearbyRestaurants: viewModel.nearbyRestaurants)
     }
+
+    func setMyLocationIcon() {
+        guard let locationCoordinate = locationManager.location?.coordinate else { return }
+        self.viewModel.myLatitude = locationCoordinate.latitude
+        self.viewModel.myLongitude = locationCoordinate.longitude
+
+        let locationOverlay = mapView.locationOverlay
+        locationOverlay.hidden = false
+        locationOverlay.location = NMGLatLng(lat: viewModel.myLatitude, lng: viewModel.myLongitude)
+    }
+
+    func moveToMyLocationOnMap() {
+        guard let locationCoordinate = locationManager.location?.coordinate else { return }
+        self.viewModel.myLatitude = locationCoordinate.latitude
+        self.viewModel.myLongitude = locationCoordinate.longitude
+
+        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: viewModel.myLatitude, lng: viewModel.myLongitude))
+        cameraUpdate.animation = .easeOut
+        cameraUpdate.animationDuration = 1
+        mapView.moveCamera(cameraUpdate)
+    }
 }
 
+//MARK: - 카메라 이동 감지
 extension MapViewController: NMFMapViewCameraDelegate {
     func mapViewCameraIdle(_ mapView: NMFMapView) {
         print(mapView.cameraPosition.target.lat)
@@ -149,6 +175,7 @@ extension MapViewController: NMFMapViewCameraDelegate {
     }
 }
 
+//MARK: - GPS 권한 관련
 extension MapViewController: CLLocationManagerDelegate {
     private func getLocationUsagePermission() {
         locationManager.requestWhenInUseAuthorization()
@@ -158,6 +185,7 @@ extension MapViewController: CLLocationManagerDelegate {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
             print("GPS 권한 설정됨")
+//            UserDataManager.sharedInstance.isMapAuthorized = true
             //setMapView()에 있는 세 method는 권한 설정 전에 호출돼서 현재 위치값을 못가져오므로 권한 설정 이후에도 다시 한 번 호출
             self.setMyLocationIcon()
             self.moveToMyLocationOnMap()
@@ -172,25 +200,21 @@ extension MapViewController: CLLocationManagerDelegate {
             print("GPS: Default")
         }
     }
-    
-    func setMyLocationIcon() {
-        guard let locationCoordinate = locationManager.location?.coordinate else { return }
-        self.viewModel.myLatitude = locationCoordinate.latitude
-        self.viewModel.myLongitude = locationCoordinate.longitude
-        
-        let locationOverlay = mapView.locationOverlay
-        locationOverlay.hidden = false
-        locationOverlay.location = NMGLatLng(lat: viewModel.myLatitude, lng: viewModel.myLongitude)
-    }
-    
-    func moveToMyLocationOnMap() {
-        guard let locationCoordinate = locationManager.location?.coordinate else { return }
-        self.viewModel.myLatitude = locationCoordinate.latitude
-        self.viewModel.myLongitude = locationCoordinate.longitude
-        
-        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: viewModel.myLatitude, lng: viewModel.myLongitude))
-        cameraUpdate.animation = .easeOut
-        cameraUpdate.animationDuration = 1
-        mapView.moveCamera(cameraUpdate)
+
+    func checkGPSPermission() -> Bool {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedAlways, .authorizedWhenInUse:
+            print("GPS: 권한 있음")
+            return true
+        case .restricted, .notDetermined:
+            print("GPS: 아직 선택하지 않음")
+            return false
+        case .denied:
+            print("GPS: 권한 없음")
+            return false
+        default:
+            print("GPS: Default")
+            return false
+        }
     }
 }
