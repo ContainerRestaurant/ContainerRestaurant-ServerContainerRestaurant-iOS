@@ -120,6 +120,10 @@ extension OnboardingViewController {
 
 extension OnboardingViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 0 {
+            scrollView.contentOffset.y = 0
+        }
+        
         switch scrollView.contentOffset.x / UIScreen.main.bounds.width {
         case 0:
             setIndicatorImage(page: 0)
