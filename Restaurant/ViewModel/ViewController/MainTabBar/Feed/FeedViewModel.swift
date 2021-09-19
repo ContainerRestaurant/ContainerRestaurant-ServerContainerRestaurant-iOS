@@ -28,11 +28,15 @@ class FeedViewModel {
     
     func categoryFeedCollectionViewSize() -> CGSize {
         let height: CGFloat = { () -> CGFloat in
-            let lineCount = round(Double(self.categoryFeeds.count)/2.0)
-            var cellHeight: CGFloat = 273 * CGFloat(lineCount)
-            if lineCount > 0 { cellHeight += 20 * CGFloat(lineCount-1) }
+            if self.categoryFeeds.count > 0 {
+                let lineCount = round(Double(self.categoryFeeds.count)/2.0)
+                var cellHeight: CGFloat = 273 * CGFloat(lineCount)
+                if lineCount > 0 { cellHeight += 20 * CGFloat(lineCount-1) }
 
-            return cellHeight
+                return cellHeight
+            } else {
+                return CGFloat(285)
+            }
         }()
 
         return CGSize(width: UIScreen.main.bounds.width, height: height)
