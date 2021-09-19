@@ -15,8 +15,8 @@ class SortButtonCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(_ isSelected: Bool, _ title: String) {
-        sortLabel.borderColor = isSelected ? .colorMainGreen03 : .colorGrayGray05
-        sortLabel.textColor = isSelected ? .colorMainGreen03 : .colorGrayGray05
+        sortLabel.borderColor = isSelected ? .colorMainGreen02 : .colorGrayGray03
+        sortLabel.textColor = isSelected ? .colorMainGreen02 : .colorGrayGray05
         sortLabel.font = isSelected ? .boldSystemFont(ofSize: 14) : .systemFont(ofSize: 14)
         sortLabel.text = title
     }

@@ -142,7 +142,10 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == categoryCollectionView {
-            let label = UILabel(frame: CGRect.zero)
+            let label = PaddingLabel(frame: CGRect.zero)
+            label.font = self.selectedCategoryIndex == indexPath.row ? .boldSystemFont(ofSize: 16) : .systemFont(ofSize: 16)
+            label.paddingLeft = 10
+            label.paddingRight = 10
             label.text = viewModel.category[indexPath.row].1
             label.sizeToFit()
             return CGSize(width: label.frame.width.widthRatio(), height: 47)
@@ -151,7 +154,6 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
             label.font = self.selectedSortIndex == indexPath.row ? .boldSystemFont(ofSize: 14) : .systemFont(ofSize: 14)
             label.paddingLeft = 10
             label.paddingRight = 10
-
             switch indexPath.row {
             case 0: label.text = "최신 순"
             case 1: label.text = "좋아요 많은 순"
@@ -159,7 +161,6 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
             case 3: label.text = "난이도 높은 순"
             default: break
             }
-
             label.sizeToFit()
             return CGSize(width: label.frame.width.widthRatio(), height: 56)
         } else {
@@ -169,7 +170,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         if collectionView == categoryCollectionView {
-            return CGFloat(14).widthRatio()
+            return CGFloat(10).widthRatio()
         } else if collectionView == sortCollectionView {
             return CGFloat(4).widthRatio()
         } else {
