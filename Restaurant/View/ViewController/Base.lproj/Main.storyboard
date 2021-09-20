@@ -1813,18 +1813,18 @@
                                                     <constraint firstAttribute="height" constant="20" id="H81-wg-hDc"/>
                                                 </constraints>
                                             </imageView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8Bw-iq-tds">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" text="댓글을 남겨주세요." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8Bw-iq-tds">
                                                 <rect key="frame" x="44" y="15" width="246" height="20"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="246" id="4fs-1M-kef"/>
                                                     <constraint firstAttribute="height" constant="20" id="Cyj-Sl-o6o"/>
                                                 </constraints>
-                                                <color key="textColor" systemColor="labelColor"/>
+                                                <color key="textColor" name="colorGrayGray05"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" smartQuotesType="no"/>
                                             </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcN-VW-hgW">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcN-VW-hgW">
                                                 <rect key="frame" x="297" y="15" width="30" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="3gy-IS-Lve"/>
@@ -1832,7 +1832,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="등록">
-                                                    <color key="titleColor" name="colorMainGreen02"/>
+                                                    <color key="titleColor" name="colorGrayGray05"/>
                                                 </state>
                                             </button>
                                         </subviews>
