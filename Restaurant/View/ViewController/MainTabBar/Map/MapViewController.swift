@@ -186,6 +186,7 @@ extension MapViewController: CLLocationManagerDelegate {
         case .authorizedAlways, .authorizedWhenInUse:
             print("GPS 권한 설정됨")
 //            UserDataManager.sharedInstance.isMapAuthorized = true
+          
             //setMapView()에 있는 세 method는 권한 설정 전에 호출돼서 현재 위치값을 못가져오므로 권한 설정 이후에도 다시 한 번 호출
             self.setMyLocationIcon()
             self.moveToMyLocationOnMap()

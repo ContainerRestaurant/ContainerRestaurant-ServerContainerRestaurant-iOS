@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "level5Pot.png",
+      "filename" : "level5Pot.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "level5Pot@2x.png",
+      "filename" : "level5Pot@2x.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "level5Pot@3x.png",
+      "filename" : "level5Pot@3x.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }

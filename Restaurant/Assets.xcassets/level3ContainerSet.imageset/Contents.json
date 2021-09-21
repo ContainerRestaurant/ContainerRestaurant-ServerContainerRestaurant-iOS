@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "level3ContainerSet.png",
+      "filename" : "level3ContainerSet.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "level3ContainerSet@2x.png",
+      "filename" : "level3ContainerSet@2x.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "level3ContainerSet@3x.png",
+      "filename" : "level3ContainerSet@3x.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }
