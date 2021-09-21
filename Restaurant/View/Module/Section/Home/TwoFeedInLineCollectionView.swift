@@ -16,7 +16,7 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
     var homeCoordinator: HomeCoordinator?
     var feedCoordinator: FeedCoordinator?
     var inquiryProfileCoordinator: InquiryProfileCoordinator?
-    var selectedCategorySubject: PublishSubject<String>?
+    var selectedCategoryAndSortSubject: PublishSubject<(String, Int)>?
     var disposeBag = DisposeBag()
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -48,9 +48,9 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
     }
     
     //피드 탭 카테고리 피드
-    func configureFeedCategoryFeed(_ feeds: [FeedPreviewModel], _ selectedCategorySubject: PublishSubject<String>, _ reloadFlagSubject: PublishSubject<[FeedPreviewModel]>, _ coordinator: FeedCoordinator) {
+    func configureFeedCategoryFeed(_ feeds: [FeedPreviewModel], _ selectedCategoryAndSortSubject: PublishSubject<(String, Int)>, _ reloadFlagSubject: PublishSubject<[FeedPreviewModel]>, _ coordinator: FeedCoordinator) {
         self.feeds = feeds
-        self.selectedCategorySubject = selectedCategorySubject
+        self.selectedCategoryAndSortSubject = selectedCategoryAndSortSubject
         self.feedCoordinator = coordinator
         self.emptyView.isHidden = self.feeds.count > 0
 
@@ -61,12 +61,16 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
             UserDataManager.sharedInstance.isFirstEntryAfterLogin = false
         }
         
-        self.selectedCategorySubject?
-            .subscribe(onNext: { category in
-                APIClient.categoryFeed(category: category) { [weak self] feeds in
-                    self?.feeds = feeds
-                    self?.collectionView.reloadData()
-                    reloadFlagSubject.onNext(self?.feeds ?? [])
+        self.selectedCategoryAndSortSubject?
+            .subscribe(onNext: { (category, sortIndex) in
+                if sortIndex > 0 {
+
+                } else {
+                    APIClient.categoryFeed(category: category) { [weak self] feeds in
+                        self?.feeds = feeds
+                        self?.collectionView.reloadData()
+                        reloadFlagSubject.onNext(self?.feeds ?? [])
+                    }
                 }
             })
             .disposed(by: disposeBag)
