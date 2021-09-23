@@ -76,22 +76,24 @@ extension LoginPopupViewController {
                         } else {
                             print("me() success.")
 
-                            APIClient.createLoginToken(provider: "KAKAO", accessToken: oAuthToken?.accessToken ?? "") {
-                                print("이거지이거")
-                                print($0)
-                                UserDataManager.sharedInstance.userID = $0.id
-                                UserDataManager.sharedInstance.loginToken = $0.token
-                                print("이거지이거")
-                            }
                             UserDataManager.sharedInstance.isFirstEntryAfterLogin = true
-                            if self?.isFromMapBottomSheet ?? false  {
-                                self?.isFromMapBottomSheet = false
-                                let nicknamePopup = NickNamePopupViewController.instantiate()
-                                nicknamePopup.isFromMapBottomSheet = true
-                                self?.present(nicknamePopup, animated: false, completion: nil)
-                            } else {
-                                self?.dismiss(animated: false, completion: nil)
-                                self?.coordinator?.presentNickNamePopup()
+                            APIClient.createLoginToken(provider: "KAKAO", accessToken: oAuthToken?.accessToken ?? "") {
+                                if UserDataManager.sharedInstance.userID == $0.id && UserDataManager.sharedInstance.loginToken == $0.token {
+                                    self?.dismiss(animated: true, completion: nil)
+                                } else {
+                                    UserDataManager.sharedInstance.userID = $0.id
+                                    UserDataManager.sharedInstance.loginToken = $0.token
+
+                                    if self?.isFromMapBottomSheet ?? false  {
+                                        self?.isFromMapBottomSheet = false
+                                        let nicknamePopup = NickNamePopupViewController.instantiate()
+                                        nicknamePopup.isFromMapBottomSheet = true
+                                        self?.present(nicknamePopup, animated: false, completion: nil)
+                                    } else {
+                                        self?.dismiss(animated: false, completion: nil)
+                                        self?.coordinator?.presentNickNamePopup()
+                                    }
+                                }
                             }
                         }
                     }

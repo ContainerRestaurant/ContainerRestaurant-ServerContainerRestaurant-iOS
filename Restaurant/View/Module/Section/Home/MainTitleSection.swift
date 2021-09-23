@@ -65,10 +65,12 @@ class MainTitleSection: UICollectionViewCell {
 
         myContainerButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
-                if self?.myContainerCount == 0 {
-                    self?.coordinator?.presentCreationPopup()
-                } else {
-                    self?.coordinator?.pushToInquiryProfile(userID: UserDataManager.sharedInstance.userID)
+                APIClient.checkLogin(loginToken: UserDataManager.sharedInstance.loginToken) { [weak self] user in
+                    if user.id == 0 {
+                        self?.coordinator?.presentCreationPopup()
+                    } else {
+                        self?.coordinator?.pushToInquiryProfile(userID: UserDataManager.sharedInstance.userID)
+                    }
                 }
             })
             .disposed(by: disposeBag)

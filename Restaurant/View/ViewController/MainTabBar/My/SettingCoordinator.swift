@@ -52,4 +52,13 @@ extension SettingCoordinator {
 
         coordinator.start()
     }
+
+    //로그아웃 확인 팝업
+    func logoutPopup() {
+        let coordinator = CommonPopupCoordinator(presenter: presenter, isTwoButton: true, buttonType: .logout)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+
+        coordinator.start()
+    }
 }
