@@ -21,6 +21,9 @@ class SearchingRestaurantPopupViewController: BaseViewController, Storyboard {
         APIClient.nearbyRestaurants(latitude: self.latitude, longitude: self.longitude, radius: 20000) { [weak self] nearbyRestaurants in
             self?.dismiss(animated: false, completion: nil)
             self?.afterSearchingRestaurantSubject.onNext(nearbyRestaurants)
+            if nearbyRestaurants.isEmpty {
+                self?.coordinator?.noRestaurantNearby()
+            }
         }
         print("SearchingRestaurantPopupViewController viewDidLoad()")
     }
