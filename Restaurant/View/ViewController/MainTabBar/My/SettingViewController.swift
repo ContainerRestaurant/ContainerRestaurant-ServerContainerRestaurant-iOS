@@ -83,6 +83,7 @@ extension SettingViewController: UICollectionViewDelegate, UICollectionViewDataS
         switch indexPath.row {
         case 1: coordinator?.pushPrivacyPolicy()
         case 2: coordinator?.pushServiceAccessTerms()
+        case 3: coordinator?.logoutPopup()
         default: break
         }
     }

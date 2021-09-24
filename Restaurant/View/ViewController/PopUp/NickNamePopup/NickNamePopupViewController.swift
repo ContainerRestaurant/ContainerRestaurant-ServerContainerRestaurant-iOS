@@ -12,10 +12,13 @@ class NickNamePopupViewController: BaseViewController, Storyboard {
     weak var coordinator: NickNamePopupCoordinator?
     var validateNicknameSubject: PublishSubject<Bool> = PublishSubject<Bool>()
     var isFromMapBottomSheet = false
+    var beforeTextLength = 0
+    var totalTextLength = 0
 
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var registerButton: UIButton!
-    
+    @IBOutlet weak var nicknameValidationCheckLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +29,8 @@ class NickNamePopupViewController: BaseViewController, Storyboard {
         self.validateNicknameSubject
             .map { !$0 }
             .subscribe(onNext: { [weak self] isValidate in
+                self?.nicknameValidationCheckLabel.textColor = isValidate ? .colorMainGreen03 : .colorPointOrange02
+                self?.nicknameValidationCheckLabel.text = isValidate ? "사용 가능한 닉네임 입니다" : "중복 닉네임 입니다."
                 self?.registerButton.isEnabled = isValidate
                 self?.registerButton.backgroundColor = isValidate ? .colorMainGreen03 : .colorGrayGray03
                 self?.registerButton.setTitleColor(isValidate ? .colorGrayGray01 : .colorGrayGray06, for: .normal)
@@ -37,7 +42,27 @@ class NickNamePopupViewController: BaseViewController, Storyboard {
                 guard let `self` = self else { return }
 
                 if let text = textInField {
-                    API().validateNickName(nickName: text, subject: self.validateNicknameSubject)
+                    if text == "" {
+                        self.nicknameValidationCheckLabel.text = ""
+                        self.setUnableRegisterButton()
+                        return
+                    }
+                    let nicknameReg = "[가-힣A-Za-z0-9]{0,}"
+                    let nicknameLengthReg = "[가-힣A-Za-z0-9]{0,10}"
+                    let pred = NSPredicate(format:"SELF MATCHES %@", nicknameReg)
+                    let lengthPred = NSPredicate(format:"SELF MATCHES %@", nicknameLengthReg)
+
+                    if !pred.evaluate(with: text) {
+                        self.nicknameValidationCheckLabel.textColor = .colorPointOrange02
+                        self.nicknameValidationCheckLabel.text = "한글/영문/숫자만 입력해 주세요"
+                        self.setUnableRegisterButton()
+                    } else if !lengthPred.evaluate(with: text) {
+                        self.nicknameValidationCheckLabel.textColor = .colorPointOrange02
+                        self.nicknameValidationCheckLabel.text = "1~10자 이내로 입력해 주세요"
+                        self.setUnableRegisterButton()
+                    } else {
+                        API().validateNickName(nickName: text, subject: self.validateNicknameSubject)
+                    }
                 }
             })
             .disposed(by: disposeBag)
@@ -68,6 +93,12 @@ class NickNamePopupViewController: BaseViewController, Storyboard {
                 }
             })
             .disposed(by: disposeBag)
+    }
+
+    private func setUnableRegisterButton() {
+        self.registerButton.isEnabled = false
+        self.registerButton.backgroundColor = .colorGrayGray03
+        self.registerButton.setTitleColor(.colorGrayGray06, for: .normal)
     }
     
     deinit {

@@ -13,8 +13,16 @@ class UserDataManager: NSObject {
         super.init()
     }
     
-    var userID: Int = Int.max //Default Int.max, 로그인 시에 세팅
-    var loginToken: String = ""
+//    var userID: Int = Int.max //Default Int.max, 로그인 시에 세팅
+//    var loginToken: String = ""
+    var userID: Int {
+        get { return UserDefaults.standard.object(forKey: "userID") == nil ? 0 : UserDefaults.standard.object(forKey: "userID") as! Int }
+        set { UserDefaults.standard.set(newValue, forKey: "userID") }
+    }
+    var loginToken: String {
+        get { return UserDefaults.standard.object(forKey: "loginToken") == nil ? "" : UserDefaults.standard.object(forKey: "loginToken") as! String }
+        set { UserDefaults.standard.set(newValue, forKey: "loginToken") }
+    }
     var isFirstEntryAfterLogin: Bool = false
     
     //앱 첫 진입 여부(온보딩 체크)

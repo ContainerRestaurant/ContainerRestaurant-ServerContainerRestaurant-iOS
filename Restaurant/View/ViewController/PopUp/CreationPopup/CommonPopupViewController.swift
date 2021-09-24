@@ -11,6 +11,7 @@ import RxSwift
 enum PopupButtonType {
     case creationFeed
     case confirmExit
+    case logout
     case none
 }
 
@@ -37,6 +38,9 @@ class CommonPopupViewController: BaseViewController, Storyboard {
         case .confirmExit:
             setButton(buttonType)
             confirmExitBindingView()
+        case .logout:
+            setButton(buttonType)
+            logoutBindingView()
         case .none: break
         }
 
@@ -85,6 +89,25 @@ class CommonPopupViewController: BaseViewController, Storyboard {
             .disposed(by: disposeBag)
     }
 
+    func logoutBindingView() {
+        cancelButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss(animated: false) {
+                    UserDataManager.sharedInstance.userID = Int.max
+                    UserDataManager.sharedInstance.loginToken = ""
+                    
+                    self?.coordinator?.presenter.popViewController(animated: false)
+                    self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
+                }
+            })
+
+        okButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss(animated: false, completion: nil)
+            })
+            .disposed(by: disposeBag)
+    }
+
     private func setButton(_ buttonType: PopupButtonType) {
         switch buttonType {
         case .creationFeed:
@@ -104,6 +127,10 @@ class CommonPopupViewController: BaseViewController, Storyboard {
             popupTitleLabel.attributedText = attributedString
             cancelButton.setTitle("취소", for: .normal)
             okButton.setTitle("확인", for: .normal)
+        case .logout:
+            popupTitleLabel.text = "정말 로그아웃 하시겠어요?"
+            cancelButton.setTitle("로그아웃", for: .normal)
+            okButton.setTitle("취소", for: .normal)
         case .none: break
         }
     }

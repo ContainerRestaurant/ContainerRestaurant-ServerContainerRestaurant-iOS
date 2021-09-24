@@ -1975,7 +1975,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FYs-yP-j7E">
-                                <rect key="frame" x="16" y="235" width="32" height="34"/>
+                                <rect key="frame" x="16" y="235" width="315" height="34"/>
                                 <color key="textColor" name="colorGrayGray07"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1991,21 +1991,33 @@
                                     <color key="titleColor" name="colorGrayGray06"/>
                                 </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jW9-3p-XS7">
+                                <rect key="frame" x="16" y="277" width="315" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="colorPointOrange02"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pSE-J2-PYq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="jW9-3p-XS7" firstAttribute="trailing" secondItem="FYs-yP-j7E" secondAttribute="trailing" id="0V4-GQ-GxG"/>
+                            <constraint firstItem="jW9-3p-XS7" firstAttribute="leading" secondItem="FYs-yP-j7E" secondAttribute="leading" id="4Ux-uO-8qf"/>
+                            <constraint firstItem="jW9-3p-XS7" firstAttribute="top" secondItem="FYs-yP-j7E" secondAttribute="bottom" constant="8" id="AmA-Ql-O8G"/>
                             <constraint firstItem="FYs-yP-j7E" firstAttribute="leading" secondItem="pSE-J2-PYq" secondAttribute="leading" constant="16" id="DkC-2J-cwM"/>
                             <constraint firstItem="FYs-yP-j7E" firstAttribute="top" secondItem="xbo-76-67R" secondAttribute="bottom" constant="38" id="FDy-iO-aYf"/>
                             <constraint firstItem="9ih-jK-i7q" firstAttribute="leading" secondItem="pSE-J2-PYq" secondAttribute="leading" id="H9D-1J-cft"/>
                             <constraint firstItem="xbo-76-67R" firstAttribute="top" secondItem="pSE-J2-PYq" secondAttribute="top" constant="110" id="J2C-mu-tlk"/>
                             <constraint firstItem="9ih-jK-i7q" firstAttribute="centerY" secondItem="Na7-cE-cbW" secondAttribute="centerY" id="NGE-At-xBg"/>
                             <constraint firstItem="pSE-J2-PYq" firstAttribute="trailing" secondItem="9ih-jK-i7q" secondAttribute="trailing" id="Sq2-SS-hHt"/>
+                            <constraint firstItem="pSE-J2-PYq" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xbo-76-67R" secondAttribute="trailing" constant="127" id="UQs-U1-Z6e"/>
+                            <constraint firstItem="pSE-J2-PYq" firstAttribute="trailing" secondItem="FYs-yP-j7E" secondAttribute="trailing" constant="44" id="Yy9-5O-jHk"/>
                             <constraint firstItem="xbo-76-67R" firstAttribute="leading" secondItem="pSE-J2-PYq" secondAttribute="leading" constant="16" id="lsj-bz-Ulw"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="nickNameTextField" destination="FYs-yP-j7E" id="zwX-S0-9vl"/>
+                        <outlet property="nicknameValidationCheckLabel" destination="jW9-3p-XS7" id="9AF-cQ-JAt"/>
                         <outlet property="registerButton" destination="9ih-jK-i7q" id="t4N-nJ-NUw"/>
                     </connections>
                 </viewController>
@@ -2062,6 +2074,9 @@
         </namedColor>
         <namedColor name="colorMainGreen03">
             <color red="0.093999996781349182" green="0.75300002098083496" blue="0.55299997329711914" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="colorPointOrange02">
+            <color red="0.9570000171661377" green="0.35699999332427979" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
