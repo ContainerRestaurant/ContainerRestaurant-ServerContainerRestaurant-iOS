@@ -1938,8 +1938,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapLoadingIcon" translatesAutoresizingMaskIntoConstraints="NO" id="dYs-8w-azA">
+                                <rect key="frame" x="157.66666666666666" y="376" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Hzu-Pu-4fE"/>
+                                    <constraint firstAttribute="width" constant="60" id="Oh5-46-1JX"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="반경 20km 이내의 용기낸 식당을 찾고 있어요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehs-yy-Vua">
-                                <rect key="frame" x="105.66666666666669" y="382" width="164" height="48"/>
+                                <rect key="frame" x="105.66666666666669" y="308" width="164" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="ybE-gv-rC7"/>
                                 </constraints>
@@ -1951,8 +1958,10 @@
                         <viewLayoutGuide key="safeArea" id="qei-B2-jNV"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="dYs-8w-azA" firstAttribute="centerX" secondItem="aY5-DB-B3F" secondAttribute="centerX" id="1tC-9C-4eQ"/>
                             <constraint firstItem="ehs-yy-Vua" firstAttribute="centerX" secondItem="aY5-DB-B3F" secondAttribute="centerX" id="F2s-zj-XBH"/>
-                            <constraint firstItem="ehs-yy-Vua" firstAttribute="centerY" secondItem="aY5-DB-B3F" secondAttribute="centerY" id="T5d-gy-TVc"/>
+                            <constraint firstItem="dYs-8w-azA" firstAttribute="top" secondItem="ehs-yy-Vua" secondAttribute="bottom" constant="20" id="Y8R-sY-WfV"/>
+                            <constraint firstItem="dYs-8w-azA" firstAttribute="centerY" secondItem="aY5-DB-B3F" secondAttribute="centerY" id="siU-5j-vk9"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -2040,6 +2049,7 @@
         <image name="favoriteFilled20Px" width="20" height="20"/>
         <image name="feedFilledBlue20Px" width="20" height="20"/>
         <image name="listOutline16Px" width="16" height="16"/>
+        <image name="mapLoadingIcon" width="60" height="60"/>
         <image name="photoEdit20Px" width="20" height="20"/>
         <image name="profileViewCountFilled24Px" width="24" height="24"/>
         <image name="resetOutline16Px" width="16" height="16"/>

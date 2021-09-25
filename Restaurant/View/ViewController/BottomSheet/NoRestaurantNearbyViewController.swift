@@ -9,12 +9,20 @@ import UIKit
 
 class NoRestaurantNearbyViewController: BaseViewController, Storyboard {
     weak var coordinator: NoRestaurantNearbyCoordinator?
+    weak var searchingRestaurantCoordinator: SearchingRestaurantPopupCoordinator?
+    var isHiddenFindNearestRestaurantButton = false
     
     @IBOutlet weak var beBraveInFirstButton: UIButton!
     @IBAction func beBraveInFirst(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-        self.coordinator?.presenter.tabBarController?.selectedIndex = 2
-        self.coordinator?.presentCreationFeed()
+        if let coordinator = self.coordinator {
+            self.dismiss(animated: true, completion: nil)
+            coordinator.presenter.tabBarController?.selectedIndex = 2
+            coordinator.presentCreationFeed()
+        } else {
+            self.dismiss(animated: true, completion: nil)
+            searchingRestaurantCoordinator?.presenter.tabBarController?.selectedIndex = 2
+            searchingRestaurantCoordinator?.presentCreationFeed()
+        }
     }
     @IBOutlet weak var findNearestRestaurantButton: UIButton!
     @IBAction func findNearestRestaurant(_ sender: Any) {
@@ -27,6 +35,7 @@ class NoRestaurantNearbyViewController: BaseViewController, Storyboard {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.findNearestRestaurantButton.isHidden = isHiddenFindNearestRestaurantButton
         
         print("NoRestaurantNearbyViewController viewDidLoad()")
     }
