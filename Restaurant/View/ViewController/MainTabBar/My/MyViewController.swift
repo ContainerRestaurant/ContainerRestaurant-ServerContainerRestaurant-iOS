@@ -42,18 +42,9 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
                 self?.coordinator?.presentLogin()
             } else {
                 self?.viewModel = MyViewModel(viewModel: userModel)
-                self?.bindingView()
+                self?.bindingViewAfterFetch()
             }
         }
-//        API().askUser(isLoginSubject: isLoginSubject, userDataSubject: userDataSubject)
-//        Observable.zip(isLoginSubject, userDataSubject)
-//            .subscribe(onNext: { [weak self] (isLogin, userData) in
-//                if !isLogin { self?.coordinator?.presentLogin() }
-//                self?.viewModel = MyViewModel(viewModel: userData)
-//
-//                self?.bindingView()
-//            })
-//            .disposed(by: disposeBag)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -61,10 +52,14 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
 
         disposeBag = DisposeBag()
     }
-    
+
     func bindingView() {
         print("My bindingView")
-        
+    }
+    
+    func bindingViewAfterFetch() {
+        print("My bindingViewAfterFetch")
+
         viewModel.nickname
             .drive(nicknameLabel.rx.text)
             .disposed(by: disposeBag)
