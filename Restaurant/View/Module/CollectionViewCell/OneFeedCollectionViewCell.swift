@@ -17,10 +17,10 @@ class OneFeedCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    func configure(_ nearbyRestaurant: RestaurantModel) {
-        let imageURL = URL(string: baseURL + nearbyRestaurant.imagePath)
+    func configure(_ restaurant: RestaurantModel) {
+        let imageURL = URL(string: baseURL + restaurant.imagePath)
         feedImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.3))])
-        restaurantNameLabel.text = nearbyRestaurant.name
-        levelOfDifficultyView.rating = nearbyRestaurant.difficultyAverage
+        restaurantNameLabel.text = restaurant.name
+        levelOfDifficultyView.rating = restaurant.difficultyAverage
     }
 }

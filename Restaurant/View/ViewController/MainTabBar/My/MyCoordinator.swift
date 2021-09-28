@@ -36,6 +36,13 @@ class MyCoordinator: NSObject, Coordinator {
 }
 
 extension MyCoordinator {
+    func pushMyData(type: MyDataType) {
+        let coordinator = MyDataCoordinator(presenter: presenter, myDataType: type)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+
     func presentLogin() {
         let coordinator = LoginPopupCoordinator(presenter: presenter)
         coordinator.delegate = self
