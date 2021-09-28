@@ -21,8 +21,8 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
     @IBOutlet weak var feedCountLabel: UILabel!
     @IBOutlet weak var scrapFeedButton: UIButton!
     @IBOutlet weak var scrapFeedCountLabel: UILabel!
-    @IBOutlet weak var bookmarkedCountButton: UIButton!
-    @IBOutlet weak var bookmarkedCountLabel: UILabel!
+    @IBOutlet weak var favoriteRestaurantButton: UIButton!
+    @IBOutlet weak var favoriteRestaurantCountLabel: UILabel!
     @IBOutlet weak var descriptionLevelButton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
 
@@ -80,7 +80,7 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
         
         viewModel.bookmarkedCount
             .map { String($0) }
-            .drive(bookmarkedCountLabel.rx.text)
+            .drive(favoriteRestaurantCountLabel.rx.text)
             .disposed(by: disposeBag)
 
         settingButton.rx.tap
@@ -90,20 +90,20 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
             .disposed(by: disposeBag)
 
         feedButton.rx.tap
-            .subscribe(onNext: {
-                print("내 피드")
+            .subscribe(onNext: { [weak self] in
+                self?.coordinator?.pushMyData(type: .myFeed)
             })
             .disposed(by: disposeBag)
 
         scrapFeedButton.rx.tap
-            .subscribe(onNext: {
-                print("스크랩 피드")
+            .subscribe(onNext: { [weak self] in
+                self?.coordinator?.pushMyData(type: .scrapedFeed)
             })
             .disposed(by: disposeBag)
 
-        bookmarkedCountButton.rx.tap
-            .subscribe(onNext: {
-                print("찜한 식당")
+        favoriteRestaurantButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.coordinator?.pushMyData(type: .favoriteRestaurant)
             })
             .disposed(by: disposeBag)
 

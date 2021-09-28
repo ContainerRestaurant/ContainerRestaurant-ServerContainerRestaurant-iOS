@@ -58,7 +58,7 @@ extension HTMLTextViewController {
         let backImage = UIImage(named: "chevronLeftOutline20Px")
         self.coordinator?.presenter.navigationBar.backIndicatorImage = backImage
         self.coordinator?.presenter.navigationBar.backIndicatorTransitionMaskImage = backImage
-//        self.coordinator?.presenter.navigationBar.backItem?.title = ""
+
         self.coordinator?.presenter.navigationBar.isTranslucent = false
         self.coordinator?.presenter.navigationBar.tintColor = .colorGrayGray07
         self.coordinator?.presenter.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.colorGrayGray07]

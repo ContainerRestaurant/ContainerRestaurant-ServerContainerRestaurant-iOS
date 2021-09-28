@@ -121,6 +121,34 @@ class APIClient {
                 }
             }
     }
+
+    //특정 유저가 스크랩한 피드
+    static func scrapedFeed(userID: Int, completion: @escaping ([FeedPreviewModel]) -> Void ) {
+        AF.request(Router.ScrapedFeed(userID: userID))
+            .responseDecodable { (response: DataResponse<TwoFeedModel, AFError>) in
+                switch response.result {
+                case .success(let scrapedFeed):
+                    completion(scrapedFeed.feedPreviewList)
+                case .failure(let error):
+                    completion([])
+                    print("Scraped Feed's Error: \(error)")
+                }
+            }
+    }
+
+    //찜(즐겨찾기)한 식당
+    static func favoriteRestaurant(completion: @escaping ([RestaurantModel]) -> Void) {
+        AF.request(Router.FavoriteRestaurant)
+            .responseDecodable { (response: DataResponse<FavoriteRestaurantModel, AFError>) in
+                switch response.result {
+                case .success(let favoriteRestaurantModel):
+                    completion(favoriteRestaurantModel.favoriteRestaurants)
+                case .failure(let error):
+                    completion([])
+                    print("Favorite Restaurants's Error: \(error)")
+                }
+            }
+    }
     
     //피드 탭 카테고리 피드
     static func categoryFeed(category: String, completion: @escaping ([FeedPreviewModel]) -> Void ) {
