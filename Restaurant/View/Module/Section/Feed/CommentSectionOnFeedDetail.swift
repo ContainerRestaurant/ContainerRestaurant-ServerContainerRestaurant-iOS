@@ -16,6 +16,8 @@ class CommentSectionOnFeedDetail: UICollectionViewCell {
     @IBOutlet weak var commentTitleView: UIView!
     @IBOutlet weak var commentCountLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var emptyCommentView: UIImageView!
+    @IBOutlet weak var emptyCommentLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,6 +38,8 @@ class CommentSectionOnFeedDetail: UICollectionViewCell {
         self.comments = comments
         self.isReplyCommentSubject = isReplyCommentSubject
 
+        emptyCommentView.isHidden = !comments.isEmpty
+        emptyCommentLabel.isHidden = !comments.isEmpty
         commentCountLabel.text = "\(comments.count)"
         collectionView.reloadData()
     }
