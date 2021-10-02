@@ -324,6 +324,14 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
                 }
             }
 
+            if viewModel.comments.isEmpty {
+                let emptyViewHeight = CGFloat(260)
+                commentLabelHeight += emptyViewHeight
+            } else {
+                let lastCommentBottomSpacing = CGFloat(24)
+                commentLabelHeight += lastCommentBottomSpacing
+            }
+
             let cellHeight = commentTitleHeight + widthoutCommentHeight + commentLabelHeight + widthoutReplyCommentHeight + replyCommentLabelHeight + replyCommentSeparateHeight
 
             return CGSize(width: UIScreen.main.bounds.width, height: cellHeight)
