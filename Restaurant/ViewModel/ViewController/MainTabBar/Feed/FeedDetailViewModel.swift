@@ -20,6 +20,8 @@ class FeedDetailViewModel {
     var restaurantNameDriver: Driver<String>
     var isWelcome: Bool = false
     var isWelcomeDriver: Driver<Bool>
+    var isLike: Observable<Bool>
+    var isScrap: Observable<Bool>
     var levelOfDifficulty: Int = 1
     var userLevel: String = ""
     var mainMenuAndContainers: [MenuAndContainerModel]
@@ -67,6 +69,12 @@ class FeedDetailViewModel {
         isWelcomeDriver = Observable<Bool>
             .just(feedDetail.isWelcome)
             .asDriver(onErrorJustReturn: false)
+
+        isLike = Observable<Bool>
+            .just(feedDetail.isLike)
+
+        isScrap = Observable<Bool>
+            .just(feedDetail.isScraped)
 
         levelOfDifficulty = feedDetail.difficulty
         userLevel = feedDetail.userLevel

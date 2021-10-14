@@ -190,6 +190,19 @@ class APIClient {
                 }
             })
     }
+
+    //피드 스크랩
+    static func scrapFeed(feedID: Int, cancel: Bool) {
+        AF.request(Router.ScrapFeed(feedID: feedID, cancel: cancel))
+            .response(completionHandler: { response in
+                switch response.result {
+                case .success(let result):
+                    print("Scrap Feed's Success: \(String(describing: result))")
+                case .failure(let error):
+                    print("Scrap Feed's Error: \(error)")
+                }
+            })
+    }
     
     //피드 상세
     static func feedDetail(feedID: Int, completion: @escaping (FeedDetailModel?) -> Void ) {

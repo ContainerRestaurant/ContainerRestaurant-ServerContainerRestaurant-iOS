@@ -39,3 +39,12 @@ class FeedDetailCoordinator: NSObject, Coordinator {
         }
     }
 }
+
+extension FeedDetailCoordinator {
+    func presentLogin() {
+        let coordinator = LoginPopupCoordinator(presenter: presenter)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+}

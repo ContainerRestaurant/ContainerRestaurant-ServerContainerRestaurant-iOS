@@ -76,7 +76,6 @@ extension LoginPopupViewController {
                         } else {
                             print("me() success.")
 
-                            UserDataManager.sharedInstance.isFirstEntryAfterLogin = true
                             APIClient.createLoginToken(provider: "KAKAO", accessToken: oAuthToken?.accessToken ?? "") {
                                 if UserDataManager.sharedInstance.userID == $0.id && UserDataManager.sharedInstance.loginToken == $0.token {
                                     self?.dismiss(animated: true, completion: nil)

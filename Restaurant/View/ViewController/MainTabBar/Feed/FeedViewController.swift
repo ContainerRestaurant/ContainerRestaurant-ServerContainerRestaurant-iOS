@@ -35,12 +35,10 @@ class FeedViewController: BaseViewController, Storyboard, ViewModelBindableType 
         super.viewWillAppear(animated)
 
         setNavigationBar()
-        if UserDataManager.sharedInstance.isFirstEntryAfterLogin {
-            APIClient.categoryFeed(category: "") { [weak self] categoryFeed in
+        APIClient.categoryFeed(category: viewModel.category[selectedCategoryIndex].0) { [weak self] categoryFeed in
                 self?.viewModel.categoryFeeds = categoryFeed
                 self?.feedCollectionView.reloadData()
             }
-        }
     }
 
     func bindingView() {

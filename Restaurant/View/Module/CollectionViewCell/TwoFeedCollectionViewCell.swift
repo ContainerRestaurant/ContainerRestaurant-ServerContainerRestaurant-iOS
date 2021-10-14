@@ -47,7 +47,7 @@ class TwoFeedCollectionViewCell: UICollectionViewCell {
 
         likeButton
             .rx.tap
-            .bind { self.likeAction(feedPreview.id) }
+            .bind { [weak self] in self?.likeAction(feedPreview.id) }
             .disposed(by: disposeBag)
     }
 

@@ -54,12 +54,7 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
         self.feedCoordinator = coordinator
         self.emptyView.isHidden = self.feeds.count > 0
 
-        if isFirstEnterToFeed {
-            isFirstEnterToFeed = false
-        } else if UserDataManager.sharedInstance.isFirstEntryAfterLogin {
-            collectionView.reloadData()
-            UserDataManager.sharedInstance.isFirstEntryAfterLogin = false
-        }
+        collectionView.reloadData()
         
         self.selectedCategoryAndSortSubject?
             .subscribe(onNext: { (category, sortIndex) in

@@ -23,7 +23,6 @@ class UserDataManager: NSObject {
         get { return UserDefaults.standard.object(forKey: "loginToken") == nil ? "" : UserDefaults.standard.object(forKey: "loginToken") as! String }
         set { UserDefaults.standard.set(newValue, forKey: "loginToken") }
     }
-    var isFirstEntryAfterLogin: Bool = false
     
     //앱 첫 진입 여부(온보딩 체크)
     var isFirstEntry: Bool {
