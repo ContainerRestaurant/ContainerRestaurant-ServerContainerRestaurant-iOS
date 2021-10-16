@@ -190,6 +190,21 @@ class APIClient {
                 }
             })
     }
+
+    //피드 삭제
+    static func deleteFeed(feedID: String, completion: @escaping (Bool) -> ()) {
+        AF.request(Router.DeleteFeed(feedID: feedID))
+            .response(completionHandler: { response in
+                switch response.result {
+                case .success(let result):
+                    print("Delete Feed's Success: \(String(describing: result))")
+                    completion(true)
+                case .failure(let error):
+                    print("Delete Feed's Error: \(error)")
+                    completion(false)
+                }
+            })
+    }
     
     //피드 상세
     static func feedDetail(feedID: Int, completion: @escaping (FeedDetailModel?) -> Void ) {
