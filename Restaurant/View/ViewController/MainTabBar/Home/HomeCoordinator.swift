@@ -76,4 +76,11 @@ extension HomeCoordinator {
         childCoordinators.append(coordinator)
         coordinator.start()
     }
+
+    func presentBannerPopup() {
+        let coordinator = ImageBannerPopupCoordinator(presenter: presenter)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
 }

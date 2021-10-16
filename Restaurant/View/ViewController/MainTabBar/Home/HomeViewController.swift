@@ -93,7 +93,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         case is MainBanner.Type:
             let cell: MainBanner = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(viewModel.homeMainData.banners)
+            cell.configure(coordinator, viewModel.homeMainData.banners)
             return cell
 
         case is SeparateLineCollectionViewCell.Type:

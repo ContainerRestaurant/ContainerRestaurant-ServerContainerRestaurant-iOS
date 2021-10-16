@@ -149,6 +149,8 @@
 		FB585B49266D6E770085C6B2 /* ExtensionUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B48266D6E770085C6B2 /* ExtensionUIButton.swift */; };
 		FB585B4B266D79C30085C6B2 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB585B4A266D79C30085C6B2 /* OnboardingView.swift */; };
 		FB585B4D266D79CE0085C6B2 /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB585B4C266D79CE0085C6B2 /* OnboardingView.xib */; };
+		FB5C42EC271B004D00DB4244 /* ImageBannerPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5C42EB271B004D00DB4244 /* ImageBannerPopupCoordinator.swift */; };
+		FB5C42EE271B009000DB4244 /* ImageBannerPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5C42ED271B009000DB4244 /* ImageBannerPopupViewController.swift */; };
 		FB5F085926F6602000A6122A /* SortButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5F085726F6602000A6122A /* SortButtonCollectionViewCell.swift */; };
 		FB5F085A26F6602000A6122A /* SortButtonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB5F085826F6602000A6122A /* SortButtonCollectionViewCell.xib */; };
 		FB5F085C26F6717A00A6122A /* ExtensionUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5F085B26F6717A00A6122A /* ExtensionUILabel.swift */; };
@@ -360,6 +362,8 @@
 		FB585B48266D6E770085C6B2 /* ExtensionUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIButton.swift; sourceTree = "<group>"; };
 		FB585B4A266D79C30085C6B2 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FB585B4C266D79CE0085C6B2 /* OnboardingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
+		FB5C42EB271B004D00DB4244 /* ImageBannerPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBannerPopupCoordinator.swift; sourceTree = "<group>"; };
+		FB5C42ED271B009000DB4244 /* ImageBannerPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBannerPopupViewController.swift; sourceTree = "<group>"; };
 		FB5F085726F6602000A6122A /* SortButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB5F085826F6602000A6122A /* SortButtonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortButtonCollectionViewCell.xib; sourceTree = "<group>"; };
 		FB5F085B26F6717A00A6122A /* ExtensionUILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUILabel.swift; sourceTree = "<group>"; };
@@ -982,6 +986,7 @@
 				520419A026513A570099BA39 /* CreationPopup */,
 				520419A326513F750099BA39 /* ListStandardDescriptionPopup */,
 				52169B1026AA098300705FEC /* SearchingRestaurantPopup */,
+				FB5C42EA271B003000DB4244 /* ImageBannerPopup */,
 			);
 			path = PopUp;
 			sourceTree = "<group>";
@@ -1070,6 +1075,15 @@
 				FB585B4C266D79CE0085C6B2 /* OnboardingView.xib */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		FB5C42EA271B003000DB4244 /* ImageBannerPopup */ = {
+			isa = PBXGroup;
+			children = (
+				FB5C42EB271B004D00DB4244 /* ImageBannerPopupCoordinator.swift */,
+				FB5C42ED271B009000DB4244 /* ImageBannerPopupViewController.swift */,
+			);
+			path = ImageBannerPopup;
 			sourceTree = "<group>";
 		};
 		FB5F086527037FF800A6122A /* My */ = {
@@ -1350,6 +1364,7 @@
 				52169B1C26ADE62B00705FEC /* NearbyRestaurantsViewModel.swift in Sources */,
 				52256FAC263D7F4300A056DE /* SeparateLineCollectionViewCell.swift in Sources */,
 				FB115A8926C029100043A4DE /* SettingCoordinator.swift in Sources */,
+				FB5C42EC271B004D00DB4244 /* ImageBannerPopupCoordinator.swift in Sources */,
 				52169B1F26ADECC200705FEC /* OneFeedCollectionViewCell.swift in Sources */,
 				FB585B3B266B1AA30085C6B2 /* LevelOfDifficultyAndWelcome.swift in Sources */,
 				52169B2426AF351200705FEC /* RestaurantSummaryInformationViewController.swift in Sources */,
@@ -1416,6 +1431,7 @@
 				FB6EEE2326CA46D900E6237B /* TopSectionOnFeedDetail.swift in Sources */,
 				FB585B45266D68720085C6B2 /* OnboardingCoordinator.swift in Sources */,
 				FB6EEE4626D1F07400E6237B /* MostFeedCreationUserModel.swift in Sources */,
+				FB5C42EE271B009000DB4244 /* ImageBannerPopupViewController.swift in Sources */,
 				FB585B2026656E5A0085C6B2 /* SearchRestaurantCoordinator.swift in Sources */,
 				FBAA5D1B26B5733200CC38CA /* MainImageInRestaurantSummaryInfo.swift in Sources */,
 				5239733C261B625000856C99 /* FeedViewController.swift in Sources */,
