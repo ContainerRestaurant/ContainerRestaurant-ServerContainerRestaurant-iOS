@@ -10,6 +10,7 @@ import RxSwift
 
 enum PopupButtonType {
     case creationFeed
+    case deleteFeed
     case confirmExit
     case logout
     case none
@@ -19,6 +20,7 @@ class CommonPopupViewController: BaseViewController, Storyboard {
     weak var coordinator: CommonPopupCoordinator?
     var isTwoButton: Bool = true
     var buttonType: PopupButtonType = .none
+    var feedID: String?
     
     @IBOutlet weak var backgroundButton: UIButton!
     @IBOutlet weak var popupTitleLabel: UILabel!
@@ -35,6 +37,9 @@ class CommonPopupViewController: BaseViewController, Storyboard {
         case .creationFeed:
             setButton(buttonType)
             creationFeedBindingView()
+        case .deleteFeed:
+            setButton(buttonType)
+            deleteFeedBindingView()
         case .confirmExit:
             setButton(buttonType)
             confirmExitBindingView()
@@ -73,6 +78,27 @@ class CommonPopupViewController: BaseViewController, Storyboard {
             .disposed(by: disposeBag)
     }
 
+    func deleteFeedBindingView() {
+        cancelButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss(animated: false, completion: nil)
+            })
+            .disposed(by: disposeBag)
+
+        okButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                if let feedID = self?.feedID {
+                    APIClient.deleteFeed(feedID: feedID) { [weak self] isSuccess in
+                        self?.dismiss(animated: false) { [weak self] in
+                            self?.coordinator?.presenter.popViewController(animated: true)
+                            print(isSuccess ? "성공하면 컬렉션뷰 리로드" : "실패하면...얼럿?")
+                        }
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+
     func confirmExitBindingView() {
         cancelButton.rx.tap
             .subscribe(onNext: { [weak self] in
@@ -100,6 +126,7 @@ class CommonPopupViewController: BaseViewController, Storyboard {
                     self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
                 }
             })
+            .disposed(by: disposeBag)
 
         okButton.rx.tap
             .subscribe(onNext: { [weak self] in
@@ -114,6 +141,10 @@ class CommonPopupViewController: BaseViewController, Storyboard {
             popupTitleLabel.text = "용기낸 경험을 들려주시겠어요?"
             cancelButton.setTitle("나중에요", for: .normal)
             okButton.setTitle("네, 좋아요!", for: .normal)
+        case .deleteFeed:
+            popupTitleLabel.text = "정말 삭제하시겠습니까?"
+            cancelButton.setTitle("취소", for: .normal)
+            okButton.setTitle("삭제", for: .normal)
         case .confirmExit:
             let attributedString = NSMutableAttributedString()
                 .bold(string: "작성을 종료할까요?\n", fontColor: .colorGrayGray07, fontSize: 16)

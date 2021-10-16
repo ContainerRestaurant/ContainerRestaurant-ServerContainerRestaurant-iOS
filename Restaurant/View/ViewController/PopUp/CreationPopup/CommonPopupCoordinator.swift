@@ -13,13 +13,15 @@ class CommonPopupCoordinator: NSObject, Coordinator {
     var childCoordinators: [Coordinator]
     var isTwoButton: Bool = true
     var buttonType: PopupButtonType = .none
+
+    //피드 삭제 시 필요
+    var feedID: String?
     
     init(presenter: UINavigationController, isTwoButton: Bool, buttonType: PopupButtonType) {
         self.presenter = presenter
         self.childCoordinators = []
         self.isTwoButton = isTwoButton
         self.buttonType = buttonType
-
     }
     
     func start() {
@@ -28,6 +30,7 @@ class CommonPopupCoordinator: NSObject, Coordinator {
         creationPopup.modalPresentationStyle = .overFullScreen
         creationPopup.isTwoButton = self.isTwoButton
         creationPopup.buttonType = self.buttonType
+        creationPopup.feedID = self.feedID
 
         presenter.present(creationPopup, animated: false, completion: nil)
     }

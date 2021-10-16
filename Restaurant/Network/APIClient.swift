@@ -200,6 +200,18 @@ class APIClient {
                     print("Scrap Feed's Success: \(String(describing: result))")
                 case .failure(let error):
                     print("Scrap Feed's Error: \(error)")
+                  
+    //피드 삭제
+    static func deleteFeed(feedID: String, completion: @escaping (Bool) -> ()) {
+        AF.request(Router.DeleteFeed(feedID: feedID))
+            .response(completionHandler: { response in
+                switch response.result {
+                case .success(let result):
+                    print("Delete Feed's Success: \(String(describing: result))")
+                    completion(true)
+                case .failure(let error):
+                    print("Delete Feed's Error: \(error)")
+                    completion(false)
                 }
             })
     }

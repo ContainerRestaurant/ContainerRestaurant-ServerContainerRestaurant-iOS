@@ -23,6 +23,7 @@ enum Router: URLRequestConvertible {
     case RestaurantFeed(restaurantID: Int)
     case LikeFeed(feedID: Int, cancel: Bool)
     case ScrapFeed(feedID: Int, cancel: Bool)
+    case DeleteFeed(feedID: String)
     case FeedDetail(feedID: Int)
     case CreateFeedComment(feedID: String, content: String)
     case CreateFeedReplyComment(feedID: String, content: String, uppperReplyID: Int)
@@ -47,6 +48,7 @@ enum Router: URLRequestConvertible {
         case .RestaurantFeed: return .get
         case .LikeFeed(_, let cancel): return cancel ? .delete : .post
         case .ScrapFeed(_, let cancel): return cancel ? .delete : .post
+        case .DeleteFeed: return .delete
         case .FeedDetail: return .get
         case .CreateFeedComment: return .post
         case .CreateFeedReplyComment: return .post
@@ -71,6 +73,7 @@ enum Router: URLRequestConvertible {
         case .RestaurantFeed(let restaurantID): return "/api/feed/restaurant/\(restaurantID)"
         case .LikeFeed(let feedID, _): return "/api/like/feed/\(feedID)"
         case .ScrapFeed(let feedID, _): return "/api/scrap/\(feedID)"
+        case .DeleteFeed(let feedID): return "/api/feed/\(feedID)"
         case .FeedDetail(let feedID): return "/api/feed/\(feedID)"
         case .CreateFeedComment(let feedID, _): return "/api/comment/feed/\(feedID)"
         case .CreateFeedReplyComment(let feedID, _, _): return "/api/comment/feed/\(feedID)"
@@ -95,6 +98,7 @@ enum Router: URLRequestConvertible {
         case .RestaurantFeed: return nil //Todo: 페이징 처리
         case .LikeFeed: return nil
         case .ScrapFeed: return nil
+        case .DeleteFeed: return nil
         case .FeedDetail: return nil
         case .CreateFeedComment(_, let content): return ["content": content]
         case .CreateFeedReplyComment(_, let content, let uppperReplyID): return ["content": content, "upperReplyId": String(uppperReplyID)]
