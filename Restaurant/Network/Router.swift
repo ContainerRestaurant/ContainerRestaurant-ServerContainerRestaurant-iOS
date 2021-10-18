@@ -22,6 +22,7 @@ enum Router: URLRequestConvertible {
     case CategoryFeed(category: String)
     case RestaurantFeed(restaurantID: Int)
     case LikeFeed(feedID: Int, cancel: Bool)
+    case ScrapFeed(feedID: Int, cancel: Bool)
     case DeleteFeed(feedID: String)
     case FeedDetail(feedID: Int)
     case CreateFeedComment(feedID: String, content: String)
@@ -46,6 +47,7 @@ enum Router: URLRequestConvertible {
         case .CategoryFeed: return .get
         case .RestaurantFeed: return .get
         case .LikeFeed(_, let cancel): return cancel ? .delete : .post
+        case .ScrapFeed(_, let cancel): return cancel ? .delete : .post
         case .DeleteFeed: return .delete
         case .FeedDetail: return .get
         case .CreateFeedComment: return .post
@@ -70,6 +72,7 @@ enum Router: URLRequestConvertible {
         case .CategoryFeed: return "/api/feed"
         case .RestaurantFeed(let restaurantID): return "/api/feed/restaurant/\(restaurantID)"
         case .LikeFeed(let feedID, _): return "/api/like/feed/\(feedID)"
+        case .ScrapFeed(let feedID, _): return "/api/scrap/\(feedID)"
         case .DeleteFeed(let feedID): return "/api/feed/\(feedID)"
         case .FeedDetail(let feedID): return "/api/feed/\(feedID)"
         case .CreateFeedComment(let feedID, _): return "/api/comment/feed/\(feedID)"
@@ -94,6 +97,7 @@ enum Router: URLRequestConvertible {
         case .CategoryFeed(let category): return category.isEmpty ? nil : ["category": category] //Todo: 페이징 처리
         case .RestaurantFeed: return nil //Todo: 페이징 처리
         case .LikeFeed: return nil
+        case .ScrapFeed: return nil
         case .DeleteFeed: return nil
         case .FeedDetail: return nil
         case .CreateFeedComment(_, let content): return ["content": content]
@@ -110,7 +114,7 @@ enum Router: URLRequestConvertible {
 
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         switch self {
-        case .CheckLogin, .UpdateUserInformation, .HomeMainData, .FavoriteRestaurant, .LikeFeed:
+        case .CheckLogin, .UpdateUserInformation, .HomeMainData, .FavoriteRestaurant, .LikeFeed, .ScrapFeed:
             urlRequest.setValue("Bearer \(UserDataManager.sharedInstance.loginToken)", forHTTPHeaderField: "Authorization")
         default: break
         }

@@ -11,6 +11,8 @@ import RxCocoa
 
 class TopSectionOnFeedDetail: UICollectionViewCell {
     var disposeBag = DisposeBag()
+    var isLiked: Bool?
+    var isScraped: Bool?
 
     @IBOutlet weak var feedImageView: UIImageView!
     @IBOutlet weak var userProfileImageView: UIImageView!
@@ -25,7 +27,7 @@ class TopSectionOnFeedDetail: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-    func configure(_ thumbnailURLObservable: Observable<String>, _ userProfileImageObservable: Observable<String>, _ userNicknameDriver: Driver<String>, _ userLevelDriver: Driver<String>, _ likeCountDriver: Driver<Int>, _ scrapCountDriver: Driver<Int>, _ userLevel: String) {
+    func configure(_ coordinator: FeedDetailCoordinator?, _ feedID: String, _ thumbnailURLObservable: Observable<String>, _ userProfileImageObservable: Observable<String>, _ userNicknameDriver: Driver<String>, _ userLevelDriver: Driver<String>, _ likeCountDriver: Driver<Int>, _ scrapCountDriver: Driver<Int>, _ userLevel: String, _ isLike: Observable<Bool>, _ isScrap: Observable<Bool>) {
         thumbnailURLObservable
             .map { URL(string: $0) }
             .subscribe(onNext: { [weak self] imageURL in
@@ -66,5 +68,65 @@ class TopSectionOnFeedDetail: UICollectionViewCell {
             .map { String($0) }
             .drive(bookmarkCountLabel.rx.text)
             .disposed(by: disposeBag)
+
+        isLike
+            .subscribe(onNext: { [weak self] isLike in
+                self?.isLiked = isLike
+                self?.likeButton.setImage(UIImage(named: isLike ? "likeFilled20Px" : "likeOutlineGray20Px"), for: .normal)
+            })
+            .disposed(by: disposeBag)
+
+        isScrap
+            .subscribe(onNext: { [weak self] isScrap in
+                self?.isScraped = isScrap
+                self?.bookmarkButton.setImage(UIImage(named: isScrap ? "bookmarkFilled20px" : "bookmarkOutlineGray20px" ), for: .normal)
+            })
+            .disposed(by: disposeBag)
+
+        likeButton.rx.tap
+            .bind { [weak self] in self?.likeAction(coordinator, Int(feedID) ?? -1) }
+            .disposed(by: disposeBag)
+
+        bookmarkButton.rx.tap
+            .bind { [weak self] in self?.bookmarkAction(coordinator, Int(feedID) ?? -1) }
+            .disposed(by: disposeBag)
+    }
+
+    private func likeAction(_ coordinator: FeedDetailCoordinator?, _ feedID: Int) {
+        APIClient.checkLogin(loginToken: UserDataManager.sharedInstance.loginToken) { [weak self] userModel in
+            if userModel.id == 0 {
+                coordinator?.presentLogin()
+            } else {
+                guard let isLiked = self?.isLiked else { return }
+                APIClient.likeFeed(feedID: feedID, cancel: isLiked)
+                self?.likeButton.setImage(UIImage(named: isLiked ? "likeOutlineGray20Px" : "likeFilled20Px"), for: .normal)
+
+                let likedCount = self?.likeCountLabel.text ?? "0"
+                let likedCountInt = isLiked ? (Int(likedCount) ?? 0) + 1 : (Int(likedCount) ?? 0) - 1
+                self?.likeCountLabel.text = "\(likedCountInt)"
+
+                self?.isLiked = !isLiked
+                Common.hapticVibration()
+            }
+        }
+    }
+
+    private func bookmarkAction(_ coordinator: FeedDetailCoordinator?, _ feedID: Int) {
+        APIClient.checkLogin(loginToken: UserDataManager.sharedInstance.loginToken) { [weak self] userModel in
+            if userModel.id == 0 {
+                coordinator?.presentLogin()
+            } else {
+                guard let isScraped = self?.isScraped else { return }
+                APIClient.scrapFeed(feedID: feedID, cancel: isScraped)
+                self?.bookmarkButton.setImage(UIImage(named: isScraped ? "bookmarkOutlineGray20px" : "bookmarkFilled20px"), for: .normal)
+
+                let scrapedCount = self?.bookmarkCountLabel.text ?? "0"
+                let scrapedCountInt = isScraped ? (Int(scrapedCount) ?? 0) - 1 : (Int(scrapedCount) ?? 0) + 1
+                self?.bookmarkCountLabel.text = "\(scrapedCountInt)"
+
+                self?.isScraped = !isScraped
+                Common.hapticVibration()
+            }
+        }
     }
 }

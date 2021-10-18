@@ -41,6 +41,12 @@ class FeedDetailCoordinator: NSObject, Coordinator {
 }
 
 extension FeedDetailCoordinator {
+    func presentLogin() {
+        let coordinator = LoginPopupCoordinator(presenter: presenter)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
     func presentDeleteFeedPopup(feedID: String) {
         let coordinator = CommonPopupCoordinator(presenter: presenter, isTwoButton: true, buttonType: .deleteFeed)
         coordinator.delegate = self
