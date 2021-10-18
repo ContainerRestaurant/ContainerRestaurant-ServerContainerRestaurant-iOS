@@ -57,4 +57,11 @@ extension MyCoordinator {
         childCoordinators.append(coordinator)
         coordinator.start()
     }
+
+    func pushNickNamePopup() {
+        let coordinator = NickNamePopupCoordinator(presenter: presenter)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start(isPush: true)
+    }
 }

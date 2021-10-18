@@ -87,7 +87,7 @@ extension LoginPopupViewController {
                                     if self?.isFromMapBottomSheet ?? false  {
                                         self?.isFromMapBottomSheet = false
                                         let nicknamePopup = NickNamePopupViewController.instantiate()
-                                        nicknamePopup.isFromMapBottomSheet = true
+                                        nicknamePopup.viewControllerWhereComeFrom = .mapBottomSheet
                                         self?.present(nicknamePopup, animated: false, completion: nil)
                                     } else {
                                         self?.dismiss(animated: false, completion: nil)

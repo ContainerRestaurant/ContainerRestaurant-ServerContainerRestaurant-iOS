@@ -45,6 +45,10 @@ class InquiryProfileViewController: BaseViewController, Storyboard, UINavigation
     }
     
     private func setNavigation() {
+        let backImage = UIImage(named: "chevronLeftOutline20Px")
+        self.coordinator?.presenter.navigationBar.backIndicatorImage = backImage
+        self.coordinator?.presenter.navigationBar.backIndicatorTransitionMaskImage = backImage
+        
         self.coordinator?.presenter.navigationBar.barTintColor = .white
         self.coordinator?.presenter.navigationBar.tintColor = .colorGrayGray08
         self.coordinator?.presenter.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.colorGrayGray08]
