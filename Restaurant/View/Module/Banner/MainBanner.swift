@@ -8,6 +8,7 @@
 import UIKit
 
 class MainBanner: UICollectionViewCell {
+    var coordinator: HomeCoordinator?
     var bannerList: [BannerInfoModel] = []
     
     @IBOutlet weak var mainBannerCollectionView: UICollectionView!
@@ -28,7 +29,8 @@ class MainBanner: UICollectionViewCell {
         mainBannerCollectionView.decelerationRate = .fast
     }
     
-    func configure(_ bannerList: [BannerInfoModel]) {
+    func configure(_ coordinator: HomeCoordinator?, _ bannerList: [BannerInfoModel]) {
+        self.coordinator = coordinator
         self.bannerList = bannerList
         
         setPageControl()
@@ -53,6 +55,10 @@ extension MainBanner: UICollectionViewDelegate, UICollectionViewDataSource, UICo
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: CGFloat(343).widthRatio(), height: CGFloat(88))
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        coordinator?.presentBannerPopup()
     }
 
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
