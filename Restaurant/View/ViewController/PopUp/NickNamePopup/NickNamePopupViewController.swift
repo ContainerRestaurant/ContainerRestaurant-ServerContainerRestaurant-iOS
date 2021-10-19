@@ -8,10 +8,16 @@
 import UIKit
 import RxSwift
 
+enum ViewControllerWhereComeFrom {
+    case mapBottomSheet
+    case myNicknameUpdate
+    case normal
+}
+
 class NickNamePopupViewController: BaseViewController, Storyboard {
     weak var coordinator: NickNamePopupCoordinator?
     var validateNicknameSubject: PublishSubject<Bool> = PublishSubject<Bool>()
-    var isFromMapBottomSheet = false
+    var viewControllerWhereComeFrom: ViewControllerWhereComeFrom = .normal
     var beforeTextLength = 0
     var totalTextLength = 0
 
@@ -24,7 +30,22 @@ class NickNamePopupViewController: BaseViewController, Storyboard {
         
         bindingView()
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.coordinator?.presenter.setNavigationBarHidden(false, animated: true)
+
+        let backImage = UIImage(named: "chevronLeftOutline20Px")
+        self.coordinator?.presenter.navigationBar.backIndicatorImage = backImage
+        self.coordinator?.presenter.navigationBar.backIndicatorTransitionMaskImage = backImage
+        self.coordinator?.presenter.navigationBar.backItem?.title = ""
+        self.coordinator?.presenter.navigationBar.tintColor = .colorGrayGray08
+
+        //self.coordinator?.presenter.navigationItem.title = "닉네임 수정" Todo: 얜 왜 안되는지 밑에랑 무슨 차인지 (현재는 coordinator에 선언해놨음)
+//        self.navigationItem.title = "닉네임 수정"
+    }
+
     private func bindingView() {
         self.validateNicknameSubject
             .map { !$0 }
@@ -72,24 +93,24 @@ class NickNamePopupViewController: BaseViewController, Storyboard {
                 let userID = UserDataManager.sharedInstance.userID
                 let nickname = self?.nickNameTextField.text ?? ""
 
-                APIClient.updateUserInformation(userID: userID, nickname: nickname) {
-                    print("업데이트 됐따")
-                    print($0)
-                    print("업데이트 됐따")
-                }
-
-                if self?.isFromMapBottomSheet ?? false {
-                    self?.isFromMapBottomSheet = false
-                    self?.dismiss(animated: true) {
-                        Common.currentViewController()?.dismiss(animated: false) {
+                APIClient.updateUserInformation(userID: userID, nickname: nickname) { [weak self] _ in
+                    switch self?.viewControllerWhereComeFrom {
+                    case .mapBottomSheet:
+                        self?.dismiss(animated: true) {
                             Common.currentViewController()?.dismiss(animated: false) {
-                                print("Todo: 탭바 인덱스 0으로 보내기")
+                                Common.currentViewController()?.dismiss(animated: false) {
+                                    print("Todo: 탭바 인덱스 0으로 보내기")
+                                }
                             }
                         }
+                    case .myNicknameUpdate:
+                        self?.coordinator?.presenter.popViewController(animated: true)
+                        ToastMessage.shared.show(str: "닉네임 변경이 완료되었습니다.")
+                    case .normal:
+                        self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
+                        self?.dismiss(animated: true, completion: nil)
+                    default: break
                     }
-                } else {
-                    self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
-                    self?.dismiss(animated: true, completion: nil)
                 }
             })
             .disposed(by: disposeBag)

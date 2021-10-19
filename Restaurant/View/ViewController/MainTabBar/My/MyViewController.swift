@@ -25,6 +25,7 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
     @IBOutlet weak var favoriteRestaurantCountLabel: UILabel!
     @IBOutlet weak var descriptionLevelButton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var nicknameUpdateButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,6 +122,12 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
 //                    }
 //                }
                 self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
+            })
+            .disposed(by: disposeBag)
+
+        nicknameUpdateButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.coordinator?.pushNickNamePopup()
             })
             .disposed(by: disposeBag)
     }

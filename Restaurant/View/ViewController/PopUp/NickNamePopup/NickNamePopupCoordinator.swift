@@ -18,10 +18,16 @@ class NickNamePopupCoordinator: NSObject, Coordinator {
         self.childCoordinators = []
     }
 
-    func start() {
+    func start(isPush: Bool = false) {
         let nickName = NickNamePopupViewController.instantiate()
         nickName.coordinator = self
         nickName.modalPresentationStyle = .overFullScreen
-        self.presenter.present(nickName, animated: false, completion: nil)
+        if isPush {
+            nickName.navigationItem.title = "닉네임 수정"
+            nickName.viewControllerWhereComeFrom = .myNicknameUpdate
+            self.presenter.pushViewController(nickName, animated: true)
+        } else {
+            self.presenter.present(nickName, animated: false, completion: nil)
+        }
     }
 }
