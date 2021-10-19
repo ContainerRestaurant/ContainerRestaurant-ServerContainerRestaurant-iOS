@@ -200,6 +200,9 @@ class APIClient {
                     print("Scrap Feed's Success: \(String(describing: result))")
                 case .failure(let error):
                     print("Scrap Feed's Error: \(error)")
+                }
+            })
+    }
                   
     //피드 삭제
     static func deleteFeed(feedID: String, completion: @escaping (Bool) -> ()) {
