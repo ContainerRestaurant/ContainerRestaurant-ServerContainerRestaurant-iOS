@@ -29,6 +29,7 @@ class FeedDetailViewModel {
 
     var content: String = ""
     var feedID: String = ""
+    var userID: Int = 0
 
     var comments: [CommentModel] = []
 
@@ -84,6 +85,7 @@ class FeedDetailViewModel {
 
         content = feedDetail.content
         feedID = String(feedDetail.id)
+        userID = feedDetail.userID
     }
 
     func setInformationModules() {

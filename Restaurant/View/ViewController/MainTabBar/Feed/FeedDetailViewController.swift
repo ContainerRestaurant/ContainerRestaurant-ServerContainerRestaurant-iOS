@@ -300,7 +300,7 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 
         case is CommentSectionOnFeedDetail.Type:
             let cell: CommentSectionOnFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(comments: viewModel.comments, isReplyCommentSubject: isReplyCommentSubject)
+            cell.configure(coordinator: coordinator, comments: viewModel.comments, isReplyCommentSubject: isReplyCommentSubject, feedID: viewModel.feedID)
             return cell
 
         default: return UICollectionViewCell()
