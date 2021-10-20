@@ -119,8 +119,8 @@ class CommonPopupViewController: BaseViewController, Storyboard {
         cancelButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.dismiss(animated: false) {
-                    UserDataManager.sharedInstance.userID = Int.max
-                    UserDataManager.sharedInstance.loginToken = ""
+                    UserDataManager.sharedInstance.userID = 0
+                    UserDataManager.sharedInstance.loginToken = "test"
                     
                     self?.coordinator?.presenter.popViewController(animated: false)
                     self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
