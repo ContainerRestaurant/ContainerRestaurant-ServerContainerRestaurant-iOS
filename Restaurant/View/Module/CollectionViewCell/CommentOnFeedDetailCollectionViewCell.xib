@@ -144,6 +144,7 @@
                 <outlet property="commentLabel" destination="Bv9-2i-Df0" id="KD1-qJ-oKT"/>
                 <outlet property="createdDateLabel" destination="xxN-eU-rI0" id="7ZB-sr-zLi"/>
                 <outlet property="likeCountButton" destination="cFJ-a6-VNM" id="Kmc-ag-d4C"/>
+                <outlet property="moreButton" destination="kBl-UX-N2s" id="RTV-hQ-nVf"/>
                 <outlet property="replyButton" destination="HkI-eL-Q07" id="kcu-N1-SYU"/>
                 <outlet property="replyCommentCollectionView" destination="Len-vs-65f" id="LEx-qR-Ie7"/>
                 <outlet property="userLevelTitleLabel" destination="EzK-fg-J6J" id="jEd-LM-89n"/>

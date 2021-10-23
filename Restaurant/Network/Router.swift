@@ -25,9 +25,10 @@ enum Router: URLRequestConvertible {
     case ScrapFeed(feedID: Int, cancel: Bool)
     case DeleteFeed(feedID: String)
     case FeedDetail(feedID: Int)
-    case CreateFeedComment(feedID: String, content: String)
-    case CreateFeedReplyComment(feedID: String, content: String, uppperReplyID: Int)
     case FeedComment(feedID: String)
+    case CreateFeedComment(feedID: String, content: String)
+    case DeleteFeedComment(commentID: Int)
+    case CreateFeedReplyComment(feedID: String, content: String, uppperReplyID: Int)
     case NearbyRestaurants(latitude: Double, longitude: Double, radius: Int)
 
     static var baseURLString = "http://ec2-52-78-66-184.ap-northeast-2.compute.amazonaws.com"
@@ -50,9 +51,10 @@ enum Router: URLRequestConvertible {
         case .ScrapFeed(_, let cancel): return cancel ? .delete : .post
         case .DeleteFeed: return .delete
         case .FeedDetail: return .get
-        case .CreateFeedComment: return .post
-        case .CreateFeedReplyComment: return .post
         case .FeedComment: return .get
+        case .CreateFeedComment: return .post
+        case .DeleteFeedComment: return .delete
+        case .CreateFeedReplyComment: return .post
         case .NearbyRestaurants: return .get
         }
     }
@@ -75,9 +77,10 @@ enum Router: URLRequestConvertible {
         case .ScrapFeed(let feedID, _): return "/api/scrap/\(feedID)"
         case .DeleteFeed(let feedID): return "/api/feed/\(feedID)"
         case .FeedDetail(let feedID): return "/api/feed/\(feedID)"
-        case .CreateFeedComment(let feedID, _): return "/api/comment/feed/\(feedID)"
-        case .CreateFeedReplyComment(let feedID, _, _): return "/api/comment/feed/\(feedID)"
         case .FeedComment(let feedID): return "/api/comment/feed/\(feedID)"
+        case .CreateFeedComment(let feedID, _): return "/api/comment/feed/\(feedID)"
+        case .DeleteFeedComment(let commentID): return "/api/comment/\(commentID)"
+        case .CreateFeedReplyComment(let feedID, _, _): return "/api/comment/feed/\(feedID)"
         case .NearbyRestaurants(let latitude, let longitude, let radius): return "/api/restaurant/\(latitude)/\(longitude)/\(radius)"
         }
     }
@@ -100,9 +103,10 @@ enum Router: URLRequestConvertible {
         case .ScrapFeed: return nil
         case .DeleteFeed: return nil
         case .FeedDetail: return nil
-        case .CreateFeedComment(_, let content): return ["content": content]
-        case .CreateFeedReplyComment(_, let content, let uppperReplyID): return ["content": content, "upperReplyId": String(uppperReplyID)]
         case .FeedComment: return nil
+        case .CreateFeedComment(_, let content): return ["content": content]
+        case .DeleteFeedComment: return nil
+        case .CreateFeedReplyComment(_, let content, let uppperReplyID): return ["content": content, "upperReplyId": String(uppperReplyID)]
         case .NearbyRestaurants(_, _, _): return nil
         }
     }

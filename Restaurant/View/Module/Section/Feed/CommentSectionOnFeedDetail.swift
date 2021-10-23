@@ -9,8 +9,11 @@ import UIKit
 import RxSwift
 
 class CommentSectionOnFeedDetail: UICollectionViewCell {
+    var coordinator: FeedDetailCoordinator?
     var comments: [CommentModel] = []
     var isReplyCommentSubject = PublishSubject<Int>()
+    var reloadSubject = PublishSubject<Void>()
+
     var disposeBag = DisposeBag()
 
     @IBOutlet weak var commentTitleView: UIView!
@@ -34,7 +37,8 @@ class CommentSectionOnFeedDetail: UICollectionViewCell {
         disposeBag = DisposeBag()
     }
 
-    func configure(comments: [CommentModel], isReplyCommentSubject: PublishSubject<Int>) {
+    func configure(coordinator: FeedDetailCoordinator?, comments: [CommentModel], isReplyCommentSubject: PublishSubject<Int>, feedID: String) {
+        self.coordinator = coordinator
         self.comments = comments
         self.isReplyCommentSubject = isReplyCommentSubject
 
@@ -42,6 +46,14 @@ class CommentSectionOnFeedDetail: UICollectionViewCell {
         emptyCommentLabel.isHidden = !comments.isEmpty
         commentCountLabel.text = "\(comments.count)"
         collectionView.reloadData()
+
+        reloadSubject.subscribe(onNext: { [weak self] in
+            APIClient.commentsOfFeed(feedID: feedID) { [weak self] comments in
+                self?.comments = comments
+                self?.collectionView.reloadData()
+            }
+        })
+        .disposed(by: disposeBag)
     }
 }
 
@@ -52,7 +64,7 @@ extension CommentSectionOnFeedDetail: UICollectionViewDelegate, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: CommentOnFeedDetailCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.configure(comment: comments[indexPath.row], isReplyCommentSubject: isReplyCommentSubject)
+        cell.configure(coordinator: coordinator, comment: comments[indexPath.row], isReplyCommentSubject: isReplyCommentSubject, reloadSubject: reloadSubject)
         return cell
     }
 

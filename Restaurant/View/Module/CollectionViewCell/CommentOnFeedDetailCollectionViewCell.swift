@@ -9,8 +9,10 @@ import UIKit
 import RxSwift
 
 class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
+    var coordiantor: FeedDetailCoordinator?
     var comment: CommentModel?
     var isReplyCommentSubject = PublishSubject<Int>()
+    var reloadSubject = PublishSubject<Void>()
     var disposeBag = DisposeBag()
 
     @IBOutlet weak var userProfileImageView: UIImageView!
@@ -21,6 +23,7 @@ class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var likeCountButton: UIButton!
     @IBOutlet weak var replyButton: UIButton!
     @IBOutlet weak var replyCommentCollectionView: UICollectionView!
+    @IBOutlet weak var moreButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,9 +39,11 @@ class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
         disposeBag = DisposeBag()
     }
 
-    func configure(comment: CommentModel, isReplyCommentSubject: PublishSubject<Int>) {
+    func configure(coordinator: FeedDetailCoordinator?, comment: CommentModel, isReplyCommentSubject: PublishSubject<Int>, reloadSubject: PublishSubject<Void>) {
+        self.coordiantor = coordinator
         self.comment = comment
         self.isReplyCommentSubject = isReplyCommentSubject
+        self.reloadSubject = reloadSubject
 
         userProfileImageView.image = Common.getDefaultProfileImage32(comment.userLevelTitle)
         userNicknameLabel.text = comment.userNickname
@@ -55,7 +60,57 @@ class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
             })
             .disposed(by: disposeBag)
 
+        moreButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                if comment.userID == UserDataManager.sharedInstance.userID {
+                    self?.clickedMyCommentMore()
+                } else {
+                    self?.clickedOthersCommentMore()
+                }
+            })
+            .disposed(by: disposeBag)
+
         replyCommentCollectionView.reloadData()
+    }
+
+    private func clickedMyCommentMore() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+        alert.addAction(UIAlertAction(title: "수정하기", style: .default , handler:{ (UIAlertAction) in
+            print("수정하기")
+        }))
+
+        alert.addAction(UIAlertAction(title: "삭제하기", style: .destructive , handler:{ [weak self] (UIAlertAction) in
+            print("삭제하기")
+            APIClient.deleteFeedComment(commentID: self?.comment?.id ?? 0) { [weak self] isSuccess in
+                print("삭제됐나? \(isSuccess)")
+                self?.reloadSubject.onNext(())
+            }
+        }))
+
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler:{ (UIAlertAction) in
+            print("취소")
+        }))
+
+        self.coordiantor?.presenter.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+    }
+
+    private func clickedOthersCommentMore() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+        alert.addAction(UIAlertAction(title: "신고하기", style: .default , handler:{ (UIAlertAction) in
+            print("신고하기")
+        }))
+
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler:{ (UIAlertAction) in
+            print("취소")
+        }))
+
+        self.coordiantor?.presenter.present(alert, animated: true, completion: {
+            print("completion block")
+        })
     }
 }
 

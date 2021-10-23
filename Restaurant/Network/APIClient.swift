@@ -244,6 +244,20 @@ class APIClient {
 //        }
 //    }
 
+    //댓글 조회
+    static func commentsOfFeed(feedID: String, completion: @escaping ([CommentModel]) -> Void) {
+        AF.request(Router.FeedComment(feedID: feedID))
+            .responseDecodable { (response: DataResponse<CommentOfFeedModel, AFError>) in
+                switch response.result {
+                case .success(let commentOfFeed):
+                    completion(commentOfFeed.comments)
+                case .failure(let error):
+                    completion([])
+                    print("Comments Of Feed's Error: \(error)")
+                }
+            }
+    }
+
     //댓글 작성
     static func createFeedComment(feedID: String, content: String, completion: @escaping (CommentModel) -> Void) {
         AF.request(Router.CreateFeedComment(feedID: feedID, content: content))
@@ -258,6 +272,21 @@ class APIClient {
             }
     }
 
+    //댓글 삭제
+    static func deleteFeedComment(commentID: Int, completion: @escaping (Bool) -> ()) {
+        AF.request(Router.DeleteFeedComment(commentID: commentID))
+            .response(completionHandler: { response in
+                switch response.result {
+                case .success(let result):
+                    print("Delete Feed Comment's Success: \(String(describing: result))")
+                    completion(true)
+                case .failure(let error):
+                    print("Delete Feed Comment's Error: \(error)")
+                    completion(false)
+                }
+            })
+    }
+
     //대댓글 작성
     static func createFeedReplyComment(feedID: String, content: String, upperReplyID: Int, completion: @escaping (CommentModel) -> Void) {
         AF.request(Router.CreateFeedReplyComment(feedID: feedID, content: content, uppperReplyID: upperReplyID))
@@ -268,20 +297,6 @@ class APIClient {
                 case .failure(let error):
                     completion(CommentModel())
                     print("Create Feed Reply Comment's Error: \(error)")
-                }
-            }
-    }
-
-    //댓글 조회
-    static func commentsOfFeed(feedID: String, completion: @escaping ([CommentModel]) -> Void) {
-        AF.request(Router.FeedComment(feedID: feedID))
-            .responseDecodable { (response: DataResponse<CommentOfFeedModel, AFError>) in
-                switch response.result {
-                case .success(let commentOfFeed):
-                    completion(commentOfFeed.comments)
-                case .failure(let error):
-                    completion([])
-                    print("Comments Of Feed's Error: \(error)")
                 }
             }
     }
