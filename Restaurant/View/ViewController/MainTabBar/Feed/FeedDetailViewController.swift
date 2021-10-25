@@ -110,10 +110,12 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
                         self?.viewModel.fetchCommentsOfFeed() { [weak self] in
                             let lastRowInCollectionView = (self?.viewModel.modules.count)!-1
                             self?.collectionView.reloadItems(at: [IndexPath(row: lastRowInCollectionView, section: 0)])
+
+                            let collectionViewItemCount = self?.collectionView.numberOfItems(inSection: 0) ?? 1
+                            self?.collectionView.scrollToItem(at: IndexPath.init(row: collectionViewItemCount-1, section: 0), at: .bottom, animated: true)
                         }
 
-                        let collectionViewItemCount = self?.collectionView.numberOfItems(inSection: 0) ?? 1
-                        self?.collectionView.scrollToItem(at: IndexPath.init(row: collectionViewItemCount-1, section: 0), at: .top, animated: true)
+
                     }
                 } else {
                     APIClient.createFeedComment(feedID: viewModel.feedID, content: comment) { [weak self] _ in
@@ -129,10 +131,10 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
                         self?.viewModel.fetchCommentsOfFeed() { [weak self] in
                             let lastRowInCollectionView = (self?.viewModel.modules.count)!-1
                             self?.collectionView.reloadItems(at: [IndexPath(row: lastRowInCollectionView, section: 0)])
-                        }
 
-                        let collectionViewItemCount = self?.collectionView.numberOfItems(inSection: 0) ?? 1
-                        self?.collectionView.scrollToItem(at: IndexPath.init(row: collectionViewItemCount-1, section: 0), at: .top, animated: true)
+                            let collectionViewItemCount = self?.collectionView.numberOfItems(inSection: 0) ?? 1
+                            self?.collectionView.scrollToItem(at: IndexPath.init(row: collectionViewItemCount-1, section: 0), at: .bottom, animated: true)
+                        }
                     }
                 }
             })
