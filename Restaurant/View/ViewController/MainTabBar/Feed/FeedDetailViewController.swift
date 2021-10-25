@@ -110,9 +110,6 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
                         self?.viewModel.fetchCommentsOfFeed() { [weak self] in
                             let lastRowInCollectionView = (self?.viewModel.modules.count)!-1
                             self?.collectionView.reloadItems(at: [IndexPath(row: lastRowInCollectionView, section: 0)])
-
-                            let collectionViewItemCount = self?.collectionView.numberOfItems(inSection: 0) ?? 1
-                            self?.collectionView.scrollToItem(at: IndexPath.init(row: collectionViewItemCount-1, section: 0), at: .bottom, animated: true)
                         }
 
 
@@ -337,20 +334,24 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 
         case is CommentSectionOnFeedDetail.Type:
             let commentTitleHeight = CGFloat(76)
-            var widthoutCommentHeight = CGFloat(0)
+            var withoutCommentHeight = CGFloat(0)
             var commentLabelHeight = CGFloat(0)
-            var widthoutReplyCommentHeight = CGFloat(0)
+            var withoutReplyCommentHeight = CGFloat(0)
             var replyCommentLabelHeight = CGFloat(0)
             var replyCommentSeparateHeight = CGFloat(0)
 
             for comment in viewModel.comments {
-                widthoutCommentHeight += CGFloat(101)
-                let commentHeight = Common.labelHeight(text: comment.content, font: .systemFont(ofSize: 12), width: CGFloat(301).widthRatio())
-                commentLabelHeight += commentHeight == 0 ? 14 : commentHeight
+                if comment.isDeleted {
+                    withoutCommentHeight += CGFloat(54)
+                } else {
+                    withoutCommentHeight += CGFloat(101)
+                    let commentHeight = Common.labelHeight(text: comment.content, font: .systemFont(ofSize: 12), width: CGFloat(301).widthRatio())
+                    commentLabelHeight += commentHeight == 0 ? 14 : commentHeight
+                }
 
                 for (index, replyComment) in comment.replyComment.enumerated() {
                     if index > 0 { replyCommentSeparateHeight += CGFloat(18) }
-                    widthoutReplyCommentHeight += CGFloat(86)
+                    withoutReplyCommentHeight += CGFloat(86)
                     let replyCommentHeight = Common.labelHeight(text: replyComment.content, font: .systemFont(ofSize: 12), width: CGFloat(235).widthRatio())
                     replyCommentLabelHeight += replyCommentHeight == 0 ? 14 : replyCommentHeight
                 }
@@ -364,7 +365,7 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
                 commentLabelHeight += lastCommentBottomSpacing
             }
 
-            let cellHeight = commentTitleHeight + widthoutCommentHeight + commentLabelHeight + widthoutReplyCommentHeight + replyCommentLabelHeight + replyCommentSeparateHeight
+            let cellHeight = commentTitleHeight + withoutCommentHeight + commentLabelHeight + withoutReplyCommentHeight + replyCommentLabelHeight + replyCommentSeparateHeight
 
             return CGSize(width: UIScreen.main.bounds.width, height: cellHeight)
 

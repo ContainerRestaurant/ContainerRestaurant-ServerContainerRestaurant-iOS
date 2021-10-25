@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class CommonPopupCoordinator: NSObject, Coordinator {
     var delegate: CoordinatorFinishDelegate?
@@ -16,6 +17,9 @@ class CommonPopupCoordinator: NSObject, Coordinator {
 
     //피드 삭제 시 필요
     var feedID: String?
+    //댓글 삭제 시 필요
+    var commentID: Int?
+    var reloadSubject: PublishSubject<Void>?
     
     init(presenter: UINavigationController, isTwoButton: Bool, buttonType: PopupButtonType) {
         self.presenter = presenter
@@ -31,6 +35,8 @@ class CommonPopupCoordinator: NSObject, Coordinator {
         creationPopup.isTwoButton = self.isTwoButton
         creationPopup.buttonType = self.buttonType
         creationPopup.feedID = self.feedID
+        creationPopup.commentID = self.commentID
+        creationPopup.reloadSubject = self.reloadSubject
 
         presenter.present(creationPopup, animated: false, completion: nil)
     }

@@ -151,6 +151,8 @@
 		FB585B4D266D79CE0085C6B2 /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB585B4C266D79CE0085C6B2 /* OnboardingView.xib */; };
 		FB5C42EC271B004D00DB4244 /* ImageBannerPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5C42EB271B004D00DB4244 /* ImageBannerPopupCoordinator.swift */; };
 		FB5C42EE271B009000DB4244 /* ImageBannerPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5C42ED271B009000DB4244 /* ImageBannerPopupViewController.swift */; };
+		FB5C43102726751D00DB4244 /* DeletedCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5C430E2726751D00DB4244 /* DeletedCommentCollectionViewCell.swift */; };
+		FB5C43112726751D00DB4244 /* DeletedCommentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB5C430F2726751D00DB4244 /* DeletedCommentCollectionViewCell.xib */; };
 		FB5F085926F6602000A6122A /* SortButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5F085726F6602000A6122A /* SortButtonCollectionViewCell.swift */; };
 		FB5F085A26F6602000A6122A /* SortButtonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB5F085826F6602000A6122A /* SortButtonCollectionViewCell.xib */; };
 		FB5F085C26F6717A00A6122A /* ExtensionUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5F085B26F6717A00A6122A /* ExtensionUILabel.swift */; };
@@ -364,6 +366,8 @@
 		FB585B4C266D79CE0085C6B2 /* OnboardingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
 		FB5C42EB271B004D00DB4244 /* ImageBannerPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBannerPopupCoordinator.swift; sourceTree = "<group>"; };
 		FB5C42ED271B009000DB4244 /* ImageBannerPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBannerPopupViewController.swift; sourceTree = "<group>"; };
+		FB5C430E2726751D00DB4244 /* DeletedCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletedCommentCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB5C430F2726751D00DB4244 /* DeletedCommentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeletedCommentCollectionViewCell.xib; sourceTree = "<group>"; };
 		FB5F085726F6602000A6122A /* SortButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB5F085826F6602000A6122A /* SortButtonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortButtonCollectionViewCell.xib; sourceTree = "<group>"; };
 		FB5F085B26F6717A00A6122A /* ExtensionUILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUILabel.swift; sourceTree = "<group>"; };
@@ -970,6 +974,8 @@
 				FB6EEE1E26CA3B2700E6237B /* MenuOnFeedDetailCollectionViewCell.xib */,
 				FBDB2E9726DD45DB0072816F /* CommentOnFeedDetailCollectionViewCell.swift */,
 				FBDB2E9826DD45DB0072816F /* CommentOnFeedDetailCollectionViewCell.xib */,
+				FB5C430E2726751D00DB4244 /* DeletedCommentCollectionViewCell.swift */,
+				FB5C430F2726751D00DB4244 /* DeletedCommentCollectionViewCell.xib */,
 				FBDB2E9B26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.swift */,
 				FBDB2E9C26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.xib */,
 				FB5F085726F6602000A6122A /* SortButtonCollectionViewCell.swift */,
@@ -1217,6 +1223,7 @@
 				FB6EEE1826CA105B00E6237B /* LevelOfDifficultyOnFeedDetail.xib in Resources */,
 				FB1BE3862637DF2B0004673C /* TwoFeedCollectionViewCell.xib in Resources */,
 				528EF7E12694C893009ECF59 /* CategoryTabCollectionViewCell.xib in Resources */,
+				FB5C43112726751D00DB4244 /* DeletedCommentCollectionViewCell.xib in Resources */,
 				FBDB2E9626DD38190072816F /* CommentSectionOnFeedDetail.xib in Resources */,
 				FBAA5D1226B55E7000CC38CA /* WelcomeViewInRestaurantSummaryInfo.xib in Resources */,
 				52256FAD263D7F4300A056DE /* SeparateLineCollectionViewCell.xib in Resources */,
@@ -1320,6 +1327,7 @@
 				FB56AF71265F5F69002736F5 /* CreationFeedViewController.swift in Sources */,
 				528558F72624A99000AB4E28 /* BaseViewController.swift in Sources */,
 				FB585B49266D6E770085C6B2 /* ExtensionUIButton.swift in Sources */,
+				FB5C43102726751D00DB4244 /* DeletedCommentCollectionViewCell.swift in Sources */,
 				FB1BE38C26397EEE0004673C /* CommonPopupViewController.swift in Sources */,
 				52169B0226A458F900705FEC /* FeedRandomBackgroundColor.swift in Sources */,
 				FB9E1DC326E159F300707C60 /* HomeMainDataModel.swift in Sources */,

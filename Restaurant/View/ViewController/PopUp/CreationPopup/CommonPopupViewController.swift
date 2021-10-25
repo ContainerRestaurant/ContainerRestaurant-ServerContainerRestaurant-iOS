@@ -11,6 +11,7 @@ import RxSwift
 enum PopupButtonType {
     case creationFeed
     case deleteFeed
+    case deleteComment
     case confirmExit
     case logout
     case none
@@ -21,6 +22,8 @@ class CommonPopupViewController: BaseViewController, Storyboard {
     var isTwoButton: Bool = true
     var buttonType: PopupButtonType = .none
     var feedID: String?
+    var commentID: Int?
+    var reloadSubject: PublishSubject<Void>?
     
     @IBOutlet weak var backgroundButton: UIButton!
     @IBOutlet weak var popupTitleLabel: UILabel!
@@ -40,6 +43,9 @@ class CommonPopupViewController: BaseViewController, Storyboard {
         case .deleteFeed:
             setButton(buttonType)
             deleteFeedBindingView()
+        case .deleteComment:
+            setButton(buttonType)
+            deleteCommentBindingView()
         case .confirmExit:
             setButton(buttonType)
             confirmExitBindingView()
@@ -99,6 +105,26 @@ class CommonPopupViewController: BaseViewController, Storyboard {
             .disposed(by: disposeBag)
     }
 
+    func deleteCommentBindingView() {
+        cancelButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss(animated: false, completion: nil)
+            })
+            .disposed(by: disposeBag)
+
+        okButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                if let commentID = self?.commentID {
+                    APIClient.deleteFeedComment(commentID: commentID) { [weak self] isSuccess in
+                        self?.dismiss(animated: false) { [weak self] in
+                            self?.reloadSubject?.onNext(())
+                        }
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+
     func confirmExitBindingView() {
         cancelButton.rx.tap
             .subscribe(onNext: { [weak self] in
@@ -141,7 +167,7 @@ class CommonPopupViewController: BaseViewController, Storyboard {
             popupTitleLabel.text = "용기낸 경험을 들려주시겠어요?"
             cancelButton.setTitle("나중에요", for: .normal)
             okButton.setTitle("네, 좋아요!", for: .normal)
-        case .deleteFeed:
+        case .deleteFeed, .deleteComment:
             popupTitleLabel.text = "정말 삭제하시겠습니까?"
             cancelButton.setTitle("취소", for: .normal)
             okButton.setTitle("삭제", for: .normal)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class FeedDetailCoordinator: NSObject, Coordinator {
     var delegate: CoordinatorFinishDelegate?
@@ -47,10 +48,20 @@ extension FeedDetailCoordinator {
         childCoordinators.append(coordinator)
         coordinator.start()
     }
+
     func presentDeleteFeedPopup(feedID: String) {
         let coordinator = CommonPopupCoordinator(presenter: presenter, isTwoButton: true, buttonType: .deleteFeed)
         coordinator.delegate = self
         coordinator.feedID = feedID
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+
+    func presentDeleteCommentPopup(commentID: Int, reloadSubject: PublishSubject<Void>) {
+        let coordinator = CommonPopupCoordinator(presenter: presenter, isTwoButton: true, buttonType: .deleteComment)
+        coordinator.delegate = self
+        coordinator.commentID = commentID
+        coordinator.reloadSubject = reloadSubject
         childCoordinators.append(coordinator)
         coordinator.start()
     }
