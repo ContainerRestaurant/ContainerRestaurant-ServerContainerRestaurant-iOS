@@ -102,7 +102,7 @@ class TopSectionOnFeedDetail: UICollectionViewCell {
                 self?.likeButton.setImage(UIImage(named: isLiked ? "likeOutlineGray20Px" : "likeFilled20Px"), for: .normal)
 
                 let likedCount = self?.likeCountLabel.text ?? "0"
-                let likedCountInt = isLiked ? (Int(likedCount) ?? 0) + 1 : (Int(likedCount) ?? 0) - 1
+                let likedCountInt = isLiked ? (Int(likedCount) ?? 0) - 1 : (Int(likedCount) ?? 0) + 1
                 self?.likeCountLabel.text = "\(likedCountInt)"
 
                 self?.isLiked = !isLiked

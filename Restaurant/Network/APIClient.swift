@@ -272,6 +272,19 @@ class APIClient {
             }
     }
 
+    static func updateFeedComment(commentID: Int, content: String, completion: @escaping (CommentModel) -> Void) {
+        AF.request(Router.UpdateFeedComment(commentID: commentID, content: content))
+            .responseDecodable { (response: DataResponse<CommentModel, AFError>) in
+                switch response.result {
+                case .success(let commentModel):
+                    completion(commentModel)
+                case .failure(let error):
+                    completion(CommentModel())
+                    print("Update Feed Comment's Error: \(error)")
+                }
+            }
+    }
+
     //댓글 삭제
     static func deleteFeedComment(commentID: Int, completion: @escaping (Bool) -> ()) {
         AF.request(Router.DeleteFeedComment(commentID: commentID))

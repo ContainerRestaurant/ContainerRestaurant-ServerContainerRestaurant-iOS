@@ -11,8 +11,9 @@ import RxSwift
 class CommentSectionOnFeedDetail: UICollectionViewCell {
     var coordinator: FeedDetailCoordinator?
     var comments: [CommentModel] = []
-    var isReplyCommentSubject = PublishSubject<Int>()
+    var isReplyCommentSubject: PublishSubject<CommentModel>?
     var reloadSubject = PublishSubject<Void>()
+    var updateCommentSubject: PublishSubject<CommentModel>?
 
     var disposeBag = DisposeBag()
 
@@ -38,10 +39,11 @@ class CommentSectionOnFeedDetail: UICollectionViewCell {
         disposeBag = DisposeBag()
     }
 
-    func configure(coordinator: FeedDetailCoordinator?, comments: [CommentModel], isReplyCommentSubject: PublishSubject<Int>, feedID: String) {
+    func configure(coordinator: FeedDetailCoordinator?, comments: [CommentModel], isReplyCommentSubject: PublishSubject<CommentModel>?, feedID: String, updateCommentSubject: PublishSubject<CommentModel>?) {
         self.coordinator = coordinator
         self.comments = comments
         self.isReplyCommentSubject = isReplyCommentSubject
+        self.updateCommentSubject = updateCommentSubject
 
         emptyCommentView.isHidden = !comments.isEmpty
         emptyCommentLabel.isHidden = !comments.isEmpty
@@ -67,11 +69,11 @@ extension CommentSectionOnFeedDetail: UICollectionViewDelegate, UICollectionView
         let isDeletedComment = comments[indexPath.row].isDeleted
         if isDeletedComment {
             let cell: DeletedCommentCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(coordinator: coordinator, comment: comments[indexPath.row], reloadSubject: reloadSubject)
+            cell.configure(coordinator: coordinator, comment: comments[indexPath.row], reloadSubject: reloadSubject, updateCommentSubject: updateCommentSubject)
             return cell
         } else {
             let cell: CommentOnFeedDetailCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(coordinator: coordinator, comment: comments[indexPath.row], isReplyCommentSubject: isReplyCommentSubject, reloadSubject: reloadSubject)
+            cell.configure(coordinator: coordinator, comment: comments[indexPath.row], isReplyCommentSubject: isReplyCommentSubject, reloadSubject: reloadSubject, updateCommentSubject: updateCommentSubject)
             return cell
         }
     }
@@ -87,7 +89,7 @@ extension CommentSectionOnFeedDetail: UICollectionViewDelegate, UICollectionView
                     replyCommentHeight += separateHeight
                 }
                 let cellHeightWithoutReplyComment = CGFloat(86)
-                var replyCommentLabelHeight = Common.labelHeight(text: replyComment.content, font: .systemFont(ofSize: 12), width: CGFloat(235).widthRatio())
+                var replyCommentLabelHeight = Common.labelHeight(text: replyComment.content, font: .systemFont(ofSize: 13), width: CGFloat(235).widthRatio())
                 if replyCommentLabelHeight == 0 {
                     replyCommentLabelHeight = 14
                 }
@@ -97,7 +99,7 @@ extension CommentSectionOnFeedDetail: UICollectionViewDelegate, UICollectionView
             return CGSize(width: UIScreen.main.bounds.width, height: cellHeightWithoutReplyComment + replyCommentHeight)
         } else {
             let cellHeightWithoutComment = CGFloat(101)
-            var commentLabelHeight = Common.labelHeight(text: comments[indexPath.row].content, font: .systemFont(ofSize: 12), width: CGFloat(301).widthRatio())
+            var commentLabelHeight = Common.labelHeight(text: comments[indexPath.row].content, font: .systemFont(ofSize: 13), width: CGFloat(301).widthRatio())
             if commentLabelHeight == 0 {
                 commentLabelHeight = 14
             }
@@ -109,7 +111,7 @@ extension CommentSectionOnFeedDetail: UICollectionViewDelegate, UICollectionView
                     replyCommentHeight += separateHeight
                 }
                 let cellHeightWithoutReplyComment = CGFloat(86)
-                var replyCommentLabelHeight = Common.labelHeight(text: replyComment.content, font: .systemFont(ofSize: 12), width: CGFloat(235).widthRatio())
+                var replyCommentLabelHeight = Common.labelHeight(text: replyComment.content, font: .systemFont(ofSize: 13), width: CGFloat(235).widthRatio())
                 if replyCommentLabelHeight == 0 {
                     replyCommentLabelHeight = 14
                 }

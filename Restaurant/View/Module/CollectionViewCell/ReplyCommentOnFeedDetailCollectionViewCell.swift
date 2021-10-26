@@ -13,6 +13,7 @@ class ReplyCommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
     var comment: CommentModel?
     var coordinator: FeedDetailCoordinator?
     var reloadSubject: PublishSubject<Void>?
+    var updateCommentSubject: PublishSubject<CommentModel>?
 
     @IBOutlet weak var userProfileImageView: UIImageView!
     @IBOutlet weak var userNicknameLabel: UILabel!
@@ -26,10 +27,11 @@ class ReplyCommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-    func configure(comment: CommentModel, coordinator: FeedDetailCoordinator?, reloadSubject: PublishSubject<Void>?) {
+    func configure(comment: CommentModel, coordinator: FeedDetailCoordinator?, reloadSubject: PublishSubject<Void>?, updateCommentSubject: PublishSubject<CommentModel>?) {
         self.comment = comment
         self.coordinator = coordinator
         self.reloadSubject = reloadSubject
+        self.updateCommentSubject = updateCommentSubject
 
         userProfileImageView.image = Common.getDefaultProfileImage32(comment.userLevelTitle)
         userNicknameLabel.text = comment.userNickname
@@ -52,8 +54,10 @@ class ReplyCommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
     private func clickedMyReplyCommentMore() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        alert.addAction(UIAlertAction(title: "수정하기", style: .default , handler:{ (UIAlertAction) in
-            print("수정하기")
+        alert.addAction(UIAlertAction(title: "수정하기", style: .default , handler:{ [weak self] (UIAlertAction) in
+            if let comment = self?.comment {
+                self?.updateCommentSubject?.onNext(comment)
+            }
         }))
 
         alert.addAction(UIAlertAction(title: "삭제하기", style: .destructive , handler:{ [weak self] (UIAlertAction) in
