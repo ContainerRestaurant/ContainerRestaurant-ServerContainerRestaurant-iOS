@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DeletedCommentCollectionViewCell" customModule="Restaurant" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="131"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="131"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="errorOutline16px" translatesAutoresizingMaskIntoConstraints="NO" id="XgO-gy-gGA">
+                        <rect key="frame" x="20" y="19" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="Jy6-GH-VwQ"/>
+                            <constraint firstAttribute="width" constant="16" id="apP-W6-cRH"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="삭제된 댓글입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JzR-5N-IV3">
+                        <rect key="frame" x="42" y="19.5" width="90" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" name="colorGrayGray06"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bqV-ia-Nbt">
+                        <rect key="frame" x="58" y="46" width="305" height="85"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Q9j-gR-YpI">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="bqV-ia-Nbt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="58" id="5uh-K2-dDf"/>
+                <constraint firstItem="XgO-gy-gGA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="8Zk-VX-UZH"/>
+                <constraint firstAttribute="bottom" secondItem="bqV-ia-Nbt" secondAttribute="bottom" id="EHp-EO-5O2"/>
+                <constraint firstItem="JzR-5N-IV3" firstAttribute="centerY" secondItem="XgO-gy-gGA" secondAttribute="centerY" id="MnG-eg-18H"/>
+                <constraint firstItem="bqV-ia-Nbt" firstAttribute="top" secondItem="XgO-gy-gGA" secondAttribute="bottom" constant="11" id="NOQ-mk-UM6"/>
+                <constraint firstItem="JzR-5N-IV3" firstAttribute="leading" secondItem="XgO-gy-gGA" secondAttribute="trailing" constant="6" id="Ntm-HO-zQ8"/>
+                <constraint firstAttribute="trailing" secondItem="bqV-ia-Nbt" secondAttribute="trailing" constant="12" id="UgE-tz-5h0"/>
+                <constraint firstItem="XgO-gy-gGA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="19" id="thq-44-y7C"/>
+            </constraints>
+            <size key="customSize" width="375" height="131"/>
+            <connections>
+                <outlet property="deletedCommentLabel" destination="JzR-5N-IV3" id="m1Q-kn-70E"/>
+                <outlet property="replyCommentCollectionView" destination="bqV-ia-Nbt" id="kwP-Ns-0fp"/>
+            </connections>
+            <point key="canvasLocation" x="38.405797101449281" y="178.45982142857142"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="errorOutline16px" width="16" height="16"/>
+        <namedColor name="colorGrayGray06">
+            <color red="0.45899999141693115" green="0.45899999141693115" blue="0.45899999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

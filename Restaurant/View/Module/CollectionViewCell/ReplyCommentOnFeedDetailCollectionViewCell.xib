@@ -130,6 +130,7 @@
                 <outlet property="commentLabel" destination="7Oq-Qs-0S2" id="H4O-2H-lra"/>
                 <outlet property="createdDateLabel" destination="sg1-Ll-uVw" id="iud-Au-lTN"/>
                 <outlet property="likeCountButton" destination="Pbx-zn-m4C" id="Jy7-Mj-cKC"/>
+                <outlet property="moreButton" destination="bZv-ft-lDc" id="WwW-bc-ATU"/>
                 <outlet property="userLevelTitleLabel" destination="ow0-jg-dF2" id="Vo0-OJ-wIO"/>
                 <outlet property="userNicknameLabel" destination="5lX-xr-cPW" id="PyZ-Nb-VJD"/>
                 <outlet property="userProfileImageView" destination="ESK-b3-olX" id="m6F-Pj-zCh"/>

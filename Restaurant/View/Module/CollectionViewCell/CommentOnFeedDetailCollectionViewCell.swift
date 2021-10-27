@@ -81,11 +81,7 @@ class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
         }))
 
         alert.addAction(UIAlertAction(title: "삭제하기", style: .destructive , handler:{ [weak self] (UIAlertAction) in
-            print("삭제하기")
-            APIClient.deleteFeedComment(commentID: self?.comment?.id ?? 0) { [weak self] isSuccess in
-                print("삭제됐나? \(isSuccess)")
-                self?.reloadSubject.onNext(())
-            }
+            self?.coordiantor?.presentDeleteCommentPopup(commentID: self?.comment?.id ?? 0, reloadSubject: self?.reloadSubject ?? PublishSubject<Void>())
         }))
 
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler:{ (UIAlertAction) in
@@ -122,7 +118,7 @@ extension CommentOnFeedDetailCollectionViewCell: UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ReplyCommentOnFeedDetailCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         if let replyComment = comment?.replyComment[indexPath.row] {
-            cell.configure(comment: replyComment)
+            cell.configure(comment: replyComment, coordinator: coordiantor, reloadSubject: reloadSubject)
         }
         return cell
     }
