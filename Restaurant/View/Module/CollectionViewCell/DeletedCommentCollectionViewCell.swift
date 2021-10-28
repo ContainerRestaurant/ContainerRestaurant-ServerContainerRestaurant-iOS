@@ -12,6 +12,7 @@ class DeletedCommentCollectionViewCell: UICollectionViewCell {
     var coordiantor: FeedDetailCoordinator?
     var comment: CommentModel?
     var reloadSubject: PublishSubject<Void>?
+    var updateCommentSubject: PublishSubject<CommentModel>?
 
     @IBOutlet weak var deletedCommentLabel: UILabel!
     @IBOutlet weak var replyCommentCollectionView: UICollectionView!
@@ -28,7 +29,7 @@ class DeletedCommentCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
     }
 
-    func configure(coordinator: FeedDetailCoordinator?, comment: CommentModel, reloadSubject: PublishSubject<Void>?) {
+    func configure(coordinator: FeedDetailCoordinator?, comment: CommentModel, reloadSubject: PublishSubject<Void>?, updateCommentSubject: PublishSubject<CommentModel>?) {
         self.coordiantor = coordinator
         self.comment = comment
         self.reloadSubject = reloadSubject
@@ -45,7 +46,7 @@ extension DeletedCommentCollectionViewCell: UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ReplyCommentOnFeedDetailCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         if let replyComment = comment?.replyComment[indexPath.row] {
-            cell.configure(comment: replyComment, coordinator: coordiantor, reloadSubject: reloadSubject)
+            cell.configure(comment: replyComment, coordinator: coordiantor, reloadSubject: reloadSubject, updateCommentSubject: updateCommentSubject)
         }
         return cell
     }

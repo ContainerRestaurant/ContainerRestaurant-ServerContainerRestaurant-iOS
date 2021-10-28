@@ -1818,6 +1818,34 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MWg-gk-irX">
+                                <rect key="frame" x="0.0" y="672" width="375" height="34"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35i-QJ-7Av">
+                                        <rect key="frame" x="16" y="9.6666666666666288" width="31" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" name="colorGrayGray06"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xql-53-wWJ">
+                                        <rect key="frame" x="339" y="7" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="IAT-Cx-l8h"/>
+                                            <constraint firstAttribute="height" constant="20" id="PPw-LS-ATu"/>
+                                        </constraints>
+                                        <state key="normal" image="closeOutline20Px"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="colorGrayGray02"/>
+                                <constraints>
+                                    <constraint firstItem="35i-QJ-7Av" firstAttribute="leading" secondItem="MWg-gk-irX" secondAttribute="leading" constant="16" id="2Ti-Om-dPO"/>
+                                    <constraint firstItem="xql-53-wWJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="35i-QJ-7Av" secondAttribute="trailing" id="IMr-iW-RU6"/>
+                                    <constraint firstItem="xql-53-wWJ" firstAttribute="centerY" secondItem="MWg-gk-irX" secondAttribute="centerY" id="dkU-fO-IVd"/>
+                                    <constraint firstItem="35i-QJ-7Av" firstAttribute="centerY" secondItem="MWg-gk-irX" secondAttribute="centerY" id="enG-8d-QyY"/>
+                                    <constraint firstAttribute="height" constant="34" id="iRf-gF-hvD"/>
+                                    <constraint firstAttribute="trailing" secondItem="xql-53-wWJ" secondAttribute="trailing" constant="16" id="vwd-J9-ATR"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shJ-Qr-BO4">
                                 <rect key="frame" x="0.0" y="706" width="375" height="72"/>
                                 <subviews>
@@ -1907,11 +1935,17 @@
                             <constraint firstItem="JqD-W7-e36" firstAttribute="leading" secondItem="nyc-NB-TJH" secondAttribute="leading" id="BK2-TA-0sA"/>
                             <constraint firstItem="shJ-Qr-BO4" firstAttribute="bottom" secondItem="nyc-NB-TJH" secondAttribute="bottom" id="GLP-Db-lT4"/>
                             <constraint firstItem="nyc-NB-TJH" firstAttribute="trailing" secondItem="JqD-W7-e36" secondAttribute="trailing" id="MOZ-hV-DSE"/>
+                            <constraint firstItem="MWg-gk-irX" firstAttribute="leading" secondItem="nyc-NB-TJH" secondAttribute="leading" id="WSL-4Z-MXa"/>
+                            <constraint firstItem="shJ-Qr-BO4" firstAttribute="top" secondItem="MWg-gk-irX" secondAttribute="bottom" id="aOY-wg-sye"/>
                             <constraint firstItem="JqD-W7-e36" firstAttribute="top" secondItem="nyc-NB-TJH" secondAttribute="top" id="gYq-RC-EW9"/>
                             <constraint firstItem="nyc-NB-TJH" firstAttribute="bottom" secondItem="JqD-W7-e36" secondAttribute="bottom" constant="72" id="v7P-o5-Nio"/>
+                            <constraint firstItem="nyc-NB-TJH" firstAttribute="trailing" secondItem="MWg-gk-irX" secondAttribute="trailing" id="zax-Qy-uow"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="additionalCommentLabel" destination="35i-QJ-7Av" id="hvn-27-IMQ"/>
+                        <outlet property="additionalCommentView" destination="MWg-gk-irX" id="gms-CL-p5N"/>
+                        <outlet property="additionalCommentViewCloseButton" destination="xql-53-wWJ" id="gdQ-PM-93F"/>
                         <outlet property="collectionView" destination="JqD-W7-e36" id="rV7-0a-wPN"/>
                         <outlet property="commentBackgroundBottomConstraint" destination="GLP-Db-lT4" id="MNW-sO-LuS"/>
                         <outlet property="commentBackgroundView" destination="shJ-Qr-BO4" id="3MB-vE-AUv"/>

@@ -11,8 +11,9 @@ import RxSwift
 class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
     var coordiantor: FeedDetailCoordinator?
     var comment: CommentModel?
-    var isReplyCommentSubject = PublishSubject<Int>()
+    var isReplyCommentSubject: PublishSubject<CommentModel>?
     var reloadSubject = PublishSubject<Void>()
+    var updateCommentSubject: PublishSubject<CommentModel>?
     var disposeBag = DisposeBag()
 
     @IBOutlet weak var userProfileImageView: UIImageView!
@@ -39,11 +40,12 @@ class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
         disposeBag = DisposeBag()
     }
 
-    func configure(coordinator: FeedDetailCoordinator?, comment: CommentModel, isReplyCommentSubject: PublishSubject<Int>, reloadSubject: PublishSubject<Void>) {
+    func configure(coordinator: FeedDetailCoordinator?, comment: CommentModel, isReplyCommentSubject: PublishSubject<CommentModel>?, reloadSubject: PublishSubject<Void>, updateCommentSubject: PublishSubject<CommentModel>?) {
         self.coordiantor = coordinator
         self.comment = comment
         self.isReplyCommentSubject = isReplyCommentSubject
         self.reloadSubject = reloadSubject
+        self.updateCommentSubject = updateCommentSubject
 
         userProfileImageView.image = Common.getDefaultProfileImage32(comment.userLevelTitle)
         userNicknameLabel.text = comment.userNickname
@@ -54,8 +56,8 @@ class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
 
         replyButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                if let commentID = self?.comment?.id {
-                    self?.isReplyCommentSubject.onNext(commentID)
+                if let comment = self?.comment {
+                    self?.isReplyCommentSubject?.onNext(comment)
                 }
             })
             .disposed(by: disposeBag)
@@ -76,12 +78,17 @@ class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
     private func clickedMyCommentMore() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        alert.addAction(UIAlertAction(title: "수정하기", style: .default , handler:{ (UIAlertAction) in
-            print("수정하기")
+        alert.addAction(UIAlertAction(title: "수정하기", style: .default , handler:{ [weak self] (UIAlertAction) in
+            if let comment = self?.comment {
+                self?.updateCommentSubject?.onNext(comment)
+            }
         }))
 
         alert.addAction(UIAlertAction(title: "삭제하기", style: .destructive , handler:{ [weak self] (UIAlertAction) in
-            self?.coordiantor?.presentDeleteCommentPopup(commentID: self?.comment?.id ?? 0, reloadSubject: self?.reloadSubject ?? PublishSubject<Void>())
+            if let commentID = self?.comment?.id,
+               let reloadSubject = self?.reloadSubject {
+                self?.coordiantor?.presentDeleteCommentPopup(commentID: commentID, reloadSubject: reloadSubject)
+            }
         }))
 
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler:{ (UIAlertAction) in
@@ -118,7 +125,7 @@ extension CommentOnFeedDetailCollectionViewCell: UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ReplyCommentOnFeedDetailCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         if let replyComment = comment?.replyComment[indexPath.row] {
-            cell.configure(comment: replyComment, coordinator: coordiantor, reloadSubject: reloadSubject)
+            cell.configure(comment: replyComment, coordinator: coordiantor, reloadSubject: reloadSubject, updateCommentSubject: updateCommentSubject)
         }
         return cell
     }

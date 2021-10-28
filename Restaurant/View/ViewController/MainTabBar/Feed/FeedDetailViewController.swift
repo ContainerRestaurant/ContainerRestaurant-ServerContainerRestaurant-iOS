@@ -21,7 +21,10 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
     var isFirstTapCommentView = true
     var upperCommentID = 0
     var isReplyCommentState = false
-    var isReplyCommentSubject = PublishSubject<Int>()
+    var isReplyCommentSubject = PublishSubject<CommentModel>()
+    var isUpdateCommentState = false
+    var updateCommentSubject = PublishSubject<CommentModel>()
+    var selectedComment: CommentModel?
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var commentBackgroundView: UIView!
@@ -29,6 +32,9 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
     @IBOutlet weak var commentRegisterButton: UIButton!
     @IBOutlet weak var commentBackgroundBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var commentTextViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var additionalCommentView: UIView!
+    @IBOutlet weak var additionalCommentLabel: UILabel!
+    @IBOutlet weak var additionalCommentViewCloseButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,57 +91,110 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
             })
             .disposed(by: disposeBag)
 
-        isReplyCommentSubject
-            .subscribe(onNext: { [weak self] upperCommentID in
-                self?.isReplyCommentState = true
-                self?.upperCommentID = upperCommentID
+        updateCommentSubject
+            .subscribe(onNext: { [weak self] comment in
+                self?.selectedComment = comment
+                self?.additionalCommentView.isHidden = false
+                self?.isUpdateCommentState = true
                 self?.commentTextView.becomeFirstResponder()
+                self?.additionalCommentLabel.text = "내 댓글 수정중..."
+                self?.commentTextView.text = comment.content
+            })
+            .disposed(by: disposeBag)
+
+        isReplyCommentSubject
+            .subscribe(onNext: { [weak self] comment in
+                self?.additionalCommentView.isHidden = false
+                self?.isReplyCommentState = true
+                self?.upperCommentID = comment.id
+                self?.additionalCommentLabel.text = "[\(comment.userNickname)]님의 댓글에 대댓글 작성중..."
+                self?.commentTextView.becomeFirstResponder()
+            })
+            .disposed(by: disposeBag)
+
+        additionalCommentViewCloseButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.commentTextView.text = ""
+                self?.view.endEditing(true)
+                self?.isReplyCommentState = false
+                self?.isUpdateCommentState = false
+                self?.additionalCommentView.isHidden = true
             })
             .disposed(by: disposeBag)
 
         commentRegisterButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let `self` = self else { return }
-                guard let viewModel = self.viewModel else { return }
                 guard let comment = self.commentTextView.text else { return }
 
-                if self.isReplyCommentState {
-                    APIClient.createFeedReplyComment(feedID: viewModel.feedID, content: comment, upperReplyID: self.upperCommentID) { [weak self] model in
-                        self?.commentTextView.text = "댓글을 남겨주세요."
-                        self?.commentTextView.textColor = .colorGrayGray05
-                        self?.commentRegisterButton.setTitleColor(.colorGrayGray05, for: .normal)
-                        self?.commentRegisterButton.isEnabled = false
-                        self?.view.endEditing(true)
+                if self.isUpdateCommentState {
+                    if self.isReplyCommentState {
 
-                        self?.viewModel.fetchCommentsOfFeed() { [weak self] in
-                            let lastRowInCollectionView = (self?.viewModel.modules.count)!-1
-                            self?.collectionView.reloadItems(at: [IndexPath(row: lastRowInCollectionView, section: 0)])
+                    } else {
+                        if let selectedComment = self.selectedComment {
+                            self.updateFeedComment(comment: selectedComment, commentText: comment)
                         }
-
-
                     }
                 } else {
-                    APIClient.createFeedComment(feedID: viewModel.feedID, content: comment) { [weak self] _ in
-                        self?.commentTextView.text = "댓글을 남겨주세요."
-                        self?.commentTextView.textColor = .colorGrayGray05
-                        self?.commentRegisterButton.setTitleColor(.colorGrayGray05, for: .normal)
-                        self?.commentRegisterButton.isEnabled = false
-                        self?.view.endEditing(true)
-//                        self?.viewModel.comments.append($0)
-//                        let lastRowInCollectionView = (self?.viewModel.modules.count)!-1
-//                        self?.collectionView.reloadItems(at: [IndexPath(row: lastRowInCollectionView, section: 0)])
-                        //아래껄로 되는지 확인해보기
-                        self?.viewModel.fetchCommentsOfFeed() { [weak self] in
-                            let lastRowInCollectionView = (self?.viewModel.modules.count)!-1
-                            self?.collectionView.reloadItems(at: [IndexPath(row: lastRowInCollectionView, section: 0)])
-
-                            let collectionViewItemCount = self?.collectionView.numberOfItems(inSection: 0) ?? 1
-                            self?.collectionView.scrollToItem(at: IndexPath.init(row: collectionViewItemCount-1, section: 0), at: .bottom, animated: true)
-                        }
+                    if self.isReplyCommentState {
+                        self.createFeedReplyComment(commentText: comment)
+                    } else {
+                        self.createFeedComment(commentText: comment)
                     }
                 }
             })
             .disposed(by: disposeBag)
+    }
+
+    private func updateFeedComment(comment: CommentModel, commentText: String) {
+        APIClient.updateFeedComment(commentID: comment.id, content: commentText) { [weak self] model in
+            self?.viewModel.fetchCommentsOfFeed() { [weak self] in
+                let lastRowInCollectionView = (self?.viewModel.modules.count)!-1
+                self?.collectionView.reloadItems(at: [IndexPath(row: lastRowInCollectionView, section: 0)])
+
+                self?.commentTextView.text = ""
+                self?.view.endEditing(true)
+                self?.isReplyCommentState = false
+                self?.isUpdateCommentState = false
+                self?.additionalCommentView.isHidden = true
+            }
+        }
+    }
+
+    private func createFeedReplyComment(commentText: String) {
+        APIClient.createFeedReplyComment(feedID: viewModel.feedID, content: commentText, upperReplyID: self.upperCommentID) { [weak self] model in
+            self?.commentTextView.text = "댓글을 남겨주세요."
+            self?.commentTextView.textColor = .colorGrayGray05
+            self?.commentRegisterButton.setTitleColor(.colorGrayGray05, for: .normal)
+            self?.commentRegisterButton.isEnabled = false
+            self?.view.endEditing(true)
+
+            self?.viewModel.fetchCommentsOfFeed() { [weak self] in
+                let lastRowInCollectionView = (self?.viewModel.modules.count)!-1
+                self?.collectionView.reloadItems(at: [IndexPath(row: lastRowInCollectionView, section: 0)])
+            }
+        }
+    }
+
+    private func createFeedComment(commentText: String) {
+        APIClient.createFeedComment(feedID: viewModel.feedID, content: commentText) { [weak self] _ in
+            self?.commentTextView.text = "댓글을 남겨주세요."
+            self?.commentTextView.textColor = .colorGrayGray05
+            self?.commentRegisterButton.setTitleColor(.colorGrayGray05, for: .normal)
+            self?.commentRegisterButton.isEnabled = false
+            self?.view.endEditing(true)
+//                        self?.viewModel.comments.append($0)
+//                        let lastRowInCollectionView = (self?.viewModel.modules.count)!-1
+//                        self?.collectionView.reloadItems(at: [IndexPath(row: lastRowInCollectionView, section: 0)])
+            //아래껄로 되는지 확인해보기
+            self?.viewModel.fetchCommentsOfFeed() { [weak self] in
+                let lastRowInCollectionView = (self?.viewModel.modules.count)!-1
+                self?.collectionView.reloadItems(at: [IndexPath(row: lastRowInCollectionView, section: 0)])
+
+                let collectionViewItemCount = self?.collectionView.numberOfItems(inSection: 0) ?? 1
+                self?.collectionView.scrollToItem(at: IndexPath.init(row: collectionViewItemCount-1, section: 0), at: .bottom, animated: true)
+            }
+        }
     }
 }
 
@@ -208,8 +267,9 @@ extension FeedDetailViewController: UITextViewDelegate {
             if UIDevice.current.hasNotch { keyboardHeight -= self.view.safeAreaInsets.bottom }
 
             if isFirstTapCommentView {
-                self.commentBackgroundView.frame.origin.y -= keyboardHeight
-                commentBackgroundBottomConstraint.constant -= keyboardHeight
+//                self.commentBackgroundView.frame.origin.y -= keyboardHeight
+//                commentBackgroundBottomConstraint.constant -= keyboardHeight
+                self.view.frame.origin.y -= keyboardHeight
                 isFirstTapCommentView = false
                 print("키보드 올라올 때: \(self.commentBackgroundView.frame.origin.y)")
             }
@@ -227,8 +287,9 @@ extension FeedDetailViewController: UITextViewDelegate {
             var keyboardHeight = keyboardRectangle.height
             if UIDevice.current.hasNotch { keyboardHeight -= self.view.safeAreaInsets.bottom }
 
-            self.commentBackgroundView.frame.origin.y += keyboardHeight
-            commentBackgroundBottomConstraint.constant += keyboardHeight
+//            self.commentBackgroundView.frame.origin.y += keyboardHeight
+//            commentBackgroundBottomConstraint.constant += keyboardHeight
+            self.view.frame.origin.y += keyboardHeight
             isFirstTapCommentView = true
             print("키보드 사라질 때: \(self.commentBackgroundView.frame.origin.y)")
 
@@ -299,7 +360,7 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 
         case is CommentSectionOnFeedDetail.Type:
             let cell: CommentSectionOnFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(coordinator: coordinator, comments: viewModel.comments, isReplyCommentSubject: isReplyCommentSubject, feedID: viewModel.feedID)
+            cell.configure(coordinator: coordinator, comments: viewModel.comments, isReplyCommentSubject: isReplyCommentSubject, feedID: viewModel.feedID, updateCommentSubject: updateCommentSubject)
             return cell
 
         default: return UICollectionViewCell()
@@ -345,14 +406,14 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
                     withoutCommentHeight += CGFloat(54)
                 } else {
                     withoutCommentHeight += CGFloat(101)
-                    let commentHeight = Common.labelHeight(text: comment.content, font: .systemFont(ofSize: 12), width: CGFloat(301).widthRatio())
+                    let commentHeight = Common.labelHeight(text: comment.content, font: .systemFont(ofSize: 13), width: CGFloat(301).widthRatio())
                     commentLabelHeight += commentHeight == 0 ? 14 : commentHeight
                 }
 
                 for (index, replyComment) in comment.replyComment.enumerated() {
                     if index > 0 { replyCommentSeparateHeight += CGFloat(18) }
                     withoutReplyCommentHeight += CGFloat(86)
-                    let replyCommentHeight = Common.labelHeight(text: replyComment.content, font: .systemFont(ofSize: 12), width: CGFloat(235).widthRatio())
+                    let replyCommentHeight = Common.labelHeight(text: replyComment.content, font: .systemFont(ofSize: 13), width: CGFloat(235).widthRatio())
                     replyCommentLabelHeight += replyCommentHeight == 0 ? 14 : replyCommentHeight
                 }
             }
@@ -384,7 +445,6 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if scrollView == collectionView {
             self.view.endEditing(true)
-            self.isReplyCommentState = false
         }
     }
 }
