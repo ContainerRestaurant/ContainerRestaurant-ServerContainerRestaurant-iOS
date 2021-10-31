@@ -146,7 +146,7 @@ class CommonPopupViewController: BaseViewController, Storyboard {
             .subscribe(onNext: { [weak self] in
                 self?.dismiss(animated: false) {
                     UserDataManager.sharedInstance.userID = 0
-                    UserDataManager.sharedInstance.loginToken = "test"
+                    UserDataManager.sharedInstance.loginToken = ""
                     
                     self?.coordinator?.presenter.popViewController(animated: false)
                     self?.coordinator?.presenter.tabBarController?.selectedIndex = 0

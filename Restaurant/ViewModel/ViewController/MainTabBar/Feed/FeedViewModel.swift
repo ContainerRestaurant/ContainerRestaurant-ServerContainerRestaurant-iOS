@@ -10,7 +10,7 @@ import UIKit
 class FeedViewModel {
     var categoryFeeds: [FeedPreviewModel] = []
     var category: [(String,String)] = [
-        ("", "전체"),
+        ("ALL", "전체"),
         ("KOREAN","한식"),
         ("NIGHT_MEAL","야식"),
         ("CHINESE","중식"),

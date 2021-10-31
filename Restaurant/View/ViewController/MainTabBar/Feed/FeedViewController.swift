@@ -35,10 +35,27 @@ class FeedViewController: BaseViewController, Storyboard, ViewModelBindableType 
         super.viewWillAppear(animated)
 
         setNavigationBar()
-        APIClient.categoryFeed(category: viewModel.category[selectedCategoryIndex].0) { [weak self] categoryFeed in
+
+        let category = viewModel.category[selectedCategoryIndex].0
+        if selectedSortIndex > 0 {
+            var sortString: String {
+                switch selectedSortIndex {
+                case 1: return "likeCount,DESC"
+                case 2: return "difficulty,ASC"
+                case 3: return "difficulty,DESC"
+                default: return ""
+                }
+            }
+            APIClient.feed(category: category, sort: sortString) { [weak self] categoryFeed in
                 self?.viewModel.categoryFeeds = categoryFeed
                 self?.feedCollectionView.reloadData()
             }
+        } else {
+            APIClient.feed(category: category) { [weak self] categoryFeed in
+                self?.viewModel.categoryFeeds = categoryFeed
+                self?.feedCollectionView.reloadData()
+            }
+        }
     }
 
     func bindingView() {
@@ -126,15 +143,15 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
             self.sortCollectionView.reloadData()
             self.sortCollectionView.scrollToItem(at: [.zero], at: .centeredHorizontally, animated: true)
 
-            let cateogry = viewModel.category[indexPath.row].0
-            self.selectedCategoryAndSortSubject.onNext((cateogry, selectedSortIndex))
+            let category = viewModel.category[selectedCategoryIndex].0
+            self.selectedCategoryAndSortSubject.onNext((category, selectedSortIndex))
         } else if collectionView == sortCollectionView {
             self.selectedSortIndex = indexPath.row
             self.sortCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             self.sortCollectionView.reloadData()
 
-            let cateogry = viewModel.category[indexPath.row].0
-            self.selectedCategoryAndSortSubject.onNext((cateogry, selectedSortIndex))
+            let category = viewModel.category[selectedCategoryIndex].0
+            self.selectedCategoryAndSortSubject.onNext((category, selectedSortIndex))
         }
     }
     

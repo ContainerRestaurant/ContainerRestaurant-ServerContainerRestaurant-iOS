@@ -19,7 +19,7 @@ enum Router: URLRequestConvertible {
     case UserFeed(userID: Int)
     case ScrapedFeed(userID: Int)
     case FavoriteRestaurant
-    case CategoryFeed(category: String)
+    case Feed(category: String, sort: String)
     case RestaurantFeed(restaurantID: Int)
     case LikeFeed(feedID: Int, cancel: Bool)
     case ScrapFeed(feedID: Int, cancel: Bool)
@@ -46,7 +46,7 @@ enum Router: URLRequestConvertible {
         case .UserFeed: return .get
         case .ScrapedFeed: return .get
         case .FavoriteRestaurant: return .get
-        case .CategoryFeed: return .get
+        case .Feed: return .get
         case .RestaurantFeed: return .get
         case .LikeFeed(_, let cancel): return cancel ? .delete : .post
         case .ScrapFeed(_, let cancel): return cancel ? .delete : .post
@@ -73,7 +73,7 @@ enum Router: URLRequestConvertible {
         case .UserFeed(let userID): return "/api/feed/user/\(userID)"
         case .ScrapedFeed(let userID): return "/api/feed/user/\(userID)/scrap"
         case .FavoriteRestaurant: return "api/favorite/restaurant"
-        case .CategoryFeed: return "/api/feed"
+        case .Feed: return "/api/feed"
         case .RestaurantFeed(let restaurantID): return "/api/feed/restaurant/\(restaurantID)"
         case .LikeFeed(let feedID, _): return "/api/like/feed/\(feedID)"
         case .ScrapFeed(let feedID, _): return "/api/scrap/\(feedID)"
@@ -100,7 +100,7 @@ enum Router: URLRequestConvertible {
         case .UserFeed: return nil //Todo: 페이징 처리
         case .ScrapedFeed: return nil //Todo: 페이징 처리
         case .FavoriteRestaurant: return nil
-        case .CategoryFeed(let category): return category.isEmpty ? nil : ["category": category] //Todo: 페이징 처리
+        case .Feed(let category, let sort): return ["category": category, "sort": sort] //Todo: 페이징 처리
         case .RestaurantFeed: return nil //Todo: 페이징 처리
         case .LikeFeed: return nil
         case .ScrapFeed: return nil
@@ -121,11 +121,13 @@ enum Router: URLRequestConvertible {
         urlRequest.method = method
 
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        switch self {
-        case .CheckLogin, .UpdateUserInformation, .HomeMainData, .FavoriteRestaurant, .LikeFeed, .ScrapFeed:
+//        switch self {
+//        case .CheckLogin, .UpdateUserInformation, .HomeMainData, .FavoriteRestaurant, .LikeFeed, .ScrapFeed, .DeleteFeed, .CreateFeedComment, .UpdateFeedComment, .DeleteFeedComment, .CreateFeedReplyComment:
+        if !UserDataManager.sharedInstance.loginToken.isEmpty {
             urlRequest.setValue("Bearer \(UserDataManager.sharedInstance.loginToken)", forHTTPHeaderField: "Authorization")
-        default: break
         }
+//        default: break
+//        }
         
         /* 추후 참고
         //urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)

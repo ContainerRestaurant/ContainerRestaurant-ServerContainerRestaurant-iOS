@@ -128,12 +128,8 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
                 guard let comment = self.commentTextView.text else { return }
 
                 if self.isUpdateCommentState {
-                    if self.isReplyCommentState {
-
-                    } else {
-                        if let selectedComment = self.selectedComment {
-                            self.updateFeedComment(comment: selectedComment, commentText: comment)
-                        }
+                    if let selectedComment = self.selectedComment {
+                        self.updateFeedComment(comment: selectedComment, commentText: comment)
                     }
                 } else {
                     if self.isReplyCommentState {
@@ -167,6 +163,7 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
             self?.commentTextView.textColor = .colorGrayGray05
             self?.commentRegisterButton.setTitleColor(.colorGrayGray05, for: .normal)
             self?.commentRegisterButton.isEnabled = false
+            self?.additionalCommentView.isHidden = true
             self?.view.endEditing(true)
 
             self?.viewModel.fetchCommentsOfFeed() { [weak self] in
@@ -182,6 +179,7 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
             self?.commentTextView.textColor = .colorGrayGray05
             self?.commentRegisterButton.setTitleColor(.colorGrayGray05, for: .normal)
             self?.commentRegisterButton.isEnabled = false
+            self?.additionalCommentView.isHidden = true
             self?.view.endEditing(true)
 //                        self?.viewModel.comments.append($0)
 //                        let lastRowInCollectionView = (self?.viewModel.modules.count)!-1

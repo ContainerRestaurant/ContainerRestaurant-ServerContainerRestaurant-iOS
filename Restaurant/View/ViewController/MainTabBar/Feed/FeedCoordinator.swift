@@ -26,7 +26,7 @@ class FeedCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        APIClient.categoryFeed(category: "") { [weak self] categoryFeed in
+        APIClient.feed(category: "") { [weak self] categoryFeed in
             var feed = FeedViewController.instantiate()
             feed.coordinator = self
             feed.bind(viewModel: FeedViewModel(categoryFeed))

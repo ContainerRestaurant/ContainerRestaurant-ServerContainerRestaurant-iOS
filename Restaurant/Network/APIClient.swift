@@ -151,8 +151,8 @@ class APIClient {
     }
     
     //피드 탭 카테고리 피드
-    static func categoryFeed(category: String, completion: @escaping ([FeedPreviewModel]) -> Void ) {
-        AF.request(Router.CategoryFeed(category: category))
+    static func feed(category: String = "", sort: String = "", completion: @escaping ([FeedPreviewModel]) -> Void ) {
+        AF.request(Router.Feed(category: category, sort: sort))
             .responseDecodable { (response: DataResponse<TwoFeedModel, AFError>) in
                 switch response.result {
                 case .success(let categoryFeed):

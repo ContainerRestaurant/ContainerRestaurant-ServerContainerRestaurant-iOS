@@ -59,9 +59,21 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
         self.selectedCategoryAndSortSubject?
             .subscribe(onNext: { (category, sortIndex) in
                 if sortIndex > 0 {
-
+                    var sortString: String {
+                        switch sortIndex {
+                        case 1: return "likeCount,DESC"
+                        case 2: return "difficulty,ASC"
+                        case 3: return "difficulty,DESC"
+                        default: return ""
+                        }
+                    }
+                    APIClient.feed(category: category, sort: sortString) { [weak self] feeds in
+                        self?.feeds = feeds
+                        self?.collectionView.reloadData()
+                        reloadFlagSubject.onNext(self?.feeds ?? [])
+                    }
                 } else {
-                    APIClient.categoryFeed(category: category) { [weak self] feeds in
+                    APIClient.feed(category: category) { [weak self] feeds in
                         self?.feeds = feeds
                         self?.collectionView.reloadData()
                         reloadFlagSubject.onNext(self?.feeds ?? [])
