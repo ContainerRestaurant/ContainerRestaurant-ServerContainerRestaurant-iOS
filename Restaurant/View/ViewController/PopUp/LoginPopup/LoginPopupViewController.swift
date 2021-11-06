@@ -10,6 +10,7 @@ import RxSwift
 import KakaoSDKCommon
 import KakaoSDKAuth
 import KakaoSDKUser
+import AuthenticationServices
 
 class LoginPopupViewController: UIViewController, Storyboard {
     weak var coordinator: LoginPopupCoordinator?
@@ -45,7 +46,7 @@ class LoginPopupViewController: UIViewController, Storyboard {
         
         appleLoginButton.rx.tap
             .subscribe(onNext: { _ in
-                print("애플 로그인 작업 필요")
+                self.appleLogin()
             })
             .disposed(by: disposeBag)
         
@@ -99,5 +100,83 @@ extension LoginPopupViewController {
                 }
             }
         }
+    }
+}
+
+extension LoginPopupViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+
+    private func appleLogin() {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+    }
+
+    //로그인 성공시
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            let userIdentifier = appleIDCredential.user
+            let fullName = appleIDCredential.fullName
+            let email = appleIDCredential.email
+
+            if let authorizationCode = appleIDCredential.authorizationCode,
+               let identityToken = appleIDCredential.identityToken,
+               let authString = String(data: authorizationCode, encoding: .utf8),
+               let tokenString = String(data: identityToken, encoding: .utf8) {
+                print("authorizationCode: \(authorizationCode)")
+                print("identityToken: \(identityToken)")
+                print("authString: \(authString)")
+                print("tokenString: \(tokenString)")
+
+                APIClient.createLoginToken(provider: "APPLE", accessToken: tokenString) {
+
+                    print("==================애플로그인==================")
+                    print($0)
+                    print("==================애플로그인==================")
+
+                    if UserDataManager.sharedInstance.userID == $0.id && UserDataManager.sharedInstance.loginToken == $0.token {
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        UserDataManager.sharedInstance.userID = $0.id
+                        UserDataManager.sharedInstance.loginToken = $0.token
+
+                        if self.isFromMapBottomSheet {
+                            self.isFromMapBottomSheet = false
+                            let nicknamePopup = NickNamePopupViewController.instantiate()
+                            nicknamePopup.viewControllerWhereComeFrom = .mapBottomSheet
+                            self.present(nicknamePopup, animated: false, completion: nil)
+                        } else {
+                            self.dismiss(animated: false, completion: nil)
+                            self.coordinator?.presentNickNamePopup()
+                        }
+                    }
+                }
+            }
+
+            print("useridentifier: \(userIdentifier)")
+            print("fullName: \(String(describing: fullName))")
+            print("email: \(String(describing: email))")
+
+        case let passwordCredential as ASPasswordCredential:
+            let userName = passwordCredential.user
+            let password = passwordCredential.password
+
+            print("username: \(userName)")
+            print("password: \(password)")
+
+        default: break
+        }
+    }
+
+    //로그인 실패시
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print("apple login error")
     }
 }
