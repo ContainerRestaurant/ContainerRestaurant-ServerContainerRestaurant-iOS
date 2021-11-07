@@ -66,9 +66,9 @@ class FeedDetailViewModel {
             .just(feedDetail.restaurantName)
             .asDriver(onErrorJustReturn: "")
 
-        isWelcome = feedDetail.isWelcome
+        isWelcome = feedDetail.welcome
         isWelcomeDriver = Observable<Bool>
-            .just(feedDetail.isWelcome)
+            .just(feedDetail.welcome)
             .asDriver(onErrorJustReturn: false)
 
         isLike = Observable<Bool>

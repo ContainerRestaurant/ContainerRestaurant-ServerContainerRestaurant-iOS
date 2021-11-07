@@ -23,7 +23,7 @@ struct FeedDetailModel: Decodable {
     var likeCount: Int
     var scrapCount: Int
     var replyCount: Int
-    var isWelcome: Bool
+    var isContainerFriendly: Bool
     var mainMenu: [MenuAndContainerModel]
     var subMenu: [MenuAndContainerModel]
     var isLike: Bool
@@ -45,7 +45,7 @@ struct FeedDetailModel: Decodable {
         case likeCount
         case scrapCount
         case replyCount
-        case isWelcome = "isContainerFriendly"
+        case isContainerFriendly = "isContainerFriendly"
         case mainMenu
         case subMenu
         case isLike
@@ -68,7 +68,7 @@ struct FeedDetailModel: Decodable {
         self.likeCount = 0
         self.scrapCount = 0
         self.replyCount = 0
-        self.isWelcome = false
+        self.isContainerFriendly = false
         self.mainMenu = []
         self.subMenu = []
         self.isLike = false
@@ -94,7 +94,7 @@ struct FeedDetailModel: Decodable {
         self.likeCount = (try? container.decode(Int.self, forKey: .likeCount)) ?? 0
         self.scrapCount = (try? container.decode(Int.self, forKey: .scrapCount)) ?? 0
         self.replyCount = (try? container.decode(Int.self, forKey: .replyCount)) ?? 0
-        self.isWelcome = (try? container.decode(Bool.self, forKey: .isWelcome)) ?? false
+        self.isContainerFriendly = (try? container.decode(Bool.self, forKey: .isContainerFriendly)) ?? false
         self.mainMenu = (try? container.decode(Array.self, forKey: .mainMenu)) ?? []
         self.subMenu = (try? container.decode(Array.self, forKey: .subMenu)) ?? []
         self.isLike = (try? container.decode(Bool.self, forKey: .isLike)) ?? false
