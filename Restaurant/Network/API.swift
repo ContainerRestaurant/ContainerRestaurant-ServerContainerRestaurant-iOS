@@ -98,7 +98,8 @@ extension API {
         let url = "\(baseURL)/api/image/upload"
         let header: HTTPHeaders = [
             "Content-type": "multipart/form-data",
-            "Accept": "application/json"
+            "Accept": "application/json",
+            "Authorization": "Bearer \(UserDataManager.sharedInstance.loginToken)"
         ]
 
         AF.upload(multipartFormData: { multipartFormData in
@@ -134,7 +135,10 @@ extension API {
         AF.request(url,
                    method: .post,
                    parameters: params,
-                   encoder: JSONParameterEncoder.default)
+                   encoder: JSONParameterEncoder.default,
+                   headers: ["Content-Type": "application/json",
+                             "Accept":"application/json",
+                             "Authorization": "Bearer \(UserDataManager.sharedInstance.loginToken)"])
             .validate(statusCode: 200..<300)
             .response { response in
                 print("피드쓰기----------------")
