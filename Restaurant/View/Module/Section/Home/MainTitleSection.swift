@@ -53,9 +53,9 @@ class MainTitleSection: UICollectionViewCell {
         for (index, user) in homeMainData.latestWriterProfile.enumerated() {
             if user.profile.isEmpty {
                 switch index {
-                case 0: firstContainerOfEveryoneImageView.image = Common.getMainProfileImage(user.levelTitle)
-                case 1: secondContainerOfEveryoneImageView.image = Common.getMainProfileImage(user.levelTitle)
-                case 2: thirdContainerOfEveryoneImageView.image = Common.getMainProfileImage(user.levelTitle)
+                case 0: firstContainerOfEveryoneImageView.image = Common.getDefaultProfileImage36(user.levelTitle)
+                case 1: secondContainerOfEveryoneImageView.image = Common.getDefaultProfileImage36(user.levelTitle)
+                case 2: thirdContainerOfEveryoneImageView.image = Common.getDefaultProfileImage36(user.levelTitle)
                 default: break
                 }
             } else {
