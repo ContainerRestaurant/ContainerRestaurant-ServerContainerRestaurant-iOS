@@ -45,18 +45,26 @@ class MainTitleSection: UICollectionViewCell {
         mainProfileImageView.image = Common.getMainProfileImage(homeMainData.myLevelTitle)
 
         if homeMainData.myProfile.isEmpty {
-            myProfileImageView.image = UIImage(named: "ProfileTumbler36px")
+            myProfileImageView.image = Common.getDefaultProfileImage36(homeMainData.myLevelTitle)
         } else {
             myProfileImageView.kf.setImage(with: URL(string: homeMainData.myProfile), options: [.transition(.fade(0.3))])
         }
 
-        for (index, imageURLString) in homeMainData.latestWriterProfile.enumerated() {
-            if index == 0 {
-                firstContainerOfEveryoneImageView.kf.setImage(with: URL(string: imageURLString), options: [.transition(.fade(0.3))])
-            } else if index == 1 {
-                secondContainerOfEveryoneImageView.kf.setImage(with: URL(string: imageURLString), options: [.transition(.fade(0.3))])
-            } else if index == 2 {
-                thirdContainerOfEveryoneImageView.kf.setImage(with: URL(string: imageURLString), options: [.transition(.fade(0.3))])
+        for (index, user) in homeMainData.latestWriterProfile.enumerated() {
+            if user.profile.isEmpty {
+                switch index {
+                case 0: firstContainerOfEveryoneImageView.image = Common.getMainProfileImage(user.levelTitle)
+                case 1: secondContainerOfEveryoneImageView.image = Common.getMainProfileImage(user.levelTitle)
+                case 2: thirdContainerOfEveryoneImageView.image = Common.getMainProfileImage(user.levelTitle)
+                default: break
+                }
+            } else {
+                switch index {
+                case 0: firstContainerOfEveryoneImageView.kf.setImage(with: URL(string: user.profile), options: [.transition(.fade(0.3))])
+                case 1: secondContainerOfEveryoneImageView.kf.setImage(with: URL(string: user.profile), options: [.transition(.fade(0.3))])
+                case 2: thirdContainerOfEveryoneImageView.kf.setImage(with: URL(string: user.profile), options: [.transition(.fade(0.3))])
+                default: break
+                }
             }
         }
 

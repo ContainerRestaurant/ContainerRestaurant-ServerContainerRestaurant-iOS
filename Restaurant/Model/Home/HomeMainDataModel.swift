@@ -14,7 +14,7 @@ struct HomeMainDataModel: Decodable {
     var myLevelTitle: String
     var myProfile: String
     var phrase: String
-    var latestWriterProfile: [String]
+    var latestWriterProfile: [UserModel]
     var banners: [BannerInfoModel]
 
     private enum CodingKeys: String, CodingKey {
