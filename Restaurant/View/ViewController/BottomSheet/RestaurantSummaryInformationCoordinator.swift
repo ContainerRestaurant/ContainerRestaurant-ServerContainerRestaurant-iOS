@@ -7,6 +7,7 @@
 
 import UIKit
 import FittedSheets
+import RxSwift
 
 class RestaurantSummaryInformationCoordinator: Coordinator {
     var delegate: CoordinatorFinishDelegate?
@@ -14,6 +15,9 @@ class RestaurantSummaryInformationCoordinator: Coordinator {
     var childCoordinators: [Coordinator]
 
     var restaurant: RestaurantModel?
+    var latitude: Double?
+    var longitude: Double?
+    var afterSearchingRestaurantSubject: PublishSubject<([RestaurantModel],Bool)>?
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
@@ -30,9 +34,9 @@ class RestaurantSummaryInformationCoordinator: Coordinator {
         APIClient.restaurantFeed(restaurantID: self.restaurant?.id ?? 0) { [weak self] restaurantFeed in
             var restaurantSummaryInformation = RestaurantSummaryInformationViewController.instantiate()
             restaurantSummaryInformation.coordinator = self
-            restaurantSummaryInformation.bind(viewModel: RestaurantSummaryInformationViewModel(self?.restaurant ?? RestaurantModel(), restaurantFeed))
+            restaurantSummaryInformation.bind(viewModel: RestaurantSummaryInformationViewModel(self?.restaurant ?? RestaurantModel(), restaurantFeed, self?.latitude ?? 0.0, self?.longitude ?? 0.0, self?.afterSearchingRestaurantSubject ?? PublishSubject<([RestaurantModel],Bool)>()))
             var bottomSheetHeight: CGFloat = 154
-            if !(self?.restaurant?.isWelcome ?? false) { bottomSheetHeight -= 31 }
+            if !(self?.restaurant?.isContainerFriendly ?? false) { bottomSheetHeight -= 31 }
             if UIDevice.current.hasNotch { bottomSheetHeight += Common.homeBarHeight }
 
             let sheetViewController = SheetViewController(controller: restaurantSummaryInformation,

@@ -14,9 +14,9 @@ class NoRestaurantNearbyCoordinator: Coordinator {
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
     
-    var afterSearchingRestaurantSubject: PublishSubject<[RestaurantModel]> = PublishSubject<[RestaurantModel]>()
+    var afterSearchingRestaurantSubject: PublishSubject<([RestaurantModel],Bool)> = PublishSubject<([RestaurantModel],Bool)>()
 
-    init(presenter: UINavigationController, _ afterSearchingRestaurantSubject: PublishSubject<[RestaurantModel]>) {
+    init(presenter: UINavigationController, _ afterSearchingRestaurantSubject: PublishSubject<([RestaurantModel],Bool)>) {
         self.presenter = presenter
         self.childCoordinators = []
         self.afterSearchingRestaurantSubject = afterSearchingRestaurantSubject

@@ -134,6 +134,9 @@
                             <constraint firstAttribute="width" constant="20" id="aV6-1U-FbI"/>
                         </constraints>
                         <state key="normal" title="Button" image="favoriteDisabled20Px"/>
+                        <connections>
+                            <action selector="clickedFavoriteButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="585-Ee-cFD"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>
@@ -161,6 +164,7 @@
                 <constraint firstItem="p0t-aa-g4x" firstAttribute="leading" secondItem="IVL-tc-Xyv" secondAttribute="trailing" constant="4" id="zU2-DN-Ho8"/>
             </constraints>
             <connections>
+                <outlet property="favoriteButton" destination="qdt-9A-0rr" id="602-UP-OfE"/>
                 <outlet property="feedCountButton" destination="d5i-zp-P8O" id="US8-Ya-Ug4"/>
                 <outlet property="levelOfDifficultyLabel" destination="p0t-aa-g4x" id="uuZ-Bh-w5I"/>
                 <outlet property="levelOfDifficultyView" destination="IVL-tc-Xyv" id="0dh-fp-JqO"/>

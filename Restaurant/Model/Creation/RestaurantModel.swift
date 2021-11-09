@@ -18,7 +18,7 @@ struct RestaurantModel: Codable {
     var imagePath: String
     var difficultyAverage: Double
     var feedCount: Int
-    var isWelcome: Bool
+    var isContainerFriendly: Bool
 
     //즐겨찾기한 식당 정보에서 추가
     var isFavorite: Bool
@@ -33,7 +33,7 @@ struct RestaurantModel: Codable {
         case imagePath = "image_path"
         case difficultyAverage = "difficultyAvg"
         case feedCount
-        case isWelcome = "isContainerFriendly"
+        case isContainerFriendly
         case isFavorite
     }
     
@@ -47,11 +47,11 @@ struct RestaurantModel: Codable {
         imagePath = ""
         difficultyAverage = 0.0
         feedCount = 0
-        isWelcome = false
+        isContainerFriendly = false
         isFavorite = false
     }
     
-    init(name: String, address: String, latitude: Double, longitude: Double, id: Int = 0, imagePath: String = "", difficultyAverage: Double = 0.0, feedCount: Int = 0, isWelcome: Bool = false, isFavorite: Bool = false) {
+    init(name: String, address: String, latitude: Double, longitude: Double, id: Int = 0, imagePath: String = "", difficultyAverage: Double = 0.0, feedCount: Int = 0, isContainerFriendly: Bool = false, isFavorite: Bool = false) {
         self.name = name
         self.address = address
         self.latitude = latitude
@@ -61,7 +61,7 @@ struct RestaurantModel: Codable {
         self.imagePath = imagePath
         self.difficultyAverage = difficultyAverage
         self.feedCount = feedCount
-        self.isWelcome = isWelcome
+        self.isContainerFriendly = isContainerFriendly
         self.isFavorite = isFavorite
     }
     
@@ -77,7 +77,7 @@ struct RestaurantModel: Codable {
         self.imagePath = (try? container.decode(String.self, forKey: .imagePath)) ?? ""
         self.difficultyAverage = (try? container.decode(Double.self, forKey: .difficultyAverage)) ?? 0.0
         self.feedCount = (try? container.decode(Int.self, forKey: .feedCount)) ?? 0
-        self.isWelcome = (try? container.decode(Bool.self, forKey: .isWelcome)) ?? false
+        self.isContainerFriendly = (try? container.decode(Bool.self, forKey: .isContainerFriendly)) ?? false
         self.isFavorite = (try? container.decode(Bool.self, forKey: .isFavorite)) ?? false
     }
 }

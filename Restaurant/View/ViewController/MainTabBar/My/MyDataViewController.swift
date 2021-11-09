@@ -53,7 +53,7 @@ extension MyDataViewController {
             self.emptyDataLabel.isHidden = viewModel.feeds.count > 0
             self.emptyDataLabel.text = myDataType == .myFeed ? "아직 용기낸 횟수가 없어요!" : "아직 스크랩한 피드가 없어요!"
 
-            self.collectionViewTopSpacing.constant = 20
+            self.collectionView.contentInset = .init(top: 20, left: 0, bottom: 0, right: 0)
             self.collectionViewLeftSpacing.constant = 16
             self.collectionViewRightSpacing.constant = 16
         } else {
@@ -61,7 +61,7 @@ extension MyDataViewController {
             self.emptyDataLabel.isHidden = viewModel.restaurants.count > 0
             self.emptyDataLabel.text = "아직 찜한 식당이 없어요!"
 
-            self.collectionViewTopSpacing.constant = 16
+            self.collectionView.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
             self.collectionViewLeftSpacing.constant = 0
             self.collectionViewRightSpacing.constant = 0
         }
@@ -120,7 +120,7 @@ extension MyDataViewController: UICollectionViewDelegate, UICollectionViewDataSo
             return cell
         } else {
             let cell: OneFeedCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(viewModel.restaurants[indexPath.row])
+            cell.favoriteRestaurantConfigure(viewModel.restaurants[indexPath.row])
             return cell
         }
     }

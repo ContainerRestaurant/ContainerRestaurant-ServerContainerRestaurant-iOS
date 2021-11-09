@@ -67,14 +67,18 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
             .disposed(by: disposeBag)
 
         viewModel.myNearbyRestaurantsFlag
-            .subscribe(onNext: { [weak self] in
-                guard let nearbyRestaurants = self?.viewModel.nearbyRestaurants,
-                      !nearbyRestaurants.isEmpty else {
-                    self?.coordinator?.presentNoRestaurantNearby()
-                    return
-                }
+            .subscribe(onNext: { [weak self] isFavoriteAction in
+                if isFavoriteAction {
+                    self?.setMarkers()
+                } else {
+                    guard let nearbyRestaurants = self?.viewModel.nearbyRestaurants,
+                          !nearbyRestaurants.isEmpty else {
+                        self?.coordinator?.presentNoRestaurantNearby()
+                        return
+                    }
 
-                self?.setMarkers()
+                    self?.setMarkers()
+                }
             })
             .disposed(by: disposeBag)
 
@@ -126,7 +130,9 @@ extension MapViewController {
             self.markers.append(marker)
             
             let handler = { [weak self] (overlay: NMFOverlay) -> Bool in
-                self?.coordinator?.restaurantSummaryInformation(restaurant: restaurant)
+                self?.moveToLocationOnMap(latitude: restaurant.latitude, longitude: restaurant.longitude)
+
+                self?.coordinator?.restaurantSummaryInformation(restaurant: restaurant, latitude: self?.viewModel.latitudeInCenterOfMap ?? 0.0, longitude: self?.viewModel.longitudeInCeterOfMap ?? 0.0)
                 
                 return true
             }
@@ -158,7 +164,11 @@ extension MapViewController {
         self.viewModel.myLatitude = locationCoordinate.latitude
         self.viewModel.myLongitude = locationCoordinate.longitude
 
-        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: viewModel.myLatitude, lng: viewModel.myLongitude))
+        moveToLocationOnMap(latitude: viewModel.myLatitude, longitude: viewModel.myLongitude)
+    }
+
+    func moveToLocationOnMap(latitude: Double, longitude: Double) {
+        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: latitude, lng: longitude))
         cameraUpdate.animation = .easeOut
         cameraUpdate.animationDuration = 1
         mapView.moveCamera(cameraUpdate)

@@ -8,7 +8,7 @@
 import Foundation
 
 struct FavoriteRestaurantModel: Decodable {
-    var favoriteRestaurants: [RestaurantModel]
+    var favoriteRestaurants: [RestaurantFavoriteDtoList]
 
     private enum RootKey: String, CodingKey {
         case embedded = "_embedded"
@@ -24,4 +24,10 @@ struct FavoriteRestaurantModel: Decodable {
 
         self.favoriteRestaurants = (try? favoriteRestaurants.decode(Array.self, forKey: .favoriteRestaurants)) ?? []
     }
+}
+
+struct RestaurantFavoriteDtoList: Decodable {
+    var id: Int
+    var createDate: String
+    var restaurant: RestaurantModel
 }

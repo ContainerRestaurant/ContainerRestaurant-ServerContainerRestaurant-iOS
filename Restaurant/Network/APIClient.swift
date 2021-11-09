@@ -137,21 +137,49 @@ class APIClient {
     }
 
     //찜(즐겨찾기)한 식당
-    static func favoriteRestaurant(completion: @escaping ([RestaurantModel]) -> Void) {
+    static func favoriteRestaurant(completion: @escaping (FavoriteRestaurantModel) -> Void) {
         AF.request(Router.FavoriteRestaurant)
             .responseDecodable { (response: DataResponse<FavoriteRestaurantModel, AFError>) in
                 switch response.result {
                 case .success(let favoriteRestaurantModel):
-                    completion(favoriteRestaurantModel.favoriteRestaurants)
+                    completion(favoriteRestaurantModel)
                 case .failure(let error):
-                    completion([])
+//                    completion(FavoriteRestaurantModel())
                     print("Favorite Restaurants's Error: \(error)")
                 }
             }
     }
+
+    //식당 즐겨찾기 추가
+    static func postFavoriteRestaurant(restaurantID: Int, completion: @escaping (()) -> Void) {
+        AF.request(Router.RegistFavoriteRestaurant(restaurantID: restaurantID))
+            .response(completionHandler: { response in
+                switch response.result {
+                case .success(let result):
+                    print("Post Favorite Restaurant's Success: \(String(describing: result))")
+                    completion(())
+                case .failure(let error):
+                    print("Post Favorite Restaurant's Error: \(error)")
+                }
+            })
+    }
+
+    //식당 즐겨찾기 삭제
+    static func deleteFavoriteRestaurant(restaurantID: Int, completion: @escaping (()) -> Void) {
+        AF.request(Router.DeleteFavoriteRestaurant(restaurantID: restaurantID))
+            .response(completionHandler: { response in
+                switch response.result {
+                case .success(let result):
+                    print("Delete Favorite Restaurant's Success: \(String(describing: result))")
+                    completion(())
+                case .failure(let error):
+                    print("Delete Favorite Restaurant's Error: \(error)")
+                }
+            })
+    }
     
     //피드 탭 카테고리 피드
-    static func feed(category: String = "", sort: String = "", completion: @escaping ([FeedPreviewModel]) -> Void ) {
+    static func feed(category: String = "", sort: String = "", completion: @escaping ([FeedPreviewModel]) -> Void) {
         AF.request(Router.Feed(category: category, sort: sort))
             .responseDecodable { (response: DataResponse<TwoFeedModel, AFError>) in
                 switch response.result {

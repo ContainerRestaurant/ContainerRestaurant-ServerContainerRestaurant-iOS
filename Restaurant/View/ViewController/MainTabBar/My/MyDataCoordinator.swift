@@ -46,11 +46,11 @@ class MyDataCoordinator: NSObject, Coordinator {
                 self?.presenter.pushViewController(myFeedViewController, animated: true)
             }
         case .favoriteRestaurant:
-            APIClient.favoriteRestaurant() { [weak self] restaurants in
+            APIClient.favoriteRestaurant() { [weak self] favoriteRestaurantModel in
                 var myFeedViewController = MyDataViewController.instantiate()
                 myFeedViewController.coordinator = self
                 myFeedViewController.myDataType = .favoriteRestaurant
-                myFeedViewController.bind(viewModel: MyDataViewModel(restaurants: restaurants))
+                myFeedViewController.bind(viewModel: MyDataViewModel(restaurants: favoriteRestaurantModel.favoriteRestaurants))
 
                 self?.presenter.pushViewController(myFeedViewController, animated: true)
             }
