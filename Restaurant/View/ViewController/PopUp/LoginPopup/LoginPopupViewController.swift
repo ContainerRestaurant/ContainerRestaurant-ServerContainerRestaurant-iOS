@@ -78,12 +78,10 @@ extension LoginPopupViewController {
                             print("me() success.")
 
                             APIClient.createLoginToken(provider: "KAKAO", accessToken: oAuthToken?.accessToken ?? "") {
-                                if UserDataManager.sharedInstance.userID == $0.id && UserDataManager.sharedInstance.loginToken == $0.token {
-                                    self?.dismiss(animated: true, completion: nil)
-                                } else {
-                                    UserDataManager.sharedInstance.userID = $0.id
-                                    UserDataManager.sharedInstance.loginToken = $0.token
+                                UserDataManager.sharedInstance.userID = $0.id
+                                UserDataManager.sharedInstance.loginToken = $0.token
 
+                                if $0.isNicknameNull {
                                     if self?.isFromMapBottomSheet ?? false  {
                                         self?.isFromMapBottomSheet = false
                                         let nicknamePopup = NickNamePopupViewController.instantiate()
@@ -93,6 +91,9 @@ extension LoginPopupViewController {
                                         self?.dismiss(animated: false, completion: nil)
                                         self?.coordinator?.presentNickNamePopup()
                                     }
+                                } else {
+                                    self?.dismiss(animated: true, completion: nil)
+                                    self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
                                 }
                             }
                         }
@@ -136,17 +137,10 @@ extension LoginPopupViewController: ASAuthorizationControllerDelegate, ASAuthori
                 print("tokenString: \(tokenString)")
 
                 APIClient.createLoginToken(provider: "APPLE", accessToken: tokenString) {
+                    UserDataManager.sharedInstance.userID = $0.id
+                    UserDataManager.sharedInstance.loginToken = $0.token
 
-                    print("==================애플로그인==================")
-                    print($0)
-                    print("==================애플로그인==================")
-
-                    if UserDataManager.sharedInstance.userID == $0.id && UserDataManager.sharedInstance.loginToken == $0.token {
-                        self.dismiss(animated: true, completion: nil)
-                    } else {
-                        UserDataManager.sharedInstance.userID = $0.id
-                        UserDataManager.sharedInstance.loginToken = $0.token
-
+                    if $0.isNicknameNull {
                         if self.isFromMapBottomSheet {
                             self.isFromMapBottomSheet = false
                             let nicknamePopup = NickNamePopupViewController.instantiate()
@@ -156,6 +150,9 @@ extension LoginPopupViewController: ASAuthorizationControllerDelegate, ASAuthori
                             self.dismiss(animated: false, completion: nil)
                             self.coordinator?.presentNickNamePopup()
                         }
+                    } else {
+                        self.dismiss(animated: true, completion: nil)
+                        self.coordinator?.presenter.tabBarController?.selectedIndex = 0
                     }
                 }
             }
