@@ -31,6 +31,8 @@ enum Router: URLRequestConvertible {
     case CreateFeedComment(feedID: String, content: String)
     case UpdateFeedComment(commentID: Int, content: String)
     case DeleteFeedComment(commentID: Int)
+    case LikeComment(commentID: Int)
+    case DeleteCommentLike(commentID: Int)
     case CreateFeedReplyComment(feedID: String, content: String, uppperReplyID: Int)
     case NearbyRestaurants(latitude: Double, longitude: Double, radius: Int)
 
@@ -60,6 +62,8 @@ enum Router: URLRequestConvertible {
         case .CreateFeedComment: return .post
         case .UpdateFeedComment: return .patch
         case .DeleteFeedComment: return .delete
+        case .LikeComment: return .post
+        case .DeleteCommentLike: return .delete
         case .CreateFeedReplyComment: return .post
         case .NearbyRestaurants: return .get
         }
@@ -89,6 +93,8 @@ enum Router: URLRequestConvertible {
         case .CreateFeedComment(let feedID, _): return "/api/comment/feed/\(feedID)"
         case .UpdateFeedComment(let commentID, _): return "/api/comment/\(commentID)"
         case .DeleteFeedComment(let commentID): return "/api/comment/\(commentID)"
+        case .LikeComment(let commentID): return "/api/like/comment/\(commentID)"
+        case .DeleteCommentLike(let commentID): return "/api/like/comment/\(commentID)"
         case .CreateFeedReplyComment(let feedID, _, _): return "/api/comment/feed/\(feedID)"
         case .NearbyRestaurants(let latitude, let longitude, let radius): return "/api/restaurant/\(latitude)/\(longitude)/\(radius)"
         }
@@ -118,6 +124,8 @@ enum Router: URLRequestConvertible {
         case .CreateFeedComment(_, let content): return ["content": content]
         case .UpdateFeedComment(_, let content): return ["content": content]
         case .DeleteFeedComment: return nil
+        case .LikeComment: return nil
+        case .DeleteCommentLike: return nil
         case .CreateFeedReplyComment(_, let content, let uppperReplyID): return ["content": content, "upperReplyId": String(uppperReplyID)]
         case .NearbyRestaurants(_, _, _): return nil
         }

@@ -38,7 +38,40 @@ class ReplyCommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
         userLevelTitleLabel.text = comment.userLevelTitle
         commentLabel.text = comment.content == "" ? "내용이 입력되지 않은 댓글입니다." : comment.content
         createdDateLabel.text = comment.createdDate
+        likeCountButton.setImage(UIImage(named: comment.isLike ? "likeFilled12Px" : "likeOutline12Px"), for: .normal)
         likeCountButton.setTitle("\(comment.likeCount)", for: .normal)
+
+        likeCountButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                APIClient.checkLogin(loginToken: UserDataManager.sharedInstance.loginToken) { [weak self] userModel in
+                    if userModel.id == 0 {
+                        self?.coordinator?.presentLogin()
+                    } else {
+                        guard let commentID = self?.comment?.id else { return }
+
+                        if self?.likeCountButton.currentImage?.isEqual(UIImage(named: "likeOutline12Px")) ?? false {
+                            APIClient.likeComment(commentID: commentID) { [weak self] isSuccess in
+                                if isSuccess {
+                                    self?.likeCountButton.setImage(UIImage(named: "likeFilled12Px"), for: .normal)
+                                    let likeCount = Int(self?.likeCountButton.title(for: .normal) ?? "0") ?? 0
+                                    self?.likeCountButton.setTitle("\(likeCount+1)", for: .normal)
+                                    Common.hapticVibration()
+                                }
+                            }
+                        } else {
+                            APIClient.deleteCommentLike(commentID: commentID) { [weak self] isSuccess in
+                                if isSuccess {
+                                    self?.likeCountButton.setImage(UIImage(named: "likeOutline12Px"), for: .normal)
+                                    let likeCount = Int(self?.likeCountButton.title(for: .normal) ?? "0") ?? 0
+                                    self?.likeCountButton.setTitle("\(likeCount-1)", for: .normal)
+                                    Common.hapticVibration()
+                                }
+                            }
+                        }
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
 
         moreButton.rx.tap
             .subscribe(onNext: { [weak self] in

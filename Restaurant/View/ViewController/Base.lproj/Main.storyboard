@@ -1881,6 +1881,10 @@
                                                     <color key="titleColor" name="colorGrayGray05"/>
                                                 </state>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1si-Ac-ejn">
+                                                <rect key="frame" x="44" y="15" width="246" height="20"/>
+                                                <color key="backgroundColor" systemColor="linkColor"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -1891,6 +1895,10 @@
                                             <constraint firstItem="ft3-4q-lnr" firstAttribute="leading" secondItem="rnu-kt-oCB" secondAttribute="leading" constant="16" id="LYg-B2-3r7"/>
                                             <constraint firstItem="8Bw-iq-tds" firstAttribute="top" secondItem="rnu-kt-oCB" secondAttribute="top" constant="15" id="Vid-EM-C0q"/>
                                             <constraint firstAttribute="trailing" secondItem="pcN-VW-hgW" secondAttribute="trailing" constant="16" id="b9q-DN-MbM"/>
+                                            <constraint firstItem="1si-Ac-ejn" firstAttribute="top" secondItem="8Bw-iq-tds" secondAttribute="top" id="eUJ-A1-Xgz"/>
+                                            <constraint firstItem="1si-Ac-ejn" firstAttribute="leading" secondItem="8Bw-iq-tds" secondAttribute="leading" id="fxy-oZ-tZu"/>
+                                            <constraint firstItem="1si-Ac-ejn" firstAttribute="bottom" secondItem="8Bw-iq-tds" secondAttribute="bottom" id="nO0-bK-wSc"/>
+                                            <constraint firstItem="1si-Ac-ejn" firstAttribute="trailing" secondItem="8Bw-iq-tds" secondAttribute="trailing" id="v1w-hr-yFa"/>
                                             <constraint firstItem="pcN-VW-hgW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8Bw-iq-tds" secondAttribute="trailing" constant="7" id="wEu-9e-7oz"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="xQ0-gi-77S"/>
                                         </constraints>
@@ -1952,6 +1960,7 @@
                         <outlet property="commentRegisterButton" destination="pcN-VW-hgW" id="nBo-Tg-swW"/>
                         <outlet property="commentTextView" destination="8Bw-iq-tds" id="FGJ-xK-BXS"/>
                         <outlet property="commentTextViewHeight" destination="Cyj-Sl-o6o" id="BLC-wX-fWo"/>
+                        <outlet property="commentTextViewHideButton" destination="1si-Ac-ejn" id="kJb-1H-cEA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="weG-X7-4TL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2250,6 +2259,9 @@
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

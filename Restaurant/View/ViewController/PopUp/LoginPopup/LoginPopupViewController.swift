@@ -12,11 +12,18 @@ import KakaoSDKAuth
 import KakaoSDKUser
 import AuthenticationServices
 
+enum loginPopupFromWhere {
+    case feedDetail
+    case mapBottomSheet
+    case none
+}
+
 class LoginPopupViewController: UIViewController, Storyboard {
     weak var coordinator: LoginPopupCoordinator?
     var disposeBag = DisposeBag()
     var isFromTapBar: Bool?
-    var isFromMapBottomSheet = false
+    var fromWhere: loginPopupFromWhere = .none
+    var feedDetailViewWillAppearSubject: PublishSubject<Void>?
 
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var kakaoLoginButton: UIButton!
@@ -78,20 +85,24 @@ extension LoginPopupViewController {
                             print("me() success.")
 
                             APIClient.createLoginToken(provider: "KAKAO", accessToken: oAuthToken?.accessToken ?? "") {
-                                if UserDataManager.sharedInstance.userID == $0.id && UserDataManager.sharedInstance.loginToken == $0.token {
-                                    self?.dismiss(animated: true, completion: nil)
-                                } else {
-                                    UserDataManager.sharedInstance.userID = $0.id
-                                    UserDataManager.sharedInstance.loginToken = $0.token
+                                UserDataManager.sharedInstance.userID = $0.id
+                                UserDataManager.sharedInstance.loginToken = $0.token
 
-                                    if self?.isFromMapBottomSheet ?? false  {
-                                        self?.isFromMapBottomSheet = false
+                                if $0.isNicknameNull {
+                                    if self?.fromWhere == .mapBottomSheet  {
                                         let nicknamePopup = NickNamePopupViewController.instantiate()
                                         nicknamePopup.viewControllerWhereComeFrom = .mapBottomSheet
                                         self?.present(nicknamePopup, animated: false, completion: nil)
                                     } else {
                                         self?.dismiss(animated: false, completion: nil)
                                         self?.coordinator?.presentNickNamePopup()
+                                    }
+                                } else {
+                                    self?.dismiss(animated: true, completion: nil)
+                                    if self?.fromWhere == .feedDetail {
+                                        self?.feedDetailViewWillAppearSubject?.onNext(())
+                                    } else {
+                                        self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
                                     }
                                 }
                             }
@@ -136,25 +147,24 @@ extension LoginPopupViewController: ASAuthorizationControllerDelegate, ASAuthori
                 print("tokenString: \(tokenString)")
 
                 APIClient.createLoginToken(provider: "APPLE", accessToken: tokenString) {
+                    UserDataManager.sharedInstance.userID = $0.id
+                    UserDataManager.sharedInstance.loginToken = $0.token
 
-                    print("==================애플로그인==================")
-                    print($0)
-                    print("==================애플로그인==================")
-
-                    if UserDataManager.sharedInstance.userID == $0.id && UserDataManager.sharedInstance.loginToken == $0.token {
-                        self.dismiss(animated: true, completion: nil)
-                    } else {
-                        UserDataManager.sharedInstance.userID = $0.id
-                        UserDataManager.sharedInstance.loginToken = $0.token
-
-                        if self.isFromMapBottomSheet {
-                            self.isFromMapBottomSheet = false
+                    if $0.isNicknameNull {
+                        if self.fromWhere == .mapBottomSheet {
                             let nicknamePopup = NickNamePopupViewController.instantiate()
                             nicknamePopup.viewControllerWhereComeFrom = .mapBottomSheet
                             self.present(nicknamePopup, animated: false, completion: nil)
                         } else {
                             self.dismiss(animated: false, completion: nil)
                             self.coordinator?.presentNickNamePopup()
+                        }
+                    } else {
+                        self.dismiss(animated: true, completion: nil)
+                        if self.fromWhere == .feedDetail {
+                            self.feedDetailViewWillAppearSubject?.onNext(())
+                        } else {
+                            self.coordinator?.presenter.tabBarController?.selectedIndex = 0
                         }
                     }
                 }

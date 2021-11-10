@@ -25,10 +25,12 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
     var isUpdateCommentState = false
     var updateCommentSubject = PublishSubject<CommentModel>()
     var selectedComment: CommentModel?
+    var feedDetailViewWillAppearSubject: PublishSubject<Void>?
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var commentBackgroundView: UIView!
     @IBOutlet weak var commentTextView: UITextView!
+    @IBOutlet weak var commentTextViewHideButton: UIButton!
     @IBOutlet weak var commentRegisterButton: UIButton!
     @IBOutlet weak var commentBackgroundBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var commentTextViewHeight: NSLayoutConstraint!
@@ -63,6 +65,15 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        APIClient.checkLogin(loginToken: UserDataManager.sharedInstance.loginToken) { [weak self] userModel in
+            if userModel.id == 0 {
+                self?.commentTextViewHideButton.isHidden = false
+            } else {
+                self?.commentTextViewHideButton.isHidden = true
+            }
+        }
+
         
         setNavigation()
 
@@ -78,6 +89,12 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
     }
 
     func bindingView() {
+        feedDetailViewWillAppearSubject?
+            .subscribe(onNext: { [weak self] in
+                self?.viewWillAppear(true)
+            })
+            .disposed(by: disposeBag)
+
         selectedTapTypeSubject
             .subscribe(onNext: { [weak self] type in
                 self?.selectedTapType = type
@@ -88,6 +105,12 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
                 }
 
                 self?.collectionView.reloadData()
+            })
+            .disposed(by: disposeBag)
+
+        commentTextViewHideButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.coordinator?.presentLogin()
             })
             .disposed(by: disposeBag)
 
@@ -104,11 +127,17 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
 
         isReplyCommentSubject
             .subscribe(onNext: { [weak self] comment in
-                self?.additionalCommentView.isHidden = false
-                self?.isReplyCommentState = true
-                self?.upperCommentID = comment.id
-                self?.additionalCommentLabel.text = "[\(comment.userNickname)]님의 댓글에 대댓글 작성중..."
-                self?.commentTextView.becomeFirstResponder()
+                APIClient.checkLogin(loginToken: UserDataManager.sharedInstance.loginToken) { [weak self] userModel in
+                    if userModel.id == 0 {
+                        self?.coordinator?.presentLogin()
+                    } else {
+                        self?.additionalCommentView.isHidden = false
+                        self?.isReplyCommentState = true
+                        self?.upperCommentID = comment.id
+                        self?.additionalCommentLabel.text = "[\(comment.userNickname)]님의 댓글에 대댓글 작성중..."
+                        self?.commentTextView.becomeFirstResponder()
+                    }
+                }
             })
             .disposed(by: disposeBag)
 
@@ -164,6 +193,7 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
             self?.commentRegisterButton.setTitleColor(.colorGrayGray05, for: .normal)
             self?.commentRegisterButton.isEnabled = false
             self?.additionalCommentView.isHidden = true
+            self?.isReplyCommentState = false
             self?.view.endEditing(true)
 
             self?.viewModel.fetchCommentsOfFeed() { [weak self] in

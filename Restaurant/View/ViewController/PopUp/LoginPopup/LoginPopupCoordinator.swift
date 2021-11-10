@@ -13,6 +13,8 @@ class LoginPopupCoordinator: NSObject, Coordinator {
     var presenter: UINavigationController
     var isFromTapBar = false
     var childCoordinators: [Coordinator]
+    var fromWhere: loginPopupFromWhere = .none
+    var feedDetailViewWillAppearSubject: PublishSubject<Void>?
 
     init(presenter: UINavigationController) {
         self.presenter = presenter
@@ -27,6 +29,8 @@ class LoginPopupCoordinator: NSObject, Coordinator {
         let login = LoginPopupViewController.instantiate()
         login.coordinator = self
         login.isFromTapBar = self.isFromTapBar
+        login.fromWhere = self.fromWhere
+        login.feedDetailViewWillAppearSubject = self.feedDetailViewWillAppearSubject
         login.modalPresentationStyle = .overFullScreen
         self.presenter.present(login, animated: false, completion: nil)
     }

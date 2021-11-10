@@ -58,7 +58,9 @@ extension RestaurantSummaryInformationViewController: UICollectionViewDelegate, 
             return cell
         case is RestaurantSummaryInformation.Type:
             let cell: RestaurantSummaryInformation = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(restaurant: viewModel.restaurant, latitude: viewModel.latitudeInCenterOfMap, longitude: viewModel.longitudeInCenterOfMap, mapReloadSubject: viewModel.afterSearchingRestaurantSubject)
+            if let coordinator = coordinator {
+                cell.configure(restaurant: viewModel.restaurant, latitude: viewModel.latitudeInCenterOfMap, longitude: viewModel.longitudeInCenterOfMap, mapReloadSubject: viewModel.afterSearchingRestaurantSubject, coordinator: coordinator)
+            }
             return cell
         case is MainImageInRestaurantSummaryInfo.Type:
             let cell: MainImageInRestaurantSummaryInfo = collectionView.dequeueReusableCell(for: indexPath)

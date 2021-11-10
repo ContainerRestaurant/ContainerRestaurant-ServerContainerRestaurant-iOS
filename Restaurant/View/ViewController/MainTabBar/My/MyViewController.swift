@@ -40,6 +40,7 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
         let loginToken = UserDataManager.sharedInstance.loginToken
         APIClient.checkLogin(loginToken: loginToken) { [weak self] userModel in
             if userModel.id == 0 {
+                self?.bindingView()
                 self?.coordinator?.presentLogin()
             } else {
                 self?.viewModel = MyViewModel(viewModel: userModel)
@@ -56,6 +57,11 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
 
     func bindingView() {
         print("My bindingView")
+        nicknameLabel.text = "용기낸 식당"
+        levelLabel.text = "Lv1. 텀블러"
+        feedCountLabel.text = "0"
+        scrapFeedCountLabel.text = "0"
+        favoriteRestaurantCountLabel.text = "0"
     }
     
     func bindingViewAfterFetch() {
