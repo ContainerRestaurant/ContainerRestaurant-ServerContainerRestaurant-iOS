@@ -13,7 +13,7 @@ class MapCoordinator: NSObject, Coordinator {
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
     
-    var afterSearchingRestaurantSubject: PublishSubject<[RestaurantModel]> = PublishSubject<[RestaurantModel]>()
+    var afterSearchingRestaurantSubject: PublishSubject<([RestaurantModel],Bool)> = PublishSubject<([RestaurantModel],Bool)>()
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
@@ -43,11 +43,14 @@ extension MapCoordinator {
         coordinator.noRestaurantNearby()
     }
     
-    func restaurantSummaryInformation(restaurant: RestaurantModel) {
+    func restaurantSummaryInformation(restaurant: RestaurantModel, latitude: Double, longitude: Double) {
         let coordinator = RestaurantSummaryInformationCoordinator(presenter: presenter)
         coordinator.delegate = self
         childCoordinators.append(coordinator)
         coordinator.restaurant = restaurant
+        coordinator.latitude = latitude
+        coordinator.longitude = longitude
+        coordinator.afterSearchingRestaurantSubject = afterSearchingRestaurantSubject
         coordinator.start()
     }
     

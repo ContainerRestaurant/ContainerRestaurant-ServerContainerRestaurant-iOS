@@ -137,7 +137,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </button>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BadgeFilled24px" translatesAutoresizingMaskIntoConstraints="NO" id="Isd-Mg-gyn">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="badgeFilled24px" translatesAutoresizingMaskIntoConstraints="NO" id="Isd-Mg-gyn">
                         <rect key="frame" x="52" y="52" width="24" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="B1n-c6-Vnh"/>
@@ -186,6 +186,8 @@
                 <constraint firstItem="x7e-P3-cbo" firstAttribute="leading" secondItem="Cbw-1T-dDi" secondAttribute="trailing" constant="8" id="uTa-yq-cJC"/>
             </constraints>
             <connections>
+                <outlet property="containerFriendlyImageView" destination="Isd-Mg-gyn" id="eVb-HJ-1q3"/>
+                <outlet property="favoriteButton" destination="gLz-Dm-y7N" id="9t8-gS-Khh"/>
                 <outlet property="feedImageView" destination="3mQ-57-u5u" id="bzK-QI-htD"/>
                 <outlet property="levelOfDifficultyView" destination="BuL-H4-J6v" id="OvQ-he-Cxw"/>
                 <outlet property="restaurantNameLabel" destination="Ta7-B2-f4M" id="tI8-94-yyi"/>
@@ -194,9 +196,9 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="BadgeFilled24px" width="24" height="24"/>
         <image name="HardFilledYellow16px" width="16" height="16"/>
         <image name="IU" width="464" height="461"/>
+        <image name="badgeFilled24px" width="24" height="24"/>
         <image name="favoriteDisabled20Px" width="20" height="20"/>
         <image name="feedFilled12Px" width="12" height="12"/>
         <image name="hardFilledGray16Px" width="16" height="16"/>

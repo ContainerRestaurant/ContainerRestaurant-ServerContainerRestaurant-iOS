@@ -15,13 +15,13 @@ class MapViewModel {
     var nearbyRestaurants: [RestaurantModel] = []
     var (myLatitude,latitudeInCenterOfMap): (Double,Double) = (0,0)
     var (myLongitude,longitudeInCeterOfMap): (Double,Double) = (0,0)
-    var myNearbyRestaurantsFlag: PublishSubject<Void> = PublishSubject<Void>()
+    var myNearbyRestaurantsFlag: PublishSubject<Bool> = PublishSubject<Bool>()
     var currentNearbyRestaurantsFlag: PublishSubject<Void> = PublishSubject<Void>()
     
-    init(_ afterSearchingRestaurantSubject: PublishSubject<[RestaurantModel]>) {
-        afterSearchingRestaurantSubject.subscribe(onNext: { [weak self] in
-            self?.nearbyRestaurants = $0
-            self?.myNearbyRestaurantsFlag.onNext(())
+    init(_ afterSearchingRestaurantSubject: PublishSubject<([RestaurantModel],Bool)>) {
+        afterSearchingRestaurantSubject.subscribe(onNext: { [weak self] (nearbyRestaurants, isFavoriteAction) in
+            self?.nearbyRestaurants = nearbyRestaurants
+            self?.myNearbyRestaurantsFlag.onNext(isFavoriteAction)
         })
         .disposed(by: disposeBag)
     }
@@ -29,7 +29,7 @@ class MapViewModel {
     func fetchMyNearbyRestaurants() {
         APIClient.nearbyRestaurants(latitude: myLatitude, longitude: myLongitude, radius: 2000) { [weak self] nearbyRestaurants in
             self?.nearbyRestaurants = nearbyRestaurants
-            self?.myNearbyRestaurantsFlag.onNext(())
+            self?.myNearbyRestaurantsFlag.onNext(false)
         }
     }
 

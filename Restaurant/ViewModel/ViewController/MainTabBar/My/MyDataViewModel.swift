@@ -9,9 +9,9 @@ import Foundation
 
 class MyDataViewModel {
     var feeds: [FeedPreviewModel]
-    var restaurants: [RestaurantModel]
+    var restaurants: [RestaurantFavoriteDtoList]
 
-    init(feeds: [FeedPreviewModel] = [], restaurants: [RestaurantModel] = []) {
+    init(feeds: [FeedPreviewModel] = [], restaurants: [RestaurantFavoriteDtoList] = []) {
         self.feeds = feeds
         self.restaurants = restaurants
     }

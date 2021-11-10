@@ -12,7 +12,7 @@ import RxSwift
 class SearchingRestaurantPopupViewController: BaseViewController, Storyboard {
     weak var coordinator: SearchingRestaurantPopupCoordinator?
     var (latitude, longitude): (Double, Double) = (0, 0)
-    var afterSearchingRestaurantSubject: PublishSubject<[RestaurantModel]> = PublishSubject<[RestaurantModel]>()
+    var afterSearchingRestaurantSubject: PublishSubject<([RestaurantModel],Bool)> = PublishSubject<([RestaurantModel],Bool)>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class SearchingRestaurantPopupViewController: BaseViewController, Storyboard {
         fetchNearbyRestaurants()
         APIClient.nearbyRestaurants(latitude: self.latitude, longitude: self.longitude, radius: 20000) { [weak self] nearbyRestaurants in
             self?.dismiss(animated: false, completion: nil)
-            self?.afterSearchingRestaurantSubject.onNext(nearbyRestaurants)
+            self?.afterSearchingRestaurantSubject.onNext((nearbyRestaurants,false))
             if nearbyRestaurants.isEmpty {
                 self?.coordinator?.noRestaurantNearby()
             }

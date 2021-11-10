@@ -19,6 +19,8 @@ enum Router: URLRequestConvertible {
     case UserFeed(userID: Int)
     case ScrapedFeed(userID: Int)
     case FavoriteRestaurant
+    case RegistFavoriteRestaurant(restaurantID: Int)
+    case DeleteFavoriteRestaurant(restaurantID: Int)
     case Feed(category: String, sort: String)
     case RestaurantFeed(restaurantID: Int)
     case LikeFeed(feedID: Int, cancel: Bool)
@@ -46,6 +48,8 @@ enum Router: URLRequestConvertible {
         case .UserFeed: return .get
         case .ScrapedFeed: return .get
         case .FavoriteRestaurant: return .get
+        case .RegistFavoriteRestaurant: return .post
+        case .DeleteFavoriteRestaurant: return .delete
         case .Feed: return .get
         case .RestaurantFeed: return .get
         case .LikeFeed(_, let cancel): return cancel ? .delete : .post
@@ -72,7 +76,9 @@ enum Router: URLRequestConvertible {
         case .RecommendFeed: return "/api/feed/recommend"
         case .UserFeed(let userID): return "/api/feed/user/\(userID)"
         case .ScrapedFeed(let userID): return "/api/feed/user/\(userID)/scrap"
-        case .FavoriteRestaurant: return "api/favorite/restaurant"
+        case .FavoriteRestaurant: return "/api/favorite/restaurant"
+        case .RegistFavoriteRestaurant(let restaurantID): return "/api/favorite/restaurant/\(restaurantID)"
+        case .DeleteFavoriteRestaurant(let restaurantID): return "/api/favorite/restaurant/\(restaurantID)"
         case .Feed: return "/api/feed"
         case .RestaurantFeed(let restaurantID): return "/api/feed/restaurant/\(restaurantID)"
         case .LikeFeed(let feedID, _): return "/api/like/feed/\(feedID)"
@@ -100,6 +106,8 @@ enum Router: URLRequestConvertible {
         case .UserFeed: return nil //Todo: 페이징 처리
         case .ScrapedFeed: return nil //Todo: 페이징 처리
         case .FavoriteRestaurant: return nil
+        case .RegistFavoriteRestaurant: return nil
+        case .DeleteFavoriteRestaurant: return nil
         case .Feed(let category, let sort): return ["category": category, "sort": sort] //Todo: 페이징 처리
         case .RestaurantFeed: return nil //Todo: 페이징 처리
         case .LikeFeed: return nil
