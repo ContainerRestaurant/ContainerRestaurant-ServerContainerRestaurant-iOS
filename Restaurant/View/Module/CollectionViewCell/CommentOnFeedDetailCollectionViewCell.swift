@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 
 class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
-    var coordiantor: FeedDetailCoordinator?
+    var coordinator: FeedDetailCoordinator?
     var comment: CommentModel?
     var isReplyCommentSubject: PublishSubject<CommentModel>?
     var reloadSubject = PublishSubject<Void>()
@@ -41,7 +41,7 @@ class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(coordinator: FeedDetailCoordinator?, comment: CommentModel, isReplyCommentSubject: PublishSubject<CommentModel>?, reloadSubject: PublishSubject<Void>, updateCommentSubject: PublishSubject<CommentModel>?) {
-        self.coordiantor = coordinator
+        self.coordinator = coordinator
         self.comment = comment
         self.isReplyCommentSubject = isReplyCommentSubject
         self.reloadSubject = reloadSubject
@@ -52,7 +52,40 @@ class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
         userLevelTitleLabel.text = comment.userLevelTitle
         commentLabel.text = comment.content == "" ? "내용이 입력되지 않은 댓글입니다." : comment.content
         createdDateLabel.text = comment.createdDate
+        likeCountButton.setImage(UIImage(named: comment.isLike ? "likeFilled12Px" : "likeOutline12Px"), for: .normal)
         likeCountButton.setTitle("\(comment.likeCount)", for: .normal)
+
+        likeCountButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                APIClient.checkLogin(loginToken: UserDataManager.sharedInstance.loginToken) { [weak self] userModel in
+                    if userModel.id == 0 {
+                        self?.coordinator?.presentLogin()
+                    } else {
+                        guard let commentID = self?.comment?.id else { return }
+
+                        if self?.likeCountButton.currentImage?.isEqual(UIImage(named: "likeOutline12Px")) ?? false {
+                            APIClient.likeComment(commentID: commentID) { [weak self] isSuccess in
+                                if isSuccess {
+                                    self?.likeCountButton.setImage(UIImage(named: "likeFilled12Px"), for: .normal)
+                                    let likeCount = Int(self?.likeCountButton.title(for: .normal) ?? "0") ?? 0
+                                    self?.likeCountButton.setTitle("\(likeCount+1)", for: .normal)
+                                    Common.hapticVibration()
+                                }
+                            }
+                        } else {
+                            APIClient.deleteCommentLike(commentID: commentID) { [weak self] isSuccess in
+                                if isSuccess {
+                                    self?.likeCountButton.setImage(UIImage(named: "likeOutline12Px"), for: .normal)
+                                    let likeCount = Int(self?.likeCountButton.title(for: .normal) ?? "0") ?? 0
+                                    self?.likeCountButton.setTitle("\(likeCount-1)", for: .normal)
+                                    Common.hapticVibration()
+                                }
+                            }
+                        }
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
 
         replyButton.rx.tap
             .subscribe(onNext: { [weak self] in
@@ -87,7 +120,7 @@ class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
         alert.addAction(UIAlertAction(title: "삭제하기", style: .destructive , handler:{ [weak self] (UIAlertAction) in
             if let commentID = self?.comment?.id,
                let reloadSubject = self?.reloadSubject {
-                self?.coordiantor?.presentDeleteCommentPopup(commentID: commentID, reloadSubject: reloadSubject)
+                self?.coordinator?.presentDeleteCommentPopup(commentID: commentID, reloadSubject: reloadSubject)
             }
         }))
 
@@ -95,7 +128,7 @@ class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
             print("취소")
         }))
 
-        self.coordiantor?.presenter.present(alert, animated: true, completion: {
+        self.coordinator?.presenter.present(alert, animated: true, completion: {
             print("completion block")
         })
     }
@@ -111,7 +144,7 @@ class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
             print("취소")
         }))
 
-        self.coordiantor?.presenter.present(alert, animated: true, completion: {
+        self.coordinator?.presenter.present(alert, animated: true, completion: {
             print("completion block")
         })
     }
@@ -125,7 +158,7 @@ extension CommentOnFeedDetailCollectionViewCell: UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ReplyCommentOnFeedDetailCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         if let replyComment = comment?.replyComment[indexPath.row] {
-            cell.configure(comment: replyComment, coordinator: coordiantor, reloadSubject: reloadSubject, updateCommentSubject: updateCommentSubject)
+            cell.configure(comment: replyComment, coordinator: coordinator, reloadSubject: reloadSubject, updateCommentSubject: updateCommentSubject)
         }
         return cell
     }

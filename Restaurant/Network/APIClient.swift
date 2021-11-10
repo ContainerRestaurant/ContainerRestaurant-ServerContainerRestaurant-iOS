@@ -300,6 +300,21 @@ class APIClient {
             }
     }
 
+    //대댓글 작성
+    static func createFeedReplyComment(feedID: String, content: String, upperReplyID: Int, completion: @escaping (CommentModel) -> Void) {
+        AF.request(Router.CreateFeedReplyComment(feedID: feedID, content: content, uppperReplyID: upperReplyID))
+            .responseDecodable { (response: DataResponse<CommentModel, AFError>) in
+                switch response.result {
+                case .success(let replyCommentModel):
+                    completion(replyCommentModel)
+                case .failure(let error):
+                    completion(CommentModel())
+                    print("Create Feed Reply Comment's Error: \(error)")
+                }
+            }
+    }
+
+    //댓글,대댓글 수정
     static func updateFeedComment(commentID: Int, content: String, completion: @escaping (CommentModel) -> Void) {
         AF.request(Router.UpdateFeedComment(commentID: commentID, content: content))
             .responseDecodable { (response: DataResponse<CommentModel, AFError>) in
@@ -313,7 +328,7 @@ class APIClient {
             }
     }
 
-    //댓글 삭제
+    //댓글,대댓글 삭제
     static func deleteFeedComment(commentID: Int, completion: @escaping (Bool) -> ()) {
         AF.request(Router.DeleteFeedComment(commentID: commentID))
             .response(completionHandler: { response in
@@ -328,18 +343,34 @@ class APIClient {
             })
     }
 
-    //대댓글 작성
-    static func createFeedReplyComment(feedID: String, content: String, upperReplyID: Int, completion: @escaping (CommentModel) -> Void) {
-        AF.request(Router.CreateFeedReplyComment(feedID: feedID, content: content, uppperReplyID: upperReplyID))
-            .responseDecodable { (response: DataResponse<CommentModel, AFError>) in
+    //댓글,대댓글 좋아요
+    static func likeComment(commentID: Int, completion: @escaping (Bool) -> Void) {
+        AF.request(Router.LikeComment(commentID: commentID))
+            .response(completionHandler: { response in
                 switch response.result {
-                case .success(let replyCommentModel):
-                    completion(replyCommentModel)
+                case .success(let result):
+                    completion(true)
+                    print("Like Comment's Success: \(String(describing: result))")
                 case .failure(let error):
-                    completion(CommentModel())
-                    print("Create Feed Reply Comment's Error: \(error)")
+                    completion(false)
+                    print("Like Comment's Error: \(error)")
                 }
-            }
+            })
+    }
+
+    //댓글,대댓글 좋아요 취소
+    static func deleteCommentLike(commentID: Int, completion: @escaping (Bool) -> Void) {
+        AF.request(Router.DeleteCommentLike(commentID: commentID))
+            .response(completionHandler: { response in
+                switch response.result {
+                case .success(let result):
+                    completion(true)
+                    print("Delete Comment Like's Success: \(String(describing: result))")
+                case .failure(let error):
+                    completion(false)
+                    print("Delete Comment Like's Error: \(error)")
+                }
+            })
     }
     
     //주변 식당 검색
