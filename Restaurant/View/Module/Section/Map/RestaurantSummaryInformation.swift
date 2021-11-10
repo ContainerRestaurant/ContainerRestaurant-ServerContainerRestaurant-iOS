@@ -14,6 +14,7 @@ class RestaurantSummaryInformation: UICollectionViewCell {
     var latitude = 0.0
     var longitude = 0.0
     var mapReloadSubject: PublishSubject<([RestaurantModel],Bool)> = PublishSubject<([RestaurantModel],Bool)>()
+    weak var coordinator: RestaurantSummaryInformationCoordinator?
 
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var levelOfDifficultyView: CosmosView!
@@ -23,22 +24,29 @@ class RestaurantSummaryInformation: UICollectionViewCell {
     @IBAction func clickedFavoriteButton(_ sender: Any) {
         guard let restaurantID = self.restaurantID else { return }
 
-        if favoriteButton.image(for: .normal) == UIImage(named: "favoriteDisabled20Px") {
-            APIClient.postFavoriteRestaurant(restaurantID: restaurantID) {
-                APIClient.nearbyRestaurants(latitude: self.latitude, longitude: self.longitude, radius: 2000) { [weak self] nearbyRestaurants in
-                    self?.mapReloadSubject.onNext((nearbyRestaurants, true))
+        APIClient.checkLogin(loginToken: UserDataManager.sharedInstance.loginToken) { [weak self] userModel in
+            guard let self = self else { return }
+            if userModel.id == 0 {
+                self.coordinator?.presentLogin()
+            } else {
+                if self.favoriteButton.image(for: .normal) == UIImage(named: "favoriteDisabled20Px") {
+                    APIClient.postFavoriteRestaurant(restaurantID: restaurantID) {
+                        APIClient.nearbyRestaurants(latitude: self.latitude, longitude: self.longitude, radius: 2000) { [weak self] nearbyRestaurants in
+                            self?.mapReloadSubject.onNext((nearbyRestaurants, true))
+                        }
+                    }
+                    self.favoriteButton.setImage(UIImage(named: "favoriteFilled20Px"), for: .normal)
+                    Common.hapticVibration()
+                } else {
+                    APIClient.deleteFavoriteRestaurant(restaurantID: restaurantID) {
+                        APIClient.nearbyRestaurants(latitude: self.latitude, longitude: self.longitude, radius: 2000) { [weak self] nearbyRestaurants in
+                            self?.mapReloadSubject.onNext((nearbyRestaurants, true))
+                        }
+                    }
+                    self.favoriteButton.setImage(UIImage(named: "favoriteDisabled20Px"), for: .normal)
+                    Common.hapticVibration()
                 }
             }
-            favoriteButton.setImage(UIImage(named: "favoriteFilled20Px"), for: .normal)
-            Common.hapticVibration()
-        } else {
-            APIClient.deleteFavoriteRestaurant(restaurantID: restaurantID) {
-                APIClient.nearbyRestaurants(latitude: self.latitude, longitude: self.longitude, radius: 2000) { [weak self] nearbyRestaurants in
-                    self?.mapReloadSubject.onNext((nearbyRestaurants, true))
-                }
-            }
-            favoriteButton.setImage(UIImage(named: "favoriteDisabled20Px"), for: .normal)
-            Common.hapticVibration()
         }
     }
 
@@ -46,11 +54,12 @@ class RestaurantSummaryInformation: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-    func configure(restaurant: RestaurantModel, latitude: Double, longitude: Double, mapReloadSubject: PublishSubject<([RestaurantModel],Bool)> = PublishSubject<([RestaurantModel],Bool)>()) {
+    func configure(restaurant: RestaurantModel, latitude: Double, longitude: Double, mapReloadSubject: PublishSubject<([RestaurantModel],Bool)> = PublishSubject<([RestaurantModel],Bool)>(), coordinator: RestaurantSummaryInformationCoordinator) {
         self.restaurantID = restaurant.id
         self.latitude = latitude
         self.longitude = longitude
         self.mapReloadSubject = mapReloadSubject
+        self.coordinator = coordinator
 
         restaurantNameLabel.text = restaurant.name
         favoriteButton.setImage(UIImage(named: restaurant.isFavorite ? "favoriteFilled20Px" : "favoriteDisabled20Px"), for: .normal)

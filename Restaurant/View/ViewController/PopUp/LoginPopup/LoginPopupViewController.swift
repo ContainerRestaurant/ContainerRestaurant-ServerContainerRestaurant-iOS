@@ -12,11 +12,18 @@ import KakaoSDKAuth
 import KakaoSDKUser
 import AuthenticationServices
 
+enum loginPopupFromWhere {
+    case feedDetail
+    case mapBottomSheet
+    case none
+}
+
 class LoginPopupViewController: UIViewController, Storyboard {
     weak var coordinator: LoginPopupCoordinator?
     var disposeBag = DisposeBag()
     var isFromTapBar: Bool?
-    var isFromMapBottomSheet = false
+    var fromWhere: loginPopupFromWhere = .none
+    var feedDetailViewWillAppearSubject: PublishSubject<Void>?
 
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var kakaoLoginButton: UIButton!
@@ -82,8 +89,7 @@ extension LoginPopupViewController {
                                 UserDataManager.sharedInstance.loginToken = $0.token
 
                                 if $0.isNicknameNull {
-                                    if self?.isFromMapBottomSheet ?? false  {
-                                        self?.isFromMapBottomSheet = false
+                                    if self?.fromWhere == .mapBottomSheet  {
                                         let nicknamePopup = NickNamePopupViewController.instantiate()
                                         nicknamePopup.viewControllerWhereComeFrom = .mapBottomSheet
                                         self?.present(nicknamePopup, animated: false, completion: nil)
@@ -93,7 +99,11 @@ extension LoginPopupViewController {
                                     }
                                 } else {
                                     self?.dismiss(animated: true, completion: nil)
-                                    self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
+                                    if self?.fromWhere == .feedDetail {
+                                        self?.feedDetailViewWillAppearSubject?.onNext(())
+                                    } else {
+                                        self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
+                                    }
                                 }
                             }
                         }
@@ -141,8 +151,7 @@ extension LoginPopupViewController: ASAuthorizationControllerDelegate, ASAuthori
                     UserDataManager.sharedInstance.loginToken = $0.token
 
                     if $0.isNicknameNull {
-                        if self.isFromMapBottomSheet {
-                            self.isFromMapBottomSheet = false
+                        if self.fromWhere == .mapBottomSheet {
                             let nicknamePopup = NickNamePopupViewController.instantiate()
                             nicknamePopup.viewControllerWhereComeFrom = .mapBottomSheet
                             self.present(nicknamePopup, animated: false, completion: nil)
@@ -152,7 +161,11 @@ extension LoginPopupViewController: ASAuthorizationControllerDelegate, ASAuthori
                         }
                     } else {
                         self.dismiss(animated: true, completion: nil)
-                        self.coordinator?.presenter.tabBarController?.selectedIndex = 0
+                        if self.fromWhere == .feedDetail {
+                            self.feedDetailViewWillAppearSubject?.onNext(())
+                        } else {
+                            self.coordinator?.presenter.tabBarController?.selectedIndex = 0
+                        }
                     }
                 }
             }

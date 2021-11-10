@@ -13,6 +13,7 @@ class FeedDetailCoordinator: NSObject, Coordinator {
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
     var feedID: Int?
+    var feedDetailViewWillAppearSubject = PublishSubject<Void>()
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
@@ -32,8 +33,9 @@ class FeedDetailCoordinator: NSObject, Coordinator {
             if let feedDetailData = feedDetailData {
                 var feedDetail = FeedDetailViewController.instantiate()
                 feedDetail.coordinator = self
-                feedDetail.bind(viewModel: FeedDetailViewModel(feedDetailData))
+                feedDetail.feedDetailViewWillAppearSubject = self?.feedDetailViewWillAppearSubject
                 feedDetail.hidesBottomBarWhenPushed = true
+                feedDetail.bind(viewModel: FeedDetailViewModel(feedDetailData))
                 
                 self?.presenter.pushViewController(feedDetail, animated: true)
             }
@@ -45,6 +47,8 @@ extension FeedDetailCoordinator {
     func presentLogin() {
         let coordinator = LoginPopupCoordinator(presenter: presenter)
         coordinator.delegate = self
+        coordinator.feedDetailViewWillAppearSubject = self.feedDetailViewWillAppearSubject
+        coordinator.fromWhere = .feedDetail
         childCoordinators.append(coordinator)
         coordinator.start()
     }

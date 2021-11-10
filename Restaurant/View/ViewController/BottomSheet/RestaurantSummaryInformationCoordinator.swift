@@ -66,7 +66,7 @@ extension RestaurantSummaryInformationCoordinator {
 //        childCoordinators.append(coordinator)
 //        coordinator.start()
         let loginPopup = LoginPopupViewController.instantiate()
-        loginPopup.isFromMapBottomSheet = true
+        loginPopup.fromWhere = .mapBottomSheet
         Common.currentViewController()?.present(loginPopup, animated: false, completion: nil)
     }
 }
