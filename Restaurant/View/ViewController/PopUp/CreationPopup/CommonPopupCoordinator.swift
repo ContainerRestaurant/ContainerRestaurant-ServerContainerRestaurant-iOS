@@ -49,5 +49,12 @@ extension CommonPopupCoordinator {
         childCoordinators.append(coordinator)
         coordinator.start()
     }
+
+    func presentConfirmReportCommentPopup() {
+        let coordinator = CommonPopupCoordinator(presenter: presenter, isTwoButton: false, buttonType: .confirmReportComment)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
 }
 

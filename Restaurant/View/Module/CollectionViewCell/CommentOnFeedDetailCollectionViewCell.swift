@@ -111,13 +111,13 @@ class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
     private func clickedMyCommentMore() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        alert.addAction(UIAlertAction(title: "수정하기", style: .default , handler:{ [weak self] (UIAlertAction) in
+        alert.addAction(UIAlertAction(title: "수정하기", style: .default, handler:{ [weak self] (UIAlertAction) in
             if let comment = self?.comment {
                 self?.updateCommentSubject?.onNext(comment)
             }
         }))
 
-        alert.addAction(UIAlertAction(title: "삭제하기", style: .destructive , handler:{ [weak self] (UIAlertAction) in
+        alert.addAction(UIAlertAction(title: "삭제하기", style: .destructive, handler:{ [weak self] (UIAlertAction) in
             if let commentID = self?.comment?.id,
                let reloadSubject = self?.reloadSubject {
                 self?.coordinator?.presentDeleteCommentPopup(commentID: commentID, reloadSubject: reloadSubject)
@@ -136,8 +136,9 @@ class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
     private func clickedOthersCommentMore() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        alert.addAction(UIAlertAction(title: "신고하기", style: .default , handler:{ (UIAlertAction) in
-            print("신고하기")
+        alert.addAction(UIAlertAction(title: "신고하기", style: .default, handler: { [weak self] (UIAlertAction) in
+            guard let commentID = self?.comment?.id else { return }
+            self?.coordinator?.presentReportCommentPopup(commentID: commentID)
         }))
 
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler:{ (UIAlertAction) in

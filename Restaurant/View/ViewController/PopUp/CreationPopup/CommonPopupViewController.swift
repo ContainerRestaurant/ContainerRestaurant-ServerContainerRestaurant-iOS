@@ -12,6 +12,8 @@ enum PopupButtonType {
     case creationFeed
     case deleteFeed
     case deleteComment
+    case reportComment
+    case confirmReportComment
     case confirmExit
     case logout
     case none
@@ -46,6 +48,12 @@ class CommonPopupViewController: BaseViewController, Storyboard {
         case .deleteComment:
             setButton(buttonType)
             deleteCommentBindingView()
+        case .reportComment:
+            setButton(buttonType)
+            reportCommentBindingView()
+        case .confirmReportComment:
+            setButton(buttonType)
+            confirmReportCommentBindingView()
         case .confirmExit:
             setButton(buttonType)
             confirmExitBindingView()
@@ -125,6 +133,37 @@ class CommonPopupViewController: BaseViewController, Storyboard {
             .disposed(by: disposeBag)
     }
 
+    func reportCommentBindingView() {
+        cancelButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss(animated: false, completion: nil)
+            })
+            .disposed(by: disposeBag)
+
+        okButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                if let commentID = self?.commentID {
+                    APIClient.reportComment(commentID: commentID) { [weak self] isSuccess in
+                        self?.dismiss(animated: false) { [weak self] in
+                            self?.coordinator?.presentConfirmReportCommentPopup()
+                        }
+//                        self?.dismiss(animated: false) { [weak self] in
+//                            self?.reloadSubject?.onNext(())
+//                        }
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func confirmReportCommentBindingView() {
+        okButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss(animated: false, completion: nil)
+            })
+            .disposed(by: disposeBag)
+    }
+
     func confirmExitBindingView() {
         cancelButton.rx.tap
             .subscribe(onNext: { [weak self] in
@@ -171,6 +210,22 @@ class CommonPopupViewController: BaseViewController, Storyboard {
             popupTitleLabel.text = "정말 삭제하시겠습니까?"
             cancelButton.setTitle("취소", for: .normal)
             okButton.setTitle("삭제", for: .normal)
+        case .reportComment:
+            popupTitleLabel.text = "정말 신고하시겠습니까?"
+            cancelButton.setTitle("취소", for: .normal)
+            okButton.setTitle("신고", for: .normal)
+        case .confirmReportComment:
+            let attributedString = NSMutableAttributedString()
+                .bold(string: "신고가 접수되었어요!\n", fontColor: .colorGrayGray07, fontSize: 16)
+                .bold(string: "빠른 시일 내에 조치하도록 할게요.", fontColor: .colorGrayGray07, fontSize: 16)
+
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            paragraphStyle.paragraphSpacing = 4
+            attributedString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+
+            popupTitleLabel.attributedText = attributedString
+            okButton.setTitle("확인", for: .normal)
         case .confirmExit:
             let attributedString = NSMutableAttributedString()
                 .bold(string: "작성을 종료할까요?\n", fontColor: .colorGrayGray07, fontSize: 16)
