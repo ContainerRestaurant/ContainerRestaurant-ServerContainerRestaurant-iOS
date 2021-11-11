@@ -10,20 +10,45 @@ import Foundation
 ///2단형 피드 모델
 struct TwoFeedModel: Decodable {
     var feedPreviewList: [FeedPreviewModel]
+    var size: Int // Todo : page struct 안에 담기
+    var totalElements: Int // Todo : page struct 안에 담기
+    var totalPages: Int // Todo : page struct 안에 담기
+    var number: Int // Todo : page struct 안에 담기
 
     private enum RootKey: String, CodingKey {
         case embedded = "_embedded"
+        case page = "page"
     }
 
     private enum Embedded: String, CodingKey {
         case feedPreviewList = "feedPreviewDtoList"
     }
 
+    private enum Page: CodingKey {
+        case size
+        case totalElements
+        case totalPages
+        case number
+    }
+
+    init() {
+        self.feedPreviewList = []
+        self.size = 0
+        self.totalElements = 0
+        self.totalPages = 0
+        self.number = 0
+    }
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: RootKey.self)
         let feedPreviewList = try container.nestedContainer(keyedBy: Embedded.self, forKey: .embedded)
+        let pageInformation = try? container.nestedContainer(keyedBy: Page.self, forKey: .page)
 
-        self.feedPreviewList = try feedPreviewList.decode(Array.self, forKey: .feedPreviewList)
+        self.feedPreviewList = (try? feedPreviewList.decode(Array.self, forKey: .feedPreviewList)) ?? []
+        self.size = (try? pageInformation?.decode(Int.self, forKey: .size)) ?? 0
+        self.totalElements = (try? pageInformation?.decode(Int.self, forKey: .totalElements)) ?? 0
+        self.totalPages = (try? pageInformation?.decode(Int.self, forKey: .totalPages)) ?? 0
+        self.number = (try? pageInformation?.decode(Int.self, forKey: .number)) ?? 0
     }
 }
 

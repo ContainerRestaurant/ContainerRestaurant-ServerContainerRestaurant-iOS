@@ -17,12 +17,12 @@ enum Router: URLRequestConvertible {
     case HomeMainData
     case ContainerOfEveryone
     case RecommendFeed
-    case UserFeed(userID: Int)
-    case ScrapedFeed(userID: Int)
+    case UserFeed(userID: Int, size: Int)
+    case ScrapedFeed(userID: Int, size: Int)
     case FavoriteRestaurant
     case RegistFavoriteRestaurant(restaurantID: Int)
     case DeleteFavoriteRestaurant(restaurantID: Int)
-    case Feed(category: String, sort: String)
+    case Feed(category: String, sort: String, page: Int)
     case RestaurantFeed(restaurantID: Int)
     case LikeFeed(feedID: Int, cancel: Bool)
     case ScrapFeed(feedID: Int, cancel: Bool)
@@ -83,8 +83,8 @@ enum Router: URLRequestConvertible {
         case .HomeMainData: return "/api/home"
         case .ContainerOfEveryone: return "/api/statistics/total-container"
         case .RecommendFeed: return "/api/feed/recommend"
-        case .UserFeed(let userID): return "/api/feed/user/\(userID)"
-        case .ScrapedFeed(let userID): return "/api/feed/user/\(userID)/scrap"
+        case .UserFeed(let userID, _): return "/api/feed/user/\(userID)"
+        case .ScrapedFeed(let userID, _): return "/api/feed/user/\(userID)/scrap"
         case .FavoriteRestaurant: return "/api/favorite/restaurant"
         case .RegistFavoriteRestaurant(let restaurantID): return "/api/favorite/restaurant/\(restaurantID)"
         case .DeleteFavoriteRestaurant(let restaurantID): return "/api/favorite/restaurant/\(restaurantID)"
@@ -115,13 +115,13 @@ enum Router: URLRequestConvertible {
         case .CheckUser: return nil
         case .HomeMainData: return nil
         case .ContainerOfEveryone: return nil
-        case .RecommendFeed: return nil //Todo: 페이징 처리
-        case .UserFeed: return nil //Todo: 페이징 처리
-        case .ScrapedFeed: return nil //Todo: 페이징 처리
+        case .RecommendFeed: return nil
+        case .UserFeed(_, let size): return ["size": String(size)]
+        case .ScrapedFeed(_, let size): return ["size": String(size)]
         case .FavoriteRestaurant: return nil
         case .RegistFavoriteRestaurant: return nil
         case .DeleteFavoriteRestaurant: return nil
-        case .Feed(let category, let sort): return ["category": category, "sort": sort] //Todo: 페이징 처리
+        case .Feed(let category, let sort, let page): return ["category": category, "sort": sort, "page": String(page)]
         case .RestaurantFeed: return nil //Todo: 페이징 처리
         case .LikeFeed: return nil
         case .ScrapFeed: return nil

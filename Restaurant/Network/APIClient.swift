@@ -125,7 +125,7 @@ class APIClient {
 
     //홈 탭 메인 피드
     static func userFeed(userID: Int, completion: @escaping ([FeedPreviewModel]) -> Void ) {
-        AF.request(Router.UserFeed(userID: userID))
+        AF.request(Router.UserFeed(userID: userID, size: 1000))
             .responseDecodable { (response: DataResponse<TwoFeedModel, AFError>) in
                 switch response.result {
                 case .success(let userFeed):
@@ -194,14 +194,14 @@ class APIClient {
     }
     
     //피드 탭 카테고리 피드
-    static func feed(category: String = "", sort: String = "", completion: @escaping ([FeedPreviewModel]) -> Void) {
-        AF.request(Router.Feed(category: category, sort: sort))
+    static func feed(category: String = "", sort: String = "", page: Int = 0, completion: @escaping (TwoFeedModel) -> Void) {
+        AF.request(Router.Feed(category: category, sort: sort, page: page))
             .responseDecodable { (response: DataResponse<TwoFeedModel, AFError>) in
                 switch response.result {
                 case .success(let categoryFeed):
-                    completion(categoryFeed.feedPreviewList)
+                    completion(categoryFeed)
                 case .failure(let error):
-                    completion([])
+                    completion(TwoFeedModel())
                     print("Category Feed's Error: \(error)")
                 }
             }

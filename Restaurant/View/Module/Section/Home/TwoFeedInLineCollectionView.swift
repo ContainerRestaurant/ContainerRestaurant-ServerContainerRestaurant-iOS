@@ -67,14 +67,14 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
                         default: return ""
                         }
                     }
-                    APIClient.feed(category: category, sort: sortString) { [weak self] feeds in
-                        self?.feeds = feeds
+                    APIClient.feed(category: category, sort: sortString) { [weak self] (twoFeedModel) in
+                        self?.feeds = twoFeedModel.feedPreviewList
                         self?.collectionView.reloadData()
                         reloadFlagSubject.onNext(self?.feeds ?? [])
                     }
                 } else {
-                    APIClient.feed(category: category) { [weak self] feeds in
-                        self?.feeds = feeds
+                    APIClient.feed(category: category) { [weak self] (twoFeedModel) in
+                        self?.feeds = twoFeedModel.feedPreviewList
                         self?.collectionView.reloadData()
                         reloadFlagSubject.onNext(self?.feeds ?? [])
                     }
