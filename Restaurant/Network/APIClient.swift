@@ -139,7 +139,7 @@ class APIClient {
 
     //특정 유저가 스크랩한 피드
     static func scrapedFeed(userID: Int, completion: @escaping ([FeedPreviewModel]) -> Void ) {
-        AF.request(Router.ScrapedFeed(userID: userID))
+        AF.request(Router.ScrapedFeed(userID: userID, size: 1000))
             .responseDecodable { (response: DataResponse<TwoFeedModel, AFError>) in
                 switch response.result {
                 case .success(let scrapedFeed):
