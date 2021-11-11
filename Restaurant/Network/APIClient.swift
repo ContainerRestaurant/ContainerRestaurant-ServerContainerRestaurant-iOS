@@ -52,6 +52,21 @@ class APIClient {
             }
     }
 
+    //계정 탈퇴
+    static func unregisterUser(userID: Int, completion: @escaping (Bool) -> Void) {
+        AF.request(Router.UnregisterUser(userID: userID))
+            .response(completionHandler: { response in
+                switch response.result {
+                case .success(let result):
+                    completion(true)
+                    print("Unregister User's Success: \(String(describing: result))")
+                case .failure(let error):
+                    completion(false)
+                    print("Unregister User's Error: \(error)")
+                }
+            })
+    }
+
     //사용자 정보 조회
     static func checkUser(userID: Int, completion: @escaping (UserModel) -> Void) {
         AF.request(Router.CheckUser(userID: userID))

@@ -16,6 +16,7 @@ enum PopupButtonType {
     case confirmReportComment
     case confirmExit
     case logout
+    case unregister
     case none
 }
 
@@ -60,6 +61,9 @@ class CommonPopupViewController: BaseViewController, Storyboard {
         case .logout:
             setButton(buttonType)
             logoutBindingView()
+        case .unregister:
+            setButton(buttonType)
+            unregisterBindingView()
         case .none: break
         }
 
@@ -183,10 +187,31 @@ class CommonPopupViewController: BaseViewController, Storyboard {
     func logoutBindingView() {
         cancelButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.dismiss(animated: false) {
+                self?.dismiss(animated: false) { [weak self] in
                     UserDataManager.sharedInstance.userID = 0
                     UserDataManager.sharedInstance.loginToken = ""
                     
+                    self?.coordinator?.presenter.popViewController(animated: false)
+                    self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
+                }
+            })
+            .disposed(by: disposeBag)
+
+        okButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss(animated: false, completion: nil)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func unregisterBindingView() {
+        cancelButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                APIClient.unregisterUser(userID: UserDataManager.sharedInstance.userID) { [weak self] isSuccess in
+                    UserDataManager.sharedInstance.userID = 0
+                    UserDataManager.sharedInstance.loginToken = ""
+
+                    self?.dismiss(animated: false, completion: nil)
                     self?.coordinator?.presenter.popViewController(animated: false)
                     self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
                 }
@@ -242,6 +267,19 @@ class CommonPopupViewController: BaseViewController, Storyboard {
         case .logout:
             popupTitleLabel.text = "정말 로그아웃 하시겠어요?"
             cancelButton.setTitle("로그아웃", for: .normal)
+            okButton.setTitle("취소", for: .normal)
+        case .unregister:
+            let attributedString = NSMutableAttributedString()
+                .bold(string: "계정 탈퇴 시 다시 되돌릴 수 없습니다.\n", fontColor: .colorGrayGray07, fontSize: 16)
+                .bold(string: "정말 탈퇴 하시겠어요?", fontColor: .colorGrayGray07, fontSize: 16)
+
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            paragraphStyle.paragraphSpacing = 4
+            attributedString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+
+            popupTitleLabel.attributedText = attributedString
+            cancelButton.setTitle("계정 탈퇴", for: .normal)
             okButton.setTitle("취소", for: .normal)
         case .none: break
         }

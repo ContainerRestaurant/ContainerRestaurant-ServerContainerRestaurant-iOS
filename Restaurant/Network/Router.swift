@@ -12,6 +12,7 @@ enum Router: URLRequestConvertible {
     case CreateLoginToken(provider: String, accessToken: String)
     case CheckLogin
     case UpdateUserInformation(userID: Int, nickname: String)
+    case UnregisterUser(userID: Int)
     case CheckUser(userID: Int)
     case HomeMainData
     case ContainerOfEveryone
@@ -44,6 +45,7 @@ enum Router: URLRequestConvertible {
         case .CreateLoginToken: return .post
         case .CheckLogin: return .get
         case .UpdateUserInformation: return .patch
+        case .UnregisterUser: return .delete
         case .CheckUser: return .get
         case .HomeMainData: return .get
         case .ContainerOfEveryone: return .get
@@ -76,6 +78,7 @@ enum Router: URLRequestConvertible {
         case .CreateLoginToken: return "/api/user"
         case .CheckLogin: return "/api/user"
         case .UpdateUserInformation(let userID, _): return "/api/user/\(userID)"
+        case .UnregisterUser(let userID): return "/api/user/\(userID)"
         case .CheckUser(let userID): return "/api/user/\(userID)"
         case .HomeMainData: return "/api/home"
         case .ContainerOfEveryone: return "/api/statistics/total-container"
@@ -108,6 +111,7 @@ enum Router: URLRequestConvertible {
         case .CreateLoginToken(let provider, let accessToken): return ["provider": provider, "accessToken": accessToken]
         case .CheckLogin: return nil
         case .UpdateUserInformation(_, let nickname): return ["nickname": nickname]
+        case .UnregisterUser: return nil
         case .CheckUser: return nil
         case .HomeMainData: return nil
         case .ContainerOfEveryone: return nil
