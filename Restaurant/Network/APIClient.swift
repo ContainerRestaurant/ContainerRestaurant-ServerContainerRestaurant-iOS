@@ -343,6 +343,21 @@ class APIClient {
             })
     }
 
+    //댓글,대댓글 신고
+    static func reportComment(commentID: Int, completion: @escaping (Bool) -> Void) {
+        AF.request(Router.ReportComment(commentID: commentID))
+            .response(completionHandler: { response in
+                switch response.result {
+                case .success(let result):
+                    completion(true)
+                    print("Report Comment's Success: \(String(describing: result))")
+                case .failure(let error):
+                    completion(false)
+                    print("Report Comment's Error: \(error)")
+                }
+            })
+    }
+
     //댓글,대댓글 좋아요
     static func likeComment(commentID: Int, completion: @escaping (Bool) -> Void) {
         AF.request(Router.LikeComment(commentID: commentID))

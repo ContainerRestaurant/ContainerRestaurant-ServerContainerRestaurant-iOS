@@ -31,6 +31,7 @@ enum Router: URLRequestConvertible {
     case CreateFeedComment(feedID: String, content: String)
     case UpdateFeedComment(commentID: Int, content: String)
     case DeleteFeedComment(commentID: Int)
+    case ReportComment(commentID: Int)
     case LikeComment(commentID: Int)
     case DeleteCommentLike(commentID: Int)
     case CreateFeedReplyComment(feedID: String, content: String, uppperReplyID: Int)
@@ -62,6 +63,7 @@ enum Router: URLRequestConvertible {
         case .CreateFeedComment: return .post
         case .UpdateFeedComment: return .patch
         case .DeleteFeedComment: return .delete
+        case .ReportComment: return .post
         case .LikeComment: return .post
         case .DeleteCommentLike: return .delete
         case .CreateFeedReplyComment: return .post
@@ -93,6 +95,7 @@ enum Router: URLRequestConvertible {
         case .CreateFeedComment(let feedID, _): return "/api/comment/feed/\(feedID)"
         case .UpdateFeedComment(let commentID, _): return "/api/comment/\(commentID)"
         case .DeleteFeedComment(let commentID): return "/api/comment/\(commentID)"
+        case .ReportComment(let commentID): return "/api/report/feed/\(commentID)"
         case .LikeComment(let commentID): return "/api/like/comment/\(commentID)"
         case .DeleteCommentLike(let commentID): return "/api/like/comment/\(commentID)"
         case .CreateFeedReplyComment(let feedID, _, _): return "/api/comment/feed/\(feedID)"
@@ -124,6 +127,7 @@ enum Router: URLRequestConvertible {
         case .CreateFeedComment(_, let content): return ["content": content]
         case .UpdateFeedComment(_, let content): return ["content": content]
         case .DeleteFeedComment: return nil
+        case .ReportComment: return nil
         case .LikeComment: return nil
         case .DeleteCommentLike: return nil
         case .CreateFeedReplyComment(_, let content, let uppperReplyID): return ["content": content, "upperReplyId": String(uppperReplyID)]
