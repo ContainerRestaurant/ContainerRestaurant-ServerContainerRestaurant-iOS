@@ -84,6 +84,7 @@ extension SettingViewController: UICollectionViewDelegate, UICollectionViewDataS
         case 1: coordinator?.pushPrivacyPolicy()
         case 2: coordinator?.pushServiceAccessTerms()
         case 3: coordinator?.logoutPopup()
+        case 4: coordinator?.unregisterPopup()
         default: break
         }
     }

@@ -61,4 +61,13 @@ extension SettingCoordinator {
 
         coordinator.start()
     }
+
+    //계정 탈퇴 확인 팝업
+    func unregisterPopup() {
+        let coordinator = CommonPopupCoordinator(presenter: presenter, isTwoButton: true, buttonType: .unregister)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+
+        coordinator.start()
+    }
 }
