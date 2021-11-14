@@ -9,6 +9,8 @@ import UIKit
 
 class FeedViewModel {
     var categoryFeeds: [FeedPreviewModel] = []
+    var totalPage: Int = 0
+    var currentPage: Int = 0
     var category: [(String,String)] = [
         ("ALL", "전체"),
         ("KOREAN","한식"),
@@ -22,8 +24,9 @@ class FeedViewModel {
         ("CHICKEN_AND_PIZZA","치킨/피자")
     ]
     
-    init(_ categoryFeeds: [FeedPreviewModel]) {
-        self.categoryFeeds = categoryFeeds
+    init(_ twoFeedModel: TwoFeedModel) {
+        self.categoryFeeds = twoFeedModel.feedPreviewList
+        self.totalPage = twoFeedModel.totalPages
     }
     
     func categoryFeedCollectionViewSize() -> CGSize {

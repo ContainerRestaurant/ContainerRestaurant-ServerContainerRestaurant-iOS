@@ -26,10 +26,10 @@ class FeedCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        APIClient.feed(category: "") { [weak self] categoryFeed in
+        APIClient.feed(category: "ALL") { [weak self] (twoFeedModel) in
             var feed = FeedViewController.instantiate()
             feed.coordinator = self
-            feed.bind(viewModel: FeedViewModel(categoryFeed))
+            feed.bind(viewModel: FeedViewModel(twoFeedModel))
 
             self?.presenter.pushViewController(feed, animated: false)
         }

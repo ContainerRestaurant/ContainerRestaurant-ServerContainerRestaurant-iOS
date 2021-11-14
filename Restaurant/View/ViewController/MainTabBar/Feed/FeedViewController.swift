@@ -36,26 +36,30 @@ class FeedViewController: BaseViewController, Storyboard, ViewModelBindableType 
 
         setNavigationBar()
 
-        let category = viewModel.category[selectedCategoryIndex].0
-        if selectedSortIndex > 0 {
-            var sortString: String {
-                switch selectedSortIndex {
-                case 1: return "likeCount,DESC"
-                case 2: return "difficulty,ASC"
-                case 3: return "difficulty,DESC"
-                default: return ""
-                }
-            }
-            APIClient.feed(category: category, sort: sortString) { [weak self] categoryFeed in
-                self?.viewModel.categoryFeeds = categoryFeed
-                self?.feedCollectionView.reloadData()
-            }
-        } else {
-            APIClient.feed(category: category) { [weak self] categoryFeed in
-                self?.viewModel.categoryFeeds = categoryFeed
-                self?.feedCollectionView.reloadData()
-            }
-        }
+        //피드상세에서 좋아요 같은 걸로 피드 정보를 바꾼 뒤에 피드 목록으로 돌아왔을 때 적용시키려고 넣어둔건데
+        //이걸 넣으면 페이징 처리도 리셋됨...! (당장에 생각하기 힘들어서 일단 빼둠)
+//        let category = viewModel.category[selectedCategoryIndex].0
+//        if selectedSortIndex > 0 {
+//            var sortString: String {
+//                switch selectedSortIndex {
+//                case 1: return "likeCount,DESC"
+//                case 2: return "difficulty,ASC"
+//                case 3: return "difficulty,DESC"
+//                default: return ""
+//                }
+//            }
+//            APIClient.feed(category: category, sort: sortString) { [weak self] twoFeedModel in
+//                self?.viewModel.currentPage = 0
+//                self?.viewModel.categoryFeeds = twoFeedModel.feedPreviewList
+//                self?.feedCollectionView.reloadData()
+//            }
+//        } else {
+//            APIClient.feed(category: category) { [weak self] twoFeedModel in
+//                self?.viewModel.currentPage = 0
+//                self?.viewModel.categoryFeeds = twoFeedModel.feedPreviewList
+//                self?.feedCollectionView.reloadData()
+//            }
+//        }
     }
 
     func bindingView() {
@@ -63,9 +67,10 @@ class FeedViewController: BaseViewController, Storyboard, ViewModelBindableType 
         
         self.reloadFlagSubject
             .subscribe(onNext: { [weak self] feeds in
+                self?.viewModel.currentPage = 0
                 self?.viewModel.categoryFeeds = feeds
                 self?.feedCollectionView.reloadData()
-                self?.feedCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                self?.feedCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
             })
             .disposed(by: disposeBag)
     }
@@ -195,5 +200,30 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+}
+
+extension FeedViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == feedCollectionView {
+            let scrollViewHeight = scrollView.frame.size.height
+            let scrollContentSizeHeight = scrollView.contentSize.height
+            let scrollYOffset = scrollView.contentOffset.y
+
+            print("scrollYOffset + scrollViewHeight: \(scrollYOffset + scrollViewHeight)")
+            print("scrollContentSizeHeight: \(scrollContentSizeHeight)")
+            print("cateogryFeedsCount: \(viewModel.categoryFeeds.count)")
+            if scrollYOffset + scrollViewHeight == scrollContentSizeHeight {
+                let category = viewModel.category[selectedCategoryIndex].0
+                viewModel.currentPage += 1
+
+                APIClient.feed(category: category, page: viewModel.currentPage) { [weak self] twoFeedModel in
+                    self?.viewModel.categoryFeeds += twoFeedModel.feedPreviewList
+                    self?.feedCollectionView.reloadData()
+
+                    print("리뤄드")
+                }
+            }
+        }
     }
 }
