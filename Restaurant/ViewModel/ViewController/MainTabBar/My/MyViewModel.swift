@@ -11,7 +11,7 @@ import RxCocoa
 
 struct MyViewModel {
     var viewModel: UserModel
-    
+
     lazy var nickname: Driver<String> = {
         return Driver<String>.just(viewModel.nickname)
     }()

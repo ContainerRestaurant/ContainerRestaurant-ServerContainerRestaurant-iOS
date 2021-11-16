@@ -11,7 +11,8 @@ import Alamofire
 enum Router: URLRequestConvertible {
     case CreateLoginToken(provider: String, accessToken: String)
     case CheckLogin
-    case UpdateUserInformation(userID: Int, nickname: String)
+    case UpdateUserNickname(userID: Int, nickname: String)
+    case UpdateUserProfile(userID: Int, profileID: Int)
     case UnregisterUser(userID: Int)
     case CheckUser(userID: Int)
     case HomeMainData
@@ -44,7 +45,8 @@ enum Router: URLRequestConvertible {
         switch self {
         case .CreateLoginToken: return .post
         case .CheckLogin: return .get
-        case .UpdateUserInformation: return .patch
+        case .UpdateUserNickname: return .patch
+        case .UpdateUserProfile: return .patch
         case .UnregisterUser: return .delete
         case .CheckUser: return .get
         case .HomeMainData: return .get
@@ -77,7 +79,8 @@ enum Router: URLRequestConvertible {
         switch self {
         case .CreateLoginToken: return "/api/user"
         case .CheckLogin: return "/api/user"
-        case .UpdateUserInformation(let userID, _): return "/api/user/\(userID)"
+        case .UpdateUserNickname(let userID, _): return "/api/user/\(userID)"
+        case .UpdateUserProfile(let userID, _): return "/api/user/\(userID)"
         case .UnregisterUser(let userID): return "/api/user/\(userID)"
         case .CheckUser(let userID): return "/api/user/\(userID)"
         case .HomeMainData: return "/api/home"
@@ -110,7 +113,8 @@ enum Router: URLRequestConvertible {
         switch self {
         case .CreateLoginToken(let provider, let accessToken): return ["provider": provider, "accessToken": accessToken]
         case .CheckLogin: return nil
-        case .UpdateUserInformation(_, let nickname): return ["nickname": nickname]
+        case .UpdateUserNickname(_, let nickname): return ["nickname": nickname]
+        case .UpdateUserProfile(_, let profileID): return ["profileId": String(profileID)]
         case .UnregisterUser: return nil
         case .CheckUser: return nil
         case .HomeMainData: return nil
@@ -146,7 +150,7 @@ enum Router: URLRequestConvertible {
 
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
 //        switch self {
-//        case .CheckLogin, .UpdateUserInformation, .HomeMainData, .FavoriteRestaurant, .LikeFeed, .ScrapFeed, .DeleteFeed, .CreateFeedComment, .UpdateFeedComment, .DeleteFeedComment, .CreateFeedReplyComment:
+//        case .CheckLogin, .UpdateUserNickname, .HomeMainData, .FavoriteRestaurant, .LikeFeed, .ScrapFeed, .DeleteFeed, .CreateFeedComment, .UpdateFeedComment, .DeleteFeedComment, .CreateFeedReplyComment:
         if !UserDataManager.sharedInstance.loginToken.isEmpty {
             urlRequest.setValue("Bearer \(UserDataManager.sharedInstance.loginToken)", forHTTPHeaderField: "Authorization")
         }

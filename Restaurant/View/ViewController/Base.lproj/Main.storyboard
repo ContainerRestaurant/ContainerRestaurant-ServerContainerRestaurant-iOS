@@ -476,12 +476,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5CZ-tG-LIz">
                                 <rect key="frame" x="0.0" y="44" width="375" height="149"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FXU-5e-QIU">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FXU-5e-QIU">
                                         <rect key="frame" x="16" y="19" width="42" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="MtJ-US-P4D"/>
                                             <constraint firstAttribute="width" constant="42" id="wue-xV-7Y4"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="21"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HfV-li-vup">
                                         <rect key="frame" x="66" y="19" width="47" height="24"/>
@@ -1126,7 +1131,7 @@
                                 <color key="textColor" name="colorGrayGray07"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IU" translatesAutoresizingMaskIntoConstraints="NO" id="Kc2-qb-C8U">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileTumbler42px" translatesAutoresizingMaskIntoConstraints="NO" id="Kc2-qb-C8U">
                                 <rect key="frame" x="16" y="141.66666666666666" width="42" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="CpE-Ql-iVf"/>
@@ -1369,6 +1374,8 @@
                         <outlet property="levelLabel" destination="vlR-Np-TuJ" id="UjE-Pr-5MC"/>
                         <outlet property="nicknameLabel" destination="1O8-8X-0lS" id="LG1-a9-ZkS"/>
                         <outlet property="nicknameUpdateButton" destination="5AD-nh-Qxx" id="Cn4-jl-ii3"/>
+                        <outlet property="profileImageButton" destination="VdE-mz-VGd" id="NFl-ry-swS"/>
+                        <outlet property="profileImageView" destination="Kc2-qb-C8U" id="tVc-N4-93S"/>
                         <outlet property="scrapFeedButton" destination="72P-3y-VWO" id="PdW-yc-wyb"/>
                         <outlet property="scrapFeedCountLabel" destination="v5E-UE-CYK" id="rr3-xK-6D0"/>
                         <outlet property="settingButton" destination="IgL-jW-e7X" id="n80-hW-k2g"/>
@@ -2205,7 +2212,6 @@
     <resources>
         <image name="28PxIconApple" width="28.333333969116211" height="28"/>
         <image name="28PxIconKakao" width="28.333333969116211" height="28"/>
-        <image name="IU" width="464" height="461"/>
         <image name="bookmarkFilledGreen20Px" width="20" height="20"/>
         <image name="btnMapList" width="130" height="58"/>
         <image name="btnMapLocation" width="58" height="58"/>
@@ -2220,6 +2226,7 @@
         <image name="listOutline16Px" width="16" height="16"/>
         <image name="mapLoadingIcon" width="60" height="60"/>
         <image name="photoEdit20Px" width="20" height="20"/>
+        <image name="profileTumbler42px" width="42" height="42"/>
         <image name="profileViewCountFilled24Px" width="24" height="24"/>
         <image name="resetOutline16Px" width="16" height="16"/>
         <image name="searchOutline20Px" width="20" height="20"/>

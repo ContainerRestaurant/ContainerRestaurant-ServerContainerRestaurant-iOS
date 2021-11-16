@@ -8,13 +8,17 @@
 import UIKit
 import RxSwift
 import KakaoSDKUser
+import Photos
 
 class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
     weak var coordinator: MyCoordinator?
     var viewModel: MyViewModel!
+    let imagePicker = UIImagePickerController()
     var isLoginSubject: PublishSubject<Bool> = PublishSubject<Bool>()
     let userDataSubject: PublishSubject<UserModel> = PublishSubject<UserModel>()
     
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var profileImageButton: UIButton!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var feedButton: UIButton!
@@ -29,6 +33,8 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        imagePicker.delegate = self
         print("MyViewController viewDidLoad()")
     }
     
@@ -57,6 +63,8 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
 
     func bindingView() {
         print("My bindingView")
+        let defaultImage = Common.getDefaultProfileImage42("Lv1. 텀블러")
+        profileImageView.image = defaultImage
         nicknameLabel.text = "용기낸 식당"
         levelLabel.text = "Lv1. 텀블러"
         feedCountLabel.text = "0"
@@ -66,6 +74,13 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
     
     func bindingViewAfterFetch() {
         print("My bindingViewAfterFetch")
+
+        if viewModel.viewModel.profile.isEmpty {
+            let defaultImage = Common.getDefaultProfileImage42(viewModel.viewModel.levelTitle)
+            profileImageView.image = defaultImage
+        } else {
+            profileImageView.kf.setImage(with: URL(string: viewModel.viewModel.profile), options: [.transition(.fade(0.3))])
+        }
 
         viewModel.nickname
             .drive(nicknameLabel.rx.text)
@@ -93,6 +108,26 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
         settingButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.coordinator?.pushSetting()
+            })
+            .disposed(by: disposeBag)
+
+        profileImageButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                PHPhotoLibrary.requestAuthorization({ [weak self] (status) in
+                    switch status {
+                    case .authorized:
+                        DispatchQueue.main.async { [weak self] in
+                            guard let self = self else { return }
+
+                            self.imagePicker.sourceType = .photoLibrary
+                            Common.currentViewController()?.present(self.imagePicker, animated: true, completion: nil)
+                        }
+                    default:
+                        DispatchQueue.main.async {
+                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                        }
+                    }
+                })
             })
             .disposed(by: disposeBag)
 
@@ -140,5 +175,20 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
 
     deinit {
         print("MyViewController Deinit")
+    }
+}
+
+extension MyViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        //사용자 정보 업데이트...
+        API().uploadImage(image: image) { [weak self] imageID in
+            let userID = UserDataManager.sharedInstance.userID
+            APIClient.updateUserProfile(userID: userID, profileID: imageID) { [weak self] userModel in
+                self?.profileImageView.kf.setImage(with: URL(string: userModel.profile), options: [.transition(.fade(0.3))])
+            }
+        }
+
+        Common.currentViewController()?.dismiss(animated: true, completion: nil)
     }
 }

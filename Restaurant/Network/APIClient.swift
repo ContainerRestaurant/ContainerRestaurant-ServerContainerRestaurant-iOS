@@ -38,20 +38,34 @@ class APIClient {
             }
     }
 
-    //사용자 정보 변경
-    static func updateUserInformation(userID: Int, nickname: String, completion: @escaping (UserModel) -> Void) {
-        AF.request(Router.UpdateUserInformation(userID: userID, nickname: nickname))
+    //사용자 닉네임 변경
+    static func updateUserNickname(userID: Int, nickname: String, completion: @escaping (UserModel) -> Void) {
+        AF.request(Router.UpdateUserNickname(userID: userID, nickname: nickname))
             .responseDecodable { (response: DataResponse<UserModel, AFError>) in
                 switch response.result {
                 case .success(let userModel):
                     completion(userModel)
                 case .failure(let error):
                     completion(UserModel())
-                    print("Update User Information's Error: \(error)")
+                    print("Update User Nickname's Error: \(error)")
                 }
             }
     }
-
+    
+    //사용자 프로필 변경
+    static func updateUserProfile(userID: Int, profileID: Int, completion: @escaping (UserModel) -> Void) {
+        AF.request(Router.UpdateUserProfile(userID: userID, profileID: profileID))
+            .responseDecodable { (response: DataResponse<UserModel, AFError>) in
+                switch response.result {
+                case .success(let userModel):
+                    completion(userModel)
+                case .failure(let error):
+                    completion(UserModel())
+                    print("Update User Profile's Error: \(error)")
+                }
+            }
+    }
+    
     //계정 탈퇴
     static func unregisterUser(userID: Int, completion: @escaping (Bool) -> Void) {
         AF.request(Router.UnregisterUser(userID: userID))
