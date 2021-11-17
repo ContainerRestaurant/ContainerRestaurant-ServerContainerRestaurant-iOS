@@ -33,7 +33,7 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
     var isWelcome: Bool = false
     var isWelcomeSubject: PublishSubject<Bool> = PublishSubject<Bool>()
     var imageID: Int?
-    var imageIDSubject: PublishSubject<Int> = PublishSubject<Int>()
+    var imageIDFlagSubject: PublishSubject<Void> = PublishSubject<Void>()
     var imageSubject: PublishSubject<UIImage?> = PublishSubject<UIImage?>()
     var contentsTextSubject: PublishSubject<String> = PublishSubject<String>()
     var contentsText: String = ""
@@ -86,17 +86,15 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
         
         imageSubject
             .subscribe(onNext: { [weak self] in
-                if $0 == nil {
-                    self?.imageIDSubject.onNext(-1)
-                } else {
-                    API().uploadImage(image: $0!, imageIDSubject: self!.imageIDSubject)
+                guard let image = $0 else {
+                    self?.imageID = -1
+                    return
                 }
-            })
-            .disposed(by: disposeBag)
-        
-        imageIDSubject
-            .subscribe(onNext: { [weak self] in
-                self?.imageID = $0
+
+                API().uploadImage(image: image) { [weak self] imageID in
+                    self?.imageID = imageID
+                    self?.imageIDFlagSubject.onNext(())
+                }
             })
             .disposed(by: disposeBag)
         
@@ -107,8 +105,8 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
             .disposed(by: disposeBag)
 
         Observable
-            .zip(registerSubject, imageIDSubject)
-            .subscribe(onNext: { [weak self] (registerSubject, imageIDSubject) in
+            .zip(registerSubject, imageIDFlagSubject)
+            .subscribe(onNext: { [weak self] (registerSubject, _) in
                 let convertingXY = self?.convertingXY()
                 let restaurant: RestaurantModel = RestaurantModel(name: self?.restaurant?.title.deleteBrTag() ?? "", address: self?.restaurant?.roadAddress ?? "", latitude: convertingXY?.lat ?? 0.0, longitude: convertingXY?.lng ?? 0.0)
                 

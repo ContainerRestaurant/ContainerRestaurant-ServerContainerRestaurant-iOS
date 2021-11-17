@@ -93,7 +93,7 @@ class NickNamePopupViewController: BaseViewController, Storyboard {
                 let userID = UserDataManager.sharedInstance.userID
                 let nickname = self?.nickNameTextField.text ?? ""
 
-                APIClient.updateUserInformation(userID: userID, nickname: nickname) { [weak self] _ in
+                APIClient.updateUserNickname(userID: userID, nickname: nickname) { [weak self] _ in
                     switch self?.viewControllerWhereComeFrom {
                     case .mapBottomSheet:
                         self?.dismiss(animated: true) {

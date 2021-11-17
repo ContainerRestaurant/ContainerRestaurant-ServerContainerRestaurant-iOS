@@ -94,7 +94,7 @@ extension API {
     }
     
     //이미지 업로드
-    func uploadImage(image: UIImage, imageIDSubject: PublishSubject<Int>) {
+    func uploadImage(image: UIImage, completion: @escaping (Int) -> Void) {
         let url = "\(baseURL)/api/image/upload"
         let header: HTTPHeaders = [
             "Content-type": "multipart/form-data",
@@ -113,8 +113,7 @@ extension API {
                     let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .fragmentsAllowed)
                     let instanceData = try JSONDecoder().decode(UploadingImageModel.self, from: dataJSON)
                     
-                    imageIDSubject.onNext(instanceData.id)
-                    print("upload Image: \(instanceData)")
+                    completion(instanceData.id)
                 } catch {
                     print(error.localizedDescription)
                 }
