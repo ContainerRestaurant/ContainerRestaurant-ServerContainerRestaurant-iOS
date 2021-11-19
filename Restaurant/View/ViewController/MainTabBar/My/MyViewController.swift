@@ -63,7 +63,7 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
 
     func bindingView() {
         print("My bindingView")
-        let defaultImage = Common.getDefaultProfileImage42("Lv1. 텀블러")
+        let defaultImage = Common.getDefaultProfileImage42("LV1. 텀블러")
         profileImageView.image = defaultImage
         nicknameLabel.text = "용기낸 식당"
         levelLabel.text = "Lv1. 텀블러"
