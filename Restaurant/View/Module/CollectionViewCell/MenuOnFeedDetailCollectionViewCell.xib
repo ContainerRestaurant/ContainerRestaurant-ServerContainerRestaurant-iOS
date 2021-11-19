@@ -27,7 +27,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZc-di-N5D">
-                        <rect key="frame" x="26" y="0.0" width="38" height="20"/>
+                        <rect key="frame" x="26" y="0.0" width="349" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="dAq-Gl-1UI"/>
                         </constraints>
@@ -36,7 +36,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NK5-0e-RIG">
-                        <rect key="frame" x="26" y="24" width="38" height="20"/>
+                        <rect key="frame" x="26" y="24" width="349" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="Rn7-WX-KWv"/>
                         </constraints>
@@ -50,10 +50,12 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="NK5-0e-RIG" firstAttribute="top" secondItem="yZc-di-N5D" secondAttribute="bottom" constant="4" id="33N-Zs-8Cj"/>
+                <constraint firstAttribute="trailing" secondItem="yZc-di-N5D" secondAttribute="trailing" id="MTG-kw-rgX"/>
                 <constraint firstItem="s1t-NG-es2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="NcF-ue-BOB"/>
                 <constraint firstItem="yZc-di-N5D" firstAttribute="leading" secondItem="s1t-NG-es2" secondAttribute="trailing" constant="6" id="XC4-Dn-Nlu"/>
                 <constraint firstItem="s1t-NG-es2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="cSS-mO-VGX"/>
                 <constraint firstItem="yZc-di-N5D" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fMh-mE-fLY"/>
+                <constraint firstAttribute="trailing" secondItem="NK5-0e-RIG" secondAttribute="trailing" id="iqE-u4-bIu"/>
                 <constraint firstItem="NK5-0e-RIG" firstAttribute="leading" secondItem="yZc-di-N5D" secondAttribute="leading" id="yGW-hc-wN6"/>
             </constraints>
             <connections>
