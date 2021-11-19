@@ -25,14 +25,17 @@ class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-//        APIClient.checkLogin(loginToken: UserDataManager.sharedInstance.loginToken) { [weak self] userModel in
-//            if userModel.id != 0 {
-        APIClient.homeMainData { [weak self] in
-            self?.viewModel.homeMainData = $0
-            self?.collectionView.reloadData()
+        APIClient.checkLogin(loginToken: UserDataManager.sharedInstance.loginToken) { [weak self] userModel in
+            if userModel.id == 0 {
+                UserDataManager.sharedInstance.loginToken = ""
+                UserDataManager.sharedInstance.userID = 0
+            }
+
+            APIClient.homeMainData { [weak self] in
+                self?.viewModel.homeMainData = $0
+                self?.collectionView.reloadData()
+            }
         }
-//            }
-//        }
 
         self.navigationController?.setNavigationBarHidden(true, animated: HomeViewController.homeNavigationBarAnimated)
     }
