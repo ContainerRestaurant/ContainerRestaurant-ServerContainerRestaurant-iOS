@@ -60,19 +60,19 @@ extension SettingViewController {
 
 extension SettingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return 5
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: SettingCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
 
         switch indexPath.row {
-        case 0: cell.alertConfigure()
-        case 1: cell.configure(title: "개인정보 취급방침")
-        case 2: cell.configure(title: "서비스 이용약관")
-        case 3: cell.configure(title: "로그아웃")
-        case 4: cell.configure(title: "계정 탈퇴")
-        case 5: cell.appVersionConfigure()
+//        case 0: cell.alertConfigure()
+        case 0: cell.configure(title: "개인정보 취급방침")
+        case 1: cell.configure(title: "서비스 이용약관")
+        case 2: cell.configure(title: "로그아웃")
+        case 3: cell.configure(title: "계정 탈퇴")
+        case 4: cell.appVersionConfigure()
         default: break
         }
 
