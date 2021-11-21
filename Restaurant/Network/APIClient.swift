@@ -137,7 +137,7 @@ class APIClient {
             }
     }
 
-    //홈 탭 메인 피드
+    //특정 유저 피드
     static func userFeed(userID: Int, completion: @escaping ([FeedPreviewModel]) -> Void ) {
         AF.request(Router.UserFeed(userID: userID, size: 1000))
             .responseDecodable { (response: DataResponse<TwoFeedModel, AFError>) in
@@ -149,6 +149,20 @@ class APIClient {
                     print("User Feed's Error: \(error)")
                 }
             }
+    }
+
+    static func reportFeed(feedID: String, completion: @escaping (Bool) -> Void) {
+        AF.request(Router.ReportFeed(feedID: feedID))
+            .response(completionHandler: { response in
+                switch response.result {
+                case .success(let result):
+                    completion(true)
+                    print("Report Feed's Success: \(String(describing: result))")
+                case .failure(let error):
+                    completion(false)
+                    print("Report Feed's Error: \(error)")
+                }
+            })
     }
 
     //특정 유저가 스크랩한 피드

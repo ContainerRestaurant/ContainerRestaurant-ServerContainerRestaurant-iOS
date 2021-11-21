@@ -78,4 +78,12 @@ extension FeedDetailCoordinator {
         childCoordinators.append(coordinator)
         coordinator.start()
     }
+
+    func presentReportFeedPopup(feedID: String) {
+        let coordinator = CommonPopupCoordinator(presenter: presenter, isTwoButton: true, buttonType: .reportFeed)
+        coordinator.delegate = self
+        coordinator.feedID = feedID
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
 }

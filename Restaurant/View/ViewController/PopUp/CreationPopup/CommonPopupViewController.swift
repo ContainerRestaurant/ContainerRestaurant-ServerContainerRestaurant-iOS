@@ -10,6 +10,7 @@ import RxSwift
 
 enum PopupButtonType {
     case creationFeed
+    case reportFeed
     case deleteFeed
     case deleteComment
     case reportComment
@@ -43,6 +44,9 @@ class CommonPopupViewController: BaseViewController, Storyboard {
         case .creationFeed:
             setButton(buttonType)
             creationFeedBindingView()
+        case .reportFeed:
+            setButton(buttonType)
+            reportFeedBindingView()
         case .deleteFeed:
             setButton(buttonType)
             deleteFeedBindingView()
@@ -90,6 +94,26 @@ class CommonPopupViewController: BaseViewController, Storyboard {
                     } else {
                         self?.dismiss(animated: false, completion: nil)
                         self?.coordinator?.presenter.tabBarController?.selectedIndex = 2
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func reportFeedBindingView() {
+        cancelButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss(animated: false, completion: nil)
+            })
+            .disposed(by: disposeBag)
+
+        okButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                if let feedID = self?.feedID {
+                    APIClient.reportFeed(feedID: feedID) { [weak self] isSuccess in
+                        self?.dismiss(animated: false) { [weak self] in
+                            self?.coordinator?.presentConfirmReportCommentPopup()
+                        }
                     }
                 }
             })
@@ -235,7 +259,7 @@ class CommonPopupViewController: BaseViewController, Storyboard {
             popupTitleLabel.text = "정말 삭제하시겠습니까?"
             cancelButton.setTitle("취소", for: .normal)
             okButton.setTitle("삭제", for: .normal)
-        case .reportComment:
+        case .reportComment, .reportFeed:
             popupTitleLabel.text = "정말 신고하시겠습니까?"
             cancelButton.setTitle("취소", for: .normal)
             okButton.setTitle("신고", for: .normal)

@@ -19,6 +19,7 @@ enum Router: URLRequestConvertible {
     case ContainerOfEveryone
     case RecommendFeed
     case UserFeed(userID: Int, size: Int)
+    case ReportFeed(feedID: String)
     case ScrapedFeed(userID: Int, size: Int)
     case FavoriteRestaurant
     case RegistFavoriteRestaurant(restaurantID: Int)
@@ -53,6 +54,7 @@ enum Router: URLRequestConvertible {
         case .ContainerOfEveryone: return .get
         case .RecommendFeed: return .get
         case .UserFeed: return .get
+        case .ReportFeed: return .post
         case .ScrapedFeed: return .get
         case .FavoriteRestaurant: return .get
         case .RegistFavoriteRestaurant: return .post
@@ -87,6 +89,7 @@ enum Router: URLRequestConvertible {
         case .ContainerOfEveryone: return "/api/statistics/total-container"
         case .RecommendFeed: return "/api/feed/recommend"
         case .UserFeed(let userID, _): return "/api/feed/user/\(userID)"
+        case .ReportFeed(let feedID): return "/api/report/feed/\(feedID)"
         case .ScrapedFeed(let userID, _): return "/api/feed/user/\(userID)/scrap"
         case .FavoriteRestaurant: return "/api/favorite/restaurant"
         case .RegistFavoriteRestaurant(let restaurantID): return "/api/favorite/restaurant/\(restaurantID)"
@@ -121,6 +124,7 @@ enum Router: URLRequestConvertible {
         case .ContainerOfEveryone: return nil
         case .RecommendFeed: return nil
         case .UserFeed(_, let size): return ["size": String(size)]
+        case .ReportFeed: return nil
         case .ScrapedFeed(_, let size): return ["size": String(size)]
         case .FavoriteRestaurant: return nil
         case .RegistFavoriteRestaurant: return nil

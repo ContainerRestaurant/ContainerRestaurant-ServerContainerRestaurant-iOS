@@ -257,22 +257,41 @@ extension FeedDetailViewController {
         let moreButton = UIButton(type: .custom)
         moreButton.setImage(UIImage(named: "moreHorizontalOutline20px"), for: .normal)
         moreButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        moreButton.addTarget(self, action: #selector(presentMoreMenu), for: .touchUpInside)
+        let isMyFeed = viewModel.userID == UserDataManager.sharedInstance.userID
+        moreButton.addTarget(self, action: isMyFeed ? #selector(presentMyMoreMenu) : #selector(presentSomeoneElseMoreButton), for: .touchUpInside)
         let helpRightBarButtonItem = UIBarButtonItem(customView: moreButton)
 //        self.coordinator?.presenter.navigationItem.rightBarButtonItem = helpRightBarButtonItem //Todo: 네비게이션 구조 파악하는데에 참고 해도 좋을듯 (얘는 안나오고 아래는 나옴)
         self.navigationItem.rightBarButtonItem = helpRightBarButtonItem
     }
 
-    @objc func presentMoreMenu() {
+    @objc func presentMyMoreMenu() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        alert.addAction(UIAlertAction(title: "수정하기", style: .default , handler:{ (UIAlertAction) in
-            print("User click Edit button")
-        }))
+//        alert.addAction(UIAlertAction(title: "수정하기", style: .default , handler:{ (UIAlertAction) in
+//            print("User click Edit button")
+//        }))
 
         alert.addAction(UIAlertAction(title: "삭제하기", style: .destructive , handler:{ [weak self] (UIAlertAction) in
             if let feedID = self?.viewModel.feedID {
                 self?.coordinator?.presentDeleteFeedPopup(feedID: feedID)
+            }
+        }))
+
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler:{ (UIAlertAction) in
+            print("User click Dismiss button")
+        }))
+
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+    }
+
+    @objc func presentSomeoneElseMoreButton() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+        alert.addAction(UIAlertAction(title: "신고하기", style: .destructive , handler:{ [weak self] (UIAlertAction) in
+            if let feedID = self?.viewModel.feedID {
+                self?.coordinator?.presentReportFeedPopup(feedID: feedID)
             }
         }))
 
