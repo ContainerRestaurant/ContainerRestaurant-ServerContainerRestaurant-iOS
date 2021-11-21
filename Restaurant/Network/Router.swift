@@ -19,6 +19,7 @@ enum Router: URLRequestConvertible {
     case ContainerOfEveryone
     case RecommendFeed
     case UserFeed(userID: Int, size: Int)
+//    case UploadFeed(feedModel: FeedModel)
     case ReportFeed(feedID: String)
     case ScrapedFeed(userID: Int, size: Int)
     case FavoriteRestaurant
@@ -54,6 +55,7 @@ enum Router: URLRequestConvertible {
         case .ContainerOfEveryone: return .get
         case .RecommendFeed: return .get
         case .UserFeed: return .get
+//        case .UploadFeed: return .post
         case .ReportFeed: return .post
         case .ScrapedFeed: return .get
         case .FavoriteRestaurant: return .get
@@ -89,6 +91,7 @@ enum Router: URLRequestConvertible {
         case .ContainerOfEveryone: return "/api/statistics/total-container"
         case .RecommendFeed: return "/api/feed/recommend"
         case .UserFeed(let userID, _): return "/api/feed/user/\(userID)"
+//        case .UploadFeed: return "/api/feed"
         case .ReportFeed(let feedID): return "/api/report/feed/\(feedID)"
         case .ScrapedFeed(let userID, _): return "/api/feed/user/\(userID)/scrap"
         case .FavoriteRestaurant: return "/api/favorite/restaurant"
@@ -124,6 +127,22 @@ enum Router: URLRequestConvertible {
         case .ContainerOfEveryone: return nil
         case .RecommendFeed: return nil
         case .UserFeed(_, let size): return ["size": String(size)]
+//        case .UploadFeed(let feedModel):
+//            var parameter: [String: Any] = [
+//                "restaurantCreateDto": feedModel.restaurantCreateDto,
+//                "category": feedModel.category,
+//                "mainMenu": feedModel.mainMenu,
+//                "difficulty": feedModel.difficulty,
+//                "welcome": feedModel.welcome,
+//                "content": feedModel.content
+//            ]
+//            if !(feedModel.subMenu?.isEmpty ?? true) {
+//                parameter["subMenu"] = feedModel.subMenu
+//            }
+//            if let thumbnailImageId = feedModel.thumbnailImageId {
+//                parameter["thumbnailImageId"] = thumbnailImageId
+//            }
+//            return parameter
         case .ReportFeed: return nil
         case .ScrapedFeed(_, let size): return ["size": String(size)]
         case .FavoriteRestaurant: return nil

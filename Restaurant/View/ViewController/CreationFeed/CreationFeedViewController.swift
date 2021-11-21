@@ -88,6 +88,7 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
             .subscribe(onNext: { [weak self] in
                 guard let image = $0 else {
                     self?.imageID = -1
+                    self?.imageIDFlagSubject.onNext(())
                     return
                 }
 
@@ -115,8 +116,8 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
                    let thumbnailImageID = self?.imageID,
                    let coordinator = self?.coordinator {
                     let feedInformation = FeedModel(restaurantCreateDto: restaurant, category: self!.selectedCategory, mainMenu: mainFoodAndContainer, subMenu: sideFoodAndContainer, difficulty: self!.levelOfDifficulty, welcome: self!.isWelcome, thumbnailImageID: thumbnailImageID, content: self!.contentsText)
-                    
-                    API().uploadFeed(feedModel: feedInformation, coordinator: coordinator)
+
+                    coordinator.confirmCreationFeedPopup(feedModel: feedInformation)
                 }
             })
             .disposed(by: disposeBag)

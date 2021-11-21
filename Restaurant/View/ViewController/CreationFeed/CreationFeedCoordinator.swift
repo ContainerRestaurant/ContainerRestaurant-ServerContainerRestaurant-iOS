@@ -34,4 +34,14 @@ extension CreationFeedCoordinator {
         childCoordinators.append(coordinator)
         coordinator.start()
     }
+
+    func confirmCreationFeedPopup(feedModel: FeedModel) {
+        let coordinator = CommonPopupCoordinator(presenter: presenter, isTwoButton: true, buttonType: .confirmCreationFeed)
+        coordinator.delegate = self
+        coordinator.feedModel = feedModel
+        childCoordinators.append(coordinator)
+
+//        coordinator.start()
+        coordinator.otherPresent()
+    }
 }

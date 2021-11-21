@@ -151,6 +151,21 @@ class APIClient {
             }
     }
 
+    //피드쓰기 Todo: API -> APIClient
+//    static func uploadFeed(feedModel: FeedModel, completion: @escaping (CreationFeedResponseModel) -> Void) {
+//        AF.request(Router.UploadFeed(feedModel: feedModel))
+//            .responseDecodable { (response: DataResponse<CreationFeedResponseModel, AFError>) in
+//                switch response.result {
+//                case .success(let creationFeedResponseModel):
+//                    completion(creationFeedResponseModel)
+//                case .failure(let error):
+//                    completion(CreationFeedResponseModel())
+//                    print("Upload Feed's Error: \(error)")
+//                }
+//            }
+//    }
+
+    //피드 신고하기
     static func reportFeed(feedID: String, completion: @escaping (Bool) -> Void) {
         AF.request(Router.ReportFeed(feedID: feedID))
             .response(completionHandler: { response in

@@ -148,4 +148,15 @@ extension Common {
         default: return nil//UIImage(named: "ProfileTumbler148px")
         }
     }
+
+    static func getLevelUpImage(_ levelTitle: String) -> UIImage? {
+        switch levelTitle {
+        case "LV1. 텀블러": return UIImage(named: "levelUpTumbler")
+        case "LV2. 밥그릇": return UIImage(named: "levelUpBowl")
+        case "LV3. 용기 세트": return UIImage(named: "levelUpContainerSet")
+        case "LV4. 후라이팬": return UIImage(named: "levelUpFryingPan")
+        case "LV5. 냄비": return UIImage(named: "levelUpPot")
+        default: return nil//UIImage(named: "ProfileTumbler148px")
+        }
+    }
 }

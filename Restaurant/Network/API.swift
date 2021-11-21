@@ -80,7 +80,7 @@ extension API {
     }
     
     //피드 업로드
-    func uploadFeed(feedModel: FeedModel, coordinator: CreationFeedCoordinator) {
+    func uploadFeed(feedModel: FeedModel, completion: @escaping (CreationFeedResponseModel) -> Void) {
         let url = "\(baseURL)/api/feed"
         let params = feedModel
 
@@ -92,12 +92,21 @@ extension API {
                              "Accept":"application/json",
                              "Authorization": "Bearer \(UserDataManager.sharedInstance.loginToken)"])
             .validate(statusCode: 200..<300)
-            .response { response in
-                print("피드쓰기----------------")
-                print(response)
-                print("피드쓰기----------------")
-                coordinator.presenter.dismiss(animated: true, completion: nil)
-            }
+            .responseJSON(completionHandler: { response in
+                switch response.result {
+                case .success(let obj):
+                    do {
+                        let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .fragmentsAllowed)
+                        let instanceData = try JSONDecoder().decode(CreationFeedResponseModel.self, from: dataJSON)
+
+                        completion(instanceData)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                case .failure(let e):
+                    print(e.localizedDescription)
+                }
+            })
     }
 }
 

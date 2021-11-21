@@ -10,6 +10,7 @@ import RxSwift
 
 enum PopupButtonType {
     case creationFeed
+    case confirmCreationFeed
     case reportFeed
     case deleteFeed
     case deleteComment
@@ -28,6 +29,9 @@ class CommonPopupViewController: BaseViewController, Storyboard {
     var feedID: String?
     var commentID: Int?
     var reloadSubject: PublishSubject<Void>?
+
+    //피드
+    var feedModel: FeedModel?
     
     @IBOutlet weak var backgroundButton: UIButton!
     @IBOutlet weak var popupTitleLabel: UILabel!
@@ -39,35 +43,19 @@ class CommonPopupViewController: BaseViewController, Storyboard {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setButton(buttonType)
         cancelView.isHidden = !isTwoButton
         switch buttonType {
-        case .creationFeed:
-            setButton(buttonType)
-            creationFeedBindingView()
-        case .reportFeed:
-            setButton(buttonType)
-            reportFeedBindingView()
-        case .deleteFeed:
-            setButton(buttonType)
-            deleteFeedBindingView()
-        case .deleteComment:
-            setButton(buttonType)
-            deleteCommentBindingView()
-        case .reportComment:
-            setButton(buttonType)
-            reportCommentBindingView()
-        case .confirmReportComment:
-            setButton(buttonType)
-            confirmReportCommentBindingView()
-        case .confirmExit:
-            setButton(buttonType)
-            confirmExitBindingView()
-        case .logout:
-            setButton(buttonType)
-            logoutBindingView()
-        case .unregister:
-            setButton(buttonType)
-            unregisterBindingView()
+        case .creationFeed: creationFeedBindingView()
+        case .confirmCreationFeed: confirmCreationFeedBindingView()
+        case .reportFeed: reportFeedBindingView()
+        case .deleteFeed: deleteFeedBindingView()
+        case .deleteComment: deleteCommentBindingView()
+        case .reportComment: reportCommentBindingView()
+        case .confirmReportComment: confirmReportCommentBindingView()
+        case .confirmExit: confirmExitBindingView()
+        case .logout: logoutBindingView()
+        case .unregister: unregisterBindingView()
         case .none: break
         }
 
@@ -94,6 +82,37 @@ class CommonPopupViewController: BaseViewController, Storyboard {
                     } else {
                         self?.dismiss(animated: false, completion: nil)
                         self?.coordinator?.presenter.tabBarController?.selectedIndex = 2
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func confirmCreationFeedBindingView() {
+        cancelButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss(animated: false, completion: nil)
+            })
+            .disposed(by: disposeBag)
+
+        okButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                if let feed = self?.feedModel {
+                    //피드쓰기 Todo: API -> APIClient
+//                    APIClient.uploadFeed(feedModel: feed) { [weak self] creationFeedResponse in
+//                        self?.coordinator?.presentLevelUpPopup {
+//                            self?.coordinator?.presenter.dismiss(animated: false)
+//                        }
+//                    }
+
+                    API().uploadFeed(feedModel: feed) { [weak self] creationFeedResponse in
+                        if creationFeedResponse.levelUp.levelFeedCount != 0 {
+                            self?.coordinator?.presentLevelUpPopup(levelUp: creationFeedResponse.levelUp) {
+                                self?.coordinator?.presenter.dismiss(animated: false)
+                            }
+                        } else {
+                            self?.coordinator?.presenter.dismiss(animated: false)
+                        }
                     }
                 }
             })
@@ -255,6 +274,19 @@ class CommonPopupViewController: BaseViewController, Storyboard {
             popupTitleLabel.text = "용기낸 경험을 들려주시겠어요?"
             cancelButton.setTitle("나중에요", for: .normal)
             okButton.setTitle("네, 좋아요!", for: .normal)
+        case .confirmCreationFeed:
+            let attributedString = NSMutableAttributedString()
+                .bold(string: "작성 완료 하시겠어요?\n", fontColor: .colorGrayGray07, fontSize: 16)
+                .regular(string: "피드 등록 후에는 수정이 불가능해요.", fontColor: .colorGrayGray06, fontSize: 14)
+
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            paragraphStyle.paragraphSpacing = 4
+            attributedString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+
+            popupTitleLabel.attributedText = attributedString
+            cancelButton.setTitle("취소", for: .normal)
+            okButton.setTitle("완료", for: .normal)
         case .deleteFeed, .deleteComment:
             popupTitleLabel.text = "정말 삭제하시겠습니까?"
             cancelButton.setTitle("취소", for: .normal)
