@@ -15,6 +15,7 @@ class FeedViewController: BaseViewController, Storyboard, ViewModelBindableType 
     var selectedSortIndex: Int = 0
     let selectedCategoryAndSortSubject: PublishSubject<(String, Int)> = PublishSubject<(String, Int)>()
     let reloadFlagSubject: PublishSubject<[FeedPreviewModel]> = PublishSubject<[FeedPreviewModel]>()
+    var addingPageFlag = true
     
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var sortCollectionView: UICollectionView!
@@ -67,6 +68,7 @@ class FeedViewController: BaseViewController, Storyboard, ViewModelBindableType 
         
         self.reloadFlagSubject
             .subscribe(onNext: { [weak self] feeds in
+                self?.addingPageFlag = true
                 self?.viewModel.currentPage = 0
                 self?.viewModel.categoryFeeds = feeds
                 self?.feedCollectionView.reloadData()
@@ -206,24 +208,30 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension FeedViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == feedCollectionView {
+            scrollView.bounces = scrollView.contentOffset.y > 0
+
             let scrollViewHeight = scrollView.frame.size.height
-            let scrollContentSizeHeight = scrollView.contentSize.height
+            let scrollContentSizeHeight = scrollView.contentSize.height - 100
             let scrollYOffset = scrollView.contentOffset.y
 
             print("scrollYOffset + scrollViewHeight: \(scrollYOffset + scrollViewHeight)")
             print("scrollContentSizeHeight: \(scrollContentSizeHeight)")
             print("cateogryFeedsCount: \(viewModel.categoryFeeds.count)")
-            if scrollYOffset + scrollViewHeight == scrollContentSizeHeight {
+            if scrollYOffset + scrollViewHeight > scrollContentSizeHeight && addingPageFlag {
+                addingPageFlag = false
+
                 let category = viewModel.category[selectedCategoryIndex].0
                 viewModel.currentPage += 1
-
-                APIClient.feed(category: category, page: viewModel.currentPage) { [weak self] twoFeedModel in
-                    self?.viewModel.categoryFeeds += twoFeedModel.feedPreviewList
-                    self?.feedCollectionView.reloadData()
-
-                    print("리뤄드")
-                }
+                fetchData(category)
             }
+        }
+    }
+
+    func fetchData(_ category: String) {
+        APIClient.feed(category: category, page: viewModel.currentPage) { [weak self] twoFeedModel in
+            self?.viewModel.categoryFeeds += twoFeedModel.feedPreviewList
+            self?.feedCollectionView.reloadData()
+            self?.addingPageFlag = !(twoFeedModel.feedPreviewList.count == 0)
         }
     }
 }
