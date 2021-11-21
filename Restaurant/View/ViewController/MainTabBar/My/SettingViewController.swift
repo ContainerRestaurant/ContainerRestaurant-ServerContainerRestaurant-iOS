@@ -81,10 +81,10 @@ extension SettingViewController: UICollectionViewDelegate, UICollectionViewDataS
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 1: coordinator?.pushPrivacyPolicy()
-        case 2: coordinator?.pushServiceAccessTerms()
-        case 3: coordinator?.logoutPopup()
-        case 4: coordinator?.unregisterPopup()
+        case 0: coordinator?.pushPrivacyPolicy()
+        case 1: coordinator?.pushServiceAccessTerms()
+        case 2: coordinator?.logoutPopup()
+        case 3: coordinator?.unregisterPopup()
         default: break
         }
     }

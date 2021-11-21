@@ -28,7 +28,6 @@ class LoginPopupViewController: UIViewController, Storyboard {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var kakaoLoginButton: UIButton!
     @IBOutlet weak var appleLoginButton: UIButton!
-    @IBOutlet weak var logoutButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,12 +53,6 @@ class LoginPopupViewController: UIViewController, Storyboard {
         appleLoginButton.rx.tap
             .subscribe(onNext: { _ in
                 self.appleLogin()
-            })
-            .disposed(by: disposeBag)
-        
-        logoutButton.rx.tap
-            .subscribe(onNext: { _ in
-                API().logoutUser()
             })
             .disposed(by: disposeBag)
     }

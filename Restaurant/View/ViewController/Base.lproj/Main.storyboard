@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6m3-wu-vyi">
-                                <rect key="frame" x="31.666666666666657" y="318" width="312" height="176"/>
+                                <rect key="frame" x="31.666666666666657" y="298.66666666666669" width="312" height="215.00000000000006"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yez-w8-32e">
                                         <rect key="frame" x="280" y="12" width="20" height="20"/>
@@ -42,84 +42,73 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="28PxIconKakao" translatesAutoresizingMaskIntoConstraints="NO" id="wm4-fP-9fu">
-                                        <rect key="frame" x="77" y="100" width="28" height="28"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="28" id="0KH-ql-mgd"/>
-                                            <constraint firstAttribute="height" constant="28" id="lEO-Kj-OEE"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카카오 로그인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAE-GC-428">
-                                        <rect key="frame" x="56" y="140" width="70" height="15"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="3Dw-oB-Ah1"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" name="colorGrayGray06"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple 로그인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pxx-dp-qgh">
-                                        <rect key="frame" x="187" y="140" width="69" height="15"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="69" id="S7a-vO-1NT"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" name="colorGrayGray06"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="28PxIconApple" translatesAutoresizingMaskIntoConstraints="NO" id="VxS-s2-8cK">
-                                        <rect key="frame" x="207.33333333333334" y="100" width="28" height="28"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="28" id="9Xh-ft-kgc"/>
-                                            <constraint firstAttribute="height" constant="28" id="fDk-Ae-ScS"/>
-                                        </constraints>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zri-0Q-vZB">
-                                        <rect key="frame" x="56" y="100" width="70" height="55"/>
+                                        <rect key="frame" x="16" y="138.66666666666663" width="280" height="44"/>
+                                        <color key="backgroundColor" red="0.99607843137254903" green="0.89803921568627454" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="70" id="6ea-jH-hf3"/>
-                                            <constraint firstAttribute="height" constant="55" id="d6U-jd-eRR"/>
+                                            <constraint firstAttribute="height" constant="44" id="d6U-jd-eRR"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kakaoLoginIcon" translatesAutoresizingMaskIntoConstraints="NO" id="wm4-fP-9fu">
+                                        <rect key="frame" x="99.999999999999986" y="151.66666666666663" width="18" height="18"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ca3-l5-uSm">
-                                        <rect key="frame" x="187" y="100" width="69" height="55"/>
+                                        <rect key="frame" x="16" y="84.666666666666629" width="280" height="44"/>
+                                        <color key="backgroundColor" name="colorGrayGray08"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="69" id="7Mn-b9-FpD"/>
-                                            <constraint firstAttribute="height" constant="55" id="T3Y-CX-BSz"/>
+                                            <constraint firstAttribute="height" constant="44" id="T3Y-CX-BSz"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cG-la-YUP">
-                                        <rect key="frame" x="130" y="73" width="52" height="30"/>
-                                        <color key="backgroundColor" name="colorMainGreen02"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Logout">
-                                            <color key="titleColor" name="colorGrayGray01"/>
-                                        </state>
-                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appleLoginIcon" translatesAutoresizingMaskIntoConstraints="NO" id="VxS-s2-8cK">
+                                        <rect key="frame" x="96.999999999999986" y="99" width="12" height="15"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple로 로그인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pxx-dp-qgh">
+                                        <rect key="frame" x="114.99999999999997" y="96.666666666666629" width="101.66666666666666" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" name="colorGrayGray01"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카카오 로그인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAE-GC-428">
+                                        <rect key="frame" x="126" y="151" width="87.333333333333314" height="19.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" name="colorGrayGray08"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="wm4-fP-9fu" firstAttribute="centerY" secondItem="zri-0Q-vZB" secondAttribute="centerY" id="04g-5U-Ajy"/>
+                                    <constraint firstItem="mAE-GC-428" firstAttribute="centerY" secondItem="zri-0Q-vZB" secondAttribute="centerY" id="0ru-wd-YUo"/>
                                     <constraint firstItem="eB2-Sv-Hhl" firstAttribute="top" secondItem="6m3-wu-vyi" secondAttribute="top" constant="31" id="0ug-9E-VTK"/>
-                                    <constraint firstAttribute="bottom" secondItem="Pxx-dp-qgh" secondAttribute="bottom" constant="21" id="5p9-T8-FQ6"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ca3-l5-uSm" secondAttribute="trailing" constant="16" id="8BQ-Ve-MfI"/>
                                     <constraint firstAttribute="trailing" secondItem="Yez-w8-32e" secondAttribute="trailing" constant="12" id="8Sk-fD-nZ7"/>
-                                    <constraint firstItem="mAE-GC-428" firstAttribute="leading" secondItem="6m3-wu-vyi" secondAttribute="leading" constant="56" id="AUc-L4-CGX"/>
-                                    <constraint firstItem="5cG-la-YUP" firstAttribute="centerX" secondItem="6m3-wu-vyi" secondAttribute="centerX" id="IhG-RA-p8O"/>
-                                    <constraint firstItem="Pxx-dp-qgh" firstAttribute="top" secondItem="VxS-s2-8cK" secondAttribute="bottom" constant="12" id="IvT-TH-E2z"/>
-                                    <constraint firstAttribute="trailing" secondItem="Pxx-dp-qgh" secondAttribute="trailing" constant="56" id="JXk-aV-hmx"/>
-                                    <constraint firstItem="mAE-GC-428" firstAttribute="top" secondItem="wm4-fP-9fu" secondAttribute="bottom" constant="12" id="Nv9-Ep-Miz"/>
-                                    <constraint firstItem="wm4-fP-9fu" firstAttribute="centerX" secondItem="mAE-GC-428" secondAttribute="centerX" id="P2P-Sh-nGY"/>
-                                    <constraint firstAttribute="height" constant="176" id="SMa-ku-xSO"/>
+                                    <constraint firstItem="VxS-s2-8cK" firstAttribute="leading" secondItem="Ca3-l5-uSm" secondAttribute="leading" constant="81" id="9zs-W6-KcE"/>
+                                    <constraint firstItem="Pxx-dp-qgh" firstAttribute="centerY" secondItem="Ca3-l5-uSm" secondAttribute="centerY" id="Iv7-b5-eil"/>
+                                    <constraint firstAttribute="trailing" secondItem="zri-0Q-vZB" secondAttribute="trailing" constant="16" id="Iyw-JB-XiW"/>
+                                    <constraint firstItem="Pxx-dp-qgh" firstAttribute="leading" secondItem="VxS-s2-8cK" secondAttribute="trailing" constant="6" id="JEk-iV-FDf"/>
+                                    <constraint firstItem="wm4-fP-9fu" firstAttribute="leading" secondItem="zri-0Q-vZB" secondAttribute="leading" constant="84" id="M0b-NK-DQ3"/>
+                                    <constraint firstItem="mAE-GC-428" firstAttribute="leading" secondItem="wm4-fP-9fu" secondAttribute="trailing" constant="8" id="Oib-4W-UEQ"/>
+                                    <constraint firstAttribute="height" constant="215" id="SMa-ku-xSO"/>
+                                    <constraint firstItem="zri-0Q-vZB" firstAttribute="top" secondItem="Ca3-l5-uSm" secondAttribute="bottom" constant="10" id="SNZ-Vm-buO"/>
+                                    <constraint firstItem="Pxx-dp-qgh" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Ca3-l5-uSm" secondAttribute="trailing" id="TWY-ij-xN0"/>
                                     <constraint firstAttribute="width" constant="312" id="Wh9-ZW-GZ9"/>
+                                    <constraint firstItem="VxS-s2-8cK" firstAttribute="centerY" secondItem="Ca3-l5-uSm" secondAttribute="centerY" id="Xec-Ad-wWo"/>
                                     <constraint firstItem="Yez-w8-32e" firstAttribute="top" secondItem="6m3-wu-vyi" secondAttribute="top" constant="12" id="Y0e-3Q-nQX"/>
                                     <constraint firstAttribute="trailing" secondItem="eB2-Sv-Hhl" secondAttribute="trailing" constant="12" id="cbg-nU-49V"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ca3-l5-uSm" secondAttribute="bottom" constant="21" id="hCm-88-8AG"/>
-                                    <constraint firstItem="5cG-la-YUP" firstAttribute="centerY" secondItem="6m3-wu-vyi" secondAttribute="centerY" id="iji-T4-jj4"/>
+                                    <constraint firstItem="zri-0Q-vZB" firstAttribute="leading" secondItem="6m3-wu-vyi" secondAttribute="leading" constant="16" id="gP9-bA-vGe"/>
+                                    <constraint firstItem="Ca3-l5-uSm" firstAttribute="leading" secondItem="6m3-wu-vyi" secondAttribute="leading" constant="16" id="kDL-Ax-O4B"/>
+                                    <constraint firstItem="Ca3-l5-uSm" firstAttribute="top" secondItem="eB2-Sv-Hhl" secondAttribute="bottom" constant="20" id="ndo-1O-RFH"/>
                                     <constraint firstItem="eB2-Sv-Hhl" firstAttribute="leading" secondItem="6m3-wu-vyi" secondAttribute="leading" constant="12" id="qs0-Rr-fP8"/>
-                                    <constraint firstItem="zri-0Q-vZB" firstAttribute="leading" secondItem="6m3-wu-vyi" secondAttribute="leading" constant="56" id="rhv-yP-bbe"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ca3-l5-uSm" secondAttribute="trailing" constant="56" id="t84-iQ-BM5"/>
-                                    <constraint firstAttribute="bottom" secondItem="zri-0Q-vZB" secondAttribute="bottom" constant="21" id="tai-T2-kzf"/>
-                                    <constraint firstAttribute="bottom" secondItem="mAE-GC-428" secondAttribute="bottom" constant="21" id="tuN-m3-FWV"/>
-                                    <constraint firstItem="VxS-s2-8cK" firstAttribute="centerX" secondItem="Pxx-dp-qgh" secondAttribute="centerX" id="u5l-bQ-Psh"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -139,7 +128,6 @@
                         <outlet property="appleLoginButton" destination="Ca3-l5-uSm" id="z17-W3-YGD"/>
                         <outlet property="closeButton" destination="Yez-w8-32e" id="5pQ-fJ-7SX"/>
                         <outlet property="kakaoLoginButton" destination="zri-0Q-vZB" id="O5D-rd-SfP"/>
-                        <outlet property="logoutButton" destination="5cG-la-YUP" id="4Sh-k1-LdI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n7a-Ji-KJ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2210,8 +2198,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="28PxIconApple" width="28.333333969116211" height="28"/>
-        <image name="28PxIconKakao" width="28.333333969116211" height="28"/>
+        <image name="appleLoginIcon" width="12" height="15.333333015441895"/>
         <image name="bookmarkFilledGreen20Px" width="20" height="20"/>
         <image name="btnMapList" width="130" height="58"/>
         <image name="btnMapLocation" width="58" height="58"/>
@@ -2223,6 +2210,7 @@
         <image name="emptyDataImgMap" width="160" height="90"/>
         <image name="favoriteFilled20Px" width="20" height="20"/>
         <image name="feedFilledBlue20Px" width="20" height="20"/>
+        <image name="kakaoLoginIcon" width="18" height="18"/>
         <image name="listOutline16Px" width="16" height="16"/>
         <image name="mapLoadingIcon" width="60" height="60"/>
         <image name="photoEdit20Px" width="20" height="20"/>
@@ -2251,6 +2239,9 @@
         </namedColor>
         <namedColor name="colorGrayGray07">
             <color red="0.14100000262260437" green="0.14100000262260437" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="colorGrayGray08">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="colorMainGreen01">
             <color red="0.9100000262260437" green="0.98400002717971802" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
