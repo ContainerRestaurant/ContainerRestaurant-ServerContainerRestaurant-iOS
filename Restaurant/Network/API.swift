@@ -15,53 +15,6 @@ struct API {
     
 }
 
-//MARK: 홈
-extension API {
-    //추천피드
-    func recommendFeed(subject: PublishSubject<TwoFeedModel>) {
-        let url = "\(baseURL)/api/feed/recommend"
-
-        AF.request(url).responseJSON { (response) in
-            switch response.result {
-            case .success(let obj):
-                do {
-                    let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .fragmentsAllowed)
-                    let instanceData = try JSONDecoder().decode(TwoFeedModel.self, from: dataJSON)
-
-                    subject.onNext(instanceData)
-                } catch {
-                    print(error.localizedDescription)
-                }
-            case .failure(let e):
-                print(e.localizedDescription)
-            }
-        }
-    }
-    
-    //메인 배너
-//    func mainBanner(completion: @escaping ((BannerModel) -> Void)) {
-//        let url = "\(baseURL)/banners"
-//        
-//        AF.request(url)
-//            .validate(statusCode: 200..<300)
-//            .responseJSON { response in
-//                switch response.result {
-//                case .success(let obj):
-//                    do {
-//                        let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .fragmentsAllowed)
-//                        let instanceData = try JSONDecoder().decode(BannerModel.self, from: dataJSON)
-//                        
-//                        completion(instanceData)
-//                    } catch {
-//                        print(error.localizedDescription)
-//                    }
-//                case .failure(let e):
-//                    print(e.localizedDescription)
-//                }
-//            }
-//    }
-}
-
 //MARK: 피드쓰기
 extension API {
     //지역검색
@@ -150,23 +103,6 @@ extension API {
 
 //MARK: 로그인
 extension API {
-    //로그아웃
-    func logoutUser() {
-        let url = "\(baseURL)/logout"
-        
-        AF.request(url,
-                   method: .get,
-                   parameters: nil,
-                   encoding: URLEncoding.default,
-                   headers: ["Content-Type": "application/json", "Accept":"application/json"])
-            .validate(statusCode: 200..<300)
-            .responseJSON { (json) in
-                print("로그아웃------------------------------------")
-                print(json)
-                print("로그아웃------------------------------------")
-            }
-    }
-
     //계정탈퇴
     func deleteUser() {
         let url = "\(baseURL)/api/user/\(UserDataManager.sharedInstance.userID)"
