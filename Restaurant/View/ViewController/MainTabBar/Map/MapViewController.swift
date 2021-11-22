@@ -59,7 +59,31 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
             .disposed(by: disposeBag)
 
         myLocationButton.rx.tap
-            .subscribe(onNext: { [weak self] in self?.moveToMyLocationOnMap() })
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+
+                let status = CLLocationManager.authorizationStatus()
+
+                if status == CLAuthorizationStatus.denied || status == CLAuthorizationStatus.restricted {
+                    let alter = UIAlertController(title: "위치 서비스를 사용할 수 없습니다.", message: "위치 서비스 활성화를 위해\n권한 설정으로 이동하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
+                    let logOkAction = UIAlertAction(title: "이동", style: UIAlertAction.Style.default) { (action: UIAlertAction) in
+                        if #available(iOS 10.0, *) {
+                            UIApplication.shared.open(NSURL(string:UIApplication.openSettingsURLString)! as URL)
+                        } else {
+                            UIApplication.shared.openURL(NSURL(string: UIApplication.openSettingsURLString)! as URL)
+                        }
+                    }
+                    let logNoAction = UIAlertAction(title: "취소", style: UIAlertAction.Style.destructive){ (action: UIAlertAction) in
+                        self.dismiss(animated: false, completion: nil)
+                    }
+                    alter.addAction(logNoAction)
+                    alter.addAction(logOkAction)
+
+                    self.present(alter, animated: true, completion: nil)
+                } else {
+                    self.moveToMyLocationOnMap()
+                }
+            })
             .disposed(by: disposeBag)
 
         showListButton.rx.tap
