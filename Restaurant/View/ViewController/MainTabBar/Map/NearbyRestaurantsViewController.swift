@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class NearbyRestaurantsViewController: BaseViewController, Storyboard, ViewModelBindableType {
     var viewModel: NearbyRestaurantsViewModel!
@@ -69,9 +70,13 @@ extension NearbyRestaurantsViewController: UICollectionViewDelegate, UICollectio
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: OneFeedCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.configure(viewModel.nearbyRestaurants[indexPath.row])
+        cell.configure(viewModel.nearbyRestaurants[indexPath.row], viewModel.latitudeInCenterOfMap, viewModel.longitudeInCenterOfMap, viewModel.afterSearchingRestaurantSubject)
         
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        coordinator?.restaurantSummaryInformation(restaurant: viewModel.nearbyRestaurants[indexPath.row])
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -30,7 +30,8 @@ class RestaurantSummaryInformation: UICollectionViewCell {
                 self.coordinator?.presentLogin()
             } else {
                 if self.favoriteButton.image(for: .normal) == UIImage(named: "favoriteDisabled20Px") {
-                    APIClient.postFavoriteRestaurant(restaurantID: restaurantID) {
+                    APIClient.postFavoriteRestaurant(restaurantID: restaurantID) { [weak self] in
+                        guard let self = self else { return }
                         APIClient.nearbyRestaurants(latitude: self.latitude, longitude: self.longitude, radius: 2000) { [weak self] nearbyRestaurants in
                             self?.mapReloadSubject.onNext((nearbyRestaurants, true))
                         }
@@ -38,7 +39,8 @@ class RestaurantSummaryInformation: UICollectionViewCell {
                     self.favoriteButton.setImage(UIImage(named: "favoriteFilled20Px"), for: .normal)
                     Common.hapticVibration()
                 } else {
-                    APIClient.deleteFavoriteRestaurant(restaurantID: restaurantID) {
+                    APIClient.deleteFavoriteRestaurant(restaurantID: restaurantID) { [weak self] in
+                        guard let self = self else { return }
                         APIClient.nearbyRestaurants(latitude: self.latitude, longitude: self.longitude, radius: 2000) { [weak self] nearbyRestaurants in
                             self?.mapReloadSubject.onNext((nearbyRestaurants, true))
                         }

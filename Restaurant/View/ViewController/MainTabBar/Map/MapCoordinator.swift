@@ -13,7 +13,7 @@ class MapCoordinator: NSObject, Coordinator {
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
     
-    var afterSearchingRestaurantSubject: PublishSubject<([RestaurantModel],Bool)> = PublishSubject<([RestaurantModel],Bool)>()
+    var afterSearchingRestaurantSubject: PublishSubject<([RestaurantModel],Bool)> = PublishSubject<([RestaurantModel],Bool)>() //요약 정보나 근처 식당 리스트에서 즐겨찾기 하면 맵 현행화 시키기 위함
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
@@ -54,10 +54,13 @@ extension MapCoordinator {
         coordinator.start()
     }
     
-    func pushNearbyRestaurants(nearbyRestaurants: [RestaurantModel]) {
+    func pushNearbyRestaurants(nearbyRestaurants: [RestaurantModel], latitude: Double, longitude: Double) {
         let coordinator = NearbyRestaurantsCoordinator(presenter: presenter)
         coordinator.delegate = self
         childCoordinators.append(coordinator)
+        coordinator.latitude = latitude
+        coordinator.longitude = longitude
+        coordinator.afterSearchingRestaurantSubject = afterSearchingRestaurantSubject
         coordinator.start(nearbyRestaurants: nearbyRestaurants)
     }
 }

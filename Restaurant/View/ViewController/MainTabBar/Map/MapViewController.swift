@@ -146,7 +146,7 @@ extension MapViewController {
     }
     
     private func pushNearbyRestaurants() {
-        coordinator?.pushNearbyRestaurants(nearbyRestaurants: viewModel.nearbyRestaurants)
+        coordinator?.pushNearbyRestaurants(nearbyRestaurants: viewModel.nearbyRestaurants, latitude: self.viewModel.latitudeInCenterOfMap, longitude: self.viewModel.longitudeInCeterOfMap)
     }
 
     func setMyLocationIcon() {
