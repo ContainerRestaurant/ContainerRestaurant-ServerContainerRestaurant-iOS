@@ -15,8 +15,7 @@ class MainBannerCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(imageURL: String) {
-        let totalURL = baseURL + imageURL
-        let URL = URL(string: totalURL)
+        let URL = URL(string: imageURL)
         imageView.kf.setImage(with: URL, options: [.transition(.fade(0.3))])
     }
 }

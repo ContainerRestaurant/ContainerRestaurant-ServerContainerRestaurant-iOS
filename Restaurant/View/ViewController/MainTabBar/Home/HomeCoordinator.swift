@@ -77,9 +77,18 @@ extension HomeCoordinator {
         coordinator.start()
     }
 
-    func presentBannerPopup() {
+    func presentBannerPopup(imageURL: String) {
         let coordinator = ImageBannerPopupCoordinator(presenter: presenter)
         coordinator.delegate = self
+        coordinator.imageURL = imageURL
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+
+    func presentWebViewPopup(webViewURL: String) {
+        let coordinator = WebViewPopupCoordinator(presenter: presenter)
+        coordinator.delegate = self
+        coordinator.webViewURL = webViewURL
         childCoordinators.append(coordinator)
         coordinator.start()
     }

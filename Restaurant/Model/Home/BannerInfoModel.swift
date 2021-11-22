@@ -8,18 +8,21 @@
 import Foundation
 
 struct BannerInfoModel: Decodable {
-    var bannerID: Int
     var bannerURL: String
+    var contentURL: String
+    var additionalURL: String
     
     private enum CodingKeys: String, CodingKey {
-        case bannerID = "bannerId"
         case bannerURL = "bannerUrl"
+        case contentURL = "contentUrl"
+        case additionalURL = "additionalUrl"
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        self.bannerID = (try? container.decode(Int.self, forKey: .bannerID)) ?? 0
         self.bannerURL = (try? container.decode(String.self, forKey: .bannerURL)) ?? ""
+        self.contentURL = (try? container.decode(String.self, forKey: .contentURL)) ?? ""
+        self.additionalURL = (try? container.decode(String.self, forKey: .additionalURL)) ?? ""
     }
 }

@@ -58,7 +58,13 @@ extension MainBanner: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        coordinator?.presentBannerPopup()
+        if self.bannerList[indexPath.row].additionalURL.isEmpty {
+            let imageURL = self.bannerList[indexPath.row].bannerURL
+            coordinator?.presentBannerPopup(imageURL: imageURL)
+        } else {
+            let webViewURL = self.bannerList[indexPath.row].additionalURL
+            coordinator?.presentWebViewPopup(webViewURL: webViewURL)
+        }
     }
 
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

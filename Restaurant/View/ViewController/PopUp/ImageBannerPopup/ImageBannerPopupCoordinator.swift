@@ -11,6 +11,7 @@ class ImageBannerPopupCoordinator: NSObject, Coordinator {
     var delegate: CoordinatorFinishDelegate?
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
+    var imageURL: String?
 
     init(presenter: UINavigationController) {
         self.presenter = presenter
@@ -21,6 +22,8 @@ class ImageBannerPopupCoordinator: NSObject, Coordinator {
         let imageBannerPopup = ImageBannerPopupViewController.instantiate()
         imageBannerPopup.coordinator = self
         imageBannerPopup.modalPresentationStyle = .fullScreen
+        imageBannerPopup.imageURL = imageURL
+        
         presenter.present(imageBannerPopup, animated: true, completion: nil)
     }
 }
