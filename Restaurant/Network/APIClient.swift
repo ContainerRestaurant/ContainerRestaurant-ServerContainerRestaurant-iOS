@@ -459,4 +459,18 @@ class APIClient {
                 }
             }
     }
+
+    //개인정보 취급방침 & 이용약관
+    static func fetchContract(completion: @escaping ([ContractInfo]) -> Void) {
+        AF.request(Router.Contract)
+            .responseDecodable { (response: DataResponse<ContractInfoModel, AFError>) in
+                switch response.result {
+                case .success(let contractInfoModel):
+                    completion(contractInfoModel.contractInfoList)
+                case .failure(let error):
+                    completion([])
+                    print("Nearby Restaurants's Error: \(error)")
+                }
+            }
+    }
 }

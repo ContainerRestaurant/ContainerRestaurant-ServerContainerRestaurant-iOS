@@ -40,6 +40,7 @@ enum Router: URLRequestConvertible {
     case DeleteCommentLike(commentID: Int)
     case CreateFeedReplyComment(feedID: String, content: String, uppperReplyID: Int)
     case NearbyRestaurants(latitude: Double, longitude: Double, radius: Int)
+    case Contract
 
     static var baseURLString = "http://ec2-52-78-66-184.ap-northeast-2.compute.amazonaws.com"
     
@@ -76,6 +77,7 @@ enum Router: URLRequestConvertible {
         case .DeleteCommentLike: return .delete
         case .CreateFeedReplyComment: return .post
         case .NearbyRestaurants: return .get
+        case .Contract: return .get
         }
     }
 
@@ -112,6 +114,7 @@ enum Router: URLRequestConvertible {
         case .DeleteCommentLike(let commentID): return "/api/like/comment/\(commentID)"
         case .CreateFeedReplyComment(let feedID, _, _): return "/api/comment/feed/\(feedID)"
         case .NearbyRestaurants(let latitude, let longitude, let radius): return "/api/restaurant/\(latitude)/\(longitude)/\(radius)"
+        case .Contract: return "/api/contract"
         }
     }
 
@@ -163,6 +166,7 @@ enum Router: URLRequestConvertible {
         case .DeleteCommentLike: return nil
         case .CreateFeedReplyComment(_, let content, let uppperReplyID): return ["content": content, "upperReplyId": String(uppperReplyID)]
         case .NearbyRestaurants(_, _, _): return nil
+        case .Contract: return nil
         }
     }
 

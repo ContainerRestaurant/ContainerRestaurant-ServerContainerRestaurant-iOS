@@ -221,6 +221,7 @@
 		FBF747E8274AD668007023AD /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF747E7274AD668007023AD /* WebKit.framework */; };
 		FBF747EB274AD6E6007023AD /* WebViewPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF747EA274AD6E6007023AD /* WebViewPopupCoordinator.swift */; };
 		FBF747ED274AD6F9007023AD /* WebViewPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF747EC274AD6F9007023AD /* WebViewPopupViewController.swift */; };
+		FBF747EF274BFB29007023AD /* ContractInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF747EE274BFB29007023AD /* ContractInfoModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -443,6 +444,7 @@
 		FBF747E7274AD668007023AD /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		FBF747EA274AD6E6007023AD /* WebViewPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewPopupCoordinator.swift; sourceTree = "<group>"; };
 		FBF747EC274AD6F9007023AD /* WebViewPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewPopupViewController.swift; sourceTree = "<group>"; };
+		FBF747EE274BFB29007023AD /* ContractInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractInfoModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1116,6 +1118,7 @@
 			isa = PBXGroup;
 			children = (
 				FB5F08662703801000A6122A /* FavoriteRestaurantModel.swift */,
+				FBF747EE274BFB29007023AD /* ContractInfoModel.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -1433,6 +1436,7 @@
 				526BED6C26470BD200897230 /* MostFeedCreationUserCollectionViewCell.swift in Sources */,
 				FBDC3D83266DA3910072D7E8 /* LongText.swift in Sources */,
 				FB585B2226656E810085C6B2 /* SearchRestaurantViewController.swift in Sources */,
+				FBF747EF274BFB29007023AD /* ContractInfoModel.swift in Sources */,
 				5285590B2629ECB900AB4E28 /* TestLoginViewController.swift in Sources */,
 				524686F6268703D900BE2BE4 /* UploadingImageModel.swift in Sources */,
 				FB5F08602702256500A6122A /* MyDataViewController.swift in Sources */,

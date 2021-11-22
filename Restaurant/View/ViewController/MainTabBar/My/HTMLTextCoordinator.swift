@@ -25,10 +25,14 @@ class HTMLTextCoordinator: NSObject, Coordinator {
     }
 
     func start() {
-        let htmlTextViewController = HTMLTextViewController.instantiate()
-        htmlTextViewController.coordinator = self
-        htmlTextViewController.htmlTextType = self.htmlTextType
+        APIClient.fetchContract { [weak self] contractInfo in
+            guard let self = self else { return }
+            let htmlTextViewController = HTMLTextViewController.instantiate()
+            htmlTextViewController.coordinator = self
+            htmlTextViewController.htmlTextType = self.htmlTextType
+            htmlTextViewController.contractInfo = contractInfo[self.htmlTextType == .privacyPolicy ? 0 : 1]
 
-        presenter.pushViewController(htmlTextViewController, animated: true)
+            self.presenter.pushViewController(htmlTextViewController, animated: true)
+        }
     }
 }
