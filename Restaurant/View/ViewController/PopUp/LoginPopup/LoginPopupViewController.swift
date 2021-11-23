@@ -80,6 +80,7 @@ extension LoginPopupViewController {
                             APIClient.createLoginToken(provider: "KAKAO", accessToken: oAuthToken?.accessToken ?? "") {
                                 UserDataManager.sharedInstance.userID = $0.id
                                 UserDataManager.sharedInstance.loginToken = $0.token
+                                UserDataManager.sharedInstance.fromWhereLogin = "kakao"
 
                                 if $0.isNicknameNull {
                                     if self?.fromWhere == .mapBottomSheet  {
@@ -142,6 +143,7 @@ extension LoginPopupViewController: ASAuthorizationControllerDelegate, ASAuthori
                 APIClient.createLoginToken(provider: "APPLE", accessToken: tokenString) {
                     UserDataManager.sharedInstance.userID = $0.id
                     UserDataManager.sharedInstance.loginToken = $0.token
+                    UserDataManager.sharedInstance.fromWhereLogin = "apple"
 
                     if $0.isNicknameNull {
                         if self.fromWhere == .mapBottomSheet {

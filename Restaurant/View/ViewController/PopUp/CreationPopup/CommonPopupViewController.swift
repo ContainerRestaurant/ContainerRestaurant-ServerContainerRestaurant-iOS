@@ -7,6 +7,10 @@
 
 import UIKit
 import RxSwift
+//import AuthenticationServices
+//import KakaoSDKCommon
+//import KakaoSDKAuth
+import KakaoSDKUser
 
 enum PopupButtonType {
     case creationFeed
@@ -233,6 +237,7 @@ class CommonPopupViewController: BaseViewController, Storyboard {
                 self?.dismiss(animated: false) { [weak self] in
                     UserDataManager.sharedInstance.userID = 0
                     UserDataManager.sharedInstance.loginToken = ""
+                    UserDataManager.sharedInstance.fromWhereLogin = ""
                     
                     self?.coordinator?.presenter.popViewController(animated: false)
                     self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
@@ -251,12 +256,20 @@ class CommonPopupViewController: BaseViewController, Storyboard {
         cancelButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 APIClient.unregisterUser(userID: UserDataManager.sharedInstance.userID) { [weak self] isSuccess in
-                    UserDataManager.sharedInstance.userID = 0
-                    UserDataManager.sharedInstance.loginToken = ""
+                    if isSuccess {
+                        self?.dismiss(animated: false) {
+                            self?.coordinator?.presenter.popViewController(animated: false)
+                            self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
 
-                    self?.dismiss(animated: false, completion: nil)
-                    self?.coordinator?.presenter.popViewController(animated: false)
-                    self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
+                            if UserDataManager.sharedInstance.fromWhereLogin == "kakao" {
+                                self?.kakaoLoginUnlink()
+                            }
+                            
+                            UserDataManager.sharedInstance.userID = 0
+                            UserDataManager.sharedInstance.loginToken = ""
+                            UserDataManager.sharedInstance.fromWhereLogin = ""
+                        }
+                    }
                 }
             })
             .disposed(by: disposeBag)
@@ -343,5 +356,17 @@ class CommonPopupViewController: BaseViewController, Storyboard {
 
     deinit {
         print("CreationPopupViewController Deinit")
+    }
+}
+
+extension CommonPopupViewController {
+    private func kakaoLoginUnlink() {
+        UserApi.shared.unlink { (error) in
+            if let error = error {
+                print("연결 끊기 \(error)")
+            } else {
+                print("unlink() success")
+            }
+        }
     }
 }

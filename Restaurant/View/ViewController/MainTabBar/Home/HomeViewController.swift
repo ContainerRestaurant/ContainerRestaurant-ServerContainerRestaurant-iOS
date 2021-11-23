@@ -29,6 +29,7 @@ class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType 
             if userModel.id == 0 {
                 UserDataManager.sharedInstance.loginToken = ""
                 UserDataManager.sharedInstance.userID = 0
+                UserDataManager.sharedInstance.fromWhereLogin = ""
             }
 
             APIClient.homeMainData { [weak self] in

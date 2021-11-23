@@ -23,6 +23,10 @@ class UserDataManager: NSObject {
         get { return UserDefaults.standard.object(forKey: "loginToken") == nil ? "" : UserDefaults.standard.object(forKey: "loginToken") as! String }
         set { UserDefaults.standard.set(newValue, forKey: "loginToken") }
     }
+    var fromWhereLogin: String {
+        get { return UserDefaults.standard.object(forKey: "fromWhereLogin") == nil ? "" : UserDefaults.standard.object(forKey: "fromWhereLogin") as! String }
+        set { UserDefaults.standard.set(newValue, forKey: "fromWhereLogin") }
+    }
     
     //앱 첫 진입 여부(온보딩 체크)
     var isFirstEntry: Bool {
