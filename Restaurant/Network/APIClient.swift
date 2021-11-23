@@ -202,7 +202,7 @@ class APIClient {
                 case .success(let favoriteRestaurantModel):
                     completion(favoriteRestaurantModel)
                 case .failure(let error):
-//                    completion(FavoriteRestaurantModel())
+                    completion(FavoriteRestaurantModel())
                     print("Favorite Restaurants's Error: \(error)")
                 }
             }

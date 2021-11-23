@@ -18,6 +18,10 @@ struct FavoriteRestaurantModel: Decodable {
         case favoriteRestaurants = "restaurantFavoriteDtoList"
     }
 
+    init() {
+        favoriteRestaurants = []
+    }
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: RootKey.self)
         let favoriteRestaurants = try container.nestedContainer(keyedBy: Embedded.self, forKey: .embedded)
