@@ -27,7 +27,7 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
     @IBOutlet weak var scrapFeedCountLabel: UILabel!
     @IBOutlet weak var favoriteRestaurantButton: UIButton!
     @IBOutlet weak var favoriteRestaurantCountLabel: UILabel!
-//    @IBOutlet weak var descriptionLevelButton: UIButton!
+    @IBOutlet weak var levelDescriptionButton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var nicknameUpdateButton: UIButton!
 
@@ -149,22 +149,11 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
             })
             .disposed(by: disposeBag)
 
-//        descriptionLevelButton.rx.tap
-//            .subscribe(onNext: { [weak self] in
-//                //계정 삭제
-//                API().deleteUser()
-//                //카카오 연결 끊기
-////                UserApi.shared.unlink {(error) in
-////                    if let error = error {
-////                        print(error)
-////                    }
-////                    else {
-////                        print("unlink() success.")
-////                    }
-////                }
-//                self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
-//            })
-//            .disposed(by: disposeBag)
+        levelDescriptionButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.coordinator?.presentBannerPopup(imageName: "levelDescription")
+            })
+            .disposed(by: disposeBag)
 
         nicknameUpdateButton.rx.tap
             .subscribe(onNext: { [weak self] in

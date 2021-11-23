@@ -1361,6 +1361,7 @@
                         <outlet property="favoriteRestaurantCountLabel" destination="wPN-Rg-hDp" id="uno-4d-9lk"/>
                         <outlet property="feedButton" destination="pGV-sU-ZBI" id="yal-w5-x18"/>
                         <outlet property="feedCountLabel" destination="oPg-i3-dbp" id="veD-8q-XT2"/>
+                        <outlet property="levelDescriptionButton" destination="OYM-7u-GIh" id="U30-g6-vxO"/>
                         <outlet property="levelLabel" destination="vlR-Np-TuJ" id="UjE-Pr-5MC"/>
                         <outlet property="nicknameLabel" destination="1O8-8X-0lS" id="LG1-a9-ZkS"/>
                         <outlet property="nicknameUpdateButton" destination="5AD-nh-Qxx" id="Cn4-jl-ii3"/>
@@ -2313,20 +2314,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWy-jd-2dO">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" directionalLockEnabled="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWy-jd-2dO">
                                 <rect key="frame" x="0.0" y="118" width="375" height="660"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="G7z-Vh-NvH">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="660"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="G7z-Vh-NvH" secondAttribute="trailing" id="M2w-aU-hkv"/>
-                                    <constraint firstAttribute="bottom" secondItem="G7z-Vh-NvH" secondAttribute="bottom" id="R8w-50-sFH"/>
-                                    <constraint firstItem="G7z-Vh-NvH" firstAttribute="top" secondItem="tWy-jd-2dO" secondAttribute="top" id="ZjX-es-0wT"/>
-                                    <constraint firstItem="G7z-Vh-NvH" firstAttribute="leading" secondItem="tWy-jd-2dO" secondAttribute="leading" id="jIe-LV-ACf"/>
-                                </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wax-Rc-y22">
                                 <rect key="frame" x="335" y="67" width="20" height="20"/>
@@ -2352,7 +2341,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="G7z-Vh-NvH" id="fm3-HP-wHb"/>
+                        <outlet property="scrollView" destination="tWy-jd-2dO" id="LSK-3w-NZh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7oQ-GG-jZR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

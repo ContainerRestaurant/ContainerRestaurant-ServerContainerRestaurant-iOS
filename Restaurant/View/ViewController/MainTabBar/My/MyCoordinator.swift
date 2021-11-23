@@ -64,4 +64,12 @@ extension MyCoordinator {
         childCoordinators.append(coordinator)
         coordinator.start(isPush: true)
     }
+
+    func presentBannerPopup(imageName: String) {
+        let coordinator = ImageBannerPopupCoordinator(presenter: presenter)
+        coordinator.delegate = self
+        coordinator.image = UIImage(named: imageName)
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
 }
