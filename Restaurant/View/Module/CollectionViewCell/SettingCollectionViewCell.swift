@@ -32,7 +32,11 @@ class SettingCollectionViewCell: UICollectionViewCell {
     }
 
     func appVersionConfigure() {
+
         settingTitleLabel.text = "앱 버전"
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            appVersionLabel.text = "v.\(version)"
+        }
         alertSettingSwitch.isHidden = true
         chevronRightButton.isHidden = true
         appVersionLabel.isHidden = false
