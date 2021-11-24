@@ -33,7 +33,12 @@ class ReplyCommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
         self.reloadSubject = reloadSubject
         self.updateCommentSubject = updateCommentSubject
 
-        userProfileImageView.image = Common.getDefaultProfileImage32(comment.userLevelTitle)
+        if comment.userProfile.isEmpty {
+            userProfileImageView.image = Common.getDefaultProfileImage32(comment.userLevelTitle)
+        } else {
+            let imageURL = URL(string: comment.userProfile)
+            userProfileImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.3))])
+        }
         userNicknameLabel.text = comment.userNickname
         userLevelTitleLabel.text = comment.userLevelTitle
         commentLabel.text = comment.content == "" ? "내용이 입력되지 않은 댓글입니다." : comment.content
