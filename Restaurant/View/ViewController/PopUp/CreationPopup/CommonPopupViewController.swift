@@ -156,6 +156,7 @@ class CommonPopupViewController: BaseViewController, Storyboard {
                     APIClient.deleteFeed(feedID: feedID) { [weak self] isSuccess in
                         self?.dismiss(animated: false) { [weak self] in
                             self?.coordinator?.presenter.popViewController(animated: true)
+                            self?.coordinator?.justReloadSubject?.onNext(())
                             print(isSuccess ? "성공하면 컬렉션뷰 리로드" : "실패하면...얼럿?")
                         }
                     }
@@ -264,7 +265,7 @@ class CommonPopupViewController: BaseViewController, Storyboard {
                             if UserDataManager.sharedInstance.fromWhereLogin == "kakao" {
                                 self?.kakaoLoginUnlink()
                             }
-                            
+
                             UserDataManager.sharedInstance.userID = 0
                             UserDataManager.sharedInstance.loginToken = ""
                             UserDataManager.sharedInstance.fromWhereLogin = ""

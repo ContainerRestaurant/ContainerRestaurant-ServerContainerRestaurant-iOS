@@ -48,7 +48,7 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
     }
     
     //피드 탭 카테고리 피드
-    func configureFeedCategoryFeed(_ feeds: [FeedPreviewModel], _ selectedCategoryAndSortSubject: PublishSubject<(String, Int)>, _ reloadFlagSubject: PublishSubject<[FeedPreviewModel]>, _ coordinator: FeedCoordinator) {
+    func configureFeedCategoryFeed(_ feeds: [FeedPreviewModel], _ selectedCategoryAndSortSubject: PublishSubject<(String, Int)>, _ reloadByTabSubject: PublishSubject<[FeedPreviewModel]>, _ coordinator: FeedCoordinator) {
         self.feeds = feeds
         self.selectedCategoryAndSortSubject = selectedCategoryAndSortSubject
         self.feedCoordinator = coordinator
@@ -70,13 +70,13 @@ class TwoFeedInLineCollectionView: UICollectionViewCell {
                     APIClient.feed(category: category, sort: sortString) { [weak self] (twoFeedModel) in
                         self?.feeds = twoFeedModel.feedPreviewList
                         self?.collectionView.reloadData()
-                        reloadFlagSubject.onNext(self?.feeds ?? [])
+                        reloadByTabSubject.onNext(self?.feeds ?? [])
                     }
                 } else {
                     APIClient.feed(category: category) { [weak self] (twoFeedModel) in
                         self?.feeds = twoFeedModel.feedPreviewList
                         self?.collectionView.reloadData()
-                        reloadFlagSubject.onNext(self?.feeds ?? [])
+                        reloadByTabSubject.onNext(self?.feeds ?? [])
                     }
                 }
             })

@@ -14,6 +14,7 @@ class FeedDetailCoordinator: NSObject, Coordinator {
     var childCoordinators: [Coordinator]
     var feedID: Int?
     var feedDetailViewWillAppearSubject = PublishSubject<Void>()
+    var justReloadSubject: PublishSubject<Void>?
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
@@ -57,6 +58,7 @@ extension FeedDetailCoordinator {
         let coordinator = CommonPopupCoordinator(presenter: presenter, isTwoButton: true, buttonType: .deleteFeed)
         coordinator.delegate = self
         coordinator.feedID = feedID
+        coordinator.justReloadSubject = justReloadSubject
         childCoordinators.append(coordinator)
         coordinator.start()
     }

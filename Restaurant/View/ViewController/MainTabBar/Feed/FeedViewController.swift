@@ -14,7 +14,8 @@ class FeedViewController: BaseViewController, Storyboard, ViewModelBindableType 
     var selectedCategoryIndex: Int = 0
     var selectedSortIndex: Int = 0
     let selectedCategoryAndSortSubject: PublishSubject<(String, Int)> = PublishSubject<(String, Int)>()
-    let reloadFlagSubject: PublishSubject<[FeedPreviewModel]> = PublishSubject<[FeedPreviewModel]>()
+    let reloadByTabSubject: PublishSubject<[FeedPreviewModel]> = PublishSubject<[FeedPreviewModel]>()
+    var justReloadSubject: PublishSubject<Void>?
     var addingPageFlag = true
     
     @IBOutlet weak var categoryCollectionView: UICollectionView!
@@ -66,13 +67,42 @@ class FeedViewController: BaseViewController, Storyboard, ViewModelBindableType 
     func bindingView() {
         print("Search bindingView")
         
-        self.reloadFlagSubject
+        self.reloadByTabSubject
             .subscribe(onNext: { [weak self] feeds in
                 self?.addingPageFlag = true
                 self?.viewModel.currentPage = 0
                 self?.viewModel.categoryFeeds = feeds
                 self?.feedCollectionView.reloadData()
                 self?.feedCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+            })
+            .disposed(by: disposeBag)
+
+        self.justReloadSubject?
+            .subscribe(onNext: { [weak self] in
+                let category = (self?.viewModel.category[self?.selectedCategoryIndex ?? 0].0) ?? ""
+                if self?.selectedSortIndex ?? 0 > 0 {
+                    var sortString: String {
+                        switch self?.selectedSortIndex {
+                        case 1: return "likeCount,DESC"
+                        case 2: return "difficulty,ASC"
+                        case 3: return "difficulty,DESC"
+                        default: return ""
+                        }
+                    }
+                    APIClient.feed(category: category, sort: sortString) { [weak self] twoFeedModel in
+                        self?.addingPageFlag = true
+                        self?.viewModel.currentPage = 0
+                        self?.viewModel.categoryFeeds = twoFeedModel.feedPreviewList
+                        self?.feedCollectionView.reloadData()
+                    }
+                } else {
+                    APIClient.feed(category: category) { [weak self] twoFeedModel in
+                        self?.addingPageFlag = true
+                        self?.viewModel.currentPage = 0
+                        self?.viewModel.categoryFeeds = twoFeedModel.feedPreviewList
+                        self?.feedCollectionView.reloadData()
+                    }
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -134,7 +164,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else {
             let cell: TwoFeedInLineCollectionView = collectionView.dequeueReusableCell(for: indexPath)
             if let coordinator = self.coordinator {
-                cell.configureFeedCategoryFeed(viewModel.categoryFeeds, self.selectedCategoryAndSortSubject, self.reloadFlagSubject, coordinator)
+                cell.configureFeedCategoryFeed(viewModel.categoryFeeds, self.selectedCategoryAndSortSubject, self.reloadByTabSubject, coordinator)
             }
             return cell
         }

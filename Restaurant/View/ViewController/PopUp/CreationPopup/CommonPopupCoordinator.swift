@@ -19,6 +19,7 @@ class CommonPopupCoordinator: NSObject, Coordinator {
     var feedModel: FeedModel?
     //피드 삭제 시 필요
     var feedID: String?
+    var justReloadSubject: PublishSubject<Void>?
     //댓글 삭제 시 필요
     var commentID: Int?
     var reloadSubject: PublishSubject<Void>?

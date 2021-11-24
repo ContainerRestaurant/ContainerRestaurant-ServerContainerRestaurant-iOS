@@ -13,6 +13,7 @@ class FeedCoordinator: NSObject, Coordinator {
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
     let disposeBag = DisposeBag()
+    var justReloadSubject = PublishSubject<Void>()
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
@@ -29,6 +30,7 @@ class FeedCoordinator: NSObject, Coordinator {
         APIClient.feed(category: "ALL") { [weak self] (twoFeedModel) in
             var feed = FeedViewController.instantiate()
             feed.coordinator = self
+            feed.justReloadSubject = self?.justReloadSubject
             feed.bind(viewModel: FeedViewModel(twoFeedModel))
 
             self?.presenter.pushViewController(feed, animated: false)
@@ -40,6 +42,7 @@ extension FeedCoordinator {
     func pushToFeedDetail(feedID: Int) {
         let coordinator = FeedDetailCoordinator(presenter: presenter)
         coordinator.feedID = feedID
+        coordinator.justReloadSubject = justReloadSubject
         coordinator.delegate = self
         childCoordinators.append(coordinator)
         coordinator.start()
