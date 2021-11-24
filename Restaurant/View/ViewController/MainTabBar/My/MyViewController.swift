@@ -21,10 +21,12 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
     @IBOutlet weak var profileImageButton: UIButton!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet weak var myFeedView: UIView!
     @IBOutlet weak var feedButton: UIButton!
     @IBOutlet weak var feedCountLabel: UILabel!
     @IBOutlet weak var scrapFeedButton: UIButton!
     @IBOutlet weak var scrapFeedCountLabel: UILabel!
+    @IBOutlet weak var favoriteRestaurantView: UIView!
     @IBOutlet weak var favoriteRestaurantButton: UIButton!
     @IBOutlet weak var favoriteRestaurantCountLabel: UILabel!
     @IBOutlet weak var levelDescriptionButton: UIButton!
@@ -33,6 +35,9 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        myFeedView.roundCorners([.topLeft, .bottomLeft], radius: 10)
+        favoriteRestaurantView.roundCorners([.topRight, .bottomRight], radius: 10)
 
         imagePicker.delegate = self
         print("MyViewController viewDidLoad()")
