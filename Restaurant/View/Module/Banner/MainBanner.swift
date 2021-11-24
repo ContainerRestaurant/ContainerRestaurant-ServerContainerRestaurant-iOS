@@ -54,7 +54,7 @@ extension MainBanner: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CGFloat(343).widthRatio(), height: CGFloat(88))
+        return CGSize(width: UIScreen.main.bounds.width - CGFloat(32), height: CGFloat(88))
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
