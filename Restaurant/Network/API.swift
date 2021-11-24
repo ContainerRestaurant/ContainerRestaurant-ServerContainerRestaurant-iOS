@@ -101,9 +101,11 @@ extension API {
 
                         completion(instanceData)
                     } catch {
+                        completion(CreationFeedResponseModel())
                         print(error.localizedDescription)
                     }
                 case .failure(let e):
+                    completion(CreationFeedResponseModel())
                     print(e.localizedDescription)
                 }
             })
