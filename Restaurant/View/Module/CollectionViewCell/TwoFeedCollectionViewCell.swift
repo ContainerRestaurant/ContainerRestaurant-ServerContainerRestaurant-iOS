@@ -39,7 +39,7 @@ class TwoFeedCollectionViewCell: UICollectionViewCell {
             feedImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.3))])
         }
         nicknameLabel.text = feedPreview.userNickname
-        contentLabel.text = feedPreview.content
+        contentLabel.lineSpacing(text: feedPreview.content, lineSpacing: 3, numberOfLines: 2)
         likeCountLabel.text = String(feedPreview.likeCount)
         replyCountLabel.text = String(feedPreview.commentCount)
         isLiked = feedPreview.isLike
