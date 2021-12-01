@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "IU.jpg",
+      "filename" : "emptyDataRestraunt.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "emptyDataRestraunt@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "emptyDataRestraunt@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

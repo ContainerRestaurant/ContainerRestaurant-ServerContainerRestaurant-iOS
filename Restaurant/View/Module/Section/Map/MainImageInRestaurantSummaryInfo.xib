@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="209"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IU" translatesAutoresizingMaskIntoConstraints="NO" id="Ikf-nb-ONU">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyDataRestraunt" translatesAutoresizingMaskIntoConstraints="NO" id="Ikf-nb-ONU">
                         <rect key="frame" x="16" y="0.0" width="343" height="184"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="184" id="9q9-xP-OkN"/>
@@ -56,7 +56,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="IU" width="464" height="461"/>
+        <image name="emptyDataRestraunt" width="343" height="228"/>
         <namedColor name="colorGrayGray03">
             <color red="0.92500001192092896" green="0.92500001192092896" blue="0.92500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

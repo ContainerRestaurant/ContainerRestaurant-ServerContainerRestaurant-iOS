@@ -87,8 +87,12 @@ extension RestaurantSummaryInformationViewController: UICollectionViewDelegate, 
         case is MainImageInRestaurantSummaryInfo.Type:
             return CGSize(width: CGFloat(375).widthRatio(), height: 209)
         case is FeedInRestaurantSummaryInfo.Type:
-            let feedLineCount = ceil(Double(viewModel.restaurantFeed.count)/2.0)
-            return CGSize(width: CGFloat(375).widthRatio(), height: CGFloat(74 + 272*feedLineCount + 20*(feedLineCount-1)))
+            if viewModel.restaurantFeed.isEmpty {
+                return CGSize(width: CGFloat(375).widthRatio(), height: 285)
+            } else {
+                let feedLineCount = ceil(Double(viewModel.restaurantFeed.count)/2.0)
+                return CGSize(width: CGFloat(375).widthRatio(), height: CGFloat(74 + 272*feedLineCount + 20*(feedLineCount-1)))
+            }
         default:
             return CGSize.zero
         }

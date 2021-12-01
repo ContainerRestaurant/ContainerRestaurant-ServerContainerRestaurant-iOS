@@ -13,6 +13,7 @@ class FeedInRestaurantSummaryInfo: UICollectionViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var feedCountDescriptionLabel: UILabel!
+    @IBOutlet weak var emptyView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +25,7 @@ class FeedInRestaurantSummaryInfo: UICollectionViewCell {
         self.restaurantFeed = restaurantFeed
         self.coordinator = coordinator
 
+        emptyView.isHidden = !restaurantFeed.isEmpty
         feedCountDescriptionLabel.text = "총 \(restaurantFeed.count)개의 용기낸 피드가 있어요"
     }
 }

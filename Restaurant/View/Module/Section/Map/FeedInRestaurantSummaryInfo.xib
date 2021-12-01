@@ -47,6 +47,32 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EaN-4S-792">
+                        <rect key="frame" x="16" y="74" width="343" height="226"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyDataImg" translatesAutoresizingMaskIntoConstraints="NO" id="KYX-j4-dIn">
+                                <rect key="frame" x="86.5" y="80" width="170" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="dTJ-ay-u1J"/>
+                                    <constraint firstAttribute="height" constant="95" id="f8H-Bk-wH5"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 작성된 피드가 없어요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COm-Vc-fMc">
+                                <rect key="frame" x="107.5" y="187" width="128.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="colorGrayGray06"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="U5G-vj-ud2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="COm-Vc-fMc" firstAttribute="top" secondItem="KYX-j4-dIn" secondAttribute="bottom" constant="12" id="17T-X0-Du6"/>
+                            <constraint firstItem="COm-Vc-fMc" firstAttribute="centerX" secondItem="EaN-4S-792" secondAttribute="centerX" id="ZWb-f4-duP"/>
+                            <constraint firstItem="KYX-j4-dIn" firstAttribute="top" secondItem="U5G-vj-ud2" secondAttribute="top" constant="80" id="cqR-9B-zEt"/>
+                            <constraint firstItem="KYX-j4-dIn" firstAttribute="centerX" secondItem="EaN-4S-792" secondAttribute="centerX" id="s9h-3U-N8H"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -54,23 +80,32 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="9QH-q4-t3v" secondAttribute="bottom" id="BI2-A0-jSR"/>
                 <constraint firstItem="ncw-Xu-tL9" firstAttribute="top" secondItem="3tu-Nj-VWS" secondAttribute="bottom" id="NO9-zl-50w"/>
+                <constraint firstItem="EaN-4S-792" firstAttribute="top" secondItem="9QH-q4-t3v" secondAttribute="top" id="Pxz-CV-k4z"/>
                 <constraint firstAttribute="trailing" secondItem="9QH-q4-t3v" secondAttribute="trailing" constant="16" id="ZXY-wq-f5P"/>
                 <constraint firstItem="9QH-q4-t3v" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="acJ-tp-anc"/>
+                <constraint firstItem="EaN-4S-792" firstAttribute="bottom" secondItem="9QH-q4-t3v" secondAttribute="bottom" id="egd-oq-Kxd"/>
                 <constraint firstItem="9QH-q4-t3v" firstAttribute="top" secondItem="ncw-Xu-tL9" secondAttribute="bottom" constant="16" id="jlB-zG-j3z"/>
                 <constraint firstItem="ncw-Xu-tL9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="n2c-E8-vrf"/>
                 <constraint firstItem="3tu-Nj-VWS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="pzg-65-ERA"/>
+                <constraint firstItem="EaN-4S-792" firstAttribute="leading" secondItem="9QH-q4-t3v" secondAttribute="leading" id="qrf-0s-TeL"/>
                 <constraint firstItem="3tu-Nj-VWS" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="sU2-x9-dI6"/>
+                <constraint firstItem="EaN-4S-792" firstAttribute="trailing" secondItem="9QH-q4-t3v" secondAttribute="trailing" id="tLJ-iY-v7q"/>
             </constraints>
             <connections>
                 <outlet property="collectionView" destination="9QH-q4-t3v" id="bb2-qz-Ocw"/>
+                <outlet property="emptyView" destination="EaN-4S-792" id="vuo-lt-1ye"/>
                 <outlet property="feedCountDescriptionLabel" destination="ncw-Xu-tL9" id="O6l-ER-6Zy"/>
             </connections>
             <point key="canvasLocation" x="9" y="153"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="emptyDataImg" width="170" height="96"/>
         <namedColor name="colorGrayGray05">
             <color red="0.68199998140335083" green="0.68199998140335083" blue="0.68199998140335083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="colorGrayGray06">
+            <color red="0.45899999141693115" green="0.45899999141693115" blue="0.45899999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="colorGrayGray07">
             <color red="0.14100000262260437" green="0.14100000262260437" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

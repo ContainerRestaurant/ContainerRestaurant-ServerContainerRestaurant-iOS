@@ -54,8 +54,10 @@ class OneFeedCollectionViewCell: UICollectionViewCell {
         self.latitude = latitude
         self.mapReloadSubject = afterSearchingRestaurantSubject
 
-        let imageURL = URL(string: restaurant.imagePath)
-        feedImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.3))])
+        if !restaurant.imagePath.isEmpty {
+            let imageURL = URL(string: restaurant.imagePath)
+            feedImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.3))])
+        }
         restaurantNameLabel.text = restaurant.name
         levelOfDifficultyView.rating = restaurant.difficultyAverage
         favoriteButton.setImage(UIImage(named: restaurant.isFavorite ? "favoriteFilled20Px" : "favoriteDisabled20Px"), for: .normal)
@@ -66,8 +68,10 @@ class OneFeedCollectionViewCell: UICollectionViewCell {
         let restaurant = restaurantFavoriteDto.restaurant
         self.restaurantID = restaurant.id
 
-        let imageURL = URL(string: restaurant.imagePath)
-        feedImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.3))])
+        if !restaurant.imagePath.isEmpty {
+            let imageURL = URL(string: restaurant.imagePath)
+            feedImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.3))])
+        }
         restaurantNameLabel.text = restaurant.name
         levelOfDifficultyView.rating = restaurant.difficultyAverage
         favoriteButton.setImage(UIImage(named: restaurant.isFavorite ? "favoriteFilled20Px" : "favoriteDisabled20Px"), for: .normal)
