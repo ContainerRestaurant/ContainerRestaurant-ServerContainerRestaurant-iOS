@@ -34,6 +34,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4z-Sd-973">
+                                <rect key="frame" x="14" y="14" width="32" height="32"/>
+                                <connections>
+                                    <action selector="clickedUserProfileImage:" destination="gTV-IL-0wX" eventType="touchUpInside" id="2AK-ya-Xpd"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lX-xr-cPW">
                                 <rect key="frame" x="56" y="14" width="33" height="18"/>
                                 <constraints>
@@ -99,7 +105,9 @@
                         <color key="backgroundColor" name="colorGrayGray02"/>
                         <constraints>
                             <constraint firstItem="ow0-jg-dF2" firstAttribute="bottom" secondItem="ESK-b3-olX" secondAttribute="bottom" id="1rv-9c-8vq"/>
+                            <constraint firstItem="J4z-Sd-973" firstAttribute="trailing" secondItem="ESK-b3-olX" secondAttribute="trailing" id="96f-k5-AGQ"/>
                             <constraint firstItem="Pbx-zn-m4C" firstAttribute="leading" secondItem="sg1-Ll-uVw" secondAttribute="trailing" constant="10" id="AYl-QF-Oyo"/>
+                            <constraint firstItem="J4z-Sd-973" firstAttribute="bottom" secondItem="ESK-b3-olX" secondAttribute="bottom" id="D6z-Yc-K4y"/>
                             <constraint firstItem="sg1-Ll-uVw" firstAttribute="leading" secondItem="5lX-xr-cPW" secondAttribute="leading" id="G1L-h2-CQK"/>
                             <constraint firstAttribute="trailing" secondItem="7Oq-Qs-0S2" secondAttribute="trailing" constant="14" id="H6M-So-OZw"/>
                             <constraint firstItem="ESK-b3-olX" firstAttribute="top" secondItem="uJe-8T-rPU" secondAttribute="top" constant="14" id="Kap-TW-hTL"/>
@@ -107,12 +115,14 @@
                             <constraint firstItem="7Oq-Qs-0S2" firstAttribute="leading" secondItem="5lX-xr-cPW" secondAttribute="leading" id="PF1-dC-5ED"/>
                             <constraint firstAttribute="trailing" secondItem="bZv-ft-lDc" secondAttribute="trailing" constant="18" id="YXx-Ds-ZG5"/>
                             <constraint firstItem="ow0-jg-dF2" firstAttribute="leading" secondItem="ESK-b3-olX" secondAttribute="trailing" constant="10" id="b2d-Am-DP2"/>
+                            <constraint firstItem="J4z-Sd-973" firstAttribute="leading" secondItem="ESK-b3-olX" secondAttribute="leading" id="cw0-lW-fEN"/>
                             <constraint firstItem="5lX-xr-cPW" firstAttribute="leading" secondItem="ESK-b3-olX" secondAttribute="trailing" constant="10" id="fLM-md-lgc"/>
                             <constraint firstItem="5lX-xr-cPW" firstAttribute="top" secondItem="ESK-b3-olX" secondAttribute="top" id="hgS-6S-pr2"/>
                             <constraint firstItem="bZv-ft-lDc" firstAttribute="top" secondItem="uJe-8T-rPU" secondAttribute="top" constant="10" id="m4r-ig-lhp"/>
                             <constraint firstItem="7Oq-Qs-0S2" firstAttribute="top" secondItem="ow0-jg-dF2" secondAttribute="bottom" constant="6" id="nsL-q1-57Y"/>
                             <constraint firstItem="ESK-b3-olX" firstAttribute="leading" secondItem="uJe-8T-rPU" secondAttribute="leading" constant="14" id="q2b-Oh-opB"/>
                             <constraint firstItem="sg1-Ll-uVw" firstAttribute="top" secondItem="7Oq-Qs-0S2" secondAttribute="bottom" constant="6" id="wbF-XB-TgB"/>
+                            <constraint firstItem="J4z-Sd-973" firstAttribute="top" secondItem="ESK-b3-olX" secondAttribute="top" id="xyw-pK-qEC"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

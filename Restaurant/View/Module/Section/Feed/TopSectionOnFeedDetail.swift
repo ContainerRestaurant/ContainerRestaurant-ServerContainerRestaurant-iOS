@@ -10,6 +10,8 @@ import RxSwift
 import RxCocoa
 
 class TopSectionOnFeedDetail: UICollectionViewCell {
+    weak var coordinator: FeedDetailCoordinator?
+    var userID: Int?
     var disposeBag = DisposeBag()
     var isLiked: Bool?
     var isScraped: Bool?
@@ -22,12 +24,20 @@ class TopSectionOnFeedDetail: UICollectionViewCell {
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var bookmarkCountLabel: UILabel!
+    @IBAction func clickedUserProfileImage(_ sender: Any) {
+        if let userID = self.userID {
+            coordinator?.pushToInquiryProfile(userID: userID)
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    func configure(_ coordinator: FeedDetailCoordinator?, _ feedID: String, _ thumbnailURLObservable: Observable<String>, _ userProfileImageObservable: Observable<String>, _ userNicknameDriver: Driver<String>, _ userLevelDriver: Driver<String>, _ likeCountDriver: Driver<Int>, _ scrapCountDriver: Driver<Int>, _ userLevel: String, _ isLike: Observable<Bool>, _ isScrap: Observable<Bool>) {
+    func configure(_ coordinator: FeedDetailCoordinator?, _ feedID: String, _ thumbnailURLObservable: Observable<String>, _ userProfileImageObservable: Observable<String>, _ userNicknameDriver: Driver<String>, _ userLevelDriver: Driver<String>, _ likeCountDriver: Driver<Int>, _ scrapCountDriver: Driver<Int>, _ userLevel: String, _ isLike: Observable<Bool>, _ isScrap: Observable<Bool>, _ userID: Int) {
+        self.coordinator = coordinator
+        self.userID = userID
+
         thumbnailURLObservable
             .map { URL(string: $0) }
             .subscribe(onNext: { [weak self] imageURL in

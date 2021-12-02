@@ -25,6 +25,11 @@ class CommentOnFeedDetailCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var replyButton: UIButton!
     @IBOutlet weak var replyCommentCollectionView: UICollectionView!
     @IBOutlet weak var moreButton: UIButton!
+    @IBAction func clickedUserProfileImage(_ sender: Any) {
+        if let userID = comment?.userID {
+            coordinator?.pushToInquiryProfile(userID: userID)
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
