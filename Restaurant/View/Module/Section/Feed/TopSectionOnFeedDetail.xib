@@ -37,6 +37,12 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fqv-13-a9d">
+                        <rect key="frame" x="16" y="266" width="36" height="36"/>
+                        <connections>
+                            <action selector="clickedUserProfileImage:" destination="gTV-IL-0wX" eventType="touchUpInside" id="8Ti-9T-nYy"/>
+                        </connections>
+                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용기낸 식당" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFO-qN-iwL">
                         <rect key="frame" x="62" y="266" width="55" height="17"/>
                         <constraints>
@@ -95,11 +101,15 @@
                 <constraint firstItem="CjG-Ae-Ayj" firstAttribute="leading" secondItem="ieY-Tw-gIZ" secondAttribute="trailing" constant="10" id="AGf-I0-aj3"/>
                 <constraint firstItem="ROc-y6-P98" firstAttribute="top" secondItem="heu-6k-quC" secondAttribute="bottom" constant="4" id="B2w-aE-iZd"/>
                 <constraint firstItem="S2e-ED-3Kv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CjG-Ae-Ayj" secondAttribute="trailing" id="BWt-16-oKc"/>
+                <constraint firstItem="Fqv-13-a9d" firstAttribute="trailing" secondItem="ieY-Tw-gIZ" secondAttribute="trailing" id="GSw-xv-vYC"/>
                 <constraint firstItem="rFO-qN-iwL" firstAttribute="leading" secondItem="ieY-Tw-gIZ" secondAttribute="trailing" constant="10" id="GpP-Wl-RWM"/>
                 <constraint firstItem="S2e-ED-3Kv" firstAttribute="top" secondItem="Hfy-6d-Ixm" secondAttribute="bottom" constant="14" id="IMO-eV-hDo"/>
+                <constraint firstItem="Fqv-13-a9d" firstAttribute="leading" secondItem="ieY-Tw-gIZ" secondAttribute="leading" id="ImS-xh-czn"/>
                 <constraint firstItem="ROc-y6-P98" firstAttribute="centerX" secondItem="heu-6k-quC" secondAttribute="centerX" id="JrW-gx-hP2"/>
                 <constraint firstItem="ieY-Tw-gIZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="OF2-cU-s5q"/>
+                <constraint firstItem="Fqv-13-a9d" firstAttribute="bottom" secondItem="ieY-Tw-gIZ" secondAttribute="bottom" id="OHy-Er-yaX"/>
                 <constraint firstItem="WeL-Zb-NaE" firstAttribute="centerX" secondItem="S2e-ED-3Kv" secondAttribute="centerX" id="PVW-LN-NC1"/>
+                <constraint firstItem="Fqv-13-a9d" firstAttribute="top" secondItem="ieY-Tw-gIZ" secondAttribute="top" id="UxU-nY-Gby"/>
                 <constraint firstItem="Hfy-6d-Ixm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="a0T-S1-ht7"/>
                 <constraint firstAttribute="trailing" secondItem="Hfy-6d-Ixm" secondAttribute="trailing" id="d49-ab-fkb"/>
                 <constraint firstItem="heu-6k-quC" firstAttribute="top" secondItem="Hfy-6d-Ixm" secondAttribute="bottom" constant="14" id="dkH-bA-WXm"/>

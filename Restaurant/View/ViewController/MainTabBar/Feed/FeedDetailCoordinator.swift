@@ -88,4 +88,11 @@ extension FeedDetailCoordinator {
         childCoordinators.append(coordinator)
         coordinator.start()
     }
+
+    func pushToInquiryProfile(userID: Int) {
+        let coordinator = InquiryProfileCoordinator(presenter: presenter, userID: userID)
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
 }
