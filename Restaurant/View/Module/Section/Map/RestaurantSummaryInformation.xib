@@ -93,7 +93,7 @@
                             <color key="titleColor" name="colorMainGreen02"/>
                         </state>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGV-2i-YTT">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGV-2i-YTT">
                         <rect key="frame" x="16" y="57" width="30" height="20"/>
                         <color key="backgroundColor" name="colorGrayGray02"/>
                         <constraints>
@@ -110,7 +110,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4C-yP-mES">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4C-yP-mES">
                         <rect key="frame" x="50" y="57" width="99" height="20"/>
                         <color key="backgroundColor" name="colorGrayGray02"/>
                         <constraints>
@@ -166,9 +166,11 @@
             <connections>
                 <outlet property="favoriteButton" destination="qdt-9A-0rr" id="602-UP-OfE"/>
                 <outlet property="feedCountButton" destination="d5i-zp-P8O" id="US8-Ya-Ug4"/>
+                <outlet property="firstBestMenuButton" destination="hGV-2i-YTT" id="UzK-pS-Dhh"/>
                 <outlet property="levelOfDifficultyLabel" destination="p0t-aa-g4x" id="uuZ-Bh-w5I"/>
                 <outlet property="levelOfDifficultyView" destination="IVL-tc-Xyv" id="0dh-fp-JqO"/>
                 <outlet property="restaurantNameLabel" destination="gHi-IW-SK2" id="But-VE-quF"/>
+                <outlet property="secondBestMenuButton" destination="F4C-yP-mES" id="zRk-qY-de7"/>
             </connections>
             <point key="canvasLocation" x="9" y="153"/>
         </collectionViewCell>

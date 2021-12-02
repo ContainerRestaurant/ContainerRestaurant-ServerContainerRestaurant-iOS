@@ -21,6 +21,8 @@ class RestaurantSummaryInformation: UICollectionViewCell {
     @IBOutlet weak var levelOfDifficultyLabel: UILabel!
     @IBOutlet weak var feedCountButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var firstBestMenuButton: UIButton!
+    @IBOutlet weak var secondBestMenuButton: UIButton!
     @IBAction func clickedFavoriteButton(_ sender: Any) {
         guard let restaurantID = self.restaurantID else { return }
 
@@ -68,5 +70,15 @@ class RestaurantSummaryInformation: UICollectionViewCell {
         levelOfDifficultyView.rating = restaurant.difficultyAverage
         levelOfDifficultyLabel.text = String(restaurant.difficultyAverage)
         feedCountButton.setTitle(String(restaurant.feedCount), for: .normal)
+
+        restaurant.bestMenu.enumerated().forEach { [weak self] (index, menu) in
+            if index == 0 {
+                self?.firstBestMenuButton.isHidden = false
+                self?.firstBestMenuButton.setTitle(menu, for: .normal)
+            } else {
+                self?.secondBestMenuButton.isHidden = false
+                self?.secondBestMenuButton.setTitle(menu, for: .normal)
+            }
+        }
     }
 }

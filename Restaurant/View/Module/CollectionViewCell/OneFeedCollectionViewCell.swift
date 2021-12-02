@@ -20,6 +20,8 @@ class OneFeedCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var levelOfDifficultyView: CosmosView!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var containerFriendlyImageView: UIImageView!
+    @IBOutlet weak var firstBestMenuButton: UIButton!
+    @IBOutlet weak var secondBestMenuButton: UIButton!
     @IBAction func clickedFavoriteButton(_ sender: Any) {
         if favoriteButton.image(for: .normal) == UIImage(named: "favoriteDisabled20Px") {
             guard let restaurantID = restaurantID else { return }
@@ -62,6 +64,16 @@ class OneFeedCollectionViewCell: UICollectionViewCell {
         levelOfDifficultyView.rating = restaurant.difficultyAverage
         favoriteButton.setImage(UIImage(named: restaurant.isFavorite ? "favoriteFilled20Px" : "favoriteDisabled20Px"), for: .normal)
         containerFriendlyImageView.isHidden = !restaurant.isContainerFriendly
+
+        restaurant.bestMenu.enumerated().forEach { [weak self] (index, menu) in
+            if index == 0 {
+                self?.firstBestMenuButton.isHidden = false
+                self?.firstBestMenuButton.setTitle(menu, for: .normal)
+            } else {
+                self?.secondBestMenuButton.isHidden = false
+                self?.secondBestMenuButton.setTitle(menu, for: .normal)
+            }
+        }
     }
 
     func favoriteRestaurantConfigure(_ restaurantFavoriteDto: RestaurantFavoriteDtoList) {
@@ -76,5 +88,15 @@ class OneFeedCollectionViewCell: UICollectionViewCell {
         levelOfDifficultyView.rating = restaurant.difficultyAverage
         favoriteButton.setImage(UIImage(named: restaurant.isFavorite ? "favoriteFilled20Px" : "favoriteDisabled20Px"), for: .normal)
         containerFriendlyImageView.isHidden = !restaurant.isContainerFriendly
+
+        restaurant.bestMenu.enumerated().forEach { [weak self] (index, menu) in
+            if index == 0 {
+                self?.firstBestMenuButton.isHidden = false
+                self?.firstBestMenuButton.setTitle(menu, for: .normal)
+            } else {
+                self?.secondBestMenuButton.isHidden = false
+                self?.secondBestMenuButton.setTitle(menu, for: .normal)
+            }
+        }
     }
 }

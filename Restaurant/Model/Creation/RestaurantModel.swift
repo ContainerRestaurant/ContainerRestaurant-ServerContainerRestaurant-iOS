@@ -22,6 +22,8 @@ struct RestaurantModel: Codable {
 
     //즐겨찾기한 식당 정보에서 추가
     var isFavorite: Bool
+
+    var bestMenu: [String]
     
     private enum CodingKeys: String, CodingKey {
         case name
@@ -35,6 +37,8 @@ struct RestaurantModel: Codable {
         case feedCount
         case isContainerFriendly
         case isFavorite
+
+        case bestMenu
     }
     
     init() {
@@ -49,6 +53,8 @@ struct RestaurantModel: Codable {
         feedCount = 0
         isContainerFriendly = false
         isFavorite = false
+
+        bestMenu = []
     }
     
     init(name: String, address: String, latitude: Double, longitude: Double, id: Int = 0, imagePath: String = "", difficultyAverage: Double = 0.0, feedCount: Int = 0, isContainerFriendly: Bool = false, isFavorite: Bool = false) {
@@ -63,6 +69,8 @@ struct RestaurantModel: Codable {
         self.feedCount = feedCount
         self.isContainerFriendly = isContainerFriendly
         self.isFavorite = isFavorite
+
+        self.bestMenu = []
     }
     
     init(from decoder: Decoder) throws {
@@ -79,5 +87,7 @@ struct RestaurantModel: Codable {
         self.feedCount = (try? container.decode(Int.self, forKey: .feedCount)) ?? 0
         self.isContainerFriendly = (try? container.decode(Bool.self, forKey: .isContainerFriendly)) ?? false
         self.isFavorite = (try? container.decode(Bool.self, forKey: .isFavorite)) ?? false
+
+        self.bestMenu = (try? container.decode(Array.self, forKey: .bestMenu)) ?? []
     }
 }
