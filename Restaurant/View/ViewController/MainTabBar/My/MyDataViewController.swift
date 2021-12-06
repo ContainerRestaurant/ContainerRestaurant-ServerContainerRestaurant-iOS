@@ -135,7 +135,7 @@ extension MyDataViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if myDataType == .myFeed || myDataType == .scrapedFeed {
-            coordinator?.pushToFeedDetail(feedID: viewModel.feeds[indexPath.row].id)
+            coordinator?.pushToFeedDetail(feedID: viewModel.feeds[indexPath.row].id, cell: collectionView.cellForItem(at: indexPath) as! TwoFeedCollectionViewCell)
         } else {
 
         }

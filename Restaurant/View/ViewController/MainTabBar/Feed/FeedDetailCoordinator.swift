@@ -15,6 +15,7 @@ class FeedDetailCoordinator: NSObject, Coordinator {
     var feedID: Int?
     var feedDetailViewWillAppearSubject = PublishSubject<Void>()
     var justReloadSubject: PublishSubject<Void>?
+    var selectedCell: TwoFeedCollectionViewCell?
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
@@ -31,11 +32,13 @@ class FeedDetailCoordinator: NSObject, Coordinator {
         guard let feedID = self.feedID else { return }
         
         APIClient.feedDetail(feedID: feedID) { [weak self] feedDetailData in
-            if let feedDetailData = feedDetailData {
+            if let feedDetailData = feedDetailData,
+               let cell = self?.selectedCell {
                 var feedDetail = FeedDetailViewController.instantiate()
                 feedDetail.coordinator = self
                 feedDetail.feedDetailViewWillAppearSubject = self?.feedDetailViewWillAppearSubject
                 feedDetail.hidesBottomBarWhenPushed = true
+                feedDetail.selectedCell = cell//self?.selectedCell
                 feedDetail.bind(viewModel: FeedDetailViewModel(feedDetailData))
                 
                 self?.presenter.pushViewController(feedDetail, animated: true)
