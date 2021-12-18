@@ -1001,6 +1001,7 @@
                     <connections>
                         <outlet property="beBraveInFirstButton" destination="aoY-g0-lKO" id="EIR-Zj-kJv"/>
                         <outlet property="findNearestRestaurantButton" destination="hiJ-xm-FZM" id="3U2-7y-kjb"/>
+                        <outlet property="titleLabel" destination="c1S-jt-9cC" id="bI3-bE-LW0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="csj-7q-Ys6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
