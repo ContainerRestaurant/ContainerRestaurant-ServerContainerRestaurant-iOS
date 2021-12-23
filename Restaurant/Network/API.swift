@@ -56,7 +56,7 @@ extension API {
         ]
 
         AF.upload(multipartFormData: { multipartFormData in
-            if let data = image.jpegData(compressionQuality: 0.4) {
+            if let data = image.jpegData(compressionQuality: 0.3) {
                 multipartFormData.append(data, withName: "image", fileName: "file.jpeg", mimeType: "image/jpeg")
             }
         }, to: url, method: .post, headers: header).responseJSON(completionHandler: { response in
