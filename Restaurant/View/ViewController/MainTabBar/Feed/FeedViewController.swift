@@ -178,7 +178,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
             self.selectedSortIndex = 0
             self.sortCollectionView.reloadData()
-            self.sortCollectionView.scrollToItem(at: [.zero], at: .centeredHorizontally, animated: true)
+            self.sortCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: true)
 
             let category = viewModel.category[selectedCategoryIndex].0
             self.selectedCategoryAndSortSubject.onNext((category, selectedSortIndex))
