@@ -1035,18 +1035,50 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q9A-v0-xal">
+                                <rect key="frame" x="107.66666666666669" y="355" width="160" height="102"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 용기낸 식당이 없어요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TN3-re-hBl">
+                                        <rect key="frame" x="15.333333333333329" y="84" width="129" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" name="colorGrayGray06"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyDataImgMap" translatesAutoresizingMaskIntoConstraints="NO" id="iMu-z1-rx8">
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="72"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="160" id="ZCR-rQ-L36"/>
+                                            <constraint firstAttribute="height" constant="72" id="n8k-91-PVh"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="iMu-z1-rx8" firstAttribute="top" secondItem="Q9A-v0-xal" secondAttribute="top" id="9No-IQ-GMV"/>
+                                    <constraint firstAttribute="height" constant="102" id="QCc-vQ-enm"/>
+                                    <constraint firstAttribute="width" constant="160" id="Uk2-Xz-8kF"/>
+                                    <constraint firstItem="iMu-z1-rx8" firstAttribute="centerX" secondItem="Q9A-v0-xal" secondAttribute="centerX" id="gCH-xZ-a1E"/>
+                                    <constraint firstItem="TN3-re-hBl" firstAttribute="centerX" secondItem="Q9A-v0-xal" secondAttribute="centerX" id="ldc-mM-dQA"/>
+                                    <constraint firstItem="iMu-z1-rx8" firstAttribute="leading" secondItem="Q9A-v0-xal" secondAttribute="leading" id="uzR-NZ-hZL"/>
+                                    <constraint firstAttribute="trailing" secondItem="iMu-z1-rx8" secondAttribute="trailing" id="vvD-lS-uXR"/>
+                                    <constraint firstItem="TN3-re-hBl" firstAttribute="top" secondItem="iMu-z1-rx8" secondAttribute="bottom" constant="12" id="w44-AT-bwz"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5G5-qA-Xyh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Q9A-v0-xal" firstAttribute="centerX" secondItem="nlB-F1-wwb" secondAttribute="centerX" id="1Ag-ca-XJw"/>
                             <constraint firstItem="5G5-qA-Xyh" firstAttribute="bottom" secondItem="o1d-hE-gO0" secondAttribute="bottom" id="55o-K4-nkW"/>
                             <constraint firstItem="5G5-qA-Xyh" firstAttribute="trailing" secondItem="o1d-hE-gO0" secondAttribute="trailing" id="8vd-GA-lp5"/>
+                            <constraint firstItem="Q9A-v0-xal" firstAttribute="centerY" secondItem="nlB-F1-wwb" secondAttribute="centerY" id="Ioi-ey-o9b"/>
                             <constraint firstItem="o1d-hE-gO0" firstAttribute="leading" secondItem="5G5-qA-Xyh" secondAttribute="leading" id="c4z-g8-PBT"/>
                             <constraint firstItem="o1d-hE-gO0" firstAttribute="top" secondItem="5G5-qA-Xyh" secondAttribute="top" id="xxk-ga-ELV"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="o1d-hE-gO0" id="0ZQ-xM-sCo"/>
+                        <outlet property="emptyView" destination="Q9A-v0-xal" id="wE0-St-4lb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I7b-KF-Quu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
