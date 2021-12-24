@@ -21,9 +21,6 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hfy-6d-Ixm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="256"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="256" id="IbJ-0C-qC6"/>
-                        </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ieY-Tw-gIZ">
                         <rect key="frame" x="16" y="266" width="36" height="36"/>
@@ -106,6 +103,7 @@
                 <constraint firstItem="S2e-ED-3Kv" firstAttribute="top" secondItem="Hfy-6d-Ixm" secondAttribute="bottom" constant="14" id="IMO-eV-hDo"/>
                 <constraint firstItem="Fqv-13-a9d" firstAttribute="leading" secondItem="ieY-Tw-gIZ" secondAttribute="leading" id="ImS-xh-czn"/>
                 <constraint firstItem="ROc-y6-P98" firstAttribute="centerX" secondItem="heu-6k-quC" secondAttribute="centerX" id="JrW-gx-hP2"/>
+                <constraint firstAttribute="bottom" secondItem="Fqv-13-a9d" secondAttribute="bottom" constant="27" id="MKG-sH-hxB"/>
                 <constraint firstItem="ieY-Tw-gIZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="OF2-cU-s5q"/>
                 <constraint firstItem="Fqv-13-a9d" firstAttribute="bottom" secondItem="ieY-Tw-gIZ" secondAttribute="bottom" id="OHy-Er-yaX"/>
                 <constraint firstItem="WeL-Zb-NaE" firstAttribute="centerX" secondItem="S2e-ED-3Kv" secondAttribute="centerX" id="PVW-LN-NC1"/>

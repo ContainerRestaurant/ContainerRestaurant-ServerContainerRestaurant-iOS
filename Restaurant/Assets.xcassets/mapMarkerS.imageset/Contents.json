@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "chevronLeftOutline20Px.png",
+      "filename" : "mapMarkerS.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "chevronLeftOutline20Px@2x.png",
+      "filename" : "mapMarkerS@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "chevronLeftOutline20Px@3x.png",
+      "filename" : "mapMarkerS@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

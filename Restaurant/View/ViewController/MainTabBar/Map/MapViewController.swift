@@ -47,6 +47,7 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
 
         MapViewController.mapNavigationBarAnimated = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.removeMarkersIcon()
 //        disposeBag = DisposeBag() 
     }
     
@@ -146,14 +147,15 @@ extension MapViewController {
     private func setMarkers() {
         for restaurant in self.viewModel.nearbyRestaurants {
             let marker = NMFMarker()
+            setNormalMarkersIcon(marker: marker)
             marker.position = NMGLatLng(lat: restaurant.latitude, lng: restaurant.longitude)
-            marker.iconImage = NMFOverlayImage(name: "mapMarker")
-            marker.width = 51
-            marker.height = 56
             marker.mapView = mapView
             self.markers.append(marker)
             
             let handler = { [weak self] (overlay: NMFOverlay) -> Bool in
+                self?.removeMarkersIcon()
+                self?.setClickedMarkersIcon(marker: marker)
+
                 self?.moveToLocationOnMap(latitude: restaurant.latitude, longitude: restaurant.longitude)
 
                 self?.coordinator?.restaurantSummaryInformation(restaurant: restaurant, latitude: self?.viewModel.latitudeInCenterOfMap ?? 0.0, longitude: self?.viewModel.longitudeInCeterOfMap ?? 0.0)
@@ -168,7 +170,25 @@ extension MapViewController {
         self.markers.forEach { $0.mapView = nil }
         self.markers.removeAll()
     }
-    
+
+    private func removeMarkersIcon() {
+        for marker in markers {
+            setNormalMarkersIcon(marker: marker)
+        }
+    }
+
+    private func setNormalMarkersIcon(marker: NMFMarker) {
+        marker.iconImage = NMFOverlayImage(name: "mapMarkerS")
+        marker.width = 30
+        marker.height = 30
+    }
+
+    private func setClickedMarkersIcon(marker: NMFMarker) {
+        marker.iconImage = NMFOverlayImage(name: "mapMarker")
+        marker.width = 51
+        marker.height = 56
+    }
+
     private func pushNearbyRestaurants() {
         coordinator?.pushNearbyRestaurants(nearbyRestaurants: viewModel.nearbyRestaurants, latitude: self.viewModel.latitudeInCenterOfMap, longitude: self.viewModel.longitudeInCeterOfMap)
     }

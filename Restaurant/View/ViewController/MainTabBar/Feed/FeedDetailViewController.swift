@@ -27,8 +27,14 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
     var selectedComment: CommentModel?
     var feedDetailViewWillAppearSubject: PublishSubject<Void>?
     var selectedCell: TwoFeedCollectionViewCell?
+    var firstReachFlag = true
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var dimBackgroundView: UIView!
+    @IBOutlet weak var dimView: UIView!
+    @IBOutlet weak var separatorView: UIView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var commentBackgroundView: UIView!
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var commentTextViewHideButton: UIButton!
@@ -58,6 +64,11 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
             selectedTapType = .content
             viewModel.setContentModules()
         }
+
+        self.coordinator?.presenter.navigationBar.isHidden = true
+        self.separatorView.isHidden = true
+        self.dimView.setVerticalGradient(startColor: .init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.7), endColor: .init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0))
+        self.coordinator?.presenter.navigationBar.barStyle = .black
     }
     
     deinit {
@@ -75,15 +86,14 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
             }
         }
 
-        
-        setNavigation()
-
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(noti:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(noti:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+
+        self.coordinator?.presenter.navigationBar.barStyle = .default
 
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -142,6 +152,19 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
             })
             .disposed(by: disposeBag)
 
+        backButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.coordinator?.presenter.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
+
+        moreButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                let isMyFeed = self?.viewModel.userID == UserDataManager.sharedInstance.userID
+                isMyFeed ? self?.presentMyMoreMenu() : self?.presentSomeoneElseMoreButton()
+            })
+            .disposed(by: disposeBag)
+
         additionalCommentViewCloseButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.commentTextView.text = ""
@@ -170,6 +193,65 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
                 }
             })
             .disposed(by: disposeBag)
+    }
+}
+
+//MARK: - Instance Method
+extension FeedDetailViewController {
+    private func setCollectionView() {
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+
+        self.collectionView.register(TopSectionOnFeedDetail.self)
+        self.collectionView.register(TapOnFeedDetail.self)
+        self.collectionView.register(RestaurantInformationOnFeedDetail.self)
+        self.collectionView.register(LevelOfDifficultyOnFeedDetail.self)
+        self.collectionView.register(MenuOnFeedDetail.self)
+
+        self.collectionView.register(ContentOnFeedDetail.self)
+
+        self.collectionView.register(CommentSectionOnFeedDetail.self)
+        self.collectionView.contentInsetAdjustmentBehavior = .never
+    }
+
+    private func presentMyMoreMenu() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+//        alert.addAction(UIAlertAction(title: "수정하기", style: .default , handler:{ (UIAlertAction) in
+//            print("User click Edit button")
+//        }))
+
+        alert.addAction(UIAlertAction(title: "삭제하기", style: .destructive , handler:{ [weak self] (UIAlertAction) in
+            if let feedID = self?.viewModel.feedID {
+                self?.coordinator?.presentDeleteFeedPopup(feedID: feedID)
+            }
+        }))
+
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler:{ (UIAlertAction) in
+            print("User click Dismiss button")
+        }))
+
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+    }
+
+    private func presentSomeoneElseMoreButton() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+        alert.addAction(UIAlertAction(title: "신고하기", style: .destructive , handler:{ [weak self] (UIAlertAction) in
+            if let feedID = self?.viewModel.feedID {
+                self?.coordinator?.presentReportFeedPopup(feedID: feedID)
+            }
+        }))
+
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler:{ (UIAlertAction) in
+            print("User click Dismiss button")
+        }))
+
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
     }
 
     private func updateFeedComment(comment: CommentModel, commentText: String) {
@@ -224,85 +306,6 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
                 self?.collectionView.scrollToItem(at: IndexPath.init(row: collectionViewItemCount-1, section: 0), at: .bottom, animated: true)
             }
         }
-    }
-}
-
-//MARK: - Instance Method
-extension FeedDetailViewController {
-    private func setCollectionView() {
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-
-        self.collectionView.register(TopSectionOnFeedDetail.self)
-        self.collectionView.register(TapOnFeedDetail.self)
-        self.collectionView.register(RestaurantInformationOnFeedDetail.self)
-        self.collectionView.register(LevelOfDifficultyOnFeedDetail.self)
-        self.collectionView.register(MenuOnFeedDetail.self)
-
-        self.collectionView.register(ContentOnFeedDetail.self)
-
-        self.collectionView.register(CommentSectionOnFeedDetail.self)
-    }
-    
-    private func setNavigation() {
-        let backImage = UIImage(named: "chevronLeftOutline20Px")
-        self.coordinator?.presenter.navigationBar.backIndicatorImage = backImage
-        self.coordinator?.presenter.navigationBar.backIndicatorTransitionMaskImage = backImage
-        
-        self.coordinator?.presenter.navigationBar.barTintColor = .white
-        self.coordinator?.presenter.navigationBar.tintColor = .colorGrayGray08
-        self.coordinator?.presenter.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.colorGrayGray08]
-        self.coordinator?.presenter.navigationBar.isTranslucent = false
-        self.coordinator?.presenter.navigationBar.topItem?.title = ""
-
-        let moreButton = UIButton(type: .custom)
-        moreButton.setImage(UIImage(named: "moreHorizontalOutline20px"), for: .normal)
-        moreButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        let isMyFeed = viewModel.userID == UserDataManager.sharedInstance.userID
-        moreButton.addTarget(self, action: isMyFeed ? #selector(presentMyMoreMenu) : #selector(presentSomeoneElseMoreButton), for: .touchUpInside)
-        let helpRightBarButtonItem = UIBarButtonItem(customView: moreButton)
-//        self.coordinator?.presenter.navigationItem.rightBarButtonItem = helpRightBarButtonItem //Todo: 네비게이션 구조 파악하는데에 참고 해도 좋을듯 (얘는 안나오고 아래는 나옴)
-        self.navigationItem.rightBarButtonItem = helpRightBarButtonItem
-    }
-
-    @objc func presentMyMoreMenu() {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
-//        alert.addAction(UIAlertAction(title: "수정하기", style: .default , handler:{ (UIAlertAction) in
-//            print("User click Edit button")
-//        }))
-
-        alert.addAction(UIAlertAction(title: "삭제하기", style: .destructive , handler:{ [weak self] (UIAlertAction) in
-            if let feedID = self?.viewModel.feedID {
-                self?.coordinator?.presentDeleteFeedPopup(feedID: feedID)
-            }
-        }))
-
-        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler:{ (UIAlertAction) in
-            print("User click Dismiss button")
-        }))
-
-        self.present(alert, animated: true, completion: {
-            print("completion block")
-        })
-    }
-
-    @objc func presentSomeoneElseMoreButton() {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
-        alert.addAction(UIAlertAction(title: "신고하기", style: .destructive , handler:{ [weak self] (UIAlertAction) in
-            if let feedID = self?.viewModel.feedID {
-                self?.coordinator?.presentReportFeedPopup(feedID: feedID)
-            }
-        }))
-
-        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler:{ (UIAlertAction) in
-            print("User click Dismiss button")
-        }))
-
-        self.present(alert, animated: true, completion: {
-            print("completion block")
-        })
     }
 }
 
@@ -418,11 +421,17 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch viewModel.modules[indexPath.row] {
-        case is TopSectionOnFeedDetail.Type: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(329))
 
-        case is TapOnFeedDetail.Type: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(37))
+        case is TopSectionOnFeedDetail.Type:
+            let imageSize: CGSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
+            let topSectionHeightWithoutImage: CGFloat = 63
+            return CGSize(width: imageSize.width, height: imageSize.height + topSectionHeightWithoutImage)
 
-        case is RestaurantInformationOnFeedDetail.Type: return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(viewModel.isWelcome ? 132 : 100))
+        case is TapOnFeedDetail.Type:
+            return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(37))
+
+        case is RestaurantInformationOnFeedDetail.Type:
+            return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(viewModel.isWelcome ? 132 : 100))
 
         case is LevelOfDifficultyOnFeedDetail.Type:
             return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(86))
@@ -479,7 +488,8 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 
             return CGSize(width: UIScreen.main.bounds.width, height: cellHeight)
 
-        default: return .zero
+        default:
+            return .zero
         }
     }
 
@@ -494,6 +504,34 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if scrollView == collectionView {
             self.view.endEditing(true)
+        }
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let isOverChangeLine = scrollView.contentOffset.y > UIScreen.main.bounds.width - self.dimBackgroundView.frame.height
+
+        if isOverChangeLine && self.firstReachFlag {
+            self.separatorView.isHidden = false
+            self.dimView.isHidden = true
+            self.firstReachFlag = false
+
+            UIView.animate(withDuration: 0.2) { [weak self] in
+                self?.dimBackgroundView.backgroundColor = .systemBackground
+                self?.backButton.setImage(UIImage(named: "chevronLeftOutline20Px"), for: .normal)
+                self?.moreButton.setImage(UIImage(named: "moreHorizontalOutline20px"), for: .normal)
+                self?.coordinator?.presenter.navigationBar.barStyle = .default
+            }
+        } else if !isOverChangeLine && !self.firstReachFlag {
+            self.separatorView.isHidden = true
+            self.dimView.isHidden = false
+            self.firstReachFlag = true
+
+            UIView.animate(withDuration: 0.2) { [weak self] in
+                self?.dimBackgroundView.backgroundColor = .clear
+                self?.backButton.setImage(UIImage(named: "chevronLeftOutlineWhite20Px"), for: .normal)
+                self?.moreButton.setImage(UIImage(named: "moreHorizontalOutlineWhite20px"), for: .normal)
+                self?.coordinator?.presenter.navigationBar.barStyle = .black
+            }
         }
     }
 }

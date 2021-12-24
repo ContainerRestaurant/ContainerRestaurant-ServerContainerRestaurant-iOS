@@ -13,10 +13,12 @@ class NearbyRestaurantsViewController: BaseViewController, Storyboard, ViewModel
     weak var coordinator: NearbyRestaurantsCoordinator?
 
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    @IBOutlet weak var emptyView: UIView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        self.emptyView.isHidden = !viewModel.nearbyRestaurants.isEmpty
         self.setCollectionView()
         print("NearbyRestaurantsViewController viewDidLoad()")
     }
