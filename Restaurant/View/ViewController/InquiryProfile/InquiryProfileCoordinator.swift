@@ -33,10 +33,11 @@ class InquiryProfileCoordinator: NSObject, Coordinator {
 }
 
 extension InquiryProfileCoordinator {
-    func pushToFeedDetail(feedID: Int) {
+    func pushToFeedDetail(feedID: Int, cell: TwoFeedCollectionViewCell) {
         let coordinator = FeedDetailCoordinator(presenter: presenter)
         coordinator.feedID = feedID
         coordinator.delegate = self
+        coordinator.selectedCell = cell
         childCoordinators.append(coordinator)
         coordinator.start()
     }

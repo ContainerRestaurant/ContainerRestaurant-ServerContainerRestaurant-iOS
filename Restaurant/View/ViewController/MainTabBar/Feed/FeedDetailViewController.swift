@@ -26,6 +26,7 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
     var updateCommentSubject = PublishSubject<CommentModel>()
     var selectedComment: CommentModel?
     var feedDetailViewWillAppearSubject: PublishSubject<Void>?
+    var selectedCell: TwoFeedCollectionViewCell?
     var firstReachFlag = true
 
     @IBOutlet weak var collectionView: UICollectionView!
@@ -377,7 +378,7 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
         case is TopSectionOnFeedDetail.Type:
             let cell: TopSectionOnFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
             cell.configure(coordinator, viewModel.feedID, viewModel.thumbnailURLObservable, viewModel.userProfileImageObservable, viewModel.userNicknameDriver, viewModel.userLevelDriver, viewModel.likeCountDriver, viewModel.scrapCountDriver, viewModel.userLevel, viewModel.isLike, viewModel.isScrap,
-                           viewModel.userID)
+                           viewModel.userID, selectedCell: self.selectedCell!)
             return cell
 
         case is TapOnFeedDetail.Type:

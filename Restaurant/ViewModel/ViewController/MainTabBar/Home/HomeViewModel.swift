@@ -77,6 +77,6 @@ extension HomeViewModel {
     }
     
     func footerSectionSize() -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 99)
+        return CGSize(width: UIScreen.main.bounds.width, height: 108)
     }
 }

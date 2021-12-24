@@ -123,11 +123,11 @@ extension TwoFeedInLineCollectionView: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let coordinator = feedCoordinator {
-            coordinator.pushToFeedDetail(feedID: self.feeds[indexPath.row].id)
+            coordinator.pushToFeedDetail(feedID: self.feeds[indexPath.row].id, cell: collectionView.cellForItem(at: indexPath) as! TwoFeedCollectionViewCell)
         } else if let coordinator = inquiryProfileCoordinator {
-            coordinator.pushToFeedDetail(feedID: self.feeds[indexPath.row].id)
+            coordinator.pushToFeedDetail(feedID: self.feeds[indexPath.row].id, cell: collectionView.cellForItem(at: indexPath) as! TwoFeedCollectionViewCell)
         } else if let coordinator = homeCoordinator {
-            coordinator.pushToFeedDetail(feedID: self.feeds[indexPath.row].id)
+            coordinator.pushToFeedDetail(feedID: self.feeds[indexPath.row].id, cell: collectionView.cellForItem(at: indexPath) as! TwoFeedCollectionViewCell)
         }
     }
     

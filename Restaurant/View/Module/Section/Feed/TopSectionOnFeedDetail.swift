@@ -34,7 +34,7 @@ class TopSectionOnFeedDetail: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-    func configure(_ coordinator: FeedDetailCoordinator?, _ feedID: String, _ thumbnailURLObservable: Observable<String>, _ userProfileImageObservable: Observable<String>, _ userNicknameDriver: Driver<String>, _ userLevelDriver: Driver<String>, _ likeCountDriver: Driver<Int>, _ scrapCountDriver: Driver<Int>, _ userLevel: String, _ isLike: Observable<Bool>, _ isScrap: Observable<Bool>, _ userID: Int) {
+    func configure(_ coordinator: FeedDetailCoordinator?, _ feedID: String, _ thumbnailURLObservable: Observable<String>, _ userProfileImageObservable: Observable<String>, _ userNicknameDriver: Driver<String>, _ userLevelDriver: Driver<String>, _ likeCountDriver: Driver<Int>, _ scrapCountDriver: Driver<Int>, _ userLevel: String, _ isLike: Observable<Bool>, _ isScrap: Observable<Bool>, _ userID: Int, selectedCell: TwoFeedCollectionViewCell) {
         self.coordinator = coordinator
         self.userID = userID
 
@@ -94,7 +94,7 @@ class TopSectionOnFeedDetail: UICollectionViewCell {
             .disposed(by: disposeBag)
 
         likeButton.rx.tap
-            .bind { [weak self] in self?.likeAction(coordinator, Int(feedID) ?? -1) }
+            .bind { [weak self] in self?.likeAction(coordinator, Int(feedID) ?? -1, selectedCell as! TwoFeedCollectionViewCell) }
             .disposed(by: disposeBag)
 
         bookmarkButton.rx.tap
@@ -102,7 +102,7 @@ class TopSectionOnFeedDetail: UICollectionViewCell {
             .disposed(by: disposeBag)
     }
 
-    private func likeAction(_ coordinator: FeedDetailCoordinator?, _ feedID: Int) {
+    private func likeAction(_ coordinator: FeedDetailCoordinator?, _ feedID: Int, _ selectedCell: TwoFeedCollectionViewCell) {
         APIClient.checkLogin(loginToken: UserDataManager.sharedInstance.loginToken) { [weak self] userModel in
             if userModel.id == 0 {
                 coordinator?.presentLogin()
@@ -110,10 +110,12 @@ class TopSectionOnFeedDetail: UICollectionViewCell {
                 guard let isLiked = self?.isLiked else { return }
                 APIClient.likeFeed(feedID: feedID, cancel: isLiked)
                 self?.likeButton.setImage(UIImage(named: isLiked ? "likeOutlineGray20Px" : "likeFilled20Px"), for: .normal)
+                selectedCell.likeButton.setImage(UIImage(named: isLiked ? "likeOutlineGray20Px" : "likeFilled20Px"), for: .normal)
 
                 let likedCount = self?.likeCountLabel.text ?? "0"
                 let likedCountInt = isLiked ? (Int(likedCount) ?? 0) - 1 : (Int(likedCount) ?? 0) + 1
                 self?.likeCountLabel.text = "\(likedCountInt)"
+                selectedCell.likeCountLabel.text = "\(likedCountInt)"
 
                 self?.isLiked = !isLiked
                 Common.hapticVibration()

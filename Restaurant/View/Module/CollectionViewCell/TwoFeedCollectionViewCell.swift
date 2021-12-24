@@ -11,7 +11,6 @@ import RxSwift
 class TwoFeedCollectionViewCell: UICollectionViewCell {
     var disposeBag = DisposeBag()
     var coordinator: Any?
-    var isLiked: Bool = false
 
     @IBOutlet weak var feedImageView: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
@@ -42,8 +41,7 @@ class TwoFeedCollectionViewCell: UICollectionViewCell {
         contentLabel.lineSpacing(text: feedPreview.content, lineSpacing: 3, numberOfLines: 2)
         likeCountLabel.text = String(feedPreview.likeCount)
         replyCountLabel.text = String(feedPreview.commentCount)
-        isLiked = feedPreview.isLike
-        likeButton.setImage(UIImage(named: isLiked ? "likeFilled20Px" : "likeOutlineWhite20Px"), for: .normal)
+        likeButton.setImage(UIImage(named: feedPreview.isLike ? "likeFilled20Px" : "likeOutlineWhite20Px"), for: .normal)
 
         likeButton
             .rx.tap
@@ -67,9 +65,13 @@ class TwoFeedCollectionViewCell: UICollectionViewCell {
                 }
             } else {
                 guard let `self` = self else { return }
-                APIClient.likeFeed(feedID: feedID, cancel: self.isLiked)
-                self.likeButton.setImage(UIImage(named: self.isLiked ? "likeOutlineWhite20Px" : "likeFilled20Px"), for: .normal)
-                self.isLiked = !self.isLiked
+
+                let isLiked = self.likeButton.image(for: .normal) == UIImage(named: "likeFilled20Px")
+                APIClient.likeFeed(feedID: feedID, cancel: isLiked)
+                self.likeButton.setImage(UIImage(named: isLiked ? "likeOutlineWhite20Px" : "likeFilled20Px"), for: .normal)
+
+                let likeCount = Int(self.likeCountLabel.text ?? "0") ?? 0
+                self.likeCountLabel.text = isLiked ? String(likeCount-1) : String(likeCount+1)
                 Common.hapticVibration()
             }
         }
