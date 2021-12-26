@@ -24,6 +24,8 @@ class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        self.coordinator?.presenter.navigationBar.isHidden = true
+
         APIClient.checkLogin(loginToken: UserDataManager.sharedInstance.loginToken) { [weak self] userModel in
             if userModel.id == 0 {
                 UserDataManager.sharedInstance.loginToken = ""
@@ -36,12 +38,6 @@ class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType 
                 self?.collectionView.reloadData()
             }
         }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        self.coordinator?.presenter.navigationBar.isHidden = true
     }
 
     func bindingView() {
