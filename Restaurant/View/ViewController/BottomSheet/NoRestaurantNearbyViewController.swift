@@ -12,6 +12,7 @@ class NoRestaurantNearbyViewController: BaseViewController, Storyboard {
     weak var searchingRestaurantCoordinator: SearchingRestaurantPopupCoordinator?
     var isHiddenFindNearestRestaurantButton = false
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var beBraveInFirstButton: UIButton!
     @IBAction func beBraveInFirst(_ sender: Any) {
         if let coordinator = self.coordinator {
@@ -35,7 +36,10 @@ class NoRestaurantNearbyViewController: BaseViewController, Storyboard {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.findNearestRestaurantButton.isHidden = isHiddenFindNearestRestaurantButton
+        if isHiddenFindNearestRestaurantButton {
+            self.findNearestRestaurantButton.isHidden = true
+            self.titleLabel.text = "가까운 곳에\n용기낸 식당이 없어요"
+        }
         
         print("NoRestaurantNearbyViewController viewDidLoad()")
     }
