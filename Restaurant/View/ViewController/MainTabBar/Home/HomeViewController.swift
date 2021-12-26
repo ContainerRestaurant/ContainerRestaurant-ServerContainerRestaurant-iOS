@@ -39,7 +39,7 @@ class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType 
             }
         }
     }
-    
+
     func bindingView() {
         print("Home bindingView")
 //        self.viewModel.recommendFeeds

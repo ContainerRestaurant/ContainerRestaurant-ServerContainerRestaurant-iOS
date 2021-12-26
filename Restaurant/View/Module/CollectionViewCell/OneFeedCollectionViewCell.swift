@@ -18,6 +18,8 @@ class OneFeedCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var feedImageView: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var levelOfDifficultyView: CosmosView!
+    @IBOutlet weak var levelOfDifficultyLabel: UILabel!
+    @IBOutlet weak var feedCountButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var containerFriendlyImageView: UIImageView!
     @IBOutlet weak var firstBestMenuButton: UIButton!
@@ -62,6 +64,8 @@ class OneFeedCollectionViewCell: UICollectionViewCell {
         }
         restaurantNameLabel.text = restaurant.name
         levelOfDifficultyView.rating = restaurant.difficultyAverage
+        levelOfDifficultyLabel.text = String(restaurant.difficultyAverage)
+        feedCountButton.setTitle(String(restaurant.feedCount), for: .normal)
         favoriteButton.setImage(UIImage(named: restaurant.isFavorite ? "favoriteFilled20Px" : "favoriteDisabled20Px"), for: .normal)
         containerFriendlyImageView.isHidden = !restaurant.isContainerFriendly
 
@@ -86,6 +90,8 @@ class OneFeedCollectionViewCell: UICollectionViewCell {
         }
         restaurantNameLabel.text = restaurant.name
         levelOfDifficultyView.rating = restaurant.difficultyAverage
+        levelOfDifficultyLabel.text = String(restaurant.difficultyAverage)
+        feedCountButton.setTitle(String(restaurant.feedCount), for: .normal)
         favoriteButton.setImage(UIImage(named: restaurant.isFavorite ? "favoriteFilled20Px" : "favoriteDisabled20Px"), for: .normal)
         containerFriendlyImageView.isHidden = !restaurant.isContainerFriendly
 
