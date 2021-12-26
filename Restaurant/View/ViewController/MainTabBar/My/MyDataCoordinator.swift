@@ -72,6 +72,7 @@ extension MyDataCoordinator {
         coordinator.feedID = feedID
         coordinator.delegate = self
         coordinator.selectedCell = cell
+        coordinator.isHiddenNavigationBarBeforePush = false
         childCoordinators.append(coordinator)
         coordinator.start()
     }

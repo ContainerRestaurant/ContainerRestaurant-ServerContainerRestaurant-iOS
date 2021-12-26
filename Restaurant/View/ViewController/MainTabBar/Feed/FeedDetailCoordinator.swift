@@ -16,6 +16,7 @@ class FeedDetailCoordinator: NSObject, Coordinator {
     var feedDetailViewWillAppearSubject = PublishSubject<Void>()
     var justReloadSubject: PublishSubject<Void>?
     var selectedCell: TwoFeedCollectionViewCell?
+    var isHiddenNavigationBarBeforePush: Bool = true
     
     init(presenter: UINavigationController) {
         self.presenter = presenter

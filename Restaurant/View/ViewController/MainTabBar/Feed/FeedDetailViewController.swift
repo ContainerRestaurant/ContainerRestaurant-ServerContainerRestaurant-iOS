@@ -65,10 +65,8 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
             viewModel.setContentModules()
         }
 
-        self.coordinator?.presenter.navigationBar.isHidden = true
         self.separatorView.isHidden = true
         self.dimView.setVerticalGradient(startColor: .init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.7), endColor: .init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0))
-        self.coordinator?.presenter.navigationBar.barStyle = .black
     }
     
     deinit {
@@ -77,6 +75,9 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        self.coordinator?.presenter.navigationBar.isHidden = true
+        self.coordinator?.presenter.navigationBar.barStyle = .black
 
         APIClient.checkLogin(loginToken: UserDataManager.sharedInstance.loginToken) { [weak self] userModel in
             if userModel.id == 0 {
@@ -97,6 +98,12 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
 
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        self.coordinator?.presenter.navigationBar.isHidden = coordinator?.isHiddenNavigationBarBeforePush ?? true
     }
 
     func bindingView() {

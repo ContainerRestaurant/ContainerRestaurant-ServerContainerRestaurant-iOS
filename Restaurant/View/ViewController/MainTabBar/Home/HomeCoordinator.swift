@@ -67,6 +67,7 @@ extension HomeCoordinator {
         coordinator.feedID = feedID
         coordinator.delegate = self
         coordinator.selectedCell = cell
+        coordinator.isHiddenNavigationBarBeforePush = true
         childCoordinators.append(coordinator)
         coordinator.start()
     }

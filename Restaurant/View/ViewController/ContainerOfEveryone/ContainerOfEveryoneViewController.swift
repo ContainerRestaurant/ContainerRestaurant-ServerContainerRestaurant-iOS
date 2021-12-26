@@ -25,15 +25,23 @@ class ContainerOfEveryoneViewController: BaseViewController, ViewModelBindableTy
         
         setNavigation()
     }
-    
-    func bindingView() {
-        
-    }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        HomeViewController.homeNavigationBarAnimated = true
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .systemBackground
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.colorGrayGray07]
+        let backImage = UIImage(named: "chevronLeftOutline20Px")
+        appearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
+        self.coordinator?.presenter.navigationBar.standardAppearance = appearance
+        self.coordinator?.presenter.navigationBar.compactAppearance = appearance
+        self.coordinator?.presenter.navigationBar.scrollEdgeAppearance = appearance
+    }
+    
+    func bindingView() {
+        
     }
     
     deinit {
@@ -52,11 +60,6 @@ extension ContainerOfEveryoneViewController {
     }
     
     private func setNavigation() {
-        //Back Button
-        let backImage = UIImage(named: "chevronLeftOutline20Px")
-        self.coordinator?.presenter.navigationBar.backIndicatorImage = backImage
-        self.coordinator?.presenter.navigationBar.backIndicatorTransitionMaskImage = backImage
-        
         //Help Button
         let helpButton = UIButton(type: .custom)
         helpButton.setImage(UIImage(named: "helpOutline20Px"), for: .normal)
@@ -64,14 +67,20 @@ extension ContainerOfEveryoneViewController {
         helpButton.addTarget(self, action: #selector(listStandardDescriptionPopup), for: .touchUpInside)
         let helpRightBarButtonItem = UIBarButtonItem(customView: helpButton)
         self.navigationItem.rightBarButtonItem = helpRightBarButtonItem
-        
+
         self.coordinator?.presenter.navigationBar.isHidden = false
         self.coordinator?.presenter.navigationBar.isTranslucent = false
-        self.coordinator?.presenter.navigationBar.barTintColor = .colorMainGreen02
         self.coordinator?.presenter.navigationBar.tintColor = .colorGrayGray01
-        self.coordinator?.presenter.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.colorGrayGray01]
 
         self.navigationItem.title = "모두의 용기"
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .colorMainGreen02
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.colorGrayGray01]
+        let backImage = UIImage(named: "chevronLeftOutlineWhite20Px")
+        appearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
+        self.coordinator?.presenter.navigationBar.standardAppearance = appearance
+        self.coordinator?.presenter.navigationBar.scrollEdgeAppearance = self.coordinator?.presenter.navigationBar.standardAppearance
     }
     
     @objc func listStandardDescriptionPopup() {

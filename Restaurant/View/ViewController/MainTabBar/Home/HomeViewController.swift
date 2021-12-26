@@ -8,7 +8,6 @@
 import UIKit
 
 class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType {
-    static var homeNavigationBarAnimated = false
     var viewModel: HomeViewModel!
     weak var coordinator: HomeCoordinator?
     
@@ -37,15 +36,12 @@ class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType 
                 self?.collectionView.reloadData()
             }
         }
-
-        self.navigationController?.setNavigationBarHidden(true, animated: HomeViewController.homeNavigationBarAnimated)
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
 
-        HomeViewController.homeNavigationBarAnimated = false
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        self.coordinator?.presenter.navigationBar.isHidden = true
     }
 
     func bindingView() {

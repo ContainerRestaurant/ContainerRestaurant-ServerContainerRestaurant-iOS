@@ -33,8 +33,6 @@ class InquiryProfileViewController: BaseViewController, Storyboard, UINavigation
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
-        HomeViewController.homeNavigationBarAnimated = true
     }
 
     private func setCollectionView() {
@@ -45,15 +43,20 @@ class InquiryProfileViewController: BaseViewController, Storyboard, UINavigation
     }
     
     private func setNavigation() {
-        let backImage = UIImage(named: "chevronLeftOutline20Px")
-        self.coordinator?.presenter.navigationBar.backIndicatorImage = backImage
-        self.coordinator?.presenter.navigationBar.backIndicatorTransitionMaskImage = backImage
-        
-        self.coordinator?.presenter.navigationBar.barTintColor = .white
-        self.coordinator?.presenter.navigationBar.tintColor = .colorGrayGray08
-        self.coordinator?.presenter.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.colorGrayGray08]
-        self.coordinator?.presenter.navigationBar.isTranslucent = false
         self.coordinator?.presenter.navigationBar.topItem?.title = ""
+        self.coordinator?.presenter.navigationBar.isTranslucent = false
+        self.coordinator?.presenter.navigationBar.tintColor = .colorGrayGray08
+
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .systemBackground
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.colorGrayGray07]
+        let backImage = UIImage(named: "chevronLeftOutline20Px")
+        appearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
+        self.coordinator?.presenter.navigationBar.standardAppearance = appearance
+
+        self.coordinator?.presenter.navigationBar.scrollEdgeAppearance = self.coordinator?.presenter.navigationBar.standardAppearance
+        self.coordinator?.presenter.navigationBar.isHidden = false
         self.navigationItem.title = "프로필 조회"
     }
 
