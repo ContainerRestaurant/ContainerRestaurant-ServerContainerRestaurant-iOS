@@ -30,9 +30,12 @@ class ImageBannerPopupViewController: BaseViewController, Storyboard, UIScrollVi
             imageView.image = image
         }
 
-        self.imageView.sizeToFit()
+        let screenWidth = UIScreen.main.bounds.width
+        let imageHeight = (image?.size.height ?? 0).heightRatio()
+        self.imageView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: imageHeight)
+        self.imageView.contentMode = .scaleAspectFill
         self.scrollView.addSubview(imageView)
-        self.scrollView.contentSize = imageView.image?.size ?? .zero
+        self.scrollView.contentSize = CGSize(width: screenWidth, height: imageHeight)
         self.scrollView.minimumZoomScale = 0.3
         self.scrollView.maximumZoomScale = 3.0
         self.scrollView.delegate = self
