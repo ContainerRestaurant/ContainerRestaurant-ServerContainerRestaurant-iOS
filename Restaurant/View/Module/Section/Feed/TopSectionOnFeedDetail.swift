@@ -34,11 +34,11 @@ class TopSectionOnFeedDetail: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-    func configure(_ coordinator: FeedDetailCoordinator?, _ feedID: String, _ thumbnailURLObservable: Observable<String>, _ userProfileImageObservable: Observable<String>, _ userNicknameDriver: Driver<String>, _ userLevelDriver: Driver<String>, _ likeCountDriver: Driver<Int>, _ scrapCountDriver: Driver<Int>, _ userLevel: String, _ isLike: Observable<Bool>, _ isScrap: Observable<Bool>, _ userID: Int, selectedCell: TwoFeedCollectionViewCell) {
+    func configure(_ coordinator: FeedDetailCoordinator?, _ viewModel: FeedDetailViewModel, selectedCell: TwoFeedCollectionViewCell) {
         self.coordinator = coordinator
-        self.userID = userID
+        self.userID = viewModel.userID
 
-        thumbnailURLObservable
+        viewModel.thumbnailURLObservable
             .map { URL(string: $0) }
             .subscribe(onNext: { [weak self] imageURL in
                 if let imageURL = imageURL {
@@ -50,93 +50,103 @@ class TopSectionOnFeedDetail: UICollectionViewCell {
             })
             .disposed(by: disposeBag)
 
-        userProfileImageObservable
+        viewModel.userProfileImageObservable
             .map { URL(string: $0) }
             .subscribe(onNext: { [weak self] imageURL in
                 if let imageURL = imageURL {
                     self?.userProfileImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.3))])
                 } else {
-                    self?.userProfileImageView.image = Common.getDefaultProfileImage36(userLevel)
+                    self?.userProfileImageView.image = Common.getDefaultProfileImage36(viewModel.userLevel)
                 }
             })
             .disposed(by: disposeBag)
 
-        userNicknameDriver
+        viewModel.userNicknameDriver
             .drive(userNicknameLabel.rx.text)
             .disposed(by: disposeBag)
 
-        userLevelDriver
+        viewModel.userLevelDriver
             .drive(userLevelLabel.rx.text)
             .disposed(by: disposeBag)
 
-        likeCountDriver
-            .map { String($0) }
-            .drive(likeCountLabel.rx.text)
-            .disposed(by: disposeBag)
-
-        scrapCountDriver
-            .map { String($0) }
-            .drive(bookmarkCountLabel.rx.text)
-            .disposed(by: disposeBag)
-
-        isLike
+        viewModel.isLikeSubject
             .subscribe(onNext: { [weak self] isLike in
                 self?.isLiked = isLike
                 self?.likeButton.setImage(UIImage(named: isLike ? "likeFilled20Px" : "likeOutlineGray20Px"), for: .normal)
             })
             .disposed(by: disposeBag)
 
-        isScrap
+        viewModel.likeCountSubject
+            .map { String($0) }
+            .bind(to: likeCountLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        viewModel.isScrapSubject
             .subscribe(onNext: { [weak self] isScrap in
                 self?.isScraped = isScrap
                 self?.bookmarkButton.setImage(UIImage(named: isScrap ? "bookmarkFilled20px" : "bookmarkOutlineGray20px" ), for: .normal)
             })
             .disposed(by: disposeBag)
 
+        viewModel.scrapCountSubject
+            .map { String($0) }
+            .bind(to: bookmarkCountLabel.rx.text)
+            .disposed(by: disposeBag)
+
         likeButton.rx.tap
-            .bind { [weak self] in self?.likeAction(coordinator, Int(feedID) ?? -1, selectedCell as! TwoFeedCollectionViewCell) }
+            .bind { [weak self] in self?.likeAction(coordinator, viewModel, selectedCell) }
             .disposed(by: disposeBag)
 
         bookmarkButton.rx.tap
-            .bind { [weak self] in self?.bookmarkAction(coordinator, Int(feedID) ?? -1) }
+            .bind { [weak self] in self?.bookmarkAction(coordinator, viewModel) }
             .disposed(by: disposeBag)
     }
 
-    private func likeAction(_ coordinator: FeedDetailCoordinator?, _ feedID: Int, _ selectedCell: TwoFeedCollectionViewCell) {
+    private func likeAction(_ coordinator: FeedDetailCoordinator?, _ viewModel: FeedDetailViewModel, _ selectedCell: TwoFeedCollectionViewCell) {
         APIClient.checkLogin(loginToken: UserDataManager.sharedInstance.loginToken) { [weak self] userModel in
             if userModel.id == 0 {
                 coordinator?.presentLogin()
             } else {
                 guard let isLiked = self?.isLiked else { return }
+                guard let feedID = Int(viewModel.feedID) else { return }
+
                 APIClient.likeFeed(feedID: feedID, cancel: isLiked)
-                self?.likeButton.setImage(UIImage(named: isLiked ? "likeOutlineGray20Px" : "likeFilled20Px"), for: .normal)
-                selectedCell.likeButton.setImage(UIImage(named: isLiked ? "likeOutlineGray20Px" : "likeFilled20Px"), for: .normal)
+
+                let likeImage = UIImage(named: isLiked ? "likeOutlineGray20Px" : "likeFilled20Px")
+                selectedCell.likeButton.setImage(likeImage, for: .normal)
 
                 let likedCount = self?.likeCountLabel.text ?? "0"
                 let likedCountInt = isLiked ? (Int(likedCount) ?? 0) - 1 : (Int(likedCount) ?? 0) + 1
-                self?.likeCountLabel.text = "\(likedCountInt)"
                 selectedCell.likeCountLabel.text = "\(likedCountInt)"
 
-                self?.isLiked = !isLiked
+                viewModel.isLikeSubject.onNext(!isLiked)
+                viewModel.likeCountSubject.onNext(likedCountInt)
+
                 Common.hapticVibration()
             }
         }
     }
 
-    private func bookmarkAction(_ coordinator: FeedDetailCoordinator?, _ feedID: Int) {
+    private func bookmarkAction(_ coordinator: FeedDetailCoordinator?, _ viewModel: FeedDetailViewModel) {
         APIClient.checkLogin(loginToken: UserDataManager.sharedInstance.loginToken) { [weak self] userModel in
             if userModel.id == 0 {
                 coordinator?.presentLogin()
             } else {
                 guard let isScraped = self?.isScraped else { return }
+                guard let feedID = Int(viewModel.feedID) else { return }
+
                 APIClient.scrapFeed(feedID: feedID, cancel: isScraped)
-                self?.bookmarkButton.setImage(UIImage(named: isScraped ? "bookmarkOutlineGray20px" : "bookmarkFilled20px"), for: .normal)
+
+                let bookmarkImage = UIImage(named: isScraped ? "bookmarkOutlineGray20px" : "bookmarkFilled20px")
+                self?.bookmarkButton.setImage(bookmarkImage, for: .normal)
 
                 let scrapedCount = self?.bookmarkCountLabel.text ?? "0"
                 let scrapedCountInt = isScraped ? (Int(scrapedCount) ?? 0) - 1 : (Int(scrapedCount) ?? 0) + 1
                 self?.bookmarkCountLabel.text = "\(scrapedCountInt)"
 
-                self?.isScraped = !isScraped
+                viewModel.isScrapSubject.onNext(!isScraped)
+                viewModel.scrapCountSubject.onNext(scrapedCountInt)
+
                 Common.hapticVibration()
             }
         }

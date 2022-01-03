@@ -14,14 +14,14 @@ class FeedDetailViewModel {
     var userProfileImageObservable: Observable<String>
     var userNicknameDriver: Driver<String>
     var userLevelDriver: Driver<String>
-    var likeCountDriver: Driver<Int>
-    var scrapCountDriver: Driver<Int>
+    var isLikeSubject: BehaviorSubject<Bool>
+    var likeCountSubject: BehaviorSubject<Int>
+    var isScrapSubject: BehaviorSubject<Bool>
+    var scrapCountSubject: BehaviorSubject<Int>
     var categoryDriver: Driver<String>
     var restaurantNameDriver: Driver<String>
     var isWelcome: Bool = false
     var isWelcomeDriver: Driver<Bool>
-    var isLike: Observable<Bool>
-    var isScrap: Observable<Bool>
     var levelOfDifficulty: Int = 1
     var userLevel: String = ""
     var mainMenuAndContainers: [MenuAndContainerModel]
@@ -49,14 +49,12 @@ class FeedDetailViewModel {
         userLevelDriver = Observable<String>
             .just(feedDetail.userLevel)
             .asDriver(onErrorJustReturn: "")
-        
-        likeCountDriver = Observable<Int>
-            .just(feedDetail.likeCount)
-            .asDriver(onErrorJustReturn: 0)
-        
-        scrapCountDriver = Observable<Int>
-            .just(feedDetail.scrapCount)
-            .asDriver(onErrorJustReturn: 0)
+
+        isLikeSubject = BehaviorSubject<Bool>(value: feedDetail.isLike)
+        likeCountSubject = BehaviorSubject<Int>(value: feedDetail.likeCount)
+
+        isScrapSubject = BehaviorSubject<Bool>(value: feedDetail.isScraped)
+        scrapCountSubject = BehaviorSubject<Int>(value: feedDetail.scrapCount)
 
         categoryDriver = Observable<String>
             .just(feedDetail.category)
@@ -70,12 +68,6 @@ class FeedDetailViewModel {
         isWelcomeDriver = Observable<Bool>
             .just(feedDetail.welcome)
             .asDriver(onErrorJustReturn: false)
-
-        isLike = Observable<Bool>
-            .just(feedDetail.isLike)
-
-        isScrap = Observable<Bool>
-            .just(feedDetail.isScraped)
 
         levelOfDifficulty = feedDetail.difficulty
         userLevel = feedDetail.userLevel
