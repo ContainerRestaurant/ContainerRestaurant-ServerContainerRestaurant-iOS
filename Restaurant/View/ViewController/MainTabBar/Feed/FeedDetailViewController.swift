@@ -66,6 +66,9 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
         }
 
         self.separatorView.isHidden = true
+    }
+
+    override func viewDidLayoutSubviews() {
         self.dimView.setVerticalGradient(startColor: .init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.7), endColor: .init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0))
     }
     
@@ -312,9 +315,7 @@ extension FeedDetailViewController {
 extension FeedDetailViewController: UITextViewDelegate {
     @objc func keyboardWillAppear(noti: NSNotification) {
         if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            var keyboardHeight = keyboardRectangle.height
-            if UIDevice.current.hasNotch { keyboardHeight -= self.view.safeAreaInsets.bottom }
+            let keyboardHeight = keyboardFrame.cgRectValue.height
 
             if isFirstTapCommentView {
                 self.view.frame.origin.y -= keyboardHeight
@@ -330,9 +331,7 @@ extension FeedDetailViewController: UITextViewDelegate {
 
     @objc func keyboardWillDisappear(noti: NSNotification) {
         if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            var keyboardHeight = keyboardRectangle.height
-            if UIDevice.current.hasNotch { keyboardHeight -= self.view.safeAreaInsets.bottom }
+            let keyboardHeight = keyboardFrame.cgRectValue.height
 
             self.view.frame.origin.y += keyboardHeight
             isFirstTapCommentView = true
