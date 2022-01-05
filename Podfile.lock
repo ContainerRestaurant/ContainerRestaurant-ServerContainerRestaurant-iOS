@@ -30,7 +30,7 @@ DEPENDENCIES:
   - KakaoSDKAuth
   - KakaoSDKCommon
   - KakaoSDKUser
-  - Kingfisher
+  - Kingfisher (~> 7.0)
   - lottie-ios
   - NMapsMap
   - RxCocoa
@@ -65,6 +65,6 @@ SPEC CHECKSUMS:
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
 
-PODFILE CHECKSUM: 14e965cedf745d4d70962d3c2874ae02441bd87e
+PODFILE CHECKSUM: e167b51d13b6f31215838eeaa6e0e91b7f4906c1
 
 COCOAPODS: 1.11.2

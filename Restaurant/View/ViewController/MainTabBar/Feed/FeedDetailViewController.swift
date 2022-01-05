@@ -66,6 +66,9 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
         }
 
         self.separatorView.isHidden = true
+    }
+
+    override func viewDidLayoutSubviews() {
         self.dimView.setVerticalGradient(startColor: .init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.7), endColor: .init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0))
     }
     
@@ -80,11 +83,7 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
         self.coordinator?.presenter.navigationBar.barStyle = .black
 
         APIClient.checkLogin(loginToken: UserDataManager.sharedInstance.loginToken) { [weak self] userModel in
-            if userModel.id == 0 {
-                self?.commentTextViewHideButton.isHidden = false
-            } else {
-                self?.commentTextViewHideButton.isHidden = true
-            }
+            self?.commentTextViewHideButton.isHidden = userModel.id != 0
         }
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(noti:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -301,10 +300,6 @@ extension FeedDetailViewController {
             self?.commentRegisterButton.isEnabled = false
             self?.additionalCommentView.isHidden = true
             self?.view.endEditing(true)
-//                        self?.viewModel.comments.append($0)
-//                        let lastRowInCollectionView = (self?.viewModel.modules.count)!-1
-//                        self?.collectionView.reloadItems(at: [IndexPath(row: lastRowInCollectionView, section: 0)])
-            //아래껄로 되는지 확인해보기
             self?.viewModel.fetchCommentsOfFeed() { [weak self] in
                 let lastRowInCollectionView = (self?.viewModel.modules.count)!-1
                 self?.collectionView.reloadItems(at: [IndexPath(row: lastRowInCollectionView, section: 0)])
@@ -320,16 +315,11 @@ extension FeedDetailViewController {
 extension FeedDetailViewController: UITextViewDelegate {
     @objc func keyboardWillAppear(noti: NSNotification) {
         if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            var keyboardHeight = keyboardRectangle.height
-            if UIDevice.current.hasNotch { keyboardHeight -= self.view.safeAreaInsets.bottom }
+            let keyboardHeight = keyboardFrame.cgRectValue.height
 
             if isFirstTapCommentView {
-//                self.commentBackgroundView.frame.origin.y -= keyboardHeight
-//                commentBackgroundBottomConstraint.constant -= keyboardHeight
                 self.view.frame.origin.y -= keyboardHeight
                 isFirstTapCommentView = false
-                print("키보드 올라올 때: \(self.commentBackgroundView.frame.origin.y)")
             }
 
             if self.commentTextView.text == "댓글을 남겨주세요." {
@@ -341,15 +331,10 @@ extension FeedDetailViewController: UITextViewDelegate {
 
     @objc func keyboardWillDisappear(noti: NSNotification) {
         if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            var keyboardHeight = keyboardRectangle.height
-            if UIDevice.current.hasNotch { keyboardHeight -= self.view.safeAreaInsets.bottom }
+            let keyboardHeight = keyboardFrame.cgRectValue.height
 
-//            self.commentBackgroundView.frame.origin.y += keyboardHeight
-//            commentBackgroundBottomConstraint.constant += keyboardHeight
             self.view.frame.origin.y += keyboardHeight
             isFirstTapCommentView = true
-            print("키보드 사라질 때: \(self.commentBackgroundView.frame.origin.y)")
 
             if self.commentTextView.text == "" {
                 self.commentTextView.text = "댓글을 남겨주세요."
