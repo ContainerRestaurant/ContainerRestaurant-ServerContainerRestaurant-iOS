@@ -99,4 +99,13 @@ extension FeedDetailCoordinator {
         childCoordinators.append(coordinator)
         coordinator.start()
     }
+
+    func presentImagePopup(image: UIImage) {
+        let coordinator = ImageBannerPopupCoordinator(presenter: presenter)
+        coordinator.delegate = self
+        coordinator.isFromFeedDetail = true
+        coordinator.image = image
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
 }
