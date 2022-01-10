@@ -15,6 +15,8 @@ struct FeedDetailModel: Decodable {
     var userLevel: String
     var userProfileImage: String
     var restaurantName: String
+    var latitude: Double
+    var longitude: Double
     var category: String
     var thumbnailURL: String
     var content: String
@@ -37,6 +39,8 @@ struct FeedDetailModel: Decodable {
         case userLevel = "ownerContainerLevel"
         case userProfileImage = "ownerProfile"
         case restaurantName
+        case latitude
+        case longitude
         case category
         case thumbnailURL = "thumbnailUrl"
         case content
@@ -60,6 +64,8 @@ struct FeedDetailModel: Decodable {
         self.userLevel = ""
         self.userProfileImage = ""
         self.restaurantName =  ""
+        self.latitude = 0.0
+        self.longitude = 0.0
         self.category = ""
         self.thumbnailURL = ""
         self.content = ""
@@ -85,6 +91,8 @@ struct FeedDetailModel: Decodable {
         self.userLevel = (try? container.decode(String.self, forKey: .userLevel)) ?? ""
         self.userProfileImage = (try? container.decode(String.self, forKey: .userProfileImage)) ?? ""
         self.restaurantName = (try? container.decode(String.self, forKey: .restaurantName)) ?? ""
+        self.latitude = (try? container.decode(Double.self, forKey: .latitude)) ?? 0.0
+        self.longitude = (try? container.decode(Double.self, forKey: .longitude)) ?? 0.0
         let convertedCategory = convertCategory(category: (try? container.decode(String.self, forKey: .category)) ?? "")
         self.category = convertedCategory
         self.thumbnailURL = (try? container.decode(String.self, forKey: .thumbnailURL)) ?? ""

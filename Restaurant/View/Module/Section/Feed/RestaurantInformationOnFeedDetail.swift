@@ -9,8 +9,18 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+struct RestaurantLocation {
+    static var sharedInstance = RestaurantLocation()
+
+    var isEntryRestaurantInformation: Bool = false
+    var latitude: Double = 0.0
+    var longtitude: Double = 0.0
+}
+
 class RestaurantInformationOnFeedDetail: UICollectionViewCell {
     let disposeBag = DisposeBag()
+    var latitude: Double?
+    var longitude: Double?
 
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var categoryButton: UIButton!
@@ -24,18 +34,32 @@ class RestaurantInformationOnFeedDetail: UICollectionViewCell {
         categoryButton.cornerRadius = categoryButton.frame.width/1.7
     }
 
-    func configure(category: Driver<String>, restaurantName: Driver<String>, isWelcome: Driver<Bool>) {
-        category
+    func configure(_ viewModel: FeedDetailViewModel, _ coordinator : FeedDetailCoordinator?) {
+        latitude = viewModel.latitude
+        longitude = viewModel.longitude
+
+        viewModel.categoryDriver
             .drive(categoryButton.rx.title(for: .normal))
             .disposed(by: disposeBag)
 
-        restaurantName
+        viewModel.restaurantNameDriver
             .drive(restaurantNameButton.rx.title(for: .normal))
             .disposed(by: disposeBag)
 
-        isWelcome
+        viewModel.isWelcomeDriver
             .map { !$0 }
             .drive(isWelcomeView.rx.isHidden)
             .disposed(by: disposeBag)
+
+        restaurantNameButton.rx.tap
+            .bind(onNext: { [weak self] in self?.clickedRestaurant(coordinator: coordinator) })
+            .disposed(by: disposeBag)
+    }
+
+    func clickedRestaurant(coordinator: FeedDetailCoordinator?) {
+        RestaurantLocation.sharedInstance.isEntryRestaurantInformation = true
+        RestaurantLocation.sharedInstance.latitude = latitude!
+        RestaurantLocation.sharedInstance.longtitude = longitude!
+        coordinator?.presenter.tabBarController?.selectedIndex = 3
     }
 }
