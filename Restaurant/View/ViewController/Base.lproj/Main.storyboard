@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -327,7 +327,7 @@
                                 <rect key="frame" x="0.0" y="136" width="375" height="480"/>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="Rd5-7b-OdA">
-                                <rect key="frame" x="118" y="656" width="139" height="27"/>
+                                <rect key="frame" x="122.66666666666667" y="656" width="129.66666666666663" height="25"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="pageIndicatorTintColor" name="colorGrayGray04"/>
                                 <color key="currentPageIndicatorTintColor" name="colorMainGreen02"/>
@@ -822,16 +822,16 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oam-IE-BxH">
-                                <rect key="frame" x="122" y="60" width="131" height="36"/>
+                                <rect key="frame" x="115" y="60" width="145" height="36"/>
                                 <color key="backgroundColor" name="colorGrayGray07"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="131" id="fia-dZ-ABY"/>
+                                    <constraint firstAttribute="width" constant="145" id="X1b-iB-nw7"/>
                                     <constraint firstAttribute="height" constant="36" id="urC-4p-qBN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
-                                <state key="normal" title="이 위치에서 찾기" image="resetOutline16Px">
+                                <state key="normal" title="이 위치 2km 반경 내 찾기" image="resetOutline16Px">
                                     <color key="titleColor" name="colorGrayGray01"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -1149,7 +1149,7 @@
                                 <state key="normal" image="settingOutline20Px"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="마이 페이지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aU-ti-sqP">
-                                <rect key="frame" x="16" y="92" width="82" height="21.666666666666671"/>
+                                <rect key="frame" x="16" y="92" width="82.333333333333329" height="21.666666666666671"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <color key="textColor" name="colorGrayGray07"/>
                                 <nil key="highlightedColor"/>
@@ -1175,13 +1175,13 @@
                                 <state key="normal" image="photoEdit20Px"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용기낸 식당" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1O8-8X-0lS">
-                                <rect key="frame" x="74" y="150.66666666666666" width="82" height="22"/>
+                                <rect key="frame" x="74" y="150.66666666666666" width="82.333333333333314" height="22"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5AD-nh-Qxx">
-                                <rect key="frame" x="74" y="150.66666666666666" width="98" height="22"/>
+                                <rect key="frame" x="74" y="150.66666666666666" width="98.333333333333314" height="22"/>
                                 <state key="normal" image="chevronRightOutline12Px"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lv1. 텀블러" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlR-Np-TuJ">
