@@ -17,6 +17,7 @@ class TopSectionOnFeedDetail: UICollectionViewCell {
     var isScraped: Bool?
 
     @IBOutlet weak var feedImageView: UIImageView!
+    @IBOutlet weak var feedImageButton: UIButton!
     @IBOutlet weak var userProfileImageView: UIImageView!
     @IBOutlet weak var userNicknameLabel: UILabel!
     @IBOutlet weak var userLevelLabel: UILabel!
@@ -91,6 +92,13 @@ class TopSectionOnFeedDetail: UICollectionViewCell {
         viewModel.scrapCountSubject
             .map { String($0) }
             .bind(to: bookmarkCountLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        feedImageButton.rx.tap
+            .bind { [weak self] in
+                guard let image = self?.feedImageView.image else { return }
+                self?.coordinator?.presentImagePopup(image: image)
+            }
             .disposed(by: disposeBag)
 
         likeButton.rx.tap

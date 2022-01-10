@@ -11,6 +11,7 @@ class ImageBannerPopupCoordinator: NSObject, Coordinator {
     var delegate: CoordinatorFinishDelegate?
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
+    var isFromFeedDetail: Bool = false
     var imageURL: String?
     var image: UIImage?
 
@@ -29,6 +30,7 @@ class ImageBannerPopupCoordinator: NSObject, Coordinator {
         if let image = image {
             imageBannerPopup.image = image
         }
+        imageBannerPopup.isFromFeedDetail = isFromFeedDetail
         
         presenter.present(imageBannerPopup, animated: true, completion: nil)
     }
