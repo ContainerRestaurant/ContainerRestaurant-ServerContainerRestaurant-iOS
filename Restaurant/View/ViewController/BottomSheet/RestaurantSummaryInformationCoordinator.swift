@@ -69,4 +69,14 @@ extension RestaurantSummaryInformationCoordinator {
         loginPopup.fromWhere = .mapBottomSheet
         Common.currentViewController()?.present(loginPopup, animated: false, completion: nil)
     }
+
+    func pushToFeedDetail(feedID: Int, cell: TwoFeedCollectionViewCell) {
+        let coordinator = FeedDetailCoordinator(presenter: presenter)
+        coordinator.feedID = feedID
+        coordinator.delegate = self
+        coordinator.selectedCell = cell
+        coordinator.isHiddenNavigationBarBeforePush = false
+        childCoordinators.append(coordinator)
+        coordinator.startTest()
+    }
 }

@@ -46,6 +46,26 @@ class FeedDetailCoordinator: NSObject, Coordinator {
             }
         }
     }
+
+    func startTest() {
+        guard let feedID = self.feedID else { return }
+
+        APIClient.feedDetail(feedID: feedID) { [weak self] feedDetailData in
+            if let feedDetailData = feedDetailData,
+               let cell = self?.selectedCell {
+                var feedDetail = FeedDetailViewController.instantiate()
+                feedDetail.coordinator = self
+                feedDetail.feedDetailViewWillAppearSubject = self?.feedDetailViewWillAppearSubject
+                feedDetail.hidesBottomBarWhenPushed = true
+                feedDetail.selectedCell = cell
+                feedDetail.bind(viewModel: FeedDetailViewModel(feedDetailData))
+
+                feedDetail.modalPresentationStyle = .overFullScreen
+                self?.presenter.dismiss(animated: false, completion: nil)
+                self?.presenter.pushViewController(feedDetail, animated: true)
+            }
+        }
+    }
 }
 
 extension FeedDetailCoordinator {

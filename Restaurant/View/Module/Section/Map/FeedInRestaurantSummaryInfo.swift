@@ -53,7 +53,7 @@ extension FeedInRestaurantSummaryInfo: UICollectionViewDelegate, UICollectionVie
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        coordinator?.pushToFeedDetail(feedID: restaurantFeed[indexPath.row].id, cell: collectionView.cellForItem(at: indexPath) as! TwoFeedCollectionViewCell)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
