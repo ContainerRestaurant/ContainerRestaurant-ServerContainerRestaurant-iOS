@@ -40,6 +40,13 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
             setMapView()
             self.viewModel.isFirstEntry = false
         }
+
+        //피드 상세에서 식당 정보 눌렀을 경우
+        if RestaurantLocation.sharedInstance.isEntryRestaurantInformation {
+            viewModel.latitudeInCenterOfMap = RestaurantLocation.sharedInstance.latitude
+            viewModel.longitudeInCeterOfMap = RestaurantLocation.sharedInstance.longtitude
+            moveToLocationOnMap(latitude: RestaurantLocation.sharedInstance.latitude, longitude: RestaurantLocation.sharedInstance.longtitude)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -98,8 +105,10 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
                 } else {
                     guard let nearbyRestaurants = self?.viewModel.nearbyRestaurants,
                           !nearbyRestaurants.isEmpty else {
-                        self?.coordinator?.presentNoRestaurantNearby()
-                        return
+                              if !RestaurantLocation.sharedInstance.isEntryRestaurantInformation {
+                                  self?.coordinator?.presentNoRestaurantNearby()
+                              }
+                              return
                     }
 
                     self?.setMarkers()
@@ -151,6 +160,15 @@ extension MapViewController {
             marker.position = NMGLatLng(lat: restaurant.latitude, lng: restaurant.longitude)
             marker.mapView = mapView
             self.markers.append(marker)
+
+            if marker.position == NMGLatLng(lat: RestaurantLocation.sharedInstance.latitude, lng: RestaurantLocation.sharedInstance.longtitude) {
+                self.setClickedMarkersIcon(marker: marker)
+                self.coordinator?.restaurantSummaryInformation(restaurant: restaurant, latitude: self.viewModel.latitudeInCenterOfMap, longitude: self.viewModel.longitudeInCeterOfMap)
+
+                RestaurantLocation.sharedInstance.isEntryRestaurantInformation = false
+                RestaurantLocation.sharedInstance.latitude = 0.0
+                RestaurantLocation.sharedInstance.longtitude = 0.0
+            }
             
             let handler = { [weak self] (overlay: NMFOverlay) -> Bool in
                 self?.removeMarkersIcon()
@@ -215,7 +233,12 @@ extension MapViewController {
         let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: latitude, lng: longitude))
         cameraUpdate.animation = .easeOut
         cameraUpdate.animationDuration = 1
-        mapView.moveCamera(cameraUpdate)
+        mapView.moveCamera(cameraUpdate) { [weak self] _ in
+            if RestaurantLocation.sharedInstance.isEntryRestaurantInformation {
+                self?.removeMarkers()
+                self?.viewModel.fetchCurrentNearbyRestaurants()
+            }
+        }
     }
 }
 

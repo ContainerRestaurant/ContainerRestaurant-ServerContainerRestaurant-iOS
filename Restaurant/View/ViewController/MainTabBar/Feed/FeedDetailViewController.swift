@@ -395,7 +395,7 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 
         case is RestaurantInformationOnFeedDetail.Type:
             let cell: RestaurantInformationOnFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(category: viewModel.categoryDriver, restaurantName: viewModel.restaurantNameDriver, isWelcome: viewModel.isWelcomeDriver)
+            cell.configure(viewModel, coordinator)
             return cell
 
         case is LevelOfDifficultyOnFeedDetail.Type:
