@@ -122,7 +122,7 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
 }
 
 //MARK: - 지도 뷰 관련
-extension MapViewController {
+extension MapViewController: NMFMapViewTouchDelegate {
     private func setMapView() {
         locationManager.delegate = self
         getLocationUsagePermission()
@@ -134,6 +134,7 @@ extension MapViewController {
         mapView = NMFMapView(frame: viewCGRect)
         mapView.positionMode = .normal
         mapView.addCameraDelegate(delegate: self)
+        mapView.touchDelegate = self
         
         self.mainView.addSubview(mapView)
         self.setMyLocationIcon()
@@ -216,6 +217,10 @@ extension MapViewController {
         cameraUpdate.animation = .easeOut
         cameraUpdate.animationDuration = 1
         mapView.moveCamera(cameraUpdate)
+    }
+
+    func mapView(_ mapView: NMFMapView, didTapMap latlng: NMGLatLng, point: CGPoint) {
+        removeMarkersIcon()
     }
 }
 
