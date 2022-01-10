@@ -822,10 +822,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oam-IE-BxH">
-                                <rect key="frame" x="115" y="60" width="145" height="36"/>
+                                <rect key="frame" x="102" y="60" width="171" height="36"/>
                                 <color key="backgroundColor" name="colorGrayGray07"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="145" id="X1b-iB-nw7"/>
+                                    <constraint firstAttribute="width" constant="171" id="X1b-iB-nw7"/>
                                     <constraint firstAttribute="height" constant="36" id="urC-4p-qBN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
