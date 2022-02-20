@@ -1166,22 +1166,22 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VdE-mz-VGd">
-                                <rect key="frame" x="40" y="164.66666666666666" width="20" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VdE-mz-VGd">
+                                <rect key="frame" x="16" y="142.66666666666666" width="42" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="Crz-hz-8TU"/>
-                                    <constraint firstAttribute="width" constant="20" id="MUI-KV-k39"/>
+                                    <constraint firstAttribute="height" constant="42" id="WsV-Vx-i02"/>
+                                    <constraint firstAttribute="width" constant="42" id="jiz-yX-9r6"/>
                                 </constraints>
                                 <state key="normal" image="photoEdit20Px"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용기낸 식당" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1O8-8X-0lS">
-                                <rect key="frame" x="74" y="150.66666666666666" width="82.333333333333314" height="22"/>
+                                <rect key="frame" x="72" y="150.66666666666666" width="82.333333333333314" height="22"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5AD-nh-Qxx">
-                                <rect key="frame" x="74" y="150.66666666666666" width="98.333333333333314" height="22"/>
+                                <rect key="frame" x="72" y="150.66666666666666" width="98.333333333333314" height="22"/>
                                 <state key="normal" image="chevronRightOutline12Px"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lv1. 텀블러" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlR-Np-TuJ">
@@ -1421,7 +1421,7 @@
                             <constraint firstItem="Kc2-qb-C8U" firstAttribute="leading" secondItem="YCg-Qz-Q0R" secondAttribute="leading" constant="16" id="ZIO-LH-uVY"/>
                             <constraint firstItem="7Nl-BH-Ewf" firstAttribute="trailing" secondItem="IgL-jW-e7X" secondAttribute="trailing" constant="14" id="Zj5-p3-8js"/>
                             <constraint firstItem="VdE-mz-VGd" firstAttribute="bottom" secondItem="Kc2-qb-C8U" secondAttribute="bottom" constant="2" id="auJ-tl-RmQ"/>
-                            <constraint firstItem="VdE-mz-VGd" firstAttribute="leading" secondItem="Kc2-qb-C8U" secondAttribute="leading" constant="24" id="eG3-Bi-xcK"/>
+                            <constraint firstItem="VdE-mz-VGd" firstAttribute="leading" secondItem="Kc2-qb-C8U" secondAttribute="leading" id="eG3-Bi-xcK"/>
                             <constraint firstItem="2aU-ti-sqP" firstAttribute="top" secondItem="7Nl-BH-Ewf" secondAttribute="top" constant="48" id="hGT-BJ-nsC"/>
                             <constraint firstItem="OYM-7u-GIh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vlR-Np-TuJ" secondAttribute="trailing" id="hRn-7E-C4S"/>
                             <constraint firstItem="7Nl-BH-Ewf" firstAttribute="bottom" secondItem="X2q-j9-cXV" secondAttribute="bottom" id="iQV-Br-Oh3"/>
