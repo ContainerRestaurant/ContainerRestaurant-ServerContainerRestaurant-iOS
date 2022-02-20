@@ -59,7 +59,7 @@ extension MainBanner: UICollectionViewDelegate, UICollectionViewDataSource, UICo
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if self.bannerList[indexPath.row].additionalURL.isEmpty {
-            let imageURL = self.bannerList[indexPath.row].bannerURL
+            let imageURL = self.bannerList[indexPath.row].contentURL
             coordinator?.presentBannerPopup(imageURL: imageURL)
         } else {
             let webViewURL = self.bannerList[indexPath.row].additionalURL
