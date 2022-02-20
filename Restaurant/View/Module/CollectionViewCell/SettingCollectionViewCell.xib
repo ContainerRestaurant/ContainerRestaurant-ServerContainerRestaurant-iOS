@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Clj-wV-ubL">
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Clj-wV-ubL">
                         <rect key="frame" x="343" y="18" width="16" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="16" id="AOC-Uw-6ig"/>
@@ -40,7 +40,7 @@
                         </constraints>
                     </switch>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v.1.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3X-Ic-cSo">
-                        <rect key="frame" x="333" y="16" width="26" height="20"/>
+                        <rect key="frame" x="313" y="16" width="26" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" name="colorGrayGray05"/>
                         <nil key="highlightedColor"/>
@@ -57,7 +57,6 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="a3X-Ic-cSo" secondAttribute="trailing" constant="16" id="2de-XM-TCd"/>
                 <constraint firstAttribute="trailing" secondItem="Clj-wV-ubL" secondAttribute="trailing" constant="16" id="Ck3-J2-OH4"/>
                 <constraint firstAttribute="bottom" secondItem="uZM-Oa-5QC" secondAttribute="bottom" constant="16" id="GOD-9U-ZkZ"/>
                 <constraint firstItem="a3X-Ic-cSo" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="Kwe-VH-OOk"/>
@@ -71,11 +70,13 @@
                 <constraint firstAttribute="bottom" secondItem="qMO-t2-MqX" secondAttribute="bottom" id="n0n-de-maL"/>
                 <constraint firstAttribute="trailing" secondItem="qMO-t2-MqX" secondAttribute="trailing" id="pph-0C-UOc"/>
                 <constraint firstItem="uZM-Oa-5QC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="ygv-wg-70w"/>
+                <constraint firstItem="Clj-wV-ubL" firstAttribute="leading" secondItem="a3X-Ic-cSo" secondAttribute="trailing" constant="4" id="yju-3i-ONf"/>
                 <constraint firstAttribute="bottom" secondItem="HuY-nc-HBK" secondAttribute="bottom" constant="12" id="zoU-Ki-Kbu"/>
             </constraints>
             <connections>
                 <outlet property="alertSettingSwitch" destination="HuY-nc-HBK" id="swx-Zw-OdR"/>
                 <outlet property="appVersionLabel" destination="a3X-Ic-cSo" id="1qg-nN-Uzp"/>
+                <outlet property="appVersionLabelRightSpacing" destination="yju-3i-ONf" id="Ghg-76-EV3"/>
                 <outlet property="chevronRightButton" destination="Clj-wV-ubL" id="pqR-fb-ZY6"/>
                 <outlet property="settingTitleLabel" destination="uZM-Oa-5QC" id="zsX-Lv-tA2"/>
             </connections>
