@@ -208,6 +208,7 @@
 		FBDB2E9D26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDB2E9B26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.swift */; };
 		FBDB2E9E26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDB2E9C26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.xib */; };
 		FBDC3D83266DA3910072D7E8 /* LongText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC3D82266DA3910072D7E8 /* LongText.swift */; };
+		FBE1915027C29FE600D3F32A /* AppVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE1914F27C29FE600D3F32A /* AppVersionModel.swift */; };
 		FBEDEA162676528D00446B83 /* LoginPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDEA152676528D00446B83 /* LoginPopupCoordinator.swift */; };
 		FBEDEA1B26765E0200446B83 /* LoginPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDEA1926765E0200446B83 /* LoginPopupViewController.swift */; };
 		FBEDEA20267BBACE00446B83 /* MainBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDEA1E267BBACE00446B83 /* MainBanner.swift */; };
@@ -431,6 +432,7 @@
 		FBDB2E9B26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyCommentOnFeedDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		FBDB2E9C26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplyCommentOnFeedDetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		FBDC3D82266DA3910072D7E8 /* LongText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongText.swift; sourceTree = "<group>"; };
+		FBE1914F27C29FE600D3F32A /* AppVersionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionModel.swift; sourceTree = "<group>"; };
 		FBEDEA152676528D00446B83 /* LoginPopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPopupCoordinator.swift; sourceTree = "<group>"; };
 		FBEDEA1926765E0200446B83 /* LoginPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPopupViewController.swift; sourceTree = "<group>"; };
 		FBEDEA1E267BBACE00446B83 /* MainBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBanner.swift; sourceTree = "<group>"; };
@@ -582,6 +584,7 @@
 				52169B0626A7604B00705FEC /* Map */,
 				FB5F086527037FF800A6122A /* My */,
 				520419CE2656CCBE0099BA39 /* TestCodable.swift */,
+				FBE1914F27C29FE600D3F32A /* AppVersionModel.swift */,
 				FB6EEE3126CC1F4C00E6237B /* LoginModel.swift */,
 				5258115C267901E900900D59 /* UserModel.swift */,
 				525811582677DD6B00900D59 /* NickNameValidationModel.swift */,
@@ -1453,6 +1456,7 @@
 				FB6EEE5026D6B1A500E6237B /* ExtensionUIDevice.swift in Sources */,
 				52254C612657E88400D921ED /* API.swift in Sources */,
 				FB6EEE1326C9346F00E6237B /* RestaurantInformationOnFeedDetail.swift in Sources */,
+				FBE1915027C29FE600D3F32A /* AppVersionModel.swift in Sources */,
 				525811572677CF3C00900D59 /* NickNamePopupViewController.swift in Sources */,
 				52169B0C26A9F56500705FEC /* NoRestaurantNearbyViewController.swift in Sources */,
 				FB585B2826662B520085C6B2 /* LocalSearchModel.swift in Sources */,

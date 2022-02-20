@@ -10,6 +10,20 @@ import Alamofire
 import RxSwift
 
 class APIClient {
+    //앱 버전 체크
+    static func appVersion(completion: @escaping (AppVersionModel) -> Void) {
+        AF.request(Router.AppVersion)
+            .responseDecodable { (response: DataResponse<AppVersionModel, AFError>) in
+                switch response.result {
+                case .success(let appVersion):
+                    completion(appVersion)
+                case .failure(let error):
+                    completion(AppVersionModel())
+                    print("App Version's Error: \(error)")
+                }
+            }
+    }
+
     //로그인 토큰 생성
     static func createLoginToken(provider: String, accessToken: String, completion: @escaping (LoginModel) -> Void) {
         AF.request(Router.CreateLoginToken(provider: provider, accessToken: accessToken))

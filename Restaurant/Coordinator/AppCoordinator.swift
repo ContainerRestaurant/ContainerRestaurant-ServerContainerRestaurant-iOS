@@ -41,9 +41,31 @@ class AppCoordinator: NSObject, Coordinator {
             coordinator.delegate = self
             childCoordinators.append(coordinator)
             coordinator.start()
+
+            checkAppVersion()
         }
         
         window.makeKeyAndVisible()
     }
-    
+
+    private func checkAppVersion() {
+        APIClient.appVersion() { [weak self] appVersionModel in
+            guard let self = self else { return }
+            guard let myVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
+
+            if myVersion < appVersionModel.minimumVersion {
+                let coordinator = CommonPopupCoordinator(presenter: self.presenter, isTwoButton: false, buttonType: .forceUpdate)
+                coordinator.delegate = self
+                self.childCoordinators.append(coordinator)
+                coordinator.start()
+            } else if myVersion < appVersionModel.latestVersion {
+                let coordinator = CommonPopupCoordinator(presenter: self.presenter, isTwoButton: true, buttonType: .selectUpdate)
+                coordinator.delegate = self
+                self.childCoordinators.append(coordinator)
+                coordinator.start()
+            } else {
+                print("최신 버전")
+            }
+        }
+    }
 }

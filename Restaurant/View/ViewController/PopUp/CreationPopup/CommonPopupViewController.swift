@@ -13,6 +13,8 @@ import RxSwift
 import KakaoSDKUser
 
 enum PopupButtonType {
+    case selectUpdate
+    case forceUpdate
     case creationFeed
     case confirmCreationFeed
     case reportFeed
@@ -50,6 +52,8 @@ class CommonPopupViewController: BaseViewController, Storyboard {
         setButton(buttonType)
         cancelView.isHidden = !isTwoButton
         switch buttonType {
+        case .selectUpdate: selectUpdateBindingView()
+        case .forceUpdate: forceUpdateBindingView()
         case .creationFeed: creationFeedBindingView()
         case .confirmCreationFeed: confirmCreationFeedBindingView()
         case .reportFeed: reportFeedBindingView()
@@ -68,6 +72,43 @@ class CommonPopupViewController: BaseViewController, Storyboard {
                 self?.dismiss(animated: false, completion: nil)
             })
             .disposed(by: disposeBag)
+    }
+
+    func selectUpdateBindingView() {
+        backgroundButton.isEnabled = false
+
+        cancelButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss(animated: false, completion: nil)
+            })
+            .disposed(by: disposeBag)
+
+        okButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.openAppStore(appId: "1586529640")
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func forceUpdateBindingView() {
+        backgroundButton.isEnabled = false
+
+        okButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.openAppStore(appId: "1586529640")
+            })
+            .disposed(by: disposeBag)
+    }
+
+    private func openAppStore(appId: String) {
+        let url = "itms-apps://itunes.apple.com/app/" + appId;
+        if let url = URL(string: url), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
     }
 
     func creationFeedBindingView() {
@@ -284,6 +325,32 @@ class CommonPopupViewController: BaseViewController, Storyboard {
 
     private func setButton(_ buttonType: PopupButtonType) {
         switch buttonType {
+        case .selectUpdate:
+            let attributedString = NSMutableAttributedString()
+                .bold(string: "업데이트가 필요해요.", fontColor: .colorGrayGray07, fontSize: 16)
+                .regular(string: "\n새롭게 추가된 기능을 즐겨보세요!", fontColor: .colorGrayGray06, fontSize: 14)
+                .regular(string: "\n*추후 [마이>설정]에서 업데이트 가능", fontColor: .colorGrayGray05, fontSize: 14)
+
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            paragraphStyle.paragraphSpacing = 8
+            attributedString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+
+            popupTitleLabel.attributedText = attributedString
+            cancelButton.setTitle("나중에", for: .normal)
+            okButton.setTitle("지금 업데이트", for: .normal)
+        case .forceUpdate:
+            let attributedString = NSMutableAttributedString()
+                .bold(string: "업데이트가 필요해요.", fontColor: .colorGrayGray07, fontSize: 16)
+                .regular(string: "\n더 편하고 다채로운 기능을 즐겨보세요!", fontColor: .colorGrayGray06, fontSize: 14)
+
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            paragraphStyle.paragraphSpacing = 6
+            attributedString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+
+            popupTitleLabel.attributedText = attributedString
+            okButton.setTitle("지금 업데이트", for: .normal)
         case .creationFeed:
             popupTitleLabel.text = "용기낸 경험을 들려주시겠어요?"
             cancelButton.setTitle("나중에요", for: .normal)
