@@ -60,6 +60,10 @@ class RestaurantInformationOnFeedDetail: UICollectionViewCell {
         RestaurantLocation.sharedInstance.isEntryRestaurantInformation = true
         RestaurantLocation.sharedInstance.latitude = latitude!
         RestaurantLocation.sharedInstance.longtitude = longitude!
-        coordinator?.presenter.tabBarController?.selectedIndex = 3
+        if coordinator?.presenter.tabBarController?.selectedIndex == 3 {
+            coordinator?.presenter.popViewController(animated: true)
+        } else {
+            coordinator?.presenter.tabBarController?.selectedIndex = 3
+        }
     }
 }
