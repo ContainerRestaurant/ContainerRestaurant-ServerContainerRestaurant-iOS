@@ -42,15 +42,15 @@ class SettingCollectionViewCell: UICollectionViewCell {
                     .regular(string: "  v."+version, fontColor: .colorGrayGray05, fontSize: 14)
                 self.settingTitleLabel.attributedText = attributedString
 
-//                if version < appVersionModel.latestVersion {
+                if version < appVersionModel.latestVersion {
                     self.appVersionLabel.text = "최신 버전으로 업데이트가 필요해요."
                     self.chevronRightButton.isHidden = false
                     self.appVersionLabelRightSpacing.constant = 4
-//                } else if version >= appVersionModel.latestVersion {
-//                    self.appVersionLabel.text = "최신 버전을 이용중이에요."
-//                    self.chevronRightButton.isHidden = true
-//                    self.appVersionLabelRightSpacing.constant = -16
-//                }
+                } else if version >= appVersionModel.latestVersion {
+                    self.appVersionLabel.text = "최신 버전을 이용중이에요."
+                    self.chevronRightButton.isHidden = true
+                    self.appVersionLabelRightSpacing.constant = -16
+                }
             }
 
             self.alertSettingSwitch.isHidden = true
