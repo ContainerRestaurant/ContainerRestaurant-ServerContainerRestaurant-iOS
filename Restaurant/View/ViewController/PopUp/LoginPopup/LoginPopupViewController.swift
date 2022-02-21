@@ -64,13 +64,53 @@ class LoginPopupViewController: UIViewController, Storyboard {
 
 extension LoginPopupViewController {
     private func kakaoLogin() {
-        if UserApi.isKakaoTalkLoginAvailable() {
+        if UserApi.isKakaoTalkLoginAvailable() { //카톡이 설치돼있는 경우
             UserApi.shared.loginWithKakaoTalk {(oAuthToken, error) in
                 if let error = error {
                     print("로그인 여부\(error)")
                 } else {
                     print("loginWithKakaoTalk() success.")
                     
+                    UserApi.shared.me() { [weak self] (user, error) in
+                        if let error = error {
+                            print("사용자 정보 가져오기 \(error)")
+                        } else {
+                            print("me() success.")
+
+                            APIClient.createLoginToken(provider: "KAKAO", accessToken: oAuthToken?.accessToken ?? "") {
+                                UserDataManager.sharedInstance.userID = $0.id
+                                UserDataManager.sharedInstance.loginToken = $0.token
+                                UserDataManager.sharedInstance.fromWhereLogin = "kakao"
+
+                                if $0.isNicknameNull {
+                                    if self?.fromWhere == .mapBottomSheet  {
+                                        let nicknamePopup = NickNamePopupViewController.instantiate()
+                                        nicknamePopup.viewControllerWhereComeFrom = .mapBottomSheet
+                                        self?.present(nicknamePopup, animated: false, completion: nil)
+                                    } else {
+                                        self?.dismiss(animated: false, completion: nil)
+                                        self?.coordinator?.presentNickNamePopup()
+                                    }
+                                } else {
+                                    self?.dismiss(animated: true, completion: nil)
+                                    if self?.fromWhere == .feedDetail {
+                                        self?.feedDetailViewWillAppearSubject?.onNext(())
+                                    } else {
+                                        self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } else { //카톡이 설치안돼있는 경우
+            UserApi.shared.loginWithKakaoAccount {(oAuthToken, error) in
+                if let error = error {
+                    print("로그인 여부\(error)")
+                } else {
+                    print("loginWithKakaoTalk() success.")
+
                     UserApi.shared.me() { [weak self] (user, error) in
                         if let error = error {
                             print("사용자 정보 가져오기 \(error)")
