@@ -1166,22 +1166,22 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VdE-mz-VGd">
-                                <rect key="frame" x="40" y="164.66666666666666" width="20" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VdE-mz-VGd">
+                                <rect key="frame" x="16" y="142.66666666666666" width="42" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="Crz-hz-8TU"/>
-                                    <constraint firstAttribute="width" constant="20" id="MUI-KV-k39"/>
+                                    <constraint firstAttribute="height" constant="42" id="WsV-Vx-i02"/>
+                                    <constraint firstAttribute="width" constant="42" id="jiz-yX-9r6"/>
                                 </constraints>
                                 <state key="normal" image="photoEdit20Px"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용기낸 식당" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1O8-8X-0lS">
-                                <rect key="frame" x="74" y="150.66666666666666" width="82.333333333333314" height="22"/>
+                                <rect key="frame" x="72" y="150.66666666666666" width="82.333333333333314" height="22"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5AD-nh-Qxx">
-                                <rect key="frame" x="74" y="150.66666666666666" width="98.333333333333314" height="22"/>
+                                <rect key="frame" x="72" y="150.66666666666666" width="98.333333333333314" height="22"/>
                                 <state key="normal" image="chevronRightOutline12Px"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lv1. 텀블러" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlR-Np-TuJ">
@@ -1421,7 +1421,7 @@
                             <constraint firstItem="Kc2-qb-C8U" firstAttribute="leading" secondItem="YCg-Qz-Q0R" secondAttribute="leading" constant="16" id="ZIO-LH-uVY"/>
                             <constraint firstItem="7Nl-BH-Ewf" firstAttribute="trailing" secondItem="IgL-jW-e7X" secondAttribute="trailing" constant="14" id="Zj5-p3-8js"/>
                             <constraint firstItem="VdE-mz-VGd" firstAttribute="bottom" secondItem="Kc2-qb-C8U" secondAttribute="bottom" constant="2" id="auJ-tl-RmQ"/>
-                            <constraint firstItem="VdE-mz-VGd" firstAttribute="leading" secondItem="Kc2-qb-C8U" secondAttribute="leading" constant="24" id="eG3-Bi-xcK"/>
+                            <constraint firstItem="VdE-mz-VGd" firstAttribute="leading" secondItem="Kc2-qb-C8U" secondAttribute="leading" id="eG3-Bi-xcK"/>
                             <constraint firstItem="2aU-ti-sqP" firstAttribute="top" secondItem="7Nl-BH-Ewf" secondAttribute="top" constant="48" id="hGT-BJ-nsC"/>
                             <constraint firstItem="OYM-7u-GIh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vlR-Np-TuJ" secondAttribute="trailing" id="hRn-7E-C4S"/>
                             <constraint firstItem="7Nl-BH-Ewf" firstAttribute="bottom" secondItem="X2q-j9-cXV" secondAttribute="bottom" id="iQV-Br-Oh3"/>
@@ -2230,29 +2230,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FYs-yP-j7E">
-                                <rect key="frame" x="16" y="235" width="315" height="34"/>
-                                <color key="textColor" name="colorGrayGray07"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ih-jK-i7q">
-                                <rect key="frame" x="0.0" y="380" width="375" height="52"/>
-                                <color key="backgroundColor" name="colorGrayGray03"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="np4-ST-aAb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="작성 완료">
-                                    <color key="titleColor" name="colorGrayGray06"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jW9-3p-XS7">
                                 <rect key="frame" x="16" y="277" width="315" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" name="colorPointOrange02"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FYs-yP-j7E">
+                                <rect key="frame" x="16" y="235" width="315" height="34"/>
+                                <color key="textColor" name="colorGrayGray07"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pSE-J2-PYq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2262,10 +2251,7 @@
                             <constraint firstItem="jW9-3p-XS7" firstAttribute="top" secondItem="FYs-yP-j7E" secondAttribute="bottom" constant="8" id="AmA-Ql-O8G"/>
                             <constraint firstItem="FYs-yP-j7E" firstAttribute="leading" secondItem="pSE-J2-PYq" secondAttribute="leading" constant="16" id="DkC-2J-cwM"/>
                             <constraint firstItem="FYs-yP-j7E" firstAttribute="top" secondItem="xbo-76-67R" secondAttribute="bottom" constant="38" id="FDy-iO-aYf"/>
-                            <constraint firstItem="9ih-jK-i7q" firstAttribute="leading" secondItem="pSE-J2-PYq" secondAttribute="leading" id="H9D-1J-cft"/>
                             <constraint firstItem="xbo-76-67R" firstAttribute="top" secondItem="pSE-J2-PYq" secondAttribute="top" constant="110" id="J2C-mu-tlk"/>
-                            <constraint firstItem="9ih-jK-i7q" firstAttribute="centerY" secondItem="Na7-cE-cbW" secondAttribute="centerY" id="NGE-At-xBg"/>
-                            <constraint firstItem="pSE-J2-PYq" firstAttribute="trailing" secondItem="9ih-jK-i7q" secondAttribute="trailing" id="Sq2-SS-hHt"/>
                             <constraint firstItem="pSE-J2-PYq" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xbo-76-67R" secondAttribute="trailing" constant="127" id="UQs-U1-Z6e"/>
                             <constraint firstItem="pSE-J2-PYq" firstAttribute="trailing" secondItem="FYs-yP-j7E" secondAttribute="trailing" constant="44" id="Yy9-5O-jHk"/>
                             <constraint firstItem="xbo-76-67R" firstAttribute="leading" secondItem="pSE-J2-PYq" secondAttribute="leading" constant="16" id="lsj-bz-Ulw"/>
@@ -2274,12 +2260,11 @@
                     <connections>
                         <outlet property="nickNameTextField" destination="FYs-yP-j7E" id="zwX-S0-9vl"/>
                         <outlet property="nicknameValidationCheckLabel" destination="jW9-3p-XS7" id="9AF-cQ-JAt"/>
-                        <outlet property="registerButton" destination="9ih-jK-i7q" id="t4N-nJ-NUw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mga-Sw-Q1p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2748" y="-548"/>
+            <point key="canvasLocation" x="2748" y="-548.27586206896558"/>
         </scene>
         <!--Web View Popup View Controller-->
         <scene sceneID="E0t-Ft-oAz">

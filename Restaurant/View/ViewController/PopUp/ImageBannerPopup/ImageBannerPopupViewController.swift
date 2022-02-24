@@ -22,31 +22,42 @@ class ImageBannerPopupViewController: BaseViewController, Storyboard, UIScrollVi
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let isFromFeedDetail = isFromFeedDetail else { return }
+        var imageHeight: CGFloat = 0
 
         if let imageURL = imageURL {
             let URL = URL(string: imageURL)
             imageView.kf.setImage(with: URL, options: [.transition(.fade(0.3))])
+
+            if let imageSource = CGImageSourceCreateWithURL(URL! as CFURL, nil) {
+                if let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary? {
+                    let pixelHeight: CGFloat = imageProperties[kCGImagePropertyPixelHeight] as! CGFloat
+                    let threeX: CGFloat = 3
+                    imageHeight = pixelHeight/threeX
+                }
+            }
         }
 
         if let image = image {
             imageView.image = image
+            imageHeight = image.size.height
         }
 
         let screenWidth = UIScreen.main.bounds.width
-        let generalImageHeight = (image?.size.height ?? 0).heightRatio()
-        let feedImageHeight: CGFloat = 365
-        let topSpacing: CGFloat = 74
+        let generalImageHeight = imageHeight
+        let feedImageHeight = CGFloat(365).heightRatio()
+        let topSpacing = CGFloat(74).heightRatio()
         let feedImageY = (scrollView.frame.height * 0.5) - (feedImageHeight * 0.5) - topSpacing
         let imageY = isFromFeedDetail ? feedImageY : 0
-        let imageHeight = isFromFeedDetail ? feedImageHeight : generalImageHeight
+        let imageViewHeight = isFromFeedDetail ? feedImageHeight : generalImageHeight
 
-        self.imageView.frame = CGRect(x: 0, y: imageY, width: screenWidth, height: imageHeight)
-        self.imageView.contentMode = isFromFeedDetail ? .scaleAspectFit : .scaleAspectFill
+        self.imageView.frame = CGRect(x: 0, y: imageY, width: screenWidth, height: imageViewHeight)
+        self.imageView.contentMode = .scaleAspectFit
         self.scrollView.addSubview(imageView)
-        self.scrollView.contentSize = CGSize(width: screenWidth, height: imageHeight)
+        self.scrollView.contentSize = CGSize(width: screenWidth, height: imageViewHeight)
 
         self.scrollView.minimumZoomScale = 1.0
         self.scrollView.maximumZoomScale = 3.0
+
         self.scrollView.delegate = self
     }
 

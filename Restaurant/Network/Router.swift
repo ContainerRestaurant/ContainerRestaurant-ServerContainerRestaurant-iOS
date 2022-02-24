@@ -9,6 +9,7 @@ import Foundation
 import Alamofire
 
 enum Router: URLRequestConvertible {
+    case AppVersion
     case CreateLoginToken(provider: String, accessToken: String)
     case CheckLogin
     case UpdateUserNickname(userID: Int, nickname: String)
@@ -42,10 +43,11 @@ enum Router: URLRequestConvertible {
     case NearbyRestaurants(latitude: Double, longitude: Double, radius: Int)
     case Contract
 
-    static var baseURLString = "http://ec2-52-78-66-184.ap-northeast-2.compute.amazonaws.com"
+    static var baseURLString = "http://dev.hellozin.net"
     
     private var method: HTTPMethod {
         switch self {
+        case .AppVersion: return .get
         case .CreateLoginToken: return .post
         case .CheckLogin: return .get
         case .UpdateUserNickname: return .patch
@@ -83,6 +85,7 @@ enum Router: URLRequestConvertible {
 
     private var path: String {
         switch self {
+        case .AppVersion: return "api/version/ios"
         case .CreateLoginToken: return "/api/user"
         case .CheckLogin: return "/api/user"
         case .UpdateUserNickname(let userID, _): return "/api/user/\(userID)"
@@ -120,6 +123,7 @@ enum Router: URLRequestConvertible {
 
     private var parameters: Parameters? {
         switch self {
+        case .AppVersion: return nil
         case .CreateLoginToken(let provider, let accessToken): return ["provider": provider, "accessToken": accessToken]
         case .CheckLogin: return nil
         case .UpdateUserNickname(_, let nickname): return ["nickname": nickname]

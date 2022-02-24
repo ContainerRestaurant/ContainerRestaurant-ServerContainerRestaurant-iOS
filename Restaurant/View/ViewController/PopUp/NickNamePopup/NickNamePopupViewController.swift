@@ -14,21 +14,20 @@ enum ViewControllerWhereComeFrom {
     case normal
 }
 
-class NickNamePopupViewController: BaseViewController, Storyboard {
+class NickNamePopupViewController: BaseViewController, Storyboard, UITextFieldDelegate {
     weak var coordinator: NickNamePopupCoordinator?
     var validateNicknameSubject: PublishSubject<Bool> = PublishSubject<Bool>()
     var viewControllerWhereComeFrom: ViewControllerWhereComeFrom = .normal
     var beforeTextLength = 0
     var totalTextLength = 0
 
+    var registerButton: UIButton = UIButton(type: .system)
+
     @IBOutlet weak var nickNameTextField: UITextField!
-    @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var nicknameValidationCheckLabel: UILabel!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        bindingView()
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,9 +40,22 @@ class NickNamePopupViewController: BaseViewController, Storyboard {
         self.coordinator?.presenter.navigationBar.backIndicatorTransitionMaskImage = backImage
         self.coordinator?.presenter.navigationBar.backItem?.title = ""
         self.coordinator?.presenter.navigationBar.tintColor = .colorGrayGray08
+    }
 
-        //self.coordinator?.presenter.navigationItem.title = "닉네임 수정" Todo: 얜 왜 안되는지 밑에랑 무슨 차인지 (현재는 coordinator에 선언해놨음)
-//        self.navigationItem.title = "닉네임 수정"
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setRegisterButton()
+        bindingView()
+    }
+
+    private func setRegisterButton() {
+        registerButton.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 52)
+        registerButton.titleLabel?.font = .boldSystemFont(ofSize: 16)
+        registerButton.setTitle("작성 완료", for: .normal)
+        registerButton.setTitleColor(.colorGrayGray06, for: .normal)
+
+        nickNameTextField.inputAccessoryView = registerButton
     }
 
     private func bindingView() {
