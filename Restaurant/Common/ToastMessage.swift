@@ -9,14 +9,16 @@ import UIKit
 
 class ToastMessage {
     public static let shared = ToastMessage()
+
     private init() {}
-    func show(str: String) {
+
+    func show(text: String) {
         if let window = UIApplication.shared.windows.first {
             let labelWidth = CGFloat(260).widthRatio()
             let x = window.bounds.width/2 - labelWidth/2
             let y = window.bounds.height/2
             let label = UILabel(frame: CGRect(x: x, y: y, width: labelWidth, height: 40))
-            label.text = str
+            label.text = text
             label.font = .systemFont(ofSize: 12)
             label.textColor = .colorGrayGray01
             label.textAlignment = .center

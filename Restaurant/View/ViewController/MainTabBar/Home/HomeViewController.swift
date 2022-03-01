@@ -8,17 +8,18 @@
 import UIKit
 
 class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType {
-    var viewModel: HomeViewModel!
     weak var coordinator: HomeCoordinator?
+    var viewModel: HomeViewModel!
     
     @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("HomeViewController viewDidLoad()")
+
         self.navigationItem.title = ""
-        
-        setCollectionView()
+        self.setCollectionView()
+
+        print("HomeViewController viewDidLoad()")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,13 +43,8 @@ class HomeViewController: BaseViewController, Storyboard, ViewModelBindableType 
 
     func bindingView() {
         print("Home bindingView")
-//        self.viewModel.recommendFeeds
-//            .map { $0.first?.userNickname }
-//            .drive(testLabel.rx.text)
-//            .disposed(by: disposeBag)
     }
-    
-    //안될거임
+
     deinit {
         print("HomeViewController Deinit")
     }

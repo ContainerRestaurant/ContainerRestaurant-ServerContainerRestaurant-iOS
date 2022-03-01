@@ -117,7 +117,7 @@ class NickNamePopupViewController: BaseViewController, Storyboard, UITextFieldDe
                         }
                     case .myNicknameUpdate:
                         self?.coordinator?.presenter.popViewController(animated: true)
-                        ToastMessage.shared.show(str: "닉네임 변경이 완료되었습니다.")
+                        ToastMessage.shared.show(text: "닉네임 변경이 완료되었습니다.")
                     case .normal:
                         self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
                         self?.dismiss(animated: true, completion: nil)

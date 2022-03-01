@@ -84,8 +84,8 @@ class CommonPopupViewController: BaseViewController, Storyboard {
             .disposed(by: disposeBag)
 
         okButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.openAppStore(appId: "1586529640")
+            .subscribe(onNext: { _ in
+                Common.openAppStore(appId: "1586529640")
             })
             .disposed(by: disposeBag)
     }
@@ -94,21 +94,10 @@ class CommonPopupViewController: BaseViewController, Storyboard {
         backgroundButton.isEnabled = false
 
         okButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.openAppStore(appId: "1586529640")
+            .subscribe(onNext: { _ in
+                Common.openAppStore(appId: "1586529640")
             })
             .disposed(by: disposeBag)
-    }
-
-    private func openAppStore(appId: String) {
-        let url = "itms-apps://itunes.apple.com/app/" + appId;
-        if let url = URL(string: url), UIApplication.shared.canOpenURL(url) {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
-        }
     }
 
     func creationFeedBindingView() {

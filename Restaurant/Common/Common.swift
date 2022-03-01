@@ -8,25 +8,9 @@
 import UIKit
 
 struct Common {
-    //Todo: sharedInstance 써서 바꾸기
-//    static var sharedInstance = Common()
-
     static var homeBarHeight: CGFloat = 34 // home indicator
     static var tabBarHeight: CGFloat = 48
     static var notchHeight: CGFloat = 48
-
-//    static func showToast(controller: UIViewController, message: String, seconds: Double) {
-//        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-//        alert.view.backgroundColor = .black
-//        alert.view.alpha = 0.6
-//        alert.view.layer.cornerRadius = 15
-//
-//        controller.present(alert, animated: true)
-//
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
-//            alert.dismiss(animated: true)
-//        }
-//    }
 
     //topViewController에서 currentViewController로 수정
     static func currentViewController() -> UIViewController? {
@@ -72,6 +56,17 @@ struct Common {
         transition.subtype = .fromTop
 
         return transition
+    }
+
+    static func openAppStore(appId: String) {
+        let url = "itms-apps://itunes.apple.com/app/" + appId;
+        if let url = URL(string: url), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
     }
 }
 
