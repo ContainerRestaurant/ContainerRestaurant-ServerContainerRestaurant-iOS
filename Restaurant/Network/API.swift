@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 import RxSwift
 
-var baseURL = "http://ec2-52-78-66-184.ap-northeast-2.compute.amazonaws.com"
+var baseURL = "http://dev.hellozin.net"
 
 struct API {
     
