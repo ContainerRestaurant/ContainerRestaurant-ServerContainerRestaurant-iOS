@@ -121,7 +121,7 @@ class MapViewController: BaseViewController, Storyboard, ViewModelBindableType {
                 guard let `self` = self else { return }
 
                 if self.viewModel.nearbyRestaurants.isEmpty {
-                    ToastMessage.shared.show(str: "이 위치에는 아직 용기낸 식당이 없어요!")
+                    ToastMessage.shared.show(text: "이 위치에는 아직 용기낸 식당이 없어요!")
                 } else {
                     self.setMarkers()
                 }

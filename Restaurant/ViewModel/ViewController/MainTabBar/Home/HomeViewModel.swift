@@ -14,12 +14,6 @@ class HomeViewModel {
     var recommendFeeds: [FeedPreviewModel] = []
     var homeMainData: HomeMainDataModel = HomeMainDataModel()
 
-//    var recommendFeeds: Driver<[FeedPreviewModel]> {
-//        return Observable
-//            .just(recommendFeed)
-//            .asDriver(onErrorJustReturn: [])
-//    }
-    
     init(_ recommendFeeds: [FeedPreviewModel], _ homeMainData: HomeMainDataModel) {
         self.recommendFeeds = recommendFeeds
         self.homeMainData = homeMainData

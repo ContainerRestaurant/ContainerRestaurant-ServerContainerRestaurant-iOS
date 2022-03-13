@@ -85,23 +85,22 @@ extension SettingViewController: UICollectionViewDelegate, UICollectionViewDataS
         case 1: coordinator?.pushServiceAccessTerms()
         case 2: coordinator?.logoutPopup()
         case 3: coordinator?.unregisterPopup()
-        case 4: self.openAppStore(appId: "1586529640")
+        case 4: self.moveAppStoreAfterVersionCheck()
         default: break
+        }
+    }
+
+    private func moveAppStoreAfterVersionCheck() {
+        APIClient.appVersion() { appVersionModel in
+            if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                if version < appVersionModel.latestVersion {
+                    Common.openAppStore(appId: "1586529640")
+                }
+            }
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return .zero
-    }
-
-    private func openAppStore(appId: String) {
-        let url = "itms-apps://itunes.apple.com/app/" + appId;
-        if let url = URL(string: url), UIApplication.shared.canOpenURL(url) {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
-        }
     }
 }
