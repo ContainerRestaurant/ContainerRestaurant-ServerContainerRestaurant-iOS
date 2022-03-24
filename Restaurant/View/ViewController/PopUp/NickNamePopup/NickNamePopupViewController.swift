@@ -45,8 +45,16 @@ class NickNamePopupViewController: BaseViewController, Storyboard, UITextFieldDe
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setTextFieldUnderLine()
         setRegisterButton()
         bindingView()
+    }
+
+    private func setTextFieldUnderLine() {
+        let border = CALayer()
+        border.frame = CGRect(x: 0, y: nickNameTextField.frame.size.height+8, width: nickNameTextField.frame.width, height: 1)
+        border.backgroundColor = UIColor.colorGrayGray04.cgColor
+        nickNameTextField.layer.addSublayer(border)
     }
 
     private func setRegisterButton() {
@@ -62,10 +70,10 @@ class NickNamePopupViewController: BaseViewController, Storyboard, UITextFieldDe
         self.validateNicknameSubject
             .map { !$0 }
             .subscribe(onNext: { [weak self] isValidate in
-                self?.nicknameValidationCheckLabel.textColor = isValidate ? .colorMainGreen03 : .colorPointOrange02
+                self?.nicknameValidationCheckLabel.textColor = isValidate ? .colorMainGreen02 : .colorPointOrange02
                 self?.nicknameValidationCheckLabel.text = isValidate ? "사용 가능한 닉네임 입니다" : "중복 닉네임 입니다."
                 self?.registerButton.isEnabled = isValidate
-                self?.registerButton.backgroundColor = isValidate ? .colorMainGreen03 : .colorGrayGray03
+                self?.registerButton.backgroundColor = isValidate ? .colorMainGreen02 : .colorGrayGray03
                 self?.registerButton.setTitleColor(isValidate ? .colorGrayGray01 : .colorGrayGray06, for: .normal)
             })
             .disposed(by: disposeBag)
