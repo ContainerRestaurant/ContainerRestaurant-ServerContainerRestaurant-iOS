@@ -14,6 +14,9 @@ enum Router: URLRequestConvertible {
     case CheckLogin
     case UpdateUserNickname(userID: Int, nickname: String)
     case UpdateUserProfile(userID: Int, profileID: Int)
+    case UpdateDeviceToken(pushToken: String)
+    case DeleteDeviceTokenOfUser(userID: Int)
+    case DeleteDeviceTokenOfTable(pushTokenID: Int)
     case UnregisterUser(userID: Int)
     case CheckUser(userID: Int)
     case HomeMainData
@@ -43,8 +46,8 @@ enum Router: URLRequestConvertible {
     case NearbyRestaurants(latitude: Double, longitude: Double, radius: Int)
     case Contract
 
-    static var baseURLString = "http://dev.hellozin.net"
-    
+    static var baseURLString = "http://beta.hellozin.net"
+
     private var method: HTTPMethod {
         switch self {
         case .AppVersion: return .get
@@ -52,6 +55,9 @@ enum Router: URLRequestConvertible {
         case .CheckLogin: return .get
         case .UpdateUserNickname: return .patch
         case .UpdateUserProfile: return .patch
+        case .UpdateDeviceToken: return .post
+        case .DeleteDeviceTokenOfUser: return .delete
+        case .DeleteDeviceTokenOfTable: return .delete
         case .UnregisterUser: return .delete
         case .CheckUser: return .get
         case .HomeMainData: return .get
@@ -90,6 +96,9 @@ enum Router: URLRequestConvertible {
         case .CheckLogin: return "/api/user"
         case .UpdateUserNickname(let userID, _): return "/api/user/\(userID)"
         case .UpdateUserProfile(let userID, _): return "/api/user/\(userID)"
+        case .UpdateDeviceToken(let pushToken): return "/api/push/token/\(pushToken)"
+        case .DeleteDeviceTokenOfUser(let userID): return "/api/user/\(userID)/push/token"
+        case .DeleteDeviceTokenOfTable(let pushTokenID): return "/api/push/token/\(pushTokenID)"
         case .UnregisterUser(let userID): return "/api/user/\(userID)"
         case .CheckUser(let userID): return "/api/user/\(userID)"
         case .HomeMainData: return "/api/home"
@@ -128,6 +137,9 @@ enum Router: URLRequestConvertible {
         case .CheckLogin: return nil
         case .UpdateUserNickname(_, let nickname): return ["nickname": nickname]
         case .UpdateUserProfile(_, let profileID): return ["profileId": String(profileID)]
+        case .UpdateDeviceToken: return nil
+        case .DeleteDeviceTokenOfUser: return nil
+        case .DeleteDeviceTokenOfTable: return nil
         case .UnregisterUser: return nil
         case .CheckUser: return nil
         case .HomeMainData: return nil
