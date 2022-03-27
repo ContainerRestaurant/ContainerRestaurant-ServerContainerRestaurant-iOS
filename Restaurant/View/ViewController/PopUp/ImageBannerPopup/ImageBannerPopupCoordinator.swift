@@ -23,7 +23,7 @@ class ImageBannerPopupCoordinator: NSObject, Coordinator {
     func start() {
         let imageBannerPopup = ImageBannerPopupViewController.instantiate()
         imageBannerPopup.coordinator = self
-        imageBannerPopup.modalPresentationStyle = .fullScreen
+        imageBannerPopup.modalPresentationStyle = .overFullScreen
         if let imageURL = imageURL {
             imageBannerPopup.imageURL = imageURL
         }
