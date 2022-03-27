@@ -2224,37 +2224,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용기낸 식당에 어서오세요! 닉네임만 정하면 가입이 끝나요 :)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbo-76-67R">
-                                <rect key="frame" x="16" y="154" width="232" height="43"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jW9-3p-XS7">
-                                <rect key="frame" x="16" y="277" width="315" height="15"/>
+                                <rect key="frame" x="16" y="261.66666666666669" width="343" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" name="colorPointOrange02"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FYs-yP-j7E">
-                                <rect key="frame" x="16" y="235" width="315" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FYs-yP-j7E">
+                                <rect key="frame" x="16" y="227" width="343" height="18.666666666666657"/>
                                 <color key="textColor" name="colorGrayGray07"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임만 정하면 가입이 끝나요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIo-9z-Pb6">
+                                <rect key="frame" x="16" y="164" width="197" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="N80-QP-MKI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" name="colorGrayGray06"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용기낸 식당에 어서오세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWg-KY-5Lp">
+                                <rect key="frame" x="16" y="130" width="287.66666666666669" height="34"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <color key="textColor" name="colorGrayGray07"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pSE-J2-PYq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="jW9-3p-XS7" firstAttribute="trailing" secondItem="FYs-yP-j7E" secondAttribute="trailing" id="0V4-GQ-GxG"/>
                             <constraint firstItem="jW9-3p-XS7" firstAttribute="leading" secondItem="FYs-yP-j7E" secondAttribute="leading" id="4Ux-uO-8qf"/>
-                            <constraint firstItem="jW9-3p-XS7" firstAttribute="top" secondItem="FYs-yP-j7E" secondAttribute="bottom" constant="8" id="AmA-Ql-O8G"/>
+                            <constraint firstItem="jW9-3p-XS7" firstAttribute="top" secondItem="FYs-yP-j7E" secondAttribute="bottom" constant="16" id="AmA-Ql-O8G"/>
                             <constraint firstItem="FYs-yP-j7E" firstAttribute="leading" secondItem="pSE-J2-PYq" secondAttribute="leading" constant="16" id="DkC-2J-cwM"/>
-                            <constraint firstItem="FYs-yP-j7E" firstAttribute="top" secondItem="xbo-76-67R" secondAttribute="bottom" constant="38" id="FDy-iO-aYf"/>
-                            <constraint firstItem="xbo-76-67R" firstAttribute="top" secondItem="pSE-J2-PYq" secondAttribute="top" constant="110" id="J2C-mu-tlk"/>
-                            <constraint firstItem="pSE-J2-PYq" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xbo-76-67R" secondAttribute="trailing" constant="127" id="UQs-U1-Z6e"/>
-                            <constraint firstItem="pSE-J2-PYq" firstAttribute="trailing" secondItem="FYs-yP-j7E" secondAttribute="trailing" constant="44" id="Yy9-5O-jHk"/>
-                            <constraint firstItem="xbo-76-67R" firstAttribute="leading" secondItem="pSE-J2-PYq" secondAttribute="leading" constant="16" id="lsj-bz-Ulw"/>
+                            <constraint firstItem="pSE-J2-PYq" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mIo-9z-Pb6" secondAttribute="trailing" constant="19" id="I0s-MS-Piq"/>
+                            <constraint firstItem="mIo-9z-Pb6" firstAttribute="top" secondItem="PWg-KY-5Lp" secondAttribute="bottom" id="NBr-9U-Siu"/>
+                            <constraint firstItem="PWg-KY-5Lp" firstAttribute="leading" secondItem="pSE-J2-PYq" secondAttribute="leading" constant="16" id="X2R-Bf-0Wg"/>
+                            <constraint firstItem="pSE-J2-PYq" firstAttribute="trailing" secondItem="FYs-yP-j7E" secondAttribute="trailing" constant="16" id="Yy9-5O-jHk"/>
+                            <constraint firstItem="PWg-KY-5Lp" firstAttribute="top" secondItem="pSE-J2-PYq" secondAttribute="top" constant="86" id="dgs-Tj-80H"/>
+                            <constraint firstItem="FYs-yP-j7E" firstAttribute="top" secondItem="mIo-9z-Pb6" secondAttribute="bottom" constant="39" id="voD-ke-Elg"/>
+                            <constraint firstItem="pSE-J2-PYq" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PWg-KY-5Lp" secondAttribute="trailing" constant="19" id="xMy-T0-sGa"/>
+                            <constraint firstItem="mIo-9z-Pb6" firstAttribute="leading" secondItem="pSE-J2-PYq" secondAttribute="leading" constant="16" id="xQX-mT-hf9"/>
                         </constraints>
                     </view>
                     <connections>
