@@ -13,6 +13,8 @@ class ImageBannerPopupViewController: BaseViewController, Storyboard, UIScrollVi
     var imageURL: String?
     var image: UIImage?
     var imageView = UIImageView()
+    var viewTranslation = CGPoint(x: 0, y: 0)
+    var viewVelocity = CGPoint(x: 0, y: 0)
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBAction func clickedCloseButton(_ sender: Any) {
@@ -21,6 +23,16 @@ class ImageBannerPopupViewController: BaseViewController, Storyboard, UIScrollVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setImageScrollView()
+        modalDismiss()
+    }
+
+    deinit {
+        print("ImageBannerPopupViewController Deinit")
+    }
+
+    private func setImageScrollView() {
         guard let isFromFeedDetail = isFromFeedDetail else { return }
         var imageHeight: CGFloat = 0
 
@@ -61,6 +73,35 @@ class ImageBannerPopupViewController: BaseViewController, Storyboard, UIScrollVi
         self.scrollView.delegate = self
     }
 
+    func modalDismiss() {
+        view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismiss)))
+    }
+
+    @objc func handleDismiss(_ sender: UIPanGestureRecognizer) {
+        viewTranslation = sender.translation(in: view)
+        viewVelocity = sender.velocity(in: view)
+
+        switch sender.state {
+        case .changed:
+            //위로 스와이프 안되도록 설정
+            if viewVelocity.y > 0 {
+                UIView.animate(withDuration: 0.1, animations: { [weak self] in
+                    self?.view.transform = CGAffineTransform(translationX: 0, y: self?.viewTranslation.y ?? 0)
+                })
+            }
+        case .ended:
+            if viewTranslation.y < 200 {
+                //원상 복구
+                UIView.animate(withDuration: 0.1, animations: { [weak self] in
+                    self?.view.transform = .identity
+                })
+            } else {
+                dismiss(animated: true, completion: nil)
+            }
+        default: break
+        }
+    }
+
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
@@ -69,9 +110,5 @@ class ImageBannerPopupViewController: BaseViewController, Storyboard, UIScrollVi
         let offsetX = max((scrollView.bounds.width - scrollView.contentSize.width) * 0.5, 0)
         let offsetY = CGFloat(0)
         scrollView.contentInset = UIEdgeInsets(top: offsetY, left: offsetX, bottom: 0, right: 0)
-    }
-
-    deinit {
-        print("ImageBannerPopupViewController Deinit")
     }
 }
