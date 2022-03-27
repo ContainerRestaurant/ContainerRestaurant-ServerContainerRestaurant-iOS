@@ -82,6 +82,8 @@ extension LoginPopupViewController {
                             UserDataManager.sharedInstance.loginToken = $0.token
                             UserDataManager.sharedInstance.fromWhereLogin = "kakao"
 
+                            APIClient.updateDeviceToken(deviceToken: UserDataManager.sharedInstance.pushToken) { _ in }
+
                             if $0.isNicknameNull {
                                 if self?.fromWhere == .mapBottomSheet  {
                                     let nicknamePopup = NickNamePopupViewController.instantiate()
@@ -123,6 +125,8 @@ extension LoginPopupViewController {
                             UserDataManager.sharedInstance.userID = $0.id
                             UserDataManager.sharedInstance.loginToken = $0.token
                             UserDataManager.sharedInstance.fromWhereLogin = "kakao"
+
+                            APIClient.updateDeviceToken(deviceToken: UserDataManager.sharedInstance.pushToken) { _ in }
 
                             if $0.isNicknameNull {
                                 if self?.fromWhere == .mapBottomSheet  {
@@ -185,6 +189,8 @@ extension LoginPopupViewController: ASAuthorizationControllerDelegate, ASAuthori
                     UserDataManager.sharedInstance.userID = $0.id
                     UserDataManager.sharedInstance.loginToken = $0.token
                     UserDataManager.sharedInstance.fromWhereLogin = "apple"
+
+                    APIClient.updateDeviceToken(deviceToken: UserDataManager.sharedInstance.pushToken) { _ in }
 
                     if $0.isNicknameNull {
                         if self.fromWhere == .mapBottomSheet {

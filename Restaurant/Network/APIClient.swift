@@ -79,6 +79,54 @@ class APIClient {
                 }
             }
     }
+
+    //디바이스 토큰 저장
+    static func updateDeviceToken(deviceToken: String, completion: @escaping (Int) -> Void) {
+        AF.request(Router.UpdateDeviceToken(pushToken: deviceToken))
+            .responseDecodable { (response: DataResponse<PushResponseModel, AFError>) in
+                switch response.result {
+                case .success(let pushResponseModel):
+                    UserDataManager.sharedInstance.pushTokenID = pushResponseModel.id
+                    print("*/등록/*")
+                    print(pushResponseModel.id)
+                    print("*/등록/*")
+                    completion(pushResponseModel.id)
+                case .failure(let error):
+                    print("Update Device Token's Error: \(error)")
+                }
+            }
+    }
+
+    //유저 필드에 저장돼있는 디바이스 토큰 삭제
+    static func deleteDeviceTokenOfUser(completion: @escaping (Bool) -> Void) {
+        AF.request(Router.DeleteDeviceTokenOfUser(userID: UserDataManager.sharedInstance.userID))
+            .validate(statusCode: 200..<300)
+            .response(completionHandler: { response in
+                switch response.result {
+                case .success(let result):
+                    completion(true)
+                    print("Delete Device Token Of User's Success: \(String(describing: result))")
+                case .failure(let error):
+                    completion(false)
+                    print("Delete Device Token Of User's Error: \(error)")
+                }
+            })
+    }
+
+    static func deleteDeviceTokenOfTable(completion: @escaping (Bool) -> Void) {
+        AF.request(Router.DeleteDeviceTokenOfTable(pushTokenID: UserDataManager.sharedInstance.pushTokenID))
+            .validate(statusCode: 200..<300)
+            .response(completionHandler: { response in
+                switch response.result {
+                case .success(let result):
+                    completion(true)
+                    print("Delete Device Token Of Table's Success: \(String(describing: result))")
+                case .failure(let error):
+                    completion(false)
+                    print("Delete Device Token Of Table's Error: \(error)")
+                }
+            })
+    }
     
     //계정 탈퇴
     static func unregisterUser(userID: Int, completion: @escaping (Bool) -> Void) {

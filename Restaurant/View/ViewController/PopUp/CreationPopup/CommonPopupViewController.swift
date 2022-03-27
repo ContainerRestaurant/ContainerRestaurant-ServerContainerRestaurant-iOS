@@ -266,12 +266,19 @@ class CommonPopupViewController: BaseViewController, Storyboard {
         cancelButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.dismiss(animated: false) { [weak self] in
-                    UserDataManager.sharedInstance.userID = 0
-                    UserDataManager.sharedInstance.loginToken = ""
-                    UserDataManager.sharedInstance.fromWhereLogin = ""
-                    
-                    self?.coordinator?.presenter.popViewController(animated: false)
-                    self?.coordinator?.presenter.tabBarController?.selectedIndex = 0
+                    let coordinator = self?.coordinator
+
+                    APIClient.deleteDeviceTokenOfUser() { isTrue in
+                        if isTrue {
+                            UserDataManager.sharedInstance.pushTokenID = 0
+                        }
+                        UserDataManager.sharedInstance.userID = 0
+                        UserDataManager.sharedInstance.loginToken = ""
+                        UserDataManager.sharedInstance.fromWhereLogin = ""
+
+                        coordinator?.presenter.popViewController(animated: false)
+                        coordinator?.presenter.tabBarController?.selectedIndex = 0
+                    }
                 }
             })
             .disposed(by: disposeBag)
