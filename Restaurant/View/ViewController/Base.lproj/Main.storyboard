@@ -2325,7 +2325,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVz-eY-GCa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4071" y="-548"/>
+            <point key="canvasLocation" x="4732" y="-548"/>
         </scene>
         <!--Level Up Popup View Controller-->
         <scene sceneID="nse-pk-I2w">
@@ -2431,7 +2431,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wPQ-gC-WUQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4754" y="-548"/>
+            <point key="canvasLocation" x="5415" y="-548"/>
         </scene>
         <!--Image Banner Popup View Controller-->
         <scene sceneID="3sa-js-pma">
@@ -2475,6 +2475,55 @@
             </objects>
             <point key="canvasLocation" x="3408.8000000000002" y="-548.27586206896558"/>
         </scene>
+        <!--Feed Image Popup View Controller-->
+        <scene sceneID="OHL-hB-tzK">
+            <objects>
+                <viewController storyboardIdentifier="FeedImagePopupViewController" id="Isg-y4-uFF" customClass="FeedImagePopupViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Md2-AV-ypt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" directionalLockEnabled="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXZ-Vc-Rub">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" name="colorGrayGray08"/>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YD-pN-SdA">
+                                <rect key="frame" x="340" y="55" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="h17-tu-Upj"/>
+                                    <constraint firstAttribute="width" constant="20" id="sqw-OZ-G8N"/>
+                                </constraints>
+                                <state key="normal" image="closeOutlineWhite20Px"/>
+                                <connections>
+                                    <action selector="clickedCloseButton:" destination="csk-mF-Nk5" eventType="touchUpInside" id="5Kg-Uo-J0A"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3Yt-jH-O11"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cXZ-Vc-Rub" firstAttribute="top" secondItem="Md2-AV-ypt" secondAttribute="top" id="1vx-9R-uFj"/>
+                            <constraint firstItem="cXZ-Vc-Rub" firstAttribute="leading" secondItem="3Yt-jH-O11" secondAttribute="leading" id="jZn-GZ-GNW"/>
+                            <constraint firstItem="3Yt-jH-O11" firstAttribute="trailing" secondItem="3YD-pN-SdA" secondAttribute="trailing" constant="15" id="nkr-5E-51O"/>
+                            <constraint firstItem="cXZ-Vc-Rub" firstAttribute="trailing" secondItem="3Yt-jH-O11" secondAttribute="trailing" id="qNj-wK-Tpa"/>
+                            <constraint firstAttribute="bottom" secondItem="cXZ-Vc-Rub" secondAttribute="bottom" id="tm0-8c-X6t"/>
+                            <constraint firstItem="3YD-pN-SdA" firstAttribute="top" secondItem="3Yt-jH-O11" secondAttribute="top" constant="11" id="wSn-Nn-nzN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="3YD-pN-SdA" id="Y3Q-IZ-m7a"/>
+                        <outlet property="scrollView" destination="cXZ-Vc-Rub" id="hwV-Mn-icM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sM9-2e-yJn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" ambiguous="YES" directionalLockEnabled="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="q2Y-f3-yQZ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="660"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <viewLayoutGuide key="safeArea" id="QIM-he-z2O"/>
+                </scrollView>
+            </objects>
+            <point key="canvasLocation" x="4064.8000000000002" y="-548.27586206896558"/>
+        </scene>
     </scenes>
     <resources>
         <image name="appleLoginIcon" width="12" height="15.333333015441895"/>
@@ -2485,6 +2534,7 @@
         <image name="chevronRightOutline12Px" width="12" height="12"/>
         <image name="closeFilled16Px" width="20" height="20"/>
         <image name="closeOutline20Px" width="20" height="20"/>
+        <image name="closeOutlineWhite20Px" width="20" height="20"/>
         <image name="commentFilled20px" width="20" height="20"/>
         <image name="emptyDataImg" width="170" height="96.333335876464844"/>
         <image name="emptyDataImgMap" width="160" height="90"/>

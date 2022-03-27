@@ -9,7 +9,6 @@ import UIKit
 
 class ImageBannerPopupViewController: BaseViewController, Storyboard, UIScrollViewDelegate {
     weak var coordinator: ImageBannerPopupCoordinator?
-    var isFromFeedDetail: Bool?
     var imageURL: String?
     var image: UIImage?
     var imageView = UIImageView()
@@ -24,16 +23,14 @@ class ImageBannerPopupViewController: BaseViewController, Storyboard, UIScrollVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setImageScrollView()
-        modalDismiss()
+        setImageInScrollView()
     }
 
     deinit {
         print("ImageBannerPopupViewController Deinit")
     }
 
-    private func setImageScrollView() {
-        guard let isFromFeedDetail = isFromFeedDetail else { return }
+    private func setImageInScrollView() {
         var imageHeight: CGFloat = 0
 
         if let imageURL = imageURL {
@@ -55,51 +52,15 @@ class ImageBannerPopupViewController: BaseViewController, Storyboard, UIScrollVi
         }
 
         let screenWidth = UIScreen.main.bounds.width
-        let generalImageHeight = imageHeight
-        let feedImageHeight = CGFloat(365).heightRatio()
-        let topSpacing = CGFloat(74).heightRatio()
-        let feedImageY = (scrollView.frame.height * 0.5) - (feedImageHeight * 0.5) - topSpacing
-        let imageY = isFromFeedDetail ? feedImageY : 0
-        let imageViewHeight = isFromFeedDetail ? feedImageHeight : generalImageHeight
-
-        self.imageView.frame = CGRect(x: 0, y: imageY, width: screenWidth, height: imageViewHeight)
+        self.imageView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: imageHeight)
         self.imageView.contentMode = .scaleAspectFit
         self.scrollView.addSubview(imageView)
-        self.scrollView.contentSize = CGSize(width: screenWidth, height: imageViewHeight)
+        self.scrollView.contentSize = CGSize(width: screenWidth, height: imageHeight)
 
         self.scrollView.minimumZoomScale = 1.0
         self.scrollView.maximumZoomScale = 3.0
 
         self.scrollView.delegate = self
-    }
-
-    func modalDismiss() {
-        view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismiss)))
-    }
-
-    @objc func handleDismiss(_ sender: UIPanGestureRecognizer) {
-        viewTranslation = sender.translation(in: view)
-        viewVelocity = sender.velocity(in: view)
-
-        switch sender.state {
-        case .changed:
-            //위로 스와이프 안되도록 설정
-            if viewVelocity.y > 0 {
-                UIView.animate(withDuration: 0.1, animations: { [weak self] in
-                    self?.view.transform = CGAffineTransform(translationX: 0, y: self?.viewTranslation.y ?? 0)
-                })
-            }
-        case .ended:
-            if viewTranslation.y < 200 {
-                //원상 복구
-                UIView.animate(withDuration: 0.1, animations: { [weak self] in
-                    self?.view.transform = .identity
-                })
-            } else {
-                dismiss(animated: true, completion: nil)
-            }
-        default: break
-        }
     }
 
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
