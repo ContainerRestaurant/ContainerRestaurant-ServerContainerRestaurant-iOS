@@ -30,7 +30,6 @@ class ImageBannerPopupCoordinator: NSObject, Coordinator {
         if let image = image {
             imageBannerPopup.image = image
         }
-        imageBannerPopup.isFromFeedDetail = isFromFeedDetail
         
         presenter.present(imageBannerPopup, animated: true, completion: nil)
     }
