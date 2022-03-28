@@ -46,7 +46,7 @@ enum Router: URLRequestConvertible {
     case NearbyRestaurants(latitude: Double, longitude: Double, radius: Int)
     case Contract
 
-    static var baseURLString = "http://beta.hellozin.net"
+    static var baseURLString = "http://prod.hellozin.net"
 
     private var method: HTTPMethod {
         switch self {
