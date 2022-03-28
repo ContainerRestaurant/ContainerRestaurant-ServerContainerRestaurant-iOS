@@ -2487,6 +2487,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" name="colorGrayGray08"/>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNJ-Vu-ihA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="156"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="156" id="KRN-fb-QAL"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YD-pN-SdA">
                                 <rect key="frame" x="340" y="55" width="20" height="20"/>
                                 <constraints>
@@ -2503,15 +2510,19 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cXZ-Vc-Rub" firstAttribute="top" secondItem="Md2-AV-ypt" secondAttribute="top" id="1vx-9R-uFj"/>
+                            <constraint firstItem="MNJ-Vu-ihA" firstAttribute="trailing" secondItem="3Yt-jH-O11" secondAttribute="trailing" id="OoJ-6Q-V9J"/>
                             <constraint firstItem="cXZ-Vc-Rub" firstAttribute="leading" secondItem="3Yt-jH-O11" secondAttribute="leading" id="jZn-GZ-GNW"/>
                             <constraint firstItem="3Yt-jH-O11" firstAttribute="trailing" secondItem="3YD-pN-SdA" secondAttribute="trailing" constant="15" id="nkr-5E-51O"/>
                             <constraint firstItem="cXZ-Vc-Rub" firstAttribute="trailing" secondItem="3Yt-jH-O11" secondAttribute="trailing" id="qNj-wK-Tpa"/>
                             <constraint firstAttribute="bottom" secondItem="cXZ-Vc-Rub" secondAttribute="bottom" id="tm0-8c-X6t"/>
                             <constraint firstItem="3YD-pN-SdA" firstAttribute="top" secondItem="3Yt-jH-O11" secondAttribute="top" constant="11" id="wSn-Nn-nzN"/>
+                            <constraint firstItem="MNJ-Vu-ihA" firstAttribute="top" secondItem="Md2-AV-ypt" secondAttribute="top" id="xfJ-Dv-Vbb"/>
+                            <constraint firstItem="MNJ-Vu-ihA" firstAttribute="leading" secondItem="3Yt-jH-O11" secondAttribute="leading" id="zlP-AH-4J9"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="3YD-pN-SdA" id="Y3Q-IZ-m7a"/>
+                        <outlet property="dimView" destination="MNJ-Vu-ihA" id="gK0-Y8-GBS"/>
                         <outlet property="scrollView" destination="cXZ-Vc-Rub" id="hwV-Mn-icM"/>
                     </connections>
                 </viewController>

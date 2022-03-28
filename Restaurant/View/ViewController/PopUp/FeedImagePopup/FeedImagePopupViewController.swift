@@ -15,12 +15,16 @@ class FeedImagePopupViewController: BaseViewController, Storyboard, UIScrollView
     var viewVelocity = CGPoint(x: 0, y: 0)
 
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var dimView: UIView!
     @IBOutlet weak var closeButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        dimView.setVerticalGradient(startColor: UIColor(red: 0, green: 0, blue: 0, alpha: 0.7), endColor: UIColor(red: 0, green: 0, blue: 0, alpha: 0))
+
         bindingView()
+        setTapGestureOnScrollView()
         setImageInScrollView()
         modalDismiss()
     }
@@ -39,6 +43,35 @@ class FeedImagePopupViewController: BaseViewController, Storyboard, UIScrollView
 
     private func dismiss() {
         self.dismiss(animated: true, completion: nil)
+    }
+
+    private func setTapGestureOnScrollView() {
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(self.touchEvent))
+        recognizer.numberOfTapsRequired = 1
+        recognizer.numberOfTouchesRequired = 1
+        scrollView.addGestureRecognizer(recognizer)
+    }
+
+    //TODO: Hidden 될 때랑 아닐 때에 처리를 왜 달리해야하는지 연구 필요
+    @objc func touchEvent() {
+        if closeButton.isHidden {
+            UIView.transition(with: closeButton, duration: 0.3,
+                              options: .transitionCrossDissolve,
+                              animations: { [weak self] in
+                self?.dimView.alpha = 1
+                self?.closeButton.alpha = 1
+                self?.dimView.isHidden = false
+                self?.closeButton.isHidden = false
+            })
+        } else {
+            UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: { [weak self] in
+                self?.dimView.alpha = 0
+                self?.closeButton.alpha = 0
+            }, completion: { _ in
+                self.dimView.isHidden = true
+                self.closeButton.isHidden = true
+            })
+        }
     }
 
     private func setImageInScrollView() {
@@ -78,7 +111,7 @@ class FeedImagePopupViewController: BaseViewController, Storyboard, UIScrollView
                 })
             }
         case .ended:
-            if viewTranslation.y < 150 {
+            if viewTranslation.y < 200 {
                 //원상 복구
                 UIView.animate(withDuration: 0.1, animations: { [weak self] in
                     self?.view.transform = .identity
