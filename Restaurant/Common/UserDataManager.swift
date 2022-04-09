@@ -23,6 +23,14 @@ class UserDataManager: NSObject {
         get { return UserDefaults.standard.object(forKey: "loginToken") == nil ? "" : UserDefaults.standard.object(forKey: "loginToken") as! String }
         set { UserDefaults.standard.set(newValue, forKey: "loginToken") }
     }
+    var pushToken: String {
+        get { return UserDefaults.standard.object(forKey: "pushToken") == nil ? "" : UserDefaults.standard.object(forKey: "pushToken") as! String }
+        set { UserDefaults.standard.set(newValue, forKey: "pushToken") }
+    }
+    var pushTokenID: Int {
+        get { return UserDefaults.standard.object(forKey: "pushTokenID") == nil ? 0 : UserDefaults.standard.object(forKey: "pushTokenID") as! Int }
+        set { UserDefaults.standard.set(newValue, forKey: "pushTokenID") }
+    }
     var fromWhereLogin: String {
         get { return UserDefaults.standard.object(forKey: "fromWhereLogin") == nil ? "" : UserDefaults.standard.object(forKey: "fromWhereLogin") as! String }
         set { UserDefaults.standard.set(newValue, forKey: "fromWhereLogin") }

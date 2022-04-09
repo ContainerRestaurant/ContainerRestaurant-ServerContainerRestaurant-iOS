@@ -9,10 +9,11 @@ import UIKit
 
 class ImageBannerPopupViewController: BaseViewController, Storyboard, UIScrollViewDelegate {
     weak var coordinator: ImageBannerPopupCoordinator?
-    var isFromFeedDetail: Bool?
     var imageURL: String?
     var image: UIImage?
     var imageView = UIImageView()
+    var viewTranslation = CGPoint(x: 0, y: 0)
+    var viewVelocity = CGPoint(x: 0, y: 0)
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBAction func clickedCloseButton(_ sender: Any) {
@@ -21,7 +22,15 @@ class ImageBannerPopupViewController: BaseViewController, Storyboard, UIScrollVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let isFromFeedDetail = isFromFeedDetail else { return }
+
+        setImageInScrollView()
+    }
+
+    deinit {
+        print("ImageBannerPopupViewController Deinit")
+    }
+
+    private func setImageInScrollView() {
         var imageHeight: CGFloat = 0
 
         if let imageURL = imageURL {
@@ -43,17 +52,10 @@ class ImageBannerPopupViewController: BaseViewController, Storyboard, UIScrollVi
         }
 
         let screenWidth = UIScreen.main.bounds.width
-        let generalImageHeight = imageHeight
-        let feedImageHeight = CGFloat(365).heightRatio()
-        let topSpacing = CGFloat(74).heightRatio()
-        let feedImageY = (scrollView.frame.height * 0.5) - (feedImageHeight * 0.5) - topSpacing
-        let imageY = isFromFeedDetail ? feedImageY : 0
-        let imageViewHeight = isFromFeedDetail ? feedImageHeight : generalImageHeight
-
-        self.imageView.frame = CGRect(x: 0, y: imageY, width: screenWidth, height: imageViewHeight)
+        self.imageView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: imageHeight)
         self.imageView.contentMode = .scaleAspectFit
         self.scrollView.addSubview(imageView)
-        self.scrollView.contentSize = CGSize(width: screenWidth, height: imageViewHeight)
+        self.scrollView.contentSize = CGSize(width: screenWidth, height: imageHeight)
 
         self.scrollView.minimumZoomScale = 1.0
         self.scrollView.maximumZoomScale = 3.0
@@ -69,9 +71,5 @@ class ImageBannerPopupViewController: BaseViewController, Storyboard, UIScrollVi
         let offsetX = max((scrollView.bounds.width - scrollView.contentSize.width) * 0.5, 0)
         let offsetY = CGFloat(0)
         scrollView.contentInset = UIEdgeInsets(top: offsetY, left: offsetX, bottom: 0, right: 0)
-    }
-
-    deinit {
-        print("ImageBannerPopupViewController Deinit")
     }
 }

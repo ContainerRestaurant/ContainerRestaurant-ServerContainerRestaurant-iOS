@@ -2224,37 +2224,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용기낸 식당에 어서오세요! 닉네임만 정하면 가입이 끝나요 :)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbo-76-67R">
-                                <rect key="frame" x="16" y="154" width="232" height="43"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jW9-3p-XS7">
-                                <rect key="frame" x="16" y="277" width="315" height="15"/>
+                                <rect key="frame" x="16" y="261.66666666666669" width="343" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" name="colorPointOrange02"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FYs-yP-j7E">
-                                <rect key="frame" x="16" y="235" width="315" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FYs-yP-j7E">
+                                <rect key="frame" x="16" y="227" width="343" height="18.666666666666657"/>
                                 <color key="textColor" name="colorGrayGray07"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임만 정하면 가입이 끝나요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIo-9z-Pb6">
+                                <rect key="frame" x="16" y="164" width="197" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="N80-QP-MKI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" name="colorGrayGray06"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용기낸 식당에 어서오세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWg-KY-5Lp">
+                                <rect key="frame" x="16" y="130" width="287.66666666666669" height="34"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <color key="textColor" name="colorGrayGray07"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pSE-J2-PYq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="jW9-3p-XS7" firstAttribute="trailing" secondItem="FYs-yP-j7E" secondAttribute="trailing" id="0V4-GQ-GxG"/>
                             <constraint firstItem="jW9-3p-XS7" firstAttribute="leading" secondItem="FYs-yP-j7E" secondAttribute="leading" id="4Ux-uO-8qf"/>
-                            <constraint firstItem="jW9-3p-XS7" firstAttribute="top" secondItem="FYs-yP-j7E" secondAttribute="bottom" constant="8" id="AmA-Ql-O8G"/>
+                            <constraint firstItem="jW9-3p-XS7" firstAttribute="top" secondItem="FYs-yP-j7E" secondAttribute="bottom" constant="16" id="AmA-Ql-O8G"/>
                             <constraint firstItem="FYs-yP-j7E" firstAttribute="leading" secondItem="pSE-J2-PYq" secondAttribute="leading" constant="16" id="DkC-2J-cwM"/>
-                            <constraint firstItem="FYs-yP-j7E" firstAttribute="top" secondItem="xbo-76-67R" secondAttribute="bottom" constant="38" id="FDy-iO-aYf"/>
-                            <constraint firstItem="xbo-76-67R" firstAttribute="top" secondItem="pSE-J2-PYq" secondAttribute="top" constant="110" id="J2C-mu-tlk"/>
-                            <constraint firstItem="pSE-J2-PYq" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xbo-76-67R" secondAttribute="trailing" constant="127" id="UQs-U1-Z6e"/>
-                            <constraint firstItem="pSE-J2-PYq" firstAttribute="trailing" secondItem="FYs-yP-j7E" secondAttribute="trailing" constant="44" id="Yy9-5O-jHk"/>
-                            <constraint firstItem="xbo-76-67R" firstAttribute="leading" secondItem="pSE-J2-PYq" secondAttribute="leading" constant="16" id="lsj-bz-Ulw"/>
+                            <constraint firstItem="pSE-J2-PYq" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mIo-9z-Pb6" secondAttribute="trailing" constant="19" id="I0s-MS-Piq"/>
+                            <constraint firstItem="mIo-9z-Pb6" firstAttribute="top" secondItem="PWg-KY-5Lp" secondAttribute="bottom" id="NBr-9U-Siu"/>
+                            <constraint firstItem="PWg-KY-5Lp" firstAttribute="leading" secondItem="pSE-J2-PYq" secondAttribute="leading" constant="16" id="X2R-Bf-0Wg"/>
+                            <constraint firstItem="pSE-J2-PYq" firstAttribute="trailing" secondItem="FYs-yP-j7E" secondAttribute="trailing" constant="16" id="Yy9-5O-jHk"/>
+                            <constraint firstItem="PWg-KY-5Lp" firstAttribute="top" secondItem="pSE-J2-PYq" secondAttribute="top" constant="86" id="dgs-Tj-80H"/>
+                            <constraint firstItem="FYs-yP-j7E" firstAttribute="top" secondItem="mIo-9z-Pb6" secondAttribute="bottom" constant="39" id="voD-ke-Elg"/>
+                            <constraint firstItem="pSE-J2-PYq" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PWg-KY-5Lp" secondAttribute="trailing" constant="19" id="xMy-T0-sGa"/>
+                            <constraint firstItem="mIo-9z-Pb6" firstAttribute="leading" secondItem="pSE-J2-PYq" secondAttribute="leading" constant="16" id="xQX-mT-hf9"/>
                         </constraints>
                     </view>
                     <connections>
@@ -2313,7 +2325,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVz-eY-GCa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4071" y="-548"/>
+            <point key="canvasLocation" x="4732" y="-548"/>
         </scene>
         <!--Level Up Popup View Controller-->
         <scene sceneID="nse-pk-I2w">
@@ -2419,7 +2431,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wPQ-gC-WUQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4754" y="-548"/>
+            <point key="canvasLocation" x="5415" y="-548"/>
         </scene>
         <!--Image Banner Popup View Controller-->
         <scene sceneID="3sa-js-pma">
@@ -2463,6 +2475,66 @@
             </objects>
             <point key="canvasLocation" x="3408.8000000000002" y="-548.27586206896558"/>
         </scene>
+        <!--Feed Image Popup View Controller-->
+        <scene sceneID="OHL-hB-tzK">
+            <objects>
+                <viewController storyboardIdentifier="FeedImagePopupViewController" id="Isg-y4-uFF" customClass="FeedImagePopupViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Md2-AV-ypt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" directionalLockEnabled="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXZ-Vc-Rub">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" name="colorGrayGray08"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNJ-Vu-ihA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="156"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="156" id="KRN-fb-QAL"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YD-pN-SdA">
+                                <rect key="frame" x="340" y="55" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="h17-tu-Upj"/>
+                                    <constraint firstAttribute="width" constant="20" id="sqw-OZ-G8N"/>
+                                </constraints>
+                                <state key="normal" image="closeOutlineWhite20Px"/>
+                                <connections>
+                                    <action selector="clickedCloseButton:" destination="csk-mF-Nk5" eventType="touchUpInside" id="5Kg-Uo-J0A"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3Yt-jH-O11"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cXZ-Vc-Rub" firstAttribute="top" secondItem="Md2-AV-ypt" secondAttribute="top" id="1vx-9R-uFj"/>
+                            <constraint firstItem="MNJ-Vu-ihA" firstAttribute="trailing" secondItem="3Yt-jH-O11" secondAttribute="trailing" id="OoJ-6Q-V9J"/>
+                            <constraint firstItem="cXZ-Vc-Rub" firstAttribute="leading" secondItem="3Yt-jH-O11" secondAttribute="leading" id="jZn-GZ-GNW"/>
+                            <constraint firstItem="3Yt-jH-O11" firstAttribute="trailing" secondItem="3YD-pN-SdA" secondAttribute="trailing" constant="15" id="nkr-5E-51O"/>
+                            <constraint firstItem="cXZ-Vc-Rub" firstAttribute="trailing" secondItem="3Yt-jH-O11" secondAttribute="trailing" id="qNj-wK-Tpa"/>
+                            <constraint firstAttribute="bottom" secondItem="cXZ-Vc-Rub" secondAttribute="bottom" id="tm0-8c-X6t"/>
+                            <constraint firstItem="3YD-pN-SdA" firstAttribute="top" secondItem="3Yt-jH-O11" secondAttribute="top" constant="11" id="wSn-Nn-nzN"/>
+                            <constraint firstItem="MNJ-Vu-ihA" firstAttribute="top" secondItem="Md2-AV-ypt" secondAttribute="top" id="xfJ-Dv-Vbb"/>
+                            <constraint firstItem="MNJ-Vu-ihA" firstAttribute="leading" secondItem="3Yt-jH-O11" secondAttribute="leading" id="zlP-AH-4J9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="3YD-pN-SdA" id="Y3Q-IZ-m7a"/>
+                        <outlet property="dimView" destination="MNJ-Vu-ihA" id="gK0-Y8-GBS"/>
+                        <outlet property="scrollView" destination="cXZ-Vc-Rub" id="hwV-Mn-icM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sM9-2e-yJn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" ambiguous="YES" directionalLockEnabled="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="q2Y-f3-yQZ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="660"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <viewLayoutGuide key="safeArea" id="QIM-he-z2O"/>
+                </scrollView>
+            </objects>
+            <point key="canvasLocation" x="4064.8000000000002" y="-548.27586206896558"/>
+        </scene>
     </scenes>
     <resources>
         <image name="appleLoginIcon" width="12" height="15.333333015441895"/>
@@ -2473,6 +2545,7 @@
         <image name="chevronRightOutline12Px" width="12" height="12"/>
         <image name="closeFilled16Px" width="20" height="20"/>
         <image name="closeOutline20Px" width="20" height="20"/>
+        <image name="closeOutlineWhite20Px" width="20" height="20"/>
         <image name="commentFilled20px" width="20" height="20"/>
         <image name="emptyDataImg" width="170" height="96.333335876464844"/>
         <image name="emptyDataImgMap" width="160" height="90"/>

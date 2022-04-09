@@ -52,3 +52,21 @@ struct UserModel: Decodable {
         self.bookmarkedCount = (try? container.decode(Int.self, forKey: .bookmarkedCount)) ?? 0
     }
 }
+
+struct PushResponseModel: Decodable {
+    var id: Int
+
+    private enum CodingKeys: CodingKey {
+        case id
+    }
+
+    init() {
+        id = 0
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        self.id = (try? container.decode(Int.self, forKey: .id)) ?? 0
+    }
+}

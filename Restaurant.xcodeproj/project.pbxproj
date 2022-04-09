@@ -197,6 +197,8 @@
 		FBAA5D1F26B5742200CC38CA /* FeedInRestaurantSummaryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA5D1D26B5742200CC38CA /* FeedInRestaurantSummaryInfo.swift */; };
 		FBAA5D2026B5742200CC38CA /* FeedInRestaurantSummaryInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBAA5D1E26B5742200CC38CA /* FeedInRestaurantSummaryInfo.xib */; };
 		FBAA5D3626B9BDB400CC38CA /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = FBAA5D3526B9BDB400CC38CA /* welcome.json */; };
+		FBAE022E27F08DD800B85825 /* FeedImagePopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE022D27F08DD800B85825 /* FeedImagePopupCoordinator.swift */; };
+		FBAE023027F08E9100B85825 /* FeedImagePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE022F27F08E9100B85825 /* FeedImagePopupViewController.swift */; };
 		FBB0010B268CF9CA00B6ED03 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0010A268CF9CA00B6ED03 /* APIClient.swift */; };
 		FBB0010D268CF9DE00B6ED03 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0010C268CF9DE00B6ED03 /* Router.swift */; };
 		FBDB2E9026DC0EA80072816F /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDB2E8F26DC0EA80072816F /* CommentModel.swift */; };
@@ -208,6 +210,7 @@
 		FBDB2E9D26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDB2E9B26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.swift */; };
 		FBDB2E9E26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDB2E9C26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.xib */; };
 		FBDC3D83266DA3910072D7E8 /* LongText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC3D82266DA3910072D7E8 /* LongText.swift */; };
+		FBE1914E27C279E400D3F32A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBE1914D27C279E400D3F32A /* GoogleService-Info.plist */; };
 		FBE1915027C29FE600D3F32A /* AppVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE1914F27C29FE600D3F32A /* AppVersionModel.swift */; };
 		FBEDEA162676528D00446B83 /* LoginPopupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDEA152676528D00446B83 /* LoginPopupCoordinator.swift */; };
 		FBEDEA1B26765E0200446B83 /* LoginPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDEA1926765E0200446B83 /* LoginPopupViewController.swift */; };
@@ -421,6 +424,8 @@
 		FBAA5D1D26B5742200CC38CA /* FeedInRestaurantSummaryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedInRestaurantSummaryInfo.swift; sourceTree = "<group>"; };
 		FBAA5D1E26B5742200CC38CA /* FeedInRestaurantSummaryInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedInRestaurantSummaryInfo.xib; sourceTree = "<group>"; };
 		FBAA5D3526B9BDB400CC38CA /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcome.json; sourceTree = "<group>"; };
+		FBAE022D27F08DD800B85825 /* FeedImagePopupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImagePopupCoordinator.swift; sourceTree = "<group>"; };
+		FBAE022F27F08E9100B85825 /* FeedImagePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImagePopupViewController.swift; sourceTree = "<group>"; };
 		FBB0010A268CF9CA00B6ED03 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		FBB0010C268CF9DE00B6ED03 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		FBDB2E8F26DC0EA80072816F /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
@@ -432,6 +437,7 @@
 		FBDB2E9B26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyCommentOnFeedDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		FBDB2E9C26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplyCommentOnFeedDetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		FBDC3D82266DA3910072D7E8 /* LongText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongText.swift; sourceTree = "<group>"; };
+		FBE1914D27C279E400D3F32A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FBE1914F27C29FE600D3F32A /* AppVersionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionModel.swift; sourceTree = "<group>"; };
 		FBE1915127C36B1B00D3F32A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FBE1915227C36B4800D3F32A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
@@ -895,6 +901,7 @@
 		529CF0C2261A0AF6002CAD5C /* Restaurant */ = {
 			isa = PBXGroup;
 			children = (
+				FBE1914D27C279E400D3F32A /* GoogleService-Info.plist */,
 				529CF0C3261A0AF6002CAD5C /* AppDelegate.swift */,
 				529CF0C5261A0AF6002CAD5C /* SceneDelegate.swift */,
 				FB585B1B266561730085C6B2 /* Common */,
@@ -1017,6 +1024,7 @@
 				520419A326513F750099BA39 /* ListStandardDescriptionPopup */,
 				52169B1026AA098300705FEC /* SearchingRestaurantPopup */,
 				FB5C42EA271B003000DB4244 /* ImageBannerPopup */,
+				FBAE022C27F08DB400B85825 /* FeedImagePopup */,
 				FBF747DE274A3C4D007023AD /* LevelUpPopup */,
 				FBF747E9274AD6D3007023AD /* WebViewPopup */,
 			);
@@ -1143,6 +1151,15 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		FBAE022C27F08DB400B85825 /* FeedImagePopup */ = {
+			isa = PBXGroup;
+			children = (
+				FBAE022D27F08DD800B85825 /* FeedImagePopupCoordinator.swift */,
+				FBAE022F27F08E9100B85825 /* FeedImagePopupViewController.swift */,
+			);
+			path = FeedImagePopup;
+			sourceTree = "<group>";
+		};
 		FBEDEA142676526500446B83 /* LoginPopup */ = {
 			isa = PBXGroup;
 			children = (
@@ -1250,6 +1267,7 @@
 				FBAA5D2026B5742200CC38CA /* FeedInRestaurantSummaryInfo.xib in Resources */,
 				FBDB2E9E26DF6EE70072816F /* ReplyCommentOnFeedDetailCollectionViewCell.xib in Resources */,
 				FB1BE37A26371BFA0004673C /* TwoFeedInLineCollectionView.xib in Resources */,
+				FBE1914E27C279E400D3F32A /* GoogleService-Info.plist in Resources */,
 				52E50DCB2662B85C0068C36C /* SearchRestaurant.xib in Resources */,
 				FB5F085A26F6602000A6122A /* SortButtonCollectionViewCell.xib in Resources */,
 				525811502677A97800900D59 /* onboarding3.json in Resources */,
@@ -1418,6 +1436,7 @@
 				FB9E1DC526E31F6500707C60 /* ContainerOfEveryoneModel.swift in Sources */,
 				526BED65264702F700897230 /* ContainerOfEveryoneViewModel.swift in Sources */,
 				5258115D267901E900900D59 /* UserModel.swift in Sources */,
+				FBAE023027F08E9100B85825 /* FeedImagePopupViewController.swift in Sources */,
 				52254C63265AC19C00D921ED /* TwoFeedModel.swift in Sources */,
 				FB1BE37926371BFA0004673C /* TwoFeedInLineCollectionView.swift in Sources */,
 				FB5F085C26F6717A00A6122A /* ExtensionUILabel.swift in Sources */,
@@ -1493,6 +1512,7 @@
 				FBAA5D1F26B5742200CC38CA /* FeedInRestaurantSummaryInfo.swift in Sources */,
 				FB6EEE2326CA46D900E6237B /* TopSectionOnFeedDetail.swift in Sources */,
 				FB585B45266D68720085C6B2 /* OnboardingCoordinator.swift in Sources */,
+				FBAE022E27F08DD800B85825 /* FeedImagePopupCoordinator.swift in Sources */,
 				FB6EEE4626D1F07400E6237B /* MostFeedCreationUserModel.swift in Sources */,
 				FB5C42EE271B009000DB4244 /* ImageBannerPopupViewController.swift in Sources */,
 				FB585B2026656E5A0085C6B2 /* SearchRestaurantCoordinator.swift in Sources */,
@@ -1659,14 +1679,14 @@
 				CODE_SIGN_ENTITLEMENTS = Restaurant/Restaurant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022031101;
+				CURRENT_PROJECT_VERSION = 2022032901;
 				DEVELOPMENT_TEAM = 833DD2H3KD;
 				INFOPLIST_FILE = Restaurant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = Container.Restaurant.iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1684,14 +1704,14 @@
 				CODE_SIGN_ENTITLEMENTS = Restaurant/Restaurant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022031101;
+				CURRENT_PROJECT_VERSION = 2022032901;
 				DEVELOPMENT_TEAM = 833DD2H3KD;
 				INFOPLIST_FILE = Restaurant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = Container.Restaurant.iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
