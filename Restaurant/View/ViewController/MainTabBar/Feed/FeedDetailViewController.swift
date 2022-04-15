@@ -57,7 +57,7 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
         commentTextView.delegate = self
         commentTextView.textContainerInset = .zero
 
-        if viewModel.content.isEmpty {
+        if viewModel.feedDetail.content.isEmpty {
             selectedTapType = .information
             viewModel.setInformationModules()
         } else {
@@ -166,7 +166,7 @@ class FeedDetailViewController: BaseViewController, Storyboard, ViewModelBindabl
 
         moreButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                let isMyFeed = self?.viewModel.userID == UserDataManager.sharedInstance.userID
+                let isMyFeed = self?.viewModel.feedDetail.userID == UserDataManager.sharedInstance.userID
                 isMyFeed ? self?.presentMyMoreMenu() : self?.presentSomeoneElseMoreButton()
             })
             .disposed(by: disposeBag)
@@ -223,13 +223,13 @@ extension FeedDetailViewController {
     private func presentMyMoreMenu() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-//        alert.addAction(UIAlertAction(title: "수정하기", style: .default , handler:{ (UIAlertAction) in
-//            print("User click Edit button")
-//        }))
+        alert.addAction(UIAlertAction(title: "수정하기", style: .default , handler:{ [weak self] (UIAlertAction) in
+            self?.coordinator?.presentEditFeed()
+        }))
 
         alert.addAction(UIAlertAction(title: "삭제하기", style: .destructive , handler:{ [weak self] (UIAlertAction) in
-            if let feedID = self?.viewModel.feedID {
-                self?.coordinator?.presentDeleteFeedPopup(feedID: feedID)
+            if let feedID = self?.viewModel.feedDetail.id {
+                self?.coordinator?.presentDeleteFeedPopup(feedID: String(feedID))
             }
         }))
 
@@ -246,8 +246,8 @@ extension FeedDetailViewController {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
         alert.addAction(UIAlertAction(title: "신고하기", style: .destructive , handler:{ [weak self] (UIAlertAction) in
-            if let feedID = self?.viewModel.feedID {
-                self?.coordinator?.presentReportFeedPopup(feedID: feedID)
+            if let feedID = self?.viewModel.feedDetail.id {
+                self?.coordinator?.presentReportFeedPopup(feedID: String(feedID))
             }
         }))
 
@@ -276,7 +276,7 @@ extension FeedDetailViewController {
     }
 
     private func createFeedReplyComment(commentText: String) {
-        APIClient.createFeedReplyComment(feedID: viewModel.feedID, content: commentText, upperReplyID: self.upperCommentID) { [weak self] model in
+        APIClient.createFeedReplyComment(feedID: String(viewModel.feedDetail.id), content: commentText, upperReplyID: self.upperCommentID) { [weak self] model in
             self?.commentTextView.text = "댓글을 남겨주세요."
             self?.commentTextView.textColor = .colorGrayGray05
             self?.commentRegisterButton.setTitleColor(.colorGrayGray05, for: .normal)
@@ -293,7 +293,7 @@ extension FeedDetailViewController {
     }
 
     private func createFeedComment(commentText: String) {
-        APIClient.createFeedComment(feedID: viewModel.feedID, content: commentText) { [weak self] _ in
+        APIClient.createFeedComment(feedID: String(viewModel.feedDetail.id), content: commentText) { [weak self] _ in
             self?.commentTextView.text = "댓글을 남겨주세요."
             self?.commentTextView.textColor = .colorGrayGray05
             self?.commentRegisterButton.setTitleColor(.colorGrayGray05, for: .normal)
@@ -374,7 +374,7 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 
         case is TapOnFeedDetail.Type:
             let cell: TapOnFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(viewModel.content, self.selectedTapType, self.selectedTapTypeSubject)
+            cell.configure(viewModel.feedDetail.content, self.selectedTapType, self.selectedTapTypeSubject)
             return cell
 
         case is RestaurantInformationOnFeedDetail.Type:
@@ -384,26 +384,26 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 
         case is LevelOfDifficultyOnFeedDetail.Type:
             let cell: LevelOfDifficultyOnFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(levelOfDifficulty: viewModel.levelOfDifficulty)
+            cell.configure(levelOfDifficulty: viewModel.feedDetail.difficulty)
             return cell
 
         case is MenuOnFeedDetail.Type:
             let cell: MenuOnFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
             if indexPath.row == 4 {
-                cell.mainMenuConfigure(menuAndContainers: viewModel.mainMenuAndContainers)
+                cell.mainMenuConfigure(menuAndContainers: viewModel.feedDetail.mainMenu)
             } else {
-                cell.sideMenuConfigure(menuAndContainers: viewModel.sideMenuAndContainers)
+                cell.sideMenuConfigure(menuAndContainers: viewModel.feedDetail.subMenu)
             }
             return cell
 
         case is ContentOnFeedDetail.Type:
             let cell: ContentOnFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(content: viewModel.content)
+            cell.configure(content: viewModel.feedDetail.content)
             return cell
 
         case is CommentSectionOnFeedDetail.Type:
             let cell: CommentSectionOnFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(coordinator: coordinator, comments: viewModel.comments, isReplyCommentSubject: isReplyCommentSubject, feedID: viewModel.feedID, updateCommentSubject: updateCommentSubject)
+            cell.configure(coordinator: coordinator, comments: viewModel.comments, isReplyCommentSubject: isReplyCommentSubject, feedID: String(viewModel.feedDetail.id), updateCommentSubject: updateCommentSubject)
             return cell
 
         default: return UICollectionViewCell()
@@ -422,24 +422,24 @@ extension FeedDetailViewController: UICollectionViewDelegate, UICollectionViewDa
             return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(37))
 
         case is RestaurantInformationOnFeedDetail.Type:
-            return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(viewModel.isWelcome ? 132 : 100))
+            return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(viewModel.feedDetail.welcome ? 132 : 100))
 
         case is LevelOfDifficultyOnFeedDetail.Type:
             return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(86))
 
         case is MenuOnFeedDetail.Type:
             var cellHeight = CGFloat(112)
-            let isTwoOrMoreMainMenu = indexPath.row == 4 && viewModel.mainMenuAndContainers.count > 1
-            let isTwoOrMoreSideMenu = indexPath.row == 5 && viewModel.sideMenuAndContainers.count > 1
+            let isTwoOrMoreMainMenu = indexPath.row == 4 && viewModel.feedDetail.mainMenu.count > 1
+            let isTwoOrMoreSideMenu = indexPath.row == 5 && viewModel.feedDetail.subMenu.count > 1
             if isTwoOrMoreMainMenu {
-                cellHeight += CGFloat(64 * (viewModel.mainMenuAndContainers.count - 1))
+                cellHeight += CGFloat(64 * (viewModel.feedDetail.mainMenu.count - 1))
             } else if isTwoOrMoreSideMenu {
-                cellHeight += CGFloat(64 * (viewModel.sideMenuAndContainers.count - 1))
+                cellHeight += CGFloat(64 * (viewModel.feedDetail.subMenu.count - 1))
             }
             return CGSize(width: UIScreen.main.bounds.width, height: cellHeight)
 
         case is ContentOnFeedDetail.Type:
-            let labelHeight = Common.labelHeight(text: viewModel.content, font: .systemFont(ofSize: 14), width: CGFloat(343).widthRatio())
+            let labelHeight = Common.labelHeight(text: viewModel.feedDetail.content, font: .systemFont(ofSize: 14), width: CGFloat(343).widthRatio())
             return CGSize(width: UIScreen.main.bounds.width, height: labelHeight)
 
         case is CommentSectionOnFeedDetail.Type:

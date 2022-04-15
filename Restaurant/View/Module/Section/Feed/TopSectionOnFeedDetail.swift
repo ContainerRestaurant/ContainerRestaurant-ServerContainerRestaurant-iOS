@@ -37,7 +37,7 @@ class TopSectionOnFeedDetail: UICollectionViewCell {
 
     func configure(_ coordinator: FeedDetailCoordinator?, _ viewModel: FeedDetailViewModel, selectedCell: TwoFeedCollectionViewCell) {
         self.coordinator = coordinator
-        self.userID = viewModel.userID
+        self.userID = viewModel.feedDetail.userID
 
         viewModel.thumbnailURLObservable
             .map { URL(string: $0) }
@@ -57,7 +57,7 @@ class TopSectionOnFeedDetail: UICollectionViewCell {
                 if let imageURL = imageURL {
                     self?.userProfileImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.3))])
                 } else {
-                    self?.userProfileImageView.image = Common.getDefaultProfileImage36(viewModel.userLevel)
+                    self?.userProfileImageView.image = Common.getDefaultProfileImage36(viewModel.feedDetail.userLevel)
                 }
             })
             .disposed(by: disposeBag)
@@ -116,9 +116,8 @@ class TopSectionOnFeedDetail: UICollectionViewCell {
                 coordinator?.presentLogin()
             } else {
                 guard let isLiked = self?.isLiked else { return }
-                guard let feedID = Int(viewModel.feedID) else { return }
 
-                APIClient.likeFeed(feedID: feedID, cancel: isLiked)
+                APIClient.likeFeed(feedID: viewModel.feedDetail.id, cancel: isLiked)
 
                 let likeImage = UIImage(named: isLiked ? "likeOutlineGray20Px" : "likeFilled20Px")
                 selectedCell.likeButton.setImage(likeImage, for: .normal)
@@ -141,9 +140,8 @@ class TopSectionOnFeedDetail: UICollectionViewCell {
                 coordinator?.presentLogin()
             } else {
                 guard let isScraped = self?.isScraped else { return }
-                guard let feedID = Int(viewModel.feedID) else { return }
 
-                APIClient.scrapFeed(feedID: feedID, cancel: isScraped)
+                APIClient.scrapFeed(feedID: viewModel.feedDetail.id, cancel: isScraped)
 
                 let bookmarkImage = UIImage(named: isScraped ? "bookmarkOutlineGray20px" : "bookmarkFilled20px")
                 self?.bookmarkButton.setImage(bookmarkImage, for: .normal)

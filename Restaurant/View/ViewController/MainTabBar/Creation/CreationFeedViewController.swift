@@ -278,7 +278,7 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
         case is CreationFeedImage.Type:
             let cell: CreationFeedImage = collectionView.dequeueReusableCell(for: indexPath)
             if let coordinator = self.coordinator {
-            cell.configure(coordinator, restaurant ?? LocalSearchItem(), mainFoodAndContainer, registerSubject, imageSubject, contentsTextSubject)
+            cell.configure(coordinator, restaurant ?? LocalSearchItem(), mainFoodAndContainer, registerSubject, imageSubject, contentsTextSubject, contentsText)
             }
             return cell
 
