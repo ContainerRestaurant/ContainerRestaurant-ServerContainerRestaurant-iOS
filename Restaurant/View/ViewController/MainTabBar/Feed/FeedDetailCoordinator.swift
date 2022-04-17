@@ -78,6 +78,10 @@ extension FeedDetailCoordinator {
         coordinator.start()
     }
 
+    func presentEditFeed() {
+        
+    }
+
     func presentDeleteFeedPopup(feedID: String) {
         let coordinator = CommonPopupCoordinator(presenter: presenter, isTwoButton: true, buttonType: .deleteFeed)
         coordinator.delegate = self

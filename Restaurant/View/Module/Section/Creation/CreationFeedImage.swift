@@ -17,6 +17,7 @@ class CreationFeedImage: UICollectionViewCell {
     var image: UIImage?
     var imageSubject: PublishSubject<UIImage?>?
     var contentsTextSubject: PublishSubject<String>?
+    let placeHolder = "용기 구성 팁 등 타인에게 용기를 줄 수 있는 소감을 적어 주세요 :)"
 
     @IBOutlet weak var imagePickerButton: UIButton!
     @IBOutlet weak var hideImageButton: UIButton!
@@ -34,11 +35,19 @@ class CreationFeedImage: UICollectionViewCell {
         bindingView()
     }
 
-    func configure(_ coordinator: CreationFeedCoordinator, _ restaurant: LocalSearchItem, _ mainMenuAndContainer: [MenuAndContainerModel], _ registerSubject: PublishSubject<Bool>, _ imageSubject: PublishSubject<UIImage?>, _ contentsTextSubject: PublishSubject<String>) {
+    func configure(_ coordinator: CreationFeedCoordinator, _ restaurant: LocalSearchItem, _ mainMenuAndContainer: [MenuAndContainerModel], _ registerSubject: PublishSubject<Bool>, _ imageSubject: PublishSubject<UIImage?>, _ contentsTextSubject: PublishSubject<String>, _ contentsText: String) {
         self.coordinator = coordinator
         self.registerSubject = registerSubject
         self.imageSubject = imageSubject
         self.contentsTextSubject = contentsTextSubject
+
+        if !contentsText.isEmpty && contentsText != placeHolder {
+            contentsTextView.text = contentsText
+            contentsTextView.textColor = .black
+        } else {
+            contentsTextView.text = placeHolder
+            contentsTextView.textColor = .colorGrayGray05
+        }
 
         setNotEnoughInformationView(restaurant, mainMenuAndContainer)
     }
@@ -142,9 +151,7 @@ extension CreationFeedImage: UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if contentsTextView.text == "" {
-            self.textViewSetupView()
-        }
+        self.textViewSetupView()
     }
     
     //???????????????????????????????????????????
@@ -157,12 +164,10 @@ extension CreationFeedImage: UITextViewDelegate {
     }
     
     func textViewSetupView() {
-        let placeHolder = "용기 구성 팁 등 타인에게 용기를 줄 수 있는 소감을 적어 주세요 :)"
-        
         if contentsTextView.text == placeHolder {
             contentsTextView.text = ""
             contentsTextView.textColor = .black
-        } else if contentsTextView.text == "" {
+        } else if contentsTextView.text.isEmpty {
             contentsTextView.text = placeHolder
             contentsTextView.textColor = .colorGrayGray05
         }

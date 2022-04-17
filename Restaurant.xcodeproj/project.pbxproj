@@ -504,6 +504,8 @@
 			children = (
 				5204199926512D8D0099BA39 /* CreationCoordinator.swift */,
 				5239733E261B629A00856C99 /* CreationViewController.swift */,
+				FB56AF6E265F5F43002736F5 /* CreationFeedCoordinator.swift */,
+				FB56AF70265F5F69002736F5 /* CreationFeedViewController.swift */,
 			);
 			path = Creation;
 			sourceTree = "<group>";
@@ -681,7 +683,6 @@
 				52041993265118540099BA39 /* MainTabBar */,
 				5204199426511A440099BA39 /* ContainerOfEveryone */,
 				520419A6265182780099BA39 /* InquiryProfile */,
-				FB56AF6D265F5F19002736F5 /* CreationFeed */,
 				52169B0926A9F52700705FEC /* BottomSheet */,
 				FB1BE38926397ECF0004673C /* PopUp */,
 				528558EB26249DC300AB4E28 /* Test */,
@@ -1039,15 +1040,6 @@
 				FB1BE3612636C9F10004673C /* Module */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		FB56AF6D265F5F19002736F5 /* CreationFeed */ = {
-			isa = PBXGroup;
-			children = (
-				FB56AF6E265F5F43002736F5 /* CreationFeedCoordinator.swift */,
-				FB56AF70265F5F69002736F5 /* CreationFeedViewController.swift */,
-			);
-			path = CreationFeed;
 			sourceTree = "<group>";
 		};
 		FB585B1B266561730085C6B2 /* Common */ = {

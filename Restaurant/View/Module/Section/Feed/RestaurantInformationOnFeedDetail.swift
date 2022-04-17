@@ -35,8 +35,8 @@ class RestaurantInformationOnFeedDetail: UICollectionViewCell {
     }
 
     func configure(_ viewModel: FeedDetailViewModel, _ coordinator : FeedDetailCoordinator?) {
-        latitude = viewModel.latitude
-        longitude = viewModel.longitude
+        latitude = viewModel.feedDetail.latitude
+        longitude = viewModel.feedDetail.longitude
 
         viewModel.categoryDriver
             .drive(categoryButton.rx.title(for: .normal))
