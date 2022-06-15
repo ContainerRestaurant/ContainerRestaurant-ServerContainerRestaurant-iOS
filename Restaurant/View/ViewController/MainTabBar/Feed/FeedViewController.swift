@@ -11,12 +11,10 @@ import RxSwift
 class FeedViewController: BaseViewController, Storyboard, ViewModelBindableType {
     var viewModel: FeedViewModel!
     weak var coordinator: FeedCoordinator?
-    var selectedCategoryIndex: Int = 0
-    var selectedSortIndex: Int = 0
+
     let selectedCategoryAndSortSubject: PublishSubject<(String, Int)> = PublishSubject<(String, Int)>()
     let reloadByTabSubject: PublishSubject<[FeedPreviewModel]> = PublishSubject<[FeedPreviewModel]>()
     var justReloadSubject: PublishSubject<Void>?
-    var addingPageFlag = true
     
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var sortCollectionView: UICollectionView!
@@ -26,11 +24,6 @@ class FeedViewController: BaseViewController, Storyboard, ViewModelBindableType 
         super.viewDidLoad()
         
         setCollectionViews()
-        print("FeedViewController viewDidLoad()")
-    }
-    
-    deinit {
-        print("FeedViewController Deinit")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,46 +33,35 @@ class FeedViewController: BaseViewController, Storyboard, ViewModelBindableType 
     }
 
     func bindingView() {
-        print("Search bindingView")
-        
-        self.reloadByTabSubject
-            .subscribe(onNext: { [weak self] feeds in
-                self?.addingPageFlag = true
-                self?.viewModel.currentPage = 0
-                self?.viewModel.categoryFeeds = feeds
-                self?.feedCollectionView.reloadData()
-                self?.feedCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        reloadByTabSubject
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, feeds) in
+                owner.viewModel.ableAddPage = true
+                owner.viewModel.currentPage = 0
+                owner.viewModel.categoryFeeds = feeds
+                owner.feedCollectionView.reloadData()
+                owner.feedCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
             })
             .disposed(by: disposeBag)
 
-        self.justReloadSubject?
-            .subscribe(onNext: { [weak self] in
-                let category = (self?.viewModel.category[self?.selectedCategoryIndex ?? 0].0) ?? ""
-                if self?.selectedSortIndex ?? 0 > 0 {
-                    var sortString: String {
-                        switch self?.selectedSortIndex {
-                        case 1: return "likeCount,DESC"
-                        case 2: return "difficulty,ASC"
-                        case 3: return "difficulty,DESC"
-                        default: return ""
-                        }
-                    }
-                    APIClient.feed(category: category, sort: sortString) { [weak self] twoFeedModel in
-                        self?.addingPageFlag = true
-                        self?.viewModel.currentPage = 0
-                        self?.viewModel.categoryFeeds = twoFeedModel.feedPreviewList
-                        self?.feedCollectionView.reloadData()
-                    }
-                } else {
-                    APIClient.feed(category: category) { [weak self] twoFeedModel in
-                        self?.addingPageFlag = true
-                        self?.viewModel.currentPage = 0
-                        self?.viewModel.categoryFeeds = twoFeedModel.feedPreviewList
-                        self?.feedCollectionView.reloadData()
-                    }
+        justReloadSubject?
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                let category = owner.viewModel.category[owner.viewModel.selectedCategoryIndex].0
+                let sortString = owner.viewModel.sortString()
+
+                APIClient.feed(category: category, sort: sortString) { twoFeedModel in
+                    owner.viewModel.ableAddPage = true
+                    owner.viewModel.currentPage = 0
+                    owner.viewModel.categoryFeeds = twoFeedModel.feedPreviewList
+                    owner.feedCollectionView.reloadData()
                 }
             })
             .disposed(by: disposeBag)
+    }
+
+    private func initializeFeed(_ feeds: [FeedPreviewModel]) {
+
     }
 }
 
@@ -124,15 +106,15 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == categoryCollectionView {
             let cell: CategoryTabCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(viewModel.category[indexPath.row].1, self.selectedCategoryIndex == indexPath.row)
+            cell.configure(viewModel.category[indexPath.row].1, viewModel.selectedCategoryIndex == indexPath.row)
             return cell
         } else if collectionView == sortCollectionView {
             let cell: SortButtonCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             switch indexPath.row {
-            case 0: cell.configure(self.selectedSortIndex == indexPath.row, "최신 순")
-            case 1: cell.configure(self.selectedSortIndex == indexPath.row, "좋아요 많은 순")
-            case 2: cell.configure(self.selectedSortIndex == indexPath.row, "난이도 낮은 순")
-            case 3: cell.configure(self.selectedSortIndex == indexPath.row, "난이도 높은 순")
+            case 0: cell.configure(viewModel.selectedSortIndex == indexPath.row, "최신 순")
+            case 1: cell.configure(viewModel.selectedSortIndex == indexPath.row, "좋아요 많은 순")
+            case 2: cell.configure(viewModel.selectedSortIndex == indexPath.row, "난이도 낮은 순")
+            case 3: cell.configure(viewModel.selectedSortIndex == indexPath.row, "난이도 높은 순")
             default: break
             }
             return cell
@@ -146,61 +128,50 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == categoryCollectionView {
-            self.selectedCategoryIndex = indexPath.row
-            self.categoryCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            self.categoryCollectionView.reloadData()
-
-            self.selectedSortIndex = 0
-            self.sortCollectionView.reloadData()
-            self.sortCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: true)
-
-            let category = viewModel.category[selectedCategoryIndex].0
-            self.selectedCategoryAndSortSubject.onNext((category, selectedSortIndex))
-        } else if collectionView == sortCollectionView {
-            self.selectedSortIndex = indexPath.row
-            self.sortCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            self.sortCollectionView.reloadData()
-
-            let category = viewModel.category[selectedCategoryIndex].0
-            self.selectedCategoryAndSortSubject.onNext((category, selectedSortIndex))
+        switch collectionView {
+        case categoryCollectionView:
+            reloadCategory(indexPath)
+            reloadSort(IndexPath(row: 0, section: 0))
+        case sortCollectionView:
+            reloadSort(indexPath)
+        default:
+            break
         }
+
+        let category = viewModel.category[viewModel.selectedCategoryIndex].0
+        selectedCategoryAndSortSubject.onNext((category, viewModel.selectedSortIndex))
+    }
+
+    private func reloadCategory(_ indexPath: IndexPath) {
+        viewModel.selectedCategoryIndex = indexPath.row
+        categoryCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        categoryCollectionView.reloadData()
+    }
+
+    private func reloadSort(_ indexPath: IndexPath) {
+        viewModel.selectedSortIndex = indexPath.row
+        sortCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        sortCollectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == categoryCollectionView {
-            let label = PaddingLabel(frame: CGRect.zero)
-            label.font = self.selectedCategoryIndex == indexPath.row ? .boldSystemFont(ofSize: 16) : .systemFont(ofSize: 16)
-            label.paddingLeft = 10
-            label.paddingRight = 10
-            label.text = viewModel.category[indexPath.row].1
-            label.sizeToFit()
-            return CGSize(width: label.frame.width.widthRatio(), height: 47)
-        } else if collectionView == sortCollectionView {
-            let label = PaddingLabel(frame: .zero)
-            label.font = self.selectedSortIndex == indexPath.row ? .boldSystemFont(ofSize: 14) : .systemFont(ofSize: 14)
-            label.paddingLeft = 10
-            label.paddingRight = 10
-            switch indexPath.row {
-            case 0: label.text = "최신 순"
-            case 1: label.text = "좋아요 많은 순"
-            case 2: label.text = "난이도 낮은 순"
-            case 3: label.text = "난이도 높은 순"
-            default: break
-            }
-            label.sizeToFit()
-            return CGSize(width: label.frame.width.widthRatio(), height: 56)
-        } else {
+        switch collectionView {
+        case categoryCollectionView:
+            return viewModel.categoryLabelSize(indexPath.row)
+        case sortCollectionView:
+            return viewModel.sortLabelSize(indexPath.row)
+        default:
             return viewModel.categoryFeedCollectionViewSize()
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        if collectionView == categoryCollectionView {
+        switch collectionView {
+        case categoryCollectionView:
             return CGFloat(10).widthRatio()
-        } else if collectionView == sortCollectionView {
+        case sortCollectionView:
             return CGFloat(4).widthRatio()
-        } else {
+        default:
             return 0
         }
     }
@@ -212,23 +183,20 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension FeedViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView == feedCollectionView {
-            scrollView.bounces = scrollView.contentOffset.y > 0
+        guard scrollView == feedCollectionView else { return }
 
-            let scrollViewHeight = scrollView.frame.size.height
-            let scrollContentSizeHeight = scrollView.contentSize.height - 100
-            let scrollYOffset = scrollView.contentOffset.y
+//        scrollView.bounces = scrollView.contentOffset.y > 0
 
-            print("scrollYOffset + scrollViewHeight: \(scrollYOffset + scrollViewHeight)")
-            print("scrollContentSizeHeight: \(scrollContentSizeHeight)")
-            print("cateogryFeedsCount: \(viewModel.categoryFeeds.count)")
-            if scrollYOffset + scrollViewHeight > scrollContentSizeHeight && addingPageFlag {
-                addingPageFlag = false
+        let scrollYOffset = scrollView.contentOffset.y
+        let scrollViewHeight = scrollView.frame.size.height
+        let scrollContentSizeHeight = scrollView.contentSize.height - 100
 
-                let category = viewModel.category[selectedCategoryIndex].0
-                viewModel.currentPage += 1
-                fetchData(category)
-            }
+        if (scrollYOffset + scrollViewHeight > scrollContentSizeHeight) && viewModel.ableAddPage {
+            viewModel.ableAddPage = false
+
+            let category = viewModel.category[viewModel.selectedCategoryIndex].0
+            viewModel.currentPage += 1
+            fetchData(category)
         }
     }
 
@@ -236,7 +204,7 @@ extension FeedViewController {
         APIClient.feed(category: category, page: viewModel.currentPage) { [weak self] twoFeedModel in
             self?.viewModel.categoryFeeds += twoFeedModel.feedPreviewList
             self?.feedCollectionView.reloadData()
-            self?.addingPageFlag = !(twoFeedModel.feedPreviewList.count == 0)
+            self?.viewModel.ableAddPage = !(twoFeedModel.feedPreviewList.count == 0)
         }
     }
 }
