@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import FittedSheets
 
-class SearchRestaurantCoordinator: NSObject, Coordinator {
+final class SearchRestaurantCoordinator: NSObject, Coordinator {
     var delegate: CoordinatorFinishDelegate?
     var presenter: UINavigationController
     var childCoordinators: [Coordinator]
@@ -29,8 +29,7 @@ class SearchRestaurantCoordinator: NSObject, Coordinator {
 extension SearchRestaurantCoordinator {
     private func setBottomSheetAndPresent() {
         var searchRestaurant = SearchRestaurantViewController.instantiate()
-        searchRestaurant.coordinator = self
-        searchRestaurant.bind(viewModel: SearchRestaurantViewModel(restaurantSubject))
+        searchRestaurant.bind(viewModel: SearchRestaurantViewModel(restaurantSubject, self))
 
         let sheetViewController = SheetViewController(controller: searchRestaurant,
                                                       sizes: [.fixed(400)],

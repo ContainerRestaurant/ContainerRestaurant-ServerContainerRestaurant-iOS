@@ -46,8 +46,3 @@ class SearchRestaurant: UICollectionViewCell {
             .disposed(by: disposeBag)
     }
 }
-
-//MARK: - Instance Method
-extension SearchRestaurant {
-
-}
