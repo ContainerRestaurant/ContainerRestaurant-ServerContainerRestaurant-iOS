@@ -7,13 +7,11 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import Alamofire
 
 class SearchRestaurantViewController: BaseViewController, Storyboard, ViewModelBindableType {
     var viewModel: SearchRestaurantViewModel!
-    weak var coordinator: SearchRestaurantCoordinator?
-    var searchLocalSubject: PublishSubject<LocalSearch> = PublishSubject<LocalSearch>()
-    var items: [LocalSearchItem]?
 
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var searchRestaurantTextField: UITextField!
@@ -32,38 +30,24 @@ class SearchRestaurantViewController: BaseViewController, Storyboard, ViewModelB
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
 
     func bindingView() {
-        closeButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
-            })
-            .disposed(by: disposeBag)
+        let input = SearchRestaurantViewModel.Input(textField: searchRestaurantTextField.rx.text,
+                                                    closeTap: closeButton.rx.tap,
+                                                    textClearTap: textClearButton.rx.tap)
+        let output = viewModel.transform(input: input)
 
-        searchRestaurantTextField.rx.text
-            .subscribe(onNext: { [weak self] in
-                if let subject = self?.searchLocalSubject {
-                    API().localSearch(text: $0 ?? "", subject: subject)
-                }
-            })
-            .disposed(by: disposeBag)
+        output?.clearTextField
+            .drive(searchRestaurantTextField.rx.text)
+            .disposed(by: viewModel.disposeBag)
 
-        textClearButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.searchRestaurantTextField.text = ""
-                self?.items = []
+        output?.collectionViewReload
+            .drive(onNext: { [weak self] in
                 self?.collectionView.reloadData()
             })
-            .disposed(by: disposeBag)
-
-        searchLocalSubject
-            .subscribe(onNext: { [weak self] in
-                self?.items = $0.items
-                self?.collectionView.reloadData()
-            })
-            .disposed(by: disposeBag)
+            .disposed(by: viewModel.disposeBag)
     }
 }
 
@@ -80,20 +64,22 @@ extension SearchRestaurantViewController {
 //MARK: - CollectionView Protocol
 extension SearchRestaurantViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.items?.count ?? 0
+        return viewModel.items?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: SearchRestaurantCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        if let item = items?[indexPath.row] { cell.configure(item: item) }
+        if let item = viewModel.items?[indexPath.row] {
+            cell.configure(item: item)
+        }
 
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let item = items?[indexPath.row] {
+        if let item = viewModel.items?[indexPath.row] {
             viewModel.restaurantSubject?.onNext(item)
-            self.dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
         }
     }
 

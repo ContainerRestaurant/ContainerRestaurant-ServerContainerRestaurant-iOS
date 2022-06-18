@@ -161,6 +161,7 @@
 		FB5F08622702257300A6122A /* MyDataCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5F08612702257300A6122A /* MyDataCoordinator.swift */; };
 		FB5F0864270237F500A6122A /* MyDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5F0863270237F500A6122A /* MyDataViewModel.swift */; };
 		FB5F08672703801000A6122A /* FavoriteRestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5F08662703801000A6122A /* FavoriteRestaurantModel.swift */; };
+		FB6B250F285A26A4006FD06B /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6B250E285A26A4006FD06B /* ViewModelType.swift */; };
 		FB6EEE1326C9346F00E6237B /* RestaurantInformationOnFeedDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6EEE1126C9346F00E6237B /* RestaurantInformationOnFeedDetail.swift */; };
 		FB6EEE1426C9346F00E6237B /* RestaurantInformationOnFeedDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB6EEE1226C9346F00E6237B /* RestaurantInformationOnFeedDetail.xib */; };
 		FB6EEE1726CA105B00E6237B /* LevelOfDifficultyOnFeedDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6EEE1526CA105B00E6237B /* LevelOfDifficultyOnFeedDetail.swift */; };
@@ -388,6 +389,7 @@
 		FB5F08612702257300A6122A /* MyDataCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDataCoordinator.swift; sourceTree = "<group>"; };
 		FB5F0863270237F500A6122A /* MyDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDataViewModel.swift; sourceTree = "<group>"; };
 		FB5F08662703801000A6122A /* FavoriteRestaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRestaurantModel.swift; sourceTree = "<group>"; };
+		FB6B250E285A26A4006FD06B /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		FB6EEE1126C9346F00E6237B /* RestaurantInformationOnFeedDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInformationOnFeedDetail.swift; sourceTree = "<group>"; };
 		FB6EEE1226C9346F00E6237B /* RestaurantInformationOnFeedDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantInformationOnFeedDetail.xib; sourceTree = "<group>"; };
 		FB6EEE1526CA105B00E6237B /* LevelOfDifficultyOnFeedDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfDifficultyOnFeedDetail.swift; sourceTree = "<group>"; };
@@ -728,6 +730,7 @@
 			children = (
 				526BED6E2647101B00897230 /* ViewController */,
 				526BED5A2646EC8900897230 /* Module */,
+				FB6B250E285A26A4006FD06B /* ViewModelType.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1496,6 +1499,7 @@
 				526BED4A2646566600897230 /* ExtensionUIView.swift in Sources */,
 				520419A226513A6A0099BA39 /* CommonPopupCoordinator.swift in Sources */,
 				524686F82687129900BE2BE4 /* RestaurantModel.swift in Sources */,
+				FB6B250F285A26A4006FD06B /* ViewModelType.swift in Sources */,
 				FB56AF61265E62E8002736F5 /* TestCoordinator.swift in Sources */,
 				52256FD626445AB400A056DE /* ExtensionUIColor.swift in Sources */,
 				FBAA5D1526B55FFC00CC38CA /* RestaurantSummaryInformation.swift in Sources */,

@@ -47,9 +47,10 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
         setCollectionView()
 
         viewModel.restaurantSubject
-            .subscribe(onNext: { [weak self] in
-                self?.restaurant = $0
-                self?.collectionView.reloadItems(at: [IndexPath(row: 17, section: 0)])
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, restaurant) in
+                owner.restaurant = restaurant
+                owner.collectionView.reloadItems(at: [IndexPath(row: 17, section: 0)])
             })
             .disposed(by: disposeBag)
         
