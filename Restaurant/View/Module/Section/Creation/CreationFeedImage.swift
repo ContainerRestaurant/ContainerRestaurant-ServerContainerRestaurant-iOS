@@ -10,11 +10,12 @@ import RxSwift
 import Photos
 
 class CreationFeedImage: UICollectionViewCell {
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     var coordinator: CreationFeedCoordinator?
     let imagePicker = UIImagePickerController()
     var registerSubject: PublishSubject<Bool> = PublishSubject<Bool>()
     var image: UIImage?
+    var reuseImageSubject: PublishSubject<UIImage?>?
     var imageSubject: PublishSubject<UIImage?>?
     var contentsTextSubject: PublishSubject<String>?
     let placeHolder = "용기 구성 팁 등 타인에게 용기를 줄 수 있는 소감을 적어 주세요 :)"
@@ -35,62 +36,60 @@ class CreationFeedImage: UICollectionViewCell {
         bindingView()
     }
 
-    func configure(_ coordinator: CreationFeedCoordinator, _ restaurant: LocalSearchItem, _ mainMenuAndContainer: [MenuAndContainerModel], _ registerSubject: PublishSubject<Bool>, _ imageSubject: PublishSubject<UIImage?>, _ contentsTextSubject: PublishSubject<String>, _ contentsText: String) {
+    func configure(_ coordinator: CreationFeedCoordinator, _ viewModel: CreationFeedViewModel) {
         self.coordinator = coordinator
-        self.registerSubject = registerSubject
-        self.imageSubject = imageSubject
-        self.contentsTextSubject = contentsTextSubject
+        self.registerSubject = viewModel.registerSubject
+        self.reuseImageSubject = viewModel.reuseImageSubject
+        self.imageSubject = viewModel.imageSubject
+        self.contentsTextSubject = viewModel.contentsTextSubject
 
-        if !contentsText.isEmpty && contentsText != placeHolder {
-            contentsTextView.text = contentsText
+        if !viewModel.contentsText.isEmpty && viewModel.contentsText != placeHolder {
+            contentsTextView.text = viewModel.contentsText
             contentsTextView.textColor = .black
         } else {
             contentsTextView.text = placeHolder
             contentsTextView.textColor = .colorGrayGray05
         }
 
-        setNotEnoughInformationView(restaurant, mainMenuAndContainer)
+        if let image = viewModel.reuseImage {
+            pickedImageView.isHidden = false
+            hideImageButton.isHidden = false
+            pickedImageView.image = image
+        }
+        
+        setNotEnoughInformationView(viewModel.restaurant ?? LocalSearchItem(), viewModel.mainMenuAndContainer)
     }
 
-    func setNotEnoughInformationView(_ restaurant: LocalSearchItem, _ mainMenuAndContainer: [MenuAndContainerModel]) {
+    private func setNotEnoughInformationView(_ restaurant: LocalSearchItem, _ mainMenuAndContainer: [MenuAndContainerModel]) {
+        let isEvenOneEmpty = isEvenOneEmpty(mainMenuAndContainer)
         if restaurant.title.isEmpty {
-            var isEmpty = false
-            for menuAndContainer in mainMenuAndContainer {
-                isEmpty = menuAndContainer.menuName.isEmpty || menuAndContainer.container.isEmpty
-                if isEmpty {
-                    break
-                }
-            }
-
-            notEnoughInformationWarningLabel.text = isEmpty ? "식당 이름, 메인음식 정보를 입력해주세요" : "식당 이름을 입력해주세요"
+            notEnoughInformationWarningLabel.text = isEvenOneEmpty ? "식당 이름, 메인음식 정보를 입력해주세요" : "식당 이름을 입력해주세요"
             registerButton.isEnabled = false
             registerButton.backgroundColor = .colorGrayGray04
         } else {
-            var isEmpty = false
-            for menuAndContainer in mainMenuAndContainer {
-                isEmpty = menuAndContainer.menuName.isEmpty || menuAndContainer.container.isEmpty
-                if isEmpty {
-                    break
-                }
-            }
-
-            notEnoughInformationWarningLabel.text = isEmpty ? "메인음식 정보를 입력해주세요" : ""
-            registerButton.isEnabled = !isEmpty
-            registerButton.backgroundColor = isEmpty ? .colorGrayGray04 : .colorMainGreen03
+            notEnoughInformationWarningLabel.text = isEvenOneEmpty ? "메인음식 정보를 입력해주세요" : ""
+            registerButton.isEnabled = !isEvenOneEmpty
+            registerButton.backgroundColor = isEvenOneEmpty ? .colorGrayGray04 : .colorMainGreen03
         }
+    }
+
+    private func isEvenOneEmpty(_ mainMenuAndContainer: [MenuAndContainerModel]) -> Bool {
+        for menuAndContainer in mainMenuAndContainer where menuAndContainer.menuName.isEmpty || menuAndContainer.container.isEmpty {
+            return true
+        }
+        return false
     }
 
     private func bindingView() {
         imagePickerButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                PHPhotoLibrary.requestAuthorization({ [weak self] (status) in
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                PHPhotoLibrary.requestAuthorization({ (status) in
                     switch status {
                     case .authorized:
-                        DispatchQueue.main.async { [weak self] in
-                            guard let self = self else { return }
-
-                            self.imagePicker.sourceType = .photoLibrary
-                            Common.currentViewController()?.present(self.imagePicker, animated: true, completion: nil)
+                        DispatchQueue.main.async {
+                            owner.imagePicker.sourceType = .photoLibrary
+                            Common.currentViewController()?.present(owner.imagePicker, animated: true, completion: nil)
                         }
 
                     default:
@@ -103,26 +102,30 @@ class CreationFeedImage: UICollectionViewCell {
             .disposed(by: disposeBag)
 
         hideImageButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.hideImageButton.isHidden = true
-                self?.pickedImageView.isHidden = true
-                self?.pickedImageView.image = nil
-                self?.image = nil
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                owner.hideImageButton.isHidden = true
+                owner.pickedImageView.isHidden = true
+                owner.pickedImageView.image = nil
+                owner.reuseImageSubject?.onNext(nil)
+                owner.image = nil
             })
             .disposed(by: disposeBag)
 
         contentsTextView.rx.text
-            .subscribe(onNext: { [weak self] contentsText in
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, contentsText) in
                 if let text = contentsText {
-                    self?.contentsTextSubject?.onNext(text)
+                    owner.contentsTextSubject?.onNext(text)
                 }
             })
             .disposed(by: disposeBag)
 
         registerButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.imageSubject?.onNext(self?.image)
-                self?.registerSubject.onNext(true)
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                owner.imageSubject?.onNext(owner.image)
+                owner.registerSubject.onNext(true)
             })
             .disposed(by: disposeBag)
     }
@@ -138,6 +141,7 @@ extension CreationFeedImage: UIImagePickerControllerDelegate, UINavigationContro
             self.hideImageButton.isHidden = false
             self.pickedImageView.isHidden = false
             self.pickedImageView.image = image
+            self.reuseImageSubject?.onNext(image)
             self.image = image
         }
 
