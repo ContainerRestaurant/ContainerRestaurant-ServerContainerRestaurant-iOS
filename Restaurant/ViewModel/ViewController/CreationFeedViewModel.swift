@@ -10,10 +10,36 @@ import RxSwift
 
 struct CreationFeedViewModel {
     var modules: [UICollectionViewCell.Type] = []
+    // MARK: - 식당 이름
+    var restaurant: LocalSearchItem?
     var restaurantName: String = ""
     var restaurantSubject: PublishSubject<LocalSearchItem> = PublishSubject<LocalSearchItem>()
+    // MARK: - 음식 카테고리
+    var selectedCategory: String = "KOREAN"
+    var selectedCategorySubject: PublishSubject<String> = PublishSubject<String>()
+    // MARK: - 상세 내역
+    var mainMenuAndContainer: [MenuAndContainerModel] = []
+    var mainMenuAndContainerSubject: PublishSubject<[MenuAndContainerModel]> = PublishSubject<[MenuAndContainerModel]>()
+    var sideMenuAndContainer: [MenuAndContainerModel] = []
+    var sideMenuAndContainerSubject: PublishSubject<[MenuAndContainerModel]> = PublishSubject<[MenuAndContainerModel]>()
     var mainFoodHeightSubject: PublishSubject<CGFloat> = PublishSubject<CGFloat>()
     var sideFoodHeightSubject: PublishSubject<CGFloat> = PublishSubject<CGFloat>()
+    // MARK: - 난이도
+    var levelOfDifficulty: Int = 1
+    var levelOfDifficultySubject: PublishSubject<Int> = PublishSubject<Int>()
+    // MARK: - 환영 여부
+    var isWelcome: Bool = false
+    var isWelcomeSubject: PublishSubject<Bool> = PublishSubject<Bool>()
+    // MARK: - 이미지 & 경험담
+    var imageID: Int?
+    var imageIDFlagSubject: PublishSubject<Void> = PublishSubject<Void>()
+    var reuseImage: UIImage?
+    var reuseImageSubject: PublishSubject<UIImage?> = PublishSubject<UIImage?>()
+    var imageSubject: PublishSubject<UIImage?> = PublishSubject<UIImage?>()
+    var contentsTextSubject: PublishSubject<String> = PublishSubject<String>()
+    var contentsText: String = ""
+
+    let registerSubject: PublishSubject<Bool> = PublishSubject<Bool>()
 
     init() {
         appendModule()

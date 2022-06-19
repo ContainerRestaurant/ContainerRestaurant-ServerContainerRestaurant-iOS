@@ -20,23 +20,7 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
     var viewModel: CreationFeedViewModel!
     var mainFoodHeight: CGFloat = 179
     var sideFoodHeight: CGFloat = 179
-    let registerSubject: PublishSubject<Bool> = PublishSubject<Bool>()
-    var restaurant: LocalSearchItem?
-    var selectedCategory: String = "KOREAN"
-    var selectedCategorySubject: PublishSubject<String> = PublishSubject<String>()
-    var mainFoodAndContainer: [MenuAndContainerModel] = []
-    var mainFoodAndContainerSubject: PublishSubject<[MenuAndContainerModel]> = PublishSubject<[MenuAndContainerModel]>()
-    var sideFoodAndContainer: [MenuAndContainerModel] = []
-    var sideFoodAndContainerSubject: PublishSubject<[MenuAndContainerModel]> = PublishSubject<[MenuAndContainerModel]>()
-    var levelOfDifficulty: Int = 1
-    var levelOfDifficultySubject: PublishSubject<Int> = PublishSubject<Int>()
-    var isWelcome: Bool = false
-    var isWelcomeSubject: PublishSubject<Bool> = PublishSubject<Bool>()
-    var imageID: Int?
-    var imageIDFlagSubject: PublishSubject<Void> = PublishSubject<Void>()
-    var imageSubject: PublishSubject<UIImage?> = PublishSubject<UIImage?>()
-    var contentsTextSubject: PublishSubject<String> = PublishSubject<String>()
-    var contentsText: String = ""
+    let registerButtonIndexPath = [IndexPath(row: 17, section: 0)]
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var closeButton: UIButton!
@@ -49,74 +33,96 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
         viewModel.restaurantSubject
             .withUnretained(self)
             .subscribe(onNext: { (owner, restaurant) in
-                owner.restaurant = restaurant
-                owner.collectionView.reloadItems(at: [IndexPath(row: 17, section: 0)])
+                owner.viewModel.restaurant = restaurant
+                owner.collectionView.reloadItems(at: owner.registerButtonIndexPath)
             })
             .disposed(by: disposeBag)
         
-        selectedCategorySubject
-            .subscribe(onNext: { [weak self] in
-                self?.selectedCategory = $0
+        viewModel.selectedCategorySubject
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, selectedCategory) in
+                owner.viewModel.selectedCategory = selectedCategory
             })
             .disposed(by: disposeBag)
 
-        mainFoodAndContainerSubject
-            .subscribe(onNext: { [weak self] in
-                self?.mainFoodAndContainer = $0
-                self?.collectionView.reloadItems(at: [IndexPath(row: 17, section: 0)])
+        viewModel.mainMenuAndContainerSubject
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, mainFoodAndContainer) in
+                owner.viewModel.mainMenuAndContainer = mainFoodAndContainer
+                owner.collectionView.reloadItems(at: owner.registerButtonIndexPath)
             })
             .disposed(by: disposeBag)
 
-        sideFoodAndContainerSubject
-            .subscribe(onNext: { [weak self] in
-                self?.sideFoodAndContainer = $0
+        viewModel.sideMenuAndContainerSubject
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, sideFoodAndContainer) in
+                owner.viewModel.sideMenuAndContainer = sideFoodAndContainer
             })
             .disposed(by: disposeBag)
 
-        levelOfDifficultySubject
-            .subscribe(onNext: { [weak self] in
-                self?.levelOfDifficulty = $0
+        viewModel.levelOfDifficultySubject
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, levelOfDifficulty) in
+                owner.viewModel.levelOfDifficulty = levelOfDifficulty
             })
             .disposed(by: disposeBag)
 
-        isWelcomeSubject
-            .subscribe(onNext: { [weak self] in
-                self?.isWelcome = $0
+        viewModel.isWelcomeSubject
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, isWelcome) in
+                owner.viewModel.isWelcome = isWelcome
             })
             .disposed(by: disposeBag)
-        
-        imageSubject
-            .subscribe(onNext: { [weak self] in
-                guard let image = $0 else {
-                    self?.imageID = -1
-                    self?.imageIDFlagSubject.onNext(())
+
+        viewModel.reuseImageSubject
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, image) in
+                owner.viewModel.reuseImage = image
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.imageSubject
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, image) in
+                guard let image = image else {
+                    owner.viewModel.imageID = -1
+                    owner.viewModel.imageIDFlagSubject.onNext(())
                     return
                 }
 
-                API().uploadImage(image: image) { [weak self] imageID in
-                    self?.imageID = imageID
-                    self?.imageIDFlagSubject.onNext(())
+                API().uploadImage(image: image) { imageID in
+                    owner.viewModel.imageID = imageID
+                    owner.viewModel.imageIDFlagSubject.onNext(())
                 }
             })
             .disposed(by: disposeBag)
         
-        contentsTextSubject
-            .subscribe(onNext: { [weak self] in
-                self?.contentsText = $0
+        viewModel.contentsTextSubject
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, contentsText) in
+                owner.viewModel.contentsText = contentsText
             })
             .disposed(by: disposeBag)
 
         Observable
-            .zip(registerSubject, imageIDFlagSubject)
-            .subscribe(onNext: { [weak self] (registerSubject, _) in
-                let convertingXY = self?.convertingXY()
-                let restaurant: RestaurantModel = RestaurantModel(name: self?.restaurant?.title.deleteBrTag() ?? "", address: self?.restaurant?.roadAddress ?? "", latitude: convertingXY?.lat ?? 0.0, longitude: convertingXY?.lng ?? 0.0)
-                
-                if let mainFoodAndContainer = self?.mainFoodAndContainer,
-                   let sideFoodAndContainer = self?.sideFoodAndContainer,
-                   let thumbnailImageID = self?.imageID,
-                   let coordinator = self?.coordinator {
-                    let feedInformation = FeedModel(restaurantCreateDto: restaurant, category: self!.selectedCategory, mainMenu: mainFoodAndContainer, subMenu: sideFoodAndContainer, difficulty: self!.levelOfDifficulty, welcome: self!.isWelcome, thumbnailImageID: thumbnailImageID, content: self!.contentsText)
+            .zip(viewModel.registerSubject, viewModel.imageIDFlagSubject)
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                let convertingXY = owner.convertingXY()
+                let restaurant: RestaurantModel = RestaurantModel(name: owner.viewModel.restaurant?.title.deleteBrTag() ?? "", address: owner.viewModel.restaurant?.roadAddress ?? "", latitude: convertingXY?.lat ?? 0.0, longitude: convertingXY?.lng ?? 0.0)
+
+                let mainFoodAndContainer = owner.viewModel.mainMenuAndContainer
+                let sideFoodAndContainer = owner.viewModel.sideMenuAndContainer
+
+                if let thumbnailImageID = owner.viewModel.imageID, let coordinator = owner.coordinator {
+                    let feedInformation = FeedModel(restaurantCreateDto: restaurant,
+                                                    category: owner.viewModel.selectedCategory,
+                                                    mainMenu: mainFoodAndContainer,
+                                                    subMenu: sideFoodAndContainer,
+                                                    difficulty: owner.viewModel.levelOfDifficulty,
+                                                    welcome: owner.viewModel.isWelcome,
+                                                    thumbnailImageID: thumbnailImageID,
+                                                    content: owner.viewModel.contentsText)
 
                     coordinator.confirmCreationFeedPopup(feedModel: feedInformation)
                 }
@@ -133,37 +139,40 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
 
     func bindingView() {
         viewModel.mainFoodHeightSubject
-            .subscribe(onNext: { [weak self] cardViewHeight in
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, cardViewHeight) in
                 let titleHeight: CGFloat = 20
                 let spacing: CGFloat = 16
                 let buttonHeight: CGFloat = 20
 
-                self?.mainFoodHeight = titleHeight + spacing + cardViewHeight + spacing + buttonHeight
-                self?.collectionView.reloadData()
+                owner.mainFoodHeight = titleHeight + spacing + cardViewHeight + spacing + buttonHeight
+                owner.collectionView.reloadData()
             })
             .disposed(by: disposeBag)
 
         viewModel.sideFoodHeightSubject
-            .subscribe(onNext: { [weak self] cardViewHeight in
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, cardViewHeight) in
                 let titleHeight: CGFloat = 20
                 let spacing: CGFloat = 16
                 let buttonHeight: CGFloat = 20
 
-                self?.sideFoodHeight = titleHeight + spacing + cardViewHeight + spacing + buttonHeight
-                self?.collectionView.reloadData()
+                owner.sideFoodHeight = titleHeight + spacing + cardViewHeight + spacing + buttonHeight
+                owner.collectionView.reloadData()
             })
             .disposed(by: disposeBag)
 
         closeButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                if !(self?.restaurant?.title.isEmpty ?? true) || !(self?.mainFoodAndContainer.first?.menuName.isEmpty ?? true) || !(self?.mainFoodAndContainer.first?.container.isEmpty ?? true) || !(self?.contentsText.isEmpty ?? true) {
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                if !(owner.viewModel.restaurant?.title.isEmpty ?? true) || !(owner.viewModel.mainMenuAndContainer.first?.menuName.isEmpty ?? true) || !(owner.viewModel.mainMenuAndContainer.first?.container.isEmpty ?? true) || !(owner.viewModel.contentsText.isEmpty) {
                     let confirmExitPopup = CommonPopupViewController.instantiate()
                     confirmExitPopup.isTwoButton = true
                     confirmExitPopup.buttonType = .confirmExit
                     confirmExitPopup.modalPresentationStyle = .overFullScreen
                     Common.currentViewController()?.present(confirmExitPopup, animated: false, completion: nil)
                 } else {
-                    self?.dismiss(animated: true, completion: nil)
+                    owner.dismiss(animated: true, completion: nil)
                 }
             })
             .disposed(by: disposeBag)
@@ -191,8 +200,8 @@ extension CreationFeedViewController {
     }
     
     private func convertingXY() -> NMGLatLng? {
-        if let mapx = self.restaurant?.mapx,
-           let mapy = self.restaurant?.mapy {
+        if let mapx = self.viewModel.restaurant?.mapx,
+           let mapy = self.viewModel.restaurant?.mapy {
             let doubleMapx = Double(mapx)!
             let doubleMapy = Double(mapy)!
             print("변환: \(NMGTm128(x: doubleMapx, y: doubleMapy).toLatLng())")
@@ -215,36 +224,32 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
         switch type {
         case is SeparateLineCollectionViewCell.Type:
             let cell: SeparateLineCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            if indexPath.row == 0 {
-                cell.configureCell(height: CGFloat(16), color: .white)
-            } else if indexPath.row == 3 {
-                cell.configureCell(height: CGFloat(34), color: .white)
-            } else if indexPath.row == 5 {
-                cell.configureCell(height: CGFloat(12), color: .white)
-            } else if indexPath.row == 7 {
-                cell.configureCell(height: CGFloat(34), color: .white)
-            } else if indexPath.row == 8 {
-                cell.configureCell(height: CGFloat(8), color: .colorGrayGray02)
-            } else if indexPath.row == 9 {
-                cell.configureCell(height: CGFloat(34), color: .white)
-            } else if indexPath.row == 11 {
-                cell.configureCell(height: CGFloat(12), color: .white)
-            } else if indexPath.row == 13 {
-                cell.configureCell(height: CGFloat(32), color: .white)
-            } else if indexPath.row == 16 {
-                cell.configureCell(height: CGFloat(8), color: .colorGrayGray02)
+
+            switch indexPath.row {
+            case 0: cell.configureCell(height: CGFloat(16), color: .white)
+            case 3: cell.configureCell(height: CGFloat(34), color: .white)
+            case 5: cell.configureCell(height: CGFloat(12), color: .white)
+            case 7: cell.configureCell(height: CGFloat(34), color: .white)
+            case 8: cell.configureCell(height: CGFloat(8), color: .colorGrayGray02)
+            case 9: cell.configureCell(height: CGFloat(34), color: .white)
+            case 11: cell.configureCell(height: CGFloat(12), color: .white)
+            case 13: cell.configureCell(height: CGFloat(32), color: .white)
+            case 16: cell.configureCell(height: CGFloat(8), color: .colorGrayGray02)
+            default: break
             }
+
             return cell
 
         case is Title16Bold.Type:
             let cell: Title16Bold = collectionView.dequeueReusableCell(for: indexPath)
-            if indexPath.row == 1 {
-                cell.configure(title: "식당 이름")
-            } else if indexPath.row == 4 {
-                cell.configure(title: "음식 카테고리")
-            } else if indexPath.row == 10 {
-                cell.configure(title: "상세 내역")
+
+            switch indexPath.row {
+            case 1: cell.configure(title: "식당 이름")
+            case 4: cell.configure(title: "음식 카테고리")
+            case 10: cell.configure(title: "상세 내역")
+            default: break
             }
+
             return cell
 
         case is SearchRestaurant.Type:
@@ -257,29 +262,28 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
 
         case is FoodCategory.Type:
             let cell: FoodCategory = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(self.selectedCategorySubject)
+            cell.configure(viewModel.selectedCategorySubject)
             return cell
 
         case is CreationFeedDetail.Type:
             let cell: CreationFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(self.mainFoodAndContainerSubject, self.viewModel.mainFoodHeightSubject, .main)
+            cell.configure(viewModel.mainMenuAndContainerSubject, viewModel.mainFoodHeightSubject, .main)
             return cell
 
         case is CreationFeedDetailSide.Type:
             let cell: CreationFeedDetailSide = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(self.sideFoodAndContainerSubject, self.viewModel.sideFoodHeightSubject, .side)
+            cell.configure(viewModel.sideMenuAndContainerSubject, viewModel.sideFoodHeightSubject, .side)
             return cell
 
         case is LevelOfDifficultyAndWelcome.Type:
             let cell: LevelOfDifficultyAndWelcome = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(self.levelOfDifficultySubject, self.isWelcomeSubject)
-
+            cell.configure(viewModel.levelOfDifficultySubject, viewModel.isWelcomeSubject)
             return cell
 
         case is CreationFeedImage.Type:
             let cell: CreationFeedImage = collectionView.dequeueReusableCell(for: indexPath)
-            if let coordinator = self.coordinator {
-            cell.configure(coordinator, restaurant ?? LocalSearchItem(), mainFoodAndContainer, registerSubject, imageSubject, contentsTextSubject, contentsText)
+            if let coordinator = coordinator {
+                cell.configure(coordinator, viewModel)
             }
             return cell
 

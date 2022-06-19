@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 
 class SearchRestaurant: UICollectionViewCell {
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     weak var coordinator: CreationFeedCoordinator?
     var restaurantSubject: PublishSubject<LocalSearchItem> = PublishSubject<LocalSearchItem>()
 
@@ -17,23 +17,18 @@ class SearchRestaurant: UICollectionViewCell {
     @IBOutlet weak var searchRestaurantButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        disposeBag = DisposeBag()
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
 
-        searchRestaurantButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                if let subject = self?.restaurantSubject {
-                    self?.coordinator?.presentBottomSheet(subject)
-                }
-            })
-            .disposed(by: disposeBag)
-
-        clearButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.restaurantNameLabel.text = ""
-                self?.restaurantSubject.onNext(LocalSearchItem())
-            })
-            .disposed(by: disposeBag)
+    deinit {
+        print("SearchRestaurant Deinit")
     }
 
     func configure(_ coordinator: CreationFeedCoordinator, _ subject: PublishSubject<LocalSearchItem>) {
@@ -43,6 +38,21 @@ class SearchRestaurant: UICollectionViewCell {
         restaurantSubject
             .map { $0.title.deleteBrTag() }
             .bind(to: restaurantNameLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        searchRestaurantButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                owner.coordinator?.presentBottomSheet(owner.restaurantSubject)
+            })
+            .disposed(by: disposeBag)
+
+        clearButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                owner.restaurantNameLabel.text = ""
+                owner.restaurantSubject.onNext(LocalSearchItem())
+            })
             .disposed(by: disposeBag)
     }
 }
