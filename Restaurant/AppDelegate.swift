@@ -8,7 +8,7 @@
 import UIKit
 import KakaoSDKCommon
 import KakaoSDKAuth
-import Firebase
+import FirebaseCore
 import FirebaseMessaging
 
 @main
