@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import RxCocoa
 
 class FeedViewModel {
     var categoryFeeds: [FeedPreviewModel] = []
     var totalPage: Int = 0
     var currentPage: Int = 0
+    var selectedSortIndex: Int = 0
+    var selectedCategoryIndex: Int = 0
+    var ableAddPage = true
     var category: [(String,String)] = [
         ("ALL", "전체"),
         ("KOREAN", "한식"),
@@ -27,6 +31,42 @@ class FeedViewModel {
     init(_ twoFeedModel: TwoFeedModel) {
         self.categoryFeeds = twoFeedModel.feedPreviewList
         self.totalPage = twoFeedModel.totalPages
+    }
+
+    func sortString() -> String {
+        switch selectedSortIndex {
+        case 1: return "likeCount,DESC"
+        case 2: return "difficulty,ASC"
+        case 3: return "difficulty,DESC"
+        default: return ""
+        }
+    }
+
+    func categoryLabelSize(_ index: Int) -> CGSize {
+        let label = PaddingLabel(frame: CGRect.zero)
+        label.font = selectedCategoryIndex == index ? .boldSystemFont(ofSize: 16) : .systemFont(ofSize: 16)
+        label.paddingLeft = 10
+        label.paddingRight = 10
+        label.text = category[index].1
+        label.sizeToFit()
+
+        return CGSize(width: label.frame.width.widthRatio(), height: 47)
+    }
+
+    func sortLabelSize(_ index: Int) -> CGSize {
+        let label = PaddingLabel(frame: .zero)
+        label.font = selectedSortIndex == index ? .boldSystemFont(ofSize: 14) : .systemFont(ofSize: 14)
+        label.paddingLeft = 10
+        label.paddingRight = 10
+        switch index {
+        case 0: label.text = "최신 순"
+        case 1: label.text = "좋아요 많은 순"
+        case 2: label.text = "난이도 낮은 순"
+        case 3: label.text = "난이도 높은 순"
+        default: break
+        }
+        label.sizeToFit()
+        return CGSize(width: label.frame.width.widthRatio(), height: 56)
     }
     
     func categoryFeedCollectionViewSize() -> CGSize {
