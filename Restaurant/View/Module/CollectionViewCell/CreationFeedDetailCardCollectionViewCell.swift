@@ -20,7 +20,7 @@ class CreationFeedDetailCardCollectionViewCell: UICollectionViewCell {
         setTextField()
         self.mainView.applySketchShadow(color: .colorGrayGray08, alpha: 0.1, x: 0, y: 0, blur: 8, spread: 0)
     }
-    
+
     func configure(foodType: FoodType) {
         mainTitleLabel.text = "음식"
         subTitleLabel.text = "용기"
