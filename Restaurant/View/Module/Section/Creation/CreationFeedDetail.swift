@@ -10,9 +10,9 @@ import RxSwift
 
 class CreationFeedDetail: UICollectionViewCell {
     let disposeBag = DisposeBag()
-    var mainFoodAndContainer: [MenuAndContainerModel] = [MenuAndContainerModel()]
-    var mainFoodAndContainerSubject: PublishSubject<[MenuAndContainerModel]> = PublishSubject<[MenuAndContainerModel]>()
-    var mainFoodCount: Int = 1
+    var mainMenuAndContainer: [MenuAndContainerModel] = [MenuAndContainerModel()]
+    var mainMenuAndContainerSubject: PublishSubject<[MenuAndContainerModel]> = PublishSubject<[MenuAndContainerModel]>()
+    var mainMenuCount: Int = 1
     var cardHeightSubject: PublishSubject<CGFloat>?
     var foodType: FoodType?
 
@@ -40,26 +40,27 @@ extension CreationFeedDetail {
     
     private func bindingView() {
         appendFoodButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                if self!.mainFoodCount >= 5 {
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                if owner.mainMenuCount >= 5 {
                     print("더이상 추가 안됨")
                 } else {
-                    self?.mainFoodAndContainer.append(MenuAndContainerModel())
-                    self?.mainFoodCount += 1
+                    owner.mainMenuAndContainer.append(MenuAndContainerModel())
+                    owner.mainMenuCount += 1
                     
-                    let cardHeight = CGFloat(104 * self!.mainFoodCount)
-                    let cardSpacing = CGFloat(14 * (self!.mainFoodCount-1))
+                    let cardHeight = CGFloat(104 * owner.mainMenuCount)
+                    let cardSpacing = CGFloat(14 * (owner.mainMenuCount-1))
                     
-                    self?.cardHeightSubject?.onNext(cardHeight+cardSpacing)
-                    self?.collectionView.reloadData()
+                    owner.cardHeightSubject?.onNext(cardHeight+cardSpacing)
+                    owner.collectionView.reloadData()
                 }
             })
             .disposed(by: disposeBag)
     }
-    
-    func configure(_ mainFoodAndContainerSubject: PublishSubject<[MenuAndContainerModel]>, _ cardHeightSubject: PublishSubject<CGFloat>, _ foodType: FoodType) {
-        self.mainFoodAndContainerSubject = mainFoodAndContainerSubject
-        self.cardHeightSubject = cardHeightSubject
+
+    func configure(_ viewModel: CreationFeedViewModel, _ foodType: FoodType) {
+        mainMenuAndContainerSubject = viewModel.mainMenuAndContainerSubject
+        cardHeightSubject = viewModel.mainMenuHeightSubject
         self.foodType = foodType
     }
 }
@@ -67,25 +68,27 @@ extension CreationFeedDetail {
 //MARK: - CollectionView Protocol
 extension CreationFeedDetail: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return mainFoodCount
+        return mainMenuCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: CreationFeedDetailCardCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
 
-        cell.configure(foodType: self.foodType!)
+        cell.configure(foodType: foodType!)
         cell.mainTextField.rx.text
+            .withUnretained(self)
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] mainFood in
-                self?.mainFoodAndContainer[indexPath.row].menuName = mainFood!
-                self?.mainFoodAndContainerSubject.onNext(self!.mainFoodAndContainer)
+            .subscribe(onNext: { (owner, mainMenu) in
+                owner.mainMenuAndContainer[indexPath.row].menuName = mainMenu!
+                owner.mainMenuAndContainerSubject.onNext(owner.mainMenuAndContainer)
             })
             .disposed(by: disposeBag)
         cell.subTextField.rx.text
+            .withUnretained(self)
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] container in
-                self?.mainFoodAndContainer[indexPath.row].container = container!
-                self?.mainFoodAndContainerSubject.onNext(self!.mainFoodAndContainer)
+            .subscribe(onNext: { (owner, container) in
+                owner.mainMenuAndContainer[indexPath.row].container = container!
+                owner.mainMenuAndContainerSubject.onNext(owner.mainMenuAndContainer)
             })
             .disposed(by: disposeBag)
 

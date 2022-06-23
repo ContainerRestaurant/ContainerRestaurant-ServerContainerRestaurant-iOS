@@ -133,12 +133,12 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        self.coordinator?.presenter.tabBarController?.selectedIndex = 0
+        coordinator?.presenter.tabBarController?.selectedIndex = 0
         disposeBag = DisposeBag()
     }
 
     func bindingView() {
-        viewModel.mainFoodHeightSubject
+        viewModel.mainMenuHeightSubject
             .withUnretained(self)
             .subscribe(onNext: { (owner, cardViewHeight) in
                 let titleHeight: CGFloat = 20
@@ -150,7 +150,7 @@ class CreationFeedViewController: BaseViewController, Storyboard, ViewModelBinda
             })
             .disposed(by: disposeBag)
 
-        viewModel.sideFoodHeightSubject
+        viewModel.sideMenuHeightSubject
             .withUnretained(self)
             .subscribe(onNext: { (owner, cardViewHeight) in
                 let titleHeight: CGFloat = 20
@@ -267,12 +267,12 @@ extension CreationFeedViewController: UICollectionViewDelegate, UICollectionView
 
         case is CreationFeedDetail.Type:
             let cell: CreationFeedDetail = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(viewModel.mainMenuAndContainerSubject, viewModel.mainFoodHeightSubject, .main)
+            cell.configure(viewModel, .main)
             return cell
 
         case is CreationFeedDetailSide.Type:
             let cell: CreationFeedDetailSide = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configure(viewModel.sideMenuAndContainerSubject, viewModel.sideFoodHeightSubject, .side)
+            cell.configure(viewModel.sideMenuAndContainerSubject, viewModel.sideMenuHeightSubject, .side)
             return cell
 
         case is LevelOfDifficultyAndWelcome.Type:

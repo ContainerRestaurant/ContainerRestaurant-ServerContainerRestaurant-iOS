@@ -22,8 +22,8 @@ struct CreationFeedViewModel {
     var mainMenuAndContainerSubject: PublishSubject<[MenuAndContainerModel]> = PublishSubject<[MenuAndContainerModel]>()
     var sideMenuAndContainer: [MenuAndContainerModel] = []
     var sideMenuAndContainerSubject: PublishSubject<[MenuAndContainerModel]> = PublishSubject<[MenuAndContainerModel]>()
-    var mainFoodHeightSubject: PublishSubject<CGFloat> = PublishSubject<CGFloat>()
-    var sideFoodHeightSubject: PublishSubject<CGFloat> = PublishSubject<CGFloat>()
+    var mainMenuHeightSubject: PublishSubject<CGFloat> = PublishSubject<CGFloat>()
+    var sideMenuHeightSubject: PublishSubject<CGFloat> = PublishSubject<CGFloat>()
     // MARK: - 난이도
     var levelOfDifficulty: Int = 1
     var levelOfDifficultySubject: PublishSubject<Int> = PublishSubject<Int>()
