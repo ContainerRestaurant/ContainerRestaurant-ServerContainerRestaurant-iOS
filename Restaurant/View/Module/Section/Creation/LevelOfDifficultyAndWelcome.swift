@@ -44,71 +44,75 @@ class LevelOfDifficultyAndWelcome: UICollectionViewCell {
 extension LevelOfDifficultyAndWelcome {
     private func bindingView() {
         levelOfDifficulty1.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.levelOfDifficultySubject?.onNext(1)
-                self?.levelOfDifficultyLabel.setTitle("쉬워요", for: .normal)
-                self?.buttonImage(index: 0)
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                owner.levelOfDifficultySubject?.onNext(1)
+                owner.levelOfDifficultyLabel.setTitle("쉬워요", for: .normal)
+                owner.buttonImage(index: 0)
             })
             .disposed(by: disposeBag)
 
         levelOfDifficulty2.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.levelOfDifficultySubject?.onNext(2)
-                self?.levelOfDifficultyLabel.setTitle("할 만 해요", for: .normal)
-                self?.buttonImage(index: 1)
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                owner.levelOfDifficultySubject?.onNext(2)
+                owner.levelOfDifficultyLabel.setTitle("할 만 해요", for: .normal)
+                owner.buttonImage(index: 1)
             })
             .disposed(by: disposeBag)
 
         levelOfDifficulty3.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.levelOfDifficultySubject?.onNext(3)
-                self?.levelOfDifficultyLabel.setTitle("보통이에요", for: .normal)
-                self?.buttonImage(index: 2)
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                owner.levelOfDifficultySubject?.onNext(3)
+                owner.levelOfDifficultyLabel.setTitle("보통이에요", for: .normal)
+                owner.buttonImage(index: 2)
             })
             .disposed(by: disposeBag)
 
         levelOfDifficulty4.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.levelOfDifficultySubject?.onNext(4)
-                self?.levelOfDifficultyLabel.setTitle("까다로워요", for: .normal)
-                self?.buttonImage(index: 3)
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                owner.levelOfDifficultySubject?.onNext(4)
+                owner.levelOfDifficultyLabel.setTitle("까다로워요", for: .normal)
+                owner.buttonImage(index: 3)
             })
             .disposed(by: disposeBag)
 
         levelOfDifficulty5.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.levelOfDifficultySubject?.onNext(5)
-                self?.levelOfDifficultyLabel.setTitle("많이 어려워요", for: .normal)
-                self?.buttonImage(index: 4)
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                owner.levelOfDifficultySubject?.onNext(5)
+                owner.levelOfDifficultyLabel.setTitle("많이 어려워요", for: .normal)
+                owner.buttonImage(index: 4)
             })
             .disposed(by: disposeBag)
 
         welcomeButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                guard let `self` = self else { return }
-
-                self.setWelcomeButton()
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                owner.setWelcomeButton()
                 Common.hapticVibration()
             })
             .disposed(by: disposeBag)
     }
 
     private func buttonImage(index: Int) {
-        self.levelOfDifficulty2.setImage(UIImage(named: index >= 1 ? "hardFilled32Px" : "hardDisabled32Px"), for: .normal)
-        self.levelOfDifficulty3.setImage(UIImage(named: index >= 2 ? "hardFilled32Px" : "hardDisabled32Px"), for: .normal)
-        self.levelOfDifficulty4.setImage(UIImage(named: index >= 3 ? "hardFilled32Px" : "hardDisabled32Px"), for: .normal)
-        self.levelOfDifficulty5.setImage(UIImage(named: index >= 4 ? "hardFilled32Px" : "hardDisabled32Px"), for: .normal)
+        levelOfDifficulty2.setImage(UIImage(named: index >= 1 ? "hardFilled32Px" : "hardDisabled32Px"), for: .normal)
+        levelOfDifficulty3.setImage(UIImage(named: index >= 2 ? "hardFilled32Px" : "hardDisabled32Px"), for: .normal)
+        levelOfDifficulty4.setImage(UIImage(named: index >= 3 ? "hardFilled32Px" : "hardDisabled32Px"), for: .normal)
+        levelOfDifficulty5.setImage(UIImage(named: index >= 4 ? "hardFilled32Px" : "hardDisabled32Px"), for: .normal)
     }
 
     private func setWelcomeButton() {
-        self.isWelcome = !(self.isWelcome)
-        self.isWelcomeSubject?.onNext(self.isWelcome)
+        isWelcome = !(isWelcome)
+        isWelcomeSubject?.onNext(isWelcome)
         
-        if self.isWelcome {
-            self.welcomeButton.imageView?.addSubview(self.welcomeAnimationView)
-            self.welcomeAnimationView.play()
+        if isWelcome {
+            welcomeButton.imageView?.addSubview(welcomeAnimationView)
+            welcomeAnimationView.play()
         } else {
-            self.welcomeButton.imageView?.subviews.forEach { $0.removeFromSuperview() }
+            welcomeButton.imageView?.subviews.forEach { $0.removeFromSuperview() }
         }
     }
 }
