@@ -19,22 +19,19 @@ class SearchRestaurant: UICollectionViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-
-        disposeBag = DisposeBag()
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    deinit {
-        print("SearchRestaurant Deinit")
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+
+        bindingView()
     }
 
-    func configure(_ coordinator: CreationFeedCoordinator, _ subject: PublishSubject<LocalSearchItem>) {
-        self.coordinator = coordinator
-        restaurantSubject = subject
-
+    private func bindingView() {
         restaurantSubject
             .map { $0.title.deleteBrTag() }
             .bind(to: restaurantNameLabel.rx.text)
@@ -54,5 +51,10 @@ class SearchRestaurant: UICollectionViewCell {
                 owner.restaurantSubject.onNext(LocalSearchItem())
             })
             .disposed(by: disposeBag)
+    }
+
+    func configure(_ coordinator: CreationFeedCoordinator, _ subject: PublishSubject<LocalSearchItem>) {
+        self.coordinator = coordinator
+        self.restaurantSubject = subject
     }
 }
