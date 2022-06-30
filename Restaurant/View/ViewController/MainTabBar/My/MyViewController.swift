@@ -111,21 +111,21 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
             .disposed(by: disposeBag)
 
         settingButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.coordinator?.pushSetting()
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                owner.coordinator?.pushSetting()
             })
             .disposed(by: disposeBag)
 
         profileImageButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                PHPhotoLibrary.requestAuthorization({ [weak self] (status) in
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                PHPhotoLibrary.requestAuthorization( { status in
                     switch status {
                     case .authorized:
-                        DispatchQueue.main.async { [weak self] in
-                            guard let self = self else { return }
-
-                            self.imagePicker.sourceType = .photoLibrary
-                            Common.currentViewController()?.present(self.imagePicker, animated: true, completion: nil)
+                        DispatchQueue.main.async {
+                            owner.imagePicker.sourceType = .photoLibrary
+                            Common.currentViewController()?.present(owner.imagePicker, animated: true, completion: nil)
                         }
                     default:
                         DispatchQueue.main.async {
@@ -137,32 +137,37 @@ class MyViewController: BaseViewController, Storyboard, ViewModelBindableType {
             .disposed(by: disposeBag)
 
         feedButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.coordinator?.pushMyData(type: .myFeed)
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                owner.coordinator?.pushMyData(type: .myFeed)
             })
             .disposed(by: disposeBag)
 
         scrapFeedButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.coordinator?.pushMyData(type: .scrapedFeed)
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                owner.coordinator?.pushMyData(type: .scrapedFeed)
             })
             .disposed(by: disposeBag)
 
         favoriteRestaurantButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.coordinator?.pushMyData(type: .favoriteRestaurant)
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                owner.coordinator?.pushMyData(type: .favoriteRestaurant)
             })
             .disposed(by: disposeBag)
 
         levelDescriptionButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.coordinator?.presentBannerPopup(imageName: "levelDescription")
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                owner.coordinator?.presentBannerPopup(imageName: "levelDescription")
             })
             .disposed(by: disposeBag)
 
         nicknameUpdateButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.coordinator?.pushNickNamePopup()
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, _) in
+                owner.coordinator?.pushNickNamePopup()
             })
             .disposed(by: disposeBag)
     }
@@ -178,7 +183,7 @@ extension MyViewController: UIImagePickerControllerDelegate, UINavigationControl
         //사용자 정보 업데이트...
         API().uploadImage(image: image) { [weak self] imageID in
             let userID = UserDataManager.sharedInstance.userID
-            APIClient.updateUserProfile(userID: userID, profileID: imageID) { [weak self] userModel in
+            APIClient.updateUserProfile(userID: userID, profileID: imageID) { userModel in
                 self?.profileImageView.kf.setImage(with: URL(string: userModel.profile), options: [.transition(.fade(0.3))])
             }
         }
